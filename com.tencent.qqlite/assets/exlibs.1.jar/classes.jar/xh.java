@@ -21,10 +21,10 @@ public class xh
       return;
       if ((AddRequestActivity.a(this.a) != null) && (AddRequestActivity.a(this.a).isShowing()))
       {
-        AddRequestActivity.a(this.a).setText(this.a.getString(2131363387));
+        AddRequestActivity.a(this.a).setText(this.a.getString(2131363398));
         AddRequestActivity.a(this.a).setVisibility(8);
         AddRequestActivity.a(this.a).setVisibility(0);
-        AddRequestActivity.a(this.a).setImageResource(2130837985);
+        AddRequestActivity.a(this.a).setImageResource(2130838004);
         postDelayed(new xi(this), 1500L);
         return;
       }
@@ -32,10 +32,10 @@ public class xh
       return;
       this.a.a(true);
     } while ((AddRequestActivity.a(this.a) == null) || (!AddRequestActivity.a(this.a).isShowing()));
-    AddRequestActivity.a(this.a).setText(this.a.getString(2131363388));
+    AddRequestActivity.a(this.a).setText(this.a.getString(2131363399));
     AddRequestActivity.a(this.a).setVisibility(8);
     AddRequestActivity.a(this.a).setVisibility(0);
-    AddRequestActivity.a(this.a).setImageResource(2130837975);
+    AddRequestActivity.a(this.a).setImageResource(2130837994);
     postDelayed(new xj(this), 1500L);
   }
 }

@@ -1,21 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.adapter.FriendProfileImageAdapter;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class cpi
-  extends Handler
+  extends BroadcastReceiver
 {
-  public cpi(FriendProfileImageAdapter paramFriendProfileImageAdapter) {}
+  public cpi(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramMessage.what == 1) && ((paramMessage.obj instanceof ImageProgressCircle)))
+    if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
     {
-      paramMessage = (ImageProgressCircle)paramMessage.obj;
-      if (paramMessage.getVisibility() != 0) {
-        paramMessage.setVisibility(0);
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
       }
+      ShortVideoPreviewActivity.a(this.a);
     }
   }
 }

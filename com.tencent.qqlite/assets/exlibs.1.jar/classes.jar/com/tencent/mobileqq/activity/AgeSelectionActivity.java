@@ -93,9 +93,9 @@ public class AgeSelectionActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903460);
+    setContentView(2130903465);
     setTitle("选择出生日期");
-    setLeftViewName(2131364492);
+    setLeftViewName(2131364503);
     paramBundle = Calendar.getInstance();
     paramBundle.setTimeInMillis(System.currentTimeMillis());
     this.jdField_a_of_type_Int = paramBundle.get(1);
@@ -112,15 +112,15 @@ public class AgeSelectionActivity
       if (Build.VERSION.SDK_INT >= 11) {
         getWindow().setFlags(16777216, 16777216);
       }
-      j = getResources().getColor(2131427505);
-      findViewById(2131298102).setBackgroundColor(j);
-      j = getResources().getColor(2131427504);
+      j = getResources().getColor(2131427511);
+      findViewById(2131298107).setBackgroundColor(j);
+      j = getResources().getColor(2131427510);
       findViewById(2131297573).setBackgroundColor(j);
       findViewById(2131297574).setBackgroundColor(j);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298100));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298101));
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)findViewById(2131298103));
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setBackgroundColor(getResources().getColor(2131427486));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298105));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298106));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)findViewById(2131298108));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setBackgroundColor(getResources().getColor(2131427489));
       this.jdField_a_of_type_Xx = new xx(this, null);
       this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(this.jdField_a_of_type_Xx);
       this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$IphonePickListener);

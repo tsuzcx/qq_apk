@@ -1,16 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
 
 public class cka
-  implements View.OnClickListener
+  extends Handler
 {
-  public cka(BannerManager paramBannerManager) {}
+  public cka(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a(9, 0);
-    this.a.a(null);
+    if (-1 != paramMessage.what) {
+      return;
+    }
+    paramMessage = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Int * 1.257D), (int)(this.b * 1.481D));
+    paramMessage.addRule(14);
+    paramMessage.topMargin = (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.a.getHeight() / 2 - (int)(this.b / 2 * 1.705D));
   }
 }
 

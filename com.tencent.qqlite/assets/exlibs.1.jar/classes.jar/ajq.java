@@ -1,14 +1,16 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import java.util.Comparator;
 
 public class ajq
-  implements Comparator
+  implements View.OnClickListener
 {
-  private ajq(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public ajq(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public int a(ajo paramajo1, ajo paramajo2)
+  public void onClick(View paramView)
   {
-    return paramajo1.c.compareToIgnoreCase(paramajo2.c);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

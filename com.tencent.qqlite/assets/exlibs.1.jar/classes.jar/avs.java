@@ -1,28 +1,15 @@
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
 
-public class avs
-  extends FriendListObserver
+class avs
+  implements DialogInterface.OnDismissListener
 {
-  public avs(MoveToGroupActivity paramMoveToGroupActivity) {}
+  avs(avq paramavq) {}
   
-  protected void a(String paramString, byte paramByte1, byte paramByte2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    MoveToGroupActivity.a(this.a);
-    if (paramString == null) {
-      QQToast.a(this.a, this.a.getString(2131363422), 0).b(this.a.getTitleBarHeight());
-    }
-    for (;;)
-    {
-      MoveToGroupActivity.b(this.a);
-      this.a.removeObserver(MoveToGroupActivity.a(this.a));
-      return;
-      QQToast.a(this.a, 2, this.a.getString(2131363420), 0).b(this.a.getTitleBarHeight());
-    }
+    this.a.a.a.finish();
   }
 }
 

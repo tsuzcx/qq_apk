@@ -1,27 +1,26 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
+import android.view.View;
+import android.widget.Toast;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.ToastUtil;
 
 public class ffm
-  implements TicketUtils.TicketCallback
+  implements Runnable
 {
-  public ffm(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, Bundle paramBundle, long paramLong, Context paramContext, boolean paramBoolean1, boolean paramBoolean2) {}
+  public ffm(ToastUtil paramToastUtil, View paramView, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    ThreadManager.b().post(new ffp(this));
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    LogUtility.c("TIME-STATISTIC", "onGetA1");
-    ThreadManager.b().post(new ffn(this, paramArrayOfByte, paramString));
+    if (this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b == null)
+    {
+      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b = new Toast(CommonDataAdapter.a().a());
+      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setView(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setDuration(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.show();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setView(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setDuration(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.show();
   }
 }
 

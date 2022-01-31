@@ -1,31 +1,13 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import mqq.observer.AccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
 
 public class bgf
-  extends AccountObserver
+  implements DialogInterface.OnClickListener
 {
-  public bgf(QuickLoginActivity paramQuickLoginActivity) {}
+  public bgf(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
   
-  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
-  }
-  
-  protected void onLoginTimeout(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
-  }
-  
-  protected void onUserCancel(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

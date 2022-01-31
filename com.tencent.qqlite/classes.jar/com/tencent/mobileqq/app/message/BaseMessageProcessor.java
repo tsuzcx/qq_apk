@@ -14,8 +14,8 @@ import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import cyg;
-import czc;
+import czi;
+import dae;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -90,7 +90,7 @@ public abstract class BaseMessageProcessor
     return new Pair(paramList1, localStringBuilder);
   }
   
-  public czc a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public dae a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     return null;
   }
@@ -195,6 +195,9 @@ public abstract class BaseMessageProcessor
       if (!paramBoolean1)
       {
         paramRequestBuilder = paramRequestBuilder.a();
+        if (paramRequestBuilder == null) {
+          return;
+        }
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.BaseMessageProcessor", 2, "processRequest cmd=" + paramRequestBuilder.getServiceCmd() + ",reqSeq=" + paramLong);
         }
@@ -206,24 +209,24 @@ public abstract class BaseMessageProcessor
       i = 0;
       while (i < 9)
       {
-        localSendMessageHandler.a(new cyg(this, paramRequestBuilder, paramLong, l, paramBoolean2, paramBoolean3));
+        localSendMessageHandler.a(new czi(this, paramRequestBuilder, paramLong, l, paramBoolean2, paramBoolean3));
         i += 1;
       }
       i = 0;
-      label162:
+      label168:
       if (i < 3) {
         if (i != 0) {
-          break label215;
+          break label221;
         }
       }
-      label215:
+      label221:
       for (paramLong = 480000L;; paramLong = (3 - i) * 480000 / 3 - i * 2000)
       {
         l = 480000 * i / 3;
         localSendMessageHandler.getClass();
         localSendMessageHandler.a(l, paramLong, "period");
         i += 1;
-        break label162;
+        break label168;
         break;
       }
     }

@@ -1,37 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ako
-  implements View.OnClickListener
+class ako
+  implements DialogInterface.OnClickListener
 {
-  public ako(EditActivity paramEditActivity) {}
+  ako(akm paramakm) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = this.a;
-    if (!EditActivity.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      EditActivity.a(paramView, bool);
-      if (!EditActivity.a(this.a)) {
-        break;
-      }
-      this.a.f();
-      EditActivity.a(this.a).setImageResource(2130837556);
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).setVisibility(0);
-      }
-      return;
-    }
-    if (EditActivity.a(this.a) != null) {
-      EditActivity.a(this.a).setVisibility(4);
-    }
-    EditActivity.a(this.a).setImageResource(2130839035);
-    this.a.e();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

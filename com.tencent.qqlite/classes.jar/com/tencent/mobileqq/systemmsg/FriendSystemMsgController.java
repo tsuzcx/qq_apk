@@ -18,9 +18,9 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BadgeUtils;
-import efr;
-import efs;
-import eft;
+import egv;
+import egw;
+import egx;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -36,7 +36,7 @@ public class FriendSystemMsgController
   private static final int jdField_c_of_type_Int = 5000;
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler = new efs(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new egw(this, Looper.getMainLooper());
   private MessageHandler jdField_a_of_type_ComTencentMobileqqAppMessageHandler = null;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private final String jdField_a_of_type_JavaLangString = FriendSystemMsgController.class.getName();
@@ -143,7 +143,7 @@ public class FriendSystemMsgController
   public void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    paramQQAppInterface.a(new efr(this, paramQQAppInterface, paramInt));
+    paramQQAppInterface.a(new egv(this, paramQQAppInterface, paramInt));
   }
   
   public void a(QQAppInterface paramQQAppInterface, long paramLong)
@@ -201,7 +201,7 @@ public class FriendSystemMsgController
   {
     this.d = paramBoolean;
     this.jdField_b_of_type_JavaLangString = paramQQAppInterface.a();
-    paramQQAppInterface.a(new eft(this, paramQQAppInterface, paramBoolean));
+    paramQQAppInterface.a(new egx(this, paramQQAppInterface, paramBoolean));
   }
   
   public boolean a()

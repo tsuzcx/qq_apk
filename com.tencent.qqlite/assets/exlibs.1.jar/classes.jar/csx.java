@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class csx
   implements Runnable
 {
-  public csx(FriendListHandler paramFriendListHandler) {}
+  public csx(DataLineHandler paramDataLineHandler, String paramString) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StatusPush", 2, "handlePushBatchFStatus notifyUI uin:" + this.a.a.a() + " at " + System.currentTimeMillis());
-    }
-    this.a.a(1, true, Boolean.valueOf(true));
-    this.a.a(7, true, Boolean.valueOf(true));
-    FriendListHandler.a(this.a, 0);
+    FMToastUtil.a("'" + this.jdField_a_of_type_JavaLangString + "'" + BaseApplication.getContext().getResources().getString(2131361846));
   }
 }
 

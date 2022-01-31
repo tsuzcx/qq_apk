@@ -1,57 +1,148 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import EncounterSvc.RespGetEncounterV2;
+import EncounterSvc.UserData;
+import NeighborComm.RespHeader;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.URLSpan;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.NearbyPeopleListFrame;
+import com.tencent.mobileqq.adapter.PeopleAroundAdapter;
+import com.tencent.mobileqq.app.LBSObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class awz
-  implements Runnable
+  extends LBSObserver
 {
-  public awz(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public awz(NearbyPeopleListFrame paramNearbyPeopleListFrame) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, RespHeader paramRespHeader, RespGetEncounterV2 paramRespGetEncounterV2, ToServiceMsg paramToServiceMsg)
   {
-    EntityManager localEntityManager = this.a.app.a().createEntityManager();
-    if (localEntityManager != null) {
-      if (NearbyPeopleProfileActivity.a(this.a) <= 0L) {
-        break label289;
+    int i = paramToServiceMsg.extraData.getInt("gender");
+    boolean bool = paramToServiceMsg.extraData.getBoolean("first");
+    int j = paramToServiceMsg.extraData.getInt("classChild");
+    long l = paramToServiceMsg.extraData.getLong("requestId");
+    Object localObject = paramToServiceMsg.getUin();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdateGetEncounter isSuccess=").append(paramBoolean).append(" isFirst=").append(bool).append(" classChild=").append(j).append(" eReplyCode=");
+      if (paramRespHeader == null) {
+        break label191;
       }
     }
-    label289:
-    for (Object localObject2 = (NearbyPeopleCard)localEntityManager.a(NearbyPeopleCard.class, "tinyId=?", new String[] { String.valueOf(NearbyPeopleProfileActivity.a(this.a)) });; localObject2 = null)
+    label191:
+    for (paramToServiceMsg = Integer.valueOf(paramRespHeader.eReplyCode);; paramToServiceMsg = "null")
     {
-      Object localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = localObject2;
-        if (!StringUtil.b(NearbyPeopleProfileActivity.a(this.a).jdField_a_of_type_JavaLangString)) {
-          localObject1 = (NearbyPeopleCard)localEntityManager.a(NearbyPeopleCard.class, "uin=?", new String[] { NearbyPeopleProfileActivity.a(this.a).jdField_a_of_type_JavaLangString });
-        }
+      QLog.d("NearbyPeopleListFrame", 2, paramToServiceMsg + " requestId=" + l + " mRequestId=" + this.a.b);
+      NearbyPeopleListFrame.c(this.a);
+      NearbyPeopleListFrame.a(this.a).setVisibility(8);
+      if (l == this.a.b) {
+        break;
       }
-      localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject2 = new NearbyPeopleCard();
-        ((NearbyPeopleCard)localObject2).tinyId = NearbyPeopleProfileActivity.a(this.a);
-        ((NearbyPeopleCard)localObject2).uin = NearbyPeopleProfileActivity.a(this.a).jdField_a_of_type_JavaLangString;
-      }
-      ((NearbyPeopleCard)localObject2).nickname = NearbyPeopleProfileActivity.a(this.a).h;
-      ((NearbyPeopleCard)localObject2).age = NearbyPeopleProfileActivity.a(this.a).jdField_b_of_type_Int;
-      ((NearbyPeopleCard)localObject2).gender = NearbyPeopleProfileActivity.a(this.a).jdField_a_of_type_Byte;
-      ((NearbyPeopleCard)localObject2).maritalStatus = NearbyPeopleProfileActivity.a(this.a).jdField_b_of_type_Byte;
-      ((NearbyPeopleCard)localObject2).job = NearbyPeopleProfileActivity.a(this.a).jdField_c_of_type_Int;
-      ((NearbyPeopleCard)localObject2).constellation = NearbyPeopleProfileActivity.a(this.a).jdField_c_of_type_Byte;
-      ((NearbyPeopleCard)localObject2).xuanYan = NearbyPeopleProfileActivity.a(this.a).jdField_a_of_type_ArrayOfByte;
-      ((NearbyPeopleCard)localObject2).distance = NearbyPeopleProfileActivity.a(this.a).jdField_b_of_type_JavaLangString;
-      ((NearbyPeopleCard)localObject2).timeDiff = null;
-      this.a.a.obtainMessage(101, localObject2).sendToTarget();
-      localEntityManager.a();
       return;
     }
+    this.a.jdField_a_of_type_Boolean = false;
+    if ((paramBoolean) && (paramRespGetEncounterV2 != null))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(true, true);
+      this.a.m = paramRespGetEncounterV2.stUserData.iLat;
+      this.a.n = paramRespGetEncounterV2.stUserData.iLon;
+      if (i == this.a.b())
+      {
+        if (paramRespGetEncounterV2.stUserData.lNextGrid == -1L) {
+          break label807;
+        }
+        NearbyPeopleListFrame.b(this.a).setVisibility(4);
+        NearbyPeopleListFrame.c(this.a).setVisibility(0);
+        paramRespHeader = paramRespGetEncounterV2.vEncounterInfos;
+        if (bool)
+        {
+          this.a.jdField_a_of_type_JavaUtilList = new ArrayList(100);
+          this.a.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.a(this.a.jdField_a_of_type_JavaUtilList, true);
+        }
+        if (paramRespHeader != null) {
+          this.a.jdField_a_of_type_JavaUtilList.addAll(paramRespHeader);
+        }
+        if ((!this.a.jdField_a_of_type_JavaUtilList.isEmpty()) && (bool) && (this.a.i != 4))
+        {
+          paramRespHeader = this.a.jdField_a_of_type_JavaUtilList;
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new axa(this, (String)localObject, paramRespHeader));
+        }
+        this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.a.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.notifyDataSetChanged();
+        if (this.a.jdField_a_of_type_JavaUtilList.isEmpty())
+        {
+          paramRespHeader = this.a.a(2131298167);
+          if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityNearPeopleFilterActivity$NearPeopleFilters.a()) {
+            break label832;
+          }
+          paramToServiceMsg = (TextView)paramRespHeader.findViewById(2131296424);
+          paramToServiceMsg.setText(this.a.a(2131364444));
+          paramToServiceMsg.setTextColor(NearbyPeopleListFrame.d(this.a).getResources().getColor(2131427497));
+          paramRespHeader.findViewById(2131296426).setVisibility(4);
+          paramRespHeader.setOnClickListener(null);
+          this.a.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(paramRespHeader);
+        }
+        NearbyPeopleListFrame.a(this.a, false);
+        if ((!StringUtil.b(paramRespGetEncounterV2.strSecurityTips)) && (!StringUtil.b(paramRespGetEncounterV2.strSecurityDetailUrl)))
+        {
+          paramRespHeader = DialogUtil.a(NearbyPeopleListFrame.f(this.a), 230);
+          paramRespHeader.setTitle("温馨提示");
+          paramRespHeader.getMessageTextView().setVisibility(8);
+          paramToServiceMsg = paramRespHeader.getMessageTextView_Plain_Text();
+          paramToServiceMsg.setVisibility(0);
+          localObject = new SpannableString(paramRespGetEncounterV2.strSecurityTips + "了解更多");
+          ((SpannableString)localObject).setSpan(new URLSpan(paramRespGetEncounterV2.strSecurityDetailUrl), paramRespGetEncounterV2.strSecurityTips.length(), ((SpannableString)localObject).length(), 18);
+          ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#00a5e0")), paramRespGetEncounterV2.strSecurityTips.length(), ((SpannableString)localObject).length(), 33);
+          paramToServiceMsg.setText((CharSequence)localObject);
+          paramToServiceMsg.setMovementMethod(LinkMovementMethod.getInstance());
+          paramRespHeader.setNegativeButton(2131362802, new axc(this, paramRespHeader));
+          paramRespHeader.show();
+        }
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityNearPeopleFilterActivity$NearPeopleFilters == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityNearPeopleFilterActivity$NearPeopleFilters.a())) {
+          break label898;
+        }
+        this.a.c = true;
+        NearbyPeopleListFrame.a(this.a, 0, 1, true);
+      }
+    }
+    label807:
+    label832:
+    while ((paramRespHeader == null) || (paramRespHeader.eReplyCode != 7)) {
+      for (;;)
+      {
+        this.a.b(paramBoolean, bool);
+        return;
+        NearbyPeopleListFrame.b(this.a).setVisibility(0);
+        NearbyPeopleListFrame.c(this.a).setVisibility(4);
+        continue;
+        paramToServiceMsg = (TextView)paramRespHeader.findViewById(2131296424);
+        paramToServiceMsg.setText("当前筛选条件下找不到附近的人");
+        paramToServiceMsg.setTextColor(NearbyPeopleListFrame.e(this.a).getResources().getColor(2131427469));
+        paramRespHeader.findViewById(2131296426).setVisibility(0);
+        paramRespHeader.setOnClickListener(new axb(this));
+        continue;
+        this.a.c = false;
+        NearbyPeopleListFrame.b(this.a, 0, 1, false);
+      }
+    }
+    label898:
+    NearbyPeopleListFrame.b(this.a, true);
   }
 }
 

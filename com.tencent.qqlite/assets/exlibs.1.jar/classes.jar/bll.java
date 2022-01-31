@@ -1,16 +1,27 @@
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnGroupClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.theme.NightModeLogic;
 
 public class bll
-  implements ExpandableListView.OnGroupClickListener
+  implements View.OnClickListener
 {
-  public bll(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public bll(ThemeSwitchDlgActivity paramThemeSwitchDlgActivity) {}
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    return true;
+    ThemeSwitchDlgActivity.a(this.a, true);
+    ThemeSwitchDlgActivity.a(this.a, new NightModeLogic(this.a.getAppRuntime(), this.a));
+    ThemeSwitchDlgActivity.a(this.a).registerModeCallback(new blm(this));
+    if ((ThemeSwitchDlgActivity.a(this.a) != null) && (ThemeSwitchDlgActivity.a(this.a).isShowing()))
+    {
+      ThemeSwitchDlgActivity.a(this.a).dismiss();
+      ThemeSwitchDlgActivity.a(this.a, null);
+    }
+    ThemeSwitchDlgActivity.a(this.a).setupNightTheme();
+    ReportController.b(ThemeSwitchDlgActivity.a(this.a), "CliOper", "", "", "Setting_tab", "Night_mode_us", 0, 0, "1", "", "", "");
   }
 }
 

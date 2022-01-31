@@ -1,27 +1,46 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
 public class dlk
-  implements Runnable
+  extends IClickListener_Ver51
 {
-  public dlk(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public dlk(QfileLocalFileAppTabView paramQfileLocalFileAppTabView) {}
   
-  public void run()
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "queryFileEntitiesFromDB thread start");
-    }
-    List localList = QfileBaseRecentFileTabView.a(this.a).a().a();
-    if (localList != null) {
-      this.a.jdField_a_of_type_JavaUtilList.addAll(localList);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "queryFileEntitiesFromDB end size[" + this.a.jdField_a_of_type_JavaUtilList.size() + "]");
-    }
-    this.a.a();
+    this.a.a.a().c();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().l();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().m();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().n();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().o();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.open.base;
 
 import com.tencent.open.adapter.CommonDataAdapter;
-import fdd;
+import ffj;
 import mqq.app.AppRuntime;
 import mqq.manager.WtloginManager;
 import mqq.observer.SSOAccountObserver;
@@ -16,7 +16,7 @@ public class TicketUtils
   
   public TicketUtils()
   {
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new fdd(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new ffj(this);
   }
   
   public void a()

@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.aio.item.DetectableAnimationDrawable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
 public class bum
   implements Runnable
 {
-  public bum(DetectableAnimationDrawable paramDetectableAnimationDrawable) {}
+  public bum(PressToSpeakPanel paramPressToSpeakPanel, String paramString) {}
   
   public void run()
   {
-    this.a.a();
+    PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).b(this.jdField_a_of_type_JavaLangString, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.d();
   }
 }
 

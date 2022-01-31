@@ -1,10 +1,20 @@
 package com.tencent.mobileqq.app.message;
 
 import android.os.Bundle;
+import com.tencent.mobileqq.activity.recent.RecentDataListManager;
+import com.tencent.mobileqq.activity.recent.msg.TroopAtAllMsg;
+import com.tencent.mobileqq.activity.recent.msg.TroopAtMeMsg;
+import com.tencent.mobileqq.activity.recent.msg.TroopSpecialAttentionMsg;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.model.TroopInfoManager;
 import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.troop.data.MessageInfo;
+import com.tencent.mobileqq.troop.data.MessageNavInfo;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -180,6 +190,46 @@ public abstract class BaseMessageManagerForTroopAndDisc
         }
         finally {}
       }
+    }
+  }
+  
+  public void a(String paramString, ArrayList paramArrayList)
+  {
+    int i = -1;
+    paramArrayList = paramArrayList.iterator();
+    int j = 0;
+    while (paramArrayList.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramArrayList.next();
+      MessageInfo localMessageInfo = localMessageRecord.mMessageInfo;
+      if ((localMessageInfo != null) && (!localMessageRecord.isread))
+      {
+        if (localMessageRecord.istroop == 1) {}
+        for (boolean bool = true;; bool = false)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, "filterTroopAndDiscAtInfo= " + localMessageInfo.a() + "-" + localMessageInfo.b());
+          }
+          RecentUserProxy localRecentUserProxy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+          RecentUser localRecentUser = localRecentUserProxy.a(paramString, localMessageRecord.istroop);
+          if (!localMessageInfo.a()) {
+            break;
+          }
+          int k = localMessageInfo.a();
+          if (k < localRecentUser.msgType) {
+            break;
+          }
+          localRecentUser.msgType = k;
+          localRecentUser.msg = MessageInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, localMessageInfo, localRecentUser.msg, localMessageRecord, bool);
+          localRecentUserProxy.a(localRecentUser);
+          i = localMessageRecord.istroop;
+          j = 1;
+          break;
+        }
+      }
+    }
+    if (j != 0) {
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(paramString, i));
     }
   }
   
@@ -788,6 +838,50 @@ public abstract class BaseMessageManagerForTroopAndDisc
     return;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(paramString, paramInt, paramLong);
     this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(paramString, paramInt));
+  }
+  
+  protected void d(String paramString, int paramInt, long paramLong)
+  {
+    if ((paramString == null) || (paramLong < 0L)) {}
+    label347:
+    for (;;)
+    {
+      return;
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+      RecentUser localRecentUser = ((RecentUserProxy)localObject).a(paramString, paramInt);
+      if ((localRecentUser != null) && (localRecentUser.shouldShowInRecentList()) && ((((localRecentUser.msg instanceof TroopAtMeMsg)) && (((TroopAtMeMsg)localRecentUser.msg).a.a <= paramLong)) || (((localRecentUser.msg instanceof TroopSpecialAttentionMsg)) && (((TroopSpecialAttentionMsg)localRecentUser.msg).a.a <= paramLong)) || (((localRecentUser.msg instanceof TroopAtAllMsg)) && (((TroopAtAllMsg)localRecentUser.msg).a.a <= paramLong))))
+      {
+        localRecentUser.cleanMsgAndMsgData(localRecentUser.msgType);
+        ((RecentUserProxy)localObject).a(localRecentUser);
+        localObject = (TroopInfoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33);
+        if (paramInt == 1)
+        {
+          ((TroopInfoManager)localObject).a(paramString, 4);
+          ((TroopInfoManager)localObject).a(paramString, 2);
+          ((TroopInfoManager)localObject).a(paramString, 3);
+        }
+        for (;;)
+        {
+          if (paramInt != 1) {
+            break label347;
+          }
+          paramInt = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(paramString);
+          if ((paramInt == 1) || (paramInt == 4)) {
+            break;
+          }
+          RecentDataListManager.a().a(localRecentUser.uin + "-" + localRecentUser.type);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localRecentUser);
+          return;
+          if (paramInt == 3000)
+          {
+            ((TroopInfoManager)localObject).a(paramString + "&" + 3000, 0);
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, "cleanBizTypeMark TYPE_ALL_MSG==>uin:" + paramString + "|seqFrom:" + paramLong);
+            }
+          }
+        }
+      }
+    }
   }
 }
 

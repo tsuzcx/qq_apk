@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.richstatus.SameStatusActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ecg
-  implements Runnable
 {
-  public ecg(SameStatusActivity paramSameStatusActivity) {}
-  
-  public void run()
-  {
-    this.a.a(true, false);
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
 }
 
 

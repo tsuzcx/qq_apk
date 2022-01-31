@@ -1,11 +1,13 @@
 package com.tencent.smtt.sdk;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Message;
 import android.view.KeyEvent;
 import com.tencent.smtt.export.external.interfaces.HttpAuthHandler;
 import com.tencent.smtt.export.external.interfaces.SslError;
 import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 
 public class WebViewClient
@@ -29,6 +31,8 @@ public class WebViewClient
   SmttWebViewClient mX5Client;
   
   public void doUpdateVisitedHistory(WebView paramWebView, String paramString, boolean paramBoolean) {}
+  
+  public void onDetectedBlankScreen(String paramString, int paramInt) {}
   
   public void onFormResubmission(WebView paramWebView, Message paramMessage1, Message paramMessage2)
   {
@@ -65,6 +69,14 @@ public class WebViewClient
   public void onTooManyRedirects(WebView paramWebView, Message paramMessage1, Message paramMessage2) {}
   
   public void onUnhandledKeyEvent(WebView paramWebView, KeyEvent paramKeyEvent) {}
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    if (this.mX5Client != null) {
+      return this.mX5Client.shouldInterceptRequest(paramWebView.getX5WebView(), paramWebResourceRequest.getUrl().toString());
+    }
+    return null;
+  }
   
   public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
   {

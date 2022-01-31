@@ -1,26 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.model.FriendManager;
+import java.util.ArrayList;
+import java.util.List;
 
-class aiw
-  implements DialogInterface.OnClickListener
+public class aiw
+  implements Runnable
 {
-  aiw(aiv paramaiv, String paramString) {}
+  public aiw(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ((FriendManager)this.jdField_a_of_type_Aiv.a.app.getManager(8)).d(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Aiv.a.app.a().a();
-    paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaLangString, 3000));
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_Aiv.a.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_Aiv.a.finish();
+    ArrayList localArrayList = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getManager(45)).a(this.jdField_a_of_type_JavaLangString);
+    if (localArrayList != null) {
+      DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, localArrayList.size());
+    }
+    Message localMessage = new Message();
+    localMessage.what = 18;
+    localMessage.obj = localArrayList;
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a.sendMessage(localMessage);
   }
 }
 

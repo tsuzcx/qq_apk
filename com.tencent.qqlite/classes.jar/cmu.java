@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
 public class cmu
-  implements View.OnClickListener
+  extends TroopMemberListActivity.ViewHolder
 {
-  public cmu(SelectMemberActivity paramSelectMemberActivity) {}
+  public CheckBox a;
   
-  public void onClick(View paramView)
-  {
-    this.a.a();
-  }
+  private cmu(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
 }
 
 

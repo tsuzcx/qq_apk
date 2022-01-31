@@ -1,8 +1,10 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
 import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 public class aqy
   implements View.OnClickListener
@@ -11,9 +13,46 @@ public class aqy
   
   public void onClick(View paramView)
   {
-    this.a.a = ((Groups)paramView.getTag());
-    GroupManagerActivity.a(this.a, DialogUtil.a(this.a, 2131363784, 2131363785, this.a.a.group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
-    GroupManagerActivity.a(this.a, 1);
+    int j = 1;
+    int k = VipUtils.a(this.a.app, null);
+    int i;
+    if ((k & 0x2) != 0)
+    {
+      i = 1;
+      if ((k & 0x4) == 0) {
+        break label92;
+      }
+    }
+    for (;;)
+    {
+      if ((i == 0) && (j == 0)) {
+        break label97;
+      }
+      if (30 != this.a.a.size()) {
+        break label145;
+      }
+      paramView = new QQToast(this.a);
+      paramView.c(2000);
+      paramView.b(2131364178);
+      paramView.a();
+      return;
+      i = 0;
+      break;
+      label92:
+      j = 0;
+    }
+    label97:
+    if (16 == this.a.a.size())
+    {
+      paramView = new QQToast(this.a);
+      paramView.c(2000);
+      paramView.b(2131364177);
+      paramView.a();
+      return;
+    }
+    label145:
+    GroupManagerActivity.a(this.a, DialogUtil.a(this.a, 2131363794, 2131363796, null, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+    GroupManagerActivity.a(this.a, 0);
   }
 }
 

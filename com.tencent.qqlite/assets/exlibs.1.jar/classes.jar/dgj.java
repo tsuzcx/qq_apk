@@ -1,50 +1,90 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.widget.FileWebView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaFileFilter;
+import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
+import com.tencent.mobileqq.transfile.AlbumThumbDownloader;
+import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import java.util.EmptyStackException;
+import java.util.List;
 
-class dgj
+public class dgj
   implements Runnable
 {
-  dgj(dgi paramdgi) {}
+  public dgj(FastImagePreviewLayout paramFastImagePreviewLayout) {}
   
   public void run()
   {
-    if ((this.a.a.e == null) || (this.a.a.e.length() == 0))
-    {
-      this.a.a.b = false;
-      FilePreviewActivity.b(this.a.a);
-      return;
+    int i = MediaFileFilter.MEDIA_FILTER_SHOW_IMAGE.ordinal();
+    Object localObject = AlbumUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 210, 1, MediaFileFilter.filterOfOrdinal(i));
+    if (QLog.isColorLevel()) {
+      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage called");
     }
-    String str1;
-    if (this.a.a.jdField_a_of_type_Boolean)
+    LocalMediaInfo localLocalMediaInfo;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      str1 = "javascript:show_file_list()";
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:show_file_list()");
+      localLocalMediaInfo = (LocalMediaInfo)((List)localObject).get(0);
+      if ((PlusPanelUtils.b == null) || (!PlusPanelUtils.b.equals(localLocalMediaInfo.jdField_a_of_type_JavaLangString))) {
+        break label91;
+      }
     }
     for (;;)
     {
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "mWebView.loadUrl(" + str1 + ")");
-      FileManagerReporter.fileAssistantReportData localfileAssistantReportData = new FileManagerReporter.fileAssistantReportData();
-      localfileAssistantReportData.b = "sf_preview_again";
-      localfileAssistantReportData.c = FileUtil.a(this.a.a.c);
-      localfileAssistantReportData.jdField_a_of_type_Long = this.a.a.jdField_a_of_type_Long;
-      FileManagerReporter.a(this.a.a.app.a(), localfileAssistantReportData);
+      return;
+      label91:
+      PlusPanelUtils.b = localLocalMediaInfo.jdField_a_of_type_JavaLangString;
+      if (((PlusPanelUtils.jdField_a_of_type_JavaLangString != null) && (PlusPanelUtils.b.equals(PlusPanelUtils.jdField_a_of_type_JavaLangString))) || (localLocalMediaInfo.jdField_a_of_type_JavaLangString.contains("/tencent/zebra/cache/"))) {
+        continue;
+      }
+      ColorDrawable localColorDrawable = new ColorDrawable(570425344);
+      URL localURL = null;
       try
       {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str1);
+        localObject = this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839067);
+        localURL = AlbumUtil.a(localLocalMediaInfo, AlbumThumbDownloader.a);
+        long l1 = System.currentTimeMillis();
+        long l2 = l1 - localLocalMediaInfo.c * 1000L;
+        if (QLog.isColorLevel()) {
+          QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage called, spentTime = " + l2 + ",currentTime = " + l1 + ",addedTime = " + localLocalMediaInfo.c + ",modifiedTime = " + localLocalMediaInfo.d);
+        }
+        if (l2 >= 30000L) {
+          continue;
+        }
+        this.a.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(localURL, localColorDrawable, (Drawable)localObject);
+        this.a.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+        this.a.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new dgk(this));
         return;
       }
-      catch (Exception localException)
+      catch (EmptyStackException localEmptyStackException)
       {
-        localException.printStackTrace();
-        return;
+        for (;;)
+        {
+          localObject = localURL;
+          if (QLog.isColorLevel())
+          {
+            QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage EmptyStackException = " + localEmptyStackException);
+            localObject = localURL;
+          }
+        }
       }
-      String str2 = "javascript:add_more_page()";
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:add_more_page()");
+      catch (NullPointerException localNullPointerException)
+      {
+        for (;;)
+        {
+          localObject = localURL;
+          if (QLog.isColorLevel())
+          {
+            QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage NullPointerException = " + localNullPointerException);
+            localObject = localURL;
+          }
+        }
+      }
     }
   }
 }

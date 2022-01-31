@@ -1,10 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
+import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
 
-public final class bye
-  implements DialogInterface.OnClickListener
+public class bye
+  implements AnimationTextView.OnDoubleClick
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public bye(TextItemBuilder paramTextItemBuilder) {}
+  
+  public void a(View paramView)
+  {
+    if (TextItemBuilder.b(this.a)) {
+      return;
+    }
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (ChatActivity)this.a.jdField_a_of_type_AndroidContentContext);
+  }
 }
 
 

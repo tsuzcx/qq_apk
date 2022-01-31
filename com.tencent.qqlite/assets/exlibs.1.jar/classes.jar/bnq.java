@@ -1,17 +1,50 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.CommUtils.IHttpGetString;
+import com.tencent.mobileqq.activity.TroopManageActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bnq
-  implements Runnable
+  implements CommUtils.IHttpGetString
 {
-  public bnq(TroopMemberCardActivity paramTroopMemberCardActivity, String paramString) {}
+  public bnq(TroopManageActivity paramTroopManageActivity) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.app.a(this.jdField_a_of_type_JavaLangString, (byte)3, true);
-    if (localBitmap != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.runOnUiThread(new bnr(this, localBitmap));
+    try
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("Q.troopmanage", 4, "get group statics ok:" + paramString);
+      }
+      Object localObject = new JSONObject(paramString);
+      if ((((JSONObject)localObject).has("title")) && (((JSONObject)localObject).has("url")))
+      {
+        paramString = ((JSONObject)localObject).getString("title");
+        localObject = ((JSONObject)localObject).getString("url");
+        SharePreferenceUtils.a(this.a.app.getApplication(), this.a.app.a() + "_" + "GoupStatisticsTitle", paramString);
+        SharePreferenceUtils.a(this.a.app.getApplication(), this.a.app.a() + "_" + "GoupStatisticsUrl", (String)localObject);
+        if (this.a.isFinishing()) {
+          return;
+        }
+        if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+        {
+          TroopManageActivity.a(this.a, paramString, (String)localObject);
+          return;
+        }
+      }
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.e("Q.troopmanage", 2, paramString.toString());
+        return;
+        TroopManageActivity.a(this.a);
+      }
     }
   }
 }

@@ -1,46 +1,25 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.widget.MenuPopupDialog;
 
 public class dmn
-  extends IClickListener_Ver51
+  implements View.OnLongClickListener
 {
-  public dmn(QfileRecentDocFileTabView paramQfileRecentDocFileTabView) {}
+  public dmn(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().u();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().H();
+    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
+      return false;
+    }
+    paramView.setSelected(true);
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131296443, paramView.getContext().getString(2131363260));
+    QfileBaseRecentFileTabView.a(this.a, MenuPopupDialog.a(paramView, paramView.getContext().getString(2131363287), localQQCustomMenu, new dmo(this, paramView), new dmp(this, paramView)));
+    return true;
   }
 }
 

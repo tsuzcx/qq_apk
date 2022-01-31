@@ -1,20 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter.ViewHolder;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
 public class cdl
   implements View.OnClickListener
 {
-  public cdl(NotificationView paramNotificationView) {}
+  cdl(SearchContactsActivity paramSearchContactsActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = (NotificationAdapter.ViewHolder)paramView.getTag();
-    if (paramView.a.msg_type.get() == 2) {
-      this.a.a(paramView);
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof cdm)))
+    {
+      paramView = (cdm)paramView;
+      this.a.a(paramView.b);
     }
   }
 }

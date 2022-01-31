@@ -1,20 +1,49 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class dly
   implements Runnable
 {
-  public dly(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView, int paramInt) {}
+  public dly(QfileLocalFileMediaTabView paramQfileLocalFileMediaTabView, Context paramContext) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView != null)
+    Map localMap = FileCategoryUtil.c(this.jdField_a_of_type_AndroidContentContext);
+    Iterator localIterator;
+    Object localObject;
+    if (localMap != null)
     {
-      QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 1, "setSelect[" + this.jdField_a_of_type_Int + "] success mFileListView");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.c(this.jdField_a_of_type_Int);
+      localIterator = localMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (String)localIterator.next();
+        if (((String)localObject).equalsIgnoreCase("QQfile_recv") != true)
+        {
+          localObject = (List)localMap.get(localObject);
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.addAll((Collection)localObject);
+        }
+      }
+    }
+    localMap = FileCategoryUtil.b(this.jdField_a_of_type_AndroidContentContext);
+    if (localMap != null)
+    {
+      localIterator = localMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (String)localIterator.next();
+        if (((String)localObject).equalsIgnoreCase("QQfile_recv") != true)
+        {
+          localObject = (List)localMap.get(localObject);
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.addAll((Collection)localObject);
+        }
+      }
     }
   }
 }

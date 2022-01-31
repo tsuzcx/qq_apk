@@ -38,6 +38,7 @@ public class TransferRequest
   public String f;
   public boolean f = true;
   public String g;
+  public boolean g = false;
   public String h;
   public String i;
   private String j = null;

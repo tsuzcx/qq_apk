@@ -1,15 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.NearbyPeopleListFrame;
+import com.tencent.mobileqq.adapter.PeopleAroundAdapter.ViewHolder;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.widget.XListView;
 
-class awx
-  implements DialogInterface.OnClickListener
+public class awx
+  implements IIconListener
 {
-  awx(awu paramawu, QQCustomDialog paramQQCustomDialog) {}
+  public awx(NearbyPeopleListFrame paramNearbyPeopleListFrame) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if ((paramBitmap != null) && (paramInt2 == 200))
+    {
+      int i = this.a.a.getChildCount();
+      paramInt2 = 0;
+      while (paramInt2 < i)
+      {
+        paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+        if ((paramBitmap != null) && ((paramBitmap instanceof PeopleAroundAdapter.ViewHolder)))
+        {
+          paramBitmap = (PeopleAroundAdapter.ViewHolder)paramBitmap;
+          if ((paramBitmap.jdField_b_of_type_Int == paramInt1) && (paramBitmap.jdField_b_of_type_AndroidWidgetTextView != null)) {
+            NearbyPeopleListFrame.a(this.a, paramBitmap.jdField_b_of_type_AndroidWidgetTextView, paramInt1);
+          }
+        }
+        paramInt2 += 1;
+      }
+    }
   }
 }
 

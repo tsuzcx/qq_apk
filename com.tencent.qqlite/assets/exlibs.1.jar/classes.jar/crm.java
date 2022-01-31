@@ -1,22 +1,26 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.DatalineMessageManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.data.Card;
+import java.util.ArrayList;
 
 public class crm
-  extends MessageObserver
+  extends Thread
 {
-  public crm(DataLineHandler paramDataLineHandler) {}
+  public crm(CardHandler paramCardHandler, int paramInt, ArrayList paramArrayList) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    if ((paramInt1 == 1) && (this.a.b()))
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a.a();
+    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a.getManager(43);
+    Card localCard = localFriendsManager.a(str);
+    if (localCard != null)
     {
-      this.a.a(true);
-      DataLineHandler.a(this.a, MessageCache.a());
-      this.a.a.a().a().a();
+      localCard.iVoteIncrement = this.jdField_a_of_type_Int;
+      localFriendsManager.a(localCard);
+    }
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      CardHandler.a(str, this.jdField_a_of_type_JavaUtilArrayList);
     }
   }
 }

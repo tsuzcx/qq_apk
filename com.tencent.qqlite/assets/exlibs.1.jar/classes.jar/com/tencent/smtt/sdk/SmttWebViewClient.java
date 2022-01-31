@@ -2,28 +2,35 @@ package com.tencent.smtt.sdk;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Message;
 import android.view.KeyEvent;
-import com.tencent.smtt.export.external.WebViewWizardBase;
+import android.view.View;
 import com.tencent.smtt.export.external.interfaces.HttpAuthHandler;
 import com.tencent.smtt.export.external.interfaces.IX5WebViewBase;
+import com.tencent.smtt.export.external.interfaces.IX5WebViewClient;
 import com.tencent.smtt.export.external.interfaces.SslError;
 import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.export.external.proxy.X5ProxyWebViewClient;
+import com.tencent.smtt.utils.QBApkProcesser;
+import com.tencent.smtt.utils.TbsConfigFile;
+import com.tencent.smtt.utils.TbsLog;
 
 class SmttWebViewClient
   extends X5ProxyWebViewClient
 {
   static final String SCHEME_WTAI_MC = "wtai://wp/mc;";
+  private static String result_configForceSyswebview = null;
   private WebViewClient mClient;
   private WebView mWebView;
   
-  public SmttWebViewClient(WebViewWizardBase paramWebViewWizardBase, WebView paramWebView, WebViewClient paramWebViewClient)
+  public SmttWebViewClient(IX5WebViewClient paramIX5WebViewClient, WebView paramWebView, WebViewClient paramWebViewClient)
   {
-    super(paramWebViewWizardBase);
+    super(paramIX5WebViewClient);
     this.mWebView = paramWebView;
     this.mClient = paramWebViewClient;
     this.mClient.mX5Client = this;
@@ -52,6 +59,12 @@ class SmttWebViewClient
     this.mClient.doUpdateVisitedHistory(this.mWebView, paramString, paramBoolean);
   }
   
+  public void onDetectedBlankScreen(IX5WebViewBase paramIX5WebViewBase, String paramString, int paramInt)
+  {
+    this.mWebView.setX5WebView(paramIX5WebViewBase);
+    this.mClient.onDetectedBlankScreen(paramString, paramInt);
+  }
+  
   public void onFormResubmission(IX5WebViewBase paramIX5WebViewBase, Message paramMessage1, Message paramMessage2)
   {
     this.mWebView.setX5WebView(paramIX5WebViewBase);
@@ -66,17 +79,50 @@ class SmttWebViewClient
   
   public void onPageFinished(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2, String paramString)
   {
+    if (result_configForceSyswebview == null)
+    {
+      localObject = TbsConfigFile.getInstance();
+      if (localObject != null)
+      {
+        ((TbsConfigFile)localObject).setForceUseSystemWebview(false);
+        result_configForceSyswebview = Boolean.toString(false);
+      }
+    }
     this.mWebView.setX5WebView(paramIX5WebViewBase);
-    paramIX5WebViewBase = this.mWebView;
-    paramIX5WebViewBase.mPv += 1;
+    Object localObject = this.mWebView;
+    ((WebView)localObject).mPv += 1;
     this.mClient.onPageFinished(this.mWebView, paramString);
-    this.mWebView.hideSplashLogo();
+    if ("com.qzone".equals(paramIX5WebViewBase.getView().getContext().getApplicationInfo().packageName)) {
+      this.mWebView.writetbscorepvfile(paramIX5WebViewBase.getView().getContext());
+    }
+    TbsLog.app_extra("SmttWebViewClient", paramIX5WebViewBase.getView().getContext());
+    try
+    {
+      super.onPageFinished(paramIX5WebViewBase, paramInt1, paramInt2, paramString);
+      label130:
+      WebView.updateRebootStatus();
+      return;
+    }
+    catch (Exception paramIX5WebViewBase)
+    {
+      break label130;
+    }
+  }
+  
+  public void onPageFinished(IX5WebViewBase paramIX5WebViewBase, String paramString)
+  {
+    onPageFinished(paramIX5WebViewBase, 0, 0, paramString);
   }
   
   public void onPageStarted(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
     this.mWebView.setX5WebView(paramIX5WebViewBase);
     this.mClient.onPageStarted(this.mWebView, paramString, paramBitmap);
+  }
+  
+  public void onPageStarted(IX5WebViewBase paramIX5WebViewBase, String paramString, Bitmap paramBitmap)
+  {
+    onPageStarted(paramIX5WebViewBase, 0, 0, paramString, paramBitmap);
   }
   
   public void onReceivedError(IX5WebViewBase paramIX5WebViewBase, int paramInt, String paramString1, String paramString2)
@@ -131,6 +177,12 @@ class SmttWebViewClient
     this.mClient.onUnhandledKeyEvent(this.mWebView, paramKeyEvent);
   }
   
+  public WebResourceResponse shouldInterceptRequest(IX5WebViewBase paramIX5WebViewBase, WebResourceRequest paramWebResourceRequest)
+  {
+    this.mWebView.setX5WebView(paramIX5WebViewBase);
+    return this.mClient.shouldInterceptRequest(this.mWebView, paramWebResourceRequest);
+  }
+  
   public WebResourceResponse shouldInterceptRequest(IX5WebViewBase paramIX5WebViewBase, String paramString)
   {
     this.mWebView.setX5WebView(paramIX5WebViewBase);
@@ -145,22 +197,29 @@ class SmttWebViewClient
   
   public boolean shouldOverrideUrlLoading(IX5WebViewBase paramIX5WebViewBase, String paramString)
   {
-    this.mWebView.setX5WebView(paramIX5WebViewBase);
-    boolean bool2 = this.mClient.shouldOverrideUrlLoading(this.mWebView, paramString);
-    boolean bool1 = bool2;
-    if (!bool2)
-    {
-      if (!paramString.startsWith("wtai://wp/mc;")) {
-        break label94;
-      }
-      paramIX5WebViewBase = new Intent("android.intent.action.VIEW", Uri.parse("tel:" + paramString.substring("wtai://wp/mc;".length())));
-      this.mWebView.getContext().startActivity(paramIX5WebViewBase);
+    boolean bool1;
+    if ((paramString == null) || (this.mWebView.showDebugView(paramString))) {
       bool1 = true;
     }
-    label94:
     do
     {
-      return bool1;
+      boolean bool2;
+      do
+      {
+        return bool1;
+        this.mWebView.setX5WebView(paramIX5WebViewBase);
+        if (QBApkProcesser.getInstance().hiJackUrl(this.mWebView.getContext().getApplicationContext(), paramString)) {
+          return true;
+        }
+        bool2 = this.mClient.shouldOverrideUrlLoading(this.mWebView, paramString);
+        bool1 = bool2;
+      } while (bool2);
+      if (paramString.startsWith("wtai://wp/mc;"))
+      {
+        paramIX5WebViewBase = new Intent("android.intent.action.VIEW", Uri.parse("tel:" + paramString.substring("wtai://wp/mc;".length())));
+        this.mWebView.getContext().startActivity(paramIX5WebViewBase);
+        return true;
+      }
       bool1 = bool2;
     } while (!paramString.startsWith("tel:"));
     doDial(paramString);

@@ -8,8 +8,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import arp;
-import arq;
+import aru;
+import arv;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -80,12 +80,12 @@ public class JumpActivity
   
   private void a(Intent paramIntent, Bundle paramBundle)
   {
-    new arp(this, paramIntent, paramBundle).run();
+    new aru(this, paramIntent, paramBundle).run();
   }
   
   private void a(Bundle paramBundle)
   {
-    new arq(this, paramBundle).run();
+    new arv(this, paramBundle).run();
   }
   
   private void a(String paramString)
@@ -172,7 +172,7 @@ public class JumpActivity
     if (localBundle.getBoolean("qqfav_extra_from_system_share", false))
     {
       if (a(localBundle) != 0) {
-        QfavUtil.a(this, 2131362754, 1);
+        QfavUtil.a(this, 2131362761, 1);
       }
       finish();
       return;
@@ -586,10 +586,10 @@ public class JumpActivity
           if (localObject5 != null)
           {
             ((JumpAction)localObject5).jdField_a_of_type_Boolean = true;
-            if ((((JumpAction)localObject5).ce != null) && (((JumpAction)localObject5).ce.equals("puzzle_verify_code")) && (((JumpAction)localObject5).cf != null))
+            if ((((JumpAction)localObject5).ce != null) && (((JumpAction)localObject5).ce.equals("puzzle_verify_code_qqlite")) && (((JumpAction)localObject5).cf != null))
             {
               paramBundle = new Intent(getIntent());
-              if (((JumpAction)localObject5).cf.equals("PUZZLEVERIFYCODE")) {
+              if (((JumpAction)localObject5).cf.equals("PUZZLEVERIFYCODEQQLITE")) {
                 paramBundle.setClass(this, QQBrowserActivity.class);
               }
               for (;;)
@@ -597,9 +597,9 @@ public class JumpActivity
                 super.startActivity(paramBundle);
                 super.finish();
                 return false;
-                if (((JumpAction)localObject5).cf.equals("VERIFYCODE")) {
+                if (((JumpAction)localObject5).cf.equals("VERIFYCODEQQLITE")) {
                   paramBundle.setClass(this, VerifyCodeActivity.class);
-                } else if (((JumpAction)localObject5).cf.equals("DEVLOCK_CODE")) {
+                } else if (((JumpAction)localObject5).cf.equals("DEVLOCK_CODE_QQLITE")) {
                   paramBundle.setClass(this, AuthDevUgActivity.class);
                 }
               }

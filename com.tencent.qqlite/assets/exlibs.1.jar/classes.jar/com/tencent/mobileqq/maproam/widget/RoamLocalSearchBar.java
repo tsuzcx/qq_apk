@@ -14,7 +14,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import dxs;
+import dyv;
 
 public class RoamLocalSearchBar
   extends LinearLayout
@@ -60,14 +60,14 @@ public class RoamLocalSearchBar
   protected void a()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext);
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903582, this, true);
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903591, this, true);
     IphoneTitleBarActivity.setLayerType(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297957));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297962));
     this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
     this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
-    this.c = findViewById(2131296894);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298633));
+    this.c = findViewById(2131296895);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298659));
     setBackgroundAlpha(0.0F);
   }
   
@@ -96,7 +96,7 @@ public class RoamLocalSearchBar
     this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnRoamResultObserver);
     this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnSearchResultItemClick);
     this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.setCanceledOnTouchOutside(true);
-    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.setOnDismissListener(new dxs(this));
+    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.setOnDismissListener(new dyv(this));
     this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.show();
     startAnimation(AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130968606));
   }

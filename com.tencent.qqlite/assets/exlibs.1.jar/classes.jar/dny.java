@@ -1,75 +1,46 @@
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.OfflinePreviewController;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
 public class dny
-  extends FMObserver
+  extends IClickListener_Ver51
 {
-  public dny(OfflinePreviewController paramOfflinePreviewController) {}
+  public dny(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  /* Error */
-  protected void b(boolean paramBoolean, int paramInt1, java.lang.String paramString1, java.lang.String paramString2, java.lang.String paramString3, java.lang.String paramString4, int paramInt2, java.lang.String paramString5)
+  public void a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 10	dny:a	Lcom/tencent/mobileqq/filemanager/core/OfflinePreviewController;
-    //   6: getfield 21	com/tencent/mobileqq/filemanager/core/OfflinePreviewController:jdField_a_of_type_Boolean	Z
-    //   9: ifeq +43 -> 52
-    //   12: ldc 23
-    //   14: astore 5
-    //   16: ldc 25
-    //   18: astore 6
-    //   20: aload_0
-    //   21: getfield 10	dny:a	Lcom/tencent/mobileqq/filemanager/core/OfflinePreviewController;
-    //   24: getfield 28	com/tencent/mobileqq/filemanager/core/OfflinePreviewController:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback	Lcom/tencent/mobileqq/filemanager/activity/FilePreviewActivity$ControlerCallback;
-    //   27: iload_1
-    //   28: aload 5
-    //   30: aload 6
-    //   32: iload_2
-    //   33: i2l
-    //   34: aload_3
-    //   35: aload 4
-    //   37: aload_0
-    //   38: getfield 10	dny:a	Lcom/tencent/mobileqq/filemanager/core/OfflinePreviewController;
-    //   41: getfield 31	com/tencent/mobileqq/filemanager/core/OfflinePreviewController:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   44: invokeinterface 36 9 0
-    //   49: aload_0
-    //   50: monitorexit
-    //   51: return
-    //   52: aload 5
-    //   54: ifnull +21 -> 75
-    //   57: aload 5
-    //   59: invokevirtual 42	java/lang/String:length	()I
-    //   62: ifle +13 -> 75
-    //   65: iload 7
-    //   67: invokestatic 46	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   70: astore 6
-    //   72: goto -52 -> 20
-    //   75: aload 6
-    //   77: astore 5
-    //   79: goto -14 -> 65
-    //   82: astore_3
-    //   83: aload_0
-    //   84: monitorexit
-    //   85: aload_3
-    //   86: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	87	0	this	dny
-    //   0	87	1	paramBoolean	boolean
-    //   0	87	2	paramInt1	int
-    //   0	87	3	paramString1	java.lang.String
-    //   0	87	4	paramString2	java.lang.String
-    //   0	87	5	paramString3	java.lang.String
-    //   0	87	6	paramString4	java.lang.String
-    //   0	87	7	paramInt2	int
-    //   0	87	8	paramString5	java.lang.String
-    // Exception table:
-    //   from	to	target	type
-    //   2	12	82	finally
-    //   20	49	82	finally
-    //   57	65	82	finally
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().u();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().H();
   }
 }
 

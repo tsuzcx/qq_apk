@@ -69,10 +69,10 @@ public class ShieldListHandler
   {
     super(paramQQAppInterface);
     this.f = null;
-    this.e = paramQQAppInterface.getApplication().getString(2131364112);
-    this.f = paramQQAppInterface.getApplication().getString(2131364113);
-    this.jdField_g_of_type_JavaLangString = paramQQAppInterface.getApplication().getString(2131364114);
-    this.h = paramQQAppInterface.getApplication().getString(2131364115);
+    this.e = paramQQAppInterface.getApplication().getString(2131364123);
+    this.f = paramQQAppInterface.getApplication().getString(2131364124);
+    this.jdField_g_of_type_JavaLangString = paramQQAppInterface.getApplication().getString(2131364125);
+    this.h = paramQQAppInterface.getApplication().getString(2131364126);
   }
   
   private int a()

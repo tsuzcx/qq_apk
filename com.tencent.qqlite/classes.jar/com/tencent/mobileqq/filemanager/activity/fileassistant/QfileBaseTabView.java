@@ -13,7 +13,7 @@ import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import djg;
+import dki;
 import java.util.ArrayList;
 
 public class QfileBaseTabView
@@ -159,7 +159,7 @@ public class QfileBaseTabView
   protected void q()
   {
     this.f = false;
-    new Handler().postDelayed(new djg(this), 1500L);
+    new Handler().postDelayed(new dki(this), 1500L);
   }
   
   public void r()

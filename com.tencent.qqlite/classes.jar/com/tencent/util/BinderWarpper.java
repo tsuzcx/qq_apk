@@ -4,12 +4,12 @@ import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import fgs;
+import fiy;
 
 public class BinderWarpper
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new fgs();
+  public static final Parcelable.Creator CREATOR = new fiy();
   public IBinder a;
   
   public BinderWarpper(IBinder paramIBinder)

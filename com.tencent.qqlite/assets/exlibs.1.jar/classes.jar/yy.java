@@ -18,7 +18,7 @@ public class yy
     String str = paramMessage.obj.toString();
     paramMessage = str;
     if (str == null) {
-      paramMessage = this.a.getString(2131363518);
+      paramMessage = this.a.getString(2131363529);
     }
     this.a.a(paramMessage, 1);
   }

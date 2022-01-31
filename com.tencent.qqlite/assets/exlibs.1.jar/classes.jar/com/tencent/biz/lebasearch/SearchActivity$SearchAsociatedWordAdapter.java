@@ -74,7 +74,7 @@ public class SearchActivity$SearchAsociatedWordAdapter
       paramViewGroup = (TextView)paramView;
       break;
       label128:
-      Object localObject = this.jdField_a_of_type_ComTencentBizLebasearchSearchActivity.getString(2131362647, new Object[] { str });
+      Object localObject = this.jdField_a_of_type_ComTencentBizLebasearchSearchActivity.getString(2131362654, new Object[] { str });
       paramInt = ((String)localObject).indexOf(str);
       if (paramInt != -1)
       {

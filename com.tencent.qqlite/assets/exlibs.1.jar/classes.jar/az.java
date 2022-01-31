@@ -1,12 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.dataline.activities.LiteAdvanceActivity;
 
-class az
+public class az
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public az(LiteAdvanceActivity paramLiteAdvanceActivity) {}
   
-  private az(ay paramay) {}
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    LiteAdvanceActivity.b(this.a, paramBoolean);
+    LiteAdvanceActivity.b(this.a, LiteAdvanceActivity.b(this.a));
+  }
 }
 
 

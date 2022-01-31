@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.IGetVideoCallback;
 
-class duh
-  implements Runnable
+public class duh
+  implements FileManagerUtil.IGetVideoCallback
 {
-  duh(dug paramdug) {}
+  public duh(LocalVideoFileView paramLocalVideoFileView) {}
   
-  public void run()
+  public void a(Bitmap paramBitmap)
   {
-    PreviewingOfflineFileViewBase.e(this.a.a);
+    LocalVideoFileView.a(this.a).runOnUiThread(new dui(this, paramBitmap));
   }
 }
 

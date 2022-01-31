@@ -1,44 +1,67 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory;
+import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory.ViewProvider;
+import com.tencent.mobileqq.utils.StringUtil;
 
-class esl
-  implements Runnable
+public class esl
+  extends TroopFeedViewFactory.ViewProvider
 {
-  esl(esk paramesk, String paramString) {}
-  
-  public void run()
+  public esl(TroopFeedViewFactory paramTroopFeedViewFactory)
   {
+    super(paramTroopFeedViewFactory);
+  }
+  
+  protected View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = LayoutInflater.from(this.a.jdField_a_of_type_AndroidContentContext).inflate(2130903369, null);
+    }
+    paramView = (esm)localView.getTag();
+    Object localObject = paramView;
+    if (paramView == null)
+    {
+      localObject = new esm(this);
+      ((esm)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131297046));
+      ((esm)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131296934));
+      ((esm)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131297846));
+      ((esm)localObject).b = ((TextView)localView.findViewById(2131297845));
+      ((esm)localObject).c = ((TextView)localView.findViewById(2131297848));
+      localView.setOnClickListener(this.a);
+      localView.setTag(localObject);
+    }
+    ((esm)localObject).jdField_a_of_type_Int = paramInt;
+    ((esm)localObject).jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem = paramTroopFeedItem;
+    paramView = "[" + paramTroopFeedItem.tag + "] " + paramTroopFeedItem.title;
+    ((esm)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+    ((esm)localObject).b.setText(paramTroopFeedItem.content);
+    ((esm)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    paramView = "点击打开 " + paramTroopFeedItem.tag + " " + paramTroopFeedItem.title + " " + paramTroopFeedItem.content;
+    if (!StringUtil.b(paramTroopFeedItem.ex_1))
+    {
+      ((esm)localObject).c.setText(paramTroopFeedItem.ex_1);
+      paramView = paramView + " " + paramTroopFeedItem.ex_1;
+    }
     for (;;)
     {
-      try
-      {
-        Intent localIntent = new Intent(this.jdField_a_of_type_Esk.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-        localIntent.putExtra("BSafeReportPost", true);
-        if (this.jdField_a_of_type_JavaLangString != null) {
-          continue;
-        }
-        arrayOfByte = null;
-        localIntent.putExtra("SafeReportData", arrayOfByte);
-        localIntent.putExtra("hide_more_button", true);
-        localIntent.putExtra("ishiderefresh", true);
-        localIntent.putExtra("ishidebackforward", true);
-        this.jdField_a_of_type_Esk.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent.putExtra("url", "http://jubao.qq.com/cn/jubao"));
+      ((esm)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838402);
+      paramTroopFeedItem = paramView;
+      if (!paramBoolean) {
+        paramTroopFeedItem = paramView + " " + "两指向左横向滑动查看下一条通知";
       }
-      catch (Exception localException)
+      localView.setContentDescription(paramTroopFeedItem);
+      if (this.a.b)
       {
-        byte[] arrayOfByte;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception" + localException.getMessage());
-        continue;
+        localView.setOnLongClickListener(this.a.jdField_a_of_type_Esi);
+        localView.setOnTouchListener(this.a.jdField_a_of_type_Esi);
       }
-      this.jdField_a_of_type_Esk.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      return;
-      arrayOfByte = this.jdField_a_of_type_JavaLangString.getBytes("utf-8");
+      return localView;
+      ((esm)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
   }
 }

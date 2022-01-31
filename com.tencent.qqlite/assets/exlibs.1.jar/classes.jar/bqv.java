@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class bqv
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public bqv(UpgradeActivity paramUpgradeActivity) {}
+  public bqv(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.a.dismiss();
   }
 }
 

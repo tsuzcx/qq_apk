@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import java.util.Comparator;
 
 public class ajg
-  extends FriendListObserver
+  implements Comparator
 {
-  public ajg(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public ajg(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public int a(DiscussionMemberInfo paramDiscussionMemberInfo1, DiscussionMemberInfo paramDiscussionMemberInfo2)
   {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
+    if ((paramDiscussionMemberInfo1 != null) && (paramDiscussionMemberInfo2 != null)) {
+      return paramDiscussionMemberInfo1.discussionUin.compareTo(paramDiscussionMemberInfo2.discussionUin);
     }
+    if (paramDiscussionMemberInfo1 != null) {
+      return 1;
+    }
+    if (paramDiscussionMemberInfo2 != null) {
+      return -1;
+    }
+    return 0;
   }
 }
 

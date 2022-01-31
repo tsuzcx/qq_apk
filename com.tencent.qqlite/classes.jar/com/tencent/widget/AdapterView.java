@@ -21,7 +21,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Adapter;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
-import fhv;
+import fkb;
 import java.lang.reflect.Field;
 
 public abstract class AdapterView
@@ -42,7 +42,7 @@ public abstract class AdapterView
   private View jdField_a_of_type_AndroidViewView;
   AdapterView.OnItemLongClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemLongClickListener;
   AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener;
-  private fhv jdField_a_of_type_Fhv;
+  private fkb jdField_a_of_type_Fkb;
   private boolean jdField_a_of_type_Boolean;
   @ViewDebug.ExportedProperty(category="list")
   public int aA;
@@ -378,10 +378,10 @@ public abstract class AdapterView
       if ((!this.p) && (!this.r)) {
         break label78;
       }
-      if (this.jdField_a_of_type_Fhv == null) {
-        this.jdField_a_of_type_Fhv = new fhv(this, null);
+      if (this.jdField_a_of_type_Fkb == null) {
+        this.jdField_a_of_type_Fkb = new fkb(this, null);
       }
-      post(this.jdField_a_of_type_Fhv);
+      post(this.jdField_a_of_type_Fkb);
     }
     for (;;)
     {
@@ -410,7 +410,7 @@ public abstract class AdapterView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    removeCallbacks(this.jdField_a_of_type_Fhv);
+    removeCallbacks(this.jdField_a_of_type_Fkb);
   }
   
   @SuppressLint({"NewApi"})

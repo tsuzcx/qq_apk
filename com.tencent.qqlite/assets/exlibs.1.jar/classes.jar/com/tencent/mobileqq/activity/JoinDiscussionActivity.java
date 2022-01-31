@@ -8,9 +8,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import arj;
-import ark;
-import arm;
+import aro;
+import arp;
+import arr;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.mobileqq.app.DiscussionHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -31,8 +31,8 @@ public class JoinDiscussionActivity
   public ImageView a;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   public TextView a;
-  private ark jdField_a_of_type_Ark;
-  private arm jdField_a_of_type_Arm;
+  private arp jdField_a_of_type_Arp;
+  private arr jdField_a_of_type_Arr;
   public DiscussionHandler a;
   public String a;
   public ArrayList a;
@@ -68,9 +68,9 @@ public class JoinDiscussionActivity
   private void d()
   {
     setTitle("加入讨论组");
-    setRightButton(2131362794, this);
+    setRightButton(2131362801, this);
     this.h.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new arj(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aro(this));
   }
   
   private void e()
@@ -150,10 +150,10 @@ public class JoinDiscussionActivity
     super.onCreate(paramBundle);
     setContentView(2130903215);
     paramBundle = getIntent().getExtras();
-    this.jdField_a_of_type_Arm = new arm(this, null);
-    this.jdField_a_of_type_Ark = new ark(this, null);
-    addObserver(this.jdField_a_of_type_Arm);
-    addObserver(this.jdField_a_of_type_Ark);
+    this.jdField_a_of_type_Arr = new arr(this, null);
+    this.jdField_a_of_type_Arp = new arp(this, null);
+    addObserver(this.jdField_a_of_type_Arr);
+    addObserver(this.jdField_a_of_type_Arp);
     this.jdField_b_of_type_Int = paramBundle.getInt(ScannerActivity.o);
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("sig");
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("innerSig");
@@ -176,8 +176,8 @@ public class JoinDiscussionActivity
   protected void onDestroy()
   {
     super.onDestroy();
-    removeObserver(this.jdField_a_of_type_Arm);
-    removeObserver(this.jdField_a_of_type_Ark);
+    removeObserver(this.jdField_a_of_type_Arr);
+    removeObserver(this.jdField_a_of_type_Arp);
   }
   
   protected void onPause()

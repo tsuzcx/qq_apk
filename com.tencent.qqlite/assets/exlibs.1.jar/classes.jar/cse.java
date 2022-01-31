@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.app.DiscussionIconHelper;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import java.io.File;
+import java.net.URL;
 
 public class cse
-  implements Comparator
+  implements Runnable
 {
-  public cse(DiscussionIconHelper paramDiscussionIconHelper) {}
+  public cse(ConfigHandler paramConfigHandler, String paramString, File paramFile) {}
   
-  public int a(String paramString1, String paramString2)
+  public void run()
   {
     try
     {
-      long l1 = Long.parseLong(paramString1);
-      long l2 = Long.parseLong(paramString2);
-      if (l1 == l2) {
-        return 0;
-      }
-      if (l1 > l2) {
-        return 2;
-      }
-      return -1;
+      HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, new URL(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaIoFile);
+      return;
     }
-    catch (Exception paramString1) {}
-    return 0;
+    catch (Exception localException) {}
   }
 }
 

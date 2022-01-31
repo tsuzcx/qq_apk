@@ -1,14 +1,36 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class dit
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends FMObserver
 {
-  public dit(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public dit(VerifyPwdView paramVerifyPwdView) {}
   
-  public void onGlobalLayout()
+  protected void a(int paramInt, String paramString)
   {
-    this.a.d();
+    FMToastUtil.a(paramString);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      VerifyPwdView.a(this.a);
+      return;
+    }
+    VerifyPwdView.b(this.a);
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    FMToastUtil.a(paramString);
+    VerifyPwdView.c(this.a);
+  }
+  
+  protected void d()
+  {
+    VerifyPwdView.a(this.a);
   }
 }
 

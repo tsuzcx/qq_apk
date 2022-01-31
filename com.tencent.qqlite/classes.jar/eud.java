@@ -1,26 +1,26 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.util.FetchInfoListManager;
+import java.util.LinkedList;
 
 public class eud
-  implements View.OnClickListener
+  extends Handler
 {
-  public eud(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
+  public eud(FetchInfoListManager paramFetchInfoListManager, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 1);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      FetchInfoListManager.a(this.a);
     }
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      }
+    while ((paramMessage.what != 2) || (FetchInfoListManager.a(this.a) == null)) {
       return;
     }
-    catch (Exception paramView) {}
+    FetchInfoListManager.a(this.a).remove(paramMessage.obj);
   }
 }
 

@@ -57,7 +57,7 @@ public class za
       this.a.a(paramErrMsg.getMessage(), 1);
       return;
     }
-    paramString = this.a.getString(2131363286);
+    paramString = this.a.getString(2131363296);
     this.a.a(paramString, 1);
   }
   
@@ -92,7 +92,7 @@ public class za
       this.a.a(paramErrMsg.getMessage(), 1);
       return;
     }
-    paramString = this.a.getString(2131363286);
+    paramString = this.a.getString(2131363296);
     this.a.a(paramString, 1);
   }
   

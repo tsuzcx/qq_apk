@@ -1,32 +1,34 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import mqq.app.AppRuntime;
 
-class cuq
-  implements Comparator
+public class cuq
+  extends cuj
 {
-  cuq(cuo paramcuo) {}
-  
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  protected void a(String paramString)
   {
-    int i = paramPhoneContact1.sortWeight - paramPhoneContact2.sortWeight;
-    if (i == 0)
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.qqlite".equals(paramString)) {}
+    for (int i = 2;; i = 3)
     {
-      Object localObject2 = paramPhoneContact1.pinyinFirst;
-      String str = paramPhoneContact2.pinyinFirst;
-      Object localObject1 = localObject2;
-      if (((String)localObject2).endsWith("#")) {
-        localObject1 = "Za";
-      }
-      localObject2 = str;
-      if (str.endsWith("#")) {
-        localObject2 = "Za";
-      }
-      ((String)localObject1).compareTo((String)localObject2);
-      if (i == 0) {
-        return paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-      }
+      localGuardManager.a(i, paramString);
+      return;
     }
-    return i;
+  }
+  
+  protected void b()
+  {
+    this.a.a(6, "fake_p_msg");
+  }
+  
+  public void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.f();
+    this.a.b(true);
+    BaseApplicationImpl.a.a().onGuardEvent(4, cuf.a().a, 0L);
+    CoreService.b();
   }
 }
 

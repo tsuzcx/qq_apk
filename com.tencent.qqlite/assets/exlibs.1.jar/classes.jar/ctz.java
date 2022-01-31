@@ -1,25 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendsManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 
 public class ctz
-  extends SendMessageHandler.SendMessageRunnable
+  extends Thread
 {
-  public ctz(MessageHandler paramMessageHandler, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq, long paramLong1, long paramLong2) {}
+  public ctz(FriendListHandler paramFriendListHandler, String paramString1, String paramString2)
+  {
+    super(paramString1);
+  }
   
   public void run()
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("PbMessageSvc.PbMsgReadedReport");
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray());
-    localToServiceMsg.extraData.putLong("timeOut", this.c);
-    localToServiceMsg.extraData.putLong("startTime", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putInt("retryIndex", this.jdField_a_of_type_Int);
-    localToServiceMsg.extraData.putLong("msgSeq", this.b);
-    localToServiceMsg.setEnableFastResend(true);
-    localToServiceMsg.setTimeout(this.c);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(localToServiceMsg);
+    FriendsManagerImp localFriendsManagerImp = (FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a.getManager(8);
+    Friends localFriends = localFriendsManagerImp.b(this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a.a());
+    localFriends.signature = this.jdField_a_of_type_JavaLangString;
+    localFriendsManagerImp.a(localFriends);
   }
 }
 

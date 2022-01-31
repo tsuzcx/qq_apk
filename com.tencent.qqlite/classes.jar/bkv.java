@@ -1,27 +1,31 @@
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.widget.CheckBox;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bkv
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public bkv(SplashActivity paramSplashActivity) {}
+  public bkv(SplashActivity paramSplashActivity, CheckBox paramCheckBox) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.isResume()) {}
-    do
-    {
-      return;
-      localIntent = this.a.app.a();
-      this.a.app.a(null);
-    } while (localIntent == null);
-    String str = localIntent.getStringExtra("wording");
-    int i = localIntent.getIntExtra("timetowait", 360000);
-    Intent localIntent = new Intent("com.tencent.mobileqq.action.SECURITY_DETECT_PUSH_BANNER");
-    localIntent.putExtra("wording", str);
-    localIntent.putExtra("timetowait", i);
-    SplashActivity.a(this.a, localIntent);
+    paramDialogInterface = "";
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.e()) {
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.a();
+    }
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity).edit();
+    localEditor.putBoolean("notToastPushMsg" + paramDialogInterface, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131363289) + paramDialogInterface, true);
+    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131363290) + paramDialogInterface, true);
+    localEditor.putBoolean("discussion_msg_notify" + paramDialogInterface, true);
+    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131363293) + paramDialogInterface, true);
+    localEditor.commit();
+    this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.finish();
   }
 }
 

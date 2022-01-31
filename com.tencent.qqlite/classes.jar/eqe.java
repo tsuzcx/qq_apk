@@ -1,24 +1,34 @@
+import android.graphics.Bitmap;
 import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
-import java.util.Queue;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache;
 
 public class eqe
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public eqe(MessageSubtitleView paramMessageSubtitleView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public eqe(RollangleImageView.ImageCache paramImageCache, Looper paramLooper)
   {
-    if ((MessageSubtitleView.a(this.a, paramAnimation)) && (!this.a.a.isEmpty())) {
-      MessageSubtitleView.a(this.a).post(MessageSubtitleView.a(this.a));
-    }
+    super(paramLooper);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (this.a.a) {}
+    Object localObject;
+    String str;
+    do
+    {
+      return;
+      localObject = (Object[])paramMessage.obj;
+      paramMessage = (RollangleImageView)localObject[0];
+      str = (String)localObject[1];
+      localObject = (Bitmap)localObject[2];
+    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
+    paramMessage.setImageBitmap((Bitmap)localObject);
+  }
 }
 
 

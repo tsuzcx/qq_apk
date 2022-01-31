@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class ail
-  implements DialogInterface.OnClickListener
+class ail
+  implements Runnable
 {
-  public ail(DialogActivity paramDialogActivity) {}
+  ail(aik paramaik, Drawable paramDrawable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.cancel();
+    this.jdField_a_of_type_Aik.a.a.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

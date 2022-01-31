@@ -13,6 +13,7 @@ public final class im_msg_body$TmpPtt
   public static final int BYTES_FILE_MD5_FIELD_NUMBER = 3;
   public static final int BYTES_FILE_NAME_FIELD_NUMBER = 4;
   public static final int BYTES_FILE_UUID_FIELD_NUMBER = 2;
+  public static final int BYTES_PB_RESERVE_FIELD_NUMBER = 30;
   public static final int UINT32_FILE_SIZE_FIELD_NUMBER = 5;
   public static final int UINT32_FILE_TYPE_FIELD_NUMBER = 1;
   public static final int UINT32_PTTTRANS_FLAG_FIELD_NUMBER = 8;
@@ -22,6 +23,7 @@ public final class im_msg_body$TmpPtt
   public final PBBytesField bytes_file_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_file_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_file_uuid = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_pb_reserve = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field uint32_file_size = PBField.initUInt32(0);
   public final PBUInt32Field uint32_file_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_ptttrans_flag = PBField.initUInt32(0);
@@ -33,7 +35,8 @@ public final class im_msg_body$TmpPtt
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 56, 64 }, new String[] { "uint32_file_type", "bytes_file_uuid", "bytes_file_md5", "bytes_file_name", "uint32_file_size", "uint64_ptt_times", "uint32_user_type", "uint32_ptttrans_flag" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, TmpPtt.class);
+    ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 56, 64, 242 }, new String[] { "uint32_file_type", "bytes_file_uuid", "bytes_file_md5", "bytes_file_name", "uint32_file_size", "uint64_ptt_times", "uint32_user_type", "uint32_ptttrans_flag", "bytes_pb_reserve" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4 }, TmpPtt.class);
   }
 }
 

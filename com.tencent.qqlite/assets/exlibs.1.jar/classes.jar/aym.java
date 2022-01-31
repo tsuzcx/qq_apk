@@ -1,26 +1,31 @@
-import android.widget.EditText;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class aym
-  implements IphonePickerView.IphonePickListener
+  implements DialogInterface.OnClickListener
 {
-  public aym(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, IphonePickerView paramIphonePickerView, ActionSheet paramActionSheet) {}
+  public aym(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    NearbyPeopleProfileActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).setTag(Byte.valueOf((byte)(i + 1)));
-    NearbyPeopleProfileActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).setText(NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).a(0, i));
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if ((NearbyPeopleProfileActivity.c(this.a) != null) && (!NearbyPeopleProfileActivity.c(this.a).isEnabled()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.dating", 2, "profile add friend return");
+      }
+      return;
     }
+    NearbyPeopleProfileActivity.w(this.a);
+    if ((NearbyPeopleProfileActivity.c(this.a) != null) && (NearbyPeopleProfileActivity.c(this.a).isShowing())) {
+      NearbyPeopleProfileActivity.c(this.a).dismiss();
+    }
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004829", "0X8004829", 1, 0, "", "", "", "");
   }
-  
-  public void a(int paramInt1, int paramInt2) {}
 }
 
 

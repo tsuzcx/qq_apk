@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import chy;
-import chz;
-import cib;
+import ciz;
+import cja;
+import cjc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
@@ -25,14 +25,14 @@ public class SettingActivity2
   private static final int jdField_a_of_type_Int = 1;
   private static final String jdField_a_of_type_JavaLangString = "SettingActivity2";
   private Button jdField_a_of_type_AndroidWidgetButton;
-  private cib jdField_a_of_type_Cib;
+  private cjc jdField_a_of_type_Cjc;
   ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver;
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   public ContactBindObserver b;
   
   private void c()
   {
-    setTitle(2131363840);
+    setTitle(2131363851);
     this.h.setText("通讯录");
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131297417));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
@@ -75,7 +75,7 @@ public class SettingActivity2
     Intent localIntent = new Intent(this, BindNumberFromPcActivity.class);
     localIntent.putExtra("key_is_first_activity", true);
     startActivityForResult(localIntent, 1);
-    overridePendingTransition(2130968635, 2130968589);
+    overridePendingTransition(2130968639, 2130968589);
   }
   
   private void g()
@@ -83,7 +83,7 @@ public class SettingActivity2
     Intent localIntent = new Intent(this, BindNumberActivity.class);
     localIntent.putExtra("key_is_first_activity", true);
     startActivityForResult(localIntent, 1);
-    overridePendingTransition(2130968635, 2130968589);
+    overridePendingTransition(2130968639, 2130968589);
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -97,8 +97,8 @@ public class SettingActivity2
     super.doOnCreate(paramBundle);
     setContentView(2130903265);
     c();
-    this.jdField_a_of_type_Cib = new cib(this);
-    this.app.a(SettingActivity2.class, this.jdField_a_of_type_Cib);
+    this.jdField_a_of_type_Cjc = new cjc(this);
+    this.app.a(SettingActivity2.class, this.jdField_a_of_type_Cjc);
     return true;
   }
   
@@ -137,20 +137,20 @@ public class SettingActivity2
         f();
         return;
       }
-      paramView = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
-      paramView.a(2131363845, 1);
+      paramView = (ActionSheet)ActionSheetHelper.a(this, null, 2131624120);
+      paramView.a(2131363856, 1);
       paramView.setCanceledOnTouchOutside(true);
-      paramView.a(new chy(this, paramView));
-      paramView.d(2131362794);
+      paramView.a(new ciz(this, paramView));
+      paramView.d(2131362801);
       paramView.show();
       return;
     }
-    paramView = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
-    paramView.a(2131363843);
+    paramView = (ActionSheet)ActionSheetHelper.a(this, null, 2131624120);
+    paramView.a(2131363854);
     paramView.setCanceledOnTouchOutside(true);
-    paramView.a(2131363844, 3);
-    paramView.a(new chz(this, paramView));
-    paramView.d(2131362794);
+    paramView.a(2131363855, 3);
+    paramView.a(new cja(this, paramView));
+    paramView.d(2131362801);
     paramView.show();
   }
 }

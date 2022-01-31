@@ -1,24 +1,33 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.mobileqq.data.RecentEmotionData;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class abo
-  implements Runnable
+  extends AsyncTask
 {
-  public abo(Context paramContext, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  public abo(QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void run()
+  protected Void a(Void... paramVarArgs)
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null, 2131624119);
-    localActionSheet.a(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362491));
-    localActionSheet.a(2131363250, 3);
-    localActionSheet.d(2131362794);
-    localActionSheet.a(new abp(this, localActionSheet));
-    localActionSheet.show();
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    List localList = localEntityManager.a(RecentEmotionData.class, false, null, null, null, null, null, null);
+    paramVarArgs = localList;
+    if (localList == null) {
+      paramVarArgs = new ArrayList();
+    }
+    if (ChatActivityFacade.a(paramVarArgs, 3, 0, this.jdField_a_of_type_JavaLangString) < 0) {
+      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localEntityManager, 3, 0, this.jdField_a_of_type_JavaLangString, paramVarArgs);
+    }
+    localEntityManager.a();
+    return null;
   }
+  
+  protected void a(Void paramVoid) {}
 }
 
 

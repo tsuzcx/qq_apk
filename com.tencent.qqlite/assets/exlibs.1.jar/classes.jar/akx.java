@@ -1,37 +1,78 @@
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import java.io.UnsupportedEncodingException;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class akx
   implements TextWatcher
 {
-  public akx(EditInfoActivity paramEditInfoActivity) {}
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = true;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = true;
+  String jdField_c_of_type_JavaLangString;
+  boolean jdField_c_of_type_Boolean = false;
   
-  public void afterTextChanged(Editable paramEditable) {}
+  public akx(EditActivity paramEditActivity) {}
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void afterTextChanged(Editable paramEditable)
+  {
+    if (!this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (paramEditable = this.jdField_c_of_type_JavaLangString;; paramEditable = "")
+    {
+      paramEditable = paramEditable + this.jdField_b_of_type_JavaLangString;
+      if (this.jdField_c_of_type_Boolean)
+      {
+        this.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.a.setText(paramEditable);
+        this.jdField_b_of_type_Boolean = true;
+      }
+      int i = this.jdField_a_of_type_JavaLangString.length();
+      int j = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.a.setSelection(i + j);
+      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.g();
+      return;
+    }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString().substring(0, paramInt1);
+    this.jdField_b_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1 + paramInt2);
+    if (paramInt3 > 0)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
-    {
-      this.a.b = ("0/" + this.a.c);
-      this.a.a.post(new aky(this));
+    if (!this.jdField_b_of_type_Boolean) {
       return;
     }
-    try
+    this.jdField_c_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1, paramInt1 + paramInt3);
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramInt1 = paramCharSequence.toString().getBytes("utf-8").length;
-      this.a.b = (paramInt1 + "/" + this.a.c);
-      this.a.a.post(new akz(this, paramInt1));
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.t == 100) && (this.jdField_c_of_type_JavaLangString.contains("\n")))
+      {
+        this.jdField_c_of_type_Boolean = true;
+        this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("\n", "");
+      }
+      this.jdField_a_of_type_Int = this.jdField_c_of_type_JavaLangString.length();
       return;
     }
-    catch (UnsupportedEncodingException paramCharSequence)
-    {
-      paramCharSequence.printStackTrace();
-    }
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

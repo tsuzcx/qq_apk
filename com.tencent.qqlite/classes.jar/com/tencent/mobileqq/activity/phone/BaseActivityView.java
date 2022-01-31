@@ -13,12 +13,12 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import cgb;
-import cgc;
-import cgd;
-import cge;
-import cgf;
-import cgg;
+import chc;
+import chd;
+import che;
+import chf;
+import chg;
+import chh;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.DialogUtil;
@@ -43,7 +43,7 @@ public class BaseActivityView
   public View a;
   public ImageView a;
   protected TextView a;
-  private cgg jdField_a_of_type_Cgg;
+  private chh jdField_a_of_type_Chh;
   private PhoneInnerFrame jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneInnerFrame;
   public PhoneContactManagerImp a;
   public QQAppInterface a;
@@ -83,7 +83,7 @@ public class BaseActivityView
   
   private void j()
   {
-    DialogUtil.a(getContext(), 231, "请求出错", "请稍后重试", new cgf(this), null).show();
+    DialogUtil.a(getContext(), 231, "请求出错", "请稍后重试", new chg(this), null).show();
   }
   
   protected View a(int paramInt)
@@ -101,13 +101,13 @@ public class BaseActivityView
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838043);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838062);
       this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription("搜索");
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     }
     for (;;)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new cgb(this));
+      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new chc(this));
       this.jdField_a_of_type_Boolean = false;
       return;
       if (this.jdField_a_of_type_Int != 1) {
@@ -115,9 +115,9 @@ public class BaseActivityView
         {
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
           this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838043);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838062);
           this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838054);
+          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838073);
           this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("搜索");
           this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription("设置");
         }
@@ -148,18 +148,18 @@ public class BaseActivityView
     if (!a())
     {
       b(paramInt);
-      this.jdField_a_of_type_Cgg.sendEmptyMessageDelayed(2, paramLong);
+      this.jdField_a_of_type_Chh.sendEmptyMessageDelayed(2, paramLong);
     }
   }
   
   public void a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_Cgg;
+    Object localObject = this.jdField_a_of_type_Chh;
     if (paramBoolean) {}
     for (int i = 0;; i = 1)
     {
-      localObject = ((cgg)localObject).obtainMessage(1, paramInt, i);
-      this.jdField_a_of_type_Cgg.sendMessageDelayed((Message)localObject, paramLong);
+      localObject = ((chh)localObject).obtainMessage(1, paramInt, i);
+      this.jdField_a_of_type_Chh.sendMessageDelayed((Message)localObject, paramLong);
       return;
     }
   }
@@ -190,7 +190,7 @@ public class BaseActivityView
   
   protected void a(Intent paramIntent, PhoneInnerFrame paramPhoneInnerFrame)
   {
-    this.jdField_a_of_type_Cgg = new cgg(this);
+    this.jdField_a_of_type_Chh = new chh(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneInnerFrame = paramPhoneInnerFrame;
     paramIntent = paramPhoneInnerFrame.b();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramIntent.a();
@@ -201,7 +201,7 @@ public class BaseActivityView
   protected void a(String paramString1, String paramString2)
   {
     if (!a()) {
-      DialogUtil.a(getContext(), 231, paramString1, paramString2, new cgc(this), null).show();
+      DialogUtil.a(getContext(), 231, paramString1, paramString2, new chd(this), null).show();
     }
   }
   
@@ -222,9 +222,9 @@ public class BaseActivityView
     if ((!a()) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getContext(), a());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new cgd(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new che(this));
       if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnKeyListener(new cge(this));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnKeyListener(new chf(this));
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(paramInt);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
@@ -262,7 +262,7 @@ public class BaseActivityView
   
   public void g()
   {
-    this.jdField_a_of_type_Cgg.removeMessages(1);
+    this.jdField_a_of_type_Chh.removeMessages(1);
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
@@ -274,13 +274,13 @@ public class BaseActivityView
   {
     if ((this.jdField_c_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837910);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837928);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.jdField_c_of_type_AndroidWidgetTextView.getCompoundDrawables();
       this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
       this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
-      this.jdField_a_of_type_Cgg.removeMessages(3);
-      this.jdField_a_of_type_Cgg.sendEmptyMessageDelayed(3, 120000L);
+      this.jdField_a_of_type_Chh.removeMessages(3);
+      this.jdField_a_of_type_Chh.sendEmptyMessageDelayed(3, 120000L);
     }
   }
   
@@ -288,7 +288,7 @@ public class BaseActivityView
   {
     if ((this.jdField_c_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
     {
-      this.jdField_a_of_type_Cgg.removeMessages(3);
+      this.jdField_a_of_type_Chh.removeMessages(3);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
       this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawables(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);

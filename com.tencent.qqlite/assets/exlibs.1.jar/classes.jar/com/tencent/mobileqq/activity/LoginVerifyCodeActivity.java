@@ -12,11 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import aun;
-import auo;
-import aup;
-import auq;
-import aur;
+import aus;
+import aut;
+import auu;
+import auv;
+import auw;
 import com.tencent.mobileqq.app.utils.SMSBodyObserver;
 import com.tencent.mobileqq.app.utils.SmsContent;
 import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
@@ -39,8 +39,8 @@ public class LoginVerifyCodeActivity
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private SmsContent jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aun(this);
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new auo(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aus(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aut(this);
   private int c;
   
   public LoginVerifyCodeActivity()
@@ -53,18 +53,18 @@ public class LoginVerifyCodeActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
     this.jdField_c_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131363328) + "(" + this.jdField_c_of_type_Int + ")");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131363338) + "(" + this.jdField_c_of_type_Int + ")");
     this.b.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
   }
   
   private void i()
   {
-    ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298190)).setText(getString(2131363327, new Object[] { this.jdField_c_of_type_JavaLangString }));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298192));
+    ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298212)).setText(getString(2131363337, new Object[] { this.jdField_c_of_type_JavaLangString }));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298214));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131363328) + "(" + this.jdField_c_of_type_Int + ")");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131363338) + "(" + this.jdField_c_of_type_Int + ")");
     this.b.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298221));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298243));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131297382));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
@@ -80,11 +80,11 @@ public class LoginVerifyCodeActivity
   
   private void k()
   {
-    a(2131363299);
+    a(2131363309);
     if (PhoneNumLoginImpl.a().a(this.app, this.d, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver) != 0)
     {
       g();
-      a(2131363386, 1);
+      a(2131363397, 1);
     }
   }
   
@@ -102,7 +102,7 @@ public class LoginVerifyCodeActivity
     }
     if ((localObject1 != null) && (((String)localObject1).length() > 0))
     {
-      a(2131363303);
+      a(2131363313);
       com.tencent.common.app.BaseApplicationImpl.f = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
       if (QLog.isColorLevel()) {
         QLog.d("LoginVerifyCodeActivity", 2, "commitSmsCode start...");
@@ -110,11 +110,11 @@ public class LoginVerifyCodeActivity
       if (PhoneNumLoginImpl.a().a(this.app, this.d, this.jdField_c_of_type_JavaLangString, (String)localObject1, this.jdField_a_of_type_MqqObserverWtloginObserver) != 0)
       {
         g();
-        a(2131363386, 1);
+        a(2131363397, 1);
       }
       return;
     }
-    a(2131363326, 0);
+    a(2131363336, 0);
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -138,8 +138,8 @@ public class LoginVerifyCodeActivity
   {
     this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130903496));
-    setTitle(2131363325);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130903504));
+    setTitle(2131363335);
     this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra("phonenum");
     this.d = getIntent().getStringExtra("key");
     i();
@@ -150,17 +150,17 @@ public class LoginVerifyCodeActivity
   
   public void e()
   {
-    this.b.post(new aup(this));
+    this.b.post(new auu(this));
   }
   
   public void f()
   {
-    this.b.post(new auq(this));
+    this.b.post(new auv(this));
   }
   
   public void handleMessage(String paramString1, String paramString2)
   {
-    runOnUiThread(new aur(this, paramString1, paramString2));
+    runOnUiThread(new auw(this, paramString1, paramString2));
   }
   
   protected void onAccountChanged()
@@ -177,14 +177,14 @@ public class LoginVerifyCodeActivity
   {
     if (!NetworkUtil.e(BaseApplication.getContext()))
     {
-      a(2131362790, 0);
+      a(2131362797, 0);
       return;
     }
     switch (paramView.getId())
     {
     default: 
       return;
-    case 2131298192: 
+    case 2131298214: 
       k();
       return;
     }

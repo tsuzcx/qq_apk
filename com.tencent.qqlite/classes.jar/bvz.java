@@ -1,40 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.ChatItemBuilder;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.PAGameItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.PASingleItemBuilder;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
 
-public class bvz
-  implements View.OnClickListener
+class bvz
+  implements DialogInterface.OnClickListener
 {
-  public bvz(PAGameItemBuilder paramPAGameItemBuilder) {}
+  bvz(bvx parambvx) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bwb localbwb = (bwb)paramView.getTag();
-    paramView = AIOUtils.a(paramView);
-    if ((localbwb == null) || (!(paramView instanceof MessageForPubAccount))) {
-      if (QLog.isColorLevel()) {
-        QLog.d(ChatItemBuilder.a, 2, "PAGameItemBuilder onClickListener holder = " + localbwb + ", msg = " + paramView);
-      }
-    }
-    do
+    if ((this.a.b != null) && (this.a.b.length() > 0))
     {
-      return;
-      paramView = (MessageForPubAccount)paramView;
-      if ((paramView.mPAMessage != null) && (paramView.mPAMessage.items != null) && (!paramView.mPAMessage.items.isEmpty())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(ChatItemBuilder.a, 2, "PAGameItemBuilder onClickListener mPAMessage or items is empty !");
-    return;
-    PASingleItemBuilder.a(PAGameItemBuilder.a(this.a), PAGameItemBuilder.a(this.a), localbwb.a, localbwb.b, localbwb.c, PAGameItemBuilder.a(this.a).a, PAGameItemBuilder.b(this.a).d);
+      paramDialogInterface = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.a.b));
+      GrayTipsItemBuilder.i(this.a.a).startActivity(paramDialogInterface);
+    }
   }
 }
 

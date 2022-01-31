@@ -1,29 +1,22 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.aio.AIOTipsController;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import java.util.List;
 
 public class cbx
-  implements TextWatcher
+  implements Runnable
 {
-  public cbx(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public cbx(TipsManager paramTipsManager) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    ImageButton localImageButton = this.a.jdField_a_of_type_AndroidWidgetImageButton;
-    if (paramEditable.equals("")) {}
-    for (int i = 8;; i = 0)
-    {
-      localImageButton.setVisibility(i);
-      return;
+    if (TipsManager.a(this.a) != null) {
+      TipsManager.a(this.a).a();
+    }
+    TipsManager.a(this.a, null);
+    if (this.a.a != null) {
+      this.a.a.clear();
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

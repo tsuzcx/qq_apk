@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import amc;
+import amh;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,18 +22,18 @@ public class Face2FaceActivity
   {
     ((ImageView)findViewById(2131297125)).setOnClickListener(this);
     ((ImageView)findViewById(2131297126)).setOnClickListener(this);
-    setTitle(getString(2131364075), getString(2131364075));
-    TextView localTextView = (TextView)findViewById(2131296897);
+    setTitle(getString(2131364086), getString(2131364086));
+    TextView localTextView = (TextView)findViewById(2131296898);
     localTextView.setVisibility(0);
     localTextView.setContentDescription("返回，按钮");
-    localTextView.setOnClickListener(new amc(this));
+    localTextView.setOnClickListener(new amh(this));
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     setContentView(2130903198);
-    d(2130837635);
+    d(2130837660);
     c();
     return true;
   }

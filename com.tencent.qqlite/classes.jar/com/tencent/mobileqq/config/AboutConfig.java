@@ -15,9 +15,9 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
-import dbx;
-import dby;
-import dbz;
+import dcz;
+import dda;
+import ddb;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Hashtable;
@@ -30,7 +30,7 @@ public class AboutConfig
 {
   public static final String a = "com.tx.aboutfunction";
   public static final boolean a = true;
-  public static final String b = "http://fwd.3g.qq.com:8080/forward.jsp?bid=942";
+  public static final String b = "http://mapp.3g.qq.com/mqq/intro/index_lite.jsp?g_bid=942";
   public static final String c = "com.tx.aboutimage";
   public static final String d = "http://fwd.3g.qq.com:8080/forward.jsp?bid=943";
   public static final String e = "com.tx.abouthelp";
@@ -40,7 +40,7 @@ public class AboutConfig
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Hashtable jdField_a_of_type_JavaUtilHashtable;
   private List jdField_a_of_type_JavaUtilList;
-  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new dby(this);
+  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new dda(this);
   private boolean b = true;
   
   public AboutConfig(QQAppInterface paramQQAppInterface)
@@ -55,7 +55,7 @@ public class AboutConfig
     Hashtable localHashtable = new Hashtable();
     ResourcePluginInfo localResourcePluginInfo = new ResourcePluginInfo();
     localResourcePluginInfo.strPkgName = "com.tx.aboutfunction";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363732);
+    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363743);
     localResourcePluginInfo.strResURL = "";
     localResourcePluginInfo.sResSubType = 2;
     localResourcePluginInfo.cCanChangeState = 0;
@@ -65,12 +65,12 @@ public class AboutConfig
     localResourcePluginInfo.isNew = 1;
     localResourcePluginInfo.sLanType = 1;
     localResourcePluginInfo.uiResId = 0L;
-    localResourcePluginInfo.strGotoUrl = "http://fwd.3g.qq.com:8080/forward.jsp?bid=942";
+    localResourcePluginInfo.strGotoUrl = "http://mapp.3g.qq.com/mqq/intro/index_lite.jsp?g_bid=942";
     localResourcePluginInfo.iPluginType = 32;
     localHashtable.put(localResourcePluginInfo.strPkgName, localResourcePluginInfo);
     localResourcePluginInfo = new ResourcePluginInfo();
     localResourcePluginInfo.strPkgName = "com.tx.aboutimage";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363733);
+    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363744);
     localResourcePluginInfo.strResURL = "";
     localResourcePluginInfo.sResSubType = 2;
     localResourcePluginInfo.cCanChangeState = 0;
@@ -85,7 +85,7 @@ public class AboutConfig
     localHashtable.put(localResourcePluginInfo.strPkgName, localResourcePluginInfo);
     localResourcePluginInfo = new ResourcePluginInfo();
     localResourcePluginInfo.strPkgName = "com.tx.abouthelp";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363734);
+    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363745);
     localResourcePluginInfo.strResDesc = "";
     localResourcePluginInfo.strResURL = "";
     localResourcePluginInfo.sResSubType = 2;
@@ -107,10 +107,10 @@ public class AboutConfig
   {
     AboutConfig localAboutConfig = paramQQAppInterface.a();
     String str = paramResourcePluginInfo.strGotoUrl;
-    Object localObject2 = "&version=3.4.0.607&appid=" + AppSetting.a + "&QUA=" + QZoneHelper.a() + "&sid=" + paramQQAppInterface.getSid();
+    Object localObject2 = "&version=3.5.0.660&appid=" + AppSetting.a + "&QUA=" + QZoneHelper.a() + "&sid=" + paramQQAppInterface.getSid();
     Object localObject1 = localObject2;
     if (paramResourcePluginInfo.strPkgName.equals("com.tx.abouthelp")) {
-      localObject1 = (String)localObject2 + "&adtag=607";
+      localObject1 = (String)localObject2 + "&adtag=660";
     }
     str = str + (String)localObject1;
     if (paramResourcePluginInfo.strPkgName.equals("com.tx.abouthelp"))
@@ -153,7 +153,7 @@ public class AboutConfig
           if (paramResourcePluginInfo.isNew == 0)
           {
             paramResourcePluginInfo.isNew = 1;
-            ThreadManager.b(new dbz(localAboutConfig, paramResourcePluginInfo));
+            ThreadManager.b(new ddb(localAboutConfig, paramResourcePluginInfo));
           }
           return;
           localObject1 = "";
@@ -330,7 +330,7 @@ public class AboutConfig
     QLog.d("AboutConfig", 2, "there has about data in memory cache, do not need load from DB");
     return;
     this.jdField_a_of_type_JavaUtilHashtable = a();
-    ThreadManager.b(new dbx(this));
+    ThreadManager.b(new dcz(this));
   }
   
   public boolean a()

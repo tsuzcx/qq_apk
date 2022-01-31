@@ -1,67 +1,35 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
 
 public class cgz
-  extends ContactBindObserver
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  private cgz(ContactListView paramContactListView) {}
+  private cgz(MessageSearchDialog paramMessageSearchDialog) {}
   
-  protected void a(boolean paramBoolean)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((!paramBoolean) || (!NetworkUtil.e(this.a.getContext())))
+    if (paramInt == 3)
     {
-      this.a.i();
-      this.a.g();
+      MessageSearchDialog.a(this.a);
+      return true;
     }
+    return false;
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b();
-    if (!paramBoolean1)
+    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
     {
-      this.a.i();
-      this.a.g();
-      if (((i == 0) || (i == 4)) && (this.a.l == 0)) {
-        this.a.a(2131363383, 3000L);
+      if (paramKeyEvent.getAction() == 1) {
+        MessageSearchDialog.a(this.a);
       }
+      return true;
     }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.b.setEnabled(true);
-      if (i == 4)
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.c())
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cha(this));
-          return;
-        }
-        this.a.i();
-        this.a.jdField_a_of_type_Chc.sendEmptyMessageDelayed(1, 0L);
-        return;
-      }
-    } while (!this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.h());
-    this.a.a(2131363381, 0L, false);
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      this.a.i();
-      ContactListView.a(this.a, true);
-      if (!paramBoolean2) {
-        this.a.g();
-      }
-      return;
-    }
-    this.a.g();
+    return false;
   }
 }
 

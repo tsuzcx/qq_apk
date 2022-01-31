@@ -1,10 +1,15 @@
-import android.widget.Button;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import com.tencent.mobileqq.data.PhoneContact;
 
-class cmb
+public class cmb
+  extends TroopMemberListActivity.ViewHolder
 {
-  public Button a;
+  public CheckBox a;
+  public PhoneContact a;
   
-  private cmb(cly paramcly) {}
+  private cmb(ContactsInnerFrame paramContactsInnerFrame) {}
 }
 
 

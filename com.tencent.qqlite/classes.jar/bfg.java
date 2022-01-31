@@ -1,13 +1,19 @@
 import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
-class bfg
-  implements Runnable
+public class bfg
+  extends ConfigObserver
 {
-  bfg(bff parambff) {}
+  public bfg(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    this.a.a.h();
+    QQSettingMe.a(this.a, paramUpgradeDetailWrapper);
+    if (this.a.b) {
+      this.a.a.runOnUiThread(new bfh(this));
+    }
   }
 }
 

@@ -1,48 +1,58 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.mobileqq.app.QQMapActivityProxy;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public final class cwr
-  extends Timer
+public class cwr
+  extends LBSObserver
 {
-  public cwr(String paramString)
-  {
-    super(paramString);
-  }
+  public cwr(QQMapActivityProxy paramQQMapActivityProxy) {}
   
-  public void cancel()
+  protected void a(boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ThreadManager", 2, "Can't cancel Global Timer");
+    if ((paramBoolean) && (paramArrayOfByte != null)) {
+      QQMapActivityProxy.a(this.a).sendBroadcast(new Intent().setAction("com.tencent.mobileqq.onGetStreetViewUrl").putExtra("streetViewUrl", new String(paramArrayOfByte)));
     }
   }
   
-  public void schedule(TimerTask paramTimerTask, long paramLong)
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    try
-    {
-      super.schedule(paramTimerTask, paramLong);
+    if (paramArrayOfObject == null) {
       return;
     }
-    catch (Exception paramTimerTask)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ThreadManager", 2, "timer schedule err", paramTimerTask);
-    }
+    ToServiceMsg localToServiceMsg = (ToServiceMsg)paramArrayOfObject[0];
+    paramArrayOfObject = (byte[])paramArrayOfObject[1];
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.mobileqq.onGetLbsShareSearch");
+    localIntent.putExtra("data", paramArrayOfObject);
+    localIntent.putExtra("req", localToServiceMsg.extraData.getBundle("req"));
+    QQMapActivityProxy.a(this.a).sendBroadcast(localIntent);
   }
   
-  public void schedule(TimerTask paramTimerTask, long paramLong1, long paramLong2)
+  protected void b(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    try
-    {
-      super.schedule(paramTimerTask, paramLong1, paramLong2);
+    if (paramArrayOfObject == null) {
       return;
     }
-    catch (Exception paramTimerTask)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ThreadManager", 2, "timer schedule2 err", paramTimerTask);
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.mobileqq.onGetLbsShareShop");
+    localIntent.putExtra("data", (byte[])paramArrayOfObject[1]);
+    localIntent.putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
+    QQMapActivityProxy.a(this.a).sendBroadcast(localIntent);
+  }
+  
+  protected void c(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramArrayOfObject == null) {
+      return;
     }
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.mobileqq.onGetShareShopDetail");
+    localIntent.putExtra("data", (byte[])paramArrayOfObject[1]);
+    localIntent.putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
+    QQMapActivityProxy.a(this.a).sendBroadcast(localIntent);
   }
 }
 

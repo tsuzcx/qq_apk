@@ -1,18 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
 
 public class ahy
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public ahy(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {
-      this.a.a.dismiss();
-    }
+    this.a.a(this.a.a, false);
   }
 }
 

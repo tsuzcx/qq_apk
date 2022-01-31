@@ -669,6 +669,14 @@ public class PkgTools
     }
   }
   
+  public static byte[] a(int paramInt)
+  {
+    int i = (byte)(paramInt & 0xFF);
+    int j = (byte)(paramInt >> 8 & 0xFF);
+    int k = (byte)(paramInt >> 16 & 0xFF);
+    return new byte[] { (byte)(paramInt >> 24 & 0xFF), k, j, i };
+  }
+  
   public static byte[] a(String paramString)
   {
     int i = paramString.length();
@@ -726,6 +734,12 @@ public class PkgTools
       i += 1;
     }
     return a(arrayOfString);
+  }
+  
+  public static byte[] a(short paramShort)
+  {
+    int i = (byte)(paramShort & 0xFF);
+    return new byte[] { (byte)(paramShort >> 8 & 0xFF), i };
   }
   
   public static byte[] a(String[] paramArrayOfString)
@@ -1124,10 +1138,10 @@ public class PkgTools
     //   38: iconst_2
     //   39: iload_2
     //   40: invokestatic 367	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   43: new 425	java/io/ByteArrayInputStream
+    //   43: new 427	java/io/ByteArrayInputStream
     //   46: dup
     //   47: aload 7
-    //   49: invokespecial 427	java/io/ByteArrayInputStream:<init>	([B)V
+    //   49: invokespecial 429	java/io/ByteArrayInputStream:<init>	([B)V
     //   52: astore_0
     //   53: new 232	java/io/DataInputStream
     //   56: dup
@@ -1135,20 +1149,20 @@ public class PkgTools
     //   58: invokespecial 235	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   61: astore_3
     //   62: aload_3
-    //   63: invokevirtual 509	java/io/DataInputStream:readUTF	()Ljava/lang/String;
+    //   63: invokevirtual 511	java/io/DataInputStream:readUTF	()Ljava/lang/String;
     //   66: astore 5
     //   68: aload 5
     //   70: astore 4
     //   72: aload_3
     //   73: ifnull +7 -> 80
     //   76: aload_3
-    //   77: invokevirtual 510	java/io/DataInputStream:close	()V
+    //   77: invokevirtual 512	java/io/DataInputStream:close	()V
     //   80: aload 4
     //   82: astore_3
     //   83: aload_0
     //   84: ifnull +10 -> 94
     //   87: aload_0
-    //   88: invokevirtual 511	java/io/ByteArrayInputStream:close	()V
+    //   88: invokevirtual 513	java/io/ByteArrayInputStream:close	()V
     //   91: aload 4
     //   93: astore_3
     //   94: aload_3
@@ -1163,13 +1177,13 @@ public class PkgTools
     //   105: aload_3
     //   106: ifnull +7 -> 113
     //   109: aload_3
-    //   110: invokevirtual 510	java/io/DataInputStream:close	()V
+    //   110: invokevirtual 512	java/io/DataInputStream:close	()V
     //   113: aload 4
     //   115: astore_3
     //   116: aload_0
     //   117: ifnull -23 -> 94
     //   120: aload_0
-    //   121: invokevirtual 511	java/io/ByteArrayInputStream:close	()V
+    //   121: invokevirtual 513	java/io/ByteArrayInputStream:close	()V
     //   124: ldc 100
     //   126: areturn
     //   127: astore_0
@@ -1183,13 +1197,13 @@ public class PkgTools
     //   137: aload_3
     //   138: ifnull +7 -> 145
     //   141: aload_3
-    //   142: invokevirtual 510	java/io/DataInputStream:close	()V
+    //   142: invokevirtual 512	java/io/DataInputStream:close	()V
     //   145: aload 4
     //   147: astore_3
     //   148: aload_0
     //   149: ifnull -55 -> 94
     //   152: aload_0
-    //   153: invokevirtual 511	java/io/ByteArrayInputStream:close	()V
+    //   153: invokevirtual 513	java/io/ByteArrayInputStream:close	()V
     //   156: ldc 100
     //   158: areturn
     //   159: astore_0
@@ -1203,11 +1217,11 @@ public class PkgTools
     //   170: aload 4
     //   172: ifnull +8 -> 180
     //   175: aload 4
-    //   177: invokevirtual 510	java/io/DataInputStream:close	()V
+    //   177: invokevirtual 512	java/io/DataInputStream:close	()V
     //   180: aload_0
     //   181: ifnull +7 -> 188
     //   184: aload_0
-    //   185: invokevirtual 511	java/io/ByteArrayInputStream:close	()V
+    //   185: invokevirtual 513	java/io/ByteArrayInputStream:close	()V
     //   188: aload_3
     //   189: athrow
     //   190: astore_3

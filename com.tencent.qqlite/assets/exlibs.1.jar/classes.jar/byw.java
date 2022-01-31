@@ -1,20 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
 
 public class byw
-  extends Handler
+  implements View.OnClickListener
 {
-  public byw(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public byw(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    if (BusinessCmrTmpChatPie.a(this.a).isShown()) {
-      BusinessCmrTmpChatPie.a(this.a).setVisibility(8);
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

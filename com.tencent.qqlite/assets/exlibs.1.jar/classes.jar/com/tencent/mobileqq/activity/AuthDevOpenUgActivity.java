@@ -109,24 +109,24 @@ public class AuthDevOpenUgActivity
         break label265;
         label144:
         if (TextUtils.isEmpty(this.s)) {
-          this.s = getString(2131364239);
+          this.s = getString(2131364250);
         }
         if (TextUtils.isEmpty(this.v)) {
-          this.v = getString(2131364230);
+          this.v = getString(2131364241);
         }
         if (TextUtils.isEmpty(this.w)) {
-          this.w = getString(2131364231);
+          this.w = getString(2131364242);
         }
         if (TextUtils.isEmpty(this.x)) {
-          this.x = getString(2131364232);
+          this.x = getString(2131364243);
         }
         if (TextUtils.isEmpty(this.y)) {
-          this.y = getString(2131364233);
+          this.y = getString(2131364244);
         }
         if (!TextUtils.isEmpty(this.u)) {
           continue;
         }
-        this.u = getString(2131364229);
+        this.u = getString(2131364240);
         return;
       }
       label265:
@@ -136,15 +136,15 @@ public class AuthDevOpenUgActivity
   
   private void b(String paramString)
   {
-    TextView localTextView = (TextView)findViewById(2131296897);
-    localTextView = (TextView)findViewById(2131298179);
+    TextView localTextView = (TextView)findViewById(2131296898);
+    localTextView = (TextView)findViewById(2131298201);
     if (TextUtils.isEmpty(paramString)) {
       localTextView.setVisibility(8);
     }
     for (;;)
     {
-      this.b.setText(getString(2131364228));
-      this.b.setContentDescription(getString(2131364192));
+      this.b.setText(getString(2131364239));
+      this.b.setContentDescription(getString(2131364203));
       ReportController.b(null, "P_CliOper", "Safe_DeviceLock", this.app.a(), "UserBehavior", "Manually", 0, 1, "", "", "", "");
       return;
       localTextView.setText(paramString);
@@ -256,7 +256,7 @@ public class AuthDevOpenUgActivity
           }
           for (;;)
           {
-            QQToast.a(getApplicationContext(), 2, getString(2131364194), 0).b(getTitleBarHeight());
+            QQToast.a(getApplicationContext(), 2, getString(2131364205), 0).b(getTitleBarHeight());
             paramIntent = new Intent();
             paramIntent.putExtra("auth_dev_open", true);
             paramIntent.putExtra("allow_set", true);
@@ -299,7 +299,7 @@ public class AuthDevOpenUgActivity
     {
     default: 
       return;
-    case 2131298188: 
+    case 2131298210: 
       if (this.app != null) {
         this.app.sendWirelessMeibaoReq(1);
       }
@@ -399,9 +399,9 @@ public class AuthDevOpenUgActivity
       }
     }
     super.onCreate(paramBundle);
-    super.setContentView(2130903478);
-    super.setTitle(2131364189);
-    this.b = ((Button)findViewById(2131298180));
+    super.setContentView(2130903486);
+    super.setTitle(2131364200);
+    this.b = ((Button)findViewById(2131298202));
     this.b.setOnClickListener(this);
     if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null) {
       a(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.ProtectIntro);

@@ -11,9 +11,9 @@ import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import cwy;
-import cwz;
-import cxa;
+import cya;
+import cyb;
+import cyc;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -33,7 +33,7 @@ public class RecentUserCache
   private static final int jdField_b_of_type_Int = 90;
   private static final String jdField_b_of_type_JavaLangString = "check_newfriend_when_upgrade";
   private static final String c = "new_friend_upgrade_pref";
-  Comparator jdField_b_of_type_JavaUtilComparator = new cwz(this);
+  Comparator jdField_b_of_type_JavaUtilComparator = new cyb(this);
   protected ConcurrentHashMap b;
   
   public RecentUserCache(QQAppInterface paramQQAppInterface, DBDelayManager paramDBDelayManager)
@@ -105,7 +105,7 @@ public class RecentUserCache
     {
       paramList.remove(localObject2);
       long l = localObject2.getId();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cwy(this, l));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cya(this, l));
     }
   }
   
@@ -123,7 +123,7 @@ public class RecentUserCache
     }
     return;
     label71:
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cxa(this, localSharedPreferences));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cyc(this, localSharedPreferences));
   }
   
   public RecentUser a(String paramString, int paramInt)

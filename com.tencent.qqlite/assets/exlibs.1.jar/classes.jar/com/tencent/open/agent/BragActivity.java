@@ -15,7 +15,7 @@ import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.StaticAnalyz;
 import com.tencent.open.widget.IKeyboardChanged;
 import com.tencent.open.widget.KeyboardDetectorRelativeLayout;
-import fbc;
+import fdi;
 
 public class BragActivity
   extends ChallengeBragBase
@@ -63,8 +63,8 @@ public class BragActivity
     this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.a(this);
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297489));
     this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131297491));
-    this.b = ((TextView)super.findViewById(2131296915));
-    this.c = ((TextView)super.findViewById(2131296914));
+    this.b = ((TextView)super.findViewById(2131296916));
+    this.c = ((TextView)super.findViewById(2131296915));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297490));
     this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new LengthInputFilter(this.jdField_a_of_type_AndroidWidgetEditText, 100) };
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
@@ -87,8 +87,8 @@ public class BragActivity
       e();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838036);
-    ImageLoader.a().a(this.k, new fbc(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838055);
+    ImageLoader.a().a(this.k, new fdi(this));
   }
   
   public void d()

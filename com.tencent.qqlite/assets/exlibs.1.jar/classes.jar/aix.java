@@ -1,83 +1,83 @@
-import android.text.TextUtils;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.model.FriendManager;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.MyGridView;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import java.util.List;
 
 public class aix
-  extends CardObserver
+  extends Handler
 {
   public aix(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramObject instanceof Card)) {}
-    for (Object localObject2 = (Card)paramObject;; localObject2 = null)
+    switch (paramMessage.what)
     {
-      if ((paramBoolean) && (localObject2 != null))
-      {
-        if ((DiscussionInfoCardActivity.a(this.a) != 0) || (!DiscussionInfoCardActivity.a(this.a).equals(((Card)localObject2).uin))) {
-          break label148;
-        }
-        paramObject = ((FriendManager)this.a.app.getManager(8)).b(DiscussionInfoCardActivity.a(this.a));
-        if ((!TextUtils.isEmpty(paramObject)) && (!paramObject.equals(DiscussionInfoCardActivity.b(this.a))))
-        {
-          DiscussionInfoCardActivity.a(this.a, paramObject);
-          ((HashMap)DiscussionInfoCardActivity.a(this.a).get(0)).put("memberName", DiscussionInfoCardActivity.b(this.a));
-          DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-        }
-      }
-      return;
-      label148:
-      while (DiscussionInfoCardActivity.a(this.a) != 3000) {}
-      paramObject = (FriendManager)this.a.app.getManager(8);
-      String str = ((Card)localObject2).uin;
-      Object localObject3 = paramObject.c(str);
-      Object localObject1 = paramObject.b(str);
-      paramObject = localObject1;
-      if (localObject3 != null)
-      {
-        paramObject = localObject1;
-        if (!((Friends)localObject3).isFriend()) {
-          if (!TextUtils.isEmpty(((Card)localObject2).strAutoRemark))
-          {
-            localObject1 = ((Card)localObject2).strAutoRemark;
-            label237:
-            paramObject = localObject1;
-            if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-              break label351;
-            }
-            paramObject = ((Card)localObject2).uin;
-          }
-        }
-      }
-      label351:
-      for (;;)
-      {
-        localObject1 = DiscussionInfoCardActivity.a(this.a).iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
-        }
-        localObject2 = (HashMap)((Iterator)localObject1).next();
-        localObject3 = (String)((HashMap)localObject2).get("memberUin");
-        if ((localObject3 == null) || (!((String)localObject3).equals(str))) {
-          break;
-        }
-        ((HashMap)localObject2).put("memberName", paramObject);
-        if (DiscussionInfoCardActivity.a(this.a) == null) {
-          break;
-        }
-        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-        return;
-        localObject1 = ((Card)localObject2).strNick;
-        break label237;
-      }
     }
+    label419:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing())) {
+                DiscussionInfoCardActivity.a(this.a).dismiss();
+              }
+              paramMessage = new Intent();
+              paramMessage.putExtra("isNeedFinish", true);
+              this.a.setResult(-1, paramMessage);
+              this.a.finish();
+              return;
+            } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
+            DiscussionInfoCardActivity.a(this.a).dismiss();
+            return;
+            if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a) == 3000)) {
+              DiscussionInfoCardActivity.a(this.a).setText(DiscussionInfoCardActivity.b(this.a));
+            }
+          } while (DiscussionInfoCardActivity.a(this.a) == null);
+          int i = DiscussionInfoCardActivity.a(this.a).size();
+          if (i + 1 > DiscussionInfoCardActivity.b(this.a) * 3)
+          {
+            DiscussionInfoCardActivity.a(this.a).setRightText(i + "人");
+            DiscussionInfoCardActivity.a(this.a).setOnClickListener(new aiy(this));
+            DiscussionInfoCardActivity.a(this.a).setPadding(DiscussionInfoCardActivity.c(this.a), DiscussionInfoCardActivity.d(this.a), DiscussionInfoCardActivity.e(this.a), DiscussionInfoCardActivity.f(this.a));
+            if (DiscussionInfoCardActivity.a(this.a) != null) {
+              break label419;
+            }
+            DiscussionInfoCardActivity.a(this.a, new ajh(this.a));
+            DiscussionInfoCardActivity.a(this.a).setAdapter(DiscussionInfoCardActivity.a(this.a));
+          }
+          for (;;)
+          {
+            removeMessages(0);
+            return;
+            if (DiscussionInfoCardActivity.a(this.a) == null) {
+              break;
+            }
+            DiscussionInfoCardActivity.a(this.a).setVisibility(8);
+            DiscussionInfoCardActivity.a(this.a).setVisibility(8);
+            break;
+            DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+          }
+        } while (DiscussionInfoCardActivity.a(this.a) != 0);
+        paramMessage = (String)paramMessage.obj;
+      } while ((DiscussionInfoCardActivity.a(this.a) == null) || (paramMessage == null) || (!DiscussionInfoCardActivity.a(this.a).equals(paramMessage)));
+      this.a.finish();
+      return;
+    } while (paramMessage.obj == null);
+    paramMessage = (List)paramMessage.obj;
+    this.a.a(paramMessage);
   }
 }
 

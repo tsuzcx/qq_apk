@@ -688,7 +688,7 @@ class ThemeSwitchManager$SwitchThemeTask
       ThemeSwitchManager.isSwitchTheme = true;
       this.this$0.themeSwitchDialog = new QQProgressDialog(localActivity, ((BaseActivity)localActivity).getTitleBarHeight());
       this.this$0.themeSwitchDialog.setCancelable(false);
-      this.this$0.themeSwitchDialog.b(2131363263);
+      this.this$0.themeSwitchDialog.b(2131363273);
       this.this$0.themeSwitchDialog.show();
     }
     for (;;)

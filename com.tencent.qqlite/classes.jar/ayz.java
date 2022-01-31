@@ -1,6 +1,8 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class ayz
   implements DialogInterface.OnClickListener
@@ -9,7 +11,7 @@ public class ayz
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    ThreadManager.b().post(new aza(this));
   }
 }
 

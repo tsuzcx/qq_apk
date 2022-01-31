@@ -673,7 +673,7 @@ public class QRUtils
     }
     localObject = Bitmap.createBitmap(i6, i6, Bitmap.Config.ARGB_8888);
     ((Bitmap)localObject).setPixels(paramString2, 0, i6, 0, 0, i6, i6);
-    paramContext = a(paramContext, localBitmap1, paramBitmap, localBundle.getInt("nameClr"), paramString1, localBitmap2, (Bitmap)localObject, localBundle.getInt("head"), localBundle.getInt("tipsClr"), paramContext.getString(2131362421), null, null, null);
+    paramContext = a(paramContext, localBitmap1, paramBitmap, localBundle.getInt("nameClr"), paramString1, localBitmap2, (Bitmap)localObject, localBundle.getInt("head"), localBundle.getInt("tipsClr"), paramContext.getString(2131362422), null, null, null);
     ((Bitmap)localObject).recycle();
     return paramContext;
   }

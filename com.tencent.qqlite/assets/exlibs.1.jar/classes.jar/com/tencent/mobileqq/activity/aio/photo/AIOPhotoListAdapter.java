@@ -87,13 +87,13 @@ public class AIOPhotoListAdapter
     paramViewGroup = paramView;
     if (paramView == null)
     {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903512, null);
+      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903520, null);
       paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int));
       paramView = new AIOPhotoListAdapter.Holder(this);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131298328));
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131298350));
       paramView.jdField_a_of_type_ComTencentImageURLImageView.setAdjustViewBounds(false);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131298329));
-      paramView.b = ((ImageView)paramViewGroup.findViewById(2131298330));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131298351));
+      paramView.b = ((ImageView)paramViewGroup.findViewById(2131298352));
       paramViewGroup.setTag(paramView);
     }
     a(a(paramInt), paramViewGroup);

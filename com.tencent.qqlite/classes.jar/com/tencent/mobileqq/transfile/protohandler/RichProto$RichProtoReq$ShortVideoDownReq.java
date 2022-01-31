@@ -8,7 +8,7 @@ public class RichProto$RichProtoReq$ShortVideoDownReq
   public byte[] a;
   public int b;
   public String b;
-  public int d;
+  public int c;
   public int e;
   
   public String toString()

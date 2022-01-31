@@ -1,21 +1,13 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
 
 public class btu
   implements Runnable
 {
-  public btu(PressToSpeakPanel paramPressToSpeakPanel, int paramInt) {}
+  public btu(ListenChangeVoicePanel paramListenChangeVoicePanel, int paramInt) {}
   
   public void run()
   {
-    if ((PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel)) && (PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).h()))
-    {
-      PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).h(this.jdField_a_of_type_Int);
-      PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel, 1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.onTouch(PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel), MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 1, 0.0F, 0.0F, 0));
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelListenChangeVoicePanel.a(this.jdField_a_of_type_Int);
   }
 }
 

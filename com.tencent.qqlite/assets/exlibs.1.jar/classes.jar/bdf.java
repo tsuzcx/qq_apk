@@ -1,14 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.tencentmap.mapsdk.map.MapController;
 
-class bdf
-  implements Runnable
+public class bdf
+  implements View.OnClickListener
 {
-  bdf(bde parambde) {}
+  public bdf(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.j = true;
-    this.a.a.o();
+    this.a.a.zoomOut();
+    this.a.n();
   }
 }
 

@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
 
 public class egr
-  implements Runnable
+  extends URLDrawableDownListener.Adapter
 {
-  public egr(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
+  public egr(StructMsgItemCover paramStructMsgItemCover) {}
   
-  public void run()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    this.a.u();
+    paramView.setBackgroundDrawable(null);
   }
 }
 

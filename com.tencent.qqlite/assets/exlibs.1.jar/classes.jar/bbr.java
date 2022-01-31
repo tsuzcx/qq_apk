@@ -1,14 +1,28 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
-public class bbr
-  implements Runnable
+class bbr
+  implements DialogInterface.OnClickListener
 {
-  public bbr(QQBrowserActivity paramQQBrowserActivity, String paramString) {}
+  bbr(bbq parambbq) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, MsfSdkUtils.insertMtype("Web", this.jdField_a_of_type_JavaLangString), 0);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_Bbp.a.app.a().b(this.a.jdField_a_of_type_Bbp.a.b(), 0, this.a.jdField_a_of_type_Long);
+      this.a.jdField_a_of_type_Bbp.a.b();
+      return;
+    } while (this.a.jdField_a_of_type_Bbp.a.jdField_a_of_type_Bbp.getCount() <= 0);
+    this.a.jdField_a_of_type_Bbp.a.app.a().a(this.a.jdField_a_of_type_Bbp.a.b(), 0);
+    this.a.jdField_a_of_type_Bbp.a.jdField_a_of_type_Bbp.changeCursor(this.a.jdField_a_of_type_Bbp.getCursor());
   }
 }
 

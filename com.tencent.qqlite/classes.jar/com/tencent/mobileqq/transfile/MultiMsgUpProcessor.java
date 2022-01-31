@@ -25,8 +25,8 @@ import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.SSCM;
-import ehj;
-import ehw;
+import ein;
+import ejc;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.OutputStream;
@@ -95,11 +95,11 @@ public class MultiMsgUpProcessor
     ((im_msg_head.LoginSig)localObject3).bytes_sig.set(ByteStringMicro.copyFrom(this.jdField_f_of_type_ArrayOfByte));
     localObject1 = new String();
     int i = 0;
-    while (i < "3.4.0".length())
+    while (i < "3.5.0".length())
     {
       localObject2 = localObject1;
-      if ("3.4.0".charAt(i) != '.') {
-        localObject2 = ((String)localObject1).concat(Character.toString("3.4.0".charAt(i)));
+      if ("3.5.0".charAt(i) != '.') {
+        localObject2 = ((String)localObject1).concat(Character.toString("3.5.0".charAt(i)));
       }
       i += 1;
       localObject1 = localObject2;
@@ -159,7 +159,7 @@ public class MultiMsgUpProcessor
     localMultiMsgUpReq.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_JavaLangString;
     localMultiMsgUpReq.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.b;
     localMultiMsgUpReq.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_c_of_type_JavaLangString;
-    localMultiMsgUpReq.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int;
+    localMultiMsgUpReq.jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int;
     RichProto.RichProtoReq localRichProtoReq = new RichProto.RichProtoReq();
     localRichProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtohandlerRichProtoProc$RichProtoCallback = this;
     localRichProtoReq.jdField_a_of_type_JavaLangString = "multi_msg_up";
@@ -227,10 +227,10 @@ public class MultiMsgUpProcessor
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqTransfileNetReq = null;
-    a("onResp", "result:" + paramNetResp.d + " errCode:" + paramNetResp.e + " errDesc:" + paramNetResp.jdField_a_of_type_JavaLangString);
+    a("onResp", "result:" + paramNetResp.jdField_d_of_type_Int + " errCode:" + paramNetResp.e + " errDesc:" + paramNetResp.jdField_a_of_type_JavaLangString);
     try
     {
-      if (paramNetResp.d == 0)
+      if (paramNetResp.jdField_d_of_type_Int == 0)
       {
         this.ay = 0;
         a(this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo, paramNetResp, true);
@@ -346,7 +346,7 @@ public class MultiMsgUpProcessor
     if (QLog.isColorLevel()) {
       QLog.d("MultiMsgUpProcessor", 2, "doDSReport : GroupPic doReport : result:" + paramBoolean);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.d == 1030) {}
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_d_of_type_Int == 1030) {}
     while (((!paramBoolean) && (RichMediaStrategy.c(this.aw))) || (this.jdField_c_of_type_Boolean) || ((paramBoolean) && ((this.az & 0x2) > 0)) || ((!paramBoolean) && ((this.az & 0x1) > 0))) {
       return;
     }
@@ -394,7 +394,7 @@ public class MultiMsgUpProcessor
       this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.L);
       this.jdField_a_of_type_JavaUtilHashMap.put("param_picmd5", this.jdField_d_of_type_JavaLangString);
       this.jdField_a_of_type_JavaUtilHashMap.put("param_picSize", String.valueOf(this.jdField_a_of_type_Long));
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_busi", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.d));
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_busi", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_d_of_type_Int));
       this.jdField_a_of_type_JavaUtilHashMap.put("param_uinType", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int));
       this.jdField_a_of_type_JavaUtilHashMap.put("param_uniseq", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long));
       StatisticCollector.a(BaseApplication.getContext()).a(null, "actMultiMsgUpload", false, l1, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
@@ -469,7 +469,7 @@ public class MultiMsgUpProcessor
       this.aw = 0;
       this.L = "";
       this.jdField_b_of_type_ComTencentWsttSSCMSSCM.a();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new ehj(this));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new ein(this));
     }
     return 0;
   }

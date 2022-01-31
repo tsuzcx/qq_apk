@@ -1,34 +1,20 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.dataline.mpfile.MpfileTaskRecord;
+import com.dataline.util.WaitEvent;
+import com.tencent.mobileqq.app.proxy.MpfileTaskProxy;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class dbb
-  implements ConditionSearchManager.IConfigListener
+  implements Runnable
 {
-  public dbb(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  public dbb(MpfileTaskProxy paramMpfileTaskProxy, Entity paramEntity, ProxyListener paramProxyListener, WaitEvent paramWaitEvent) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void run()
   {
-    if ((paramInt == 2) && (paramBoolean)) {
-      this.a.d = true;
-    }
-    if ((this.a.h == 1) || (this.a.h == 2)) {
-      if (!paramBoolean) {
-        this.a.d();
-      }
-    }
-    while ((!this.a.c) || (paramInt != 2) || (!paramBoolean))
-    {
-      QQToast.a(this.a, 2131364394, 0).b(this.a.getTitleBarHeight());
-      do
-      {
-        return;
-      } while (paramInt != 2);
-      this.a.d();
-      this.a.a(this.a.h);
-      return;
-    }
-    this.a.c();
+    MpfileTaskRecord localMpfileTaskRecord = ((MpfileTaskRecord)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).clone();
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyMpfileTaskProxy.a.a(String.valueOf(0), 0, MpfileTaskRecord.tableName(), localMpfileTaskRecord, 0, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
+    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
   }
 }
 

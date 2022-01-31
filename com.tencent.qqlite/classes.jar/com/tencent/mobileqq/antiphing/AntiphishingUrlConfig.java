@@ -5,9 +5,9 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.StatFs;
 import com.tencent.qphone.base.util.QLog;
-import cpv;
-import cpw;
-import cpx;
+import cqw;
+import cqx;
+import cqy;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -21,7 +21,7 @@ public class AntiphishingUrlConfig
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = 0L;
   private Context jdField_a_of_type_AndroidContentContext = null;
-  private Handler jdField_a_of_type_AndroidOsHandler = new cpv(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new cqw(this);
   private String jdField_a_of_type_JavaLangString = "antiphishingConfig";
   private ArrayList jdField_a_of_type_JavaUtilArrayList = null;
   private boolean jdField_a_of_type_Boolean = false;
@@ -76,7 +76,7 @@ public class AntiphishingUrlConfig
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_b_of_type_Int = paramInt;
     QLog.d(this.jdField_a_of_type_JavaLangString, 1, "filehash:" + paramString2 + "downloadurl:" + paramString1);
-    new cpw(this, paramContext, paramString1, paramString2).start();
+    new cqx(this, paramContext, paramString1, paramString2).start();
   }
   
   public void a(String paramString, Context paramContext)
@@ -93,12 +93,12 @@ public class AntiphishingUrlConfig
       return false;
     }
     localObject = new File((String)localObject);
-    cpx localcpx = new cpx();
+    cqy localcqy = new cqy();
     try
     {
-      SAXParserFactory.newInstance().newSAXParser().parse(new InputSource(new InputStreamReader(new FileInputStream((File)localObject), "UTF-8")), localcpx);
-      this.jdField_a_of_type_Int = localcpx.a();
-      this.jdField_a_of_type_JavaUtilArrayList = localcpx.a();
+      SAXParserFactory.newInstance().newSAXParser().parse(new InputSource(new InputStreamReader(new FileInputStream((File)localObject), "UTF-8")), localcqy);
+      this.jdField_a_of_type_Int = localcqy.a();
+      this.jdField_a_of_type_JavaUtilArrayList = localcqy.a();
       return true;
     }
     catch (Exception localException)

@@ -1,29 +1,27 @@
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import com.tencent.mobileqq.emosm.view.DragSortListView.DropListener;
-import com.tencent.mobileqq.emoticon.EmojiListenerManager;
-import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import java.lang.ref.WeakReference;
 
 public class ali
-  implements DragSortListView.DropListener
+  implements View.OnClickListener
 {
   public ali(EmosmActivity paramEmosmActivity) {}
   
-  public void a_(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (paramInt1 != paramInt2)
-    {
-      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
-      this.a.a.remove(localEmoticonPackage);
-      this.a.a.setNotifyOnChange(true);
-      this.a.a.insert(localEmoticonPackage, paramInt2);
-      ((EmojiManager)this.a.app.getManager(39)).a.a(localEmoticonPackage, paramInt1, paramInt2);
-      this.a.c = true;
-      ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
+    if (this.a.jdField_a_of_type_Boolean) {}
+    while (!EmosmUtils.showNetEnable(this.a)) {
+      return;
     }
+    this.a.jdField_a_of_type_Boolean = true;
+    EmojiHomeUiPlugin.openEmojiHomePage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 2, this.a.app.getSid());
+    ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "ForwardEmojiHome", 0, 0, "", "", "", "");
   }
 }
 

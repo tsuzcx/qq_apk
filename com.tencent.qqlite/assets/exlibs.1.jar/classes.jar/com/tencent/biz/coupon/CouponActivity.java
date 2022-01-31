@@ -54,7 +54,7 @@ public class CouponActivity
     {
       this.p.setVisibility(8);
       this.j.setVisibility(0);
-      this.j.setText(2131362490);
+      this.j.setText(2131362491);
       this.j.setClickable(false);
       return;
     }
@@ -92,7 +92,7 @@ public class CouponActivity
     this.jdField_a_of_type_AndroidContentIntent.putExtra("webStyle", "noBottomBar");
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("title", super.getResources().getString(2131362489));
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("title", super.getResources().getString(2131362490));
       this.jdField_a_of_type_Boolean = true;
       super.doOnCreate(paramBundle);
       if (this.jdField_a_of_type_Boolean)
@@ -127,7 +127,7 @@ public class CouponActivity
       }
       this.p.setVisibility(8);
       this.j.setVisibility(0);
-      this.j.setText(2131362490);
+      this.j.setText(2131362491);
       this.j.setOnClickListener(new lw(this));
     }
     for (;;)

@@ -1,65 +1,84 @@
-import android.app.Activity;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import java.io.IOException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.mobileqq.filemanager.util.UniformDownloader;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistantsdk.downloadclient.ITMAssistantDownloadSDKClientListener;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
 public class dws
-  extends Thread
+  implements ITMAssistantDownloadSDKClientListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public dws(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk) {}
   
-  public dws(MediaApiPlugin paramMediaApiPlugin, String paramString1, int paramInt, String paramString2)
+  public void OnDownloadSDKTaskProgressChanged(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, String paramString, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
+    UniformDownloaderAppBabySdk.b(this.a);
+    if (!UniformDownloaderAppBabySdk.a(this.a).post(new dwt(this, paramString, paramLong1, paramLong2))) {
+      QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
+    }
   }
   
-  public void run()
+  public void OnDownloadSDKTaskStateChanged(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    try
+    int i = 0;
+    int j = 0;
+    Object localObject2 = null;
+    QLog.i(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[" + paramInt1 + "] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
+    String str = "";
+    Object localObject1;
+    if ((paramTMAssistantDownloadSDKClient != null) && (4 == paramInt1))
     {
-      JSONObject localJSONObject = MediaApiPlugin.a(this.b, this.jdField_a_of_type_Int);
-      if (isInterrupted()) {
-        throw new InterruptedException();
+      try
+      {
+        localObject1 = paramTMAssistantDownloadSDKClient.getDownloadTaskState(paramString1);
+        i = 0;
+        paramTMAssistantDownloadSDKClient = str;
+      }
+      catch (Exception paramTMAssistantDownloadSDKClient)
+      {
+        do
+        {
+          for (;;)
+          {
+            paramTMAssistantDownloadSDKClient.printStackTrace();
+            paramTMAssistantDownloadSDKClient = UniformDownloader.a(22);
+            localObject1 = null;
+            j = 22;
+            i = 1;
+            continue;
+            localObject1 = ((TMAssistantDownloadTaskInfo)localObject1).mSavePath;
+          }
+        } while (UniformDownloaderAppBabySdk.a(this.a).post(new dwv(this, paramString1, paramInt1, paramInt2, paramString2, (String)localObject1)));
+        QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
+        return;
+      }
+      if (localObject1 == null) {
+        localObject1 = localObject2;
       }
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    for (;;)
     {
-      System.gc();
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "3", "[]" });
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "0", localOutOfMemoryError.toString() });
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "[]" });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "[]" });
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.mRuntime.a();
-      if ((localActivity != null) && (!localActivity.isFinishing())) {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "1", "[]" });
+      UniformDownloaderAppBabySdk.b(this.a);
+      if (i != 0)
+      {
+        if (!UniformDownloaderAppBabySdk.a(this.a).post(new dwu(this, paramString1, j, paramTMAssistantDownloadSDKClient))) {
+          QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. haveErr and thread error!!");
+        }
+        return;
       }
-      return;
+      localObject1 = null;
+      paramTMAssistantDownloadSDKClient = "";
+      j = 0;
     }
-    finally
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.dismiss();
-      }
+  }
+  
+  public void OnDwonloadSDKServiceInvalid(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient)
+  {
+    QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] ABSdkdownload service invalid ");
+    UniformDownloaderAppBabySdk.b(this.a);
+    if (!UniformDownloaderAppBabySdk.a(this.a).post(new dww(this))) {
+      QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDwonloadSDKServiceInvalid. thread error!!");
     }
   }
 }

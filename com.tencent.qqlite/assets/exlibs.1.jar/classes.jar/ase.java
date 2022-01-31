@@ -1,24 +1,17 @@
+import android.view.ViewStub;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.observer.QZoneObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.main.CommonLoadingView;
 
 public class ase
-  extends QZoneObserver
+  implements Runnable
 {
   public ase(Leba paramLeba) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
-    }
-    if (paramBoolean1)
-    {
-      Leba.b(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
-      }
-    }
+    ViewStub localViewStub = (ViewStub)this.a.a(2131297255);
+    ((CommonLoadingView)this.a.a(2131296837)).setVisibility(8);
+    localViewStub.setVisibility(0);
   }
 }
 

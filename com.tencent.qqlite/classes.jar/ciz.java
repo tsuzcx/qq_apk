@@ -1,22 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ciz
-  extends Handler
+  implements ActionSheet.OnButtonClickListener
 {
-  public ciz(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity, int paramInt1, int paramInt2) {}
+  public ciz(SettingActivity2 paramSettingActivity2, ActionSheet paramActionSheet) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(View paramView, int paramInt)
   {
-    if (-1 != paramMessage.what) {
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (paramInt == 0)
+    {
+      if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b(2131363461);
+      }
+    }
+    else {
       return;
     }
-    paramMessage = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Int * 1.257D), (int)(this.b * 1.481D));
-    paramMessage.addRule(14);
-    paramMessage.topMargin = (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.a.getHeight() / 2 - (int)(this.b / 2 * 1.705D));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.setResult(2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.finish();
   }
 }
 

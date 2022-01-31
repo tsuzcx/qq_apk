@@ -1,84 +1,101 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.FaceInfo;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
+import java.util.ArrayList;
 
 public class bqo
-  extends FacePreloadBaseAdapter
+  extends TroopObserver
 {
-  private List jdField_a_of_type_JavaUtilList;
+  public bqo(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public bqo(TroopTransferActivity paramTroopTransferActivity, List paramList)
+  protected void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    super(paramTroopTransferActivity, paramTroopTransferActivity.app, paramTroopTransferActivity.b, 1, true);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  protected Object a(int paramInt)
-  {
-    TroopTransferActivity.TroopMemberItem localTroopMemberItem = (TroopTransferActivity.TroopMemberItem)getItem(paramInt);
-    FacePreloadBaseAdapter.FaceInfo localFaceInfo = new FacePreloadBaseAdapter.FaceInfo(this);
-    if (localTroopMemberItem != null) {
-      localFaceInfo.jdField_a_of_type_JavaLangString = localTroopMemberItem.jdField_a_of_type_JavaLangString;
+    if ((!Utils.a(String.valueOf(paramLong), this.a.b)) || (!Utils.a(paramString1, this.a.app.a()))) {
+      return;
     }
-    return localFaceInfo;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    TroopTransferActivity.TroopMemberItem localTroopMemberItem;
-    if (paramView == null)
+    this.a.jdField_a_of_type_Boolean = false;
+    if (paramBoolean)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getLayoutInflater().inflate(2130903626, paramViewGroup, false);
-      paramViewGroup = new bqt(null);
-      paramViewGroup.b = ((ImageView)paramView.findViewById(2131297011));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296875));
-      ((TextView)paramView.findViewById(2131298766)).setText("");
-      paramView.setTag(paramViewGroup);
-      localTroopMemberItem = (TroopTransferActivity.TroopMemberItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if ((TextUtils.isEmpty(localTroopMemberItem.e)) || (localTroopMemberItem.e.equals(localTroopMemberItem.b))) {
-        break label203;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopMemberItem.b + "(" + localTroopMemberItem.e + ")");
+      paramString1 = (TroopManager)this.a.app.getManager(44);
+      paramString3 = paramString1.a(paramLong + "");
+      if (paramString3 != null)
+      {
+        paramString3.dwAdditionalFlag = 0L;
+        paramString1.b(paramString3);
+      }
+      paramString1 = new Intent();
+      paramString1.putExtra("isNeedFinish", true);
+      paramString1.putExtra("fin_tip_msg", this.a.getString(2131363645));
+      paramString1.putExtra("uin", paramString2);
+      this.a.setResult(-1, paramString1);
+      this.a.finish();
+      return;
+    }
+    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 6) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10) || (paramInt == 11)) {
+      paramString1 = this.a.getString(2131363646);
     }
     for (;;)
     {
-      paramViewGroup.jdField_a_of_type_JavaLangString = localTroopMemberItem.jdField_a_of_type_JavaLangString;
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem = localTroopMemberItem;
-      paramViewGroup.b.setImageBitmap(a(1, localTroopMemberItem.jdField_a_of_type_JavaLangString));
-      return paramView;
-      paramViewGroup = (bqt)paramView.getTag();
-      break;
-      label203:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopMemberItem.b);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.a);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, paramString1, 1500);
+      return;
+      if ((paramInt == 3) || (paramInt == 4) || (paramInt == 7) || (paramInt == 16) || (paramInt == 19))
+      {
+        paramString1 = this.a.getString(2131363648);
+      }
+      else if ((paramInt == 5) || (paramInt == 17) || (paramInt == 18))
+      {
+        paramString1 = this.a.getString(2131363647);
+      }
+      else
+      {
+        if (paramInt == 12)
+        {
+          if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
+          }
+          paramString1 = DialogUtil.a(this.a, 230);
+          paramString1.setTitle(this.a.getString(2131362595));
+          paramString1.setMessage(this.a.getString(2131362598));
+          paramString1.setNegativeButton(this.a.getString(2131362594), new bqp(this, paramString1));
+          paramString1.setPositiveButton(this.a.getString(2131363671), new bqq(this, paramString1));
+          paramString1.show();
+          return;
+        }
+        paramString1 = this.a.getString(2131363647);
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, ArrayList paramArrayList)
+  {
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+      this.a.b(paramArrayList);
+    }
+  }
+  
+  protected void c(boolean paramBoolean, ArrayList paramArrayList)
+  {
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+      this.a.b(paramArrayList);
+    }
+  }
+  
+  protected void d(boolean paramBoolean, ArrayList paramArrayList)
+  {
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+      this.a.b(paramArrayList);
     }
   }
 }

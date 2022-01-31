@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.aio.PanelAdapter;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
 
-public class bta
-  implements Runnable
+public final class bta
+  implements Parcelable.Creator
 {
-  public bta(PlusPanel paramPlusPanel) {}
-  
-  public void run()
+  public ForwardUtils.SectionBase a(Parcel paramParcel)
   {
-    int i = 0;
-    while (i < this.a.a.getCount())
-    {
-      this.a.a.c(i);
-      i += 1;
-    }
+    return new ForwardUtils.SectionBase(paramParcel);
+  }
+  
+  public ForwardUtils.SectionBase[] a(int paramInt)
+  {
+    return new ForwardUtils.SectionBase[paramInt];
   }
 }
 

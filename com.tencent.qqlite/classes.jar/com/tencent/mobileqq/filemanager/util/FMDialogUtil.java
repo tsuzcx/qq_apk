@@ -7,9 +7,9 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import duu;
-import duv;
-import duw;
+import dvx;
+import dvy;
+import dvz;
 
 public class FMDialogUtil
 {
@@ -31,15 +31,15 @@ public class FMDialogUtil
   
   public static void a(Context paramContext, String paramString, int paramInt, FMDialogUtil.FMDialogInterface paramFMDialogInterface)
   {
-    duu localduu = new duu(paramFMDialogInterface);
-    paramFMDialogInterface = new duv(paramFMDialogInterface);
+    dvx localdvx = new dvx(paramFMDialogInterface);
+    paramFMDialogInterface = new dvy(paramFMDialogInterface);
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new duw(paramContext, paramString, paramInt, localduu, paramFMDialogInterface));
+      new Handler(localLooper).post(new dvz(paramContext, paramString, paramInt, localdvx, paramFMDialogInterface));
       return;
     }
-    DialogUtil.a(paramContext, 230, paramString, paramContext.getString(paramInt), 2131361966, 2131361967, localduu, paramFMDialogInterface).show();
+    DialogUtil.a(paramContext, 230, paramString, paramContext.getString(paramInt), 2131361966, 2131361967, localdvx, paramFMDialogInterface).show();
   }
 }
 

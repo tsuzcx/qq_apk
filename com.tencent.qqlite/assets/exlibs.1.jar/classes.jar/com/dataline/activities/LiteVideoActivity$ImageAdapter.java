@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
-import bt;
+import bq;
 import com.dataline.util.file.ImageInfo;
 import com.dataline.util.file.MediaStoreUtil;
 import com.tencent.image.URLDrawable;
@@ -91,34 +91,34 @@ public class LiteVideoActivity$ImageAdapter
     if (paramView == null)
     {
       paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903166, null);
-      localObject = new bt(this);
-      ((bt)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131296957));
-      ((bt)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296991));
-      ((bt)localObject).b = ((ImageView)paramViewGroup.findViewById(2131296992));
+      localObject = new bq(this);
+      ((bq)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131296957));
+      ((bq)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296991));
+      ((bq)localObject).b = ((ImageView)paramViewGroup.findViewById(2131296992));
       paramViewGroup.setTag(localObject);
       paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity.a, this.jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity.b));
-      ((bt)localObject).jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(false);
-      ((bt)localObject).jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      paramView = this.jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity.getResources().getDrawable(2130839034);
+      ((bq)localObject).jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(false);
+      ((bq)localObject).jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      paramView = this.jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity.getResources().getDrawable(2130839067);
       paramView = URLDrawable.getDrawable(a(localImageInfo.a()), paramView, paramView, false);
-      ((bt)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
-      ((bt)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localImageInfo.d());
+      ((bq)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
+      ((bq)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localImageInfo.d());
     }
     while (LiteVideoActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity, localImageInfo))
     {
-      ((bt)localObject).b.setVisibility(0);
+      ((bq)localObject).b.setVisibility(0);
       return paramViewGroup;
-      bt localbt = (bt)paramView.getTag();
-      localObject = localbt;
+      bq localbq = (bq)paramView.getTag();
+      localObject = localbq;
       paramViewGroup = paramView;
       if (LiteVideoActivity.c(this.jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity))
       {
         paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity.a, this.jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity.b));
-        localObject = localbt;
+        localObject = localbq;
         paramViewGroup = paramView;
       }
     }
-    ((bt)localObject).b.setVisibility(4);
+    ((bq)localObject).b.setVisibility(4);
     return paramViewGroup;
   }
 }

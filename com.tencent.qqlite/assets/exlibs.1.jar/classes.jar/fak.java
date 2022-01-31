@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.DoodlePicView;
 
-class fak
-  implements DialogInterface.OnClickListener
+public class fak
+  implements Runnable
 {
-  fak(faj paramfaj) {}
+  public fak(DoodlePicView paramDoodlePicView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    DoodlePicView.a(this.a, this.a.a);
+    this.a.postInvalidate();
   }
 }
 

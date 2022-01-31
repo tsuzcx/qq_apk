@@ -9,7 +9,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.BaseApplication;
-import eoo;
+import eqe;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -27,21 +27,21 @@ public class RollangleImageView$ImageCache
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     try
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838556));
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(0), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838527));
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838528));
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(3), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838514));
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(4), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838580));
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(6), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838579));
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(5), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838509));
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(7), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838545));
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(8), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838515));
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(9), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838543));
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838549));
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838555));
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(11), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838555));
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838581));
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(0), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838552));
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838553));
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(3), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838539));
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(4), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838605));
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(6), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838604));
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(5), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838534));
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(7), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838570));
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(8), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838540));
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(9), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838568));
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838574));
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838580));
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(11), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838580));
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler = new eoo(this, BaseApplication.getContext().getMainLooper());
+      this.jdField_a_of_type_AndroidOsHandler = new eqe(this, BaseApplication.getContext().getMainLooper());
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -245,10 +245,10 @@ public class RollangleImageView$ImageCache
     //   66: ifeq +21 -> 87
     //   69: new 170	java/lang/Thread
     //   72: dup
-    //   73: new 172	eon
+    //   73: new 172	eqd
     //   76: dup
     //   77: aload_0
-    //   78: invokespecial 175	eon:<init>	(Lcom/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache;)V
+    //   78: invokespecial 175	eqd:<init>	(Lcom/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache;)V
     //   81: invokespecial 178	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
     //   84: invokevirtual 181	java/lang/Thread:start	()V
     //   87: new 113	com/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache$QueueItem

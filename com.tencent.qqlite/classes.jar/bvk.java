@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.ActivityChatItemBuilder;
 
 public class bvk
-  implements DialogInterface.OnClickListener
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public bvk(LongMsgItemBuilder paramLongMsgItemBuilder) {}
+  public ImageView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public bvk(ActivityChatItemBuilder paramActivityChatItemBuilder) {}
 }
 
 

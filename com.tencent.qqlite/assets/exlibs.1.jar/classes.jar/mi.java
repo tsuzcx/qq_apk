@@ -19,7 +19,7 @@ public class mi
       QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
     }
     if (!paramBoolean) {
-      this.a.a(2131362450);
+      this.a.a(2131362451);
     }
     for (;;)
     {
@@ -48,10 +48,10 @@ public class mi
           EnterpriseDetailActivity.a(this.a);
           continue;
         }
-        this.a.a(2131362450);
+        this.a.a(2131362451);
       }
       catch (Exception paramBundle) {}
-      this.a.a(2131362450);
+      this.a.a(2131362451);
     }
   }
 }

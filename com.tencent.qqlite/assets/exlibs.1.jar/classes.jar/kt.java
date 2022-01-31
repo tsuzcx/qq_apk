@@ -20,7 +20,7 @@ public class kt
   {
     if ((paramBoolean) && (BmqqProfileCardActivity.a(this.a).a.equals(String.valueOf(paramObject))))
     {
-      this.a.a(2131362938, 2);
+      this.a.a(2131362945, 2);
       this.a.finish();
     }
   }

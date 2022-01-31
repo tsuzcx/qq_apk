@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import eui;
-import euj;
+import ewn;
+import ewo;
 
 public class QQCustomDialogDevLock
   extends Dialog
@@ -33,8 +33,8 @@ public class QQCustomDialogDevLock
   
   public static QQCustomDialogDevLock a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    paramContext = new QQCustomDialogDevLock(paramContext, 2131624119);
-    paramContext.setContentView(2130903576);
+    paramContext = new QQCustomDialogDevLock(paramContext, 2131624120);
+    paramContext.setContentView(2130903585);
     paramContext.c(paramString1);
     paramContext.a(paramString2);
     paramContext.b(paramString3);
@@ -54,7 +54,7 @@ public class QQCustomDialogDevLock
     this.d.setText(paramString);
     this.d.setContentDescription(paramString);
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new eui(this, paramOnClickListener));
+    this.d.setOnClickListener(new ewn(this, paramOnClickListener));
     a();
     return this;
   }
@@ -85,7 +85,7 @@ public class QQCustomDialogDevLock
     this.e.setText(paramString);
     this.e.setContentDescription(paramString);
     this.e.setVisibility(0);
-    this.e.setOnClickListener(new euj(this, paramOnClickListener));
+    this.e.setOnClickListener(new ewo(this, paramOnClickListener));
     a();
     return this;
   }
@@ -133,12 +133,12 @@ public class QQCustomDialogDevLock
   {
     super.setContentView(paramInt);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297358));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298605));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296847));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298607));
-    this.c = ((TextView)findViewById(2131296850));
-    this.d = ((TextView)findViewById(2131296914));
-    this.e = ((TextView)findViewById(2131296915));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298631));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296848));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298633));
+    this.c = ((TextView)findViewById(2131296851));
+    this.d = ((TextView)findViewById(2131296915));
+    this.e = ((TextView)findViewById(2131296916));
   }
 }
 

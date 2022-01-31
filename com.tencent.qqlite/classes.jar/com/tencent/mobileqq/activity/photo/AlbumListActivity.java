@@ -7,8 +7,8 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.TextView;
-import cid;
-import cie;
+import cje;
+import cjf;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.utils.AlbumUtil;
@@ -64,20 +64,20 @@ public class AlbumListActivity
   private void d()
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter = new AlbumListAdapter(this, MediaFileFilter.filterOfOrdinal(this.jdField_d_of_type_Int));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131298144));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131298166));
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new cie(this, null));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new cjf(this, null));
     if (Build.VERSION.SDK_INT > 8) {
       this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296897));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364498);
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364516));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296901));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296891));
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131364498);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296898));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364509);
+    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364539));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296902));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296892));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131364509);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new cid(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new cje(this));
   }
   
   protected boolean a()
@@ -133,7 +133,7 @@ public class AlbumListActivity
   {
     requestWindowFeature(7);
     super.onCreate(paramBundle);
-    super.setContentView(2130903466);
+    super.setContentView(2130903474);
     getWindow().setFeatureInt(7, 2130903134);
     this.jdField_b_of_type_Int = getResources().getDimensionPixelSize(2131492953);
     this.jdField_c_of_type_Int = this.jdField_b_of_type_Int;

@@ -1,32 +1,28 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.open.agent.report.ReportCenter;
 
 public class fen
-  implements Runnable
+  extends Handler
 {
-  public fen(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
-  
-  public void run()
+  public fen(ReportCenter paramReportCenter, Looper paramLooper)
   {
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-      if (localTMAssistantDownloadTaskInfo != null)
-      {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = localTMAssistantDownloadTaskInfo.mSavePath;
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-      }
-      StaticAnalyz.a("300", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-      return;
     }
-    catch (Exception localException)
+    for (;;)
     {
-      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
+      super.handleMessage(paramMessage);
+      return;
+      this.a.a();
+      continue;
+      this.a.b();
     }
   }
 }

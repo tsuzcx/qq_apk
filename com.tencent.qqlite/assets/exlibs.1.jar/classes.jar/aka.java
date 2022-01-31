@@ -1,8 +1,8 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.widget.DoodlePicView;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class aka
   implements View.OnClickListener
@@ -11,29 +11,7 @@ public class aka
   
   public void onClick(View paramView)
   {
-    int j = 0;
-    int i = 0;
-    while (i < 6)
-    {
-      this.a.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setBackgroundDrawable(null);
-      i += 1;
-    }
-    paramView.setBackgroundResource(2130839138);
-    int k = paramView.getId();
-    i = j;
-    for (;;)
-    {
-      if (i < 6)
-      {
-        if (this.a.jdField_a_of_type_ArrayOfInt[i] == k) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setPaintThickness(this.a.c[i]);
-        }
-      }
-      else {
-        return;
-      }
-      i += 1;
-    }
+    DialogUtil.a(this.a, this.a.getString(2131363464), 2131362801, 2131363465, new akb(this), new akc(this)).show();
   }
 }
 

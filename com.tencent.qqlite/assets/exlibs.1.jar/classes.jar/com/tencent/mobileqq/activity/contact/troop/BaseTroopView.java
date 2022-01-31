@@ -10,9 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
-import cde;
-import cdf;
-import cdg;
+import cef;
+import ceg;
+import ceh;
 import com.tencent.mobileqq.activity.Contacts;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -197,9 +197,9 @@ public class BaseTroopView
     localTranslateAnimation1.setFillAfter(true);
     TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -j, 0.0F);
     localTranslateAnimation2.setDuration(200L);
-    localTranslateAnimation1.setAnimationListener(new cde(this));
-    localTranslateAnimation2.setAnimationListener(new cdf(this, j));
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new cdg(this, j, i, localTranslateAnimation2));
+    localTranslateAnimation1.setAnimationListener(new cef(this));
+    localTranslateAnimation2.setAnimationListener(new ceg(this, j));
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new ceh(this, j, i, localTranslateAnimation2));
     this.c.startAnimation(localTranslateAnimation1);
   }
 }

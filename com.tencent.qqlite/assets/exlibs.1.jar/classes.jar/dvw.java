@@ -1,23 +1,11 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.filemanager.widget.FileWebView;
-import com.tencent.mobileqq.filemanager.widget.FileWebView.TitilebarEventInterface;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewerGalleryAdapter;
 
 public class dvw
-  extends Handler
 {
-  public dvw(FileWebView paramFileWebView) {}
+  public URLImageView a;
   
-  public void handleMessage(Message paramMessage)
-  {
-    if ((this.a.getContentHeight() * this.a.getScale() - (this.a.getView().getHeight() + this.a.getWebScrollY()) < 2.5D) && (this.a.a != null) && (this.a.b == true))
-    {
-      this.a.b = false;
-      this.a.a.b();
-    }
-    super.handleMessage(paramMessage);
-  }
+  private dvw(FileViewerGalleryAdapter paramFileViewerGalleryAdapter) {}
 }
 
 

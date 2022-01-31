@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class fgn
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public fgn(Login paramLogin) {}
+  public fgn(DownloadManager paramDownloadManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    if (!this.a.a)
+    {
+      if (!MyAppApi.a().b()) {
+        this.a.a(true);
+      }
+      this.a.a = true;
+    }
   }
 }
 

@@ -1,27 +1,19 @@
-import android.graphics.drawable.Drawable;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ImageView;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter.CornerListItemHolder;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 public class cpk
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public cpk(LebaListViewAdapter paramLebaListViewAdapter, LebaListViewAdapter.CornerListItemHolder paramCornerListItemHolder, Drawable paramDrawable, int paramInt) {}
+  public cpk(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    boolean bool = true;
-    LebaListViewAdapter localLebaListViewAdapter = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter;
-    ImageView localImageView1 = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter$CornerListItemHolder.d;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    ImageView localImageView2 = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter$CornerListItemHolder.g;
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
-      LebaListViewAdapter.b(localLebaListViewAdapter, localImageView1, localDrawable, localImageView2, bool);
-      return;
-      bool = false;
-    }
+    ShortVideoPreviewActivity.a(this.a, ShortVideoUtils.a(this.a, ShortVideoPreviewActivity.a(this.a)));
+    ShortVideoPreviewActivity.a(this.a).setImageBitmap(ShortVideoPreviewActivity.a(this.a));
+    ShortVideoPreviewActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

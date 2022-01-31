@@ -1,20 +1,27 @@
-import android.text.Editable;
-import android.text.TextWatcher;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
-public class aye
-  implements TextWatcher
+class aye
+  implements Runnable
 {
-  public aye(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  aye(ayd paramayd) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    NearbyPeopleProfileActivity.a(this.a, NearbyPeopleProfileActivity.b(this.a), 40);
+    this.a.a.a.app.a(this.a.a.a.app.a(), 3000, true);
+    EntityManager localEntityManager = this.a.a.a.app.a().createEntityManager();
+    if (localEntityManager != null)
+    {
+      NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.a.a.app.a() });
+      if ((localNearbyPeopleCard != null) && (localNearbyPeopleCard.tinyId > 0L)) {
+        this.a.a.a.app.a(String.valueOf(localNearbyPeopleCard.tinyId), 3001, true);
+      }
+      localEntityManager.a();
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,25 +1,58 @@
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.model.FriendManager;
 
-class axz
-  implements Runnable
+public class axz
+  extends FriendListObserver
 {
-  axz(axy paramaxy) {}
+  public axz(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.a.a.a.app.a(this.a.a.a.app.a(), 3000, true);
-    EntityManager localEntityManager = this.a.a.a.app.a().createEntityManager();
-    if (localEntityManager != null)
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    while ((NearbyPeopleProfileActivity.b(this.a) != 3) || (NearbyPeopleProfileActivity.c(this.a)) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin))) {
+      return;
+    }
+    b();
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((!paramBoolean1) || (!paramBoolean2)) {}
+    while ((NearbyPeopleProfileActivity.b(this.a) != 3) || (NearbyPeopleProfileActivity.a(this.a) == null) || (TextUtils.isEmpty(NearbyPeopleProfileActivity.a(this.a).uin))) {
+      return;
+    }
+    b();
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    if ((!paramBoolean1) || (!paramBoolean2) || (!paramBoolean3) || (TextUtils.isEmpty(paramString))) {}
+    while ((NearbyPeopleProfileActivity.b(this.a) != 3) || (NearbyPeopleProfileActivity.c(this.a)) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin))) {
+      return;
+    }
+    b();
+  }
+  
+  public void b()
+  {
+    boolean bool = NearbyPeopleProfileActivity.c(this.a);
+    FriendManager localFriendManager = (FriendManager)this.a.app.getManager(8);
+    if (localFriendManager != null) {
+      bool = localFriendManager.b(NearbyPeopleProfileActivity.a(this.a).uin);
+    }
+    for (;;)
     {
-      NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.a.a.app.a() });
-      if ((localNearbyPeopleCard != null) && (localNearbyPeopleCard.tinyId > 0L)) {
-        this.a.a.a.app.a(String.valueOf(localNearbyPeopleCard.tinyId), 3001, true);
+      if (bool != NearbyPeopleProfileActivity.c(this.a))
+      {
+        NearbyPeopleProfileActivity.a(this.a, bool);
+        this.a.runOnUiThread(new aya(this));
       }
-      localEntityManager.a();
+      return;
     }
   }
 }

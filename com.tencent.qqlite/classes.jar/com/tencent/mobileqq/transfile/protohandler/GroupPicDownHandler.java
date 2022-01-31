@@ -36,8 +36,8 @@ public class GroupPicDownHandler
     cmd0x388.GetImgUrlReq localGetImgUrlReq = new cmd0x388.GetImgUrlReq();
     localGetImgUrlReq.setHasFlag(true);
     localGetImgUrlReq.uint64_file_id.set(paramInt);
-    localGetImgUrlReq.uint64_dst_uin.set(Long.valueOf(paramReqCommon.jdField_c_of_type_JavaLangString).longValue());
-    localGetImgUrlReq.uint64_group_code.set(Long.parseLong(paramReqCommon.d));
+    localGetImgUrlReq.uint64_dst_uin.set(Long.valueOf(paramReqCommon.c).longValue());
+    localGetImgUrlReq.uint64_group_code.set(Long.parseLong(paramReqCommon.jdField_d_of_type_JavaLangString));
     localGetImgUrlReq.bytes_file_md5.set(ByteStringMicro.copyFrom(paramReqCommon.jdField_a_of_type_ArrayOfByte));
     if (paramReqCommon.jdField_a_of_type_Long != 0L) {
       localGetImgUrlReq.uint64_fileid.set(paramReqCommon.jdField_a_of_type_Long);
@@ -51,7 +51,7 @@ public class GroupPicDownHandler
       localGetImgUrlReq.uint32_req_term.set(5);
       localGetImgUrlReq.uint32_inner_ip.set(0);
       localPBUInt32Field = localGetImgUrlReq.uint32_bu_type;
-      if (paramReqCommon.jdField_c_of_type_Int != 1) {
+      if (paramReqCommon.jdField_d_of_type_Int != 1) {
         break label265;
       }
     }

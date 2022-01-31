@@ -1,25 +1,15 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
 
-public class bge
-  implements AdapterView.OnItemClickListener
+class bge
+  implements Runnable
 {
-  public bge(QuickLoginActivity paramQuickLoginActivity) {}
+  bge(bgd parambgd) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    paramAdapterView = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
-    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
-    paramView = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
-    this.a.getAppRuntime().login(paramAdapterView, paramView, QuickLoginActivity.a(this.a));
-    Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
+    this.a.a.e();
+    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
   }
 }
 

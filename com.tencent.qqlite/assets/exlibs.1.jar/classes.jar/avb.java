@@ -1,15 +1,32 @@
-import com.tencent.mobileqq.activity.MayKnowManActivity;
-import com.tencent.mobileqq.app.LBSObserver;
-import java.util.List;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class avb
-  extends LBSObserver
+  implements Runnable
 {
-  public avb(MayKnowManActivity paramMayKnowManActivity) {}
+  public avb(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
   
-  protected void a(boolean paramBoolean, List paramList, int paramInt)
+  public void run()
   {
-    this.a.runOnUiThread(new avc(this, paramBoolean, paramList, paramInt));
+    try
+    {
+      if ((LoginVerifyCodeActivity2.a(this.a) == null) && (!this.a.isFinishing()))
+      {
+        LoginVerifyCodeActivity2.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
+        LoginVerifyCodeActivity2.a(this.a).b(2131363569);
+      }
+      if ((LoginVerifyCodeActivity2.a(this.a) != null) && (!LoginVerifyCodeActivity2.a(this.a).isShowing())) {
+        LoginVerifyCodeActivity2.a(this.a).show();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

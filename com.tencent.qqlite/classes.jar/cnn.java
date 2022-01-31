@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.app.TroopObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class cnn
-  extends TroopObserver
+  implements View.OnClickListener
 {
-  public cnn(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public cnn(SelectMemberActivity paramSelectMemberActivity) {}
   
-  protected void b(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    new Thread(new cno(this)).start();
+    this.a.g();
   }
 }
 

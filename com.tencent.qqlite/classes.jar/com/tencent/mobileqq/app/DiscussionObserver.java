@@ -34,6 +34,8 @@ public class DiscussionObserver
   
   protected void a(boolean paramBoolean, String paramString) {}
   
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2) {}
+  
   protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString) {}
   
   protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
@@ -54,20 +56,18 @@ public class DiscussionObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object localObject1;
-    Object localObject2;
     switch (paramInt)
     {
-    default: 
+    }
+    do
+    {
       return;
-    case 1000: 
       a(paramBoolean);
       return;
-    case 1001: 
       a(paramBoolean, (Object[])paramObject);
       return;
-    case 1003: 
       paramObject = (Object[])paramObject;
+      Object localObject1;
       if (paramBoolean)
       {
         paramObject = (RespAddDiscussMember)paramObject[1];
@@ -87,38 +87,28 @@ public class DiscussionObserver
       }
       a(false, Long.valueOf((String)paramObject[0]).longValue(), null);
       return;
-    case 1005: 
       b(paramBoolean, (String)paramObject);
       return;
-    case 1002: 
       a(paramBoolean, ((Long)paramObject).longValue());
       return;
-    case 1004: 
       a(paramBoolean, (String)paramObject);
       return;
-    case 1006: 
       d(paramBoolean, (String)paramObject);
       return;
-    case 1007: 
       paramObject = (Pair)paramObject;
       a(paramBoolean, ((Boolean)paramObject.first).booleanValue(), (String)paramObject.second);
       return;
-    case 2000: 
       a((Object[])paramObject);
       return;
-    case 1008: 
       a();
       return;
-    case 1009: 
       b();
       return;
-    case 1010: 
       b(paramBoolean, ((Long)paramObject).longValue());
       return;
-    case 1011: 
       paramObject = (Object[])paramObject;
       paramInt = Integer.parseInt((String)paramObject[0]);
-      localObject2 = (FlyTicket.DiscussGetUrlResponse)paramObject[1];
+      Object localObject2 = (FlyTicket.DiscussGetUrlResponse)paramObject[1];
       if ((localObject2 != null) && (paramInt == 0))
       {
         localObject1 = ((FlyTicket.DiscussGetUrlResponse)localObject2).url.get();
@@ -143,7 +133,6 @@ public class DiscussionObserver
       }
       a(false, paramInt, 0L, null, "");
       return;
-    case 1012: 
       paramObject = (FlyTicket.DiscussSigDecodeResponse)paramObject;
       if ((paramObject != null) && (((FlyTicket.RetInfo)paramObject.ret_info.get()).ret_code.get() == 0))
       {
@@ -152,17 +141,18 @@ public class DiscussionObserver
       }
       c(false, null);
       return;
-    case 1013: 
       paramObject = (Object[])paramObject;
       a(paramBoolean, Integer.parseInt((String)paramObject[0]), (RespGetDiscussInfo)paramObject[1]);
       return;
-    case 1014: 
       paramObject = (Long[])paramObject;
       a(paramBoolean, paramObject[1].longValue(), paramObject[0].intValue());
       return;
-    }
-    paramObject = (long[])paramObject;
-    a(paramBoolean, Long.valueOf(paramObject[0]), Long.valueOf(paramObject[1]));
+      paramObject = (long[])paramObject;
+      a(paramBoolean, Long.valueOf(paramObject[0]), Long.valueOf(paramObject[1]));
+      return;
+    } while (!(paramObject instanceof Object[]));
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
   }
 }
 

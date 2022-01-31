@@ -24,7 +24,7 @@ public class ShareResultDialog
   
   public ShareResultDialog(Context paramContext)
   {
-    super(paramContext, 2131624119);
+    super(paramContext, 2131624120);
     super.setContentView(2130903195);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a();
@@ -32,8 +32,8 @@ public class ShareResultDialog
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296914));
-    this.b = ((TextView)super.findViewById(2131296915));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296915));
+    this.b = ((TextView)super.findViewById(2131296916));
     this.c = ((TextView)super.findViewById(2131297108));
     this.d = ((TextView)super.findViewById(2131297109));
     this.e = ((TextView)super.findViewById(2131297110));

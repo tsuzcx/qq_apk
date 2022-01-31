@@ -1,31 +1,52 @@
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.eAnimType;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.emoticon.ReqInfo;
+import com.tencent.mobileqq.emoticonview.EmotionPreviewLayout;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class dgh
-  implements Runnable
+  extends DownloadListener
 {
-  public dgh(FilePreviewActivity paramFilePreviewActivity, int paramInt) {}
-  
-  public void run()
+  public dgh(EmotionPreviewLayout paramEmotionPreviewLayout, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c = new FilePreviewAnimQueue(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a);
+    super(paramString1, paramString2);
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    EmojiManager localEmojiManager;
+    EmoticonPackage localEmoticonPackage;
+    if (paramDownloadTask.a() == 3)
+    {
+      localEmojiManager = (EmojiManager)EmotionPreviewLayout.a(this.a).getManager(39);
+      localObject1 = paramDownloadTask.a();
+      localEmoticonPackage = (EmoticonPackage)((Bundle)localObject1).getSerializable("emoticonPackage");
+      if ((localEmoticonPackage != null) && (!TextUtils.isEmpty(localEmoticonPackage.epId))) {}
     }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setFillAfter(true);
-    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = false;
-    localFilePreviewAnim.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue$eAnimType = FilePreviewAnimQueue.eAnimType.eAlphaAnim;
-    localFilePreviewAnim.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c.a(localFilePreviewAnim);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("<FileAssistant>FilePreviewActivity", 2, "hideGetMore(" + this.jdField_a_of_type_Int + ")");
+    else
+    {
+      return;
+    }
+    Object localObject2 = EmosmUtils.getEmosmJsonUrl(localEmoticonPackage.epId);
+    int i = ((Bundle)localObject1).getInt("jsonType", EmojiManager.c);
+    paramDownloadTask = (File)paramDownloadTask.a.get(localObject2);
+    Object localObject1 = new ArrayList();
+    localObject2 = new ArrayList();
+    ReqInfo localReqInfo = new ReqInfo();
+    if (paramDownloadTask.exists()) {}
+    for (paramDownloadTask = FileUtils.a(paramDownloadTask);; paramDownloadTask = null)
+    {
+      localEmojiManager.a(localEmoticonPackage, i, paramDownloadTask, (ArrayList)localObject1, (ArrayList)localObject2, localReqInfo);
+      return;
     }
   }
 }

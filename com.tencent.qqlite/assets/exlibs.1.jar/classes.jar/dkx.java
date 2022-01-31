@@ -1,46 +1,13 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 
-public class dkx
-  extends IClickListener_Ver51
+class dkx
+  implements Runnable
 {
-  public dkx(QfileLocalFileMediaTabView paramQfileLocalFileMediaTabView) {}
+  dkx(dku paramdku) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a.a().c();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().l();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().m();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().n();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
+    QfileBaseLocalFileTabView.a(this.a.a);
   }
 }
 

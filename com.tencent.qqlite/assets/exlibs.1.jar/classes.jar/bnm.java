@@ -1,46 +1,30 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.TroopManageActivity;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class bnm
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public bnm(TroopManageActivity paramTroopManageActivity) {}
+  public bnm(TroopManageActivity paramTroopManageActivity, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, int paramInt)
   {
-    Object localObject = "";
-    try
+    if (NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityTroopManageActivity.getActivity()))
     {
-      if (1L == this.a.a.dwAdditionalFlag) {
-        localObject = "0";
-      }
-      for (;;)
-      {
-        ReportController.b(this.a.app, "P_CliOper", "Grp_manage", "", "manage_grp", "Clk_data", 0, 0, this.a.a.troopuin, (String)localObject, "", "");
-        paramView = (String)paramView.getTag();
-        paramView = paramView + "&gc=" + this.a.a.troopuin;
-        paramView = paramView + "&src=2";
-        localObject = new Intent(this.a, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", paramView);
-        this.a.startActivity((Intent)localObject);
-        return;
-        if (1L == this.a.a.dwCmdUinUinFlag) {
-          localObject = "1";
-        }
-      }
-      return;
+      TroopManageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopManageActivity, paramInt + 1);
+      TroopManageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopManageActivity, 1);
     }
-    catch (Exception paramView)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.troopmanage", 2, "go to statics h5 url error");
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopManageActivity.a == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopManageActivity.a = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityTroopManageActivity);
       }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopManageActivity.a.a(2, this.jdField_a_of_type_ComTencentMobileqqActivityTroopManageActivity.getString(2131362797), 1000);
     }
   }
 }

@@ -1,14 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import java.util.HashMap;
 
 class amp
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  amp(amm paramamm, HashMap paramHashMap) {}
+  amp(amn paramamn) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Amm.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(this.jdField_a_of_type_Amm.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Amm.jdField_a_of_type_Int, this.jdField_a_of_type_Amm.b, this.jdField_a_of_type_JavaUtilHashMap);
+    ForwardOperations.a(this.a.a.jdField_a_of_type_AndroidAppActivity, true, "addToQQFavorites", this.a.a.jdField_a_of_type_Long);
   }
 }
 

@@ -1,98 +1,39 @@
-import android.database.DataSetObservable;
-import android.database.DataSetObserver;
-import com.tencent.widget.XBaseAdapter;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.KeyEvent;
+import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.InputConnectionWrapper;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.widget.AbsListView;
 
 public class fjd
-  extends DataSetObservable
+  extends InputConnectionWrapper
 {
-  public fjd(XBaseAdapter paramXBaseAdapter) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public fjd(AbsListView paramAbsListView, InputConnection paramInputConnection, boolean paramBoolean)
   {
-    for (;;)
-    {
-      int i;
-      synchronized (this.mObservers)
-      {
-        i = this.mObservers.size() - 1;
-        if (i >= 0)
-        {
-          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
-          if ((localDataSetObserver instanceof fjc)) {
-            ((fjc)localDataSetObserver).a(paramInt1, paramInt2);
-          } else {
-            localDataSetObserver.onChanged();
-          }
-        }
-      }
-      return;
-      i -= 1;
-    }
+    super(paramInputConnection, paramBoolean);
   }
   
-  public void a(int... paramVarArgs)
+  public boolean performEditorAction(int paramInt)
   {
-    for (;;)
+    if (paramInt == 6)
     {
-      int i;
-      synchronized (this.mObservers)
-      {
-        i = this.mObservers.size() - 1;
-        if (i >= 0)
-        {
-          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
-          if ((localDataSetObserver instanceof fjc)) {
-            ((fjc)localDataSetObserver).a(paramVarArgs);
-          } else {
-            localDataSetObserver.onChanged();
-          }
-        }
+      InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getContext().getSystemService("input_method");
+      if (localInputMethodManager != null) {
+        localInputMethodManager.hideSoftInputFromWindow(this.a.getWindowToken(), 0);
       }
-      return;
-      i -= 1;
+      return true;
     }
+    return false;
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public boolean reportFullscreenMode(boolean paramBoolean)
   {
-    for (;;)
-    {
-      int i;
-      synchronized (this.mObservers)
-      {
-        i = this.mObservers.size() - 1;
-        if (i >= 0)
-        {
-          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
-          if ((localDataSetObserver instanceof fjc)) {
-            ((fjc)localDataSetObserver).b(paramInt1, paramInt2);
-          } else {
-            localDataSetObserver.onChanged();
-          }
-        }
-      }
-      return;
-      i -= 1;
-    }
+    return AbsListView.a(this.a).reportFullscreenMode(paramBoolean);
   }
   
-  public void c(int paramInt1, int paramInt2)
+  public boolean sendKeyEvent(KeyEvent paramKeyEvent)
   {
-    int i = this.mObservers.size() - 1;
-    if (i >= 0)
-    {
-      DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
-      if ((localDataSetObserver instanceof fjc)) {
-        ((fjc)localDataSetObserver).c(paramInt1, paramInt2);
-      }
-      for (;;)
-      {
-        i -= 1;
-        break;
-        localDataSetObserver.onChanged();
-      }
-    }
+    return AbsListView.a(this.a).sendKeyEvent(paramKeyEvent);
   }
 }
 

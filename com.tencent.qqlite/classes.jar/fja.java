@@ -1,14 +1,12 @@
-import com.tencent.widget.VerticalGallery;
+import com.tencent.util.DumpMemInfoHandler;
 
 public class fja
-  implements Runnable
 {
-  public fja(VerticalGallery paramVerticalGallery) {}
+  public long a;
+  public long b;
+  public long c;
   
-  public void run()
-  {
-    this.a.g();
-  }
+  private fja(DumpMemInfoHandler paramDumpMemInfoHandler) {}
 }
 
 

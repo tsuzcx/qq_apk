@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqfav.widget.FavoriteActionSheet;
+import com.tencent.widget.TipsPopupWindow;
 
 public class fld
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public fld(FavoriteActionSheet paramFavoriteActionSheet) {}
+  public fld(TipsPopupWindow paramTipsPopupWindow) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a = false;
+    TipsPopupWindow.a(this.a);
+    TipsPopupWindow.a(this.a, false);
+    TipsPopupWindow.b(this.a, false);
   }
 }
 

@@ -77,19 +77,19 @@ public class OnlineSimpleFileView
     do
     {
       return;
-      localObject = (AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297644);
+      localObject = (AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297648);
       String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
       ((AsyncImageView)localObject).setImageResource(FileManagerUtil.b(str));
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297985)).setText(str);
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297646)).setText(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()));
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297990)).setText(str);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297650)).setText(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()));
       localObject = b();
     } while (localObject == null);
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298058)).setText((CharSequence)localObject);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298063)).setText((CharSequence)localObject);
   }
   
   public View a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903434, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903439, paramViewGroup, false);
     e();
     return this.jdField_a_of_type_AndroidViewView;
   }

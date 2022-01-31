@@ -30,7 +30,7 @@ public class SearchableTroopMember
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo = paramTroopMemberInfo;
-    this.y = paramLong2;
+    this.A = paramLong2;
     ChnToSpell.a(paramContext);
     paramContext = (FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
     if (paramContext != null)
@@ -129,30 +129,30 @@ public class SearchableTroopMember
     long l2 = 562949953421312L;
     int k = -1;
     paramString = paramString.toLowerCase();
-    this.x = -9223372036854775808L;
-    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0) && ((this.jdField_a_of_type_JavaLangString.equals(paramString)) || ((this.b != null) && (this.b.equals(paramString))) || ((this.c != null) && (this.c.equals(paramString)))) && (1125899906842624L > this.x))
+    this.z = -9223372036854775808L;
+    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0) && ((this.jdField_a_of_type_JavaLangString.equals(paramString)) || ((this.b != null) && (this.b.equals(paramString))) || ((this.c != null) && (this.c.equals(paramString)))) && (1125899906842624L > this.z))
     {
-      this.x = 1125899906842624L;
+      this.z = 1125899906842624L;
       this.f = 4;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick.length() > 0) && ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick.equals(paramString)) || ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyAll_troopnick != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyAll_troopnick.equals(paramString))) || ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyFirst_troopnick != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyFirst_troopnick.equals(paramString)))) && (1125899906842624L > this.x))
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick.length() > 0) && ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick.equals(paramString)) || ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyAll_troopnick != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyAll_troopnick.equals(paramString))) || ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyFirst_troopnick != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyFirst_troopnick.equals(paramString)))) && (1125899906842624L > this.z))
     {
-      this.x = 1125899906842624L;
+      this.z = 1125899906842624L;
       this.f = 3;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark.length() > 0) && ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark.equals(paramString)) || ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyAll_autoremark != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyAll_autoremark.equals(paramString))) || ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyFirst_autoremark != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyFirst_autoremark.equals(paramString)))) && (1125899906842624L > this.x))
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark.length() > 0) && ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark.equals(paramString)) || ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyAll_autoremark != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyAll_autoremark.equals(paramString))) || ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyFirst_autoremark != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyFirst_autoremark.equals(paramString)))) && (1125899906842624L > this.z))
     {
-      this.x = 1125899906842624L;
+      this.z = 1125899906842624L;
       this.f = 2;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick.length() > 0) && ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick.equals(paramString)) || ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyAll_friendnick != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyAll_friendnick.equals(paramString))) || ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyFirst_friendnick != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyFirst_friendnick.equals(paramString)))) && (1125899906842624L > this.x))
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick.length() > 0) && ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick.equals(paramString)) || ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyAll_friendnick != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyAll_friendnick.equals(paramString))) || ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyFirst_friendnick != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.pyFirst_friendnick.equals(paramString)))) && (1125899906842624L > this.z))
     {
-      this.x = 1125899906842624L;
+      this.z = 1125899906842624L;
       this.f = 1;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin.equals(paramString)) && (1125899906842624L > this.x))
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin.equals(paramString)) && (1125899906842624L > this.z))
     {
-      this.x = 1125899906842624L;
+      this.z = 1125899906842624L;
       this.f = 0;
     }
     int m;
@@ -177,9 +177,9 @@ public class SearchableTroopMember
         }
         l1 = 562949953421312L;
         label568:
-        if (l1 > this.x)
+        if (l1 > this.z)
         {
-          this.x = l1;
+          this.z = l1;
           this.f = 4;
         }
       }
@@ -204,9 +204,9 @@ public class SearchableTroopMember
         }
         l1 = 562949953421312L;
         label700:
-        if (l1 > this.x)
+        if (l1 > this.z)
         {
-          this.x = l1;
+          this.z = l1;
           this.f = 3;
         }
       }
@@ -231,9 +231,9 @@ public class SearchableTroopMember
         }
         l1 = 562949953421312L;
         label832:
-        if (l1 > this.x)
+        if (l1 > this.z)
         {
-          this.x = l1;
+          this.z = l1;
           this.f = 2;
         }
       }
@@ -257,9 +257,9 @@ public class SearchableTroopMember
         }
         l1 = 562949953421312L;
         label967:
-        if (l1 > this.x)
+        if (l1 > this.z)
         {
-          this.x = l1;
+          this.z = l1;
           this.f = 1;
         }
       }
@@ -287,13 +287,13 @@ public class SearchableTroopMember
     label1135:
     for (long l1 = l2;; l1 = 281474976710656L)
     {
-      if (l1 > this.x)
+      if (l1 > this.z)
       {
-        this.x = l1;
+        this.z = l1;
         this.f = 0;
       }
-      if (this.x != -9223372036854775808L) {
-        this.x += this.y;
+      if (this.z != -9223372036854775808L) {
+        this.z += this.A;
       }
       return;
       i = -1;

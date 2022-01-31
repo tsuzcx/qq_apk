@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListConnector.GroupMetadata;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener;
 
-public final class fib
-  implements Parcelable.Creator
+public class fib
+  implements Runnable
 {
-  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
-  {
-    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
-  }
+  public fib(MyAppApi.QQDownloadListener paramQQDownloadListener) {}
   
-  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
+  public void run()
   {
-    return new ExpandableListConnector.GroupMetadata[paramInt];
+    DownloadManager.a().d();
   }
 }
 

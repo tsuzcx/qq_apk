@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.CheckMsgCount;
-import com.tencent.mobileqq.app.message.MultiMsgProxy;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
 
 public class cxd
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cxd(CheckMsgCount paramCheckMsgCount) {}
+  public cxd(ScreenShot paramScreenShot) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    CheckMsgCount.a(this.a).a.a().l();
-    CheckMsgCount.b(this.a).a.a().c();
+    ScreenShot.a(this.a);
+    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
+      KapalaiAdapterUtil.a().b(this.a.a);
+    }
   }
 }
 

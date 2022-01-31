@@ -1,20 +1,24 @@
-import android.app.Dialog;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
-class abs
-  implements Animation.AnimationListener
+public final class abs
+  implements Runnable
 {
-  abs(abr paramabr) {}
+  public abs(Context paramContext, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.dismiss();
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null, 2131624120);
+    localActionSheet.a(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362492));
+    localActionSheet.a(2131363260, 3);
+    localActionSheet.d(2131362801);
+    localActionSheet.a(new abt(this, localActionSheet));
+    localActionSheet.show();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

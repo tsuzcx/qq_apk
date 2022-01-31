@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import com.tencent.mobileqq.utils.LogTag;
+import android.widget.TextView;
 
 public class cij
-  implements Runnable
 {
-  public cij(AlbumListAdapter paramAlbumListAdapter) {}
-  
-  public void run()
-  {
-    LogTag.a();
-    QQAlbumInfo localQQAlbumInfo = this.a.a(AlbumListAdapter.a(this.a), 200, 100, AlbumListAdapter.a(this.a));
-    AlbumListAdapter.b(this.a, localQQAlbumInfo);
-    LogTag.a("PEAK", "queryRecentBucket");
-  }
+  public TextView a;
+  public cii a;
+  public TextView b;
 }
 
 

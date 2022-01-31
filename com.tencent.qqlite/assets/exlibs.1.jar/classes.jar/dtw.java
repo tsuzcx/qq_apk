@@ -1,27 +1,15 @@
 import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PhotoFileViewBase;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PhotoFileViewBase.IControllProxyInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewerGalleryAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
 public class dtw
-  implements AdapterView.OnItemSelectedListener
+  implements View.OnClickListener
 {
-  public dtw(PhotoFileViewBase paramPhotoFileViewBase) {}
+  public dtw(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    PhotoFileViewBase.a(this.a, paramInt);
-    if (PhotoFileViewBase.a(this.a) != null) {
-      PhotoFileViewBase.b(this.a).a(paramInt);
-    }
-    paramAdapterView = (IFileViewerAdapter)PhotoFileViewBase.a(this.a).getItem(paramInt);
-    this.a.a().a(paramAdapterView);
+    FileBrowserActivity.a(this.a);
   }
 }
 

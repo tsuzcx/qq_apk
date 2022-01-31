@@ -1,16 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class bnf
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public bnf(TroopInfoActivity paramTroopInfoActivity) {}
+  public bnf(TroopInfoActivity paramTroopInfoActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.finish();
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
     }
   }
 }

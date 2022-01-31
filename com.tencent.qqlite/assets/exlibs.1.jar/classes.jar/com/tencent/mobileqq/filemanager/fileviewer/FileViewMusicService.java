@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
 import android.app.Activity;
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
@@ -10,9 +13,14 @@ import android.view.Display;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
-import dur;
+import com.tencent.util.VersionUtils;
+import dvt;
+import dvu;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -22,16 +30,23 @@ import java.util.List;
 public class FileViewMusicService
   implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener
 {
-  private static FileViewMusicService jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService = null;
   private static WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
   private int jdField_a_of_type_Int;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
   SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder = null;
   IFileViewMusicEvent jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewMusicEvent;
+  private Object jdField_a_of_type_JavaLangObject;
   String jdField_a_of_type_JavaLangString;
   private List jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean = false;
   private final String b = "FileViewMusicService<FileAssistant>";
+  
+  private FileViewMusicService()
+  {
+    if (VersionUtils.b()) {
+      this.jdField_a_of_type_JavaLangObject = new dvt(this);
+    }
+  }
   
   public static FileViewMusicService a()
   {
@@ -63,12 +78,29 @@ public class FileViewMusicService
       }
       else
       {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+        if (VersionUtils.b()) {
+          ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio")).requestAudioFocus((AudioManager.OnAudioFocusChangeListener)this.jdField_a_of_type_JavaLangObject, 3, 1);
+        }
+        if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+        }
         this.jdField_a_of_type_Boolean = true;
+        try
+        {
+          ((QQAppInterface)BaseApplicationImpl.a().a()).a().a(true, 25, Boolean.valueOf(true));
+          return;
+        }
+        catch (Exception localException1)
+        {
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+        }
+        QLog.e("FileViewMusicService<FileAssistant>", 2, "onAudioFocusChange notifyAllObserver error");
         return;
       }
     }
-    catch (Exception localException) {}
+    catch (Exception localException2) {}
   }
   
   public int a()
@@ -125,10 +157,24 @@ public class FileViewMusicService
   
   public void a()
   {
-    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying())) {
+    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()))
+    {
+      if (VersionUtils.b()) {
+        ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio")).abandonAudioFocus((AudioManager.OnAudioFocusChangeListener)this.jdField_a_of_type_JavaLangObject);
+      }
       this.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
     }
     this.jdField_a_of_type_Boolean = false;
+    try
+    {
+      ((QQAppInterface)BaseApplicationImpl.a().a()).a().a(true, 25, Boolean.valueOf(true));
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("FileViewMusicService<FileAssistant>", 2, "onAudioFocusChange notifyAllObserver error");
+    }
   }
   
   public void a(int paramInt)
@@ -182,7 +228,7 @@ public class FileViewMusicService
         this.jdField_a_of_type_AndroidViewSurfaceHolder.setType(3);
       }
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setDisplay(this.jdField_a_of_type_AndroidViewSurfaceHolder);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnVideoSizeChangedListener(new dur(this, paramActivity));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnVideoSizeChangedListener(new dvu(this, paramActivity));
     }
   }
   
@@ -252,11 +298,11 @@ public class FileViewMusicService
     catch (IllegalStateException paramString)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewMusicEvent == null) {
-        break label238;
+        break label239;
       }
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewMusicEvent.a(null);
       if (!QLog.isColorLevel()) {
-        break label273;
+        break label274;
       }
       QLog.e("FileViewMusicService<FileAssistant>", 2, "mediaplay init error[IllegalStateException]:" + paramString.toString());
       paramString.printStackTrace();
@@ -264,14 +310,14 @@ public class FileViewMusicService
     }
     catch (IOException paramString)
     {
-      label238:
+      label239:
       do
       {
         if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewMusicEvent != null) {
           this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewMusicEvent.a("文件读取失败，文件不存在或格式不支持！");
         }
       } while (!QLog.isColorLevel());
-      label273:
+      label274:
       QLog.e("FileViewMusicService<FileAssistant>", 2, "mediaplay init error[IOException]:" + paramString.toString());
     }
     return bool;
@@ -293,7 +339,6 @@ public class FileViewMusicService
   
   public void b()
   {
-    jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService = this;
     f();
   }
   
@@ -309,8 +354,30 @@ public class FileViewMusicService
   
   public void c()
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService = null;
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+      this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+    }
+    if (VersionUtils.b()) {
+      ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio")).abandonAudioFocus((AudioManager.OnAudioFocusChangeListener)this.jdField_a_of_type_JavaLangObject);
+    }
+    try
+    {
+      ((QQAppInterface)BaseApplicationImpl.a().a()).a().a(true, 25, Boolean.valueOf(true));
+      this.jdField_a_of_type_JavaLangString = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("FileViewMusicService<FileAssistant>", 2, "onAudioFocusChange notifyAllObserver error");
+        }
+      }
+    }
   }
   
   public void d()
@@ -322,7 +389,11 @@ public class FileViewMusicService
   
   public void e()
   {
-    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.jdField_a_of_type_Boolean)) {
+    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.jdField_a_of_type_Boolean))
+    {
+      if (VersionUtils.b()) {
+        ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio")).requestAudioFocus((AudioManager.OnAudioFocusChangeListener)this.jdField_a_of_type_JavaLangObject, 3, 1);
+      }
       this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
     }
   }
@@ -333,8 +404,24 @@ public class FileViewMusicService
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewMusicEvent != null) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewMusicEvent.e();
     }
-    this.jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService = null;
+    if (VersionUtils.b()) {
+      ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio")).abandonAudioFocus((AudioManager.OnAudioFocusChangeListener)this.jdField_a_of_type_JavaLangObject);
+    }
+    try
+    {
+      ((QQAppInterface)BaseApplicationImpl.a().a()).a().a(true, 25, Boolean.valueOf(true));
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("FileViewMusicService<FileAssistant>", 2, "onAudioFocusChange notifyAllObserver error");
+        }
+      }
+    }
   }
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
@@ -347,6 +434,20 @@ public class FileViewMusicService
       }
       this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
       this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+      this.jdField_a_of_type_JavaLangString = null;
+    }
+    if (VersionUtils.b()) {
+      ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio")).abandonAudioFocus((AudioManager.OnAudioFocusChangeListener)this.jdField_a_of_type_JavaLangObject);
+    }
+    try
+    {
+      ((QQAppInterface)BaseApplicationImpl.a().a()).a().a(true, 25, Boolean.valueOf(true));
+      return true;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("FileViewMusicService<FileAssistant>", 2, "onAudioFocusChange notifyAllObserver error");
     }
     return true;
   }

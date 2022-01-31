@@ -1,24 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.FriendListHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class csw
-  extends Handler
+  implements Runnable
 {
-  public csw(FriendListHandler paramFriendListHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public csw(DataLineHandler paramDataLineHandler, String paramString, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    FriendListHandler.a(this.a);
+    String str = "'" + this.jdField_a_of_type_JavaLangString + "'" + BaseApplication.getContext().getResources().getString(2131361873);
+    QQToast.a(BaseApplicationImpl.getContext(), 1, str, 0).b(this.jdField_a_of_type_Int);
   }
 }
 

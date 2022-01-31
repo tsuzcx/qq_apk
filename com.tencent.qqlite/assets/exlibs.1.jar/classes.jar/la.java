@@ -92,7 +92,7 @@ public class la
       {
         if (2 == this.jdField_a_of_type_Int)
         {
-          localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentBizBmqqProfileBmqqProfileCardActivity.getResources(), 2130838047);
+          localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentBizBmqqProfileBmqqProfileCardActivity.getResources(), 2130838066);
           continue;
         }
         localObject1 = ImageUtil.a();

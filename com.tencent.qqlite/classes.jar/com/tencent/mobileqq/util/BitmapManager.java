@@ -7,7 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Rect;
 import android.util.Pair;
-import ero;
+import ett;
 import java.io.InputStream;
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
@@ -55,7 +55,7 @@ public class BitmapManager
       {
         localBitmapDecodeResult.e = 0;
         paramResources = String.valueOf(localBitmapDecodeResult.a.hashCode());
-        localObject = new ero(paramResources, localBitmapDecodeResult.a, jdField_a_of_type_JavaLangRefReferenceQueue);
+        localObject = new ett(paramResources, localBitmapDecodeResult.a, jdField_a_of_type_JavaLangRefReferenceQueue);
         jdField_a_of_type_JavaUtilMap.put(paramResources, localObject);
       }
       return localBitmapDecodeResult.a;
@@ -88,8 +88,8 @@ public class BitmapManager
     if (paramResources != null)
     {
       localObject = String.valueOf(paramResources.hashCode());
-      ero localero = new ero((String)localObject, paramResources, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(localObject, localero);
+      ett localett = new ett((String)localObject, paramResources, jdField_a_of_type_JavaLangRefReferenceQueue);
+      jdField_a_of_type_JavaUtilMap.put(localObject, localett);
     }
     return paramResources;
   }
@@ -107,7 +107,7 @@ public class BitmapManager
       {
         localBitmapDecodeResult.e = 0;
         paramInputStream = String.valueOf(localBitmapDecodeResult.a.hashCode());
-        localObject = new ero(paramInputStream, localBitmapDecodeResult.a, jdField_a_of_type_JavaLangRefReferenceQueue);
+        localObject = new ett(paramInputStream, localBitmapDecodeResult.a, jdField_a_of_type_JavaLangRefReferenceQueue);
         jdField_a_of_type_JavaUtilMap.put(paramInputStream, localObject);
       }
       return localBitmapDecodeResult.a;
@@ -140,7 +140,7 @@ public class BitmapManager
     if (paramInputStream != null)
     {
       paramRect = String.valueOf(paramInputStream.hashCode());
-      localObject = new ero(paramRect, paramInputStream, jdField_a_of_type_JavaLangRefReferenceQueue);
+      localObject = new ett(paramRect, paramInputStream, jdField_a_of_type_JavaLangRefReferenceQueue);
       jdField_a_of_type_JavaUtilMap.put(paramRect, localObject);
     }
     return paramInputStream;
@@ -163,8 +163,8 @@ public class BitmapManager
     if (paramString != null)
     {
       localObject = String.valueOf(paramString.hashCode());
-      ero localero = new ero((String)localObject, paramString, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(localObject, localero);
+      ett localett = new ett((String)localObject, paramString, jdField_a_of_type_JavaLangRefReferenceQueue);
+      jdField_a_of_type_JavaUtilMap.put(localObject, localett);
     }
     return paramString;
   }
@@ -189,7 +189,7 @@ public class BitmapManager
       {
         localBitmapDecodeResult.e = 0;
         paramArrayOfByte = String.valueOf(localBitmapDecodeResult.a.hashCode());
-        localObject = new ero(paramArrayOfByte, localBitmapDecodeResult.a, jdField_a_of_type_JavaLangRefReferenceQueue);
+        localObject = new ett(paramArrayOfByte, localBitmapDecodeResult.a, jdField_a_of_type_JavaLangRefReferenceQueue);
         jdField_a_of_type_JavaUtilMap.put(paramArrayOfByte, localObject);
       }
       return localBitmapDecodeResult.a;
@@ -222,10 +222,17 @@ public class BitmapManager
     if (paramArrayOfByte != null)
     {
       localObject = String.valueOf(paramArrayOfByte.hashCode());
-      ero localero = new ero((String)localObject, paramArrayOfByte, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(localObject, localero);
+      ett localett = new ett((String)localObject, paramArrayOfByte, jdField_a_of_type_JavaLangRefReferenceQueue);
+      jdField_a_of_type_JavaUtilMap.put(localObject, localett);
     }
     return paramArrayOfByte;
+  }
+  
+  public static BitmapManager.BitmapDecodeResult a(String paramString, BitmapFactory.Options paramOptions)
+  {
+    BitmapManager.BitmapDecodeResult localBitmapDecodeResult = new BitmapManager.BitmapDecodeResult();
+    a(paramString, paramOptions, localBitmapDecodeResult);
+    return localBitmapDecodeResult;
   }
   
   public static String a()
@@ -286,11 +293,11 @@ public class BitmapManager
   {
     for (;;)
     {
-      ero localero = (ero)jdField_a_of_type_JavaLangRefReferenceQueue.poll();
-      if (localero == null) {
+      ett localett = (ett)jdField_a_of_type_JavaLangRefReferenceQueue.poll();
+      if (localett == null) {
         break;
       }
-      jdField_a_of_type_JavaUtilMap.remove(ero.a(localero));
+      jdField_a_of_type_JavaUtilMap.remove(ett.a(localett));
     }
   }
   
@@ -301,35 +308,35 @@ public class BitmapManager
     //   0: invokestatic 55	com/tencent/mobileqq/util/BitmapManager:a	()V
     //   3: aconst_null
     //   4: astore 4
-    //   6: new 262	java/io/File
+    //   6: new 263	java/io/File
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 265	java/io/File:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 266	java/io/File:<init>	(Ljava/lang/String;)V
     //   14: astore 6
     //   16: aload 6
     //   18: ifnull +11 -> 29
     //   21: aload 6
-    //   23: invokevirtual 268	java/io/File:exists	()Z
+    //   23: invokevirtual 269	java/io/File:exists	()Z
     //   26: ifne +21 -> 47
     //   29: aload_2
     //   30: iconst_2
     //   31: putfield 80	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:e	I
     //   34: iconst_0
     //   35: ifeq +11 -> 46
-    //   38: new 270	java/lang/NullPointerException
+    //   38: new 271	java/lang/NullPointerException
     //   41: dup
-    //   42: invokespecial 271	java/lang/NullPointerException:<init>	()V
+    //   42: invokespecial 272	java/lang/NullPointerException:<init>	()V
     //   45: athrow
     //   46: return
-    //   47: new 273	java/io/FileInputStream
+    //   47: new 274	java/io/FileInputStream
     //   50: dup
     //   51: aload 6
-    //   53: invokespecial 276	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   53: invokespecial 277	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   56: astore 5
     //   58: aload 5
     //   60: astore 4
     //   62: aload 6
-    //   64: invokevirtual 279	java/io/File:length	()J
+    //   64: invokevirtual 280	java/io/File:length	()J
     //   67: l2i
     //   68: istore_3
     //   69: aload 5
@@ -342,7 +349,7 @@ public class BitmapManager
     //   82: iload_3
     //   83: aload 5
     //   85: aload 6
-    //   87: invokevirtual 283	java/io/FileInputStream:read	([B)I
+    //   87: invokevirtual 284	java/io/FileInputStream:read	([B)I
     //   90: if_icmpeq +25 -> 115
     //   93: aload 5
     //   95: astore 4
@@ -352,7 +359,7 @@ public class BitmapManager
     //   102: aload 5
     //   104: ifnull -58 -> 46
     //   107: aload 5
-    //   109: invokevirtual 286	java/io/FileInputStream:close	()V
+    //   109: invokevirtual 287	java/io/FileInputStream:close	()V
     //   112: return
     //   113: astore_0
     //   114: return
@@ -369,20 +376,20 @@ public class BitmapManager
     //   133: aload 5
     //   135: ifnull +8 -> 143
     //   138: aload 5
-    //   140: invokevirtual 286	java/io/FileInputStream:close	()V
+    //   140: invokevirtual 287	java/io/FileInputStream:close	()V
     //   143: aload_2
     //   144: getfield 77	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:a	Landroid/graphics/Bitmap;
     //   147: ifnull -101 -> 46
     //   150: aload_2
     //   151: iconst_0
     //   152: putfield 80	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:e	I
-    //   155: new 92	ero
+    //   155: new 92	ett
     //   158: dup
     //   159: aload_0
     //   160: aload_2
     //   161: getfield 77	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:a	Landroid/graphics/Bitmap;
     //   164: getstatic 30	com/tencent/mobileqq/util/BitmapManager:jdField_a_of_type_JavaLangRefReferenceQueue	Ljava/lang/ref/ReferenceQueue;
-    //   167: invokespecial 95	ero:<init>	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
+    //   167: invokespecial 95	ett:<init>	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
     //   170: astore_1
     //   171: getstatic 25	com/tencent/mobileqq/util/BitmapManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   174: aload_0
@@ -401,7 +408,7 @@ public class BitmapManager
     //   196: aload 5
     //   198: ifnull -55 -> 143
     //   201: aload 5
-    //   203: invokevirtual 286	java/io/FileInputStream:close	()V
+    //   203: invokevirtual 287	java/io/FileInputStream:close	()V
     //   206: goto -63 -> 143
     //   209: astore_1
     //   210: goto -67 -> 143
@@ -416,7 +423,7 @@ public class BitmapManager
     //   226: aload 5
     //   228: ifnull -85 -> 143
     //   231: aload 5
-    //   233: invokevirtual 286	java/io/FileInputStream:close	()V
+    //   233: invokevirtual 287	java/io/FileInputStream:close	()V
     //   236: goto -93 -> 143
     //   239: astore_1
     //   240: goto -97 -> 143
@@ -431,7 +438,7 @@ public class BitmapManager
     //   256: aload 5
     //   258: ifnull -115 -> 143
     //   261: aload 5
-    //   263: invokevirtual 286	java/io/FileInputStream:close	()V
+    //   263: invokevirtual 287	java/io/FileInputStream:close	()V
     //   266: goto -123 -> 143
     //   269: astore_1
     //   270: goto -127 -> 143
@@ -439,7 +446,7 @@ public class BitmapManager
     //   274: aload 4
     //   276: ifnull +8 -> 284
     //   279: aload 4
-    //   281: invokevirtual 286	java/io/FileInputStream:close	()V
+    //   281: invokevirtual 287	java/io/FileInputStream:close	()V
     //   284: aload_0
     //   285: athrow
     //   286: astore_0

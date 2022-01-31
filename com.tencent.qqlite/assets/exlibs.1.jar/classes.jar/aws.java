@@ -1,35 +1,29 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.activity.NearbyPeopleListFrame;
-import com.tencent.mobileqq.adapter.PeopleAroundAdapter.ViewHolder;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.widget.XListView;
+import android.os.Handler;
+import android.os.Message;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class aws
-  implements IIconListener
+  implements Animation.AnimationListener
 {
-  public aws(NearbyPeopleListFrame paramNearbyPeopleListFrame) {}
+  public aws(NearbyActivity paramNearbyActivity, int paramInt) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramBitmap != null) && (paramInt2 == 200))
+    if (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity) != null)
     {
-      int i = this.a.a.getChildCount();
-      paramInt2 = 0;
-      while (paramInt2 < i)
-      {
-        paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
-        if ((paramBitmap != null) && ((paramBitmap instanceof PeopleAroundAdapter.ViewHolder)))
-        {
-          paramBitmap = (PeopleAroundAdapter.ViewHolder)paramBitmap;
-          if ((paramBitmap.jdField_b_of_type_Int == paramInt1) && (paramBitmap.jdField_b_of_type_AndroidWidgetTextView != null)) {
-            NearbyPeopleListFrame.a(this.a, paramBitmap.jdField_b_of_type_AndroidWidgetTextView, paramInt1);
-          }
-        }
-        paramInt2 += 1;
-      }
+      paramAnimation = new Message();
+      paramAnimation.what = 1;
+      paramAnimation.arg1 = this.jdField_a_of_type_Int;
+      paramAnimation.arg2 = 1001;
+      NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity).sendMessageDelayed(paramAnimation, 400L);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

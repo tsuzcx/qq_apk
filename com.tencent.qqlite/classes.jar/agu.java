@@ -1,14 +1,27 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.DataLineObserver;
 
-class agu
-  implements Runnable
+public class agu
+  extends DataLineObserver
 {
-  agu(agt paramagt) {}
+  public agu(Conversation paramConversation) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
-    this.a.a.a.y();
+    super.a(paramBoolean, paramLong, paramString);
+    this.a.a(8, AppConstants.T, 6000);
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  {
+    this.a.a(9, AppConstants.T, 6000);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.b(paramBoolean, paramLong, paramString);
+    this.a.a(8, AppConstants.T, 6000);
   }
 }
 

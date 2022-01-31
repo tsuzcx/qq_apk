@@ -1,19 +1,25 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory.ViewHolder;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Task;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskPool;
+import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class eqs
-  extends TroopFeedViewFactory.ViewHolder
+public class eqs
+  implements Runnable
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public eqs(TroopFileTransferManager.TaskPool paramTaskPool) {}
   
-  eqs(eqr parameqr)
+  public void run()
   {
-    super(parameqr.a);
+    synchronized (this.a)
+    {
+      if (this.a.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      {
+        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
+        return;
+      }
+      TroopFileTransferManager.Task localTask = (TroopFileTransferManager.Task)this.a.jdField_a_of_type_JavaUtilLinkedList.remove(0);
+      localTask.run();
+    }
   }
 }
 

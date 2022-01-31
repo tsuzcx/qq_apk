@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.feedback.eup.CrashReport;
-import fkh;
-import fki;
+import fmn;
+import fmo;
 
 public class PluginCrashReceiver
   extends BroadcastReceiver
@@ -43,11 +43,11 @@ public class PluginCrashReceiver
       }
       if ("com.tencent.qqlite.ACTION_PLUGIN_STARTUP_FAILED".equals(str))
       {
-        new fki(paramIntent).execute(new String[] { "" });
+        new fmo(paramIntent).execute(new String[] { "" });
         return;
       }
     } while (!"com.tencent.qqlite.ACTION_PLUGIN_DIR_INFO_LOG".equals(str));
-    new fkh(paramContext).execute(new String[] { "" });
+    new fmn(paramContext).execute(new String[] { "" });
   }
 }
 

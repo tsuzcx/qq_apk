@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901af" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901b0" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901b0" android:background="#fffff4b9" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip">
-        <TextView android:textSize="15.0sp" android:textColor="#ffc2804a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901b1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a03e6" android:layout_weight="1.0" />
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020776" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901b1" android:background="#fffff4b9" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <TextView android:textSize="15.0sp" android:textColor="#ffc2804a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901b2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a03ed" android:layout_weight="1.0" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207b7" />
     </LinearLayout>
     <ImageView android:background="#ffe5dba6" android:layout_width="fill_parent" android:layout_height="1.0dip" />
 </LinearLayout>

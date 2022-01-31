@@ -1,38 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopManageActivity;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.widget.Switch;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class bnk
-  extends BizTroopObserver
+  implements DialogInterface.OnDismissListener
 {
-  public bnk(TroopManageActivity paramTroopManageActivity) {}
+  public bnk(TroopInfoActivity paramTroopInfoActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean1)
-    {
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
-      ((TroopInfo)localObject).dwGroupFlagExt ^= 0x40000000;
-      localObject = (TroopManager)this.a.app.getManager(44);
-      if (localObject != null) {
-        ((TroopManager)localObject).b(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
-      }
-      return;
-    }
-    this.a.a(1, this.a.getString(2131362565));
-    Object localObject = ((FormSwitchItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[7].findViewById(2131298524)).a();
-    ((Switch)localObject).setOnCheckedChangeListener(null);
-    if (!paramBoolean2) {}
-    for (paramBoolean1 = true;; paramBoolean1 = false)
-    {
-      ((Switch)localObject).setChecked(paramBoolean1);
-      ((Switch)localObject).setOnCheckedChangeListener(this.a);
-      return;
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }

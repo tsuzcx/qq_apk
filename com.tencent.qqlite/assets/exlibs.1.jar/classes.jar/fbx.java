@@ -1,16 +1,20 @@
-import android.text.Editable;
-import com.tencent.open.agent.SendStoryActivity;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class fbx
-  implements Comparator
+  implements View.OnClickListener
 {
-  public fbx(SendStoryActivity paramSendStoryActivity, Editable paramEditable) {}
+  public fbx(TabBarView paramTabBarView, int paramInt) {}
   
-  public int a(Friend paramFriend1, Friend paramFriend2)
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2);
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a < 500L) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a = l;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 

@@ -1,18 +1,18 @@
 import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.anonymous.AnonymousChatHelper.AnonymousStatusListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
 
 public class bzw
-  implements AnonymousChatHelper.AnonymousStatusListener
+  extends Handler
 {
-  public bzw(TroopChatPie paramTroopChatPie) {}
+  public bzw(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void a(String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(TroopChatPie.N(this.a).a))) {
-      TroopChatPie.h(this.a).post(new bzx(this, paramString2));
+    super.handleMessage(paramMessage);
+    if (BusinessCmrTmpChatPie.a(this.a).isShown()) {
+      BusinessCmrTmpChatPie.a(this.a).setVisibility(8);
     }
   }
 }

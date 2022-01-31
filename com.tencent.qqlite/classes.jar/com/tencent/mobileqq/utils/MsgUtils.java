@@ -138,9 +138,9 @@ public class MsgUtils
     }
     paramContext = paramQQAppInterface.a().a(AppShareIDUtil.a(paramMessage.shareAppID));
     if ((paramContext == null) || (paramContext.messagetail == null) || ("".equals(paramContext.messagetail))) {
-      return paramQQAppInterface.a().getString(2131363963);
+      return paramQQAppInterface.a().getString(2131363974);
     }
-    return paramQQAppInterface.a().getString(2131363961) + paramContext.messagetail + paramQQAppInterface.a().getString(2131363962);
+    return paramQQAppInterface.a().getString(2131363972) + paramContext.messagetail + paramQQAppInterface.a().getString(2131363973);
   }
   
   private static String a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, QQMessageFacade.Message paramMessage)
@@ -193,15 +193,15 @@ public class MsgUtils
                 do
                 {
                   return str1;
-                  paramContext = paramContext.getString(2131363472);
+                  paramContext = paramContext.getString(2131363483);
                   break;
-                  paramContext = paramContext.getString(2131363473);
+                  paramContext = paramContext.getString(2131363484);
                   break;
-                  paramContext = paramContext.getString(2131363474);
+                  paramContext = paramContext.getString(2131363485);
                   break;
-                  paramContext = paramContext.getString(2131363477);
+                  paramContext = paramContext.getString(2131363488);
                   break;
-                  paramContext = paramContext.getString(2131363478);
+                  paramContext = paramContext.getString(2131363489);
                   break;
                   return paramMessage.senderuin + paramContext;
                   str1 = paramString;
@@ -316,9 +316,9 @@ public class MsgUtils
       }
       label1692:
       label1720:
-      label1886:
-      label1895:
-      label1901:
+      label1888:
+      label1897:
+      label1903:
       for (;;)
       {
         long l;
@@ -326,7 +326,7 @@ public class MsgUtils
         {
           paramString = paramMessage.frienduin;
           if (!MsgProxyUtils.a(paramMessage.frienduin, paramMessage.istroop)) {
-            break label1901;
+            break label1903;
           }
           paramString = paramMessage.senderuin;
           localObject1 = (MessageForPic)paramQQAppInterface.a().b(paramString, paramMessage.istroop, paramMessage.uniseq);
@@ -379,15 +379,15 @@ public class MsgUtils
             }
             else
             {
-              a((CharSequence)localObject2, paramContext.getString(2131363809), null, paramBoolean2, paramBoolean1, paramMsgSummary);
+              a((CharSequence)localObject2, paramContext.getString(2131363820), null, paramBoolean2, paramBoolean1, paramMsgSummary);
               return;
               if ((paramQQAppInterface == null) || (!(paramQQAppInterface instanceof BaseTransProcessor))) {
-                break label1895;
+                break label1897;
               }
               l = ((BaseTransProcessor)paramQQAppInterface).c();
               paramInt = (int)l;
               if ((paramInt != 1005) && (paramInt != 1004)) {
-                break label1895;
+                break label1897;
               }
               paramBoolean1 = true;
               continue;
@@ -416,11 +416,11 @@ public class MsgUtils
           {
             paramString = paramMessage.frienduin;
             if (!MsgProxyUtils.a(paramMessage.frienduin, paramMessage.istroop)) {
-              break label1886;
+              break label1888;
             }
             paramString = paramMessage.senderuin;
             paramBoolean2 = false;
-            paramContext = paramContext.getString(2131363810);
+            paramContext = paramContext.getString(2131363821);
             localObject1 = paramQQAppInterface.a().b(paramString, paramMessage.istroop, paramMessage.uniseq);
             if ((localObject1 instanceof MessageForPtt))
             {
@@ -465,12 +465,12 @@ public class MsgUtils
             }
             if (paramMessage.msgtype == -2017)
             {
-              a((CharSequence)localObject2, paramContext.getString(2131362600), null, a(paramQQAppInterface, paramMessage), b(paramQQAppInterface, paramMessage), paramMsgSummary);
+              a((CharSequence)localObject2, paramContext.getString(2131362602), null, a(paramQQAppInterface, paramMessage), b(paramQQAppInterface, paramMessage), paramMsgSummary);
               return;
             }
             if (ActionMsgUtil.d(paramMessage.msgtype))
             {
-              a((CharSequence)localObject2, paramContext.getString(2131364093), null, a(paramQQAppInterface, paramMessage), b(paramQQAppInterface, paramMessage), paramMsgSummary);
+              a((CharSequence)localObject2, paramContext.getString(2131364104), null, a(paramQQAppInterface, paramMessage), b(paramQQAppInterface, paramMessage), paramMsgSummary);
               return;
             }
             if (paramMessage.msgtype == -1013)
@@ -490,7 +490,7 @@ public class MsgUtils
             }
             if (paramMessage.msgtype == -2019)
             {
-              paramMsgSummary.b = paramContext.getString(2131364298);
+              paramMsgSummary.b = paramContext.getString(2131364309);
               return;
             }
             if (paramMessage.msgtype == -2005)
@@ -498,7 +498,7 @@ public class MsgUtils
               paramString = FileManagerUtil.a(paramQQAppInterface, paramMessage);
               paramBoolean1 = a(paramQQAppInterface, paramMessage);
               paramBoolean2 = b(paramQQAppInterface, paramMessage);
-              a((CharSequence)localObject2, paramContext.getString(2131363812), null, paramBoolean1, paramBoolean2, paramMsgSummary);
+              a((CharSequence)localObject2, paramContext.getString(2131363823), null, paramBoolean1, paramBoolean2, paramMsgSummary);
               if (paramString == null) {
                 break;
               }
@@ -529,7 +529,7 @@ public class MsgUtils
                   paramBoolean2 = true;
                 }
               }
-              a((CharSequence)localObject2, paramContext.getString(2131363813), null, paramBoolean1, paramBoolean2, paramMsgSummary);
+              a((CharSequence)localObject2, paramContext.getString(2131363824), null, paramBoolean1, paramBoolean2, paramMsgSummary);
               return;
             }
             if (paramMessage.msgtype == -5002)
@@ -570,17 +570,17 @@ public class MsgUtils
             case 1: 
               if ((paramMessage.istroop == 1001) && (paramMessage.msgtype == -3001))
               {
-                paramMsgSummary.b = paramContext.getString(2131364095);
+                paramMsgSummary.b = paramContext.getString(2131364106);
                 return;
               }
-              a((CharSequence)localObject2, paramContext.getString(2131363809), null, paramBoolean1, paramBoolean2, paramMsgSummary);
+              a((CharSequence)localObject2, paramContext.getString(2131363820), null, paramBoolean1, paramBoolean2, paramMsgSummary);
               return;
             case 65538: 
-              a((CharSequence)localObject2, paramContext.getString(2131363809), null, false, false, paramMsgSummary);
+              a((CharSequence)localObject2, paramContext.getString(2131363820), null, false, false, paramMsgSummary);
               return;
             case 2: 
             case 8: 
-              paramContext = paramContext.getString(2131363810);
+              paramContext = paramContext.getString(2131363821);
               if ((Utils.a(paramMessage.senderuin, paramQQAppInterface.a())) && (paramInt != 0))
               {
                 a((CharSequence)localObject2, paramContext, "", paramBoolean1, paramBoolean2, paramMsgSummary);
@@ -724,8 +724,8 @@ public class MsgUtils
     boolean bool1 = a(paramQQAppInterface, paramMessage);
     boolean bool2 = b(paramQQAppInterface, paramMessage);
     paramContext.getResources();
-    paramContext.getString(2131363811);
-    paramCountDownTimerListener = paramContext.getString(2131363812);
+    paramContext.getString(2131363822);
+    paramCountDownTimerListener = paramContext.getString(2131363823);
     if (paramMessage.msgtype == -2011)
     {
       paramContext = StructMsgFactory.a(paramMessage.msgData);
@@ -772,7 +772,7 @@ public class MsgUtils
       if (paramQQAppInterface != null) {
         bool2 = true;
       }
-      paramTextView.setText(a(paramCountDownTimer, paramContext.getString(2131363809), null, bool1, bool2, paramDrawable1, paramDrawable2, paramDrawable3));
+      paramTextView.setText(a(paramCountDownTimer, paramContext.getString(2131363820), null, bool1, bool2, paramDrawable1, paramDrawable2, paramDrawable3));
       return false;
       if (paramQQAppInterface != null)
       {
@@ -808,7 +808,7 @@ public class MsgUtils
               }
               for (;;)
               {
-                paramTextView.setText(a(paramCountDownTimer, paramContext.getString(2131363810), null, bool1, bool2, paramDrawable1, paramDrawable2, paramDrawable3));
+                paramTextView.setText(a(paramCountDownTimer, paramContext.getString(2131363821), null, bool1, bool2, paramDrawable1, paramDrawable2, paramDrawable3));
                 return false;
                 label537:
                 bool1 = bool4;
@@ -850,7 +850,7 @@ public class MsgUtils
             }
             if (ActionMsgUtil.d(paramMessage.msgtype))
             {
-              paramTextView.setText(a(paramCountDownTimer, paramContext.getString(2131364093), null, bool1, bool2, paramDrawable1, paramDrawable2, paramDrawable3));
+              paramTextView.setText(a(paramCountDownTimer, paramContext.getString(2131364104), null, bool1, bool2, paramDrawable1, paramDrawable2, paramDrawable3));
               return false;
             }
             if (paramMessage.msgtype == -2017)
@@ -880,11 +880,11 @@ public class MsgUtils
                 }
                 else if ((paramMessage.istroop == 1001) && (paramMessage.msgtype == -3001))
                 {
-                  paramTextView.setText(2131364095);
+                  paramTextView.setText(2131364106);
                 }
                 else
                 {
-                  paramTextView.setText(a(paramCountDownTimer, paramContext.getString(2131363809), null, bool1, bool2, paramDrawable1, paramDrawable2, paramDrawable3));
+                  paramTextView.setText(a(paramCountDownTimer, paramContext.getString(2131363820), null, bool1, bool2, paramDrawable1, paramDrawable2, paramDrawable3));
                   continue;
                   if (paramMessage.msg == null)
                   {
@@ -907,7 +907,7 @@ public class MsgUtils
                       }
                       else
                       {
-                        paramTextView.setText(a(paramCountDownTimer, paramContext.getString(2131363809), null, false, false, paramDrawable1, paramDrawable2, paramDrawable3));
+                        paramTextView.setText(a(paramCountDownTimer, paramContext.getString(2131363820), null, false, false, paramDrawable1, paramDrawable2, paramDrawable3));
                         continue;
                         if (paramMessage.msg == null)
                         {
@@ -921,16 +921,16 @@ public class MsgUtils
                             l1 = paramMessage.fileSize;
                             label1100:
                             if (l1 <= 0L) {
-                              break label1238;
+                              break label1235;
                             }
                             new StringBuilder().append(l1).append("\"").toString();
                           }
-                          label1238:
+                          label1235:
                           for (;;)
                           {
-                            paramContext = paramContext.getString(2131363810);
+                            paramContext = paramContext.getString(2131363821);
                             if ((paramMessage.senderuin == null) || (!paramMessage.senderuin.equalsIgnoreCase(paramQQAppInterface.a())) || (paramInt == 0)) {
-                              break label1241;
+                              break label1238;
                             }
                             paramTextView.setText(a(paramCountDownTimer, paramContext, "", bool1, bool2, paramDrawable1, paramDrawable2, paramDrawable3));
                             break;
@@ -942,11 +942,11 @@ public class MsgUtils
                             if (paramMessage.pttUrl.toLowerCase().startsWith("http")) {
                               break label1100;
                             }
-                            l1 = QQRecorder.a(paramMessage.pttUrl);
+                            l1 = QQRecorder.a(paramMessage);
                             paramMessage.fileSize = l1;
                             break label1100;
                           }
-                          label1241:
+                          label1238:
                           paramTextView.setText(a(paramCountDownTimer, paramContext, "", false, false, paramDrawable1, paramDrawable2, paramDrawable3));
                           continue;
                           paramTextView.setText(a(paramCountDownTimer, "", paramMessage.msg, bool1, bool2, paramDrawable1, paramDrawable2, paramDrawable3));
@@ -981,14 +981,14 @@ public class MsgUtils
               if (bool1)
               {
                 paramContext.append("F ");
-                label1414:
+                label1411:
                 if (!(paramCountDownTimerListener instanceof QQText)) {
-                  break label1518;
+                  break label1515;
                 }
                 paramContext = ((QQText)paramCountDownTimerListener).a(paramContext.toString(), true, new int[0]);
-                label1439:
+                label1436:
                 if (!bool1) {
-                  break label1540;
+                  break label1537;
                 }
                 paramDrawable3.setBounds(0, 0, paramDrawable3.getIntrinsicWidth() * 2 / 3, paramDrawable3.getIntrinsicHeight() * 2 / 3);
                 ((Spannable)paramContext).setSpan(new ImageSpan(paramDrawable3), paramInt, paramInt + 1, 33);
@@ -998,15 +998,15 @@ public class MsgUtils
                 paramTextView.setText(paramContext);
                 break;
                 if (!bool2) {
-                  break label1414;
+                  break label1411;
                 }
                 paramContext.append("S ");
-                break label1414;
-                label1518:
+                break label1411;
+                label1515:
                 paramContext.append(paramCountDownTimerListener);
                 paramContext = new SpannableString(paramContext.toString());
-                break label1439;
-                label1540:
+                break label1436;
+                label1537:
                 if (bool2)
                 {
                   paramDrawable2.setBounds(0, 0, paramDrawable2.getIntrinsicWidth() * 2 / 3, paramDrawable2.getIntrinsicHeight() * 2 / 3);
@@ -1017,12 +1017,12 @@ public class MsgUtils
             if (paramCountDownTimerListener != null)
             {
               paramCountDownTimerListener = paramCountDownTimerListener.toString().trim();
-              label1614:
+              label1613:
               if ((!String.valueOf(AppConstants.Y).equalsIgnoreCase(paramMessage.frienduin)) || (paramCountDownTimerListener == null) || (paramCountDownTimerListener.length() <= 0)) {
-                break label1719;
+                break label1718;
               }
             }
-            label1719:
+            label1718:
             for (paramContext = a(paramContext, paramQQAppInterface, paramCountDownTimerListener, paramMessage);; paramContext = paramCountDownTimerListener)
             {
               paramContext = a(paramCountDownTimer, null, paramContext, bool1, paramQQAppInterface.a().b(paramMessage), paramDrawable1, paramDrawable2, paramDrawable3);
@@ -1034,7 +1034,7 @@ public class MsgUtils
                 paramTextView.setText(paramContext);
                 break;
                 paramCountDownTimerListener = null;
-                break label1614;
+                break label1613;
               }
             }
           }

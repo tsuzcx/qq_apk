@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906e7" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:transcriptMode="normal" android:cacheColorHint="@null" android:divider="@null"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906cd" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906e2" android:clickable="true" android:duplicateParentState="true" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0b0011" android:scrollingCache="true" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:isScrollContainer="true" />
+    <com.tencent.mobileqq.widget.GridListView android:gravity="fill" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0902de" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:scrollingCache="false" android:horizontalSpacing="2.0dip" android:verticalSpacing="2.0dip" android:stretchMode="columnWidth" android:numColumns="3" android:divider="@null" />
+</RelativeLayout>

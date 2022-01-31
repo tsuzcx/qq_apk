@@ -21,7 +21,7 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import dfj;
+import dgl;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,11 +95,11 @@ public class FavoriteEmoticonInfo
   public void a(Context paramContext, QQAppInterface paramQQAppInterface, EmoticonCallback paramEmoticonCallback)
   {
     String[] arrayOfString = paramContext.getResources().getStringArray(2131230721);
-    paramContext = (ActionSheet)ActionSheetHelper.a(paramContext, null, 2131624119);
+    paramContext = (ActionSheet)ActionSheetHelper.a(paramContext, null, 2131624120);
     paramContext.a(arrayOfString[0], 1);
     paramContext.a(arrayOfString[1], 1);
-    paramContext.d(2131362794);
-    paramContext.a(new dfj(this, paramQQAppInterface, paramEmoticonCallback, paramContext));
+    paramContext.d(2131362801);
+    paramContext.a(new dgl(this, paramQQAppInterface, paramEmoticonCallback, paramContext));
     paramContext.show();
   }
   

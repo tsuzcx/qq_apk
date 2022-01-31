@@ -122,7 +122,7 @@ public abstract class EmojiUiPlugin
   
   private void showGetKeyErrorDialog()
   {
-    QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = DialogUtil.a(this.activity, 230).a(this.activity.getString(2131364085)).b(this.activity.getString(2131364084)).a(this.activity.getString(2131362795), new EmojiUiPlugin.5(this));
+    QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = DialogUtil.a(this.activity, 230).a(this.activity.getString(2131364096)).b(this.activity.getString(2131364095)).a(this.activity.getString(2131362802), new EmojiUiPlugin.5(this));
     localQQCustomDialogThreeBtns.setOnDismissListener(this);
     localQQCustomDialogThreeBtns.setCanceledOnTouchOutside(false);
     localQQCustomDialogThreeBtns.show();
@@ -138,7 +138,7 @@ public abstract class EmojiUiPlugin
     boolean bool1 = false;
     boolean bool2 = false;
     super.OnActivityCreate();
-    this.activity.setTheme(2131624265);
+    this.activity.setTheme(2131624266);
     this.mSelfUin = getInfoIntent().getExtras().getString("selfuin");
     this.mSid = getInfoIntent().getExtras().getString("emojimall_sid");
     boolean bool3 = getInfoIntent().getExtras().getBoolean("emojimall_qFace", false);
@@ -441,7 +441,7 @@ public abstract class EmojiUiPlugin
       if (i == 0) {
         break;
       }
-      str1 = paramHomePageLoadInfo.replace("[client]", "androidQQ").replace("[version]", "5.3.1.607").replace("[adtag]", str1).replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE).replace("[systemInt]", Integer.toString(Build.VERSION.SDK_INT));
+      str1 = paramHomePageLoadInfo.replace("[client]", "androidQQ").replace("[version]", "5.3.1.660").replace("[adtag]", str1).replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE).replace("[systemInt]", Integer.toString(Build.VERSION.SDK_INT));
       paramHomePageLoadInfo = str1;
       if (str1.contains("[platformId]")) {
         paramHomePageLoadInfo = str1.replace("[platformId]", "2");
@@ -599,16 +599,16 @@ public abstract class EmojiUiPlugin
   {
     this.activity.b(getInfoIntent(), this.homePageUrlInfo.homePageUrl);
     if ((this.mActivityType == 1) && ((this.mSrcFromType == 3) || (this.mSrcFromType == 1) || (this.mSrcFromType == 6))) {
-      this.activity.setRightButton(2131364086, new EmojiUiPlugin.2(this));
+      this.activity.setRightButton(2131364097, new EmojiUiPlugin.2(this));
     }
     for (;;)
     {
       if ((this.mActivityType == 1) && ((this.mSrcFromType == 1) || (this.mSrcFromType == 6))) {
-        this.activity.setLeftButton(2131363523, new EmojiUiPlugin.4(this));
+        this.activity.setLeftButton(2131363534, new EmojiUiPlugin.4(this));
       }
       return;
       if ((this.mSrcFromType != 3) && (this.mSrcFromType != 7) && (this.mSrcFromType != 8) && (this.mSrcFromType != 4) && (this.mSrcFromType != 2)) {
-        this.activity.setRightButton(2131363523, new EmojiUiPlugin.3(this));
+        this.activity.setRightButton(2131363534, new EmojiUiPlugin.3(this));
       }
     }
   }

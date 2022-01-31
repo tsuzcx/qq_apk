@@ -46,9 +46,9 @@
         <item>设置头像挂件</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f080007">
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0a0202</item>
         <item>@string/APKTOOL_DUPLICATE_string_0x7f0a0203</item>
         <item>@string/APKTOOL_DUPLICATE_string_0x7f0a0204</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0a0205</item>
         <item>取消</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f080008">

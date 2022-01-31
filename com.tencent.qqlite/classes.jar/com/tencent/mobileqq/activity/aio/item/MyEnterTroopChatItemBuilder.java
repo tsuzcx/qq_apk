@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bvy;
+import bwx;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
@@ -28,12 +28,12 @@ public class MyEnterTroopChatItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramLinearLayout = (bvy)paramViewHolder;
+    paramLinearLayout = (bwx)paramViewHolder;
     paramViewHolder = paramView;
     if (paramView == null)
     {
       paramViewHolder = LayoutInflater.from(this.a).inflate(2130903110, null);
-      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131296823));
+      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131296824));
     }
     paramLinearLayout.b.setMovementMethod(null);
     paramLinearLayout.b.setGravity(17);
@@ -53,7 +53,7 @@ public class MyEnterTroopChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new bvy(this);
+    return new bwx(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

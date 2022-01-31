@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
+import android.app.ProgressDialog;
+import com.tencent.util.DumpMemInfoHandler;
+import java.util.TimerTask;
 
-public class dym
-  implements Runnable
+class dym
+  extends TimerTask
 {
-  public dym(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, int paramInt) {}
+  dym(dyl paramdyl, ProgressDialog paramProgressDialog) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlayStateChanged(this.jdField_a_of_type_Int);
+    DumpMemInfoHandler.a(this.jdField_a_of_type_Dyl.a.a);
+    this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
   }
 }
 

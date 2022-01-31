@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class bha
   implements Runnable
 {
-  public bha(RegisterBaseActivity paramRegisterBaseActivity, String paramString1, String paramString2) {}
+  public bha(RegisterActivity paramRegisterActivity) {}
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 230);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
-    localQQCustomDialog.setMessage(this.b);
-    localQQCustomDialog.setPositiveButton(2131364110, new bhb(this));
-    localQQCustomDialog.show();
+    try
+    {
+      if (RegisterActivity.a(this.a) != null)
+      {
+        RegisterActivity.a(this.a).dismiss();
+        RegisterActivity.a(this.a).cancel();
+        RegisterActivity.a(this.a, null);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

@@ -1,50 +1,80 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.common.util.Util;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.app.message.MultiMsgProxy;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.pic.DownCallBack;
+import com.tencent.mobileqq.pic.DownCallBack.DownResult;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public final class cap
-  implements DialogInterface.OnClickListener
+public class cap
+  implements DownCallBack
 {
-  public cap(AbsShareMsg paramAbsShareMsg, Activity paramActivity, Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  WeakReference a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public cap(MultiForwardChatPie paramMultiForwardChatPie)
   {
-    switch (paramInt)
+    this.a = new WeakReference(paramMultiForwardChatPie);
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(DownCallBack.DownResult paramDownResult)
+  {
+    if (this.a == null) {}
+    MultiForwardChatPie localMultiForwardChatPie;
+    do
     {
-    default: 
-      return;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatActivity", 2, "qbShowWpaResultDialog back");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
+      do
       {
-        paramDialogInterface = this.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("appid");
-        if (paramDialogInterface != null) {
-          ForwardOperations.a(this.jdField_a_of_type_AndroidAppActivity, true, this.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("callback_type"), Long.parseLong(paramDialogInterface));
-        }
+        do
+        {
+          return;
+          localMultiForwardChatPie = (MultiForwardChatPie)this.a.get();
+          if ((paramDownResult.jdField_a_of_type_Int != 0) || (paramDownResult.jdField_a_of_type_ArrayOfByte == null)) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("MultiMsg", 2, "MultiForwardActivity.onDownload success");
+          }
+        } while (localMultiForwardChatPie == null);
+        localObject = new HashMap();
+        MessageRecord localMessageRecord = MultiForwardChatPie.a(localMultiForwardChatPie).a().a(localMultiForwardChatPie.a.jdField_a_of_type_JavaLangString, localMultiForwardChatPie.a.jdField_a_of_type_Int, localMultiForwardChatPie.e);
+        paramDownResult = MultiForwardChatPie.b(localMultiForwardChatPie).a().a().a(paramDownResult.jdField_a_of_type_ArrayOfByte, (HashMap)localObject, localMessageRecord);
+      } while ((paramDownResult == null) || (paramDownResult.size() <= 0));
+      MultiMsgManager.a().a((HashMap)localObject, localMultiForwardChatPie.e, MultiForwardChatPie.c(localMultiForwardChatPie));
+      Object localObject = new ArrayList();
+      paramDownResult = paramDownResult.iterator();
+      while (paramDownResult.hasNext()) {
+        ((List)localObject).add((ChatMessage)paramDownResult.next());
       }
-      Util.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8004B56", "0X8004B56", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      localMultiForwardChatPie.b = ((List)localObject);
+      paramDownResult = ChatActivityUtils.a(localMultiForwardChatPie.b, localMultiForwardChatPie.a, MultiForwardChatPie.d(localMultiForwardChatPie));
+      paramDownResult = ChatActivityUtils.a(MultiForwardChatPie.e(localMultiForwardChatPie), BaseApplicationImpl.getContext(), localMultiForwardChatPie.a, paramDownResult);
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg", 2, "MultiForwardActivity.onDownload, requestReceiveMultiMsg uses " + (System.currentTimeMillis() - MultiForwardChatPie.a(localMultiForwardChatPie)));
+      }
+      MultiMsgManager.a().a(MultiForwardChatPie.f(localMultiForwardChatPie), localMultiForwardChatPie.b, true);
+      MultiForwardChatPie.a(localMultiForwardChatPie).runOnUiThread(new caq(this, localMultiForwardChatPie, paramDownResult));
       return;
-    }
-    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", 0);
-    paramDialogInterface.setFlags(335544320);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8004B55", "0X8004B55", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg", 2, "MultiForwardActivity.onDownload failed");
+      }
+    } while (localMultiForwardChatPie == null);
+    MultiMsgManager.a().a(MultiForwardChatPie.g(localMultiForwardChatPie), null, false);
+    MultiForwardChatPie.b(localMultiForwardChatPie).runOnUiThread(new car(this, localMultiForwardChatPie));
   }
 }
 

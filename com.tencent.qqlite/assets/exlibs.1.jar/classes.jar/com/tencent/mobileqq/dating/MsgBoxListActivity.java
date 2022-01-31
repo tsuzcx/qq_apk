@@ -39,10 +39,10 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
-import dcz;
-import dda;
-import ddb;
-import ddc;
+import deb;
+import dec;
+import ded;
+import dee;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -64,7 +64,7 @@ public class MsgBoxListActivity
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private RecentAdapter jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter;
   private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dcz(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new deb(this);
   private FPSSwipListView jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView;
   protected FaceDecoder a;
   private List jdField_a_of_type_JavaUtilList;
@@ -264,27 +264,27 @@ public class MsgBoxListActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903500);
+    setContentView(2130903508);
     getWindow().setBackgroundDrawable(null);
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131298247));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131298269));
     this.jdField_a_of_type_AndroidViewViewStub.setVisibility(0);
     this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
     this.jdField_b_of_type_Int = getIntent().getIntExtra("uintype", -1);
     this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra("uin");
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = DragFrameLayout.a(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this, false);
-    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView = ((FPSSwipListView)findViewById(2131298245));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298246));
+    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView = ((FPSSwipListView)findViewById(2131298267));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298268));
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setOnScrollListener(this);
     if (this.jdField_b_of_type_Int == 1001)
     {
-      setTitle(2131363241);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131362822));
+      setTitle(2131363251);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131362829));
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidOsHandler = new CustomHandler(ThreadManager.b(), this);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new dda(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new dec(this));
       addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
       this.app.a().addObserver(this);
       if (QLog.isColorLevel())
@@ -295,7 +295,7 @@ public class MsgBoxListActivity
       return true;
       if (this.jdField_b_of_type_Int == 1009)
       {
-        setTitle(2131363243);
+        setTitle(2131363253);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       }
     }
@@ -342,7 +342,7 @@ public class MsgBoxListActivity
     {
       return false;
       this.jdField_a_of_type_JavaUtilList = a();
-      runOnUiThread(new ddb(this));
+      runOnUiThread(new ded(this));
     }
   }
   
@@ -368,7 +368,7 @@ public class MsgBoxListActivity
       this.d = "";
       return;
     }
-    runOnUiThread(new ddc(this, paramObservable));
+    runOnUiThread(new dee(this, paramObservable));
   }
 }
 

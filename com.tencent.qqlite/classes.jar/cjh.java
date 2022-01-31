@@ -1,16 +1,15 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
+import java.util.List;
 
-class cjh
+public class cjh
+  implements Runnable
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  ImageView b;
-  ImageView c;
+  public cjh(AlbumListAdapter paramAlbumListAdapter, List paramList) {}
   
-  private cjh(cjg paramcjg) {}
+  public void run()
+  {
+    AlbumListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter, this.jdField_a_of_type_JavaUtilList);
+  }
 }
 
 

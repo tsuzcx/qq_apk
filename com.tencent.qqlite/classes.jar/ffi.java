@@ -1,14 +1,11 @@
-import com.tencent.open.base.ToastUtil;
-import com.tencent.open.downloadnew.MyAppApi;
+import java.util.Comparator;
 
 public class ffi
-  implements Runnable
+  implements Comparator
 {
-  public ffi(MyAppApi paramMyAppApi) {}
-  
-  public void run()
+  public int a(String paramString1, String paramString2)
   {
-    ToastUtil.a().a(this.a.b);
+    return paramString1.compareTo(paramString2);
   }
 }
 

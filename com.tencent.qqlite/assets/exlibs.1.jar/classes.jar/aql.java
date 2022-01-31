@@ -1,22 +1,20 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 
 public class aql
-  extends FriendListObserver
+  implements View.OnClickListener
 {
   public aql(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.a()))) {}
-    while (this.a.a == null) {
-      return;
-    }
-    paramString = GesturePWDUnlockActivity.a(this.a, this.a.app.a(), true);
-    this.a.a.setImageBitmap(paramString);
+    this.a.c();
+    GesturePWDUtils.setGestureUnlockFailedType(this.a, 0);
+    StatisticCollector.a(this.a.getBaseContext()).a(this.a.app, this.a.app.a(), "Gesture_pwd", "click_forgive", 0, 1, "0", null, null, null, null);
   }
 }
 

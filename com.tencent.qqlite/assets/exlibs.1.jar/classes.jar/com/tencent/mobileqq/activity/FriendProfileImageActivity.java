@@ -25,21 +25,21 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aov;
-import aow;
-import aox;
-import aoy;
-import aoz;
 import apa;
 import apb;
+import apc;
 import apd;
+import ape;
 import apf;
 import apg;
-import aph;
 import api;
 import apk;
 import apl;
 import apm;
+import apn;
+import app;
+import apq;
+import apr;
 import com.tencent.common.galleryactivity.AnimationUtils;
 import com.tencent.mobileqq.adapter.FriendProfileImageAdapter;
 import com.tencent.mobileqq.app.AppConstants;
@@ -83,7 +83,7 @@ public class FriendProfileImageActivity
   private long jdField_a_of_type_Long = 350L;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   public AsyncTask a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new apb(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new apg(this);
   public View a;
   AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
@@ -96,7 +96,7 @@ public class FriendProfileImageActivity
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private QQToastNotifier jdField_a_of_type_ComTencentMobileqqWidgetQQToastNotifier;
   public Gallery a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new aoy(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new apd(this);
   public boolean a;
   public int b;
   View b;
@@ -197,7 +197,7 @@ public class FriendProfileImageActivity
       paramRect1 = new TranslateAnimation(-(k - n), 0.0F, -(m - i1), 0.0F);
       paramRect1.setDuration(this.jdField_a_of_type_Long);
       paramRect1.setInterpolator(new AccelerateDecelerateInterpolator());
-      paramRect1.setAnimationListener(new aoz(this));
+      paramRect1.setAnimationListener(new ape(this));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(paramRect1);
       paramRect1 = new AlphaAnimation(0.0F, 1.0F);
       paramRect1.setInterpolator(new DecelerateInterpolator());
@@ -224,8 +224,8 @@ public class FriendProfileImageActivity
     paramTextView.setVisibility(4);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
     this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new aow(this, paramTextView));
-    this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new aox(this, paramTextView));
+    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new apb(this, paramTextView));
+    this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new apc(this, paramTextView));
   }
   
   private void e()
@@ -234,14 +234,14 @@ public class FriendProfileImageActivity
     if ((localProfileImageInfo == null) || (localProfileImageInfo.h != 6)) {
       return;
     }
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
-    localActionSheet.a(2131363930, 1);
-    localActionSheet.a(2131363934, 1);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624120);
+    localActionSheet.a(2131363941, 1);
+    localActionSheet.a(2131363945, 1);
     if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean)) {
-      localActionSheet.a(2131363936, 3);
+      localActionSheet.a(2131363947, 3);
     }
-    localActionSheet.d(2131362794);
-    localActionSheet.a(new apk(this, localProfileImageInfo, localActionSheet));
+    localActionSheet.d(2131362801);
+    localActionSheet.a(new app(this, localProfileImageInfo, localActionSheet));
     localActionSheet.show();
   }
   
@@ -250,7 +250,7 @@ public class FriendProfileImageActivity
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363251);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363261);
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
@@ -322,7 +322,7 @@ public class FriendProfileImageActivity
     {
       sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.parse("file://" + paramString2)));
       return;
-      DialogUtil.a(this, 230).setTitle(getString(2131363443)).setMessage(getString(2131363445)).setPositiveButton(getString(2131363444), new apm(this, paramString1, paramString2)).setNegativeButton(getString(2131362791), new apl(this)).show();
+      DialogUtil.a(this, 230).setTitle(getString(2131363454)).setMessage(getString(2131363456)).setPositiveButton(getString(2131363455), new apr(this, paramString1, paramString2)).setNegativeButton(getString(2131362798), new apq(this)).show();
     }
   }
   
@@ -344,7 +344,7 @@ public class FriendProfileImageActivity
   public void b(FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo)
   {
     if (!NetworkUtil.e(this)) {
-      QQToast.a(this, getString(2131363446), 0).a();
+      QQToast.a(this, getString(2131363457), 0).a();
     }
     Card localCard;
     do
@@ -360,10 +360,10 @@ public class FriendProfileImageActivity
   {
     if (FileUtils.c(paramString1, paramString2))
     {
-      QQToast.a(this, getString(2131363440) + " " + AppConstants.au, 0).a();
+      QQToast.a(this, getString(2131363451) + " " + AppConstants.au, 0).a();
       return;
     }
-    QQToast.a(this, getString(2131363441), 0).a();
+    QQToast.a(this, getString(2131363452), 0).a();
   }
   
   protected boolean b()
@@ -443,7 +443,7 @@ public class FriendProfileImageActivity
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new apa(this));
+    localAnimationSet.setAnimationListener(new apf(this));
     this.jdField_a_of_type_ComTencentWidgetGallery.startAnimation(localAnimationSet);
     this.jdField_b_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
@@ -470,15 +470,15 @@ public class FriendProfileImageActivity
     this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131297183));
     this.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296989));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296564));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131296445);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296567));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131296448);
     this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131297182));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131296440));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131296443));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297185));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aov(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new apa(this));
     this.jdField_a_of_type_ComTencentMobileqqAdapterFriendProfileImageAdapter = new FriendProfileImageAdapter(this);
     if (881 == paramBundle.getInt("requestType"))
     {
@@ -499,17 +499,17 @@ public class FriendProfileImageActivity
       localProfileImageInfo.jdField_a_of_type_JavaLangString = paramBundle.getString("filekey");
       this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(this, localProfileImageInfo);
       this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(new apd(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(new api(this));
       this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b(this);
       this.jdField_a_of_type_ComTencentMobileqqAdapterFriendProfileImageAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel);
       this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterFriendProfileImageAdapter);
       this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
       this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131492920));
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new apf(this));
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new apg(this));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new apk(this));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new apl(this));
       a(this.jdField_a_of_type_AndroidWidgetTextView);
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new aph(this));
-      this.jdField_a_of_type_AndroidOsAsyncTask = new api(this, localProfileImageInfo);
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new apm(this));
+      this.jdField_a_of_type_AndroidOsAsyncTask = new apn(this, localProfileImageInfo);
       return true;
       this.jdField_b_of_type_Boolean = false;
       this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel = new FriendProfileImagePortraits(this.app);

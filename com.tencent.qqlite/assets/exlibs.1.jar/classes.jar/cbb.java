@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.book.ResizeLayout;
-import com.tencent.mobileqq.activity.book.ResizeLayout.OnResizeListener;
+import com.tencent.biz.anonymous.QQAnonymousDialog;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class cbb
   implements Runnable
 {
-  public cbb(ResizeLayout paramResizeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public cbb(TroopChatPie paramTroopChatPie) {}
   
   public void run()
   {
-    ResizeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout).a(this.jdField_a_of_type_Int, this.b, this.c, this.d);
+    if (this.a.a != null) {
+      this.a.a.dismiss();
+    }
   }
 }
 

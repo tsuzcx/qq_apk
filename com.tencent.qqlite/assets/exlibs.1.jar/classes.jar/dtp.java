@@ -1,16 +1,22 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
-import java.util.TimerTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarWeiYunFile.BaseActionBarWeiyunFile;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class dtp
-  extends TimerTask
+class dtp
+  implements FMDialogUtil.FMDialogInterface
 {
-  public dtp(LocalVideoFileView paramLocalVideoFileView) {}
+  dtp(dto paramdto) {}
   
-  public void run()
+  public void a()
   {
-    LocalVideoFileView.e(this.a).runOnUiThread(new dtq(this));
+    this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.a.a.h();
   }
+  
+  public void b() {}
 }
 
 

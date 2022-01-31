@@ -1,37 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.OvalProgress;
-import cooperation.qqfav.QfavUtil;
-import cooperation.qqfav.widget.QfavMicroPhoneDialog;
-
-public class fli
-  extends Handler
+public abstract interface fli
 {
-  public fli(QfavMicroPhoneDialog paramQfavMicroPhoneDialog) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    case 8: 
-    case 10: 
-    default: 
-      return;
-    case 7: 
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress.setProgressParams(0L, 0L);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838831);
-      return;
-    case 9: 
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838831);
-      return;
-    case 11: 
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(Integer.toString((int)Math.round(this.a.e * 1.0D / 1000.0D)) + "\"");
-      return;
-    }
-    QfavUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 2131362728, 1);
-  }
+  public abstract void a(int... paramVarArgs);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void c(int paramInt1, int paramInt2);
 }
 
 

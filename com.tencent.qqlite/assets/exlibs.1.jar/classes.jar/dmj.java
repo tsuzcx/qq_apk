@@ -1,27 +1,46 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 
 public class dmj
   implements Runnable
 {
-  public dmj(QfileRecentAllFileTabView paramQfileRecentAllFileTabView, FileManagerEntity paramFileManagerEntity) {}
+  public dmj(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
   
   public void run()
   {
-    Object localObject = QfileTimeUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.srvTime);
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.a.containsKey(localObject)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.a.put(localObject, new ArrayList());
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    localLinkedHashMap.put("已下载图片", new ArrayList());
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext())
+    {
+      FileInfo localFileInfo = (FileInfo)localIterator.next();
+      String str = localFileInfo.a();
+      if ((str != null) && (str.length() != 0))
+      {
+        localObject = str;
+        if (!str.equalsIgnoreCase("QQfile_recv")) {}
+      }
+      else
+      {
+        localObject = "已下载图片";
+      }
+      if (!localLinkedHashMap.containsKey(localObject)) {
+        localLinkedHashMap.put(localObject, new ArrayList());
+      }
+      ((List)localLinkedHashMap.get(localObject)).add(localFileInfo);
     }
-    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.a.get(localObject);
-    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity) == true) {
-      return;
+    Object localObject = localLinkedHashMap.keySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (((List)localLinkedHashMap.get((String)((Iterator)localObject).next())).size() == 0) {
+        ((Iterator)localObject).remove();
+      }
     }
-    ((List)localObject).add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.i();
+    QfileLocalFilePicTabView.a(this.a, new dmk(this, localLinkedHashMap));
   }
 }
 

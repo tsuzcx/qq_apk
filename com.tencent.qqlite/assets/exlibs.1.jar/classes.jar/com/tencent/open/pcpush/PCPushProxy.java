@@ -22,7 +22,7 @@ import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadListener;
 import com.tencent.open.downloadnew.DownloadManager;
-import fgd;
+import fij;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -70,7 +70,7 @@ public class PCPushProxy
   protected PCPushProxy()
   {
     DownloadManager.a().a(this);
-    this.jdField_a_of_type_AndroidOsHandler = new fgd(this, ThreadManager.b());
+    this.jdField_a_of_type_AndroidOsHandler = new fij(this, ThreadManager.b());
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
     jdField_a_of_type_JavaUtilList = new ArrayList(10);
     this.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper = new PCPushDBHelper();

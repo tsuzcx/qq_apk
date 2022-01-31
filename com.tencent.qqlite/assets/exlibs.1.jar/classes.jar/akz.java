@@ -1,24 +1,13 @@
-import android.graphics.Color;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.EditInfoActivity;
 
-class akz
+public class akz
   implements Runnable
 {
-  akz(akx paramakx, int paramInt) {}
+  public akz(EditInfoActivity paramEditInfoActivity) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int > this.jdField_a_of_type_Akx.a.c)
-    {
-      this.jdField_a_of_type_Akx.a.a.setText("内容超出!" + this.jdField_a_of_type_Akx.a.b);
-      this.jdField_a_of_type_Akx.a.a.setTextColor(-65536);
-      EditInfoActivity.c(this.jdField_a_of_type_Akx.a, false);
-      return;
-    }
-    this.jdField_a_of_type_Akx.a.a.setText(this.jdField_a_of_type_Akx.a.b);
-    this.jdField_a_of_type_Akx.a.a.setTextColor(Color.rgb(119, 119, 119));
-    EditInfoActivity.d(this.jdField_a_of_type_Akx.a, true);
+    this.a.a();
   }
 }
 

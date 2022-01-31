@@ -1,46 +1,19 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.richstatus.IActionListener;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.view.animation.AlphaAnimation;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class ecv
-  extends ConfigObserver
+class ecv
+  implements Runnable
 {
-  public ecv(StatusManager paramStatusManager) {}
+  ecv(ecu paramecu, ImageView paramImageView, TextView paramTextView) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "onUpdateStatusActions " + paramBoolean + ", " + paramInt);
-    }
-    StatusManager.a(this.a, 0L);
-    if (paramBoolean)
-    {
-      if (paramInt == 100)
-      {
-        StatusManager.b(this.a, System.currentTimeMillis());
-        StatusManager.a(this.a).edit().putLong("k_update_time", StatusManager.a(this.a)).commit();
-      }
-      this.a.a(true);
-    }
-    if (StatusManager.a(this.a) != null)
-    {
-      Iterator localIterator = StatusManager.a(this.a).iterator();
-      if (localIterator.hasNext())
-      {
-        IActionListener localIActionListener = (IActionListener)localIterator.next();
-        if (paramBoolean) {}
-        for (int i = 300;; i = 301)
-        {
-          localIActionListener.a(paramInt, i);
-          break;
-        }
-      }
-    }
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+    localAlphaAnimation.setDuration(200L);
+    localAlphaAnimation.setAnimationListener(new ecw(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAlphaAnimation);
+    this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(localAlphaAnimation);
   }
 }
 

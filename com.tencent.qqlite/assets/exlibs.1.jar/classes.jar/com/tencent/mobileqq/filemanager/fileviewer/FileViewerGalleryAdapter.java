@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import dut;
+import dvw;
 import java.io.File;
 import java.util.List;
 
@@ -29,8 +29,8 @@ public class FileViewerGalleryAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi;
     this.jdField_a_of_type_Int *= 2;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839445);
-    this.b = paramContext.getResources().getDrawable(2130837910);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839510);
+    this.b = paramContext.getResources().getDrawable(2130837928);
   }
   
   public void a(List paramList)
@@ -63,8 +63,8 @@ public class FileViewerGalleryAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903441, null);
-      paramViewGroup = new dut(this, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903446, null);
+      paramViewGroup = new dvw(this, null);
       paramViewGroup.a = ((URLImageView)paramView.findViewById(2131296283));
       paramView.setTag(paramViewGroup);
     }
@@ -77,7 +77,7 @@ public class FileViewerGalleryAdapter
       }
       paramViewGroup.a.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       return paramView;
-      paramViewGroup = (dut)paramView.getTag();
+      paramViewGroup = (dvw)paramView.getTag();
     }
     String str = ((IFileViewerAdapter)localObject).f();
     if (str == null)

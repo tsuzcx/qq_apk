@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="66.0dip" android:minHeight="66.0dip"
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020665" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02009c" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/icon" android:clickable="true" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020460" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="13.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a1" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0900c7" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/icon" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02009c" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="@dimen/title_bar_height" android:layout_width="fill_parent" android:layout_height="wrap_content"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b008d" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090792" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="40.0dip" android:layout_marginRight="10.0dip" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00aa" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090795" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="10.0dip" />
+        <TextView android:textSize="24.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b008d" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090796" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f090797" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginTop="35.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0979" style="@style/APKTOOL_DUPLICATE_style_0x7f0e006f" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f090798" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginTop="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0979" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0068" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.activity.NearPeopleFilterActivity;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
 
 public class awf
-  implements ConditionSearchManager.IConfigListener
+  implements Runnable
 {
-  public awf(NearPeopleFilterActivity paramNearPeopleFilterActivity) {}
+  public awf(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void run()
   {
-    this.a.e();
-    if (!paramBoolean) {
-      QQToast.a(this.a, 2131364394, 0).b(this.a.getTitleBarHeight());
-    }
-    while (paramInt != 2) {
-      return;
-    }
-    this.a.d();
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.e = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.e);
   }
 }
 

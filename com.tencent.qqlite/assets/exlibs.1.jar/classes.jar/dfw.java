@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.emoticonview.MagicFaceViewBinder;
 
-public class dfw
+class dfw
   implements Runnable
 {
-  public dfw(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
+  dfw(dfv paramdfv, MagicFaceViewBinder paramMagicFaceViewBinder) {}
   
   public void run()
   {
-    this.a.c = true;
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewMagicFaceViewBinder.b();
   }
 }
 

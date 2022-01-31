@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.BookShareAdviceEditActivity;
-import com.tencent.mobileqq.activity.book.ResizeLayout;
+import com.tencent.mobileqq.activity.BaseSystemActivity;
 
-class abi
+public class abi
   implements Runnable
 {
-  abi(abh paramabh) {}
+  public abi(BaseSystemActivity paramBaseSystemActivity) {}
   
   public void run()
   {
-    this.a.a.a.fullScroll(33);
+    this.a.a();
   }
 }
 

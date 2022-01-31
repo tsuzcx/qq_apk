@@ -13,7 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import cgl;
+import chm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
@@ -70,16 +70,16 @@ public class BindVerifyActivity
   {
     if (!NetworkUtil.e(this))
     {
-      b(2131363450);
+      b(2131363461);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cgl(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new chm(this);
       this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
     this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), this.jdField_a_of_type_Int);
-    b(2131363381, 1000L);
+    b(2131363392, 1000L);
   }
   
   public void afterTextChanged(Editable paramEditable)

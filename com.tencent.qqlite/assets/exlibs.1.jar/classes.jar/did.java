@@ -1,25 +1,16 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.widget.MenuPopupDialog;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class did
-  implements View.OnLongClickListener
+  implements Runnable
 {
-  public did(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public did(LocalFileBrowserActivity paramLocalFileBrowserActivity, int paramInt) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    if ((paramView == null) || (QfileBaseCloudFileTabView.b(this.a))) {
-      return false;
-    }
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131296440, paramView.getContext().getString(2131363250));
-    QfileBaseCloudFileTabView.a(this.a, MenuPopupDialog.a(paramView, paramView.getContext().getString(2131363277), localQQCustomMenu, new die(this, paramView), new dif(this, paramView)));
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelected(true);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelection(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelected(true);
   }
 }
 

@@ -1,12 +1,22 @@
-import com.tencent.mobileqq.remind.RemindJavascriptInterface;
-import com.tencent.mobileqq.remind.widget.IosTimepicker.OnTimePickerSelectListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.PicFowardInfo;
+import com.tencent.mobileqq.pic.PicUploadInfo;
+import com.tencent.mobileqq.pic.UiCallBack;
 
-public class eas
-  implements IosTimepicker.OnTimePickerSelectListener
+public abstract interface eas
 {
-  public eas(RemindJavascriptInterface paramRemindJavascriptInterface) {}
+  public abstract MessageRecord a(PicFowardInfo paramPicFowardInfo);
   
-  public void a(long paramLong) {}
+  public abstract MessageRecord a(PicUploadInfo paramPicUploadInfo);
+  
+  public abstract void a(CompressInfo paramCompressInfo);
+  
+  public abstract void a(PicFowardInfo paramPicFowardInfo);
+  
+  public abstract void a(PicUploadInfo paramPicUploadInfo);
+  
+  public abstract void a(UiCallBack paramUiCallBack);
 }
 
 

@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.IndividuationSetActivity;
 
-public class arj
-  implements View.OnClickListener
+class arj
+  implements Runnable
 {
-  public arj(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  arj(ari paramari, Bitmap paramBitmap) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a();
+    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Ari.a.a.setImageDrawable(localBitmapDrawable);
   }
 }
 

@@ -1,51 +1,86 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import java.io.IOException;
-import java.util.Map;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBaby.IUniformDownloaderAppBabyListener;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import com.tencent.qphone.base.util.QLog;
 
 public class dwx
-  implements Runnable
 {
-  public dwx(QQApiPlugin paramQQApiPlugin, String paramString, Map paramMap, Runnable paramRunnable) {}
+  int jdField_a_of_type_Int;
+  public final long a;
+  public UniformDownloaderAppBaby.IUniformDownloaderAppBabyListener a;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  final String jdField_a_of_type_JavaLangString;
+  public int b;
+  public final long b;
+  Object b;
+  long jdField_c_of_type_Long;
+  Object jdField_c_of_type_JavaLangObject = new Object();
+  long d;
   
-  public void run()
+  public dwx(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, long paramLong1, String paramString, long paramLong2)
   {
-    label143:
-    try
+    this.jdField_b_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_c_of_type_Long = 0L;
+    this.d = 0L;
+    this.jdField_b_of_type_Int = -1;
+  }
+  
+  int a()
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
     {
-      localObject = HttpUtil.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
-      localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-      if (localObject == null) {
-        break label115;
-      }
-      int i = ((Bitmap)localObject).getWidth();
-      int j = ((Bitmap)localObject).getHeight();
-      if (i * j <= 8000) {
-        break label143;
-      }
-      double d = Math.sqrt(8000.0D / (i * j));
-      Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
-      ((Bitmap)localObject).recycle();
-      localObject = localBitmap;
+      int i = this.jdField_a_of_type_Int;
+      return i;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+  }
+  
+  public long a()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      Object localObject;
-      break label115;
+      long l = this.jdField_c_of_type_Long;
+      return l;
     }
-    catch (IOException localIOException)
+  }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
     {
-      label115:
-      for (;;) {}
+      QLog.i(UniformDownloaderAppBabySdk.jdField_a_of_type_JavaLangString, 1, "[UniformDL] setStatus:" + this.jdField_a_of_type_Int + " -> " + paramInt + "url:" + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Int = paramInt;
+      return;
     }
-    this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
-    this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void a(long paramLong)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_c_of_type_Long = paramLong;
+      return;
+    }
+  }
+  
+  public long b()
+  {
+    synchronized (this.jdField_c_of_type_JavaLangObject)
+    {
+      long l = this.d;
+      return l;
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    synchronized (this.jdField_c_of_type_JavaLangObject)
+    {
+      this.d = paramLong;
+      return;
+    }
   }
 }
 

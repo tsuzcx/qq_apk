@@ -1,17 +1,14 @@
-import com.dataline.activities.LiteVideoActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.dataline.activities.LiteVideoActivity.ImageAdapter;
 
 public class bq
-  implements FMDialogUtil.FMDialogInterface
 {
-  public bq(LiteVideoActivity paramLiteVideoActivity) {}
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
   
-  public void a()
-  {
-    LiteVideoActivity.b(this.a);
-  }
-  
-  public void b() {}
+  public bq(LiteVideoActivity.ImageAdapter paramImageAdapter) {}
 }
 
 

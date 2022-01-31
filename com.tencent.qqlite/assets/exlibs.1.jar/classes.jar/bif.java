@@ -1,88 +1,26 @@
-import android.os.Handler;
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class bif
-  extends AccountObserver
+  implements Runnable
 {
-  public bif(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public bif(RegisterSendUpSms paramRegisterSendUpSms, String paramString) {}
   
-  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
+  public void run()
   {
-    Object localObject = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterSendUpSms", 2, "RegisterPhoneNumActivity onRegisterQuerySmsStatResp");
-    }
-    if (this.a.isFinishing()) {}
-    do
-    {
-      return;
-      if (!paramBoolean)
-      {
-        RegisterSendUpSms.d(this.a);
-        try
-        {
-          paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
-          localObject = paramArrayOfByte;
-          if (TextUtils.isEmpty(paramArrayOfByte)) {
-            localObject = this.a.getString(2131363286);
-          }
-          this.a.a((String)localObject, 1);
-          return;
-        }
-        catch (UnsupportedEncodingException paramArrayOfByte)
-        {
-          for (;;)
-          {
-            paramArrayOfByte.printStackTrace();
-            paramArrayOfByte = null;
-          }
-        }
-      }
-      if (paramArrayOfByte != null) {}
-      try
-      {
-        localObject = new String(paramArrayOfByte, "utf-8");
-        if (QLog.isColorLevel()) {
-          QLog.d("RegisterSendUpSms", 2, "RegisterPhoneNumActivity onRegisterQuerySmsStatResp code = " + paramInt1 + ";strMsg = " + (String)localObject + ";next_chk_time =" + paramInt2 + ";total_time_over =" + paramInt3);
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-        }
-      }
-      RegisterSendUpSms.d(this.a);
-      if (paramInt1 == 0)
-      {
-        RegisterVerifyCodeActivity.a(this.a.app, this.a, this.a.c, this.a.d, this.a.e, RegisterSendUpSms.a(this.a));
-        RegisterSendUpSms.c(this.a);
-        return;
-      }
-    } while (paramInt1 != 4);
-    paramInt1 = paramInt3;
-    if (paramInt3 <= 0) {
-      paramInt1 = 60000;
-    }
-    paramInt3 = paramInt2;
-    if (paramInt2 <= 60) {
-      paramInt3 = 60;
-    }
-    this.a.b.post(new big(this, paramInt3));
     try
     {
-      this.a.b.postDelayed(new bih(this), paramInt1 * 1000);
+      if (RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms) == null) {
+        RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms, new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms.getTitleBarHeight()));
+      }
+      RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms).a(this.jdField_a_of_type_JavaLangString);
+      RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms).setOnKeyListener(new big(this));
+      RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms).show();
       return;
     }
-    catch (Exception paramArrayOfByte)
+    catch (Throwable localThrowable)
     {
-      paramArrayOfByte.printStackTrace();
+      localThrowable.printStackTrace();
     }
   }
 }

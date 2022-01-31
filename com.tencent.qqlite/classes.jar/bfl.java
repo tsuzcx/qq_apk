@@ -1,17 +1,13 @@
-import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bfl
+class bfl
   implements Runnable
 {
-  public bfl(QQSettingMe paramQQSettingMe, String paramString) {}
+  bfl(bfk parambfk) {}
   
   public void run()
   {
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new bfm(this, localDrawable));
+    this.a.a.h();
   }
 }
 

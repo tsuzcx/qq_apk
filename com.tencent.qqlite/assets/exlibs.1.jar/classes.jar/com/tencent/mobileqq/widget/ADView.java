@@ -12,8 +12,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.qphone.base.util.QLog;
-import exf;
-import exg;
+import ezl;
+import ezm;
 
 public class ADView
   extends LinearLayout
@@ -23,7 +23,7 @@ public class ADView
   protected int a;
   protected LinearLayout a;
   public WorkSpaceView a;
-  private exg a;
+  private ezm a;
   public boolean a;
   protected int b;
   private boolean b;
@@ -39,7 +39,7 @@ public class ADView
     this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView = null;
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Exg = new exg(this);
+    this.jdField_a_of_type_Ezm = new ezm(this);
   }
   
   public ADView(Context paramContext, AttributeSet paramAttributeSet)
@@ -51,7 +51,7 @@ public class ADView
     this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView = null;
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Exg = new exg(this);
+    this.jdField_a_of_type_Ezm = new ezm(this);
     setPadding(0, 0, 0, 0);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, new LinearLayout.LayoutParams(-1, -1));
@@ -188,7 +188,7 @@ public class ADView
       localObject = new LinearLayout(getContext());
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView = new WorkSpaceView(getContext());
       setCircle(this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setOnScreenChangeListener(new exf(this, (LinearLayout)localObject));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setOnScreenChangeListener(new ezl(this, (LinearLayout)localObject));
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setId(100000);
@@ -222,7 +222,7 @@ public class ADView
     localLayoutParams.addRule(14, 100000);
     localLayoutParams.setMargins(0, 0, 0, (int)(6.0F * this.jdField_a_of_type_Float));
     paramLinearLayout.setGravity(16);
-    paramLinearLayout.setBackgroundResource(2130838107);
+    paramLinearLayout.setBackgroundResource(2130838126);
     paramLinearLayout.setPadding((int)(4.0F * this.jdField_a_of_type_Float), 0, (int)(2.0F * this.jdField_a_of_type_Float), 0);
     paramLinearLayout.setLayoutParams(localLayoutParams);
   }
@@ -234,13 +234,13 @@ public class ADView
   
   public void b()
   {
-    this.jdField_a_of_type_Exg.removeMessages(0);
-    this.jdField_a_of_type_Exg.sendEmptyMessage(0);
+    this.jdField_a_of_type_Ezm.removeMessages(0);
+    this.jdField_a_of_type_Ezm.sendEmptyMessage(0);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Exg.sendEmptyMessage(1);
+    this.jdField_a_of_type_Ezm.sendEmptyMessage(1);
   }
   
   public void setCircle(boolean paramBoolean)

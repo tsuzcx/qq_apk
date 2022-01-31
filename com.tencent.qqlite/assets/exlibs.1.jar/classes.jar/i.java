@@ -1,12 +1,9 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.dataline.activities.LiteActivity;
 
-public class i
+public final class i
   implements DialogInterface.OnClickListener
 {
-  public i(LiteActivity paramLiteActivity) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();

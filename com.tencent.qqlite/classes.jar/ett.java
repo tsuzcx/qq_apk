@@ -1,19 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.JumpAction;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
 
 public class ett
-  implements View.OnClickListener
+  extends WeakReference
 {
-  public ett(JumpAction paramJumpAction) {}
+  private final String a;
   
-  public void onClick(View paramView)
+  public ett(String paramString, Object paramObject, ReferenceQueue paramReferenceQueue)
   {
-    if ((JumpAction.a(this.a) != null) && (JumpAction.a(this.a).isShowing())) {
-      JumpAction.a(this.a).dismiss();
-    }
-    JumpAction.a(this.a);
+    super(paramObject, paramReferenceQueue);
+    this.a = paramString;
   }
 }
 

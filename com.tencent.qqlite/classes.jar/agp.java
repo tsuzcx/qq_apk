@@ -1,27 +1,14 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.DataLineObserver;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
-public class agp
-  extends DataLineObserver
+class agp
+  implements Runnable
 {
-  public agp(Conversation paramConversation) {}
+  agp(agm paramagm) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public void run()
   {
-    super.a(paramBoolean, paramLong, paramString);
-    this.a.a(8, AppConstants.T, 6000);
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
-  {
-    this.a.a(9, AppConstants.T, 6000);
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    this.a.a(8, AppConstants.T, 6000);
+    this.a.a.a.a();
   }
 }
 

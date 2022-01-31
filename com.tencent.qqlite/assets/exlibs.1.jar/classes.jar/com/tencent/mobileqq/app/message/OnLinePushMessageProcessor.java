@@ -88,8 +88,8 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import czb;
-import czc;
+import dad;
+import dae;
 import friendlist.AddGroupResp;
 import friendlist.DelGroupResp;
 import friendlist.RenameGroupResp;
@@ -149,12 +149,12 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x67.submsgtype0x67.MsgBody;
 public class OnLinePushMessageProcessor
   extends BaseMessageProcessor
 {
-  public czb a;
+  public dad a;
   
   public OnLinePushMessageProcessor(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
     super(paramQQAppInterface, paramMessageHandler);
-    this.jdField_a_of_type_Czb = new czb(this, null);
+    this.jdField_a_of_type_Dad = new dad(this, null);
   }
   
   private MessageRecord a(MsgInfo paramMsgInfo, long paramLong)
@@ -1037,7 +1037,7 @@ public class OnLinePushMessageProcessor
     }
   }
   
-  private czc b(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  private dae b(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     return this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(OnLinePushMsgTypeProcessorDispatcher.a(paramInt)).a(OnLinePushMsgTypeProcessorDispatcher.a(paramInt), paramMsgInfo, paramSvcReqPushMsg);
   }

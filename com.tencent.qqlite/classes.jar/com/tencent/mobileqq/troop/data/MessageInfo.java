@@ -5,6 +5,7 @@ import com.tencent.mobileqq.activity.recent.msg.TroopAtMeMsg;
 import com.tencent.mobileqq.activity.recent.msg.TroopNotificationMsg;
 import com.tencent.mobileqq.activity.recent.msg.TroopSpecialAttentionMsg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.model.TroopInfoManager;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -32,9 +33,9 @@ public class MessageInfo
     a();
   }
   
-  public static Object a(QQAppInterface paramQQAppInterface, String paramString, MessageInfo paramMessageInfo, Object paramObject)
+  public static Object a(QQAppInterface paramQQAppInterface, String paramString, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    TroopInfoManager localTroopInfoManager = (TroopInfoManager)paramQQAppInterface.getManager(33);
+    paramMessageRecord = (TroopInfoManager)paramQQAppInterface.getManager(33);
     switch (paramMessageInfo.a())
     {
     default: 
@@ -53,11 +54,11 @@ public class MessageInfo
           paramObject = (TroopSpecialAttentionMsg)paramObject;
           paramQQAppInterface = paramObject;
         } while (!paramObject.a.a(paramMessageInfo.b));
-        localTroopInfoManager.a(paramString, 3, paramMessageInfo.b.b, "");
+        paramMessageRecord.a(paramString, 3, paramMessageInfo.b.b, "");
         return paramObject;
         paramQQAppInterface = new TroopSpecialAttentionMsg(BaseApplication.getContext());
         paramQQAppInterface.a = new MessageNavInfo(paramMessageInfo.b);
-        localTroopInfoManager.a(paramString, 3, paramMessageInfo.b.b, "");
+        paramMessageRecord.a(paramString, 3, paramMessageInfo.b.b, "");
         return paramQQAppInterface;
         return new TroopNotificationMsg(BaseApplication.getContext());
         if (!(paramObject instanceof TroopAtMeMsg)) {
@@ -66,11 +67,11 @@ public class MessageInfo
         paramObject = (TroopAtMeMsg)paramObject;
         paramQQAppInterface = paramObject;
       } while (!paramObject.a.a(paramMessageInfo.a));
-      localTroopInfoManager.a(paramString, 4, paramMessageInfo.a.b, "");
+      paramMessageRecord.a(paramString, 4, paramMessageInfo.a.b, "");
       return paramObject;
       paramQQAppInterface = new TroopAtMeMsg(BaseApplication.getContext());
       paramQQAppInterface.a = new MessageNavInfo(paramMessageInfo.a);
-      localTroopInfoManager.a(paramString, 4, paramMessageInfo.a.b, "");
+      paramMessageRecord.a(paramString, 4, paramMessageInfo.a.b, "");
       return paramQQAppInterface;
       if (!(paramObject instanceof TroopAtAllMsg)) {
         break;
@@ -78,11 +79,11 @@ public class MessageInfo
       paramObject = (TroopAtAllMsg)paramObject;
       paramQQAppInterface = paramObject;
     } while (!paramObject.a.a(paramMessageInfo.c));
-    localTroopInfoManager.a(paramString, 2, paramMessageInfo.c.b, "");
+    paramMessageRecord.a(paramString, 2, paramMessageInfo.c.b, "");
     return paramObject;
     paramQQAppInterface = new TroopAtAllMsg(BaseApplication.getContext());
     paramQQAppInterface.a = new MessageNavInfo(paramMessageInfo.c);
-    localTroopInfoManager.a(paramString, 2, paramMessageInfo.c.b, "");
+    paramMessageRecord.a(paramString, 2, paramMessageInfo.c.b, "");
     return paramQQAppInterface;
   }
   
@@ -104,9 +105,6 @@ public class MessageInfo
   {
     if (this.a.a()) {
       return this.a.a;
-    }
-    if (this.b.a()) {
-      return this.b.a;
     }
     if (this.c.a()) {
       return this.c.a;
@@ -135,6 +133,31 @@ public class MessageInfo
   public boolean a()
   {
     return (this.c.a()) || (this.a.a()) || (this.b.a());
+  }
+  
+  public int b()
+  {
+    if (this.a.a()) {
+      return 4;
+    }
+    if (this.c.a()) {
+      return 2;
+    }
+    return 0;
+  }
+  
+  public long b()
+  {
+    if (this.a.a()) {
+      return this.a.a;
+    }
+    if (this.b.a()) {
+      return this.b.a;
+    }
+    if (this.c.a()) {
+      return this.c.a;
+    }
+    return -1L;
   }
 }
 

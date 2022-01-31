@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class dyn
-  implements Runnable
+class dyn
+  implements View.OnClickListener
 {
-  public dyn(QQPlayerService paramQQPlayerService) {}
+  dyn(dyk paramdyk, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QQPlayerService.g() == 5) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQPlayerService", 2, "===========> timeout retry to check playState:" + QQPlayerService.b(QQPlayerService.g()) + ",needRetryPlay:" + bool);
-      }
-      if ((bool) && (QQPlayerService.b() != null)) {
-        QQPlayerService.a(this.a, QQPlayerService.b().a);
-      }
-      return;
-    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

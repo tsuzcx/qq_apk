@@ -1,16 +1,13 @@
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.richstatus.IActionListener;
 
-public class bej
-  implements IActionListener
+class bej
+  implements Runnable
 {
-  public bej(QQSetting paramQQSetting) {}
+  bej(bei parambei, String paramString) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    if ((paramInt1 == 102) && (paramInt2 == 300)) {
-      this.a.n();
-    }
+    this.jdField_a_of_type_Bei.a.b(this.jdField_a_of_type_JavaLangString);
   }
 }
 

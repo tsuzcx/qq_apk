@@ -25,7 +25,7 @@ import com.tencent.mobileqq.startup.step.Step.AmStepFactory;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
-import fgp;
+import fiv;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -142,7 +142,7 @@ public class OpenSDKAppInterface
     {
       paramContext = new AlertDialog.Builder(paramContext);
       paramContext.setMessage(paramString);
-      paramContext.setNegativeButton("确定", new fgp(this));
+      paramContext.setNegativeButton("确定", new fiv(this));
       paramContext.show();
     }
   }

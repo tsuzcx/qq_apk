@@ -1,55 +1,20 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public final class djl
-  implements DialogInterface.OnClickListener
+class djl
+  implements FMDialogUtil.FMDialogInterface
 {
-  public djl(String paramString, long paramLong, QQAppInterface paramQQAppInterface, Activity paramActivity) {}
+  djl(djj paramdjj, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface = new FileManagerReporter.fileAssistantReportData();
-    paramDialogInterface.b = "file_local_qqmusic_download";
-    paramDialogInterface.c = this.jdField_a_of_type_JavaLangString;
-    paramDialogInterface.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    FileManagerReporter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), paramDialogInterface);
-    long l = 0L;
-    for (;;)
-    {
-      try
-      {
-        paramDialogInterface = new URL("http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435");
-      }
-      catch (MalformedURLException paramDialogInterface)
-      {
-        paramDialogInterface.printStackTrace();
-        continue;
-      }
-      try
-      {
-        paramInt = paramDialogInterface.openConnection().getContentLength();
-        l = paramInt;
-      }
-      catch (IOException paramDialogInterface)
-      {
-        paramDialogInterface.printStackTrace();
-      }
-    }
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putLong("_filesize_from_dlg", l);
-    paramDialogInterface.putString("_filename_from_dlg", this.jdField_a_of_type_AndroidAppActivity.getString(2131363576));
-    UniformDownloadMgr.a().b("http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435", paramDialogInterface);
+    QfileBaseCloudFileTabView.g(this.jdField_a_of_type_Djj.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 

@@ -10,9 +10,6 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class cmd0x383$ApplyResendRspBody
   extends MessageMicro
 {
-  public static final int BYTES_CHECK_KEY_FIELD_NUMBER = 3;
-  public static final int BYTES_FILE_KEY_FIELD_NUMBER = 2;
-  public static final int STR_UPLOAD_IP_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_check_key = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_file_key = PBField.initBytes(ByteStringMicro.EMPTY);

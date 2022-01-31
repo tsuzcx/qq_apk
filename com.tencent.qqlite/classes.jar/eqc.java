@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
 
 public class eqc
-  implements Runnable
+  extends AsyncTask
 {
-  public eqc(MessageSubtitleView paramMessageSubtitleView) {}
+  private RollangleImageView b;
   
-  public void run()
+  public eqc(RollangleImageView paramRollangleImageView) {}
+  
+  protected Bitmap a(Boolean... paramVarArgs)
   {
-    MessageSubtitleView.a(this.a);
+    return RollangleImageView.a(this.a, paramVarArgs[0].booleanValue());
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null) {
+      this.a.setImageBitmap(paramBitmap);
+    }
   }
 }
 

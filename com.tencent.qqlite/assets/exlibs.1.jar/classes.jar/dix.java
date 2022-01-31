@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import android.widget.TextView;
 
 public class dix
-  implements DialogInterface.OnCancelListener
 {
-  public dix(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    QfileBaseCloudFileTabView.a(this.a);
-  }
+  public int a;
+  public TextView a;
+  public TextView b;
 }
 
 

@@ -2,8 +2,8 @@ package cooperation.qzone.util;
 
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import fly;
-import flz;
+import foe;
+import fof;
 
 public abstract class UrlKeyGenerator
 {
@@ -18,7 +18,7 @@ public abstract class UrlKeyGenerator
     try
     {
       if (a == null) {
-        a = new fly();
+        a = new foe();
       }
       return a;
     }
@@ -31,7 +31,7 @@ public abstract class UrlKeyGenerator
     try
     {
       if (b == null) {
-        b = new flz();
+        b = new fof();
       }
       return b;
     }

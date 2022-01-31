@@ -24,7 +24,7 @@ import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.mobileqq.troop.data.MessageNavInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MsgAutoMonitorUtil;
-import cyh;
+import czj;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -53,7 +53,7 @@ public class BaseMessageProcessorForTroopAndDisc
   public BaseMessageProcessorForTroopAndDisc(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
     super(paramQQAppInterface, paramMessageHandler);
-    this.jdField_a_of_type_JavaUtilComparator = new cyh(this);
+    this.jdField_a_of_type_JavaUtilComparator = new czj(this);
   }
   
   private void a(String paramString)

@@ -61,8 +61,8 @@ public class PicEmoticonInfo
     if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null))
     {
       paramString = BaseApplication.getContext().getResources();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130838957);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130838958);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130838990);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130838991);
     }
   }
   
@@ -355,7 +355,7 @@ public class PicEmoticonInfo
       if (paramEditText.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, Boolean.valueOf(false))) {
         break;
       }
-      ChatActivityUtils.a(paramContext, 2131364109, 0);
+      ChatActivityUtils.a(paramContext, 2131364120, 0);
       paramQQAppInterface = paramQQAppInterface.a(ChatActivity.class);
     } while (paramQQAppInterface == null);
     paramQQAppInterface.obtainMessage(10).sendToTarget();
@@ -370,7 +370,7 @@ public class PicEmoticonInfo
       return;
     }
     label269:
-    ChatActivityUtils.a(paramContext, 2131364108);
+    ChatActivityUtils.a(paramContext, 2131364119);
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo, boolean paramBoolean)
@@ -382,7 +382,7 @@ public class PicEmoticonInfo
       if ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType != 2) || (!paramBoolean) || (!(paramContext instanceof ChatActivity)) || (((EmojiManager)paramQQAppInterface.getManager(39)).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, Boolean.valueOf(false)))) {
         break;
       }
-      ChatActivityUtils.a(paramContext, 2131364109, 0);
+      ChatActivityUtils.a(paramContext, 2131364120, 0);
       paramQQAppInterface = paramQQAppInterface.a(ChatActivity.class);
     } while (paramQQAppInterface == null);
     paramQQAppInterface.obtainMessage(10).sendToTarget();

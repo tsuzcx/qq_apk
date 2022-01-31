@@ -176,8 +176,8 @@ public class QRLoginActivity
     if (!HttpUtil.a(this))
     {
       localObject = DialogUtil.a(this, 230);
-      ((QQCustomDialog)localObject).setMessage(2131362376);
-      ((QQCustomDialog)localObject).setPositiveButton(2131362795, new qi(this));
+      ((QQCustomDialog)localObject).setMessage(2131362377);
+      ((QQCustomDialog)localObject).setPositiveButton(2131362802, new qi(this));
       ((QQCustomDialog)localObject).show();
     }
     if (paramString != null)
@@ -187,14 +187,14 @@ public class QRLoginActivity
     }
     else
     {
-      localObject = getString(2131362400);
+      localObject = getString(2131362401);
     }
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131362379);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131362380);
     this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
   }
@@ -202,7 +202,7 @@ public class QRLoginActivity
   protected void a(boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131362435);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131362436);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(new qh(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     Object localObject1 = QRUtils.a(this.app.a());
@@ -257,7 +257,7 @@ public class QRLoginActivity
       localIntent.setFlags(67108864);
       super.startActivity(localIntent);
     }
-    Toast.makeText(this, 2131362401, 0).show();
+    Toast.makeText(this, 2131362402, 0).show();
     if (this.d.equals("QQ"))
     {
       localIntent = new Intent("com.tencent.qqlite.action.PC_STATUS_MANAGE");
@@ -273,8 +273,8 @@ public class QRLoginActivity
     {
     default: 
       return;
-    case 2131297815: 
-    case 2131297817: 
+    case 2131297819: 
+    case 2131297821: 
       if (this.jdField_a_of_type_Boolean)
       {
         paramView = new Intent(this, ScannerActivity.class);
@@ -282,7 +282,7 @@ public class QRLoginActivity
         startActivity(paramView);
         return;
       }
-      if (paramView.getId() == 2131297817) {}
+      if (paramView.getId() == 2131297821) {}
       for (boolean bool = true;; bool = false)
       {
         a(bool);
@@ -295,17 +295,17 @@ public class QRLoginActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130903355);
-    super.setTitle(2131362378);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131297810));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297815));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297816));
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297817));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297812));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297814));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297811));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297813));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131297818));
+    super.setContentView(2130903358);
+    super.setTitle(2131362379);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131297814));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297819));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297820));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297821));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297816));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297818));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297815));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297817));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131297822));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);

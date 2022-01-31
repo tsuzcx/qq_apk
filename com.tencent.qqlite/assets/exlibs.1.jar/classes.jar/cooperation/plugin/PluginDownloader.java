@@ -17,8 +17,8 @@ import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fkj;
-import fkk;
+import fmp;
+import fmq;
 import java.io.File;
 import java.util.HashMap;
 
@@ -50,13 +50,13 @@ public class PluginDownloader
     String str = (String)paramNetReq.a();
     if (paramInt2 > 0)
     {
-      paramNetReq = (fkk)this.b.get(str);
+      paramNetReq = (fmq)this.b.get(str);
       if (paramNetReq == null) {
         break label95;
       }
     }
     label95:
-    for (paramNetReq = fkk.a(paramNetReq);; paramNetReq = null)
+    for (paramNetReq = fmq.a(paramNetReq);; paramNetReq = null)
     {
       if (paramNetReq != null) {
         paramNetReq.a(paramInt1, paramInt2, str);
@@ -145,7 +145,7 @@ public class PluginDownloader
     if (paramNetResp.d == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      PluginDownloader.OnPluginDownLoadListener localOnPluginDownLoadListener = fkk.a((fkk)this.b.remove(str));
+      PluginDownloader.OnPluginDownLoadListener localOnPluginDownLoadListener = fmq.a((fmq)this.b.remove(str));
       if (localOnPluginDownLoadListener != null) {
         localOnPluginDownLoadListener.a(bool, str);
       }
@@ -163,11 +163,11 @@ public class PluginDownloader
     if (QLog.isColorLevel()) {
       QLog.d("plugin_tag", 2, "doCancelInstall: " + paramString);
     }
-    Object localObject = (fkk)this.b.remove(paramString);
+    Object localObject = (fmq)this.b.remove(paramString);
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0).b(fkk.a((fkk)localObject));
-      localObject = fkk.a((fkk)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0).b(fmq.a((fmq)localObject));
+      localObject = fmq.a((fmq)localObject);
       if (localObject != null) {
         ((PluginDownloader.OnPluginDownLoadListener)localObject).d(paramString);
       }
@@ -247,10 +247,10 @@ public class PluginDownloader
       localHttpNetReq.c = 0;
       localHttpNetReq.a(paramPluginInfo.mID);
       localHttpNetReq.b = new File(a(this.jdField_a_of_type_AndroidContentContext), paramPluginInfo.mID).getPath();
-      fkk localfkk = new fkk(null);
-      fkk.a(localfkk, localHttpNetReq);
-      fkk.a(localfkk, paramOnPluginDownLoadListener);
-      this.b.put(paramPluginInfo.mID, localfkk);
+      fmq localfmq = new fmq(null);
+      fmq.a(localfmq, localHttpNetReq);
+      fmq.a(localfmq, paramOnPluginDownLoadListener);
+      this.b.put(paramPluginInfo.mID, localfmq);
       localINetEngine.a(localHttpNetReq);
       this.jdField_a_of_type_JavaUtilHashMap.put(paramPluginInfo.mID, Long.valueOf(SystemClock.uptimeMillis()));
     } while (!QLog.isColorLevel());
@@ -264,7 +264,7 @@ public class PluginDownloader
   
   public boolean a(String paramString)
   {
-    paramString = a(this.jdField_a_of_type_AndroidContentContext).listFiles(new fkj(this, paramString));
+    paramString = a(this.jdField_a_of_type_AndroidContentContext).listFiles(new fmp(this, paramString));
     return (paramString != null) && (paramString.length > 0);
   }
   

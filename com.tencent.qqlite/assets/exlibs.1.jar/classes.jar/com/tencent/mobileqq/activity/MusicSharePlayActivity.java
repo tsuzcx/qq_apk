@@ -10,7 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import avu;
+import avz;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,7 +24,7 @@ public class MusicSharePlayActivity
 {
   public static final int a = 1;
   public static final int b = 2;
-  private Handler jdField_a_of_type_AndroidOsHandler = new avu(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new avz(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -51,7 +51,7 @@ public class MusicSharePlayActivity
     while (!QLog.isColorLevel()) {
       try
       {
-        Object localObject = getResources().getDrawable(2130839369);
+        Object localObject = getResources().getDrawable(2130839434);
         localObject = URLDrawable.getDrawable(localSongInfo.d, (Drawable)localObject, (Drawable)localObject);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
         return;
@@ -93,8 +93,8 @@ public class MusicSharePlayActivity
   {
     super.onCreate(paramBundle);
     setContentView(2130903243);
-    setTitle(2131364116);
-    setLeftViewName(2131364492);
+    setTitle(2131364127);
+    setLeftViewName(2131364503);
     c();
     this.app.a(MusicSharePlayActivity.class, this.jdField_a_of_type_AndroidOsHandler);
     d();

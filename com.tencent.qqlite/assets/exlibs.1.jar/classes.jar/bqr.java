@@ -1,155 +1,84 @@
-import android.text.TextUtils;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
-import com.tencent.mobileqq.app.FriendsManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import com.tencent.mobileqq.utils.DBUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class bqr
-  extends Thread
+  implements Animation.AnimationListener
 {
-  public bqr(TroopTransferActivity.TroopMemberListAdapter paramTroopMemberListAdapter, TroopTransferActivity paramTroopTransferActivity) {}
+  public bqr(TroopTransferActivity paramTroopTransferActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
   
-  public void run()
+  /* Error */
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_JavaUtilArrayList.size();
-    FriendManager localFriendManager = (FriendManager)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getManager(8);
-    FriendsManagerImp localFriendsManagerImp = (FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getManager(8);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < j)
-    {
-      TroopTransferActivity.TroopMemberItem localTroopMemberItem = (TroopTransferActivity.TroopMemberItem)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (TextUtils.isEmpty(localTroopMemberItem.a)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (localFriendManager == null)
-        {
-          localObject = null;
-          label108:
-          if ((localObject != null) && (!TextUtils.isEmpty(((Friends)localObject).name))) {
-            localTroopMemberItem.g = ((Friends)localObject).name;
-          }
-          if ((localObject != null) && (!TextUtils.isEmpty(((Friends)localObject).remark))) {
-            localTroopMemberItem.j = ((Friends)localObject).remark;
-          }
-          if (localFriendsManagerImp != null) {
-            break label457;
-          }
-          localObject = null;
-          label161:
-          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(localTroopMemberItem.a))) {
-            break label481;
-          }
-          localObject = DBUtils.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.b), localTroopMemberItem.a);
-          if ((localObject != null) && (!TextUtils.isEmpty(((TroopMemberInfo)localObject).troopnick))) {
-            localTroopMemberItem.m = ((TroopMemberInfo)localObject).troopnick;
-          }
-          if ((localObject != null) && (!TextUtils.isEmpty(((TroopMemberInfo)localObject).troopremark))) {
-            localTroopMemberItem.j = ((TroopMemberInfo)localObject).troopremark;
-          }
-          label261:
-          if (TextUtils.isEmpty(localTroopMemberItem.j)) {
-            break label490;
-          }
-          localTroopMemberItem.b = localTroopMemberItem.j;
-          label282:
-          if (TextUtils.isEmpty(localTroopMemberItem.b)) {
-            break label573;
-          }
-          localTroopMemberItem.c = ChnToSpell.a(localTroopMemberItem.b, 2);
-          localTroopMemberItem.d = ChnToSpell.a(localTroopMemberItem.b, 1);
-          label321:
-          if (TextUtils.isEmpty(localTroopMemberItem.g)) {
-            break label590;
-          }
-          localTroopMemberItem.h = ChnToSpell.a(localTroopMemberItem.g, 2);
-          localTroopMemberItem.i = ChnToSpell.a(localTroopMemberItem.g, 1);
-          label360:
-          if (TextUtils.isEmpty(localTroopMemberItem.j)) {
-            break label607;
-          }
-          localTroopMemberItem.k = ChnToSpell.a(localTroopMemberItem.j, 2);
-        }
-        for (localTroopMemberItem.l = ChnToSpell.a(localTroopMemberItem.j, 1);; localTroopMemberItem.l = "")
-        {
-          if (TextUtils.isEmpty(localTroopMemberItem.m)) {
-            break label624;
-          }
-          localTroopMemberItem.n = ChnToSpell.a(localTroopMemberItem.m, 2);
-          localTroopMemberItem.o = ChnToSpell.a(localTroopMemberItem.m, 1);
-          break;
-          localObject = localFriendManager.c(localTroopMemberItem.a);
-          break label108;
-          label457:
-          localObject = localFriendsManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.b, localTroopMemberItem.a);
-          break label161;
-          label481:
-          localTroopMemberItem.m = ((String)localObject);
-          break label261;
-          label490:
-          if (!TextUtils.isEmpty(localTroopMemberItem.m))
-          {
-            localTroopMemberItem.b = localTroopMemberItem.m;
-            break label282;
-          }
-          if (!TextUtils.isEmpty(localTroopMemberItem.g))
-          {
-            localTroopMemberItem.b = localTroopMemberItem.g;
-            break label282;
-          }
-          if (TextUtils.isEmpty(localTroopMemberItem.a)) {
-            break label282;
-          }
-          localTroopMemberItem.b = localTroopMemberItem.a;
-          localArrayList.add(localTroopMemberItem.a);
-          break label282;
-          label573:
-          localTroopMemberItem.c = "";
-          localTroopMemberItem.d = "";
-          break label321;
-          label590:
-          localTroopMemberItem.h = "";
-          localTroopMemberItem.i = "";
-          break label360;
-          label607:
-          localTroopMemberItem.k = "";
-        }
-        label624:
-        localTroopMemberItem.n = "";
-        localTroopMemberItem.o = "";
-      }
-    }
-    Object localObject = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.a(17);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.troopdisband.transfer", 2, "init list data, size = " + localArrayList.size() + ", frh = " + localObject);
-    }
-    if ((localArrayList.size() > 0) && (localObject != null)) {
-      ((TroopHandler)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.c, localArrayList);
-    }
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.isFinishing())) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.runOnUiThread(new bqs(this));
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.troopdisband.transfer", 2, localException.toString());
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: aload_0
+    //   2: getfield 17	bqr:jdField_a_of_type_AndroidViewAnimationTranslateAnimation	Landroid/view/animation/TranslateAnimation;
+    //   5: if_acmpne +49 -> 54
+    //   8: aload_0
+    //   9: getfield 15	bqr:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   12: getfield 34	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidAppDialog	Landroid/app/Dialog;
+    //   15: astore_1
+    //   16: aload_1
+    //   17: ifnull +91 -> 108
+    //   20: aload_0
+    //   21: getfield 15	bqr:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   24: getfield 34	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidAppDialog	Landroid/app/Dialog;
+    //   27: invokevirtual 39	android/app/Dialog:show	()V
+    //   30: aload_0
+    //   31: getfield 15	bqr:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   34: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   37: aconst_null
+    //   38: invokevirtual 47	android/widget/LinearLayout:setAnimation	(Landroid/view/animation/Animation;)V
+    //   41: aload_0
+    //   42: getfield 15	bqr:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   45: getfield 50	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   48: bipush 8
+    //   50: invokevirtual 56	android/view/View:setVisibility	(I)V
+    //   53: return
+    //   54: aload_1
+    //   55: aload_0
+    //   56: getfield 19	bqr:b	Landroid/view/animation/TranslateAnimation;
+    //   59: if_acmpne +49 -> 108
+    //   62: aload_0
+    //   63: getfield 15	bqr:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   66: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   69: aconst_null
+    //   70: invokevirtual 47	android/widget/LinearLayout:setAnimation	(Landroid/view/animation/Animation;)V
+    //   73: aload_0
+    //   74: getfield 15	bqr:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   77: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   80: aload_0
+    //   81: getfield 21	bqr:jdField_a_of_type_Int	I
+    //   84: invokevirtual 59	android/widget/LinearLayout:offsetTopAndBottom	(I)V
+    //   87: aload_0
+    //   88: getfield 15	bqr:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   91: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   94: invokevirtual 62	android/widget/LinearLayout:requestLayout	()V
+    //   97: return
+    //   98: astore_1
+    //   99: aload_1
+    //   100: invokevirtual 65	java/lang/Exception:printStackTrace	()V
+    //   103: return
+    //   104: astore_1
+    //   105: goto -75 -> 30
+    //   108: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	109	0	this	bqr
+    //   0	109	1	paramAnimation	Animation
+    // Exception table:
+    //   from	to	target	type
+    //   0	16	98	java/lang/Exception
+    //   30	53	98	java/lang/Exception
+    //   54	97	98	java/lang/Exception
+    //   20	30	104	java/lang/Exception
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

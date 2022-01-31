@@ -1,23 +1,36 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
+import com.tencent.mobileqq.troop.widget.VideoViewX.OnPlayListener;
 
-public final class etd
-  implements MediaPlayer.OnCompletionListener
+public class etd
+  implements Runnable
 {
-  public etd(MediaPlayer.OnCompletionListener paramOnCompletionListener) {}
+  public etd(VideoViewX paramVideoViewX) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void run()
   {
-    if (AudioUtil.b() == 0)
+    if (VideoViewX.a(this.a) != null)
     {
-      if (this.a != null) {
-        this.a.onCompletion(paramMediaPlayer);
+      if (VideoViewX.a(this.a).getCurrentPosition() > 0)
+      {
+        if (this.a.a)
+        {
+          this.a.a = false;
+          if (VideoViewX.a(this.a) != null) {
+            VideoViewX.a(this.a).b();
+          }
+        }
+        if (VideoViewX.a(this.a) != null) {
+          VideoViewX.a(this.a).a(VideoViewX.a(this.a));
+        }
+        VideoViewX.c(this.a, false);
       }
+    }
+    else {
       return;
     }
-    AudioUtil.c();
-    AudioUtil.a.start();
+    this.a.postDelayed(VideoViewX.a(this.a), 300L);
   }
 }
 

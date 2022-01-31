@@ -1,16 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
 public class bkx
-  implements Runnable
+  implements View.OnClickListener
 {
   public bkx(SplashActivity paramSplashActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.h();
-    }
+    ((Conversation)SplashActivity.a(this.a, Conversation.class)).a(SplashActivity.a(this.a));
   }
 }
 

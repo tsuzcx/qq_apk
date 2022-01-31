@@ -23,9 +23,9 @@ import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import eex;
-import eey;
-import efa;
+import egb;
+import egc;
+import ege;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -52,12 +52,12 @@ public abstract class AbsShareMsg
   public long mSourceAppid = -1L;
   public String mSourceIcon = null;
   public String mSourceName = null;
-  protected View.OnClickListener mSourceOnClickListener = new eey(this);
+  protected View.OnClickListener mSourceOnClickListener = new egc(this);
   public String mSourceUrl = null;
   public String mSource_A_ActionData = null;
   public String mSource_I_ActionData = null;
   List mStructMsgItemLists = new ArrayList();
-  private URLDrawableDownListener.Adapter mUrlAdapter = new eex(this);
+  private URLDrawableDownListener.Adapter mUrlAdapter = new egb(this);
   
   AbsShareMsg()
   {
@@ -332,18 +332,18 @@ public abstract class AbsShareMsg
     }
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(paramContext).inflate(2130903652, null);
+      localView = LayoutInflater.from(paramContext).inflate(2130903661, null);
     }
     Object localObject2 = paramContext.getResources();
-    Object localObject1 = (TextView)localView.findViewById(2131298833);
-    paramView = (URLImageView)localView.findViewById(2131298832);
+    Object localObject1 = (TextView)localView.findViewById(2131298859);
+    paramView = (URLImageView)localView.findViewById(2131298858);
     ((TextView)localObject1).setText(this.mSourceName);
     boolean bool;
     if (!TextUtils.isEmpty(this.mSourceIcon))
     {
       paramView.setVisibility(0);
       localObject1 = this.mSourceIcon;
-      localObject2 = ((Resources)localObject2).getDrawable(2130839366);
+      localObject2 = ((Resources)localObject2).getDrawable(2130839431);
       localObject2 = URLDrawable.getDrawable((String)localObject1, (Drawable)localObject2, (Drawable)localObject2);
       if ((AbsDownloader.a((String)localObject1)) || (!URLDrawableHelper.a(paramContext)))
       {
@@ -381,27 +381,27 @@ public abstract class AbsShareMsg
     //   5: dup
     //   6: invokespecial 447	java/io/ByteArrayOutputStream:<init>	()V
     //   9: astore 4
-    //   11: new 621	efa
+    //   11: new 621	ege
     //   14: dup
     //   15: aload_0
     //   16: new 623	com/tencent/mobileqq/structmsg/QQXmlSerializer
     //   19: dup
     //   20: invokespecial 624	com/tencent/mobileqq/structmsg/QQXmlSerializer:<init>	()V
-    //   23: invokespecial 627	efa:<init>	(Lcom/tencent/mobileqq/structmsg/AbsStructMsg;Lorg/xmlpull/v1/XmlSerializer;)V
+    //   23: invokespecial 627	ege:<init>	(Lcom/tencent/mobileqq/structmsg/AbsStructMsg;Lorg/xmlpull/v1/XmlSerializer;)V
     //   26: astore 5
     //   28: aload 5
     //   30: aload 4
     //   32: ldc_w 629
-    //   35: invokevirtual 633	efa:setOutput	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   35: invokevirtual 633	ege:setOutput	(Ljava/io/OutputStream;Ljava/lang/String;)V
     //   38: aload 5
     //   40: ldc_w 629
     //   43: iconst_1
     //   44: invokestatic 638	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   47: invokevirtual 642	efa:startDocument	(Ljava/lang/String;Ljava/lang/Boolean;)V
+    //   47: invokevirtual 642	ege:startDocument	(Ljava/lang/String;Ljava/lang/Boolean;)V
     //   50: aload 5
     //   52: aconst_null
     //   53: ldc_w 644
-    //   56: invokevirtual 648	efa:startTag	(Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   56: invokevirtual 648	ege:startTag	(Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   59: pop
     //   60: aload 5
     //   62: aconst_null
@@ -409,7 +409,7 @@ public abstract class AbsShareMsg
     //   66: aload_0
     //   67: getfield 371	com/tencent/mobileqq/structmsg/AbsShareMsg:mMsgServiceID	I
     //   70: invokestatic 374	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   73: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   73: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   76: pop
     //   77: aload 5
     //   79: aconst_null
@@ -417,7 +417,7 @@ public abstract class AbsShareMsg
     //   83: aload_0
     //   84: getfield 659	com/tencent/mobileqq/structmsg/AbsShareMsg:mMsgTemplateID	I
     //   87: invokestatic 374	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   90: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   90: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   93: pop
     //   94: aload_0
     //   95: getfield 114	com/tencent/mobileqq/structmsg/AbsShareMsg:mMsgAction	Ljava/lang/String;
@@ -428,7 +428,7 @@ public abstract class AbsShareMsg
     //   107: aconst_null
     //   108: ldc_w 661
     //   111: aload_2
-    //   112: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   112: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   115: pop
     //   116: aload_0
     //   117: getfield 119	com/tencent/mobileqq/structmsg/AbsShareMsg:mMsgActionData	Ljava/lang/String;
@@ -439,7 +439,7 @@ public abstract class AbsShareMsg
     //   129: aconst_null
     //   130: ldc_w 663
     //   133: aload_2
-    //   134: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   134: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   137: pop
     //   138: aload_0
     //   139: getfield 124	com/tencent/mobileqq/structmsg/AbsShareMsg:mMsg_A_ActionData	Ljava/lang/String;
@@ -450,7 +450,7 @@ public abstract class AbsShareMsg
     //   151: aconst_null
     //   152: ldc_w 665
     //   155: aload_2
-    //   156: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   156: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   159: pop
     //   160: aload_0
     //   161: getfield 129	com/tencent/mobileqq/structmsg/AbsShareMsg:mMsg_I_ActionData	Ljava/lang/String;
@@ -461,7 +461,7 @@ public abstract class AbsShareMsg
     //   173: aconst_null
     //   174: ldc_w 667
     //   177: aload_2
-    //   178: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   178: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   181: pop
     //   182: aload_0
     //   183: getfield 186	com/tencent/mobileqq/structmsg/AbsShareMsg:mMsgBrief	Ljava/lang/String;
@@ -472,7 +472,7 @@ public abstract class AbsShareMsg
     //   195: aconst_null
     //   196: ldc_w 669
     //   199: aload_2
-    //   200: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   200: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   203: pop
     //   204: aload_0
     //   205: getfield 193	com/tencent/mobileqq/structmsg/AbsShareMsg:mResid	Ljava/lang/String;
@@ -483,7 +483,7 @@ public abstract class AbsShareMsg
     //   217: aconst_null
     //   218: ldc_w 671
     //   221: aload_2
-    //   222: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   222: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   225: pop
     //   226: aload_0
     //   227: getfield 198	com/tencent/mobileqq/structmsg/AbsShareMsg:mFileName	Ljava/lang/String;
@@ -494,7 +494,7 @@ public abstract class AbsShareMsg
     //   239: aconst_null
     //   240: ldc_w 673
     //   243: aload_2
-    //   244: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   244: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   247: pop
     //   248: aload 5
     //   250: aconst_null
@@ -502,7 +502,7 @@ public abstract class AbsShareMsg
     //   254: aload_0
     //   255: getfield 206	com/tencent/mobileqq/structmsg/AbsShareMsg:mFileSize	J
     //   258: invokestatic 368	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   261: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   261: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   264: pop
     //   265: aload_0
     //   266: getfield 220	com/tencent/mobileqq/structmsg/AbsShareMsg:fwFlag	I
@@ -514,7 +514,7 @@ public abstract class AbsShareMsg
     //   279: aload_0
     //   280: getfield 220	com/tencent/mobileqq/structmsg/AbsShareMsg:fwFlag	I
     //   283: invokestatic 374	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   286: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   286: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   289: pop
     //   290: aload_0
     //   291: getfield 244	com/tencent/mobileqq/structmsg/AbsShareMsg:mMsgUrl	Ljava/lang/String;
@@ -525,7 +525,7 @@ public abstract class AbsShareMsg
     //   303: aconst_null
     //   304: ldc_w 679
     //   307: aload_2
-    //   308: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   308: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   311: pop
     //   312: aload 5
     //   314: aconst_null
@@ -533,15 +533,15 @@ public abstract class AbsShareMsg
     //   318: aload_0
     //   319: getfield 684	com/tencent/mobileqq/structmsg/AbsShareMsg:mFlag	I
     //   322: invokestatic 374	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   325: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   325: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   328: pop
     //   329: aload_0
     //   330: aload 5
-    //   332: invokevirtual 688	com/tencent/mobileqq/structmsg/AbsShareMsg:toContentXml	(Lefa;)V
+    //   332: invokevirtual 688	com/tencent/mobileqq/structmsg/AbsShareMsg:toContentXml	(Lege;)V
     //   335: aload 5
     //   337: aconst_null
     //   338: ldc_w 330
-    //   341: invokevirtual 648	efa:startTag	(Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   341: invokevirtual 648	ege:startTag	(Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   344: pop
     //   345: aload_0
     //   346: getfield 68	com/tencent/mobileqq/structmsg/AbsShareMsg:mSourceName	Ljava/lang/String;
@@ -552,7 +552,7 @@ public abstract class AbsShareMsg
     //   358: aconst_null
     //   359: ldc_w 690
     //   362: aload_2
-    //   363: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   363: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   366: pop
     //   367: aload_0
     //   368: getfield 66	com/tencent/mobileqq/structmsg/AbsShareMsg:mSourceIcon	Ljava/lang/String;
@@ -563,7 +563,7 @@ public abstract class AbsShareMsg
     //   380: aconst_null
     //   381: ldc_w 692
     //   384: aload_2
-    //   385: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   385: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   388: pop
     //   389: aload_0
     //   390: getfield 56	com/tencent/mobileqq/structmsg/AbsShareMsg:mSourceUrl	Ljava/lang/String;
@@ -578,7 +578,7 @@ public abstract class AbsShareMsg
     //   412: aconst_null
     //   413: ldc_w 679
     //   416: aload_2
-    //   417: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   417: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   420: pop
     //   421: aload_0
     //   422: getfield 58	com/tencent/mobileqq/structmsg/AbsShareMsg:mSourceAction	Ljava/lang/String;
@@ -589,7 +589,7 @@ public abstract class AbsShareMsg
     //   434: aconst_null
     //   435: ldc_w 661
     //   438: aload_2
-    //   439: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   439: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   442: pop
     //   443: aload_0
     //   444: getfield 60	com/tencent/mobileqq/structmsg/AbsShareMsg:mSourceActionData	Ljava/lang/String;
@@ -600,7 +600,7 @@ public abstract class AbsShareMsg
     //   456: aconst_null
     //   457: ldc_w 663
     //   460: aload_2
-    //   461: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   461: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   464: pop
     //   465: aload_0
     //   466: getfield 62	com/tencent/mobileqq/structmsg/AbsShareMsg:mSource_A_ActionData	Ljava/lang/String;
@@ -615,7 +615,7 @@ public abstract class AbsShareMsg
     //   488: aconst_null
     //   489: ldc_w 665
     //   492: aload_2
-    //   493: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   493: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   496: pop
     //   497: aload_0
     //   498: getfield 64	com/tencent/mobileqq/structmsg/AbsShareMsg:mSource_I_ActionData	Ljava/lang/String;
@@ -630,7 +630,7 @@ public abstract class AbsShareMsg
     //   520: aconst_null
     //   521: ldc_w 667
     //   524: aload_2
-    //   525: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   525: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   528: pop
     //   529: aload 5
     //   531: aconst_null
@@ -638,22 +638,22 @@ public abstract class AbsShareMsg
     //   535: aload_0
     //   536: getfield 72	com/tencent/mobileqq/structmsg/AbsShareMsg:mSourceAppid	J
     //   539: invokestatic 368	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   542: invokevirtual 654	efa:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   542: invokevirtual 654	ege:attribute	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   545: pop
     //   546: aload 5
     //   548: aconst_null
     //   549: ldc_w 330
-    //   552: invokevirtual 697	efa:endTag	(Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   552: invokevirtual 697	ege:endTag	(Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   555: pop
     //   556: aload 5
     //   558: aconst_null
     //   559: ldc_w 644
-    //   562: invokevirtual 697	efa:endTag	(Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    //   562: invokevirtual 697	ege:endTag	(Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
     //   565: pop
     //   566: aload 5
-    //   568: invokevirtual 700	efa:endDocument	()V
+    //   568: invokevirtual 700	ege:endDocument	()V
     //   571: aload 5
-    //   573: invokevirtual 701	efa:flush	()V
+    //   573: invokevirtual 701	ege:flush	()V
     //   576: invokestatic 704	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   579: ifeq +38 -> 617
     //   582: aload 4
@@ -810,7 +810,7 @@ public abstract class AbsShareMsg
     //   835	22	2	arrayOfByte1	byte[]
     //   1	855	3	arrayOfByte2	byte[]
     //   9	609	4	localByteArrayOutputStream	ByteArrayOutputStream
-    //   26	546	5	localefa	efa
+    //   26	546	5	localege	ege
     //   832	19	5	localUnsupportedEncodingException	java.io.UnsupportedEncodingException
     // Exception table:
     //   from	to	target	type
@@ -965,7 +965,7 @@ public abstract class AbsShareMsg
     }
   }
   
-  protected abstract void toContentXml(efa paramefa);
+  protected abstract void toContentXml(ege paramege);
 }
 
 

@@ -1,24 +1,19 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class aun
-  implements Runnable
+  extends ClickableSpan
 {
-  public aun(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
+  private aun(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void run()
+  public void onClick(View paramView) {}
+  
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if ((LoginVerifyCodeActivity.a(this.a) == 1) || (this.a.isFinishing()))
-    {
-      LoginVerifyCodeActivity.a(this.a).setText(2131363328);
-      LoginVerifyCodeActivity.a(this.a).setEnabled(true);
-      LoginVerifyCodeActivity.a(this.a).setClickable(true);
-      return;
-    }
-    LoginVerifyCodeActivity.b(this.a);
-    LoginVerifyCodeActivity.a(this.a).setText(this.a.getString(2131363328) + "(" + LoginVerifyCodeActivity.a(this.a) + ")");
-    this.a.b.postDelayed(this, 1000L);
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

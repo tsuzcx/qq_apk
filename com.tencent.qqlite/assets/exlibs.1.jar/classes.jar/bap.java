@@ -1,27 +1,14 @@
 import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 
-public class bap
-  implements IStatusListener
+class bap
+  implements Runnable
 {
-  public bap(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  bap(bao parambao, boolean paramBoolean) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void run()
   {
-    PermisionPrivacyActivity.a(this.a, this.a.e.a(), paramBoolean);
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      PermisionPrivacyActivity.a(this.a, 2131364023);
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.e.a(), PermisionPrivacyActivity.a(this.a).b());
+    PermisionPrivacyActivity.a(this.jdField_a_of_type_Bao.a, this.jdField_a_of_type_Bao.a.b.a(), this.jdField_a_of_type_Boolean);
   }
 }
 

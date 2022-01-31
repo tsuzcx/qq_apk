@@ -8,7 +8,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.image.URLDrawableDownListener;
 import com.tencent.qphone.base.util.QLog;
-import dfa;
+import dgc;
 
 public abstract class EmoticonPanelViewBinder
   extends EmoticonViewBinder
@@ -24,7 +24,7 @@ public abstract class EmoticonPanelViewBinder
   public EmoticonPanelViewBinder(Context paramContext, int paramInt1, int paramInt2)
   {
     super(paramInt1);
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener = new dfa(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener = new dgc(this);
     if (paramContext == null) {
       throw new IllegalArgumentException("Context MUST NOT be null!!!");
     }
@@ -97,11 +97,11 @@ public abstract class EmoticonPanelViewBinder
         QLog.e("EmoticonPanelViewBinder", 2, "load image error: " + localOutOfMemoryError.getMessage());
         localObject = localView;
         continue;
-        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903581, null);
+        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903590, null);
         continue;
         localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903184, null);
         continue;
-        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903578, null);
+        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903587, null);
         continue;
         localObject = new EmoticonLinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
         ((EmoticonLinearLayout)localObject).setPanelViewType(paramInt);

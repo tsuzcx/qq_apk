@@ -1,12 +1,25 @@
-import android.widget.ImageView;
+import android.os.Handler;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
 
 public class bio
+  implements Runnable
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public bio(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  
+  public void run()
+  {
+    if (RegisterVerifyCodeActivity.a(this.a) == 1)
+    {
+      RegisterVerifyCodeActivity.a(this.a).setText(2131363338);
+      RegisterVerifyCodeActivity.a(this.a).setEnabled(true);
+      RegisterVerifyCodeActivity.a(this.a).setClickable(true);
+      return;
+    }
+    RegisterVerifyCodeActivity.b(this.a);
+    RegisterVerifyCodeActivity.a(this.a).setText(this.a.getString(2131363338) + "(" + RegisterVerifyCodeActivity.a(this.a) + ")");
+    this.a.b.postDelayed(this, 1000L);
+  }
 }
 
 

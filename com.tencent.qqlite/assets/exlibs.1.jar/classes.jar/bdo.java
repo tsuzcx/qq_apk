@@ -1,21 +1,30 @@
+import android.view.View;
 import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.config.QQMapConstants;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.widget.SelectPicPopupWindow;
-import java.io.File;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class bdo
-  implements Runnable
+public class bdo
+  implements ActionSheet.OnButtonClickListener
 {
-  bdo(bdm parambdm) {}
+  public bdo(QQMapActivity paramQQMapActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void a(View paramView, int paramInt)
   {
-    this.a.a.r = null;
-    this.a.a.p = true;
-    this.a.a.a.a(this.a.a.getString(2131362610));
-    if (new File(QQMapConstants.i).exists()) {
-      UniformDownloadUtil.a(QQMapConstants.i);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.i();
     }
   }
 }

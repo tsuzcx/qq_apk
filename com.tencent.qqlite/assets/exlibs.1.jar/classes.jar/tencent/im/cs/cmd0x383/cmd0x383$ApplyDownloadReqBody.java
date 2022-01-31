@@ -10,11 +10,6 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class cmd0x383$ApplyDownloadReqBody
   extends MessageMicro
 {
-  public static final int BOOL_PREVIEW_REQ_FIELD_NUMBER = 5;
-  public static final int BOOL_THUMBNAIL_REQ_FIELD_NUMBER = 3;
-  public static final int STR_FILE_PATH_FIELD_NUMBER = 2;
-  public static final int UINT32_BUS_ID_FIELD_NUMBER = 1;
-  public static final int UINT32_URL_TYPE_FIELD_NUMBER = 4;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40 }, new String[] { "uint32_bus_id", "str_file_path", "bool_thumbnail_req", "uint32_url_type", "bool_preview_req" }, new Object[] { Integer.valueOf(0), "", Boolean.valueOf(false), Integer.valueOf(0), Boolean.valueOf(false) }, ApplyDownloadReqBody.class);
   public final PBBoolField bool_preview_req = PBField.initBool(false);
   public final PBBoolField bool_thumbnail_req = PBField.initBool(false);

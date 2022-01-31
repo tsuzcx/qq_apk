@@ -1,30 +1,57 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.adapter.GroupEditeDragSortAdapter;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aqz
   implements DialogInterface.OnClickListener
 {
-  public aqz(GroupManagerActivity paramGroupManagerActivity, byte paramByte) {}
+  public aqz(GroupManagerActivity paramGroupManagerActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.c();
-    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).setDragEnabled(true);
-    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(this.jdField_a_of_type_Byte));
-    if (QLog.isColorLevel()) {
-      QLog.d(GroupManagerActivity.a, 2, "DeleteFriendGroup :" + this.jdField_a_of_type_Byte + ", " + GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity));
+    paramDialogInterface = GroupManagerActivity.a(this.a).getInputValue();
+    if (paramDialogInterface.equals("")) {
+      paramDialogInterface = this.a.getResources().getString(2131364174);
     }
-    if (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(2131363790);
-    }
-    while (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity) == null) {
+    for (;;)
+    {
+      if (GroupManagerActivity.a(this.a) == 0) {
+        if (this.a.jdField_a_of_type_JavaUtilList.size() > 0)
+        {
+          b = (byte)(((Groups)this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_JavaUtilList.size() - 1)).seqid + 1);
+          GroupManagerActivity.a(this.a, this.a.a(b, paramDialogInterface));
+          if (QLog.isColorLevel()) {
+            QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "AddFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
+          }
+          if (GroupManagerActivity.a(this.a)) {
+            this.a.a(2131363800);
+          }
+          ReportController.b(this.a.app, "CliOper", "", "", "category", "Add_category", 0, 0, "", "", "", "");
+        }
+      }
+      while (1 != GroupManagerActivity.a(this.a)) {
+        for (;;)
+        {
+          return;
+          byte b = 1;
+        }
+      }
+      GroupManagerActivity.a(this.a, this.a.b((byte)this.a.jdField_a_of_type_ComTencentMobileqqDataGroups.group_id, paramDialogInterface));
+      if (QLog.isColorLevel()) {
+        QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "EditeFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
+      }
+      if (GroupManagerActivity.a(this.a)) {
+        this.a.a(2131363802);
+      }
+      ReportController.b(this.a.app, "CliOper", "", "", "category", "Name_category", 0, 0, "", "", "", "");
       return;
     }
-    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).notifyDataSetChanged();
   }
 }
 

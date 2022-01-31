@@ -478,7 +478,7 @@ public class EmosmHandler
     paramString.uint32_sub_cmd.set(8);
     paramString.uint64_uin.set(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()).longValue());
     paramString.int32_plat_id.set(109);
-    paramString.str_app_version.set("3.4.0");
+    paramString.str_app_version.set("3.5.0");
     paramString.msg_subcmd0x8_req_addtab.set((MessageMicro)localObject);
     paramString.setHasFlag(true);
     localObject = a("BQMallSvc.TabOpReq");

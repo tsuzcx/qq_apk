@@ -1,41 +1,56 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileWeiYunImageExpandableListAdapter.ImageHolder;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileBaseExpandableListAdapter.CloudItemHolder;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
+import com.tencent.widget.MenuPopupDialog;
 
-class die
-  implements View.OnClickListener
+public class die
+  implements SlideDetectListView.OnSlideListener
 {
-  die(did paramdid, View paramView) {}
+  public die(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    paramView = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((paramView instanceof QfileWeiYunImageExpandableListAdapter.ImageHolder))
+    if (LocalFileBrowserActivity.a(this.a) != null) {
+      LocalFileBrowserActivity.a(this.a).dismiss();
+    }
+    if (!this.a.f())
     {
-      paramView = (WeiYunFileInfo)((QfileWeiYunImageExpandableListAdapter.ImageHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-      if ((FMDataCache.a(paramView.a)) && (QLog.isColorLevel())) {
-        QLog.d(QfileBaseCloudFileTabView.a, 2, "there is a bug ");
-      }
-      QfileBaseCloudFileTabView.c(this.jdField_a_of_type_Did.a).a().a(paramView);
-      QfileBaseCloudFileTabView.a(this.jdField_a_of_type_Did.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
+      paramView.setPressed(false);
     }
     do
     {
       return;
-      if ((paramView instanceof QfileCloudFileBaseExpandableListAdapter.CloudItemHolder))
-      {
-        paramView = (WeiYunFileInfo)((QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e(QfileBaseCloudFileTabView.a, 2, "unknow Object");
+      paramSlideDetectListView = paramView.findViewById(2131296444);
+      paramView = (FileInfo)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.getItem(paramInt);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(paramView);
+    } while (paramSlideDetectListView == null);
+    paramView = (Button)paramSlideDetectListView.findViewById(2131297123);
+    paramView.setTag(Integer.valueOf(paramInt));
+    paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+    ((ShaderAnimLayout)paramSlideDetectListView).a();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
+  }
+  
+  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  {
+    paramSlideDetectListView = paramView.findViewById(2131296444);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
+    if (paramSlideDetectListView != null)
+    {
+      ((ShaderAnimLayout)paramSlideDetectListView).d();
+      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131297123);
+      paramSlideDetectListView.setTag(null);
+      paramSlideDetectListView.setOnClickListener(null);
+    }
+    LocalFileBrowserActivity.a(this.a);
   }
 }
 

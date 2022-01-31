@@ -27,7 +27,7 @@ import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.mobileqq.troopshare.TroopShareUtility;
 import com.tencent.mobileqq.utils.ShareMsgHelper;
 import com.tencent.mobileqq.widget.QQToast;
-import ekv;
+import emb;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -56,7 +56,7 @@ public class TroopCreateLogicActivity
   public TroopCreateLogicActivity()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ekv(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new emb(this);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
@@ -67,17 +67,19 @@ public class TroopCreateLogicActivity
       String str = paramQQAppInterface.a();
       long l = paramQQAppInterface.a().a(paramString, 1).shmsgseq;
       paramQQAppInterface = (MessageForGrayTips)MessageRecordFactory.a(-1013);
-      paramQQAppInterface.init(str, paramString, paramString, paramContext.getString(2131362326), MessageCache.a(), -1013, 1, 1L + l);
+      paramQQAppInterface.init(str, paramString, paramString, paramContext.getString(2131362327), MessageCache.a(), -1013, 1, 1L + l);
       paramQQAppInterface.isread = true;
       localQQMessageFacade.a(paramQQAppInterface, str);
     }
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
+    a(this.app, this, paramString1);
     Intent localIntent = new Intent();
     localIntent.putExtra("retCode", paramInt);
-    localIntent.putExtra("troopUin", paramString);
+    localIntent.putExtra("troopUin", paramString1);
+    localIntent.putExtra("troopName", paramString2);
     setResult(-1, localIntent);
     finish();
   }
@@ -214,7 +216,7 @@ public class TroopCreateLogicActivity
         break;
       }
       i = getResources().getDimensionPixelSize(2131492887);
-      QQToast.a(this, 2, getString(2131362626), 0).b(i);
+      QQToast.a(this, 2, getString(2131362633), 0).b(i);
       localObject = StructMsgFactory.a(paramIntent.getByteArrayExtra("stuctmsg_bytes"));
     } while (localObject == null);
     if ((localObject instanceof StructMsgForImageShare)) {}

@@ -1,13 +1,33 @@
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
 
 public class eht
   implements Runnable
 {
-  public eht(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
+  public eht(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
   public void run()
   {
-    this.a.a();
+    switch (this.a.aM)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.c("<BDH_LOG> sendFileNotBlockCallThread() BUT current status is INIT");
+      return;
+    case 2: 
+      this.a.c("<BDH_LOG> sendFileNotBlockCallThread() resume HTTP channel");
+      this.a.s();
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null)
+    {
+      this.a.c("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel");
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().resumeTransactionTask(this.a.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
+      return;
+    }
+    this.a.c("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel, but trans == null");
   }
 }
 

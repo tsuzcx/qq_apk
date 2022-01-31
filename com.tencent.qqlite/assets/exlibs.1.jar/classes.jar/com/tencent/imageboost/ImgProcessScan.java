@@ -1,7 +1,7 @@
 package com.tencent.imageboost;
 
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.uncompress.UncompressSo;
+import com.tencent.commonsdk.soload.SoLoadUtilNew;
 
 public class ImgProcessScan
 {
@@ -15,29 +15,8 @@ public class ImgProcessScan
   
   static
   {
-    String str;
-    if (BaseApplicationImpl.a == 0)
-    {
-      str = UncompressSo.GetInstance().GetPath("stlport_shared");
-      if (str != null) {
-        break label45;
-      }
-      a = true;
-    }
-    for (;;)
-    {
-      str = UncompressSo.GetInstance().GetPath("ImgProcessScan");
-      if (str != null) {
-        break;
-      }
-      a = true;
-      return;
-      label45:
-      a = false;
-      System.load(str);
-    }
-    a = false;
-    System.load(str);
+    SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "stlport_shared");
+    SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "ImgProcessScan");
   }
   
   public static native int FocusInit(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4);

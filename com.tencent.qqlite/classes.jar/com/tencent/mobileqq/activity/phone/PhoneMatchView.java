@@ -8,8 +8,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import chv;
-import chw;
+import ciw;
+import cix;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -40,16 +40,16 @@ public class PhoneMatchView
   {
     if (!NetworkUtil.e(getContext()))
     {
-      b(2131363450);
+      b(2131363461);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new chv(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ciw(this);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new chw(this));
-    a(2131363381, 1000L, true);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cix(this));
+    a(2131363392, 1000L, true);
   }
   
   protected void a()

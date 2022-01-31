@@ -8,6 +8,7 @@ public class RichProto$RichProtoReq$PttUpReq
   public boolean a;
   public byte[] a;
   public int b;
+  public int c;
   
   public RichProto$RichProtoReq$PttUpReq()
   {
@@ -23,6 +24,7 @@ public class RichProto$RichProtoReq$PttUpReq
     localStringBuilder.append(this.b);
     localStringBuilder.append(" voiceLength:");
     localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" type:").append(this.c);
     return localStringBuilder.toString();
   }
 }

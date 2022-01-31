@@ -1,23 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.DiscussionListInnerFrame;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
+import java.util.HashMap;
 
 public class cmp
-  implements Animation.AnimationListener
+  implements Comparator
 {
-  public cmp(SelectMemberActivity paramSelectMemberActivity) {}
+  public cmp(DiscussionListInnerFrame paramDiscussionListInnerFrame, HashMap paramHashMap) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    paramAnimation = new FrameLayout.LayoutParams(-1, -1);
-    SelectMemberActivity.a(this.a).setLayoutParams(paramAnimation);
+    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
+    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
+    if (l1 < l2) {
+      return -1;
+    }
+    if (l1 > l2) {
+      return 1;
+    }
+    return 0;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

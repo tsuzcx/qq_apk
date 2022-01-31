@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
 
 public class drd
+  implements Runnable
 {
-  public long a;
-  public String a;
-  public long b;
+  public drd(UniformDownloadMgr paramUniformDownloadMgr) {}
   
-  public drd(FileManagerProxy paramFileManagerProxy) {}
+  public void run()
+  {
+    UniformDownloadMgr.b(this.a, null);
+    UniformDownloadMgr.b(this.a);
+  }
 }
 
 

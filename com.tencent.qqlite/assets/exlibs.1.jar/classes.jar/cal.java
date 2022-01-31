@@ -1,24 +1,17 @@
-import android.os.AsyncTask;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.SelfGagInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
 
-class cal
-  extends AsyncTask
+public class cal
+  implements Runnable
 {
-  cal(cak paramcak) {}
+  public cal(FriendChatPie paramFriendChatPie) {}
   
-  protected TroopGagMgr.SelfGagInfo a(Void... paramVarArgs)
+  public void run()
   {
-    TroopChatPie.b(this.a.a);
-    return ((TroopGagMgr)TroopChatPie.j(this.a.a).getManager(42)).a(TroopChatPie.E(this.a.a).a, true);
-  }
-  
-  protected void a(TroopGagMgr.SelfGagInfo paramSelfGagInfo)
-  {
-    TroopChatPie.a(this.a.a, paramSelfGagInfo, true);
+    if (this.a.a == null) {}
+    while (this.a.a.a == 0) {
+      return;
+    }
   }
 }
 

@@ -33,7 +33,7 @@ public class TrafficStatActivity
   {
     if (paramArrayOfLong1 == null)
     {
-      Toast.makeText(this, getString(2131363386), 1).show();
+      Toast.makeText(this, getString(2131363397), 1).show();
       return;
     }
     long l3 = 0L;
@@ -55,8 +55,8 @@ public class TrafficStatActivity
         f1 = f2 * 1024.0F;
         label128:
         l2 = l1;
-        if (j != 2131296487) {
-          if (j != 2131296493) {
+        if (j != 2131296490) {
+          if (j != 2131296496) {
             break label204;
           }
         }
@@ -94,8 +94,8 @@ public class TrafficStatActivity
         f1 = f2 * 1024.0F;
         label320:
         l3 = l2;
-        if (j != 2131296488) {
-          if (j != 2131296494) {
+        if (j != 2131296491) {
+          if (j != 2131296497) {
             break label396;
           }
         }
@@ -119,8 +119,8 @@ public class TrafficStatActivity
         break label320;
       }
     }
-    paramArrayOfLong1 = (TextView)findViewById(2131296475);
-    paramArrayOfLong2 = (TextView)findViewById(2131296476);
+    paramArrayOfLong1 = (TextView)findViewById(2131296478);
+    paramArrayOfLong2 = (TextView)findViewById(2131296479);
     paramArrayOfLong1.setText(FileUtils.a(0, l1));
     paramArrayOfLong2.setText(FileUtils.a(1, l2));
   }
@@ -128,20 +128,20 @@ public class TrafficStatActivity
   public void c()
   {
     this.jdField_a_of_type_JavaUtilVector = new Vector();
-    this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(2131296478));
     this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(2131296481));
     this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(2131296484));
     this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(2131296487));
     this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(2131296490));
     this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(2131296493));
+    this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(2131296496));
     this.jdField_b_of_type_JavaUtilVector = new Vector();
-    this.jdField_b_of_type_JavaUtilVector.add(Integer.valueOf(2131296479));
     this.jdField_b_of_type_JavaUtilVector.add(Integer.valueOf(2131296482));
     this.jdField_b_of_type_JavaUtilVector.add(Integer.valueOf(2131296485));
     this.jdField_b_of_type_JavaUtilVector.add(Integer.valueOf(2131296488));
     this.jdField_b_of_type_JavaUtilVector.add(Integer.valueOf(2131296491));
     this.jdField_b_of_type_JavaUtilVector.add(Integer.valueOf(2131296494));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296495));
+    this.jdField_b_of_type_JavaUtilVector.add(Integer.valueOf(2131296497));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296498));
   }
   
   public void d()
@@ -167,7 +167,7 @@ public class TrafficStatActivity
   {
     super.onCreate(paramBundle);
     setContentView(2130903050);
-    setTitle(2131363050);
+    setTitle(2131363060);
     this.app.registObserver(this);
     d();
     c();
@@ -198,7 +198,7 @@ public class TrafficStatActivity
     a(arrayOfLong, paramBundle);
     return;
     label51:
-    Toast.makeText(this, getString(2131363386), 1).show();
+    Toast.makeText(this, getString(2131363397), 1).show();
   }
 }
 

@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.widget.Toast;
-import bix;
-import biy;
-import biz;
-import bja;
-import bjb;
 import bjc;
+import bjd;
+import bje;
+import bjf;
+import bjg;
+import bjh;
 import com.tencent.mobileqq.activity.photo.ImageInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -49,20 +49,20 @@ public class SendMultiPictureHelper
   static final String jdField_a_of_type_JavaLangString = "SendMultiPictureHelper";
   public int a;
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new biz(this);
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new bje(this);
   public Bundle a;
   protected SendMultiPictureHelper.SendingFileInfo a;
   public BaseActivity a;
   public QQAppInterface a;
   public FMObserver a;
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new bix(this);
+  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new bjc(this);
   public QQCustomDialog a;
   public ArrayList a;
   public List a;
   public boolean a;
   public int b;
   BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = null;
-  DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new bja(this);
+  DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new bjf(this);
   protected String b;
   public boolean b;
   public int c;
@@ -84,11 +84,11 @@ public class SendMultiPictureHelper
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new biy(this);
-    this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener = new bjb(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new bjd(this);
+    this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener = new bjg(this);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
-    this.f = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364053);
+    this.f = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364064);
   }
   
   private long a(String paramString1, int paramInt, String paramString2)
@@ -319,7 +319,7 @@ public class SendMultiPictureHelper
         if (((File)localObject2).length() == 0L)
         {
           if (this.jdField_c_of_type_Int == 0) {
-            Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364099), 0).show();
+            Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364110), 0).show();
           }
         }
         else
@@ -328,7 +328,7 @@ public class SendMultiPictureHelper
           return;
         }
       }
-      Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364100), 0).show();
+      Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364111), 0).show();
       continue;
       label264:
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
@@ -351,7 +351,7 @@ public class SendMultiPictureHelper
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, this.e, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364056), null, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, this.e, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364067), null, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
@@ -394,7 +394,7 @@ public class SendMultiPictureHelper
       if (this.jdField_c_of_type_Int != 0) {
         break label613;
       }
-      Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364099), 0).show();
+      Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364110), 0).show();
     }
     for (;;)
     {
@@ -403,14 +403,14 @@ public class SendMultiPictureHelper
         ((SendMultiPictureHelper.SendingFileInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long = l;
       }
       if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bjc(this);
+        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bjh(this);
       }
       paramString1 = new IntentFilter();
       paramString1.addAction("android.net.conn.CONNECTIVITY_CHANGE");
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramString1);
       return;
       label613:
-      Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364100), 0).show();
+      Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364111), 0).show();
     }
   }
   
@@ -418,16 +418,16 @@ public class SendMultiPictureHelper
   {
     Object localObject = "";
     if (this.jdField_d_of_type_Int == 1) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364054);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364065);
     }
     for (;;)
     {
-      localObject = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131363513), (String)localObject, 2131364103, 2131362791, this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
+      localObject = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131363524), (String)localObject, 2131364114, 2131362798, this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
       ((QQCustomDialog)localObject).setCancelable(false);
       ((QQCustomDialog)localObject).show();
       return;
       if (this.jdField_d_of_type_Int == 0) {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364055);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364066);
       }
     }
   }

@@ -1,21 +1,37 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.QZoneManager.FeedType;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
 
 public class cwa
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public cwa(ScreenShot paramScreenShot) {}
+  public cwa(QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.jdField_a_of_type_Cwe.a(false);
-    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
-      KapalaiAdapterUtil.a().b(this.a.jdField_a_of_type_AndroidViewWindow);
+    int i;
+    if (paramIntent.getAction().equals("com.tencent.qzone.cleanunreadcount"))
+    {
+      i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
+      paramContext = (QZoneManagerImp)this.a.getManager(9);
+      if (paramContext != null)
+      {
+        if (i != 0) {
+          break label62;
+        }
+        if (paramContext.a(QZoneManager.FeedType.friendSpace) > 0) {
+          paramContext.a(QZoneManager.FeedType.friendSpace, 0, 0L, null);
+        }
+      }
     }
+    label62:
+    while ((i != 1) || (paramContext.a(QZoneManager.FeedType.mySpacefeed) <= 0)) {
+      return;
+    }
+    paramContext.a(QZoneManager.FeedType.mySpacefeed, 0, 0L, null);
   }
 }
 

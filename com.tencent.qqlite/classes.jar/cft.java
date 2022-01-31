@@ -1,37 +1,25 @@
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.SecSigObserver;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.XListView;
 
 public class cft
-  implements AbsListView.OnScrollListener
+  extends SecSigObserver
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  public cft(MainAssistObserver paramMainAssistObserver) {}
   
-  public cft(MessageSearchDialog paramMessageSearchDialog) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (MessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog).a() == this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, scrollState = " + paramInt + ", lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
-      }
-    } while ((this.b == 0) || (this.jdField_a_of_type_Int != this.b) || (paramInt != 0));
     if (QLog.isColorLevel()) {
-      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, reach bottom, lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
+      QLog.d("sec_sig_tag", 2, "mSecSigObserver start url:" + paramString5);
     }
-    MessageSearchDialog.b(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.b = paramInt3;
+    paramString1 = DialogUtil.a(this.a.a, 230).setTitle(paramString1).setMessage(paramString2).setPositiveButton(paramString4, new cfv(this, paramString5)).setNegativeButton(paramString3, new cfu(this));
+    if (paramString1 != null)
+    {
+      paramString1.setCancelable(false);
+      paramString1.show();
+    }
   }
 }
 

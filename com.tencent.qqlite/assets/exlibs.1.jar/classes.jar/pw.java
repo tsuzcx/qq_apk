@@ -13,7 +13,7 @@ public class pw
     int j = this.a.b.getHeight();
     if (j < i)
     {
-      View localView = this.a.findViewById(2131297802);
+      View localView = this.a.findViewById(2131297806);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
       int k = localLayoutParams.topMargin;
       localLayoutParams.topMargin = ((i - j) / 2 + k);

@@ -7,7 +7,7 @@ public class aaa
   
   public void run()
   {
-    BaseChatPie.c(this.a, true);
+    this.a.g(2131165187);
   }
 }
 

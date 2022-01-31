@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
 public class cul
-  implements Comparator
+  implements View.OnClickListener
 {
-  public cul(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public cul(IphoneTitleBarActivity paramIphoneTitleBarActivity) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void onClick(View paramView)
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    this.a.a();
   }
 }
 

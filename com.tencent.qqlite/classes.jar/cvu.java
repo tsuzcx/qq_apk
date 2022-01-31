@@ -1,21 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.RoamInfoListWrapper;
-import java.util.ArrayList;
+import android.os.Process;
+import com.tencent.mobileqq.app.ProcessExitReceiver;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-public final class cvu
-  implements Parcelable.Creator
+public class cvu
+  extends Thread
 {
-  public RoamInfoListWrapper a(Parcel paramParcel)
-  {
-    RoamInfoListWrapper localRoamInfoListWrapper = new RoamInfoListWrapper();
-    localRoamInfoListWrapper.a = paramParcel.readArrayList(ArrayList.class.getClassLoader());
-    return localRoamInfoListWrapper;
-  }
+  public cvu(ProcessExitReceiver paramProcessExitReceiver) {}
   
-  public RoamInfoListWrapper[] a(int paramInt)
+  public void run()
   {
-    return new RoamInfoListWrapper[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("ProcessExitReceiver", 2, "Kill process " + MobileQQ.getMobileQQ().getProcessName());
+    }
+    Process.killProcess(Process.myPid());
   }
 }
 

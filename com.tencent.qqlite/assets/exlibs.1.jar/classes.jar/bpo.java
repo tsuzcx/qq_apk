@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.FriendManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class bpo
-  extends FriendListObserver
+  implements View.OnClickListener
 {
-  public bpo(TroopRequestActivity paramTroopRequestActivity) {}
+  public bpo(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((!paramBoolean) || (paramString == null)) {}
-    do
-    {
-      return;
-      paramString = ((FriendManager)this.a.app.getManager(8)).a(paramString);
-    } while (paramString == null);
-    TroopRequestActivity.a(this.a, paramString);
+    this.a.i();
   }
 }
 

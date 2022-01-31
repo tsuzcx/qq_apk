@@ -1,15 +1,26 @@
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.FriendsManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
 public class aar
-  implements Runnable
+  implements Comparator
 {
   public aar(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    ((FriendsManagerImp)this.a.a.getManager(8)).a();
+    if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
+      if (paramChatMessage1.getId() <= paramChatMessage2.getId()) {}
+    }
+    while (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq)
+    {
+      return 1;
+      if (paramChatMessage1.getId() < paramChatMessage2.getId()) {
+        return -1;
+      }
+      return 0;
+    }
+    return -1;
   }
 }
 

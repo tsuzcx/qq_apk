@@ -1,22 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoCropAction;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
+import com.tencent.mobileqq.model.PhoneContactManager;
 
 public class civ
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public civ(PhotoCropAction paramPhotoCropAction, ActionSheet paramActionSheet) {}
+  public civ(PhoneMatchActivity paramPhoneMatchActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void run()
   {
-    if (paramInt != this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.a(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.c();
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.a.f();
   }
 }
 

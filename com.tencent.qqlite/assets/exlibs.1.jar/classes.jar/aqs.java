@@ -1,14 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.emosm.view.DragSortListView.LeftEventListener;
 
 public class aqs
-  implements DragSortListView.LeftEventListener
+  implements View.OnClickListener
 {
   public aqs(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void b(int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+  }
 }
 
 

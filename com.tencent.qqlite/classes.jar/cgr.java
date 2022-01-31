@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.ContactListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
 
 public class cgr
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public cgr(ContactListView paramContactListView) {}
+  public cgr(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.f();
-    this.a.m();
+    this.a.a.setText("");
   }
 }
 

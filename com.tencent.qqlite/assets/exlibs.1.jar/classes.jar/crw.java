@@ -1,17 +1,25 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class crw
   implements Runnable
 {
-  public crw(DataLineHandler paramDataLineHandler, String paramString) {}
+  public crw(ConditionSearchManager paramConditionSearchManager) {}
   
   public void run()
   {
-    FMToastUtil.a("'" + this.jdField_a_of_type_JavaLangString + "'" + BaseApplication.getContext().getResources().getString(2131361846));
+    int j = this.a.a();
+    int i = -1;
+    if (j != 0) {
+      i = this.a.a(j);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "pendCardParseRequest | check reuslt = " + j + " | update result = " + i);
+    }
+    if (j == 0) {
+      ConditionSearchManager.a(this.a).a(new crx(this));
+    }
   }
 }
 

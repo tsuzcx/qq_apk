@@ -11,7 +11,7 @@ import android.text.method.MovementMethod;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import exv;
+import fab;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -39,9 +39,9 @@ public class ContainerView$SelectableTextView
     setGravity(19);
     setScroller(null);
     setHighlightColor(1722605812);
-    setTextSelectHandle(2130839409);
-    setTextSelectHandleLeft(2130839408);
-    setTextSelectHandleRight(2130839410);
+    setTextSelectHandle(2130839474);
+    setTextSelectHandleLeft(2130839473);
+    setTextSelectHandleRight(2130839475);
     setTextSize(28.0F);
     setTextColor(-16777216);
     setVisibility(4);
@@ -127,7 +127,7 @@ public class ContainerView$SelectableTextView
     setFocusable(true);
     setFocusableInTouchMode(true);
     setClickable(paramBoolean);
-    setOnLongClickListener(new exv(this));
+    setOnLongClickListener(new fab(this));
   }
   
   public void setTextSelectHandle(int paramInt)

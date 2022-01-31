@@ -1,10 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
-public final class djo
-  implements DialogInterface.OnClickListener
+class djo
+  implements Runnable
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  djo(djn paramdjn) {}
+  
+  public void run()
+  {
+    QfileBaseCloudFileTabView.a(this.a.a);
+  }
 }
 
 

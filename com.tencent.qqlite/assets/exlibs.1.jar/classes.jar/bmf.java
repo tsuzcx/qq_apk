@@ -1,34 +1,27 @@
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class bmf
-  extends Thread
+  extends Handler
 {
-  public bmf(TroopDisbandActivity paramTroopDisbandActivity) {}
+  public bmf(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    try
-    {
-      TroopHandler localTroopHandler = (TroopHandler)this.a.app.a(17);
-      if (localTroopHandler != null)
-      {
-        long l = Long.parseLong(this.a.b);
-        localTroopHandler.a(l, 0L, 5, null, 6, 1);
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(Long.valueOf(l));
-        localTroopHandler.a(localArrayList);
-      }
+    if (!this.a.app.isLogin()) {
       return;
     }
-    catch (Exception localException)
+    switch (paramMessage.what)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.troopdisband.disband", 2, localException.toString());
+    default: 
+      return;
+    case 1: 
+      this.a.d();
+      return;
     }
+    this.a.d();
   }
 }
 

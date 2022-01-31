@@ -1,20 +1,50 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.SystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class efz
-  implements Runnable
 {
-  public efz(SystemMsgController paramSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
+  public int a;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void run()
+  public efz(long paramLong, String paramString1, String paramString2)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putInt("unread_system_msg", this.jdField_a_of_type_Int).commit();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    int i;
+    if (paramString1 == null)
+    {
+      i = 0;
+      if (paramString2 != null) {
+        break label67;
+      }
     }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = (j + (i + 19 + 1) + 1);
+      return;
+      i = paramString1.getBytes().length;
+      break;
+      label67:
+      j = paramString2.getBytes().length;
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Date localDate = new Date(this.jdField_a_of_type_Long);
+    localStringBuilder.append(StatisticCollector.a().format(localDate));
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
 }
 

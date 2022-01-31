@@ -14,16 +14,16 @@ import com.tencent.mobileqq.utils.ContactUtils;
 public class ContactSearchableFriend
   extends IContactSearchable
 {
-  private static final int jdField_a_of_type_Int = 0;
-  private static final int jdField_b_of_type_Int = 1;
-  private static final int jdField_c_of_type_Int = 2;
-  private static final int jdField_d_of_type_Int = 3;
+  public static final int a = 0;
+  public static final int b = 3;
+  private static final int c = 1;
+  private static final int d = 2;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Friends jdField_a_of_type_ComTencentMobileqqDataFriends;
-  private String jdField_a_of_type_JavaLangString;
-  private String jdField_b_of_type_JavaLangString;
-  private String jdField_c_of_type_JavaLangString;
-  private String jdField_d_of_type_JavaLangString;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   private int jdField_e_of_type_Int;
   private String jdField_e_of_type_JavaLangString;
   private String f;
@@ -37,19 +37,19 @@ public class ContactSearchableFriend
   public ContactSearchableFriend(Context paramContext, QQAppInterface paramQQAppInterface, Friends paramFriends, String paramString, long paramLong1, long paramLong2)
   {
     this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.y = paramLong2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.A = paramLong2;
+    this.jdField_e_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     ChnToSpell.a(paramContext);
     if ((this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark != null) && (this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark.length() != 0))
     {
-      this.b = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, 1).toLowerCase();
-      this.c = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, 2).toLowerCase();
+      this.jdField_a_of_type_JavaLangString = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, 1).toLowerCase();
+      this.b = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, 2).toLowerCase();
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqDataFriends.name != null) && (this.jdField_a_of_type_ComTencentMobileqqDataFriends.name.length() != 0))
     {
-      this.d = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, 1).toLowerCase();
-      this.jdField_e_of_type_JavaLangString = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, 2).toLowerCase();
+      this.c = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, 1).toLowerCase();
+      this.d = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, 2).toLowerCase();
     }
     a();
   }
@@ -173,32 +173,32 @@ public class ContactSearchableFriend
         break label263;
       }
       str4 = this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias;
-      str5 = this.b;
-      str6 = this.c;
-      str7 = this.d;
-      str8 = this.jdField_e_of_type_JavaLangString;
+      str5 = this.jdField_a_of_type_JavaLangString;
+      str6 = this.b;
+      str7 = this.c;
+      str8 = this.d;
       paramString = paramString.toLowerCase();
-      this.x = -9223372036854775808L;
+      this.z = -9223372036854775808L;
       if ((str1 == null) || (str1.length() == 0)) {
         break label422;
       }
       if ((!str1.equals(paramString)) && ((str5 == null) || (!str5.equals(paramString))) && ((str6 == null) || (!str6.equals(paramString)))) {
         break label281;
       }
-      if (1125899906842624L > this.x)
+      if (1125899906842624L > this.z)
       {
         if ((str1.equals(paramString)) || (str1.equals(str5))) {
           break label269;
         }
         l = 1125899906842624L + 4503599627370496L;
         label207:
-        this.x = (l + 0L);
+        this.z = (l + 0L);
         this.jdField_e_of_type_Int = 2;
       }
-      if (this.x == -9223372036854775808L) {
+      if (this.z == -9223372036854775808L) {
         break label422;
       }
-      this.x += this.y;
+      this.z += this.A;
     }
     label251:
     int i;
@@ -241,7 +241,7 @@ public class ContactSearchableFriend
           break label403;
         }
         l = 562949953421312L;
-        if (l <= this.x) {
+        if (l <= this.z) {
           break label409;
         }
         if ((k >= 0) || (str1.equals(str5))) {
@@ -250,7 +250,7 @@ public class ContactSearchableFriend
       }
       for (l += 4503599627370496L;; l += 9007199254740992L)
       {
-        this.x = (l + 0L);
+        this.z = (l + 0L);
         this.jdField_e_of_type_Int = 2;
         break;
         i = -1;
@@ -266,7 +266,7 @@ public class ContactSearchableFriend
       {
         if ((str2.equals(paramString)) || ((str7 != null) && (str7.equals(paramString))) || ((str8 != null) && (str8.equals(paramString))))
         {
-          if (1125899906842624L > this.x)
+          if (1125899906842624L > this.z)
           {
             if ((str2.equals(paramString)) || (str2.equals(str7))) {
               break label562;
@@ -276,13 +276,13 @@ public class ContactSearchableFriend
               break label574;
             }
           }
-          for (this.x = (l + 0L);; this.x = (l + 0L))
+          for (this.z = (l + 0L);; this.z = (l + 0L))
           {
             this.jdField_e_of_type_Int = 1;
-            if (this.x == -9223372036854775808L) {
+            if (this.z == -9223372036854775808L) {
               break label750;
             }
-            this.x += this.y;
+            this.z += this.A;
             return;
             l = 9007199254740992L + 1125899906842624L;
             break;
@@ -303,7 +303,7 @@ public class ContactSearchableFriend
             break label720;
           }
           l = 562949953421312L;
-          if (l <= this.x) {
+          if (l <= this.z) {
             break label726;
           }
           if ((k >= 0) || (str2.equals(str7))) {
@@ -314,7 +314,7 @@ public class ContactSearchableFriend
             break label739;
           }
         }
-        for (this.x = (l + 0L);; this.x = (l + 0L))
+        for (this.z = (l + 0L);; this.z = (l + 0L))
         {
           this.jdField_e_of_type_Int = 1;
           break;
@@ -333,29 +333,29 @@ public class ContactSearchableFriend
       if ((str4 != null) && (str4.length() != 0))
       {
         if (str4.equals(paramString)) {
-          if (1125899906842624L > this.x)
+          if (1125899906842624L > this.z)
           {
             l = 1125899906842624L + 9007199254740992L;
             if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark)) || (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name))) {
               break label856;
             }
-            this.x = (l + 0L);
+            this.z = (l + 0L);
             this.jdField_e_of_type_Int = 3;
           }
         }
         for (;;)
         {
-          if (this.x != -9223372036854775808L)
+          if (this.z != -9223372036854775808L)
           {
-            this.x += this.y;
+            this.z += this.A;
             return;
-            this.x = (l + 0L);
+            this.z = (l + 0L);
             break;
-            if ((str4.indexOf(paramString) >= 0) && (281474976710656L > this.x))
+            if ((str4.indexOf(paramString) >= 0) && (281474976710656L > this.z))
             {
               l = 281474976710656L + 9007199254740992L;
               if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark)) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name))) {}
-              for (this.x = (l + 0L);; this.x = (l + 0L))
+              for (this.z = (l + 0L);; this.z = (l + 0L))
               {
                 this.jdField_e_of_type_Int = 3;
                 break;
@@ -384,13 +384,13 @@ public class ContactSearchableFriend
       if (!str3.equals(paramString)) {
         break label1069;
       }
-      if (1125899906842624L > this.x)
+      if (1125899906842624L > this.z)
       {
         l = 1125899906842624L + 9007199254740992L;
         if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark)) || (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name))) {
           break label1058;
         }
-        this.x = (l + 0L);
+        this.z = (l + 0L);
         this.jdField_e_of_type_Int = 0;
       }
     }
@@ -401,11 +401,11 @@ public class ContactSearchableFriend
     for (;;)
     {
       label856:
-      if (this.x != -9223372036854775808L)
+      if (this.z != -9223372036854775808L)
       {
-        this.x += this.y;
+        this.z += this.A;
         return;
-        this.x = (l + 0L);
+        this.z = (l + 0L);
         break;
         i = str3.indexOf(paramString);
         if (i >= 0)
@@ -414,7 +414,7 @@ public class ContactSearchableFriend
             break label1149;
           }
           l = 562949953421312L;
-          if (l <= this.x) {
+          if (l <= this.z) {
             break label1155;
           }
           l += 9007199254740992L;
@@ -426,7 +426,7 @@ public class ContactSearchableFriend
     }
     label1033:
     label1058:
-    for (this.x = (l + 0L);; this.x = (l + 0L))
+    for (this.z = (l + 0L);; this.z = (l + 0L))
     {
       this.jdField_e_of_type_Int = 0;
       break label1033;
@@ -445,7 +445,12 @@ public class ContactSearchableFriend
   
   public String b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.jdField_e_of_type_JavaLangString;
+  }
+  
+  public int c()
+  {
+    return this.jdField_e_of_type_Int;
   }
   
   public String c()

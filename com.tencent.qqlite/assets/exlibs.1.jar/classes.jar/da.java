@@ -1,60 +1,53 @@
-import com.dataline.mpfile.MpfileDataCenter;
-import com.dataline.mpfile.MpfileTaskInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.DLFilesViewerActivity;
+import com.dataline.util.DatalineFilesAdapter;
+import com.dataline.util.DatalineFilesAdapter.ItemHolder;
+import com.dataline.util.file.DLFileInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.DatalineMessageManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class da
+  implements View.OnClickListener
 {
-  public Map a;
-  public Map b = new HashMap();
+  public da(DatalineFilesAdapter paramDatalineFilesAdapter) {}
   
-  private da(MpfileDataCenter paramMpfileDataCenter)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public MpfileTaskInfo a(long paramLong)
-  {
-    return (MpfileTaskInfo)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-  }
-  
-  public MpfileTaskInfo a(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!this.b.containsKey(paramString)) {
-      return null;
-    }
-    return a(((Long)this.b.get(paramString)).longValue());
-  }
-  
-  public ArrayList a()
-  {
-    return new ArrayList(this.jdField_a_of_type_JavaUtilMap.values());
-  }
-  
-  public void a(MpfileTaskInfo paramMpfileTaskInfo)
-  {
-    if (paramMpfileTaskInfo == null) {}
-    while ((paramMpfileTaskInfo.c == null) || (paramMpfileTaskInfo.c.length() == 0) || (paramMpfileTaskInfo.d == 0L)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramMpfileTaskInfo.d), paramMpfileTaskInfo);
-    this.b.put(paramMpfileTaskInfo.c, Long.valueOf(paramMpfileTaskInfo.d));
-    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(paramMpfileTaskInfo);
-  }
-  
-  public void a(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
+    paramView = (DatalineFilesAdapter.ItemHolder)paramView.getTag();
+    if (paramView.a == null) {}
     do
     {
       return;
-      paramString = a(paramString);
-    } while (paramString == null);
-    this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramString.d));
-    this.b.remove(paramString.c);
-    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.d(paramString.c);
+      localObject = DatalineFilesAdapter.a(this.a).a().a().b(paramView.a.a);
+    } while (localObject == null);
+    paramView = FileManagerUtil.a((DataLineMsgRecord)localObject);
+    ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
+    localForwardFileInfo.a(10009);
+    localForwardFileInfo.c(6);
+    localForwardFileInfo.b(paramView.nSessionId);
+    localForwardFileInfo.d(((DataLineMsgRecord)localObject).filename);
+    localForwardFileInfo.c(((DataLineMsgRecord)localObject).sessionid);
+    localForwardFileInfo.d(((DataLineMsgRecord)localObject).filesize);
+    localForwardFileInfo.a(((DataLineMsgRecord)localObject).path);
+    Object localObject = new Intent(DatalineFilesAdapter.a(this.a).getApplicationContext(), FileBrowserActivity.class);
+    if ((paramView.nFileType == 0) || (paramView.nFileType == 1))
+    {
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(String.valueOf(paramView.nSessionId));
+      ((Intent)localObject).putStringArrayListExtra("Aio_SessionId_ImageList", localArrayList);
+    }
+    ((Intent)localObject).putExtra("fileinfo", localForwardFileInfo);
+    DatalineFilesAdapter.a(this.a).startActivityForResult((Intent)localObject, 102);
   }
 }
 

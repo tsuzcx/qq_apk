@@ -1,28 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
 
 public class apb
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public apb(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public apb(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramView.getId() == 2131296440)
-    {
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a();
-      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (paramView != null))
-      {
-        ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a, null);
-        localActionSheet.a(2131363936, 3);
-        localActionSheet.d(2131362794);
-        localActionSheet.a(new apc(this, paramView, localActionSheet));
-        localActionSheet.show();
-      }
+    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.c) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
   }
 }

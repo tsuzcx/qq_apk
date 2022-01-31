@@ -16,7 +16,7 @@ public class vr
   {
     AppRuntime.Status localStatus = AppRuntime.Status.online;
     int i = paramView.getId();
-    if (i == 2131296459)
+    if (i == 2131296462)
     {
       ReportController.b(this.a.app, "CliOper", "", "", "0X800403A", "0X800403A", 0, 0, "", "", "", "");
       paramView = AppRuntime.Status.online;
@@ -32,7 +32,7 @@ public class vr
         this.a.app.a(this.a.a(paramView), true);
       }
       return;
-      if (i == 2131296460)
+      if (i == 2131296463)
       {
         ReportController.b(this.a.app, "CliOper", "", "", "0X800403B", "0X800403B", 0, 0, "", "", "", "");
         paramView = AppRuntime.Status.invisiable;
@@ -40,12 +40,12 @@ public class vr
       else
       {
         paramView = localStatus;
-        if (i == 2131296461) {
+        if (i == 2131296464) {
           paramView = AppRuntime.Status.away;
         }
       }
     }
-    Toast.makeText(this.a, 2131362935, 0).show();
+    Toast.makeText(this.a, 2131362942, 0).show();
   }
 }
 

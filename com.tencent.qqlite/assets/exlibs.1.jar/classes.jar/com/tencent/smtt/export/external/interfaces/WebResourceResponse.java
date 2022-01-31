@@ -1,18 +1,31 @@
 package com.tencent.smtt.export.external.interfaces;
 
 import java.io.InputStream;
+import java.util.Map;
 
 public class WebResourceResponse
 {
   private String mEncoding;
   private InputStream mInputStream;
   private String mMimeType;
+  private String mReasonPhrase;
+  private Map<String, String> mResponseHeaders;
+  private int mStatusCode;
+  
+  public WebResourceResponse(String paramString1, String paramString2, int paramInt, String paramString3, Map<String, String> paramMap, InputStream paramInputStream)
+  {
+    this.mMimeType = paramString1;
+    this.mEncoding = paramString2;
+    this.mStatusCode = paramInt;
+    this.mReasonPhrase = paramString3;
+    setResponseHeaders(paramMap);
+  }
   
   public WebResourceResponse(String paramString1, String paramString2, InputStream paramInputStream)
   {
     this.mMimeType = paramString1;
     this.mEncoding = paramString2;
-    this.mInputStream = paramInputStream;
+    setData(paramInputStream);
   }
   
   public InputStream getData()
@@ -30,6 +43,21 @@ public class WebResourceResponse
     return this.mMimeType;
   }
   
+  public String getReasonPhrase()
+  {
+    return this.mReasonPhrase;
+  }
+  
+  public Map<String, String> getResponseHeaders()
+  {
+    return this.mResponseHeaders;
+  }
+  
+  public int getStatusCode()
+  {
+    return this.mStatusCode;
+  }
+  
   public void setData(InputStream paramInputStream)
   {
     this.mInputStream = paramInputStream;
@@ -43,6 +71,17 @@ public class WebResourceResponse
   public void setMimeType(String paramString)
   {
     this.mMimeType = paramString;
+  }
+  
+  public void setResponseHeaders(Map<String, String> paramMap)
+  {
+    this.mResponseHeaders = paramMap;
+  }
+  
+  public void setStatusCodeAndReasonPhrase(int paramInt, String paramString)
+  {
+    this.mStatusCode = paramInt;
+    this.mReasonPhrase = paramString;
   }
 }
 

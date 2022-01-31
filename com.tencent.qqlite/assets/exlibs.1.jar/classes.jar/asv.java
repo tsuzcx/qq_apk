@@ -1,23 +1,31 @@
-import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.biz.lebasearch.SearchProtocol.SearchObserver;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import com.tencent.mobileqq.activity.Leba;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
 
 public class asv
-  implements Runnable
+  implements SearchProtocol.SearchObserver
 {
-  public asv(LoginActivity paramLoginActivity) {}
+  public asv(Leba paramLeba) {}
   
-  public void run()
+  public void a(int paramInt, SearchProtocol.WordItem paramWordItem)
   {
-    this.a.a.setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
-    localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
-    localTranslateAnimation.setDuration(500L);
-    localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setAnimationListener(new asw(this));
-    this.a.a.startAnimation(localTranslateAnimation);
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramWordItem.a)))
+    {
+      Leba.a(this.a).setHint(paramWordItem.a);
+      Leba.a(this.a).setTag(paramWordItem.b);
+    }
   }
+  
+  public void a(int paramInt, ArrayList paramArrayList) {}
+  
+  public void a(int paramInt, List paramList) {}
+  
+  public void a(int paramInt, JSONArray paramJSONArray) {}
 }
 
 

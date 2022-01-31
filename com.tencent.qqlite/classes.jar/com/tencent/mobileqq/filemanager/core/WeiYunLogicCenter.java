@@ -29,17 +29,17 @@ import com.weiyun.sdk.IWyTaskManager;
 import com.weiyun.sdk.IWyTaskManager.Task;
 import com.weiyun.sdk.WyConfiguration;
 import com.weiyun.sdk.WyFileSystemFactory;
-import dqo;
-import dqp;
-import dqq;
-import dqr;
-import dqs;
-import dqt;
-import dqu;
-import dqv;
-import dqw;
-import dqx;
-import dqy;
+import drq;
+import drr;
+import drs;
+import drt;
+import dru;
+import drv;
+import drw;
+import drx;
+import dry;
+import drz;
+import dsa;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -257,7 +257,7 @@ public class WeiYunLogicCenter
     if (paramBoolean) {}
     for (paramInt = i;; paramInt = 2)
     {
-      ((IWyFileSystem)localObject1).getOfflineFileThumbnail(paramString, (IWyFileSystem.ThumbnailType)localObject2, paramInt, paramObject, new dqw(this));
+      ((IWyFileSystem)localObject1).getOfflineFileThumbnail(paramString, (IWyFileSystem.ThumbnailType)localObject2, paramInt, paramObject, new dry(this));
       return null;
     }
   }
@@ -291,7 +291,7 @@ public class WeiYunLogicCenter
       }
       return null;
     }
-    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getThumbnail(paramString1, IWyFileSystem.ThumbnailType.values()[paramInt], paramString2, 0L, paramObject, new dqv(this));
+    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getThumbnail(paramString1, IWyFileSystem.ThumbnailType.values()[paramInt], paramString2, 0L, paramObject, new drx(this));
     return null;
   }
   
@@ -309,7 +309,7 @@ public class WeiYunLogicCenter
       return;
     }
     this.b = new ArrayList();
-    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().listCategory(new dqo(this));
+    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().listCategory(new drq(this));
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -325,7 +325,7 @@ public class WeiYunLogicCenter
       }
       return;
     }
-    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().listOfflineFiles(paramInt1, paramInt2, paramInt3, new dqs(this));
+    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().listOfflineFiles(paramInt1, paramInt2, paramInt3, new dru(this));
   }
   
   public void a(FileManagerEntity paramFileManagerEntity, int paramInt, boolean paramBoolean)
@@ -386,7 +386,7 @@ public class WeiYunLogicCenter
           }
         }
       }
-      this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().sendWyFile2Ftn(paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramFileManagerEntity.nWeiYunSrcType, null, l1, i, null, localObject, new dqt(this, paramFileManagerEntity, paramInt));
+      this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().sendWyFile2Ftn(paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramFileManagerEntity.nWeiYunSrcType, null, l1, i, null, localObject, new drv(this, paramFileManagerEntity, paramInt));
       FileManagerUtil.b(paramFileManagerEntity.nSessionId);
       return;
     }
@@ -462,7 +462,7 @@ public class WeiYunLogicCenter
           }
         }
       }
-      this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().sendWyFile2Ftn(paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramFileManagerEntity.nWeiYunSrcType, paramFileManagerEntity.strFileMd5, l1, 102, null, paramString, new dqu(this, paramFileManagerEntity, localTroopFileTransferManager, localTroopFileStatusInfo));
+      this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().sendWyFile2Ftn(paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramFileManagerEntity.nWeiYunSrcType, paramFileManagerEntity.strFileMd5, l1, 102, null, paramString, new drw(this, paramFileManagerEntity, localTroopFileTransferManager, localTroopFileStatusInfo));
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramFileManagerEntity.nSessionId);
       return;
     }
@@ -486,7 +486,7 @@ public class WeiYunLogicCenter
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, strFileId[" + String.valueOf(paramWeiYunFileInfo.a) + "],strFileName[" + paramWeiYunFileInfo.b + "]");
     }
     FMDataCache.a(paramWeiYunFileInfo.a, paramWeiYunFileInfo);
-    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().deleteWyFile(paramWeiYunFileInfo.a, paramWeiYunFileInfo.c, new dqy(this, paramWeiYunFileInfo));
+    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().deleteWyFile(paramWeiYunFileInfo.a, paramWeiYunFileInfo.c, new dsa(this, paramWeiYunFileInfo));
   }
   
   public void a(IWyTaskManager.Task paramTask)
@@ -528,7 +528,7 @@ public class WeiYunLogicCenter
       while (this.jdField_a_of_type_JavaUtilLinkedHashMap != null)
       {
         this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().listCloudFiles(paramString, paramInt1, paramInt2, paramLong, new dqr(this, paramString));
+        this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().listCloudFiles(paramString, paramInt1, paramInt2, paramLong, new drt(this, paramString));
         return;
       }
     } while (!QLog.isColorLevel());
@@ -548,7 +548,7 @@ public class WeiYunLogicCenter
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 40, new Object[] { Integer.valueOf(0), "network error" });
       return;
     }
-    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().getPreviewUrl(paramString1, paramString2, new dqx(this));
+    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().getPreviewUrl(paramString1, paramString2, new drz(this));
   }
   
   public boolean a()
@@ -566,7 +566,7 @@ public class WeiYunLogicCenter
     if (QLog.isColorLevel()) {
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd");
     }
-    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().needVerifyIndependentPassword(new dqp(this));
+    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().needVerifyIndependentPassword(new drr(this));
   }
   
   public void b(String paramString)
@@ -579,10 +579,10 @@ public class WeiYunLogicCenter
       if (QLog.isColorLevel()) {
         QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd : network error");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 45, new Object[] { Integer.valueOf(0), BaseApplication.getContext().getString(2131362916) });
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 45, new Object[] { Integer.valueOf(0), BaseApplication.getContext().getString(2131362923) });
       return;
     }
-    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().verifyIndependentPassword(paramString, null, new dqq(this));
+    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().verifyIndependentPassword(paramString, null, new drs(this));
   }
   
   public void c()

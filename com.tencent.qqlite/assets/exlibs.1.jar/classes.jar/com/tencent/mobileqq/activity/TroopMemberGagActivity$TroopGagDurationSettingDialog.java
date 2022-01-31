@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import bod;
+import boi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.utils.TroopGagMgr;
@@ -24,10 +24,10 @@ public class TroopMemberGagActivity$TroopGagDurationSettingDialog
   
   public TroopMemberGagActivity$TroopGagDurationSettingDialog(TroopMemberGagActivity paramTroopMemberGagActivity, Context paramContext)
   {
-    super(paramContext, 2131624242);
+    super(paramContext, 2131624243);
     requestWindowFeature(1);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2130903313, null);
+    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2130903316, null);
     setContentView(this.jdField_a_of_type_AndroidViewView);
     paramTroopMemberGagActivity = getWindow();
     paramContext = paramTroopMemberGagActivity.getAttributes();
@@ -35,7 +35,7 @@ public class TroopMemberGagActivity$TroopGagDurationSettingDialog
     paramContext.height = -2;
     paramContext.gravity = 81;
     paramTroopMemberGagActivity.setAttributes(paramContext);
-    paramTroopMemberGagActivity.setWindowAnimations(2131624243);
+    paramTroopMemberGagActivity.setWindowAnimations(2131624244);
     if (Build.VERSION.SDK_INT >= 11) {
       paramTroopMemberGagActivity.setFlags(16777216, 16777216);
     }
@@ -50,10 +50,10 @@ public class TroopMemberGagActivity$TroopGagDurationSettingDialog
     do
     {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagDurationSettingPannel = ((TroopGagDurationSettingPannel)this.jdField_a_of_type_AndroidViewView.findViewById(2131297667));
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagDurationSettingPannel = ((TroopGagDurationSettingPannel)this.jdField_a_of_type_AndroidViewView.findViewById(2131297671));
       this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagDurationSettingPannel.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity.f, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity.g, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity.h, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity.e);
-      this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131297663);
-      this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131297665);
+      this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131297667);
+      this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131297669);
       this.b.setClickable(true);
       this.c.setClickable(true);
       this.b.setOnClickListener(this);
@@ -61,8 +61,8 @@ public class TroopMemberGagActivity$TroopGagDurationSettingDialog
       this.b.setFocusable(true);
       this.c.setFocusable(true);
     } while (this.jdField_a_of_type_AndroidContentContext == null);
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131362342) + this.jdField_a_of_type_AndroidContentContext.getString(2131362344);
-    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131362343) + this.jdField_a_of_type_AndroidContentContext.getString(2131362344);
+    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131362343) + this.jdField_a_of_type_AndroidContentContext.getString(2131362345);
+    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131362344) + this.jdField_a_of_type_AndroidContentContext.getString(2131362345);
     this.b.setContentDescription(str1);
     this.c.setContentDescription(str2);
   }

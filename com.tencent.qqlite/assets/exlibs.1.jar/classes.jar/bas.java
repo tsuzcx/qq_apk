@@ -1,20 +1,39 @@
-import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class bas
-  implements Runnable
+  extends CardObserver
 {
-  public bas(PortraitImageview paramPortraitImageview, float paramFloat1, long paramLong, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5) {}
+  public bas(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void run()
+  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2)
   {
-    long l = System.currentTimeMillis();
-    float f1 = Math.min(this.jdField_a_of_type_Float, (float)(l - this.jdField_a_of_type_Long));
-    float f2 = this.b;
-    float f3 = this.c;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a(f2 + f3 * f1, this.d, this.e);
-    if (f1 < this.jdField_a_of_type_Float) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.post(this);
+    if (paramBoolean1) {}
+  }
+  
+  protected void onGetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (!this.a.app.a().equals(paramString)) {
+      return;
     }
+    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+  }
+  
+  protected void onSetAllowSeeLoginDays(boolean paramBoolean) {}
+  
+  protected void onSetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (!this.a.app.a().equals(paramString)) {}
+    do
+    {
+      return;
+      if (!paramBoolean1) {
+        this.a.a(2131364034, 1);
+      }
+    } while (!paramBoolean2);
+    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean3);
   }
 }
 

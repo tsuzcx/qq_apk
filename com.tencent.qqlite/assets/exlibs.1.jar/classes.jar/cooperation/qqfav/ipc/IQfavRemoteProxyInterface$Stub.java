@@ -6,7 +6,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import fkz;
+import fnf;
 
 public abstract class IQfavRemoteProxyInterface$Stub
   extends Binder
@@ -29,7 +29,7 @@ public abstract class IQfavRemoteProxyInterface$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IQfavRemoteProxyInterface))) {
       return (IQfavRemoteProxyInterface)localIInterface;
     }
-    return new fkz(paramIBinder);
+    return new fnf(paramIBinder);
   }
   
   public IBinder asBinder()

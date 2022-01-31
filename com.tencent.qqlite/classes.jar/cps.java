@@ -1,31 +1,24 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.antiphing.AntiphingHandler;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.adapter.AllBuddyListAdapter;
+import com.tencent.mobileqq.app.ContactSorter;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
 
 public class cps
-  implements DialogInterface.OnClickListener
+  implements Comparator
 {
-  public cps(AntiphingHandler paramAntiphingHandler) {}
+  public cps(AllBuddyListAdapter paramAllBuddyListAdapter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private String a(Entity paramEntity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(AntiphingHandler.a(this.a), 2, "On Click Left Button! ");
-    }
-    if (this.a.mRuntime.a() != null) {
-      this.a.mRuntime.a().finish();
-    }
-    for (;;)
-    {
-      AntiphingHandler.a(this.a, 1);
-      return;
-      if (QLog.isDevelopLevel()) {
-        QLog.d(AntiphingHandler.a(this.a), 4, "Call back object is null!");
-      }
-    }
+    paramEntity = (Friends)paramEntity;
+    return ContactUtils.a(paramEntity) + paramEntity.uin;
+  }
+  
+  public int a(Entity paramEntity1, Entity paramEntity2)
+  {
+    return ContactSorter.a(a(paramEntity1), a(paramEntity2));
   }
 }
 

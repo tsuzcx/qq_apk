@@ -1,14 +1,22 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.HashMap;
 
 public class dma
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public dma(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public dma(QfileLocalFileMediaTabView paramQfileLocalFileMediaTabView) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    this.a.e();
+    HashMap localHashMap1 = new HashMap();
+    FileCategoryUtil.a(AppConstants.ay, ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap1, null);
+    FileCategoryUtil.a(localHashMap1);
+    HashMap localHashMap2 = new HashMap();
+    FileCategoryUtil.a(AppConstants.ay, ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4a|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap2, null);
+    FileCategoryUtil.a(localHashMap2);
+    QfileLocalFileMediaTabView.a(this.a, new dmb(this, localHashMap1, localHashMap2));
   }
 }
 

@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
-import clo;
-import clp;
-import clq;
+import cmp;
+import cmq;
+import cmr;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.app.ContactFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -28,7 +28,7 @@ public class DiscussionListInnerFrame
   extends SelectMemberInnerFrame
   implements View.OnClickListener
 {
-  private clp jdField_a_of_type_Clp;
+  private cmq jdField_a_of_type_Cmq;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   public ArrayList a;
   
@@ -58,8 +58,8 @@ public class DiscussionListInnerFrame
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     }
     localObject1 = new HashMap();
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getResources().getString(2131362952);
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getResources().getString(2131362954);
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getResources().getString(2131362959);
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getResources().getString(2131362961);
     int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
     while (i >= 0)
     {
@@ -95,7 +95,7 @@ public class DiscussionListInnerFrame
         }
       }
     }
-    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new clo(this, (HashMap)localObject1));
+    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new cmp(this, (HashMap)localObject1));
   }
   
   public String a()
@@ -111,18 +111,18 @@ public class DiscussionListInnerFrame
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    setContentView(2130903631);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131297772));
+    setContentView(2130903640);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131297776));
     this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131427345);
     g();
-    this.jdField_a_of_type_Clp = new clp(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Clp);
+    this.jdField_a_of_type_Cmq = new cmq(this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Cmq);
   }
   
   public void b(Bundle paramBundle)
   {
     super.b(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(true, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131363983), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131363978));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(true, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131363994), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131363989));
   }
   
   public void d()
@@ -132,12 +132,12 @@ public class DiscussionListInnerFrame
   
   public void f()
   {
-    this.jdField_a_of_type_Clp.notifyDataSetChanged();
+    this.jdField_a_of_type_Cmq.notifyDataSetChanged();
   }
   
   public void onClick(View paramView)
   {
-    paramView = (clq)paramView.getTag();
+    paramView = (cmr)paramView.getTag();
     if ((paramView != null) && (paramView.a != null))
     {
       paramView = paramView.a;

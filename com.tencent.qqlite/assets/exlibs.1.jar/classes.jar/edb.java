@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.search.ISearchable;
-import java.util.Comparator;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.widget.ClickableImageSpan;
+import com.tencent.mobileqq.widget.ClickableImageSpan.ClickableImageSpanListener;
 
-public final class edb
-  implements Comparator
+public class edb
+  implements ClickableImageSpan.ClickableImageSpanListener
 {
-  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
+  public edb(EditActivity paramEditActivity) {}
+  
+  public void a(ClickableImageSpan paramClickableImageSpan)
   {
-    long l1 = paramISearchable1.d();
-    long l2 = paramISearchable2.d();
-    if (l1 < l2) {
-      return 1;
+    if ((EditActivity.a(this.a) == paramClickableImageSpan) && (System.currentTimeMillis() - this.a.a > 1300L)) {
+      this.a.c();
     }
-    if (l1 > l2) {
-      return -1;
-    }
-    return 0;
   }
 }
 

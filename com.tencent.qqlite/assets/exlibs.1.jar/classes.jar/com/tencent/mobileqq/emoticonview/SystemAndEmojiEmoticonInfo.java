@@ -123,7 +123,7 @@ public class SystemAndEmojiEmoticonInfo
     Object localObject2 = null;
     Object localObject1;
     if (this.e == 1) {
-      localObject1 = TextUtils.a(this.f, true);
+      localObject1 = TextUtils.a(this.f, false);
     }
     do
     {

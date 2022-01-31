@@ -1,31 +1,38 @@
-import android.database.Cursor;
-import android.os.Handler;
-import android.os.Message;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 import com.tencent.mobileqq.activity.ChatHistory;
 import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class aed
-  implements Runnable
+  extends ClickableSpan
 {
-  public aed(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, String paramString1, String paramString2, String paramString3) {}
+  public aed(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
+    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, "CliOper", "", this.b, "0X8004937", "0X8004937", 0, 0, "", "", "", "");
     try
     {
-      Cursor localCursor = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
-      Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.obtainMessage(8);
-      localMessage.obj = localCursor;
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.sendMessage(localMessage);
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
       return;
     }
-    catch (Exception localException)
+    catch (ActivityNotFoundException paramView)
     {
-      for (;;)
-      {
-        Object localObject = null;
-      }
+      paramView.printStackTrace();
     }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-16732929);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

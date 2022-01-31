@@ -1,20 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.ChatBackgroundInfo;
 
-public class acj
-  implements Runnable
+class acj
+  implements DialogInterface.OnClickListener
 {
-  public acj(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity, ArrayList paramArrayList) {}
+  acj(ach paramach, ChatBackgroundInfo paramChatBackgroundInfo, View paramView, int paramInt) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.e();
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.jdField_a_of_type_Acl.notifyDataSetChanged();
+    this.jdField_a_of_type_Ach.a.b = this.jdField_a_of_type_ComTencentMobileqqDataChatBackgroundInfo;
+    this.jdField_a_of_type_Ach.a.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView;
+    this.jdField_a_of_type_Ach.a.k = this.jdField_a_of_type_Int;
+    ChatBackgroundSettingActivity.a(this.jdField_a_of_type_Ach.a, "OPENVIP_SET", 3);
   }
 }
 

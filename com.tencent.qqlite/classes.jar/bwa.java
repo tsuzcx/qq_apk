@@ -1,51 +1,63 @@
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.ChatItemBuilder;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.PAGameItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.data.PAMessage.Item;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class bwa
-  implements View.OnClickListener
+  extends ClickableSpan
 {
-  public bwa(PAGameItemBuilder paramPAGameItemBuilder) {}
+  public bwa(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString1, String paramString2) {}
   
   public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis();
-    if (Math.abs(l - PAGameItemBuilder.a(this.a)) < 1000L) {}
-    bwb localbwb;
-    do
+    int j = 1;
+    Object localObject;
+    if (this.jdField_a_of_type_JavaLangString.startsWith("http"))
     {
-      do
+      localObject = this.jdField_a_of_type_JavaLangString;
+      paramView = (View)localObject;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        do
-        {
-          return;
-          PAGameItemBuilder.a(this.a, l);
-          localbwb = (bwb)paramView.getTag();
-          paramView = AIOUtils.a(paramView);
-        } while ((localbwb == null) || (!(paramView instanceof MessageForPubAccount)));
-        paramView = (MessageForPubAccount)paramView;
-        if ((paramView.mPAMessage != null) && (paramView.mPAMessage.items != null) && (!paramView.mPAMessage.items.isEmpty())) {
-          break;
+        if (((String)localObject).contains("?")) {
+          paramView = (String)localObject + "&sid=" + GrayTipsItemBuilder.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).getSid();
         }
-      } while (!QLog.isColorLevel());
-      QLog.d(ChatItemBuilder.a, 2, "PAGameItemBuilder onClickListener mPAMessage or items is empty !");
-      return;
-      PAMessage.Item localItem = (PAMessage.Item)paramView.mPAMessage.items.get(localbwb.c);
-      if (localItem != null) {
-        PAGameItemBuilder.a(this.a, localItem);
       }
-    } while (!(PAGameItemBuilder.b(this.a) instanceof QQAppInterface));
-    ReportController.b(PAGameItemBuilder.c(this.a), "P_CliOper", "Pb_account_lifeservice", PAGameItemBuilder.c(this.a).a, "mp_msg_game_xiazai_click", "aio_game_xiazai_click", localbwb.c + 1, 0, "", "", Long.toString(paramView.mPAMessage.mMsgId), "");
+      else
+      {
+        localObject = new Intent(GrayTipsItemBuilder.j(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder), QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", paramView);
+        ((Intent)localObject).putExtra("hide_left_button", true);
+        ((Intent)localObject).putExtra("show_right_close_button", true);
+        ((Intent)localObject).putExtra("finish_animation_up_down", true);
+        GrayTipsItemBuilder.k(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).startActivity((Intent)localObject);
+      }
+    }
+    for (int i = 2;; i = 1)
+    {
+      paramView = GrayTipsItemBuilder.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder);
+      if (GrayTipsItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).a == 0) {}
+      for (;;)
+      {
+        ReportController.a(paramView, "CliOper", "", "", "0X800416C", "0X800416C", 0, 0, String.valueOf(j), String.valueOf(2), String.valueOf(i), this.b);
+        return;
+        paramView = (String)localObject + "?sid=" + GrayTipsItemBuilder.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).getSid();
+        break;
+        j = 2;
+      }
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
   }
 }
 

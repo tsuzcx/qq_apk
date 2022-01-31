@@ -1,36 +1,26 @@
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class bem
-  implements View.OnClickListener
+  implements IStatusListener
 {
   public bem(QQSetting paramQQSetting) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, RichStatus paramRichStatus)
   {
-    int i = this.a.a.getPreferences().getInt("nearby_people_profile_ok_new", -1);
-    boolean bool = this.a.a.getPreferences().getBoolean("nearby_people_skip_guide", false);
-    if ((i == -1) && (!bool))
+    if (QQSetting.c(this.a))
     {
-      QQSetting.a(this.a, new QQProgressDialog(this.a.a(), (int)this.a.a().getResources().getDimension(2131492887)));
-      QQSetting.a(this.a).a("正在检查资料");
-      QQSetting.a(this.a).show();
-      paramView = (CardHandler)this.a.a.a(2);
-      if (paramView != null) {
-        paramView.g();
+      if (paramInt != 100) {
+        this.a.a(2131363679);
       }
-      return;
+      this.a.n();
     }
-    NearbyActivity.a(this.a.a(), 0, 0);
   }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

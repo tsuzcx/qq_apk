@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import dfg;
-import dfh;
+import dgi;
+import dgj;
 
 public class FastImagePreviewLayout
   extends LinearLayout
@@ -46,7 +46,7 @@ public class FastImagePreviewLayout
       QLog.d(jdField_a_of_type_JavaLangString, 2, "showFastImage called");
     }
     Object localObject = inflate(this.jdField_a_of_type_AndroidContentContext, 2130903063, null);
-    ((ImageView)((View)localObject).findViewById(2131296547)).setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    ((ImageView)((View)localObject).findViewById(2131296550)).setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
     addView((View)localObject);
     setVisibility(0);
     localObject = new AlphaAnimation(0.0F, 1.0F);
@@ -69,7 +69,7 @@ public class FastImagePreviewLayout
       localAlphaAnimation.setDuration(500L);
       localAlphaAnimation.setFillAfter(true);
       startAnimation(localAlphaAnimation);
-      localAlphaAnimation.setAnimationListener(new dfg(this));
+      localAlphaAnimation.setAnimationListener(new dgi(this));
       return;
     }
     removeAllViews();
@@ -77,7 +77,7 @@ public class FastImagePreviewLayout
   
   public void b()
   {
-    ThreadManager.b().post(new dfh(this));
+    ThreadManager.b().post(new dgj(this));
   }
   
   public void setHandler(Handler paramHandler)

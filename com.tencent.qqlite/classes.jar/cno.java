@@ -1,32 +1,30 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Message;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
-class cno
-  implements Runnable
+public class cno
+  implements View.OnTouchListener
 {
-  cno(cnn paramcnn) {}
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
   
-  public void run()
+  public cno(SelectMemberActivity paramSelectMemberActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberListInnerFrame", 2, "read troop members from database after updating data from server");
-      }
-      this.a.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSharedPreferences("last_update_time" + this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0).edit().putLong("key_last_update_time" + this.a.a.b, System.currentTimeMillis()).commit();
-      this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      Object localObject = TroopMemberListInnerFrame.a(this.a.a, this.a.a.b);
-      localObject = this.a.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, localObject);
-      this.a.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-      return;
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.b = paramMotionEvent.getRawY();
     }
-    catch (Exception localException) {}
+    while ((i != 2) || ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float <= 10.0F) && (paramMotionEvent.getRawY() - this.b <= 10.0F))) {
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

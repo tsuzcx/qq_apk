@@ -31,8 +31,8 @@ public class vo
       }
       AccountManageActivity.g(this.a).setVisibility(8);
       AccountManageActivity.h(this.a).setVisibility(0);
-      AccountManageActivity.i(this.a).setText(2131363433);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131427495));
+      AccountManageActivity.i(this.a).setText(2131363444);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131427499));
       if (this.a.jdField_a_of_type_AndroidViewView != null)
       {
         ((ShaderAnimLayout)AccountManageActivity.a(this.a, this.a.jdField_a_of_type_AndroidViewView)).d();
@@ -58,11 +58,11 @@ public class vo
       label194:
       AccountManageActivity.j(this.a).setVisibility(0);
       AccountManageActivity.k(this.a).setVisibility(8);
-      AccountManageActivity.l(this.a).setText(2131363436);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131427469));
+      AccountManageActivity.l(this.a).setText(2131363447);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131427472));
       break label102;
       label254:
-      paramView = paramView.findViewById(2131296454);
+      paramView = paramView.findViewById(2131296457);
       if (paramView != null)
       {
         ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();

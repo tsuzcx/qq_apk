@@ -1,14 +1,23 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class dis
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements URLDrawable.URLDrawableListener
 {
-  public dis(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public dis(UniformDownloadActivity paramUniformDownloadActivity, ImageView paramImageView) {}
   
-  public void onGlobalLayout()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.d();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
   }
 }
 

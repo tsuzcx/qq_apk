@@ -1,13 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
 
-public final class ete
-  implements MediaPlayer.OnCompletionListener
+public class ete
+  implements View.OnFocusChangeListener
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public ete(VideoViewX paramVideoViewX) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    paramMediaPlayer.release();
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
+    if (VideoViewX.a(this.a) != null) {
+      VideoViewX.a(this.a).onClick(paramView);
+    }
   }
 }
 

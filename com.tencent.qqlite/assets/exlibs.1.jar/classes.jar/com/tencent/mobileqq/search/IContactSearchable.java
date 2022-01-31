@@ -27,10 +27,12 @@ public abstract class IContactSearchable
   public static final long s = 0L;
   public static final long t = 0L;
   public static final long u = 0L;
-  protected long v;
-  protected long w = -1L;
+  public static long v = 51539607552L;
+  public static long w = 4294967296L;
+  protected long A;
   protected long x;
-  protected long y;
+  protected long y = -1L;
+  protected long z;
   
   public abstract int a();
   
@@ -64,7 +66,7 @@ public abstract class IContactSearchable
         }
         else
         {
-          this.v = Long.parseLong(localStringBuilder.toString());
+          this.x = Long.parseLong(localStringBuilder.toString());
           return;
         }
       }
@@ -73,7 +75,7 @@ public abstract class IContactSearchable
         if (QLog.isColorLevel()) {
           localException.printStackTrace();
         }
-        this.v = System.currentTimeMillis();
+        this.x = System.currentTimeMillis();
         return;
       }
       i1 += 1;
@@ -82,14 +84,14 @@ public abstract class IContactSearchable
   
   public void a(long paramLong)
   {
-    this.x = paramLong;
+    this.z = paramLong;
   }
   
   public abstract int b();
   
   public long b()
   {
-    return d() - this.y;
+    return d() - this.A;
   }
   
   public abstract String b();
@@ -103,22 +105,22 @@ public abstract class IContactSearchable
   
   public long d()
   {
-    return this.x;
+    return this.z;
   }
   
   public abstract String d();
   
   public long e()
   {
-    if (this.w == -1L) {
-      this.w = a();
+    if (this.y == -1L) {
+      this.y = a();
     }
-    return this.w;
+    return this.y;
   }
   
   public boolean equals(Object paramObject)
   {
-    return this.v == ((IContactSearchable)paramObject).v;
+    return this.x == ((IContactSearchable)paramObject).x;
   }
   
   public int hashCode()

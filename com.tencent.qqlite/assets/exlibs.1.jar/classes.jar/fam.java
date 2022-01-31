@@ -1,14 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.DropdownView;
 
 class fam
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  fam(faj paramfaj) {}
+  fam(fal paramfal, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Fal.a.jdField_a_of_type_Fao.showDropDown();
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Fal.a.b);
+    this.jdField_a_of_type_Fal.a.jdField_a_of_type_Boolean = true;
   }
 }
 

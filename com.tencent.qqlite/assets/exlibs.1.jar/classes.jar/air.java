@@ -1,26 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class air
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public air(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, String paramString) {}
+  public air(DialogActivity paramDialogActivity) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    ArrayList localArrayList = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getManager(45)).a(this.jdField_a_of_type_JavaLangString);
-    if (localArrayList != null) {
-      DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, localArrayList.size());
-    }
-    Message localMessage = new Message();
-    localMessage.what = 18;
-    localMessage.obj = localArrayList;
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a.sendMessage(localMessage);
+    this.a.finish();
   }
 }
 

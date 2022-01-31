@@ -1,19 +1,42 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import java.util.ArrayList;
 
-class ait
-  implements View.OnClickListener
+public class ait
+  extends BroadcastReceiver
 {
-  ait(ais paramais) {}
+  public ait(DirectForwardActivity paramDirectForwardActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = new Intent(this.a.a, DiscussionMemberActivity.class);
-    paramView.putExtra("uin", DiscussionInfoCardActivity.a(this.a.a));
-    this.a.a.startActivity(paramView);
+    paramIntent = paramIntent.getExtras();
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getStringArrayList("procNameList");
+      paramIntent = paramIntent.getString("verify");
+      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.d != null) && (BrowserAppInterface.a(paramIntent, paramContext))) {
+        break label53;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label53:
+      int i = 0;
+      while (i < paramContext.size())
+      {
+        if (this.a.d.equals(paramContext.get(i)))
+        {
+          this.a.finish();
+          return;
+        }
+        i += 1;
+      }
+    }
   }
 }
 

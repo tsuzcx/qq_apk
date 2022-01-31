@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.widget.ImageViewTouchBase;
-import com.tencent.mobileqq.widget.RotateBitmap;
-
-public class eym
-  implements Runnable
+public abstract interface eym
 {
-  public eym(ImageViewTouchBase paramImageViewTouchBase, RotateBitmap paramRotateBitmap, boolean paramBoolean) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.setImageRotateBitmapResetBase(this.jdField_a_of_type_ComTencentMobileqqWidgetRotateBitmap, this.jdField_a_of_type_Boolean);
-  }
+  public abstract Object a(float paramFloat, Object paramObject1, Object paramObject2);
 }
 
 

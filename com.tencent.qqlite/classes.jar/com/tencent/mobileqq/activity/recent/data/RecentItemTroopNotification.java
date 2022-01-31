@@ -30,7 +30,7 @@ public class RecentItemTroopNotification
       return;
       super.a(paramQQAppInterface, paramContext);
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = paramContext.getString(2131362945);
+        this.jdField_a_of_type_JavaLangString = paramContext.getString(2131362952);
       }
       this.v = TroopNotificationUtils.a(paramQQAppInterface);
       paramContext = paramQQAppInterface.a().a(AppConstants.ae, 0);

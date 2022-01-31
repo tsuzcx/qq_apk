@@ -1,19 +1,24 @@
-import android.app.Dialog;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.IndividuationSetActivity;
 import com.tencent.mobileqq.activity.QQSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class bet
+public class bet
   implements View.OnClickListener
 {
-  bet(bes parambes) {}
+  public bet(QQSetting paramQQSetting) {}
   
   public void onClick(View paramView)
   {
-    if ((QQSetting.a(this.a.a) != null) && (QQSetting.a(this.a.a).isShowing())) {
-      QQSetting.a(this.a.a).dismiss();
-    }
-    QQSetting.a(this.a.a, null);
+    ((RedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(32)).b(String.valueOf(100005));
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    paramView = new Intent(this.a.a(), IndividuationSetActivity.class);
+    this.a.a(paramView);
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Trends_tab", "Personality_setting_native", 0, 0, "", "", "", "");
   }
 }
 

@@ -31,21 +31,21 @@ import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKManager;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKSettingClient;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
-import feh;
-import fek;
-import fel;
-import fem;
-import fen;
-import fep;
-import fes;
-import fet;
-import feu;
-import fev;
-import few;
-import fez;
-import ffa;
-import ffb;
-import ffc;
+import fgn;
+import fgq;
+import fgr;
+import fgs;
+import fgt;
+import fgv;
+import fgy;
+import fgz;
+import fha;
+import fhb;
+import fhc;
+import fhf;
+import fhg;
+import fhh;
+import fhi;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -91,7 +91,7 @@ public class DownloadManager
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentTmassistantsdkDownloadclientITMAssistantDownloadSDKClientListener = new few(this);
+    this.jdField_a_of_type_ComTencentTmassistantsdkDownloadclientITMAssistantDownloadSDKClientListener = new fhc(this);
     this.jdField_b_of_type_Long = 0L;
     this.jdField_c_of_type_Long = 0L;
     this.jdField_c_of_type_Int = 1000;
@@ -106,7 +106,7 @@ public class DownloadManager
     NoticeDownloadListener.a().a(ThreadManager.b().getLooper());
     a(WebViewDownloadListener.a());
     a(NoticeDownloadListener.a());
-    ThreadManager.b().post(new fet(this));
+    ThreadManager.b().post(new fgz(this));
   }
   
   public static int a(int paramInt)
@@ -210,7 +210,7 @@ public class DownloadManager
     label75:
     for (localObject = ((DownloadInfo)localObject).jdField_h_of_type_JavaLangString;; localObject = ((DownloadInfo)localObject).jdField_c_of_type_JavaLangString)
     {
-      ThreadManager.b().post(new fek(this, (String)localObject));
+      ThreadManager.b().post(new fgq(this, (String)localObject));
       LogUtility.a(jdField_a_of_type_JavaLangString, "pause url=" + (String)localObject + ", appid=" + paramString);
       return 0;
     }
@@ -384,7 +384,7 @@ public class DownloadManager
   
   public void a()
   {
-    ThreadManager.b().post(new feh(this));
+    ThreadManager.b().post(new fgn(this));
   }
   
   public void a(int paramInt, DownloadInfo paramDownloadInfo)
@@ -476,7 +476,7 @@ public class DownloadManager
   
   public void a(Activity paramActivity, Bundle paramBundle, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2)
   {
-    new Handler(Looper.getMainLooper()).post(new fep(this, paramBundle, paramActivity, paramInt1, paramApkUpdateDetail, paramInt2));
+    new Handler(Looper.getMainLooper()).post(new fgv(this, paramBundle, paramActivity, paramInt1, paramApkUpdateDetail, paramInt2));
   }
   
   public void a(AppInterface paramAppInterface)
@@ -507,11 +507,11 @@ public class DownloadManager
     //   13: getfield 273	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   16: bipush 100
     //   18: invokestatic 524	com/tencent/open/base/ImageUtil:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   21: new 526	fei
+    //   21: new 526	fgo
     //   24: dup
     //   25: aload_0
     //   26: aload_1
-    //   27: invokespecial 529	fei:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   27: invokespecial 529	fgo:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;Lcom/tencent/open/downloadnew/DownloadInfo;)V
     //   30: invokestatic 534	com/tencent/open/base/img/ImageCache:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/open/base/img/ImageDownCallback;)V
     //   33: aload_0
     //   34: aload_1
@@ -564,14 +564,14 @@ public class DownloadManager
     //   139: getfield 209	com/tencent/open/downloadnew/DownloadInfo:jdField_f_of_type_Int	I
     //   142: istore_2
     //   143: invokestatic 150	com/tencent/mobileqq/app/ThreadManager:b	()Landroid/os/Handler;
-    //   146: new 550	fej
+    //   146: new 550	fgp
     //   149: dup
     //   150: aload_0
     //   151: aload_1
     //   152: iload_2
     //   153: aload_3
     //   154: aload 4
-    //   156: invokespecial 553	fej:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;Ljava/lang/String;ILcom/tencent/open/downloadnew/DownloadInfo;Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   156: invokespecial 553	fgp:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;Ljava/lang/String;ILcom/tencent/open/downloadnew/DownloadInfo;Lcom/tencent/open/downloadnew/DownloadInfo;)V
     //   159: invokevirtual 174	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   162: pop
     //   163: aload_0
@@ -680,10 +680,10 @@ public class DownloadManager
           paramDownloadInfo.a(4);
           if (paramDownloadInfo.jdField_f_of_type_Int == 1)
           {
-            ThreadManager.b().post(new fez(this, paramDownloadInfo));
+            ThreadManager.b().post(new fhf(this, paramDownloadInfo));
             return;
           }
-          ThreadManager.b().post(new ffa(this, paramDownloadInfo));
+          ThreadManager.b().post(new fhg(this, paramDownloadInfo));
           return;
           paramString = CommonDataAdapter.a().a().getString(2131362097);
           i = 3;
@@ -710,7 +710,7 @@ public class DownloadManager
           if (paramDownloadInfo.jdField_f_of_type_Int == 1) {}
           for (localObject = paramDownloadInfo.jdField_h_of_type_JavaLangString; localObject != null; localObject = paramDownloadInfo.jdField_c_of_type_JavaLangString)
           {
-            ThreadManager.b().post(new ffb(this, (String)localObject));
+            ThreadManager.b().post(new fhh(this, (String)localObject));
             break;
           }
         }
@@ -1277,8 +1277,8 @@ public class DownloadManager
   
   protected void b()
   {
-    ThreadManager.b().postDelayed(new feu(this), 5000L);
-    ThreadManager.b().postDelayed(new fev(this), 10000L);
+    ThreadManager.b().postDelayed(new fha(this), 5000L);
+    ThreadManager.b().postDelayed(new fhb(this), 10000L);
   }
   
   public void b(DownloadInfo paramDownloadInfo)
@@ -1296,13 +1296,13 @@ public class DownloadManager
       if (paramDownloadInfo.jdField_h_of_type_Int == 0)
       {
         if (paramDownloadInfo.jdField_f_of_type_Int == 1) {
-          ThreadManager.b().post(new fel(this, paramDownloadInfo));
+          ThreadManager.b().post(new fgr(this, paramDownloadInfo));
         } else {
-          ThreadManager.b().post(new fem(this, paramDownloadInfo));
+          ThreadManager.b().post(new fgs(this, paramDownloadInfo));
         }
       }
       else {
-        ThreadManager.b().post(new fen(this, paramDownloadInfo));
+        ThreadManager.b().post(new fgt(this, paramDownloadInfo));
       }
     }
   }
@@ -1346,7 +1346,7 @@ public class DownloadManager
     for (localObject = ((DownloadInfo)localObject).jdField_h_of_type_JavaLangString;; localObject = ((DownloadInfo)localObject).jdField_c_of_type_JavaLangString)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        ThreadManager.b().post(new ffc(this, (String)localObject));
+        ThreadManager.b().post(new fhi(this, (String)localObject));
       }
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
       DownloadDBHelper.a().a(paramString);
@@ -1588,10 +1588,10 @@ public class DownloadManager
     //   53: monitorexit
     //   54: return
     //   55: invokestatic 150	com/tencent/mobileqq/app/ThreadManager:b	()Landroid/os/Handler;
-    //   58: new 927	feo
+    //   58: new 927	fgu
     //   61: dup
     //   62: aload_0
-    //   63: invokespecial 928	feo:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;)V
+    //   63: invokespecial 928	fgu:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;)V
     //   66: invokevirtual 174	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   69: pop
     //   70: goto -26 -> 44
@@ -1635,7 +1635,7 @@ public class DownloadManager
   protected void f()
   {
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 200) {
-      ThreadManager.b().postDelayed(new fes(this), 3000L);
+      ThreadManager.b().postDelayed(new fgy(this), 3000L);
     }
   }
 }

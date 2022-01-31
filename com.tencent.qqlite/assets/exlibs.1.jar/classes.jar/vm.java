@@ -28,8 +28,8 @@ public class vm
       }
       AccountManageActivity.a(this.a).setVisibility(8);
       AccountManageActivity.b(this.a).setVisibility(0);
-      AccountManageActivity.c(this.a).setText(2131363433);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131427495));
+      AccountManageActivity.c(this.a).setText(2131363444);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131427499));
     }
     for (;;)
     {
@@ -49,8 +49,8 @@ public class vm
       label225:
       AccountManageActivity.d(this.a).setVisibility(0);
       AccountManageActivity.e(this.a).setVisibility(8);
-      AccountManageActivity.f(this.a).setText(2131363436);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131427469));
+      AccountManageActivity.f(this.a).setText(2131363447);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131427472));
     }
   }
 }

@@ -3,10 +3,10 @@ package com.tencent.mobileqq.activity;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.Toast;
-import baf;
-import bag;
-import bah;
-import bai;
+import bak;
+import bal;
+import bam;
+import ban;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BizTroopHandler;
@@ -71,9 +71,9 @@ public class OpenTroopChatLogic
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
     this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidOsHandler = new baf(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new bag(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bah(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bak(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new bal(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bam(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     if ((paramBaseActivity.getAppRuntime() instanceof QQAppInterface))
@@ -141,7 +141,7 @@ public class OpenTroopChatLogic
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new bai(this), 1000L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ban(this), 1000L);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
   }
@@ -208,7 +208,7 @@ public class OpenTroopChatLogic
       {
         paramChatMessage = (MessageForPtt)paramChatMessage;
         ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-        ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage.url, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, -3);
+        ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage.url, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, -3, 0);
         return;
       }
       if ((paramChatMessage instanceof MessageForMarketFace))

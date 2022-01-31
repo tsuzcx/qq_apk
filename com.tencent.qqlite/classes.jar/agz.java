@@ -1,22 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agz
-  implements Animation.AnimationListener
+class agz
+  implements Runnable
 {
-  public agz(Conversation paramConversation, View paramView) {}
+  agz(agy paramagy) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(0);
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    this.a.a.a.y();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

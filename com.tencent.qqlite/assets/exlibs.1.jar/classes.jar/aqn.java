@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
 
 public class aqn
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aqn(GroupManagerActivity paramGroupManagerActivity) {}
+  public aqn(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
+    this.a.a.a();
   }
 }
 

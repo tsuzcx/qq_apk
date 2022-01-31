@@ -1,22 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.widget.BounceScrollView.OnScrollChangedListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class aox
-  implements Animation.AnimationListener
+  implements BounceScrollView.OnScrollChangedListener
 {
-  public aox(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  public aox(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("PROFILE_TEST", 4, "onScrollChanged, [" + paramInt1 + "," + paramInt2 + "],[" + paramInt3 + "," + paramInt4 + "]");
+    }
+    if ((this.a.a.a.a != 33) && (FriendProfileCardActivity.a(this.a) == null)) {}
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,14 +1,27 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarOnlineFile.BaseActionBarOnlineFile;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 
-class dtd
-  implements Runnable
+public class dtd
+  implements View.OnClickListener
 {
-  dtd(dtc paramdtc) {}
+  public dtd(BaseActionBarOnlineFile paramBaseActionBarOnlineFile) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LocalMusicFileView.a(this.a.a).post(new dte(this));
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.a.h();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g())
+    {
+      FileManagerReporter.a("0X8004BBC");
+      return;
+    }
+    FileManagerReporter.a("0X8004BD2");
   }
 }
 

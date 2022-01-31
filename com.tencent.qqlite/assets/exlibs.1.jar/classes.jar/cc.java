@@ -1,30 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.dataline.mpfile.LiteMpFileDownloadActivity;
+import com.dataline.mpfile.LiteMpFileFileListActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class cc
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public cc(LiteMpFileDownloadActivity paramLiteMpFileDownloadActivity) {}
+  public cc(LiteMpFileFileListActivity paramLiteMpFileFileListActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-      } while (paramContext == null);
-      if (paramContext.equals("com.dataline.mpfile.download_progress"))
-      {
-        this.a.a();
-        return;
-      }
-    } while (!paramContext.equals("com.dataline.mpfile.download_completed"));
-    this.a.a();
+    paramView = new Intent(this.a, LiteMpFileDownloadActivity.class);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800421B", "0X800421B", 0, 0, "", "", "", "");
   }
 }
 

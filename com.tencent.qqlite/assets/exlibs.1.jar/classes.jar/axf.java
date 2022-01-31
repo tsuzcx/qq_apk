@@ -1,17 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.widget.QQToast;
 
-class axf
-  implements DialogInterface.OnClickListener
+public class axf
+  extends Handler
 {
-  axf(axd paramaxd, QQCustomDialog paramQQCustomDialog) {}
+  public axf(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    NearbyPeopleProfileActivity.e(this.jdField_a_of_type_Axd.a);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      this.a.c();
+      QQToast.a(this.a, 2131364405, 0).b(this.a.getTitleBarHeight());
+      return;
+      this.a.a.i();
+      return;
+      NearbyPeopleProfileActivity.a(this.a);
+      return;
+    } while (paramMessage.obj == null);
+    NearbyPeopleProfileActivity.a(this.a, (NearbyPeopleCard)paramMessage.obj);
+    NearbyPeopleProfileActivity.b(this.a);
   }
 }
 

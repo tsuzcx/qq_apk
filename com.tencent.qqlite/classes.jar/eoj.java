@@ -1,37 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.TroopFeedParserHelper;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
+import java.util.List;
+import org.json.JSONObject;
 
-public class eoj
-  implements View.OnClickListener
+class eoj
+  implements Runnable
 {
-  public eoj(VideoPlayLogic paramVideoPlayLogic) {}
+  eoj(eoi parameoi, JSONObject paramJSONObject) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (VideoPlayLogic.a(this.a).a()) {
-      if (VideoPlayLogic.a(this.a) != null)
-      {
-        VideoPlayLogic.a(this.a).setVisibility(0);
-        VideoPlayLogic.a(this.a, false);
-        if (VideoPlayLogic.a(this.a)) {
-          ReportController.b(VideoPlayLogic.a(this.a).app, "P_CliOper", "Grp_AIO", "", "video", "close_barrage", 0, 0, VideoPlayLogic.a(this.a).a, "1", "", "");
-        }
-      }
-    }
-    while (VideoPlayLogic.a(this.a) == null) {
-      return;
-    }
-    if (VideoPlayLogic.a(this.a)) {
-      ReportController.b(VideoPlayLogic.a(this.a).app, "P_CliOper", "Grp_AIO", "", "video", "close_barrage", 0, 0, VideoPlayLogic.a(this.a).a, "0", "", "");
-    }
-    VideoPlayLogic.a(this.a).setVisibility(8);
-    VideoPlayLogic.a(this.a, true);
+    Object localObject = TroopFeedParserHelper.a(this.jdField_a_of_type_OrgJsonJSONObject, "" + this.jdField_a_of_type_Eoi.a.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_Eoi.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
+    List localList = (List)localObject[0];
+    localObject = (List)localObject[1];
+    ((List)localObject).addAll(this.jdField_a_of_type_Eoi.a.jdField_a_of_type_JavaUtilList);
+    Message localMessage = this.jdField_a_of_type_Eoi.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
+    localMessage.obj = this.jdField_a_of_type_Eoi.a.a(localList, (List)localObject);
+    this.jdField_a_of_type_Eoi.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
 }
 

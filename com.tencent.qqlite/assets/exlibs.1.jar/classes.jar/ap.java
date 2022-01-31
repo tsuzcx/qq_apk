@@ -1,14 +1,15 @@
 import com.dataline.activities.LiteActivity;
-import java.util.Observable;
 
 public class ap
   implements Runnable
 {
-  public ap(LiteActivity paramLiteActivity, Observable paramObservable, Object paramObject) {}
+  public ap(LiteActivity paramLiteActivity, boolean paramBoolean) {}
   
   public void run()
   {
-    LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, this.jdField_a_of_type_JavaUtilObservable, this.jdField_a_of_type_JavaLangObject);
+    if (this.jdField_a_of_type_Boolean) {
+      LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity);
+    }
   }
 }
 

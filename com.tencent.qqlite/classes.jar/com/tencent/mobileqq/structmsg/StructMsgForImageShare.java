@@ -36,8 +36,8 @@ import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import efa;
-import efm;
+import ege;
+import egq;
 import java.io.File;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -50,7 +50,7 @@ public class StructMsgForImageShare
   extends AbsShareMsg
 {
   private static final int I = 288;
-  private static View.OnClickListener a = new efm();
+  private static View.OnClickListener a = new egq();
   public int mIsSend = 1;
   public int mMsgType = 0;
   public long mUniseq = 0L;
@@ -302,8 +302,8 @@ public class StructMsgForImageShare
     ((LinearLayout.LayoutParams)localObject2).gravity = 17;
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     paramView.setMinimumHeight(i * 120);
-    paramView.setContentDescription(paramContext.getString(2131364499));
-    paramContext = ((Resources)localObject1).getDrawable(2130839365);
+    paramView.setContentDescription(paramContext.getString(2131364510));
+    paramContext = ((Resources)localObject1).getDrawable(2130839430);
     localObject1 = getFirstImageElement();
     if ((localObject1 != null) && (((StructMsgItemImage)localObject1).h != null))
     {
@@ -488,11 +488,11 @@ public class StructMsgForImageShare
     this.mCompatibleText = paramObjectInput.readUTF();
   }
   
-  protected void toContentXml(efa paramefa)
+  protected void toContentXml(ege paramege)
   {
     Iterator localIterator = iterator();
     while (localIterator.hasNext()) {
-      ((AbsStructMsgElement)localIterator.next()).a(paramefa);
+      ((AbsStructMsgElement)localIterator.next()).a(paramege);
     }
   }
   

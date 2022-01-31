@@ -33,12 +33,12 @@ class vy
       this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
       this.a.jdField_a_of_type_AndroidViewView.setTag("left");
       continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839121);
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839155);
       continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839120);
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839154);
       continue;
       this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (this.a.jdField_a_of_type_AndroidViewView.getId() == 2131296457)
+      if (this.a.jdField_a_of_type_AndroidViewView.getId() == 2131296460)
       {
         this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c();
         continue;

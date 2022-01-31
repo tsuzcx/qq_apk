@@ -1,52 +1,17 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class acf
-  implements View.OnClickListener
+  extends Handler
 {
   public acf(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.c();
-    Object localObject = this.a.d;
-    this.a.d = "null";
-    paramView.findViewById(2131296792).setVisibility(0);
-    paramView.findViewById(2131296791).setContentDescription(this.a.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131364360, new Object[] { Integer.valueOf(this.a.b + 1) }));
-    this.a.b = -1;
-    if (localObject != null)
-    {
-      paramView = (View)localObject;
-      if (((String)localObject).trim().length() != 0) {}
-    }
-    else
-    {
-      paramView = "null";
-    }
-    String str = this.a.d;
-    if (str != null)
-    {
-      localObject = str;
-      if (str.trim().length() != 0) {}
-    }
-    else
-    {
-      localObject = "null";
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(ChatBackgroundSettingActivity.jdField_a_of_type_JavaLangString, 2, "oldPicPath is:" + paramView + ",newPicPath is:" + (String)localObject);
-    }
-    if (!paramView.equals(localObject))
-    {
-      if ((this.a.c == null) || (this.a.c.trim().length() == 0)) {
-        ChatBackgroundSettingActivity.a(this.a, this.a.app.a());
-      }
-      this.a.d();
+    if ((paramMessage.what == 1) && (this.a.a.size() == 0)) {
+      this.a.b();
     }
   }
 }

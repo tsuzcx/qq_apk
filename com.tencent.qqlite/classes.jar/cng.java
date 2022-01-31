@@ -1,11 +1,16 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class cng
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements View.OnClickListener
 {
-  TextView a;
-  TextView b;
+  public cng(SelectMemberActivity paramSelectMemberActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.e();
+  }
 }
 
 

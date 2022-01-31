@@ -1,19 +1,18 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileManager;
 
-public final class eoq
-  implements Runnable
+public class eoq
+  implements DialogInterface.OnClickListener
 {
-  public eoq(Context paramContext, String paramString1, String paramString2, int paramInt) {}
+  public eoq(TroopFileItemOperation paramTroopFileItemOperation, TroopFileInfo paramTroopFileInfo) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.b(this.jdField_a_of_type_AndroidContentContext, 230);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString).setMessage(this.b);
-    localQQCustomDialog.setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getResources().getString(this.jdField_a_of_type_Int), new eor(this));
-    localQQCustomDialog.show();
+    TroopFileManager.a(TroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TroopFileItemOperation.jdField_a_of_type_Long).a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
+    paramDialogInterface.dismiss();
   }
 }
 

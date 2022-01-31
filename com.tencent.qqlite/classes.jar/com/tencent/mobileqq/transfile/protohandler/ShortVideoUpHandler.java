@@ -172,8 +172,8 @@ public class ShortVideoUpHandler
       paramList = (RichProto.RichProtoReq.ShortVideoUpReq)paramList.get(0);
       PttShortVideo.PttShortVideoUploadReq localPttShortVideoUploadReq = new PttShortVideo.PttShortVideoUploadReq();
       localPttShortVideoUploadReq.setHasFlag(true);
-      localPttShortVideoUploadReq.uint64_fromuin.set(Long.parseLong(paramList.c));
-      localPttShortVideoUploadReq.uint64_touin.set(Long.parseLong(paramList.jdField_d_of_type_JavaLangString));
+      localPttShortVideoUploadReq.uint64_fromuin.set(Long.parseLong(paramList.jdField_c_of_type_JavaLangString));
+      localPttShortVideoUploadReq.uint64_touin.set(Long.parseLong(paramList.d));
       localPttShortVideoUploadReq.uint32_chat_type.set(paramList.jdField_a_of_type_Int);
       localPttShortVideoUploadReq.uint32_client_type.set(paramList.jdField_b_of_type_Int);
       localPttShortVideoUploadReq.uint64_group_code.set(Long.parseLong(paramList.jdField_b_of_type_JavaLangString));
@@ -190,7 +190,7 @@ public class ShortVideoUpHandler
       localPttShortVideoFileInfo.uint64_thumb_file_size.set(paramList.jdField_b_of_type_Long);
       localPttShortVideoUploadReq.msg_PttShortVideoFileInfo.set(localPttShortVideoFileInfo);
       localReqBody.uint32_cmd.set(300);
-      localReqBody.uint32_seq.set(paramList.jdField_d_of_type_Int);
+      localReqBody.uint32_seq.set(paramList.jdField_c_of_type_Int);
       localReqBody.msg_PttShortVideoUpload_Req.set(localPttShortVideoUploadReq);
       return localReqBody.toByteArray();
     }
@@ -208,7 +208,7 @@ public class ShortVideoUpHandler
         break label134;
       }
       localReqCommon = (RichProto.RichProtoReq.ReqCommon)paramRichProtoReq.jdField_a_of_type_JavaUtilList.get(0);
-      if (localReqCommon.c != 0) {
+      if (localReqCommon.d != 0) {
         break label96;
       }
       localProtoReq.jdField_a_of_type_JavaLangString = "PttCenterSvr.ShortVideoUpReq";
@@ -221,7 +221,7 @@ public class ShortVideoUpHandler
       a(paramRichProtoReq, localProtoReq);
       return;
       label96:
-      if ((1 == localReqCommon.c) || (3000 == localReqCommon.c)) {
+      if ((1 == localReqCommon.d) || (3000 == localReqCommon.d)) {
         localProtoReq.jdField_a_of_type_JavaLangString = "PttCenterSvr.GroupShortVideoUpReq";
       } else {
         localProtoReq.jdField_a_of_type_JavaLangString = "PttCenterSvr.ShortVideoUpReq";

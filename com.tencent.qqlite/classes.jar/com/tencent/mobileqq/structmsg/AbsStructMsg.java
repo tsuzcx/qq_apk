@@ -81,7 +81,7 @@ public abstract class AbsStructMsg
     {
       paramOnLongClickAndTouchListener = new LinearLayout(paramContext);
       paramOnLongClickAndTouchListener.setOrientation(1);
-      paramOnLongClickAndTouchListener.setBackgroundResource(2130839364);
+      paramOnLongClickAndTouchListener.setBackgroundResource(2130839429);
       paramContext = paramOnLongClickAndTouchListener.getLayoutParams();
       if (paramContext != null) {
         break label55;

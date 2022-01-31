@@ -7,7 +7,7 @@ class ams
   
   public void run()
   {
-    this.a.a.a(1004, 1, null, 0, null);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(1004, 0, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.b);
   }
 }
 

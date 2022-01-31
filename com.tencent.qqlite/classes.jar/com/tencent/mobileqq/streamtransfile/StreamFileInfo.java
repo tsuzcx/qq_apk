@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.streamtransfile;
 
+import com.tencent.mobileqq.ptt.PttBuffer;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,39 +9,23 @@ public class StreamFileInfo
 {
   public static final int a = 0;
   public static final int b = 1;
-  private long jdField_a_of_type_Long;
-  private File jdField_a_of_type_JavaIoFile = null;
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream = null;
+  public long a;
   private String jdField_a_of_type_JavaLangString;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private short jdField_a_of_type_Short = 0;
   boolean jdField_a_of_type_Boolean = false;
+  public long b;
   private short b = 0;
   private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long;
   private short jdField_c_of_type_Short = 1;
   private int d;
   
-  public StreamFileInfo(String paramString, int paramInt, boolean paramBoolean)
+  public StreamFileInfo(String paramString, int paramInt)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_c_of_type_Int = paramInt;
-    if (!paramBoolean)
-    {
-      this.jdField_a_of_type_JavaIoFile = new File(paramString);
-      if (this.jdField_a_of_type_JavaIoFile.exists()) {
-        this.jdField_a_of_type_JavaIoFile.delete();
-      }
-    }
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_a_of_type_JavaIoFile);
-      return;
-    }
-    catch (FileNotFoundException paramString)
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream = null;
-      paramString.printStackTrace();
-    }
+    PttBuffer.a(paramString);
   }
   
   public int a()
@@ -53,17 +35,12 @@ public class StreamFileInfo
   
   public long a()
   {
-    return this.jdField_a_of_type_Long;
+    return this.jdField_c_of_type_Long;
   }
   
   public File a()
   {
-    return this.jdField_a_of_type_JavaIoFile;
-  }
-  
-  public FileOutputStream a()
-  {
-    return this.jdField_a_of_type_JavaIoFileOutputStream;
+    return new File(this.jdField_a_of_type_JavaLangString);
   }
   
   public List a()
@@ -78,19 +55,7 @@ public class StreamFileInfo
   
   public void a()
   {
-    try
-    {
-      if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {
-        this.jdField_a_of_type_JavaIoFileOutputStream.close();
-      }
-      label14:
-      this.jdField_a_of_type_JavaIoFileOutputStream = null;
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      break label14;
-    }
+    this.jdField_a_of_type_Short = 0;
   }
   
   public void a(int paramInt)
@@ -100,12 +65,27 @@ public class StreamFileInfo
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_c_of_type_Long = paramLong;
   }
   
   public void a(short paramShort)
   {
     this.b = paramShort;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      PttBuffer.b(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    PttBuffer.a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    PttBuffer.a(this.jdField_a_of_type_JavaLangString, paramArrayOfByte, paramArrayOfByte.length);
   }
   
   public int b()
@@ -116,11 +96,6 @@ public class StreamFileInfo
   public short b()
   {
     return this.jdField_c_of_type_Short;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Short = 0;
   }
   
   public void b(int paramInt)

@@ -1,30 +1,25 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.app.FriendListObserver;
-import java.util.Map;
+import android.app.Dialog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
 
 public class cef
-  extends FriendListObserver
+  implements Animation.AnimationListener
 {
-  private cef(TroopView paramTroopView) {}
+  public cef(BaseTroopView paramBaseTroopView) {}
   
-  protected void a(boolean paramBoolean, Map paramMap)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a();
+    this.a.jdField_a_of_type_AndroidAppDialog.show();
+    this.a.c.setAnimation(null);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.a.b.setVisibility(8);
   }
   
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      this.a.a();
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

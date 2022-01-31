@@ -1,41 +1,52 @@
-import android.os.Message;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.StringUtil;
 
-public class ayc
-  extends TransProcessorHandler
+class ayc
+  implements Runnable
 {
-  public ayc(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  ayc(ayb paramayb, NearbyPeopleCard paramNearbyPeopleCard) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (NearbyPeopleProfileActivity.b(this.a) != 1) {}
-    do
+    if (!StringUtil.b(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin)) {
+      this.jdField_a_of_type_Ayb.a.app.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin, 3000, false);
+    }
+    Object localObject2;
+    int i;
+    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Ayb.a) > 0L)
     {
+      this.jdField_a_of_type_Ayb.a.app.a(String.valueOf(NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Ayb.a)), 3001, false);
+      localObject2 = this.jdField_a_of_type_Ayb.a.app;
+      i = NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Ayb.a).g;
+      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Ayb.a) == null) {
+        break label262;
+      }
+    }
+    label262:
+    for (Object localObject1 = NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Ayb.a).uin;; localObject1 = "")
+    {
+      ReportController.b((QQAppInterface)localObject2, "CliOper", "", "", "0X8004CC5", "0X8004CC5", i, 0, (String)localObject1, "", "", "");
       return;
-      switch (paramMessage.what)
-      {
-      case 1004: 
-      default: 
-        return;
-      case 1003: 
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyPeopleProfileActivity.mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.aN);
-        }
+      if (StringUtil.b(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin)) {
         break;
       }
-    } while (NearbyPeopleProfileActivity.a(this.a) == null);
-    NearbyPeopleProfileActivity.a(this.a).a = NearbyPeoplePhotoUploadProcessor.aN;
-    NearbyPeopleProfileActivity.f(this.a);
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyPeopleProfileActivity.mPicUploadHandler.handleMessage(), upload fail.");
+      localObject1 = this.jdField_a_of_type_Ayb.a.app.a().createEntityManager();
+      if (localObject1 == null) {
+        break;
+      }
+      localObject2 = (NearbyPeopleCard)((EntityManager)localObject1).a(NearbyPeopleCard.class, "uin=?", new String[] { this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin });
+      if ((localObject2 != null) && (((NearbyPeopleCard)localObject2).tinyId > 0L)) {
+        this.jdField_a_of_type_Ayb.a.app.a(String.valueOf(((NearbyPeopleCard)localObject2).tinyId), 3001, false);
+      }
+      ((EntityManager)localObject1).a();
+      break;
     }
-    this.a.c();
-    QQToast.a(this.a, "上传失败", 0).b(this.a.getTitleBarHeight());
   }
 }
 

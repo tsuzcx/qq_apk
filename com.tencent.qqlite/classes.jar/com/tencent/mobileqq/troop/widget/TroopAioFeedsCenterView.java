@@ -16,7 +16,7 @@ import com.tencent.mobileqq.model.TroopInfoManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import eqn;
+import esf;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -57,18 +57,18 @@ public class TroopAioFeedsCenterView
   
   private void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    inflate(paramContext, 2130903364, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297831));
+    inflate(paramContext, 2130903367, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297835));
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131297293));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetDotIndexView = ((DotIndexView)findViewById(2131297832));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131297833));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetDotIndexView = ((DotIndexView)findViewById(2131297836));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131297837));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297080));
     if (NetworkUtil.e(this.jdField_a_of_type_AndroidContentContext)) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("加载中，请稍候...");
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new eqn(this, paramContext));
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new esf(this, paramContext));
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView$FeedPagerAdapter = new TroopAioFeedsCenterView.FeedPagerAdapter(this);
       this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(this);
       this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView$FeedPagerAdapter);

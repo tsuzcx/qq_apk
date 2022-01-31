@@ -1,48 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.book.BookEditText;
+import com.tencent.mobileqq.text.QQText;
 
 public class ccb
-  implements ContactSearchFacade.ISearchListener
+  implements InputFilter
 {
-  public ccb(SearchBaseActivity paramSearchBaseActivity) {}
+  public ccb(BookEditText paramBookEditText) {}
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    this.a.n();
-    if (paramBoolean)
-    {
-      if ((paramObject != null) && ((paramObject instanceof ArrayList)))
-      {
-        paramObject = (ArrayList)paramObject;
-        if (paramObject.size() != 0) {
-          break label81;
-        }
-        paramObject = this.a.a;
-        if (!this.a.b) {
-          break label76;
-        }
-        paramInt1 = 3;
-        paramObject.sendEmptyMessage(paramInt1);
-        if (QLog.isColorLevel()) {
-          QLog.d(SearchBaseActivity.c(), 2, "error! SearchResult is null!");
-        }
-      }
-      label76:
-      label81:
-      while (!this.a.a(paramObject)) {
-        for (;;)
-        {
-          return;
-          paramInt1 = 2;
-        }
-      }
-      this.a.a.sendEmptyMessage(0);
-      return;
+    this.a.a(paramSpanned.toString());
+    if (this.a.a(paramCharSequence.toString()) == 0) {
+      BookEditText.a(this.a);
     }
-    this.a.a(paramInt1, paramObject, paramInt2, paramString);
+    while (!QQText.a(paramCharSequence.toString())) {
+      return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
+    }
+    return "";
   }
 }
 

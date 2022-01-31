@@ -1,32 +1,22 @@
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DetailProfileActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class aic
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aic(DevlockPushActivity paramDevlockPushActivity) {}
+  public aic(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if ((DevlockPushActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        DevlockPushActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
-        DevlockPushActivity.a(this.a).b(2131363558);
-      }
-      if ((DevlockPushActivity.a(this.a) != null) && (!DevlockPushActivity.a(this.a).isShowing())) {
-        DevlockPushActivity.a(this.a).show();
-      }
-      return;
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {
+      this.a.a.dismiss();
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004920", "0X8004920", 0, 0, "", "", "", "");
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130968584);
   }
 }
 

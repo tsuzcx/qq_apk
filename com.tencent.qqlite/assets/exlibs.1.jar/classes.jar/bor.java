@@ -1,15 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class bor
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public bor(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public bor(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.i();
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.findViewById(2131298908).getHandler().postDelayed(new bos(this), 150L);
   }
 }
 

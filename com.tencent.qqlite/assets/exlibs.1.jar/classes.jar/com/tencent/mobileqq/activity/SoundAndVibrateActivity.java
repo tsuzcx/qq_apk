@@ -13,18 +13,18 @@ import android.provider.Settings.System;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
-import bjz;
-import bka;
-import bkb;
-import bkd;
 import bke;
 import bkf;
 import bkg;
-import bkh;
 import bki;
 import bkj;
 import bkk;
 import bkl;
+import bkm;
+import bkn;
+import bko;
+import bkp;
+import bkq;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.CheckPttListener;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -113,16 +113,16 @@ public class SoundAndVibrateActivity
     Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.values().iterator();
     while (localIterator.hasNext())
     {
-      bkl localbkl = (bkl)localIterator.next();
-      if (localbkl.jdField_a_of_type_Int == paramInt)
+      bkq localbkq = (bkq)localIterator.next();
+      if (localbkq.jdField_a_of_type_Int == paramInt)
       {
-        localbkl.jdField_a_of_type_Boolean = true;
-        this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(localbkl.jdField_a_of_type_JavaLangString);
+        localbkq.jdField_a_of_type_Boolean = true;
+        this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(localbkq.jdField_a_of_type_JavaLangString);
         this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(1);
       }
       else
       {
-        localbkl.jdField_a_of_type_Boolean = false;
+        localbkq.jdField_a_of_type_Boolean = false;
       }
     }
   }
@@ -167,18 +167,18 @@ public class SoundAndVibrateActivity
     if ((this.app.d() != 0) && (this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()))
     {
       f();
-      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
+      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624120);
       Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.values().iterator();
       while (localIterator.hasNext())
       {
-        bkl localbkl = (bkl)localIterator.next();
-        if (2131296391 == localbkl.jdField_a_of_type_Int) {
-          localActionSheet.d(localbkl.jdField_a_of_type_JavaLangString);
+        bkq localbkq = (bkq)localIterator.next();
+        if (2131296391 == localbkq.jdField_a_of_type_Int) {
+          localActionSheet.d(localbkq.jdField_a_of_type_JavaLangString);
         } else {
-          localActionSheet.a(localbkl.jdField_a_of_type_JavaLangString, localbkl.jdField_a_of_type_Boolean);
+          localActionSheet.a(localbkq.jdField_a_of_type_JavaLangString, localbkq.jdField_a_of_type_Boolean);
         }
       }
-      localActionSheet.a(new bkb(this, localActionSheet));
+      localActionSheet.a(new bkg(this, localActionSheet));
       localActionSheet.setCanceledOnTouchOutside(true);
       this.jdField_a_of_type_AndroidAppDialog = localActionSheet;
     }
@@ -208,16 +208,16 @@ public class SoundAndVibrateActivity
   
   private void g()
   {
-    bkl localbkl1 = new bkl(this, 0, getResources().getString(2131363650), false);
-    bkl localbkl2 = new bkl(this, 1, getResources().getString(2131363651), false);
-    bkl localbkl3 = new bkl(this, 2, getResources().getString(2131363652), false);
-    bkl localbkl4 = new bkl(this, 3, getResources().getString(2131363653), false);
-    bkl localbkl5 = new bkl(this, 2131296391, getResources().getString(2131363114), false);
-    this.jdField_a_of_type_JavaUtilTreeMap.put(Integer.valueOf(0), localbkl1);
-    this.jdField_a_of_type_JavaUtilTreeMap.put(Integer.valueOf(1), localbkl2);
-    this.jdField_a_of_type_JavaUtilTreeMap.put(Integer.valueOf(2), localbkl3);
-    this.jdField_a_of_type_JavaUtilTreeMap.put(Integer.valueOf(3), localbkl4);
-    this.jdField_a_of_type_JavaUtilTreeMap.put(Integer.valueOf(4), localbkl5);
+    bkq localbkq1 = new bkq(this, 0, getResources().getString(2131363661), false);
+    bkq localbkq2 = new bkq(this, 1, getResources().getString(2131363662), false);
+    bkq localbkq3 = new bkq(this, 2, getResources().getString(2131363663), false);
+    bkq localbkq4 = new bkq(this, 3, getResources().getString(2131363664), false);
+    bkq localbkq5 = new bkq(this, 2131296391, getResources().getString(2131363124), false);
+    this.jdField_a_of_type_JavaUtilTreeMap.put(Integer.valueOf(0), localbkq1);
+    this.jdField_a_of_type_JavaUtilTreeMap.put(Integer.valueOf(1), localbkq2);
+    this.jdField_a_of_type_JavaUtilTreeMap.put(Integer.valueOf(2), localbkq3);
+    this.jdField_a_of_type_JavaUtilTreeMap.put(Integer.valueOf(3), localbkq4);
+    this.jdField_a_of_type_JavaUtilTreeMap.put(Integer.valueOf(4), localbkq5);
   }
   
   public Boolean a()
@@ -263,52 +263,52 @@ public class SoundAndVibrateActivity
   
   public void a(SoundAndVibrateActivity.SoundStyle paramSoundStyle)
   {
-    switch (bkc.a[paramSoundStyle.ordinal()])
+    switch (bkh.a[paramSoundStyle.ordinal()])
     {
     default: 
       return;
     case 1: 
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839426));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839491));
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
       this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
       this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363650) + getString(2131364358));
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363651) + getString(2131364359));
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363652) + getString(2131364359));
-      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363653) + getString(2131364359));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363661) + getString(2131364369));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363662) + getString(2131364370));
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363663) + getString(2131364370));
+      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363664) + getString(2131364370));
       ReportController.b(this.app, "CliOper", "", "", "Setting_tab", "Select_sound", 0, 0, "2", "", "", "");
       return;
     case 2: 
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839426));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839491));
       this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
       this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363650) + getString(2131364359));
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363651) + getString(2131364358));
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363652) + getString(2131364359));
-      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363653) + getString(2131364359));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363661) + getString(2131364370));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363662) + getString(2131364369));
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363663) + getString(2131364370));
+      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363664) + getString(2131364370));
       ReportController.b(this.app, "CliOper", "", "", "Setting_tab", "Select_sound", 0, 0, "1", "", "", "");
       return;
     case 3: 
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839426));
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839491));
       this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363650) + getString(2131364359));
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363651) + getString(2131364359));
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363652) + getString(2131364358));
-      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363653) + getString(2131364359));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363661) + getString(2131364370));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363662) + getString(2131364370));
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363663) + getString(2131364369));
+      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363664) + getString(2131364370));
       ReportController.b(this.app, "CliOper", "", "", "Setting_tab", "Select_sound", 0, 0, "3", "", "", "");
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
     this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
-    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839426));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363650) + getString(2131364359));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363651) + getString(2131364359));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363652) + getString(2131364359));
-    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363653) + getString(2131364358));
+    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839491));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363661) + getString(2131364370));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363662) + getString(2131364370));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363663) + getString(2131364370));
+    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363664) + getString(2131364369));
     ReportController.b(this.app, "CliOper", "", "", "Setting_tab", "Select_sound", 0, 0, "4", "", "", "");
   }
   
@@ -318,30 +318,30 @@ public class SoundAndVibrateActivity
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.app.a());
     int j = this.app.d();
     int k = this.app.e();
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298780));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298781));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298784));
-    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298786));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298787));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298782));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298788));
-    this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298785));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298806));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298807));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298810));
+    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298812));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298813));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298808));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298814));
+    this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298811));
     Object localObject = this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem;
     if (this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
     {
       i = 0;
       ((FormSimpleItem)localObject).setVisibility(i);
-      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131363645));
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131363648));
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131363646));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131363647));
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131298789);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298792));
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298791));
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298794));
+      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131363656));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131363659));
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131363657));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131363658));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131298815);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298818));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298817));
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298820));
       g();
-      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298793));
-      this.jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298783));
+      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298819));
+      this.jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298809));
       if (k == 0) {
         break label913;
       }
@@ -371,9 +371,9 @@ public class SoundAndVibrateActivity
       if (i != 2131165184) {
         break label933;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839426));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839491));
       a(0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363650) + getString(2131364358));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363661) + getString(2131364369));
       label589:
       if (this.app.b() != 0) {
         break label1145;
@@ -399,16 +399,16 @@ public class SoundAndVibrateActivity
         if (localSharedPreferences.getBoolean("theme_voice_setting_" + this.app.a(), true))
         {
           this.jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(true);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new bjz(this));
-          this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new bkd(this));
-          this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new bke(this));
-          this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new bkf(this));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new bke(this));
+          this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new bki(this));
+          this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new bkj(this));
+          this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new bkk(this));
           if (!this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
             break label1217;
           }
           this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
           this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bkg(this));
+          this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bkl(this));
           if (!this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
             break label1238;
           }
@@ -417,11 +417,11 @@ public class SoundAndVibrateActivity
       }
       for (;;)
       {
-        this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bkh(this));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bki(this));
-        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bkj(this));
-        this.jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bkk(this, localSharedPreferences));
-        this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new bka(this));
+        this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bkm(this));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bkn(this));
+        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bko(this));
+        this.jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bkp(this, localSharedPreferences));
+        this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new bkf(this));
         return;
         i = 8;
         break;
@@ -432,26 +432,26 @@ public class SoundAndVibrateActivity
         break label357;
         if (i == 2131165185)
         {
-          this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839426));
+          this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839491));
           a(1);
-          this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363651) + getString(2131364358));
+          this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363662) + getString(2131364369));
           break label589;
         }
         if (i == jdField_a_of_type_Int)
         {
-          this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839426));
+          this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839491));
           a(2);
-          this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363652) + getString(2131364358));
+          this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131363663) + getString(2131364369));
           break label589;
         }
         if (i == jdField_b_of_type_Int)
         {
-          this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839426));
+          this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839491));
           a(3);
           SettingCloneUtil.writeValueForInt(this, this.app.a(), "sound_type", "qqsetting_notify_soundtype_key", jdField_b_of_type_Int);
           break label589;
         }
-        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839426));
+        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839491));
         a(1);
         break label589;
         label1145:
@@ -484,8 +484,8 @@ public class SoundAndVibrateActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903638);
-    setTitle(2131363643);
+    setContentView(2130903647);
+    setTitle(2131363654);
     c();
     return false;
   }

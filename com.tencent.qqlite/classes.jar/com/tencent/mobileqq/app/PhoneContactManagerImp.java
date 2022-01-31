@@ -35,12 +35,12 @@ import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cui;
-import cuk;
-import cul;
-import cum;
-import cun;
-import cuo;
+import cvj;
+import cvl;
+import cvm;
+import cvn;
+import cvo;
+import cvp;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -70,8 +70,8 @@ public class PhoneContactManagerImp
   private ContentObserver jdField_a_of_type_AndroidDatabaseContentObserver;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cui(this);
-  private cuo jdField_a_of_type_Cuo;
+  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cvj(this);
+  private cvp jdField_a_of_type_Cvp;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private List jdField_a_of_type_JavaUtilList;
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
@@ -1177,7 +1177,7 @@ public class PhoneContactManagerImp
   
   private void k()
   {
-    this.jdField_a_of_type_AndroidDatabaseContentObserver = new cuk(this, new Handler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getMainLooper()));
+    this.jdField_a_of_type_AndroidDatabaseContentObserver = new cvl(this, new Handler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getMainLooper()));
     try
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getContentResolver().registerContentObserver(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, true, this.jdField_a_of_type_AndroidDatabaseContentObserver);
@@ -1287,11 +1287,11 @@ public class PhoneContactManagerImp
     if (localRespondQueryQQBindingStat == null) {
       return jdField_c_of_type_Int;
     }
-    if (this.jdField_a_of_type_Cuo != null) {
-      this.jdField_a_of_type_Cuo.cancel(true);
+    if (this.jdField_a_of_type_Cvp != null) {
+      this.jdField_a_of_type_Cvp.cancel(true);
     }
-    this.jdField_a_of_type_Cuo = new cuo(this, null);
-    this.jdField_a_of_type_Cuo.execute(new RespondQueryQQBindingStat[] { localRespondQueryQQBindingStat });
+    this.jdField_a_of_type_Cvp = new cvp(this, null);
+    this.jdField_a_of_type_Cvp.execute(new RespondQueryQQBindingStat[] { localRespondQueryQQBindingStat });
     return jdField_b_of_type_Int;
   }
   
@@ -1563,7 +1563,7 @@ public class PhoneContactManagerImp
     paramRespondQueryQQBindingStat.putLong("contact_bind_info_flag", localRespondQueryQQBindingStat.lastUsedFlag);
     paramRespondQueryQQBindingStat.commit();
     if (a(localRespondQueryQQBindingStat)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cun(this));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cvo(this));
     }
   }
   
@@ -1767,7 +1767,7 @@ public class PhoneContactManagerImp
     {
       localObject2 = new ArrayList();
       ((List)localObject2).addAll(this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.values());
-      Collections.sort((List)localObject2, new cul(this));
+      Collections.sort((List)localObject2, new cvm(this));
       localArrayList1 = new ArrayList();
       localArrayList2 = new ArrayList();
       localFriendManager = (FriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
@@ -1837,7 +1837,7 @@ public class PhoneContactManagerImp
       if (localObject1 != null) {
         localArrayList2.add(localObject1);
       }
-      localObject1 = new cum(this);
+      localObject1 = new cvn(this);
       Collections.sort(localArrayList1, (Comparator)localObject1);
       Collections.sort(localArrayList2, (Comparator)localObject1);
       this.jdField_c_of_type_JavaUtilList = localArrayList1;
@@ -2100,7 +2100,7 @@ public class PhoneContactManagerImp
   
   public boolean d()
   {
-    if (!"3.4.0".equals(this.jdField_b_of_type_AndroidContentSharedPreferences.getString("phone_version_run", ""))) {}
+    if (!"3.5.0".equals(this.jdField_b_of_type_AndroidContentSharedPreferences.getString("phone_version_run", ""))) {}
     for (boolean bool = true;; bool = false)
     {
       if (bool) {
@@ -2133,7 +2133,7 @@ public class PhoneContactManagerImp
   
   public boolean e()
   {
-    if (!"3.4.0".equals(this.jdField_a_of_type_AndroidContentSharedPreferences.getString("phone_contact_need_star_v", ""))) {}
+    if (!"3.5.0".equals(this.jdField_a_of_type_AndroidContentSharedPreferences.getString("phone_contact_need_star_v", ""))) {}
     for (boolean bool = true; bool; bool = false)
     {
       int i = d();
@@ -2196,7 +2196,7 @@ public class PhoneContactManagerImp
       QLog.d("PhoneContact", 2, "runPhoneContact");
     }
     SharedPreferences.Editor localEditor = this.jdField_b_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.putString("phone_version_run", "3.4.0");
+    localEditor.putString("phone_version_run", "3.5.0");
     localEditor.commit();
   }
   
@@ -2227,7 +2227,7 @@ public class PhoneContactManagerImp
   {
     h();
     SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.putString("phone_contact_need_star_v", "3.4.0");
+    localEditor.putString("phone_contact_need_star_v", "3.5.0");
     localEditor.commit();
   }
   

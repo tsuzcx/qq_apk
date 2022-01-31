@@ -3,12 +3,12 @@ package cooperation.qzone;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import fll;
+import fnr;
 
 public class LbsData$QzonePoiInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new fll();
+  public static final Parcelable.Creator CREATOR = new fnr();
   public int a;
   public LbsData.QzoneGpsInfo a;
   public String a;

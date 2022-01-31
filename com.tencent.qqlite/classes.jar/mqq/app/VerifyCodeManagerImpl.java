@@ -78,7 +78,7 @@ public class VerifyCodeManagerImpl
     ((Intent)localObject).putExtra("key", paramString1);
     ((Intent)localObject).putExtra("note", paramString2);
     ((Intent)localObject).putExtra("image", paramArrayOfByte);
-    ((Intent)localObject).setData(Uri.parse("mqqverifycode://puzzle_verify_code/VERIFYCODE?"));
+    ((Intent)localObject).setData(Uri.parse("mqqverifycode://puzzle_verify_code_qqlite/VERIFYCODEQQLITE?"));
     this.app.getApplication().startActivity((Intent)localObject);
   }
   
@@ -101,7 +101,7 @@ public class VerifyCodeManagerImpl
     Object localObject = null;
     if (!TextUtils.isEmpty(paramString2))
     {
-      paramString1 = "PUZZLEVERIFYCODE";
+      paramString1 = "PUZZLEVERIFYCODEQQLITE";
       localIntent.putExtra("seq", i);
       localIntent.putExtra("url", paramString2);
       localIntent.putExtra("business", 2097152L);
@@ -114,7 +114,7 @@ public class VerifyCodeManagerImpl
       if (!TextUtils.isEmpty(paramString1))
       {
         paramToServiceMsg = new StringBuilder();
-        paramToServiceMsg.append("mqqverifycode://puzzle_verify_code/");
+        paramToServiceMsg.append("mqqverifycode://puzzle_verify_code_qqlite/");
         paramToServiceMsg.append(paramString1);
         paramToServiceMsg.append("?");
         localIntent.setData(Uri.parse(paramToServiceMsg.toString()));
@@ -132,7 +132,7 @@ public class VerifyCodeManagerImpl
       localIntent.putExtra("image", paramArrayOfByte);
       paramString1 = paramToServiceMsg;
       break;
-      localObject = "VERIFYCODE";
+      localObject = "VERIFYCODEQQLITE";
       paramString2 = paramToServiceMsg;
     }
   }

@@ -1,25 +1,54 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.widget.MenuPopupDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class dkf
-  implements View.OnLongClickListener
+  extends FMObserver
 {
-  public dkf(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public dkf(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public boolean onLongClick(View paramView)
+  protected void a(int paramInt, String paramString1, String paramString2)
   {
-    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
-      return false;
+    super.a(paramInt, paramString1, paramString2);
+    this.a.b(false);
+  }
+  
+  protected void a(String paramString, boolean paramBoolean, int paramInt1, long paramLong, List paramList, int paramInt2)
+  {
+    QfileCloudFileTabView.a(this.a, paramBoolean);
+    this.a.g = paramInt2;
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
+      if (FileManagerUtil.a(localWeiYunFileInfo.jdField_b_of_type_JavaLangString) == 0)
+      {
+        String str = QfileCloudFileTabView.a(this.a).a().a(localWeiYunFileInfo.a, localWeiYunFileInfo.jdField_b_of_type_JavaLangString, 2, localWeiYunFileInfo);
+        if (str != null) {
+          localWeiYunFileInfo.g = str;
+        }
+      }
     }
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131296440, paramView.getContext().getString(2131363250));
-    QfileBaseLocalFileTabView.a(this.a, MenuPopupDialog.a(paramView, paramView.getContext().getString(2131363277), localQQCustomMenu, new dkg(this, paramView), new dkh(this, paramView)));
-    return true;
+    if (!paramString.equals(this.a.jdField_b_of_type_JavaLangString)) {
+      return;
+    }
+    if (QfileCloudFileTabView.b(this.a)) {
+      this.a.a.clear();
+    }
+    this.a.a.addAll(paramList);
+    if (!this.a.jdField_b_of_type_JavaLangString.equalsIgnoreCase("picture")) {
+      this.a.setListFooter();
+    }
+    this.a.jdField_b_of_type_Long = paramLong;
+    this.a.d = true;
+    this.a.g();
+    this.a.a();
   }
 }
 

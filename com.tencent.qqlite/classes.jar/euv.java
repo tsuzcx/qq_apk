@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
-import com.tencent.util.InputMethodUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.QQSettingUtil;
 
-public class euv
+public final class euv
   implements Runnable
 {
-  public euv(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
+  public euv(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    InputMethodUtil.a(QQCustomDialogWtihEmoticonInput.a(this.a));
+    QQSettingUtil.b(this.a);
   }
 }
 

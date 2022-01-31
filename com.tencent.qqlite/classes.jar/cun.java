@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.LebaHelper;
 
 public class cun
   implements Runnable
 {
-  public cun(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public cun(LebaHelper paramLebaHelper) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact", 2, "syncBindState mCurrentBindState = " + this.a.a);
-    }
-    if (this.a.a >= 6) {
-      return;
-    }
-    this.a.f();
+    LebaHelper.c(this.a);
+    LebaHelper.a(this.a);
+    LebaHelper.b(this.a);
   }
 }
 

@@ -1,13 +1,26 @@
-import com.tencent.mobileqq.activity.RegisterGuideActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
 public class bhe
-  implements Runnable
+  extends Handler
 {
-  public bhe(RegisterGuideActivity paramRegisterGuideActivity) {}
+  public bhe(RegisterBaseActivity paramRegisterBaseActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    RegisterGuideActivity.a(this.a);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.g();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131363529);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

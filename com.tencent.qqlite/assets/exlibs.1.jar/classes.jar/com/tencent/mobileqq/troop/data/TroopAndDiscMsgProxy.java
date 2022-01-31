@@ -22,7 +22,7 @@ import com.tencent.mobileqq.persistence.MessageRecordEntityManager;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.utils.MessageDBUtils;
 import com.tencent.qphone.base.util.QLog;
-import emm;
+import eob;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -403,7 +403,7 @@ public class TroopAndDiscMsgProxy
   
   protected void a(String paramString, int paramInt, boolean paramBoolean)
   {
-    new Thread(new emm(this, paramBoolean), "report_troop_aio_break").start();
+    new Thread(new eob(this, paramBoolean), "report_troop_aio_break").start();
   }
   
   protected boolean a(int paramInt, long paramLong, MessageRecord paramMessageRecord)

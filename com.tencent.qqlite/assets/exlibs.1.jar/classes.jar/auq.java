@@ -1,30 +1,20 @@
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
 
 public class auq
-  implements Runnable
+  extends Handler
 {
-  public auq(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
+  public auq(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      if ((LoginVerifyCodeActivity.a(this.a) != null) && (LoginVerifyCodeActivity.a(this.a).isShowing()))
-      {
-        LoginVerifyCodeActivity.a(this.a).dismiss();
-        LoginVerifyCodeActivity.a(this.a).cancel();
-      }
-      LoginVerifyCodeActivity.a(this.a, null);
+    default: 
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.a.finish();
   }
 }
 

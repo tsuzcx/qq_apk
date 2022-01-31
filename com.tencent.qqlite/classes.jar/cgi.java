@@ -1,30 +1,34 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.observer.QZoneObserver;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
 
 public class cgi
-  extends ContactBindObserver
+  extends QZoneObserver
 {
-  public cgi(BindNumberActivity paramBindNumberActivity) {}
+  public cgi(MainAssistObserver paramMainAssistObserver) {}
   
-  protected void b(boolean paramBoolean)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    super.b(paramBoolean);
-    BindNumberActivity localBindNumberActivity = this.a;
-    if (paramBoolean)
+    if ((paramBoolean1) && (paramBoolean2))
     {
-      this.a.a.c();
-      BindNumberActivity.a(this.a).sendEmptyMessage(3);
+      if (QLog.isColorLevel()) {
+        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
+      }
+      if ((this.a.a != null) && (this.a.a.app != null)) {}
     }
-    for (;;)
+    else
     {
-      this.a.app.unRegistObserver(BindNumberActivity.a(this.a));
-      BindNumberActivity.a(this.a, null);
       return;
-      this.a.d();
     }
+    QQAppInterface localQQAppInterface = this.a.a.app;
+    if (!GuardManager.a.a()) {
+      QZoneHelper.a(localQQAppInterface);
+    }
+    this.a.g();
   }
 }
 

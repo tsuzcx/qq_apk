@@ -35,10 +35,10 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import eow;
-import eoy;
-import eoz;
-import epa;
+import eqm;
+import eqo;
+import eqp;
+import eqq;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -134,7 +134,7 @@ public class TroopFileTransferManager
       if (jdField_a_of_type_JavaUtilMap == null)
       {
         jdField_a_of_type_JavaUtilMap = new HashMap();
-        new Thread(new eow()).start();
+        new Thread(new eqm()).start();
       }
       TroopFileUploadingManager.a(paramQQAppInterface);
       TroopFileTransferManager localTroopFileTransferManager2 = (TroopFileTransferManager)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
@@ -1049,7 +1049,7 @@ public class TroopFileTransferManager
         bool1 = true;
         continue;
         continue;
-        new Handler(Looper.getMainLooper()).postDelayed(new eoy(this, paramItem), 1000L);
+        new Handler(Looper.getMainLooper()).postDelayed(new eqo(this, paramItem), 1000L);
         bool1 = true;
         continue;
         if (paramItem.BusId == 104) {
@@ -1936,7 +1936,7 @@ public class TroopFileTransferManager
     if (this.jdField_a_of_type_JavaUtilTimer == null)
     {
       this.jdField_a_of_type_JavaUtilTimer = new Timer();
-      this.jdField_a_of_type_JavaUtilTimer.schedule(new epa(this), 10000L, 10000L);
+      this.jdField_a_of_type_JavaUtilTimer.schedule(new eqq(this), 10000L, 10000L);
     }
   }
   
@@ -2397,10 +2397,10 @@ public class TroopFileTransferManager
     //   21: ifeq +21 -> 42
     //   24: new 115	java/lang/Thread
     //   27: dup
-    //   28: new 1153	epb
+    //   28: new 1153	eqr
     //   31: dup
     //   32: aload_0
-    //   33: invokespecial 1154	epb:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;)V
+    //   33: invokespecial 1154	eqr:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;)V
     //   36: invokespecial 121	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
     //   39: invokevirtual 124	java/lang/Thread:start	()V
     //   42: aload_0
@@ -2490,7 +2490,7 @@ public class TroopFileTransferManager
       a(paramItem, 5, i1);
       continue;
       continue;
-      new Handler(Looper.getMainLooper()).postDelayed(new eoz(this, paramItem), 1000L);
+      new Handler(Looper.getMainLooper()).postDelayed(new eqp(this, paramItem), 1000L);
       continue;
       if (paramItem.BusId == 102)
       {

@@ -1,20 +1,16 @@
-import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class bep
-  implements View.OnClickListener
+  extends Handler
 {
   public bep(QQSetting paramQQSetting) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    paramView = new Intent(this.a.a(), AccountManageActivity.class);
-    this.a.a(paramView);
-    ReportController.b(this.a.a, "CliOper", "", "", "Setting_tab", "Clk_manage_acc", 0, 0, "", "", "", "");
+    ((View)paramMessage.obj).setVisibility(8);
   }
 }
 

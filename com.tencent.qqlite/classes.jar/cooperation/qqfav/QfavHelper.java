@@ -12,8 +12,8 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.mobileqq.pluginsdk.PluginStatic;
 import com.tencent.qphone.base.util.QLog;
-import fks;
-import fkw;
+import fmy;
+import fnc;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
@@ -21,7 +21,7 @@ import java.util.List;
 import mqq.app.AppRuntime;
 
 public final class QfavHelper
-  implements fks
+  implements fmy
 {
   public static final String ao = "com.qqfav.QfavAppInterface";
   
@@ -138,7 +138,7 @@ public final class QfavHelper
     if (paramContext == null) {
       localContext = BaseApplicationImpl.a().getApplicationContext();
     }
-    new fkw(localContext, paramOnPluginInstallListener).start();
+    new fnc(localContext, paramOnPluginInstallListener).start();
   }
   
   public static void a(AppRuntime paramAppRuntime)

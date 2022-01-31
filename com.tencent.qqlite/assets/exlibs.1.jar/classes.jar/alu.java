@@ -1,22 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
 import com.tencent.mobileqq.activity.EmosmDetailActivity;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
-public class alu
-  implements View.OnClickListener
+public final class alu
+  implements Runnable
 {
-  public alu(EmosmDetailActivity paramEmosmDetailActivity) {}
+  public alu(int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, PicEmoticonInfo paramPicEmoticonInfo, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    EmosmDetailActivity.a(this.a.app, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Ep_pkg_detail", 0);
-    EmojiHomeUiPlugin.openEmojiDetailPage(this.a, this.a.app.getAccount(), 8, this.a.a.a.epId, this.a.app.getSid(), false);
+    EmosmDetailActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a, this.jdField_a_of_type_AndroidContentContext.getString(2131362946), this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,17 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.TroopMemberCardActivity;
-import com.tencent.mobileqq.data.TroopMemberCard;
 
 public class bnt
-  implements View.OnClickListener
+  extends Handler
 {
   public bnt(TroopMemberCardActivity paramTroopMemberCardActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a(this.a.c, this.a.d, this.a.e, this.a.a.isFriend);
-    this.a.e("Clk_head");
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    if (this.a.o != 1)
+    {
+      paramMessage = new Intent();
+      paramMessage.putExtra("finish_chat_setting", true);
+      this.a.a.setResult(-1, paramMessage);
+    }
+    this.a.a.finish();
   }
 }
 

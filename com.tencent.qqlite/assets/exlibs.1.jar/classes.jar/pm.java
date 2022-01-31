@@ -19,7 +19,7 @@ public class pm
       }
     }
     label101:
-    for (String str = (String)((TextView)paramView.findViewById(2131296566)).getText();; str = null)
+    for (String str = (String)((TextView)paramView.findViewById(2131296569)).getText();; str = null)
     {
       if (((Integer)localObject).intValue() == 1)
       {

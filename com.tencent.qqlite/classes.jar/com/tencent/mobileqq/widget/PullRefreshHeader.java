@@ -45,7 +45,7 @@ public class PullRefreshHeader
     if (paramLong != 0L)
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s%s", new Object[] { this.jdField_a_of_type_AndroidContentContext.getString(2131363355), TimeFormatterUtils.a(paramLong, true, "yyyy-MM-dd") }));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s%s", new Object[] { this.jdField_a_of_type_AndroidContentContext.getString(2131363365), TimeFormatterUtils.a(paramLong, true, "yyyy-MM-dd") }));
       return;
     }
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -83,14 +83,14 @@ public class PullRefreshHeader
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
-      localDrawable = getResources().getDrawable(2130839074);
-      str = getResources().getString(2131363358);
+      localDrawable = getResources().getDrawable(2130839107);
+      str = getResources().getString(2131363368);
       continue;
-      localDrawable = getResources().getDrawable(2130839072);
-      str = getResources().getString(2131363356);
+      localDrawable = getResources().getDrawable(2130839105);
+      str = getResources().getString(2131363366);
       continue;
-      localDrawable = getResources().getDrawable(2130839073);
-      str = getResources().getString(2131363356);
+      localDrawable = getResources().getDrawable(2130839106);
+      str = getResources().getString(2131363366);
     }
   }
   
@@ -116,17 +116,17 @@ public class PullRefreshHeader
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
-      localDrawable = getResources().getDrawable(2130839074);
+      localDrawable = getResources().getDrawable(2130839107);
       continue;
-      localDrawable = getResources().getDrawable(2130839072);
+      localDrawable = getResources().getDrawable(2130839105);
       continue;
-      localDrawable = getResources().getDrawable(2130839073);
+      localDrawable = getResources().getDrawable(2130839106);
     }
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363353);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363363);
     d(paramLong);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
@@ -137,7 +137,7 @@ public class PullRefreshHeader
   {
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationRotateAnimation);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363354);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363364);
     d(paramLong);
   }
   
@@ -146,8 +146,8 @@ public class PullRefreshHeader
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839071);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363352);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839104);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363362);
     d(paramLong);
   }
   
@@ -156,7 +156,7 @@ public class PullRefreshHeader
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131296558));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131296561));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297440));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297441));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297442));

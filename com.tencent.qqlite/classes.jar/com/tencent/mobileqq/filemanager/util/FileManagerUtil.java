@@ -77,9 +77,9 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dvg;
-import dvh;
-import dvi;
+import dwj;
+import dwk;
+import dwl;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -415,7 +415,7 @@ public class FileManagerUtil
     int i = paramString1.indexOf(paramString2);
     int j = paramString2.length() + i;
     paramString1 = new SpannableString(paramString1);
-    paramString2 = new dvi(paramTipsClickedInterface);
+    paramString2 = new dwl(paramTipsClickedInterface);
     paramString1.setSpan(new ForegroundColorSpan(2131427331), i, j, 33);
     paramString1.setSpan(paramString2, i, j, 33);
     paramString1.setSpan(paramString2, i, j, 33);
@@ -1523,7 +1523,7 @@ public class FileManagerUtil
     while (NetworkUtil.e(paramContext)) {
       if ((a()) && (paramFileManagerEntity.fileSize > 5242880L) && (!a(paramFileManagerEntity)))
       {
-        FMDialogUtil.a(paramContext, 2131362018, i, new dvg(paramFileManagerEntity, paramQQAppInterface));
+        FMDialogUtil.a(paramContext, 2131362018, i, new dwj(paramFileManagerEntity, paramQQAppInterface));
         return;
         i = 2131362017;
       }
@@ -1534,7 +1534,7 @@ public class FileManagerUtil
         return;
       }
     }
-    FMToastUtil.a(2131363450);
+    FMToastUtil.a(2131363461);
   }
   
   public static void a(ImageView paramImageView, String paramString)
@@ -1542,7 +1542,7 @@ public class FileManagerUtil
     paramString = FileUtil.a(paramString);
     if (paramString == null)
     {
-      paramImageView.setImageResource(2130838555);
+      paramImageView.setImageResource(2130838580);
       return;
     }
     paramImageView.setImageResource(b(paramString));
@@ -1563,7 +1563,7 @@ public class FileManagerUtil
     String str3 = FileUtil.a(paramDataLineMsgRecord.filename);
     if (str3 == null)
     {
-      paramAsyncImageView.setImageResource(2130838555);
+      paramAsyncImageView.setImageResource(2130838580);
       label21:
       return;
     }
@@ -1604,7 +1604,7 @@ public class FileManagerUtil
   {
     if ((paramTextView != null) && (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
     {
-      jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramBaseActivity.getResources().getDrawable(2130837904);
+      jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramBaseActivity.getResources().getDrawable(2130837922);
       paramTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
       ((Animatable)jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
     }
@@ -1988,14 +1988,14 @@ public class FileManagerUtil
       do
       {
         return;
-        paramAsyncImageView.setDefaultImage(2130838527);
+        paramAsyncImageView.setDefaultImage(2130838552);
         paramAsyncImageView.setAsyncImage(paramString);
         return;
-        paramAsyncImageView.setDefaultImage(2130838509);
+        paramAsyncImageView.setDefaultImage(2130838534);
       } while (!FileUtil.b(paramString));
       paramAsyncImageView.setApkIconAsyncImage(paramString);
       return;
-      paramAsyncImageView.setDefaultImage(2130838556);
+      paramAsyncImageView.setDefaultImage(2130838581);
     } while (!FileUtil.b(paramString));
     paramAsyncImageView.setAsyncImage(paramString);
   }
@@ -2004,7 +2004,7 @@ public class FileManagerUtil
   {
     String str = FileUtil.a(paramString);
     if (str == null) {
-      paramAsyncImageView.setImageResource(2130838555);
+      paramAsyncImageView.setImageResource(2130838580);
     }
     do
     {
@@ -2017,11 +2017,11 @@ public class FileManagerUtil
     default: 
       return;
     case 0: 
-      paramAsyncImageView.setDefaultImage(2130838527);
+      paramAsyncImageView.setDefaultImage(2130838552);
       paramAsyncImageView.setAsyncImage(paramString);
       return;
     }
-    paramAsyncImageView.setDefaultImage(2130838556);
+    paramAsyncImageView.setDefaultImage(2130838581);
     paramAsyncImageView.setAsyncImage(paramString);
   }
   
@@ -2033,7 +2033,7 @@ public class FileManagerUtil
   @TargetApi(10)
   public static void a(String paramString, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, FileManagerUtil.IGetVideoCallback paramIGetVideoCallback)
   {
-    ThreadManager.b(new dvh(paramString, paramInt3, paramBoolean, paramIGetVideoCallback, paramInt1, paramInt2));
+    ThreadManager.b(new dwk(paramString, paramInt3, paramBoolean, paramIGetVideoCallback, paramInt1, paramInt2));
   }
   
   public static boolean a()
@@ -2044,7 +2044,7 @@ public class FileManagerUtil
   
   public static boolean a(int paramInt)
   {
-    return paramInt == FMConstants.cO;
+    return paramInt == FMConstants.cP;
   }
   
   public static boolean a(int paramInt, String paramString)
@@ -2385,7 +2385,7 @@ public class FileManagerUtil
   {
     paramString = FileUtil.a(paramString);
     if (paramString == null) {
-      return 2130838555;
+      return 2130838580;
     }
     return d(a(paramString));
   }
@@ -3133,29 +3133,29 @@ public class FileManagerUtil
     switch (paramInt)
     {
     default: 
-      return 2130838555;
-    case 2: 
-      return 2130838556;
-    case 0: 
-      return 2130838527;
-    case 1: 
-      return 2130838528;
-    case 3: 
-      return 2130838514;
-    case 4: 
       return 2130838580;
+    case 2: 
+      return 2130838581;
+    case 0: 
+      return 2130838552;
+    case 1: 
+      return 2130838553;
+    case 3: 
+      return 2130838539;
+    case 4: 
+      return 2130838605;
     case 6: 
-      return 2130838579;
+      return 2130838604;
     case 5: 
-      return 2130838509;
+      return 2130838534;
     case 7: 
-      return 2130838545;
+      return 2130838570;
     case 8: 
-      return 2130838515;
+      return 2130838540;
     case 9: 
-      return 2130838543;
+      return 2130838568;
     }
-    return 2130838549;
+    return 2130838574;
   }
   
   public static int d(String paramString)

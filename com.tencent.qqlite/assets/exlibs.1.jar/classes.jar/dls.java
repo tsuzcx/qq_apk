@@ -1,80 +1,85 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileCategoryBrowserActivity;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.widget.NoFileRelativeLayout;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class dls
-  extends FMObserver
+  extends AsyncTask
 {
-  public dls(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public dls(QfileLocalFileCategoryBrowserActivity paramQfileLocalFileCategoryBrowserActivity) {}
   
-  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected List a(Void... paramVarArgs)
   {
-    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.s(this.a).a().a(paramLong1, paramString, paramInt, paramLong2);
-    if (localFileManagerEntity == null)
+    ArrayList localArrayList;
+    Iterator localIterator;
+    switch (this.a.c)
     {
-      QLog.e(QfileBaseRecentFileTabView.a, 1, "OnFileCome,but query FileEntity null,uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + "], strUin[" + FileManagerUtil.e(paramString) + "], peerType[" + paramInt + "]");
-      return;
-    }
-    this.a.b(localFileManagerEntity);
-    QfileBaseRecentFileTabView.t(this.a).a().c(localFileManagerEntity);
-    QfileBaseRecentFileTabView.c(this.a, new dlv(this));
-  }
-  
-  protected void a(ThumbnailInfo paramThumbnailInfo)
-  {
-    if (paramThumbnailInfo == null) {
-      return;
-    }
-    if ((paramThumbnailInfo.a instanceof FileManagerEntity))
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.a;
-      if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() > 0))
-      {
-        localFileManagerEntity.strThumbPath = paramThumbnailInfo.b;
-        QfileBaseRecentFileTabView.o(this.a).a().c(localFileManagerEntity);
+    case 0: 
+    case 3: 
+    case 5: 
+    case 7: 
+    case 8: 
+    case 9: 
+    default: 
+      return null;
+    case 10: 
+      paramVarArgs = FileCategoryUtil.a(this.a.getApplicationContext());
+      localArrayList = new ArrayList();
+      localIterator = paramVarArgs.keySet().iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.addAll((Collection)paramVarArgs.get((String)localIterator.next()));
       }
+      return localArrayList;
+    case 1: 
+      paramVarArgs = FileCategoryUtil.c(this.a.getApplicationContext());
+      localArrayList = new ArrayList();
+      localIterator = paramVarArgs.keySet().iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.addAll((Collection)paramVarArgs.get((String)localIterator.next()));
+      }
+      return localArrayList;
+    case 2: 
+      paramVarArgs = FileCategoryUtil.b(this.a.getApplicationContext());
+      localArrayList = new ArrayList();
+      localIterator = paramVarArgs.keySet().iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.addAll((Collection)paramVarArgs.get((String)localIterator.next()));
+      }
+      return localArrayList;
+    case 4: 
+      return FileCategoryUtil.a(this.a.getApplicationContext(), null);
     }
-    this.a.i();
+    return FileManagerUtil.a(false, 0);
   }
   
-  protected void a(Boolean paramBoolean, List paramList)
+  protected void a(List paramList)
   {
-    QfileBaseRecentFileTabView.a(this.a, paramBoolean, paramList);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    QfileBaseRecentFileTabView.a(this.a, new dlt(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.p(this.a).a().a(paramLong1, paramString1, paramInt1, paramLong2);
-    if (localFileManagerEntity == null)
+    if (paramList == null)
     {
-      QLog.e(QfileBaseRecentFileTabView.a, 1, "OnFileCome,but query FileEntity null,uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + "], strUin[" + FileManagerUtil.e(paramString1) + "], peerType[" + paramInt1 + "]");
+      QfileLocalFileCategoryBrowserActivity.a(this.a);
+      QfileLocalFileCategoryBrowserActivity.b(this.a);
+      FileManagerUtil.a(QfileLocalFileCategoryBrowserActivity.a(this.a));
       return;
     }
-    if (!paramBoolean)
-    {
-      localFileManagerEntity.bDelInFM = false;
-      FileManagerUtil.a(paramLong2, paramInt2, paramString2);
-    }
-    this.a.b(localFileManagerEntity);
-    QfileBaseRecentFileTabView.q(this.a).a().c(localFileManagerEntity);
-    QfileBaseRecentFileTabView.b(this.a, new dlu(this, paramLong2));
+    this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    this.a.jdField_a_of_type_JavaUtilLinkedHashMap.put("本地文件分组", this.a.jdField_a_of_type_JavaUtilArrayList);
+    QfileLocalFileCategoryBrowserActivity.a(this.a);
+    QfileLocalFileCategoryBrowserActivity.c(this.a);
   }
   
-  protected void d()
+  protected void onPreExecute()
   {
-    super.d();
-    QfileBaseRecentFileTabView.d(this.a, new dlw(this));
+    super.onPreExecute();
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setGone();
+    QfileLocalFileCategoryBrowserActivity.a(this.a);
   }
 }
 

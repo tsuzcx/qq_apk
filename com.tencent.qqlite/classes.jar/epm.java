@@ -1,37 +1,17 @@
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
+import com.tencent.mobileqq.troop.widget.TroopAioFeedsCenterView.FlingGestureListener;
 
-class epm
-  implements Runnable
+public class epm
+  extends TroopAioFeedsCenterView.FlingGestureListener
 {
-  epm(epl paramepl, TroopUploadingThread.UploadState paramUploadState) {}
+  public epm(TroopFeedsCenterLogic paramTroopFeedsCenterLogic) {}
   
-  public void run()
+  public void a()
   {
-    AvatarWallAdapter.m = 0;
-    this.jdField_a_of_type_Epl.a.n = 0;
-    int i = this.jdField_a_of_type_Epl.a.b - this.jdField_a_of_type_Epl.a.j;
-    if (i >= 8) {}
-    String str;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.a != 1) {
-            break;
-          }
-          this.jdField_a_of_type_Epl.a.a(i, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.b, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.c);
-        } while (this.jdField_a_of_type_Epl.a.a(this.jdField_a_of_type_Epl.a.g));
-        this.jdField_a_of_type_Epl.a.d = false;
-        this.jdField_a_of_type_Epl.a.b();
-        return;
-      } while (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.a != 2);
-      str = this.jdField_a_of_type_Epl.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.b);
-    } while (str == null);
-    this.jdField_a_of_type_Epl.a.a(str, i);
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Clk_fold", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "1", "", "");
+    this.a.b();
   }
 }
 

@@ -1,180 +1,160 @@
-import android.os.Handler;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.app.FriendsManagerImp;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsShareMsg.Builder;
+import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
+import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
+import com.tencent.mobileqq.structmsg.StructMsgElementFactory;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
-public class aiv
-  extends DiscussionObserver
+public final class aiv
+  implements Runnable
 {
-  public aiv(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aiv(long paramLong, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, Activity paramActivity, int paramInt, QQProgressDialog paramQQProgressDialog) {}
   
-  protected void a(boolean paramBoolean, long paramLong, ArrayList paramArrayList)
+  public void run()
   {
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramLong == Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue()))
+    Object localObject3 = null;
+    int i = 1;
+    int k = 0;
+    int j = 0;
+    Object localObject2;
+    label80:
+    FriendManager localFriendManager;
+    if (1L == this.jdField_a_of_type_Long)
     {
-      ArrayList localArrayList1 = new ArrayList();
-      ArrayList localArrayList2 = new ArrayList();
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
+      if (SystemUtil.a()) {}
+      for (Object localObject1 = AppConstants.aF;; localObject1 = SystemUtil.jdField_a_of_type_JavaLangString + "head/_hd/")
       {
-        String str = (String)paramArrayList.next();
-        HashMap localHashMap = new HashMap();
-        if (!TextUtils.isEmpty(str))
-        {
-          Friends localFriends = ((FriendManager)this.a.app.getManager(8)).c(str);
-          if (localFriends != null) {
-            localHashMap.put("memberName", localFriends.name);
-          }
-          for (;;)
-          {
-            localHashMap.put("memberUin", str);
-            localArrayList1.add(localHashMap);
-            localArrayList2.add(str);
-            break;
-            localHashMap.put("memberName", str);
-          }
+        localObject1 = (String)localObject1 + "default_discussion_icon.png";
+        localObject2 = new File((String)localObject1);
+        if (!((File)localObject2).exists()) {
+          break;
         }
+        i = 1;
+        if (i != 0) {
+          break label622;
+        }
+        localObject2 = "";
+        AbsShareMsg localAbsShareMsg = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(15).a("推荐讨论组：" + this.jdField_a_of_type_JavaLangString).e(this.b).a("邀请加入讨论组", null).a();
+        localFriendManager = (FriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
+        localObject1 = localObject3;
+        if (localFriendManager != null)
+        {
+          localObject1 = localFriendManager.a(this.c);
+          localObject3 = localFriendManager.a(this.c, ((DiscussionInfo)localObject1).ownerUin);
+          if (localObject3 == null) {
+            break label580;
+          }
+          localObject1 = ContactUtils.a((DiscussionMemberInfo)localObject3, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        }
+        label207:
+        localObject3 = localObject1;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          localObject3 = "创建者信息获取失败";
+        }
+        localObject1 = StructMsgElementFactory.a(2);
+        ((AbsStructMsgItem)localObject1).a((String)localObject2, this.jdField_a_of_type_JavaLangString, "创建人：" + (String)localObject3);
+        localAbsShareMsg.addItem((AbsStructMsgElement)localObject1);
+        localObject1 = new Intent(this.jdField_a_of_type_AndroidAppActivity, ForwardRecentActivity.class);
+        ((Intent)localObject1).putExtra("forward_type", -3);
+        ((Intent)localObject1).putExtra("stuctmsg_bytes", localAbsShareMsg.getBytes());
+        this.jdField_a_of_type_AndroidAppActivity.startActivityForResult((Intent)localObject1, this.jdField_a_of_type_Int);
+        if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+        }
+        return;
       }
-      this.a.a(localArrayList1);
-      DiscussionInfoCardActivity.a(this.a).addAll(localArrayList2);
-      this.a.a(2, this.a.getString(2131363670));
-      DiscussionInfoCardActivity.a(this.a);
-      if (!this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong)
-  {
-    if ((paramBoolean) && (paramLong != null) && (String.valueOf(paramLong).equals(DiscussionInfoCardActivity.a(this.a)))) {
-      ReportController.b(this.a.app, "CliOper", "", "", "discuss", "discuss_common", 0, 0, "", "", "", "");
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    if ((paramBoolean) && (paramLong1 != null) && (String.valueOf(paramLong1).equals(DiscussionInfoCardActivity.a(this.a))))
-    {
-      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.a(this.a));
-      return;
-    }
-    QQToast.a(this.a, 1, this.a.getString(2131363222), 0).b(this.a.getTitleBarHeight());
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (DiscussionInfoCardActivity.a(this.a).equals(paramString))
-    {
-      if (!paramBoolean) {
-        break label110;
-      }
-      if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
-      {
-        DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131363674));
-        DiscussionInfoCardActivity.a(this.a).c(2130837985);
-        DiscussionInfoCardActivity.a(this.a).b(false);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(16, 1500L);
-      }
-    }
-    label110:
-    while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing())) {
-      return;
-    }
-    DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131363675));
-    DiscussionInfoCardActivity.a(this.a).c(2130837975);
-    DiscussionInfoCardActivity.a(this.a).b(false);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(17, 1500L);
-  }
-  
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    String str = (String)paramArrayOfObject[0];
-    boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-    if ((DiscussionInfoCardActivity.a(this.a).equals(str)) && (paramBoolean) && (bool))
-    {
-      paramArrayOfObject = (FriendsManagerImp)this.a.app.getManager(8);
-      this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramArrayOfObject.a(DiscussionInfoCardActivity.a(this.a));
-      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.a(this.a));
-      this.a.a();
-      DiscussionInfoCardActivity.b(this.a);
-    }
-  }
-  
-  protected void a(Object[] paramArrayOfObject)
-  {
-    String str = (String)paramArrayOfObject[0];
-    int i = ((Integer)paramArrayOfObject[1]).intValue();
-    paramArrayOfObject = (String)paramArrayOfObject[2];
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.trim().equals(""))) {
-      paramArrayOfObject = this.a.getString(2131363676);
     }
     for (;;)
     {
-      if (DiscussionInfoCardActivity.a(this.a).equals(str))
+      boolean bool;
+      try
       {
-        if ((10001 == i) || (10002 == i)) {
-          DialogUtil.a(this.a, 230, null, paramArrayOfObject, new aiw(this, str), null).show();
+        ((File)localObject2).createNewFile();
+        bool = ((BitmapDrawable)ImageUtil.d()).getBitmap().compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream((File)localObject2));
+        if (!bool) {
+          break label637;
         }
+        i = 1;
       }
-      else {
-        return;
-      }
-      this.a.a(1, paramArrayOfObject);
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Long paramLong)
-  {
-    if ((paramBoolean) && (paramLong != null) && (String.valueOf(paramLong).equals(DiscussionInfoCardActivity.a(this.a)))) {}
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (DiscussionInfoCardActivity.a(this.a).equals(paramString))
-    {
-      if (!paramBoolean) {
-        break label164;
-      }
-      paramString = ((FriendsManagerImp)this.a.app.getManager(8)).a(paramString);
-      if (paramString != null)
+      catch (IOException localIOException1)
       {
-        DiscussionInfoCardActivity.a(this.a, paramString.discussionName);
-        DiscussionInfoCardActivity.a(this.a).setText(DiscussionInfoCardActivity.b(this.a));
+        if (QLog.isColorLevel()) {
+          localIOException1.printStackTrace();
+        }
+        str1 = null;
+        i = j;
       }
-      if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
+      break;
+      if (SystemUtil.a()) {}
+      for (String str1 = AppConstants.aF;; str1 = SystemUtil.jdField_a_of_type_JavaLangString + "head/_hd/")
       {
-        DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131363667));
-        DiscussionInfoCardActivity.a(this.a).c(2130837985);
-        DiscussionInfoCardActivity.a(this.a).b(false);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(17, 1500L);
+        str1 = str1 + "default_discussion_icon.png";
+        localObject2 = new File(str1);
+        if (!((File)localObject2).exists()) {
+          break label517;
+        }
+        i = 1;
+        break;
       }
+      for (;;)
+      {
+        try
+        {
+          label517:
+          ((File)localObject2).createNewFile();
+          bool = ((BitmapDrawable)ImageUtil.d()).getBitmap().compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream((File)localObject2));
+          if (!bool) {
+            break label629;
+          }
+        }
+        catch (IOException localIOException2)
+        {
+          if (QLog.isColorLevel()) {
+            localIOException2.printStackTrace();
+          }
+          str2 = null;
+          i = k;
+        }
+        break;
+        label580:
+        if (localFriendManager.b(str2.ownerUin))
+        {
+          str2 = localFriendManager.c(str2.ownerUin);
+          break label207;
+        }
+        str2 = str2.ownerUin;
+        break label207;
+        label622:
+        localObject2 = str2;
+        break label80;
+        label629:
+        str2 = null;
+        i = 0;
+      }
+      label637:
+      String str2 = null;
+      i = 0;
     }
-    label164:
-    do
-    {
-      return;
-      DiscussionInfoCardActivity.a(this.a).setText(DiscussionInfoCardActivity.b(this.a));
-    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
-    DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131363668));
-    DiscussionInfoCardActivity.a(this.a).c(2130837985);
-    DiscussionInfoCardActivity.a(this.a).b(false);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(17, 1500L);
   }
 }
 

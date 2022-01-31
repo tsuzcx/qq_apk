@@ -1,24 +1,15 @@
-import com.tencent.mobileqq.adapter.AllBuddyListAdapter;
-import com.tencent.mobileqq.app.ContactSorter;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 import java.util.Comparator;
 
 public class cor
   implements Comparator
 {
-  public cor(AllBuddyListAdapter paramAllBuddyListAdapter) {}
+  private cor(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  private String a(Entity paramEntity)
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    paramEntity = (Friends)paramEntity;
-    return ContactUtils.a(paramEntity) + paramEntity.uin;
-  }
-  
-  public int a(Entity paramEntity1, Entity paramEntity2)
-  {
-    return ContactSorter.a(a(paramEntity1), a(paramEntity2));
+    return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
   }
 }
 

@@ -20,10 +20,10 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.rc.GetQQAppInterfaceDataRemoteCommand;
-import fko;
-import fkp;
-import fkq;
-import fkr;
+import fmu;
+import fmv;
+import fmw;
+import fmx;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
@@ -107,7 +107,7 @@ public final class PluginManagerV2
     paramContext.setTitle(paramString);
     paramContext.setMessage("下载中...");
     paramContext.setCancelable(false);
-    paramContext.setButton(-2, "取消", new fko(paramOnClickListener));
+    paramContext.setButton(-2, "取消", new fmu(paramOnClickListener));
     return paramContext;
   }
   
@@ -157,8 +157,8 @@ public final class PluginManagerV2
           localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
           localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
           localLaunchState.jdField_a_of_type_Boolean = false;
-          localLaunchState.jdField_a_of_type_AndroidAppProgressDialog = a(paramContext, (String)localObject, new fkp(this, paramPluginParams.b, null));
-          a(str, paramBoolean, new fkr(this, localLaunchState, paramContext));
+          localLaunchState.jdField_a_of_type_AndroidAppProgressDialog = a(paramContext, (String)localObject, new fmv(this, paramPluginParams.b, null));
+          a(str, paramBoolean, new fmx(this, localLaunchState, paramContext));
           return;
         }
       }
@@ -173,8 +173,8 @@ public final class PluginManagerV2
       localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
       localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
       localLaunchState.jdField_a_of_type_Boolean = false;
-      localLaunchState.jdField_a_of_type_AndroidAppProgressDialog = a(paramContext, (String)localObject, new fkp(this, paramPluginParams.b, null));
-      a(str, paramBoolean, new fkr(this, localLaunchState, paramContext));
+      localLaunchState.jdField_a_of_type_AndroidAppProgressDialog = a(paramContext, (String)localObject, new fmv(this, paramPluginParams.b, null));
+      a(str, paramBoolean, new fmx(this, localLaunchState, paramContext));
       return;
     }
   }
@@ -355,7 +355,7 @@ public final class PluginManagerV2
       }
       else
       {
-        paramPluginParams = new fkq(this, paramOnPluginReadyListener, bool1, paramContext, paramPluginParams, bool3, null);
+        paramPluginParams = new fmw(this, paramOnPluginReadyListener, bool1, paramContext, paramPluginParams, bool3, null);
         a(paramContext, localPluginInfo.mName, localPluginInfo.mLength, paramPluginParams, paramPluginParams, bool1).show();
         return;
       }

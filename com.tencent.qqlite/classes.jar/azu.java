@@ -1,22 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreUtils;
 
 public class azu
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   public azu(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.app.logout(true);
-    SharedPreUtils.a(this.a.app.a(), this.a.app.a(), false);
-    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
-    this.a.finish();
+    this.a.c();
   }
 }
 

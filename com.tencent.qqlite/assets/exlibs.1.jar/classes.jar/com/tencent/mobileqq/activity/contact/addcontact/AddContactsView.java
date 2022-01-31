@@ -6,8 +6,8 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.View.OnClickListener;
-import cbu;
-import cbv;
+import ccv;
+import ccw;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
 import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
@@ -33,9 +33,9 @@ public class AddContactsView
   private static final String jdField_a_of_type_JavaLangString = AddContactsView.class.getSimpleName();
   private static final String b = "、";
   private static final String c = "条件：";
-  ConditionSearchManager.IConfigListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener = new cbu(this);
+  ConditionSearchManager.IConfigListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener = new ccv(this);
   ConditionSearchManager jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager;
-  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new cbv(this);
+  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new ccw(this);
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   FormMutiItem jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem;
   boolean jdField_a_of_type_Boolean = false;
@@ -70,42 +70,42 @@ public class AddContactsView
   
   private void i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131296509));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setPadding(getResources().getDimensionPixelSize(2131493068), 0, 0, 0);
-    Object localObject = getResources().getDrawable(2130839313);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131296512));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setPadding(getResources().getDimensionPixelSize(2131493070), 0, 0, 0);
+    Object localObject = getResources().getDrawable(2130839376);
     ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setCompoundDrawables((Drawable)localObject, null, null, null);
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setFocusable(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setCursorVisible(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setContentDescription("搜索栏、QQ号、手机号、邮箱、群");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem = ((FormMutiItem)findViewById(2131296510));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon(getResources().getDrawable(2130838626));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setFirstLineText(this.jdField_a_of_type_AndroidContentContext.getString(2131363761));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem = ((FormMutiItem)findViewById(2131296513));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon(getResources().getDrawable(2130838653));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setFirstLineText(this.jdField_a_of_type_AndroidContentContext.getString(2131363772));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setSecondLineText("");
     if (((ConditionSearchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(49)).b()) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setRightIcon(getResources().getDrawable(2130839338));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setRightIcon(getResources().getDrawable(2130839403));
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setOnClickListener(this);
-    localObject = (FormSimpleItem)findViewById(2131296511);
-    ((FormSimpleItem)localObject).setLeftIcon(getResources().getDrawable(2130838600));
-    ((FormSimpleItem)localObject).setLeftText(getResources().getString(2131363767));
+    localObject = (FormSimpleItem)findViewById(2131296514);
+    ((FormSimpleItem)localObject).setLeftIcon(getResources().getDrawable(2130838625));
+    ((FormSimpleItem)localObject).setLeftText(getResources().getString(2131363778));
     ((FormSimpleItem)localObject).setOnClickListener(this);
     ((FormSimpleItem)localObject).setContentDescription("添加手机联系人");
-    localObject = (FormSimpleItem)findViewById(2131296512);
+    localObject = (FormSimpleItem)findViewById(2131296515);
     ((FormSimpleItem)localObject).setLeftIcon(getResources().getDrawable(2130837521));
-    ((FormSimpleItem)localObject).setLeftText(getContext().getString(2131363762));
+    ((FormSimpleItem)localObject).setLeftText(getContext().getString(2131363773));
     ((FormSimpleItem)localObject).setOnClickListener(this);
-    localObject = (FormSimpleItem)findViewById(2131296513);
+    localObject = (FormSimpleItem)findViewById(2131296516);
     ((FormSimpleItem)localObject).setLeftIcon(getResources().getDrawable(2130837520));
-    ((FormSimpleItem)localObject).setLeftText(getContext().getString(2131363764));
-    ((FormSimpleItem)localObject).setContentDescription(getContext().getString(2131363764));
+    ((FormSimpleItem)localObject).setLeftText(getContext().getString(2131363775));
+    ((FormSimpleItem)localObject).setContentDescription(getContext().getString(2131363775));
     ((FormSimpleItem)localObject).setOnClickListener(this);
   }
   
   public int a()
   {
-    return getResources().getDimensionPixelSize(2131493092);
+    return getResources().getDimensionPixelSize(2131493094);
   }
   
   protected void a()
@@ -113,7 +113,7 @@ public class AddContactsView
     super.a();
     this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager = ((ConditionSearchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(49));
     a(2130903055);
-    setBackgroundResource(2130837635);
+    setBackgroundResource(2130837660);
     i();
     h();
   }
@@ -238,20 +238,20 @@ public class AddContactsView
     {
     default: 
       return;
-    case 2131296509: 
+    case 2131296512: 
       this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a();
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BEC", "0X8004BEC", 1, 0, "", "", "", "");
       return;
-    case 2131296510: 
-      ((FormSimpleItem)findViewById(2131296510)).setRightIcon(null);
+    case 2131296513: 
+      ((FormSimpleItem)findViewById(2131296513)).setRightIcon(null);
       this.jdField_a_of_type_AndroidContentContext.startActivity(new Intent(this.jdField_a_of_type_AndroidContentContext, ConditionSearchFriendActivity.class).putExtra("from", "addcontacts"));
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004240", "0X8004240", 0, 0, "", "", "", "");
       return;
-    case 2131296512: 
+    case 2131296515: 
       this.jdField_a_of_type_AndroidContentContext.startActivity(new Intent(this.jdField_a_of_type_AndroidContentContext, ScannerActivity.class).putExtra("from", "addcontacts"));
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Contacts_tab", "Contacts_tab_scan", 0, 0, "", "", "", "");
       return;
-    case 2131296513: 
+    case 2131296516: 
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80041A8", "0X80041A8", 0, 0, "", "", "", "");
       paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, CreateFaceToFaceDiscussionActivity.class);
       paramView.putExtra("param_face_to_face_troop", true);

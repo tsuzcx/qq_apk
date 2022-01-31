@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set
+<animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <scale android:duration="300" android:pivotX="50.0%" android:pivotY="50.0%" android:fromXScale="1.0" android:toXScale="1.0" android:fromYScale="1.0" android:toYScale="1.0" />
-    <alpha android:interpolator="@android:anim/decelerate_interpolator" android:duration="300" android:fromAlpha="0.0" android:toAlpha="1.0" />
-</set>
+    <item android:duration="200" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205ec" />
+    <item android:duration="200" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205ed" />
+    <item android:duration="200" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205ee" />
+</animation-list>

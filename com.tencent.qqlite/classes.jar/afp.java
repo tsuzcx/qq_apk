@@ -1,16 +1,22 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class afp
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public afp(ChatSettingForTroop paramChatSettingForTroop) {}
+  public afp(ChatSettingForTroop paramChatSettingForTroop, View paramView) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    if (this.a.ap >= 0) {
-      ChatSettingForTroop.a(this.a, this.a.ap);
-    }
+    LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131297090);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, -this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.ao, 0.0F, 0.0F);
+    localTranslateAnimation.setDuration(800L);
+    localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
+    localTranslateAnimation.setAnimationListener(new afq(this, localLinearLayout));
+    localLinearLayout.startAnimation(localTranslateAnimation);
   }
 }
 

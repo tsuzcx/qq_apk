@@ -11,12 +11,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import cch;
-import cci;
-import ccj;
-import cck;
-import ccl;
-import ccm;
+import cdi;
+import cdj;
+import cdk;
+import cdl;
+import cdm;
+import cdn;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -49,8 +49,8 @@ public class SearchContactsActivity
   public static final int o = 2;
   public static final int p = 3;
   public int a;
-  public cck a;
-  private ccm jdField_a_of_type_Ccm;
+  public cdl a;
+  private cdn jdField_a_of_type_Cdn;
   private ViewFactory.GuideView jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView;
   ArrayList jdField_a_of_type_JavaUtilArrayList;
   public boolean a;
@@ -124,14 +124,14 @@ public class SearchContactsActivity
     return false;
   }
   
-  public String a(SearchBaseActivity.ItemViewHolder paramItemViewHolder, ccl paramccl)
+  public String a(SearchBaseActivity.ItemViewHolder paramItemViewHolder, cdm paramcdm)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int i = paramccl.jdField_b_of_type_Int;
-    paramItemViewHolder.jdField_a_of_type_JavaLangString = (paramccl.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() + "");
-    if (paramccl.jdField_b_of_type_Int != 80000001)
+    int i = paramcdm.jdField_b_of_type_Int;
+    paramItemViewHolder.jdField_a_of_type_JavaLangString = (paramcdm.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() + "");
+    if (paramcdm.jdField_b_of_type_Int != 80000001)
     {
-      paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(a(paramccl.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get()));
+      paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(a(paramcdm.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get()));
       localStringBuilder.append(paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.getText().toString());
       switch (i)
       {
@@ -142,32 +142,32 @@ public class SearchContactsActivity
     for (;;)
     {
       Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(i, paramItemViewHolder.jdField_a_of_type_JavaLangString);
-      paramccl = localBitmap;
+      paramcdm = localBitmap;
       if (localBitmap == null)
       {
         localBitmap = ImageUtil.a();
-        paramccl = localBitmap;
+        paramcdm = localBitmap;
         if (!this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a())
         {
           this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(paramItemViewHolder.jdField_a_of_type_JavaLangString, i, true, (byte)1);
-          paramccl = localBitmap;
+          paramcdm = localBitmap;
         }
       }
-      paramItemViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramccl);
+      paramItemViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramcdm);
       return localStringBuilder.toString() + "轻触两次进入资料卡";
-      paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(b(paramccl.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get()));
+      paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(b(paramcdm.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get()));
       break;
-      localStringBuilder.append(a(paramItemViewHolder, paramccl.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record));
+      localStringBuilder.append(a(paramItemViewHolder, paramcdm.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record));
       i = 1;
       continue;
       i = 4;
       paramItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       paramItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      paramItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramccl.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.number.get() + "人");
+      paramItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramcdm.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.number.get() + "人");
       paramItemViewHolder.c.setText("");
-      paramItemViewHolder.d.setText(paramccl.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.brief.get());
-      paramItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131427493));
-      paramItemViewHolder.jdField_a_of_type_JavaLangString = String.valueOf(paramccl.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get());
+      paramItemViewHolder.d.setText(paramcdm.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.brief.get());
+      paramItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131427497));
+      paramItemViewHolder.jdField_a_of_type_JavaLangString = String.valueOf(paramcdm.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get());
       localStringBuilder.append(paramItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.getText()).append(paramItemViewHolder.d.getText());
     }
   }
@@ -267,31 +267,31 @@ public class SearchContactsActivity
       }
       else
       {
-        ccl localccl = new ccl();
-        localccl.jdField_a_of_type_Int = 0;
-        localccl.jdField_a_of_type_JavaLangString = getString(ViewFactory.a(localSearchResult.jdField_a_of_type_Int));
-        localArrayList.add(localccl);
+        cdm localcdm = new cdm();
+        localcdm.jdField_a_of_type_Int = 0;
+        localcdm.jdField_a_of_type_JavaLangString = getString(ViewFactory.a(localSearchResult.jdField_a_of_type_Int));
+        localArrayList.add(localcdm);
         int m = localSearchResult.b.size();
         int j = 0;
         for (;;)
         {
           if (j < 2)
           {
-            localccl = new ccl();
-            localccl.jdField_a_of_type_Int = 2;
-            localccl.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = ((AccountSearchPb.record)localSearchResult.b.get(j));
-            localccl.jdField_b_of_type_Int = localSearchResult.jdField_a_of_type_Int;
-            localArrayList.add(localccl);
+            localcdm = new cdm();
+            localcdm.jdField_a_of_type_Int = 2;
+            localcdm.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = ((AccountSearchPb.record)localSearchResult.b.get(j));
+            localcdm.jdField_b_of_type_Int = localSearchResult.jdField_a_of_type_Int;
+            localArrayList.add(localcdm);
             if (j < m - 1) {}
           }
           else
           {
             if (m > 2)
             {
-              localccl = new ccl();
-              localccl.jdField_a_of_type_Int = 1;
-              localccl.jdField_b_of_type_Int = localSearchResult.jdField_a_of_type_Int;
-              localArrayList.add(localccl);
+              localcdm = new cdm();
+              localcdm.jdField_a_of_type_Int = 1;
+              localcdm.jdField_b_of_type_Int = localSearchResult.jdField_a_of_type_Int;
+              localArrayList.add(localcdm);
             }
             if (!QLog.isColorLevel()) {
               break;
@@ -316,9 +316,9 @@ public class SearchContactsActivity
   protected void c()
   {
     super.c();
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new cch(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new cdi(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription("搜索栏、QQ号、手机号、邮箱、群、生活服务、正在编辑");
-    Looper.myQueue().addIdleHandler(new cci(this));
+    Looper.myQueue().addIdleHandler(new cdj(this));
   }
   
   public void doOnBackPressed()
@@ -340,20 +340,20 @@ public class SearchContactsActivity
     do
     {
       return;
-      if (this.jdField_a_of_type_Ccm == null)
+      if (this.jdField_a_of_type_Cdn == null)
       {
-        this.jdField_a_of_type_Ccm = new ccm(this, null);
-        this.jdField_a_of_type_Ccm.a(this.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ccm);
-        this.a = this.jdField_a_of_type_Ccm;
+        this.jdField_a_of_type_Cdn = new cdn(this, null);
+        this.jdField_a_of_type_Cdn.a(this.jdField_a_of_type_JavaUtilArrayList);
+        this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Cdn);
+        this.a = this.jdField_a_of_type_Cdn;
       }
       if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0) != this.jdField_a_of_type_ComTencentWidgetXListView)
       {
         this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentWidgetXListView);
       }
-      this.jdField_a_of_type_Ccm.a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_Ccm.notifyDataSetChanged();
+      this.jdField_a_of_type_Cdn.a(this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Cdn.notifyDataSetChanged();
     } while (!this.jdField_c_of_type_Boolean);
     this.jdField_c_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
@@ -386,7 +386,7 @@ public class SearchContactsActivity
       ReportController.b(this.app, "CliOper", "", "", "0X8004BED", "0X8004BED", this.f + 1, 0, "", "", "", "");
       return;
     }
-    QQToast.a(this, 2131363516, 0).b(getTitleBarHeight());
+    QQToast.a(this, 2131363527, 0).b(getTitleBarHeight());
   }
   
   public void g()
@@ -399,7 +399,7 @@ public class SearchContactsActivity
     while (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0) == this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView)
     {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView.setListener(new ccj(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView.setListener(new cdk(this));
       a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView);
       return;
     }

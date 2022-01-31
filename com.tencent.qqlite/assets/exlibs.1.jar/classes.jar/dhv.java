@@ -1,10 +1,22 @@
-import android.widget.TextView;
+import android.os.Handler;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
-public class dhv
+class dhv
+  implements Runnable
 {
-  public int a;
-  public TextView a;
-  public TextView b;
+  dhv(dhu paramdhu) {}
+  
+  public void run()
+  {
+    if (this.a.a.e)
+    {
+      this.a.a.g();
+      return;
+    }
+    this.a.a.h();
+    this.a.a.g();
+    new Handler().postDelayed(new dhw(this), 1500L);
+  }
 }
 
 

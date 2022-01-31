@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.activity.MayKnowManActivity;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
 
 public class auz
   implements Runnable
 {
-  public auz(MayKnowManActivity paramMayKnowManActivity) {}
+  public auz(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
   
   public void run()
   {
-    if (MayKnowManActivity.a(this.a, 10, this.a.c)) {
-      MayKnowManActivity.a(this.a);
+    if (LoginVerifyCodeActivity2.a(this.a) == 1)
+    {
+      LoginVerifyCodeActivity2.a(this.a).setText(2131363338);
+      LoginVerifyCodeActivity2.a(this.a).setEnabled(true);
+      LoginVerifyCodeActivity2.a(this.a).setClickable(true);
+      return;
     }
+    LoginVerifyCodeActivity2.b(this.a);
+    LoginVerifyCodeActivity2.a(this.a).setText(this.a.getString(2131363338) + "(" + LoginVerifyCodeActivity2.a(this.a) + ")");
+    this.a.b.postDelayed(this, 1000L);
   }
 }
 

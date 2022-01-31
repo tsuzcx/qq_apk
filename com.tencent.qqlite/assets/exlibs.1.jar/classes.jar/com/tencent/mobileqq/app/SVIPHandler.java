@@ -21,7 +21,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cvw;
+import cwx;
 import java.util.Random;
 import java.util.WeakHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -39,7 +39,7 @@ public class SVIPHandler
   public static final int e = 2;
   public static final int f = 3;
   private static final int g = 0;
-  Handler jdField_a_of_type_AndroidOsHandler = new cvw(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getMainLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new cwx(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getMainLooper());
   public WeakHashMap a;
   AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   private boolean jdField_a_of_type_Boolean = false;
@@ -157,7 +157,7 @@ public class SVIPHandler
     localTFontSsoReq.u64_seq.set(((Random)localObject).nextInt(1000));
     localTFontSsoReq.i32_implat.set(109);
     localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
-    localTFontSsoReq.str_mqqver.set("3.4.0.607");
+    localTFontSsoReq.str_mqqver.set("3.5.0.660");
     localTFontSsoReq.st_fresh_req = new VipFontUpdate.TFontFreshReq();
     localTFontSsoReq.st_fresh_req.i32_local_font_id.set(a());
     localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "Font.fresh");

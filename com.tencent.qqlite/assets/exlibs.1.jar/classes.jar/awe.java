@@ -1,20 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.NearPeopleFilterActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
 
 public class awe
-  extends Handler
+  implements Runnable
 {
-  public awe(NearPeopleFilterActivity paramNearPeopleFilterActivity) {}
+  public awe(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 1000)
-    {
-      this.a.e();
-      QQToast.a(this.a, 2131364394, 0).b(this.a.getTitleBarHeight());
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.b = true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.d = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.a.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.d);
   }
 }
 

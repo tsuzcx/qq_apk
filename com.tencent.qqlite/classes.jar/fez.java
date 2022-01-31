@@ -1,29 +1,27 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.UpdateManager;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
+import android.os.Bundle;
+import com.tencent.open.appcommon.js.BaseJsCallBack;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class fez
   implements Runnable
 {
-  public fez(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
+  public fez(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
   
   public void run()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h) != null)
-      {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h).mSavePath;
-        UpdateManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-      }
+      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("iconType", localJSONObject.optString("iconType"));
+      localBundle.putString("visible", localJSONObject.optString("visible"));
+      localBundle.putString("callBackKey", localJSONObject.optString("callBackKey"));
       return;
     }
-    catch (Exception localException)
+    catch (JSONException localJSONException)
     {
-      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
+      localJSONException.printStackTrace();
     }
   }
 }

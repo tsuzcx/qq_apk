@@ -1,19 +1,39 @@
-import android.os.AsyncTask;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.AlbumListActivity;
+import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
 import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-class cjf
-  implements Runnable
+public class cjf
+  implements AdapterView.OnItemClickListener
 {
-  cjf(cje paramcje) {}
+  private cjf(AlbumListActivity paramAlbumListActivity) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((PhotoListActivity.a(this.a.a)) && (this.a.a.a == null))
+    paramAdapterView = this.a.a.a(paramInt);
+    if ((paramAdapterView == null) || (paramAdapterView.mMediaFileCount <= 0) || (TextUtils.isEmpty(paramAdapterView.name)))
     {
-      PhotoListActivity.a(this.a.a, false);
-      this.a.a.a = new cji(this.a.a, null);
-      this.a.a.a.execute(new Object[0]);
+      QQToast.a(this.a, 2131364070, 0).a();
+      return;
     }
+    paramView = this.a.getIntent();
+    paramView.putExtra("ALBUM_ID", paramAdapterView._id);
+    paramView.putExtra("ALBUM_NAME", paramAdapterView.name);
+    paramView.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", paramView.getIntExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0));
+    paramView.putExtra("album_enter_directly", false);
+    AlbumListActivity.a(this.a, true);
+    paramView.setClass(this.a, PhotoListActivity.class);
+    paramView.addFlags(603979776);
+    this.a.startActivity(paramView);
+    this.a.finish();
+    AlbumUtil.a(this.a, true, true);
   }
 }
 

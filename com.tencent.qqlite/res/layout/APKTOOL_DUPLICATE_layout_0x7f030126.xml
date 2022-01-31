@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020083" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0b0019" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.XListView android:id="@id/common_xlistview" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c003f" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c003f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0b0011" /> /> </LinearLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0905cf" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0905d0" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020309" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b0019" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0905d1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020329" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginBottom="120.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0172" android:includeFontPadding="false" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0905d0" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0905d2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020338" android:layout_width="32.5dip" android:layout_height="12.5dip" android:layout_marginLeft="10.0dip" android:layout_marginBottom="123.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0905d1" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0905d0" />
+    </RelativeLayout>
+</RelativeLayout>

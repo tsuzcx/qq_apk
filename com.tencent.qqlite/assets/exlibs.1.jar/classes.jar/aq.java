@@ -1,28 +1,22 @@
-import android.widget.FrameLayout;
-import android.widget.GridView;
-import android.widget.ImageButton;
+import android.text.Editable;
+import android.text.SpannableStringBuilder;
+import android.text.TextWatcher;
 import com.dataline.activities.LiteActivity;
 
 public class aq
-  implements Runnable
+  implements TextWatcher
 {
-  public aq(LiteActivity paramLiteActivity, boolean paramBoolean) {}
+  public aq(LiteActivity paramLiteActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setVisibility(0);
-      LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setVisibility(0);
-      LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).notifyDataSetChanged();
-      LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setImageResource(2130837556);
-      LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).requestFocus();
-      LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity);
-      return;
-    }
-    LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setVisibility(8);
-    LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setImageResource(2130837545);
+    if ((paramEditable instanceof SpannableStringBuilder)) {}
+    LiteActivity.a(this.a);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

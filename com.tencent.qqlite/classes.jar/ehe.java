@@ -1,17 +1,20 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.pic.PicBusiManager;
-import com.tencent.mobileqq.pic.PicReq;
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.SystemMsgController;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ehe
-  extends AsyncTask
+  implements Runnable
 {
-  public ehe(GroupPicUploadProcessor paramGroupPicUploadProcessor, PicReq paramPicReq) {}
+  public ehe(SystemMsgController paramSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void run()
   {
-    PicBusiManager.a(this.jdField_a_of_type_ComTencentMobileqqPicPicReq, this.jdField_a_of_type_ComTencentMobileqqTransfileGroupPicUploadProcessor.a);
-    return null;
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putInt("unread_system_msg", this.jdField_a_of_type_Int).commit();
+    }
   }
 }
 

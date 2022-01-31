@@ -7,7 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.open.agent.datamodel.AgentBaseAdapter;
 import com.tencent.open.agent.datamodel.FriendDataManager;
-import fbp;
+import fdv;
 
 public class GroupListOpenFrame$GroupListAdapter
   extends AgentBaseAdapter
@@ -38,20 +38,20 @@ public class GroupListOpenFrame$GroupListAdapter
       if (paramInt != 0) {
         break label194;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837927);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837945);
     }
     for (;;)
     {
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(i, 0, i, 0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new fbp(this, paramInt, str));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new fdv(this, paramInt, str));
       return paramView;
       paramViewGroup = (GroupListOpenFrame.GroupListAdapter.ViewHolder)paramView.getTag();
       break;
       label194:
       if (paramInt == getCount() - 1) {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837926);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837944);
       } else {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837927);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837945);
       }
     }
   }

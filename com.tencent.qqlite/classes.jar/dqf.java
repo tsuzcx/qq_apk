@@ -1,15 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
 public class dqf
-  implements Runnable
+  extends dpx
 {
-  public dqf(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
-  
-  public void run()
+  public dqf(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    UniformDownloadMgr.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateRefuseByPC";
   }
 }
 

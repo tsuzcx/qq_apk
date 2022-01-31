@@ -1,17 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
+import com.tencent.mobileqq.filemanager.data.FileCategoryEntity;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.Iterator;
+import java.util.List;
 
 public class dhf
-  implements DialogInterface.OnDismissListener
+  extends AsyncTask
 {
-  public dhf(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public dhf(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected Integer a(Void... paramVarArgs)
   {
-    this.a.a.a(null);
-    LocalFileBrowserActivity.a(this.a);
+    return Integer.valueOf(FileCategoryUtil.e(this.a));
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    super.onPostExecute(paramInteger);
+    FMLocalFileActivity.b(this.a);
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileCategoryEntity localFileCategoryEntity = (FileCategoryEntity)localIterator.next();
+      if (localFileCategoryEntity.E == 4)
+      {
+        localFileCategoryEntity.D = paramInteger.intValue();
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
+      }
+    }
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    FMLocalFileActivity.a(this.a);
   }
 }
 

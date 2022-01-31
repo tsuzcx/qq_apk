@@ -1,12 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
 
-public final class etq
-  implements Runnable
+public class etq
+  implements DialogInterface.OnDismissListener
 {
-  public void run()
+  public etq(TroopShareUtility paramTroopShareUtility) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    FileUtils.a(BaseApplicationImpl.a, true);
+    TroopShareUtility.b(this.a, false);
+    if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
+      ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+    }
   }
 }
 

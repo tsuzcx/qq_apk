@@ -1,49 +1,52 @@
 import android.os.Handler;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Message;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bph
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public static final String a = "right";
-  public static final int b = 0;
-  public static final String b = "left";
-  public static final int c = 1;
-  public static final int d = 2;
-  public static final int e = 3;
-  public static final int f = 4;
-  public static final int g = 5;
-  public static final int h = 6;
-  int jdField_a_of_type_Int = -1;
-  View jdField_a_of_type_AndroidViewView;
+  public bph(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public bph(TroopMemberListActivity paramTroopMemberListActivity, View paramView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.postDelayed(new bpi(this), 0L);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
-    }
-    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
+      Object localObject3;
+      try
+      {
+        localObject3 = this.a.app.a().createEntityManager();
+        if (localObject3 == null) {
+          break label168;
+        }
+        Object localObject1 = ((EntityManager)localObject3).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.a.i }, null, null, null, null);
+        ((EntityManager)localObject3).a();
+        if (localObject1 == null) {
+          break label165;
+        }
+        localObject3 = new ArrayList(((List)localObject1).size());
+        localObject1 = ((List)localObject1).iterator();
+        if (((Iterator)localObject1).hasNext())
+        {
+          ((ArrayList)localObject3).add(((TroopMemberInfo)((Iterator)localObject1).next()).memberuin);
+          continue;
+        }
+        localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      }
+      finally {}
+      localMessage.what = 8;
+      localMessage.obj = new Object[] { Boolean.valueOf(this.a.jdField_a_of_type_Boolean), localObject3 };
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      label165:
+      return;
+      label168:
+      Message localMessage = null;
     }
   }
 }

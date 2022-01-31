@@ -12,6 +12,7 @@ import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.Groups;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.data.NoC2CExtensionInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -23,7 +24,7 @@ import com.tencent.mobileqq.utils.ChnToSpell;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.TraceUtils;
-import ctc;
+import cud;
 import friendlist.GetOnlineInfoResp;
 import friendlist.SimpleOnlineFriendInfo;
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class FriendsManager
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(6);
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new ctc(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new cud(this);
   private boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 0;
   private ConcurrentHashMap jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
@@ -68,11 +69,13 @@ public class FriendsManager
   private boolean jdField_c_of_type_Boolean = false;
   private ConcurrentHashMap d = new ConcurrentHashMap();
   private ConcurrentHashMap jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private ConcurrentHashMap f = new ConcurrentHashMap(4);
-  private ConcurrentHashMap g = null;
+  private ConcurrentHashMap f;
+  private ConcurrentHashMap g = new ConcurrentHashMap(4);
+  private ConcurrentHashMap h = null;
   
   public FriendsManager(QQAppInterface paramQQAppInterface)
   {
+    this.e = new ConcurrentHashMap();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     paramQQAppInterface.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
@@ -177,7 +180,7 @@ public class FriendsManager
         }
       }
       if (paramBoolean) {
-        this.e = ((ConcurrentHashMap)localObject5);
+        this.f = ((ConcurrentHashMap)localObject5);
       }
       if (QLog.isColorLevel())
       {
@@ -225,6 +228,46 @@ public class FriendsManager
   }
   
   private void f()
+  {
+    ??? = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(NoC2CExtensionInfo.class);
+    if (??? != null)
+    {
+      Iterator localIterator = ((ArrayList)???).iterator();
+      while (localIterator.hasNext())
+      {
+        NoC2CExtensionInfo localNoC2CExtensionInfo = (NoC2CExtensionInfo)localIterator.next();
+        if ((localNoC2CExtensionInfo != null) && (localNoC2CExtensionInfo.uin != null)) {
+          synchronized (this.e)
+          {
+            String str = NoC2CExtensionInfo.getNoC2Ckey(localNoC2CExtensionInfo.type, localNoC2CExtensionInfo.uin);
+            this.e.put(str, localNoC2CExtensionInfo);
+          }
+        }
+      }
+    }
+  }
+  
+  private boolean f(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.contacttab.", 2, "isValidUin empty uin");
+      }
+    }
+    for (;;)
+    {
+      return false;
+      if (paramString.length() >= 4) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.contacttab.", 2, "isValidUin uin=" + paramString);
+      }
+    }
+    return true;
+  }
+  
+  private void g()
   {
     for (;;)
     {
@@ -278,26 +321,6 @@ public class FriendsManager
     }
   }
   
-  private boolean f(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.contacttab.", 2, "isValidUin empty uin");
-      }
-    }
-    for (;;)
-    {
-      return false;
-      if (paramString.length() >= 4) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.contacttab.", 2, "isValidUin uin=" + paramString);
-      }
-    }
-    return true;
-  }
-  
   public int a()
   {
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
@@ -332,7 +355,7 @@ public class FriendsManager
     {
       return null;
       if (!this.jdField_c_of_type_Boolean) {
-        f();
+        g();
       }
     } while (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString));
     return (DateNickNameInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
@@ -455,6 +478,34 @@ public class FriendsManager
     return localGroups;
   }
   
+  public NoC2CExtensionInfo a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    String str = NoC2CExtensionInfo.getNoC2Ckey(paramInt, paramString);
+    NoC2CExtensionInfo localNoC2CExtensionInfo = (NoC2CExtensionInfo)this.e.get(str);
+    ??? = localNoC2CExtensionInfo;
+    if (localNoC2CExtensionInfo == null)
+    {
+      ??? = localNoC2CExtensionInfo;
+      if (paramBoolean)
+      {
+        ??? = localNoC2CExtensionInfo;
+        if (!this.jdField_b_of_type_Boolean)
+        {
+          paramString = (NoC2CExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(NoC2CExtensionInfo.class, "type=? and uin=?", new String[] { String.valueOf(paramInt), paramString });
+          ??? = paramString;
+          if (paramString != null) {
+            synchronized (this.d)
+            {
+              this.d.put(str, paramString);
+              return paramString;
+            }
+          }
+        }
+      }
+    }
+    return ???;
+  }
+  
   public EntityTransaction a()
   {
     return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
@@ -505,7 +556,7 @@ public class FriendsManager
   
   protected ArrayList a(String paramString)
   {
-    return (ArrayList)this.f.get(paramString);
+    return (ArrayList)this.g.get(paramString);
   }
   
   public ConcurrentHashMap a()
@@ -620,7 +671,7 @@ public class FriendsManager
           }
         }
       }
-      this.e = ((ConcurrentHashMap)localObject5);
+      this.f = ((ConcurrentHashMap)localObject5);
       if (QLog.isColorLevel())
       {
         localObject3 = new StringBuilder(300);
@@ -634,7 +685,7 @@ public class FriendsManager
         QLog.d("Q.contacttab.friend", 2, ((StringBuilder)localObject3).toString());
         QLog.d("Q.contacttab.", 2, "buildUIMaps end: , size:" + localConcurrentHashMap.size());
       }
-      this.f = localConcurrentHashMap;
+      this.g = localConcurrentHashMap;
       return;
     }
   }
@@ -645,56 +696,56 @@ public class FriendsManager
     // Byte code:
     //   0: iconst_0
     //   1: istore 4
-    //   3: new 440	java/lang/StringBuffer
+    //   3: new 462	java/lang/StringBuffer
     //   6: dup
-    //   7: invokespecial 441	java/lang/StringBuffer:<init>	()V
+    //   7: invokespecial 463	java/lang/StringBuffer:<init>	()V
     //   10: astore 9
-    //   12: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   12: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   15: ifeq +19 -> 34
     //   18: aload 9
-    //   20: ldc_w 443
-    //   23: invokevirtual 446	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   20: ldc_w 465
+    //   23: invokevirtual 468	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   26: pop
     //   27: aload 9
     //   29: iload_1
-    //   30: invokevirtual 449	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
+    //   30: invokevirtual 471	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
     //   33: pop
     //   34: aload_0
     //   35: iload_1
-    //   36: invokevirtual 451	com/tencent/mobileqq/app/FriendsManager:a	(I)Ljava/util/ArrayList;
+    //   36: invokevirtual 473	com/tencent/mobileqq/app/FriendsManager:a	(I)Ljava/util/ArrayList;
     //   39: astore 8
     //   41: aconst_null
     //   42: astore 6
     //   44: aload_0
-    //   45: getfield 104	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   48: invokevirtual 411	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   45: getfield 107	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   48: invokevirtual 433	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   51: astore 7
     //   53: aload 7
     //   55: astore 6
     //   57: aload 6
-    //   59: invokevirtual 454	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
+    //   59: invokevirtual 476	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
     //   62: aload 8
-    //   64: invokevirtual 205	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   64: invokevirtual 208	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   67: astore 7
     //   69: iconst_0
     //   70: istore_2
     //   71: aload 7
-    //   73: invokeinterface 157 1 0
+    //   73: invokeinterface 160 1 0
     //   78: ifeq +170 -> 248
     //   81: aload 7
-    //   83: invokeinterface 161 1 0
-    //   88: checkcast 163	com/tencent/mobileqq/persistence/Entity
-    //   91: checkcast 165	com/tencent/mobileqq/data/Friends
+    //   83: invokeinterface 164 1 0
+    //   88: checkcast 166	com/tencent/mobileqq/persistence/Entity
+    //   91: checkcast 168	com/tencent/mobileqq/data/Friends
     //   94: astore 10
     //   96: aload_0
     //   97: aload 10
-    //   99: getfield 266	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
-    //   102: invokevirtual 456	com/tencent/mobileqq/app/FriendsManager:c	(Ljava/lang/String;)Z
+    //   99: getfield 269	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
+    //   102: invokevirtual 478	com/tencent/mobileqq/app/FriendsManager:c	(Ljava/lang/String;)Z
     //   105: istore 5
     //   107: iload_2
     //   108: istore_3
     //   109: aload 10
-    //   111: getfield 169	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   111: getfield 172	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   114: iconst_1
     //   115: if_icmpeq +14 -> 129
     //   118: iload_2
@@ -707,153 +758,153 @@ public class FriendsManager
     //   128: istore_3
     //   129: aload 10
     //   131: iconst_0
-    //   132: putfield 186	com/tencent/mobileqq/data/Friends:groupid	I
+    //   132: putfield 189	com/tencent/mobileqq/data/Friends:groupid	I
     //   135: aload_0
     //   136: aload 10
-    //   138: invokevirtual 459	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Friends;)Z
+    //   138: invokevirtual 481	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Friends;)Z
     //   141: pop
     //   142: iload_3
     //   143: istore_2
-    //   144: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   144: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   147: ifeq -76 -> 71
     //   150: aload 9
-    //   152: ldc_w 461
-    //   155: invokevirtual 446	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   152: ldc_w 483
+    //   155: invokevirtual 468	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   158: pop
     //   159: aload 9
     //   161: aload 10
-    //   163: getfield 266	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
+    //   163: getfield 269	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
     //   166: iconst_0
     //   167: iconst_4
-    //   168: invokevirtual 465	java/lang/String:substring	(II)Ljava/lang/String;
-    //   171: invokevirtual 446	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   168: invokevirtual 487	java/lang/String:substring	(II)Ljava/lang/String;
+    //   171: invokevirtual 468	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   174: pop
     //   175: aload 9
-    //   177: ldc_w 467
-    //   180: invokevirtual 446	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   177: ldc_w 489
+    //   180: invokevirtual 468	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   183: pop
     //   184: aload 9
     //   186: iload 5
-    //   188: invokevirtual 470	java/lang/StringBuffer:append	(Z)Ljava/lang/StringBuffer;
+    //   188: invokevirtual 492	java/lang/StringBuffer:append	(Z)Ljava/lang/StringBuffer;
     //   191: pop
     //   192: iload_3
     //   193: istore_2
     //   194: goto -123 -> 71
     //   197: astore 7
-    //   199: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   199: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   202: ifeq +31 -> 233
     //   205: ldc 24
     //   207: iconst_2
-    //   208: new 113	java/lang/StringBuilder
+    //   208: new 116	java/lang/StringBuilder
     //   211: dup
-    //   212: invokespecial 114	java/lang/StringBuilder:<init>	()V
-    //   215: ldc_w 472
-    //   218: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   212: invokespecial 117	java/lang/StringBuilder:<init>	()V
+    //   215: ldc_w 494
+    //   218: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   221: iload_1
-    //   222: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   225: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   222: invokevirtual 192	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   225: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   228: aload 7
-    //   230: invokestatic 475	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   230: invokestatic 497	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   233: aload 6
     //   235: ifnull +8 -> 243
     //   238: aload 6
-    //   240: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   240: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   243: aload_0
-    //   244: invokevirtual 293	com/tencent/mobileqq/app/FriendsManager:a	()V
+    //   244: invokevirtual 296	com/tencent/mobileqq/app/FriendsManager:a	()V
     //   247: return
-    //   248: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   248: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   251: ifeq +14 -> 265
     //   254: ldc 24
     //   256: iconst_2
     //   257: aload 9
-    //   259: invokevirtual 478	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   262: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   259: invokevirtual 500	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   262: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   265: aload_0
     //   266: iconst_0
-    //   267: invokestatic 235	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   270: invokevirtual 480	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Groups;
+    //   267: invokestatic 238	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   270: invokevirtual 502	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Groups;
     //   273: astore 7
     //   275: aload 7
     //   277: ifnull +31 -> 308
     //   280: aload 7
     //   282: aload 7
-    //   284: getfield 213	com/tencent/mobileqq/data/Groups:group_friend_count	I
+    //   284: getfield 216	com/tencent/mobileqq/data/Groups:group_friend_count	I
     //   287: aload 8
-    //   289: invokevirtual 258	java/util/ArrayList:size	()I
+    //   289: invokevirtual 261	java/util/ArrayList:size	()I
     //   292: iadd
-    //   293: putfield 213	com/tencent/mobileqq/data/Groups:group_friend_count	I
+    //   293: putfield 216	com/tencent/mobileqq/data/Groups:group_friend_count	I
     //   296: aload 7
     //   298: iload_2
     //   299: aload 7
-    //   301: getfield 483	com/tencent/mobileqq/data/Groups:group_online_friend_count	I
+    //   301: getfield 505	com/tencent/mobileqq/data/Groups:group_online_friend_count	I
     //   304: iadd
-    //   305: putfield 483	com/tencent/mobileqq/data/Groups:group_online_friend_count	I
+    //   305: putfield 505	com/tencent/mobileqq/data/Groups:group_online_friend_count	I
     //   308: aload_0
     //   309: aload 7
-    //   311: invokevirtual 486	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   311: invokevirtual 508	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   314: pop
     //   315: aload_0
-    //   316: new 113	java/lang/StringBuilder
+    //   316: new 116	java/lang/StringBuilder
     //   319: dup
-    //   320: invokespecial 114	java/lang/StringBuilder:<init>	()V
+    //   320: invokespecial 117	java/lang/StringBuilder:<init>	()V
     //   323: iload_1
-    //   324: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   327: ldc 191
-    //   329: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   332: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   335: invokevirtual 480	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Groups;
+    //   324: invokevirtual 192	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   327: ldc 194
+    //   329: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   332: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   335: invokevirtual 502	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Groups;
     //   338: astore 7
     //   340: aload_0
-    //   341: getfield 405	com/tencent/mobileqq/app/FriendsManager:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   341: getfield 421	com/tencent/mobileqq/app/FriendsManager:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   344: ifnull +30 -> 374
     //   347: aload_0
-    //   348: getfield 405	com/tencent/mobileqq/app/FriendsManager:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   351: new 113	java/lang/StringBuilder
+    //   348: getfield 421	com/tencent/mobileqq/app/FriendsManager:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   351: new 116	java/lang/StringBuilder
     //   354: dup
-    //   355: invokespecial 114	java/lang/StringBuilder:<init>	()V
+    //   355: invokespecial 117	java/lang/StringBuilder:<init>	()V
     //   358: iload_1
-    //   359: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   362: ldc 191
-    //   364: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   367: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   370: invokevirtual 489	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   359: invokevirtual 192	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   362: ldc 194
+    //   364: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   367: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   370: invokevirtual 511	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   373: pop
     //   374: aload_0
-    //   375: getfield 204	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   378: invokevirtual 492	java/util/ArrayList:clone	()Ljava/lang/Object;
-    //   381: checkcast 197	java/util/ArrayList
+    //   375: getfield 207	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   378: invokevirtual 514	java/util/ArrayList:clone	()Ljava/lang/Object;
+    //   381: checkcast 200	java/util/ArrayList
     //   384: astore 8
     //   386: iload 4
     //   388: istore_2
     //   389: iload_2
     //   390: aload 8
-    //   392: invokevirtual 258	java/util/ArrayList:size	()I
+    //   392: invokevirtual 261	java/util/ArrayList:size	()I
     //   395: if_icmpge +26 -> 421
     //   398: iload_1
     //   399: aload 8
     //   401: iload_2
-    //   402: invokevirtual 317	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   405: checkcast 207	com/tencent/mobileqq/data/Groups
-    //   408: getfield 210	com/tencent/mobileqq/data/Groups:group_id	I
+    //   402: invokevirtual 346	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   405: checkcast 210	com/tencent/mobileqq/data/Groups
+    //   408: getfield 213	com/tencent/mobileqq/data/Groups:group_id	I
     //   411: if_icmpne +44 -> 455
     //   414: aload 8
     //   416: iload_2
-    //   417: invokevirtual 494	java/util/ArrayList:remove	(I)Ljava/lang/Object;
+    //   417: invokevirtual 516	java/util/ArrayList:remove	(I)Ljava/lang/Object;
     //   420: pop
     //   421: aload_0
     //   422: aload 8
-    //   424: putfield 204	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   424: putfield 207	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   427: aload_0
-    //   428: getfield 104	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   428: getfield 107	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   431: aload 7
-    //   433: invokevirtual 496	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   433: invokevirtual 518	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   436: pop
     //   437: aload 6
-    //   439: invokevirtual 497	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
+    //   439: invokevirtual 519	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
     //   442: aload 6
     //   444: ifnull -201 -> 243
     //   447: aload 6
-    //   449: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   449: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   452: goto -209 -> 243
     //   455: iload_2
     //   456: iconst_1
@@ -866,7 +917,7 @@ public class FriendsManager
     //   467: aload 6
     //   469: ifnull +8 -> 477
     //   472: aload 6
-    //   474: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   474: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   477: aload 7
     //   479: athrow
     //   480: astore 7
@@ -1043,13 +1094,28 @@ public class FriendsManager
     }
   }
   
+  public void a(NoC2CExtensionInfo paramNoC2CExtensionInfo)
+  {
+    if ((paramNoC2CExtensionInfo == null) || (paramNoC2CExtensionInfo.uin == null)) {}
+    while (this.e == null) {
+      return;
+    }
+    synchronized (this.e)
+    {
+      String str = NoC2CExtensionInfo.getNoC2Ckey(paramNoC2CExtensionInfo.type, paramNoC2CExtensionInfo.uin);
+      this.e.put(str, paramNoC2CExtensionInfo);
+      a(paramNoC2CExtensionInfo);
+      return;
+    }
+  }
+  
   protected void a(String paramString)
   {
     if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString)) && (paramString.length() > 3)) {
       QLog.d("Q.contacttab.", 2, "add friend to black list " + paramString.substring(0, 2));
     }
-    if (this.g != null) {
-      this.g.put(paramString, "");
+    if (this.h != null) {
+      this.h.put(paramString, "");
     }
     localObject2 = null;
     localObject1 = null;
@@ -1513,22 +1579,22 @@ public class FriendsManager
     //   11: aconst_null
     //   12: astore 6
     //   14: aload_0
-    //   15: getfield 104	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   18: invokevirtual 411	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   15: getfield 107	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   18: invokevirtual 433	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   21: astore 7
     //   23: aload 7
     //   25: astore 6
     //   27: aload 6
-    //   29: invokevirtual 454	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
-    //   32: new 440	java/lang/StringBuffer
+    //   29: invokevirtual 476	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
+    //   32: new 462	java/lang/StringBuffer
     //   35: dup
-    //   36: invokespecial 441	java/lang/StringBuffer:<init>	()V
+    //   36: invokespecial 463	java/lang/StringBuffer:<init>	()V
     //   39: astore 7
-    //   41: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   41: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   44: ifeq +12 -> 56
     //   47: aload 7
-    //   49: ldc_w 783
-    //   52: invokevirtual 446	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   49: ldc_w 806
+    //   52: invokevirtual 468	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   55: pop
     //   56: iconst_0
     //   57: istore_3
@@ -1544,18 +1610,18 @@ public class FriendsManager
     //   72: aload_1
     //   73: iload 5
     //   75: baload
-    //   76: invokestatic 235	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   79: invokevirtual 480	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Groups;
+    //   76: invokestatic 238	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   79: invokevirtual 502	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Groups;
     //   82: astore 8
     //   84: iload_3
     //   85: istore 4
-    //   87: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   87: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   90: ifeq +70 -> 160
     //   93: iload_3
     //   94: istore 4
     //   96: aload 7
-    //   98: ldc_w 785
-    //   101: invokevirtual 446	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   98: ldc_w 808
+    //   101: invokevirtual 468	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   104: pop
     //   105: iload_3
     //   106: istore 4
@@ -1563,13 +1629,13 @@ public class FriendsManager
     //   110: aload_1
     //   111: iload 5
     //   113: baload
-    //   114: invokevirtual 449	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
+    //   114: invokevirtual 471	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
     //   117: pop
     //   118: iload_3
     //   119: istore 4
     //   121: aload 7
-    //   123: ldc_w 787
-    //   126: invokevirtual 446	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   123: ldc_w 810
+    //   126: invokevirtual 468	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   129: pop
     //   130: iload_3
     //   131: istore 4
@@ -1577,15 +1643,15 @@ public class FriendsManager
     //   135: aload_2
     //   136: iload 5
     //   138: baload
-    //   139: invokevirtual 449	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
+    //   139: invokevirtual 471	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
     //   142: pop
     //   143: aload 8
     //   145: ifnonnull +15 -> 160
     //   148: iload_3
     //   149: istore 4
     //   151: aload 7
-    //   153: ldc_w 789
-    //   156: invokevirtual 446	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   153: ldc_w 812
+    //   156: invokevirtual 468	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   159: pop
     //   160: iload_3
     //   161: istore 4
@@ -1594,7 +1660,7 @@ public class FriendsManager
     //   168: iload_3
     //   169: istore 4
     //   171: aload 8
-    //   173: getfield 501	com/tencent/mobileqq/data/Groups:seqid	B
+    //   173: getfield 523	com/tencent/mobileqq/data/Groups:seqid	B
     //   176: aload_2
     //   177: iload 5
     //   179: baload
@@ -1608,14 +1674,14 @@ public class FriendsManager
     //   194: aload_2
     //   195: iload 5
     //   197: baload
-    //   198: putfield 501	com/tencent/mobileqq/data/Groups:seqid	B
+    //   198: putfield 523	com/tencent/mobileqq/data/Groups:seqid	B
     //   201: iconst_1
     //   202: istore_3
     //   203: iconst_1
     //   204: istore 4
     //   206: aload_0
     //   207: aload 8
-    //   209: invokevirtual 486	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   209: invokevirtual 508	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   212: pop
     //   213: iload_3
     //   214: istore 4
@@ -1625,52 +1691,52 @@ public class FriendsManager
     //   222: astore_1
     //   223: iload 4
     //   225: istore_3
-    //   226: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   226: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   229: ifeq +32 -> 261
     //   232: ldc 24
     //   234: iconst_2
-    //   235: new 113	java/lang/StringBuilder
+    //   235: new 116	java/lang/StringBuilder
     //   238: dup
-    //   239: invokespecial 114	java/lang/StringBuilder:<init>	()V
-    //   242: ldc_w 791
-    //   245: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   239: invokespecial 117	java/lang/StringBuilder:<init>	()V
+    //   242: ldc_w 814
+    //   245: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   248: aload_2
-    //   249: invokevirtual 794	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   252: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   255: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   258: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   249: invokevirtual 817	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   252: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   255: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   258: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   261: aload_1
     //   262: ifnull +117 -> 379
     //   265: aload_1
-    //   266: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   266: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   269: iload_3
     //   270: istore 4
     //   272: iload 4
     //   274: ifeq +7 -> 281
     //   277: aload_0
-    //   278: invokevirtual 503	com/tencent/mobileqq/app/FriendsManager:d	()V
+    //   278: invokevirtual 525	com/tencent/mobileqq/app/FriendsManager:d	()V
     //   281: return
     //   282: iload_3
     //   283: istore 4
-    //   285: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   285: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   288: ifeq +17 -> 305
     //   291: iload_3
     //   292: istore 4
     //   294: ldc 24
     //   296: iconst_2
     //   297: aload 7
-    //   299: invokevirtual 478	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   302: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   299: invokevirtual 500	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   302: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   305: iload_3
     //   306: istore 4
     //   308: aload 6
-    //   310: invokevirtual 497	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
+    //   310: invokevirtual 519	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
     //   313: iload_3
     //   314: istore 4
     //   316: aload 6
     //   318: ifnull -46 -> 272
     //   321: aload 6
-    //   323: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   323: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   326: iload_3
     //   327: istore 4
     //   329: goto -57 -> 272
@@ -1680,7 +1746,7 @@ public class FriendsManager
     //   336: aload 6
     //   338: ifnull +8 -> 346
     //   341: aload 6
-    //   343: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   343: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   346: aload_1
     //   347: athrow
     //   348: astore_1
@@ -1823,13 +1889,13 @@ public class FriendsManager
   void a(Groups[] paramArrayOfGroups)
   {
     // Byte code:
-    //   0: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +38 -> 41
-    //   6: new 113	java/lang/StringBuilder
+    //   6: new 116	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 114	java/lang/StringBuilder:<init>	()V
-    //   13: ldc_w 812
-    //   16: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10: invokespecial 117	java/lang/StringBuilder:<init>	()V
+    //   13: ldc_w 835
+    //   16: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   19: astore_3
     //   20: aload_1
     //   21: ifnull +30 -> 51
@@ -1840,9 +1906,9 @@ public class FriendsManager
     //   29: iconst_2
     //   30: aload_3
     //   31: iload_2
-    //   32: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   35: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   38: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   32: invokevirtual 192	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   38: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   41: aload_1
     //   42: ifnull +8 -> 50
     //   45: aload_1
@@ -1853,40 +1919,40 @@ public class FriendsManager
     //   52: istore_2
     //   53: goto -26 -> 27
     //   56: aload_0
-    //   57: getfield 204	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   57: getfield 207	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   60: ifnonnull +29 -> 89
     //   63: aload_0
-    //   64: new 197	java/util/ArrayList
+    //   64: new 200	java/util/ArrayList
     //   67: dup
     //   68: aload_1
     //   69: arraylength
-    //   70: invokespecial 813	java/util/ArrayList:<init>	(I)V
-    //   73: putfield 204	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   70: invokespecial 836	java/util/ArrayList:<init>	(I)V
+    //   73: putfield 207	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   76: aload_0
-    //   77: new 45	java/util/concurrent/ConcurrentHashMap
+    //   77: new 46	java/util/concurrent/ConcurrentHashMap
     //   80: dup
     //   81: aload_1
     //   82: arraylength
-    //   83: invokespecial 57	java/util/concurrent/ConcurrentHashMap:<init>	(I)V
-    //   86: putfield 405	com/tencent/mobileqq/app/FriendsManager:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   89: new 197	java/util/ArrayList
+    //   83: invokespecial 60	java/util/concurrent/ConcurrentHashMap:<init>	(I)V
+    //   86: putfield 421	com/tencent/mobileqq/app/FriendsManager:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   89: new 200	java/util/ArrayList
     //   92: dup
     //   93: aload_1
     //   94: arraylength
-    //   95: invokespecial 813	java/util/ArrayList:<init>	(I)V
+    //   95: invokespecial 836	java/util/ArrayList:<init>	(I)V
     //   98: astore 4
-    //   100: new 45	java/util/concurrent/ConcurrentHashMap
+    //   100: new 46	java/util/concurrent/ConcurrentHashMap
     //   103: dup
     //   104: aload_1
     //   105: arraylength
-    //   106: invokespecial 57	java/util/concurrent/ConcurrentHashMap:<init>	(I)V
+    //   106: invokespecial 60	java/util/concurrent/ConcurrentHashMap:<init>	(I)V
     //   109: astore 5
     //   111: aload_0
-    //   112: getfield 104	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   115: invokevirtual 411	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   112: getfield 107	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   115: invokevirtual 433	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   118: astore_3
     //   119: aload_3
-    //   120: invokevirtual 454	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
+    //   120: invokevirtual 476	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
     //   123: iconst_0
     //   124: istore_2
     //   125: iload_2
@@ -1894,33 +1960,33 @@ public class FriendsManager
     //   127: arraylength
     //   128: if_icmpge +60 -> 188
     //   131: aload 5
-    //   133: new 113	java/lang/StringBuilder
+    //   133: new 116	java/lang/StringBuilder
     //   136: dup
-    //   137: invokespecial 114	java/lang/StringBuilder:<init>	()V
+    //   137: invokespecial 117	java/lang/StringBuilder:<init>	()V
     //   140: aload_1
     //   141: iload_2
     //   142: aaload
-    //   143: getfield 210	com/tencent/mobileqq/data/Groups:group_id	I
-    //   146: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   149: ldc 191
-    //   151: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   154: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   143: getfield 213	com/tencent/mobileqq/data/Groups:group_id	I
+    //   146: invokevirtual 192	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   149: ldc 194
+    //   151: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   157: aload_1
     //   158: iload_2
     //   159: aaload
-    //   160: invokevirtual 202	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   160: invokevirtual 205	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   163: pop
     //   164: aload 4
     //   166: aload_1
     //   167: iload_2
     //   168: aaload
-    //   169: invokevirtual 220	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   169: invokevirtual 223	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   172: pop
     //   173: aload_0
     //   174: aload_1
     //   175: iload_2
     //   176: aaload
-    //   177: invokevirtual 486	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   177: invokevirtual 508	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   180: pop
     //   181: iload_2
     //   182: iconst_1
@@ -1932,60 +1998,60 @@ public class FriendsManager
     //   190: iconst_1
     //   191: if_icmple +8 -> 199
     //   194: aload 4
-    //   196: invokestatic 815	com/tencent/mobileqq/app/ContactSorter:a	(Ljava/util/ArrayList;)V
+    //   196: invokestatic 838	com/tencent/mobileqq/app/ContactSorter:a	(Ljava/util/ArrayList;)V
     //   199: aload_0
-    //   200: getfield 405	com/tencent/mobileqq/app/FriendsManager:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   203: invokevirtual 800	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
-    //   206: invokeinterface 255 1 0
+    //   200: getfield 421	com/tencent/mobileqq/app/FriendsManager:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   203: invokevirtual 823	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
+    //   206: invokeinterface 258 1 0
     //   211: astore_1
     //   212: aload_1
-    //   213: invokeinterface 157 1 0
+    //   213: invokeinterface 160 1 0
     //   218: ifeq +91 -> 309
     //   221: aload_1
-    //   222: invokeinterface 161 1 0
-    //   227: checkcast 802	java/util/Map$Entry
+    //   222: invokeinterface 164 1 0
+    //   227: checkcast 825	java/util/Map$Entry
     //   230: astore 6
     //   232: aload 5
     //   234: aload 6
-    //   236: invokeinterface 818 1 0
-    //   241: checkcast 174	java/lang/String
-    //   244: invokevirtual 394	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   236: invokeinterface 841 1 0
+    //   241: checkcast 177	java/lang/String
+    //   244: invokevirtual 410	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
     //   247: ifne -35 -> 212
     //   250: aload_0
-    //   251: getfield 104	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   251: getfield 107	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   254: aload 6
-    //   256: invokeinterface 805 1 0
-    //   261: checkcast 163	com/tencent/mobileqq/persistence/Entity
-    //   264: invokevirtual 496	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   256: invokeinterface 828 1 0
+    //   261: checkcast 166	com/tencent/mobileqq/persistence/Entity
+    //   264: invokevirtual 518	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   267: pop
     //   268: goto -56 -> 212
     //   271: astore_1
-    //   272: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   272: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   275: ifeq +13 -> 288
     //   278: ldc 24
     //   280: iconst_2
-    //   281: ldc_w 820
+    //   281: ldc_w 843
     //   284: aload_1
-    //   285: invokestatic 475	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   285: invokestatic 497	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   288: aload_3
-    //   289: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   289: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   292: aload_0
     //   293: aload 4
-    //   295: putfield 204	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   295: putfield 207	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   298: aload_0
     //   299: aload 5
-    //   301: putfield 405	com/tencent/mobileqq/app/FriendsManager:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   301: putfield 421	com/tencent/mobileqq/app/FriendsManager:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   304: aload_0
-    //   305: invokevirtual 293	com/tencent/mobileqq/app/FriendsManager:a	()V
+    //   305: invokevirtual 296	com/tencent/mobileqq/app/FriendsManager:a	()V
     //   308: return
     //   309: aload_3
-    //   310: invokevirtual 497	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
+    //   310: invokevirtual 519	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
     //   313: aload_3
-    //   314: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   314: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   317: goto -25 -> 292
     //   320: astore_1
     //   321: aload_3
-    //   322: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   322: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   325: aload_1
     //   326: athrow
     // Local variable table:
@@ -2080,9 +2146,9 @@ public class FriendsManager
   
   public boolean a(String paramString)
   {
-    if (this.g == null)
+    if (this.h == null)
     {
-      this.g = new ConcurrentHashMap();
+      this.h = new ConcurrentHashMap();
       if (QLog.isColorLevel()) {
         QLog.d("Q.contacttab.friend", 2, "initBlackList begin");
       }
@@ -2093,14 +2159,14 @@ public class FriendsManager
         while (((Iterator)localObject).hasNext())
         {
           Friends localFriends = (Friends)((Iterator)localObject).next();
-          this.g.put(localFriends.uin, "");
+          this.h.put(localFriends.uin, "");
         }
       }
       if (QLog.isColorLevel()) {
-        QLog.d("Q.contacttab.friend", 2, "initBlackList end, size=" + this.g.size());
+        QLog.d("Q.contacttab.friend", 2, "initBlackList end, size=" + this.h.size());
       }
     }
-    return this.g.containsKey(paramString);
+    return this.h.containsKey(paramString);
   }
   
   /* Error */
@@ -2109,83 +2175,83 @@ public class FriendsManager
     // Byte code:
     //   0: iconst_0
     //   1: istore 4
-    //   3: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   6: ifeq +39 -> 45
     //   9: ldc 24
     //   11: iconst_2
-    //   12: new 113	java/lang/StringBuilder
+    //   12: new 116	java/lang/StringBuilder
     //   15: dup
-    //   16: invokespecial 114	java/lang/StringBuilder:<init>	()V
-    //   19: ldc_w 848
-    //   22: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16: invokespecial 117	java/lang/StringBuilder:<init>	()V
+    //   19: ldc_w 871
+    //   22: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: aload_1
-    //   26: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: ldc_w 785
-    //   32: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: ldc_w 808
+    //   32: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: iload_2
-    //   36: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   45: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   36: invokevirtual 192	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   45: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   48: ifeq +30 -> 78
-    //   51: ldc_w 733
+    //   51: ldc_w 756
     //   54: iconst_2
-    //   55: new 113	java/lang/StringBuilder
+    //   55: new 116	java/lang/StringBuilder
     //   58: dup
-    //   59: invokespecial 114	java/lang/StringBuilder:<init>	()V
-    //   62: ldc_w 850
-    //   65: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: invokespecial 117	java/lang/StringBuilder:<init>	()V
+    //   62: ldc_w 873
+    //   65: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: iload_3
-    //   69: invokevirtual 513	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   72: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   75: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   69: invokevirtual 535	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   72: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   75: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   78: aload_0
-    //   79: getfield 104	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   82: invokevirtual 411	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   79: getfield 107	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   82: invokevirtual 433	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   85: astore 8
     //   87: aload 8
     //   89: astore 9
     //   91: aload 8
-    //   93: invokevirtual 454	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
+    //   93: invokevirtual 476	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
     //   96: aload 8
     //   98: astore 9
     //   100: aload_0
     //   101: aload_1
-    //   102: invokevirtual 387	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
+    //   102: invokevirtual 403	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
     //   105: astore 10
     //   107: aload 8
     //   109: astore 9
-    //   111: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   111: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   114: ifeq +48 -> 162
     //   117: aload 8
     //   119: astore 9
-    //   121: ldc_w 733
+    //   121: ldc_w 756
     //   124: iconst_2
-    //   125: new 113	java/lang/StringBuilder
+    //   125: new 116	java/lang/StringBuilder
     //   128: dup
-    //   129: invokespecial 114	java/lang/StringBuilder:<init>	()V
-    //   132: ldc_w 852
-    //   135: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: invokespecial 117	java/lang/StringBuilder:<init>	()V
+    //   132: ldc_w 875
+    //   135: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   138: aload_1
-    //   139: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   142: ldc_w 854
-    //   145: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: ldc_w 877
+    //   145: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   148: aload 10
-    //   150: getfield 169	com/tencent/mobileqq/data/Friends:gathtertype	B
-    //   153: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   156: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   159: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   150: getfield 172	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   153: invokevirtual 192	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   156: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   159: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   162: aload 8
     //   164: astore 9
     //   166: aload 10
-    //   168: getfield 186	com/tencent/mobileqq/data/Friends:groupid	I
+    //   168: getfield 189	com/tencent/mobileqq/data/Friends:groupid	I
     //   171: iconst_m1
     //   172: if_icmpne +335 -> 507
     //   175: aload 8
     //   177: astore 9
     //   179: aload 10
     //   181: iload_2
-    //   182: putfield 186	com/tencent/mobileqq/data/Friends:groupid	I
+    //   182: putfield 189	com/tencent/mobileqq/data/Friends:groupid	I
     //   185: iconst_m1
     //   186: istore 5
     //   188: iconst_1
@@ -2193,41 +2259,41 @@ public class FriendsManager
     //   191: aload 8
     //   193: astore 9
     //   195: aload 10
-    //   197: invokestatic 301	java/lang/System:currentTimeMillis	()J
-    //   200: putfield 393	com/tencent/mobileqq/data/Friends:datetime	J
+    //   197: invokestatic 332	java/lang/System:currentTimeMillis	()J
+    //   200: putfield 409	com/tencent/mobileqq/data/Friends:datetime	J
     //   203: iload_3
     //   204: ifeq +99 -> 303
     //   207: aload 8
     //   209: astore 9
     //   211: aload 10
     //   213: iconst_1
-    //   214: putfield 169	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   214: putfield 172	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   217: aload 8
     //   219: astore 9
     //   221: aload 10
-    //   223: ldc_w 856
-    //   226: putfield 755	com/tencent/mobileqq/data/Friends:recommReason	Ljava/lang/String;
+    //   223: ldc_w 879
+    //   226: putfield 778	com/tencent/mobileqq/data/Friends:recommReason	Ljava/lang/String;
     //   229: aload 8
     //   231: astore 9
     //   233: aload_0
     //   234: aload_0
-    //   235: getfield 81	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_Int	I
+    //   235: getfield 84	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_Int	I
     //   238: iconst_1
     //   239: iadd
-    //   240: putfield 81	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_Int	I
+    //   240: putfield 84	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_Int	I
     //   243: aload 8
     //   245: astore 9
     //   247: aload_0
     //   248: aload 10
-    //   250: getfield 266	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
-    //   253: invokevirtual 673	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   250: getfield 269	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
+    //   253: invokevirtual 696	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
     //   256: astore 11
     //   258: aload 11
     //   260: ifnull +43 -> 303
     //   263: aload 8
     //   265: astore 9
     //   267: aload 11
-    //   269: getfield 859	com/tencent/mobileqq/data/Card:shGender	S
+    //   269: getfield 882	com/tencent/mobileqq/data/Card:shGender	S
     //   272: ifne +262 -> 534
     //   275: iconst_1
     //   276: istore 4
@@ -2235,25 +2301,25 @@ public class FriendsManager
     //   280: astore 9
     //   282: aload 10
     //   284: iload 4
-    //   286: putfield 640	com/tencent/mobileqq/data/Friends:gender	B
+    //   286: putfield 663	com/tencent/mobileqq/data/Friends:gender	B
     //   289: aload 8
     //   291: astore 9
     //   293: aload 10
     //   295: aload 11
-    //   297: getfield 861	com/tencent/mobileqq/data/Card:age	B
-    //   300: putfield 643	com/tencent/mobileqq/data/Friends:age	I
+    //   297: getfield 884	com/tencent/mobileqq/data/Card:age	B
+    //   300: putfield 666	com/tencent/mobileqq/data/Friends:age	I
     //   303: aload 8
     //   305: astore 9
     //   307: aload_0
     //   308: aload 10
-    //   310: invokevirtual 486	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   310: invokevirtual 508	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   313: pop
     //   314: aload 8
     //   316: astore 9
     //   318: aload_0
     //   319: iload_2
-    //   320: invokestatic 235	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   323: invokevirtual 480	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Groups;
+    //   320: invokestatic 238	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   323: invokevirtual 502	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Groups;
     //   326: astore 10
     //   328: aload 10
     //   330: ifnull +61 -> 391
@@ -2261,30 +2327,30 @@ public class FriendsManager
     //   335: astore 9
     //   337: aload 10
     //   339: aload 10
-    //   341: getfield 213	com/tencent/mobileqq/data/Groups:group_friend_count	I
+    //   341: getfield 216	com/tencent/mobileqq/data/Groups:group_friend_count	I
     //   344: iconst_1
     //   345: iadd
-    //   346: putfield 213	com/tencent/mobileqq/data/Groups:group_friend_count	I
+    //   346: putfield 216	com/tencent/mobileqq/data/Groups:group_friend_count	I
     //   349: aload 8
     //   351: astore 9
     //   353: aload_0
     //   354: aload_1
-    //   355: invokevirtual 456	com/tencent/mobileqq/app/FriendsManager:c	(Ljava/lang/String;)Z
+    //   355: invokevirtual 478	com/tencent/mobileqq/app/FriendsManager:c	(Ljava/lang/String;)Z
     //   358: ifeq +19 -> 377
     //   361: aload 8
     //   363: astore 9
     //   365: aload 10
     //   367: aload 10
-    //   369: getfield 483	com/tencent/mobileqq/data/Groups:group_online_friend_count	I
+    //   369: getfield 505	com/tencent/mobileqq/data/Groups:group_online_friend_count	I
     //   372: iconst_1
     //   373: iadd
-    //   374: putfield 483	com/tencent/mobileqq/data/Groups:group_online_friend_count	I
+    //   374: putfield 505	com/tencent/mobileqq/data/Groups:group_online_friend_count	I
     //   377: aload 8
     //   379: astore 9
     //   381: aload_0
-    //   382: getfield 104	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   382: getfield 107	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   385: aload 10
-    //   387: invokevirtual 529	com/tencent/mobileqq/persistence/EntityManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   387: invokevirtual 551	com/tencent/mobileqq/persistence/EntityManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   390: pop
     //   391: iload 7
     //   393: ifne +83 -> 476
@@ -2294,8 +2360,8 @@ public class FriendsManager
     //   403: astore 9
     //   405: aload_0
     //   406: iload 5
-    //   408: invokestatic 235	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   411: invokevirtual 480	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Groups;
+    //   408: invokestatic 238	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   411: invokevirtual 502	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Groups;
     //   414: astore 10
     //   416: aload 10
     //   418: ifnull +58 -> 476
@@ -2303,63 +2369,63 @@ public class FriendsManager
     //   423: astore 9
     //   425: aload 10
     //   427: aload 10
-    //   429: getfield 213	com/tencent/mobileqq/data/Groups:group_friend_count	I
+    //   429: getfield 216	com/tencent/mobileqq/data/Groups:group_friend_count	I
     //   432: iconst_1
     //   433: isub
-    //   434: putfield 213	com/tencent/mobileqq/data/Groups:group_friend_count	I
+    //   434: putfield 216	com/tencent/mobileqq/data/Groups:group_friend_count	I
     //   437: aload 8
     //   439: astore 9
     //   441: aload_0
     //   442: aload_1
-    //   443: invokevirtual 456	com/tencent/mobileqq/app/FriendsManager:c	(Ljava/lang/String;)Z
+    //   443: invokevirtual 478	com/tencent/mobileqq/app/FriendsManager:c	(Ljava/lang/String;)Z
     //   446: ifeq +19 -> 465
     //   449: aload 8
     //   451: astore 9
     //   453: aload 10
     //   455: aload 10
-    //   457: getfield 483	com/tencent/mobileqq/data/Groups:group_online_friend_count	I
+    //   457: getfield 505	com/tencent/mobileqq/data/Groups:group_online_friend_count	I
     //   460: iconst_1
     //   461: isub
-    //   462: putfield 483	com/tencent/mobileqq/data/Groups:group_online_friend_count	I
+    //   462: putfield 505	com/tencent/mobileqq/data/Groups:group_online_friend_count	I
     //   465: aload 8
     //   467: astore 9
     //   469: aload_0
     //   470: aload 10
-    //   472: invokevirtual 486	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   472: invokevirtual 508	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   475: pop
     //   476: aload 8
     //   478: astore 9
     //   480: aload 8
-    //   482: invokevirtual 497	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
+    //   482: invokevirtual 519	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
     //   485: iload 7
     //   487: istore_3
     //   488: aload 8
     //   490: ifnull +11 -> 501
     //   493: aload 8
-    //   495: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   495: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   498: iload 7
     //   500: istore_3
     //   501: aload_0
-    //   502: invokevirtual 293	com/tencent/mobileqq/app/FriendsManager:a	()V
+    //   502: invokevirtual 296	com/tencent/mobileqq/app/FriendsManager:a	()V
     //   505: iload_3
     //   506: ireturn
     //   507: aload 8
     //   509: astore 9
     //   511: aload 10
-    //   513: getfield 186	com/tencent/mobileqq/data/Friends:groupid	I
+    //   513: getfield 189	com/tencent/mobileqq/data/Friends:groupid	I
     //   516: istore 5
     //   518: aload 8
     //   520: astore 9
     //   522: aload 10
     //   524: iload_2
-    //   525: putfield 186	com/tencent/mobileqq/data/Friends:groupid	I
+    //   525: putfield 189	com/tencent/mobileqq/data/Friends:groupid	I
     //   528: iconst_0
     //   529: istore 7
     //   531: goto -340 -> 191
     //   534: aload 8
     //   536: astore 9
     //   538: aload 11
-    //   540: getfield 859	com/tencent/mobileqq/data/Card:shGender	S
+    //   540: getfield 882	com/tencent/mobileqq/data/Card:shGender	S
     //   543: istore 6
     //   545: iload 6
     //   547: iconst_1
@@ -2374,21 +2440,21 @@ public class FriendsManager
     //   562: istore 7
     //   564: aload 8
     //   566: astore 9
-    //   568: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   568: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   571: ifeq +17 -> 588
     //   574: aload 8
     //   576: astore 9
     //   578: ldc 24
     //   580: iconst_2
-    //   581: ldc_w 863
+    //   581: ldc_w 886
     //   584: aload_1
-    //   585: invokestatic 475	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   585: invokestatic 497	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   588: iload 7
     //   590: istore_3
     //   591: aload 8
     //   593: ifnull -92 -> 501
     //   596: aload 8
-    //   598: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   598: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   601: iload 7
     //   603: istore_3
     //   604: goto -103 -> 501
@@ -2398,7 +2464,7 @@ public class FriendsManager
     //   611: aload 9
     //   613: ifnull +8 -> 621
     //   616: aload 9
-    //   618: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   618: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   621: aload_1
     //   622: athrow
     //   623: astore_1
@@ -2537,10 +2603,10 @@ public class FriendsManager
       {
         return i;
         i = j;
-      } while (this.e == null);
+      } while (this.f == null);
       i = j;
-    } while (!this.e.containsKey(paramString));
-    return ((Integer)this.e.get(paramString)).intValue();
+    } while (!this.f.containsKey(paramString));
+    return ((Integer)this.f.get(paramString)).intValue();
   }
   
   public Card b(String paramString)
@@ -2612,7 +2678,7 @@ public class FriendsManager
       while (localIterator.hasNext())
       {
         Object localObject = (Groups)localIterator.next();
-        localObject = (List)this.f.get(String.valueOf(((Groups)localObject).group_id));
+        localObject = (List)this.g.get(String.valueOf(((Groups)localObject).group_id));
         if (localObject != null) {
           localArrayList.addAll((Collection)localObject);
         }
@@ -2665,8 +2731,8 @@ public class FriendsManager
   
   protected void b(String paramString)
   {
-    if (this.g != null) {
-      this.g.remove(paramString);
+    if (this.h != null) {
+      this.h.remove(paramString);
     }
     paramString = b(paramString);
     paramString.groupid = -1;
@@ -2838,64 +2904,64 @@ public class FriendsManager
     //   0: aload_1
     //   1: ifnull +12 -> 13
     //   4: aload_1
-    //   5: invokeinterface 759 1 0
+    //   5: invokeinterface 782 1 0
     //   10: ifne +4 -> 14
     //   13: return
     //   14: aload_1
-    //   15: invokeinterface 759 1 0
+    //   15: invokeinterface 782 1 0
     //   20: iconst_1
     //   21: if_icmpne +18 -> 39
     //   24: aload_0
     //   25: aload_1
     //   26: iconst_0
-    //   27: invokeinterface 909 2 0
-    //   32: checkcast 377	com/tencent/mobileqq/data/ExtensionInfo
-    //   35: invokevirtual 911	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/ExtensionInfo;)V
+    //   27: invokeinterface 926 2 0
+    //   32: checkcast 393	com/tencent/mobileqq/data/ExtensionInfo
+    //   35: invokevirtual 928	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/ExtensionInfo;)V
     //   38: return
     //   39: aload_0
-    //   40: getfield 104	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   43: invokevirtual 411	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   40: getfield 107	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   43: invokevirtual 433	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   46: astore_2
     //   47: aload_2
-    //   48: invokevirtual 454	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
+    //   48: invokevirtual 476	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
     //   51: aload_1
-    //   52: invokeinterface 430 1 0
+    //   52: invokeinterface 452 1 0
     //   57: astore_1
     //   58: aload_1
-    //   59: invokeinterface 157 1 0
+    //   59: invokeinterface 160 1 0
     //   64: ifeq +60 -> 124
     //   67: aload_0
     //   68: aload_1
-    //   69: invokeinterface 161 1 0
-    //   74: checkcast 377	com/tencent/mobileqq/data/ExtensionInfo
-    //   77: invokevirtual 911	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/ExtensionInfo;)V
+    //   69: invokeinterface 164 1 0
+    //   74: checkcast 393	com/tencent/mobileqq/data/ExtensionInfo
+    //   77: invokevirtual 928	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/ExtensionInfo;)V
     //   80: goto -22 -> 58
     //   83: astore_1
-    //   84: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   84: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   87: ifeq +32 -> 119
     //   90: ldc 21
     //   92: iconst_2
-    //   93: new 113	java/lang/StringBuilder
+    //   93: new 116	java/lang/StringBuilder
     //   96: dup
-    //   97: invokespecial 114	java/lang/StringBuilder:<init>	()V
-    //   100: ldc_w 913
-    //   103: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: invokespecial 117	java/lang/StringBuilder:<init>	()V
+    //   100: ldc_w 930
+    //   103: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   106: aload_1
-    //   107: invokevirtual 794	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   110: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   116: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   107: invokevirtual 817	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   110: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   116: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   119: aload_2
-    //   120: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   120: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   123: return
     //   124: aload_2
-    //   125: invokevirtual 497	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
+    //   125: invokevirtual 519	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
     //   128: aload_2
-    //   129: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   129: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   132: return
     //   133: astore_1
     //   134: aload_2
-    //   135: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   135: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   138: aload_1
     //   139: athrow
     // Local variable table:
@@ -3114,63 +3180,63 @@ public class FriendsManager
     //   0: aload_1
     //   1: ifnull +12 -> 13
     //   4: aload_1
-    //   5: invokeinterface 759 1 0
+    //   5: invokeinterface 782 1 0
     //   10: ifgt +4 -> 14
     //   13: return
     //   14: aload_0
-    //   15: getfield 104	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   18: invokevirtual 411	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   15: getfield 107	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   18: invokevirtual 433	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   21: astore_2
     //   22: aload_2
-    //   23: invokevirtual 454	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
+    //   23: invokevirtual 476	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
     //   26: aload_1
-    //   27: invokeinterface 430 1 0
+    //   27: invokeinterface 452 1 0
     //   32: astore_1
     //   33: aload_1
-    //   34: invokeinterface 157 1 0
+    //   34: invokeinterface 160 1 0
     //   39: ifeq +67 -> 106
     //   42: aload_1
-    //   43: invokeinterface 161 1 0
-    //   48: checkcast 174	java/lang/String
+    //   43: invokeinterface 164 1 0
+    //   48: checkcast 177	java/lang/String
     //   51: astore_3
     //   52: aload_0
-    //   53: getfield 48	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   53: getfield 49	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   56: aload_3
-    //   57: invokevirtual 195	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   60: checkcast 165	com/tencent/mobileqq/data/Friends
+    //   57: invokevirtual 198	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   60: checkcast 168	com/tencent/mobileqq/data/Friends
     //   63: astore_3
     //   64: aload_3
     //   65: ifnull -32 -> 33
     //   68: aload_3
     //   69: iconst_0
-    //   70: putfield 169	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   70: putfield 172	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   73: aload_0
     //   74: aload_3
-    //   75: invokevirtual 459	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Friends;)Z
+    //   75: invokevirtual 481	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Friends;)Z
     //   78: pop
     //   79: aload_0
     //   80: aload_0
-    //   81: getfield 81	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_Int	I
+    //   81: getfield 84	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_Int	I
     //   84: iconst_1
     //   85: isub
-    //   86: putfield 81	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_Int	I
+    //   86: putfield 84	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_Int	I
     //   89: goto -56 -> 33
     //   92: astore_1
     //   93: aload_1
-    //   94: invokevirtual 749	java/lang/Exception:printStackTrace	()V
+    //   94: invokevirtual 772	java/lang/Exception:printStackTrace	()V
     //   97: aload_2
-    //   98: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   98: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   101: aload_0
-    //   102: invokevirtual 293	com/tencent/mobileqq/app/FriendsManager:a	()V
+    //   102: invokevirtual 296	com/tencent/mobileqq/app/FriendsManager:a	()V
     //   105: return
     //   106: aload_2
-    //   107: invokevirtual 497	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
+    //   107: invokevirtual 519	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
     //   110: aload_2
-    //   111: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   111: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   114: goto -13 -> 101
     //   117: astore_1
     //   118: aload_2
-    //   119: invokevirtual 477	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   119: invokevirtual 499	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   122: aload_1
     //   123: athrow
     // Local variable table:

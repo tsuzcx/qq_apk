@@ -19,7 +19,7 @@ public class EquipLockCircleView
   {
     super.onDraw(paramCanvas);
     Paint localPaint = new Paint();
-    localPaint.setColor(getResources().getColor(2131427466));
+    localPaint.setColor(getResources().getColor(2131427469));
     paramCanvas.drawCircle(AIOUtils.a(3.0F, getResources()), getHeight() / 2, AIOUtils.a(2.0F, getResources()), localPaint);
   }
 }

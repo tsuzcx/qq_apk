@@ -1,26 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class bgz
-  extends Handler
+  implements DialogInterface.OnKeyListener
 {
-  public bgz(RegisterBaseActivity paramRegisterBaseActivity) {}
+  public bgz(RegisterActivity paramRegisterActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramMessage.what)
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
     {
-    default: 
-      return;
+      RegisterActivity.b(this.a);
+      return true;
     }
-    this.a.g();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131363518);
-    }
-    this.a.a(paramMessage, 1);
+    return false;
   }
 }
 

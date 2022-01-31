@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 
 public class bbw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public bbw(QQBrowserActivity paramQQBrowserActivity) {}
+  public bbw(QQBrowserActivity paramQQBrowserActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    QQBrowserActivity.b(this.a).setVisibility(8);
-    this.a.b.setVisibility(8);
-    this.a.l();
+    QQBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, MsfSdkUtils.insertMtype("Web", this.jdField_a_of_type_JavaLangString), 0);
   }
 }
 

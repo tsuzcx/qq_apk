@@ -174,6 +174,7 @@ public abstract interface AppConstants
   public static final String cE = "multimsgGd";
   public static final String cF = "multimsgDu";
   public static final String cG = "multimsgDd";
+  public static final String cH = "10000512";
   public static final String ca = "pcactive_config";
   public static final String cb = "picCu";
   public static final String cc = "picCd";

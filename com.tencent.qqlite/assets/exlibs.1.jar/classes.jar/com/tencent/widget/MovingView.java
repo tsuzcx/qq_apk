@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
 import com.tencent.qphone.base.util.QLog;
-import fir;
+import fkx;
 import java.util.Random;
 
 public class MovingView
@@ -66,21 +66,21 @@ public class MovingView
   public MovingView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidOsHandler = new fir(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new fkx(this, Looper.getMainLooper());
     f();
   }
   
   public MovingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidOsHandler = new fir(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new fkx(this, Looper.getMainLooper());
     f();
   }
   
   public MovingView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidOsHandler = new fir(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new fkx(this, Looper.getMainLooper());
     f();
   }
   

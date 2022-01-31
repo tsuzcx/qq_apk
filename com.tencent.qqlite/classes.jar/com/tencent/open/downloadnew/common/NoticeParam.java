@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ffz;
+import fif;
 
 public class NoticeParam
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ffz();
+  public static final Parcelable.Creator CREATOR = new fif();
   public int a;
   public long a;
   public Intent a;

@@ -1,17 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class epv
-  implements View.OnClickListener
+  implements TroopMemberApiClient.Callback
 {
-  public epv(MediaControllerX paramMediaControllerX) {}
+  public epv(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    if (this.a.a != null) {
-      this.a.a.onClick(paramView);
+    if (paramBundle.getBoolean("ret"))
+    {
+      VideoPlayLogic.b(this.a);
+      return;
     }
+    if ((VideoPlayLogic.a(this.a) != null) && (VideoPlayLogic.a(this.a).isShowing() == true)) {
+      VideoPlayLogic.a(this.a).dismiss();
+    }
+    this.a.a(VideoPlayLogic.a(this.a));
   }
 }
 

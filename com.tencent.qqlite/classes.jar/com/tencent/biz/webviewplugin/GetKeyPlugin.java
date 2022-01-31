@@ -216,14 +216,6 @@ public class GetKeyPlugin
         {
           i = 2;
           continue;
-          paramString = localException2;
-          if (localCookieManager.getCookie(localException2).contains("p_skey=")) {
-            continue;
-          }
-          paramString = localException2;
-          if (TextUtils.isEmpty(this.f)) {
-            continue;
-          }
           str = localAppInterface.getAccount();
           localObject4 = this.f;
           if (localException2.startsWith("http://s.p.qq.com")) {}
@@ -301,7 +293,7 @@ public class GetKeyPlugin
     else
     {
       if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-        break label1487;
+        break label1455;
       }
       localObject2 = this.jdField_a_of_type_ComTencentBizAuthorizeConfig.c();
       j = localObject2.length;

@@ -1,18 +1,27 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import android.view.View;
+import android.widget.ExpandableListAdapter;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.statistics.StatisticTroopAssist;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.ExpandableListView.OnChildClickListener;
 
 public class blr
-  extends TransProcessorHandler
+  implements ExpandableListView.OnChildClickListener
 {
-  public blr(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public blr(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
   {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
-      this.a.d();
+    if (((TroopMessageSettingAdapter)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
+      return true;
     }
+    StatisticTroopAssist.c(this.a.getActivity(), this.a.app.a());
+    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
+    this.a.a(paramExpandableListView);
+    return true;
   }
 }
 

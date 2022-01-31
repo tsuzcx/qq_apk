@@ -1,65 +1,116 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
-import com.tencent.tmassistantsdk.openSDK.BaseQQDownloaderOpenSDK;
-import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
+import com.tencent.open.base.http.HttpBaseUtil;
+import com.tencent.open.business.base.OpenConfig;
+import com.tencent.open.business.cgireport.ReportDataModal;
+import com.tencent.open.business.cgireport.ReportManager;
+import java.net.SocketTimeoutException;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ConnectTimeoutException;
+import org.apache.http.entity.ByteArrayEntity;
 
 public class ffu
   implements Runnable
 {
-  public ffu(MyAppApi.QQDownloadListener paramQQDownloadListener, TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, int paramInt1, int paramInt2, String paramString) {}
+  public ffu(ReportManager paramReportManager, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
-    int i;
-    DownloadManager localDownloadManager;
-    DownloadInfo localDownloadInfo;
-    if (this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam != null)
-    {
-      LogUtility.a("State_Log", "OpenSDK OnDownloadTaskStateChanged state=" + this.jdField_a_of_type_Int + " errorCode=" + this.b + " param SNGAppId=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.SNGAppId + " apkId=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskApkId + " taskAppId=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskAppId + " packageName=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskPackageName + " version=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskVersion + " uin=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.uin + " via=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.via);
-      i = DownloadManager.a(this.jdField_a_of_type_Int);
-      LogUtility.c("State_Log", "OnDownloadTaskStateChanged--localState = " + i + "state = " + this.jdField_a_of_type_Int + "errorCode = " + this.b);
-      localDownloadManager = DownloadManager.a();
-      localDownloadInfo = localDownloadManager.b(this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.SNGAppId, i);
-      if ((localDownloadInfo != null) || (this.jdField_a_of_type_Int == 6)) {
-        break label383;
-      }
-      localDownloadInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a(this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, null);
-      localDownloadManager.e(localDownloadInfo);
-      localDownloadManager.b(this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.SNGAppId, i);
+    LogUtility.b("cgi_report_debug", "ReportManager doUploadItems Thread start, url = " + this.jdField_a_of_type_JavaLangString);
+    LogUtility.b("cgi_report_debug", "report bundle=" + this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager.jdField_a_of_type_Int = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_HttpRetryCount");
+    Object localObject = this.jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager;
+    if (this.jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager.jdField_a_of_type_Int == 0) {
+      i = 3;
     }
-    while (localDownloadInfo != null)
+    for (;;)
     {
-      LogUtility.c("State_Log", "OnDownloadTaskStateChanged notifyListener localState=" + i + " dlInfo=" + localDownloadInfo.toString());
-      localDownloadManager.a(i, localDownloadInfo, this.b, this.jdField_a_of_type_JavaLangString);
-      return;
-      LogUtility.a("State_Log", "OpenSDK OnDownloadTaskStateChanged state=" + this.jdField_a_of_type_Int + " errorCode=" + this.b + " param== null");
-      return;
-      label383:
-      if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a != null) && ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 3)) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.e())) {
-        try
+      ((ReportManager)localObject).jdField_a_of_type_Int = i;
+      i = 0;
+      int k = 0;
+      int m = k + 1;
+      LogUtility.b("cgi_report_debug", "ReportManager doUploadItems Thread request count = " + m);
+      try
+      {
+        localObject = HttpBaseUtil.a(null, this.jdField_a_of_type_JavaLangString);
+        HttpPost localHttpPost = new HttpPost(MsfSdkUtils.insertMtype("yingyongbao", this.jdField_a_of_type_JavaLangString));
+        localHttpPost.addHeader("Accept-Encoding", "gzip");
+        localHttpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
+        localHttpPost.setEntity(new ByteArrayEntity(HttpBaseUtil.a(this.jdField_a_of_type_AndroidOsBundle).getBytes()));
+        if (((HttpClient)localObject).execute(localHttpPost).getStatusLine().getStatusCode() != 200)
         {
-          localDownloadManager.a(localDownloadInfo);
-          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a.getDownloadTaskState(this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam);
-          if (localTMAssistantDownloadTaskInfo != null)
-          {
-            long l1 = localTMAssistantDownloadTaskInfo.mReceiveDataLen;
-            long l2 = localTMAssistantDownloadTaskInfo.mTotalDataLen;
-            int j = (int)((float)l1 * 100.0F / (float)l2);
-            localDownloadInfo.k = j;
-            LogUtility.a("MyAppApi", "OnDownloadTaskStateChanged info progress = " + j);
+          LogUtility.e("cgi_report_debug", "ReportManager doUploadItems : HttpStatuscode != 200");
+          this.jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager.jdField_a_of_type_Boolean = false;
+          LogUtility.b("cgi_report_debug", "ReportManager doUploadItems Thread end, url = " + this.jdField_a_of_type_JavaLangString);
+          if (i != 1) {
+            break label372;
           }
-        }
-        catch (Exception localException)
-        {
-          LogUtility.c("MyAppApi", "getDownloadTaskState>>>", localException);
+          LogUtility.b("cgi_report_debug", "ReportManager doUploadItems Thread request success");
+          return;
+          i = this.jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager.jdField_a_of_type_Int;
         }
       }
+      catch (ConnectTimeoutException localConnectTimeoutException1)
+      {
+        for (;;)
+        {
+          try
+          {
+            LogUtility.b("cgi_report_debug", "ReportManager doUploadItems Thread success");
+            i = 1;
+          }
+          catch (Exception localException2)
+          {
+            int j;
+            i = 1;
+            continue;
+          }
+          catch (SocketTimeoutException localSocketTimeoutException2)
+          {
+            i = 1;
+            continue;
+          }
+          catch (ConnectTimeoutException localConnectTimeoutException2)
+          {
+            i = 1;
+            continue;
+          }
+          localConnectTimeoutException1 = localConnectTimeoutException1;
+          LogUtility.c(ReportManager.jdField_a_of_type_JavaLangString, "ReportManager doUploadItems : ConnectTimeoutException", localConnectTimeoutException1);
+          j = i;
+          i = j;
+          k = m;
+          if (m < this.jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager.jdField_a_of_type_Int) {
+            break;
+          }
+          i = j;
+        }
+      }
+      catch (SocketTimeoutException localSocketTimeoutException1)
+      {
+        for (;;)
+        {
+          LogUtility.c(ReportManager.jdField_a_of_type_JavaLangString, "doUploadItems>>>", localSocketTimeoutException1);
+          j = i;
+        }
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          LogUtility.c("cgi_report_debug", "ReportManager doUploadItems : Exception", localException1);
+        }
+        label372:
+        LogUtility.e("cgi_report_debug", "ReportManager doUploadItems Thread request failed");
+        this.jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager.jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal.a(this.jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager.jdField_a_of_type_JavaUtilArrayList);
+        return;
+      }
     }
-    LogUtility.c("MyAppApi", "OnDownloadTaskStateChanged notifyListener error dlInfo == null");
   }
 }
 

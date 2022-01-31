@@ -1,43 +1,74 @@
-import PersonalState.UserProfile;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.richstatus.SameStatusActivity;
-import java.util.HashMap;
-import java.util.HashSet;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.richstatus.ActionInfo;
+import com.tencent.mobileqq.richstatus.ActionListActivity;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.widget.StatableBitmapDrawable;
+import java.util.ArrayList;
 
 public class ech
-  extends CardObserver
+  extends BaseAdapter
 {
-  public ech(SameStatusActivity paramSameStatusActivity) {}
+  private ArrayList jdField_a_of_type_JavaUtilArrayList;
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public ech(ActionListActivity paramActionListActivity, ArrayList paramArrayList)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
     {
-      UserProfile localUserProfile;
-      if ((paramBoolean) && (paramObject != null) && (SameStatusActivity.a(this.a).containsKey(paramObject.uin)))
-      {
-        localUserProfile = (UserProfile)SameStatusActivity.a(this.a).get(paramObject.uin);
-        localUserProfile.nPicNum = paramObject.iFaceNum;
-        localUserProfile.bAge = paramObject.age;
-        if (paramObject.shGender != 0) {
-          break label113;
-        }
-        localUserProfile.bSex = 0;
+      localView = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getLayoutInflater().inflate(2130903662, paramViewGroup, false);
+      paramView = new ecg(null);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131298217));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131298218));
+      localView.setTag(paramView);
+    }
+    paramView = (ecg)localView.getTag();
+    paramViewGroup = ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue());
+    if ((paramViewGroup != null) && (paramView.jdField_a_of_type_Int != paramViewGroup.i))
+    {
+      paramView.jdField_a_of_type_Int = paramViewGroup.i;
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new StatableBitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources(), ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(paramViewGroup.i, 201), false, false));
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup.c);
+      if (paramViewGroup.j != 1) {
+        break label205;
       }
-      for (;;)
-      {
-        SameStatusActivity.a(this.a).add(Long.valueOf(localUserProfile.lEctID));
-        SameStatusActivity.a(this.a).notifyDataSetChanged();
-        return;
-        label113:
-        if (paramObject.shGender == 1) {
-          localUserProfile.bSex = 1;
-        } else {
-          localUserProfile.bSex = 2;
-        }
-      }
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+    }
+    for (;;)
+    {
+      localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity);
+      return localView;
+      label205:
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources().getDrawable(2130837734), null);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
     }
   }
 }

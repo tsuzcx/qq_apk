@@ -1,45 +1,61 @@
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.app.BizTroopObserver;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bmy
-  implements View.OnClickListener
+  extends BizTroopObserver
 {
   public bmy(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(long paramLong1, long paramLong2, long paramLong3, String paramString)
   {
-    paramView = paramView.getTag();
-    if ((paramView instanceof Integer)) {}
-    switch (((Integer)paramView).intValue())
-    {
-    default: 
-      return;
-    case 10: 
-      this.a.j();
-      return;
+    if (paramLong1 != 0L) {}
+    this.a.jdField_a_of_type_Long = paramLong2;
+    this.a.b = paramLong3;
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  {
+    this.a.k();
+    if (!paramBoolean) {
+      if (TextUtils.isEmpty(paramString)) {}
     }
-    paramView = TroopInfoActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
-    if ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f)) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.k)) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.m)) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Long == -1L) || (TextUtils.isEmpty(paramView)))
+    for (;;)
     {
-      this.a.e();
+      QQToast.a(this.a, paramString, 1).b(this.a.getTitleBarHeight());
+      this.a.finish();
       return;
+      switch ((int)paramLong)
+      {
+      default: 
+        paramString = this.a.getString(2131363888);
+        break;
+      case 1281: 
+        paramString = this.a.getString(2131362659);
+        break;
+      case 1282: 
+        paramString = this.a.getString(2131362660);
+        break;
+      case 1283: 
+        paramString = this.a.getString(2131362661);
+        continue;
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.r == 3) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.r == 2))
+        {
+          paramString = DialogUtil.a(this.a, 230);
+          paramString.setTitle(null);
+          paramString.setMessage(this.a.getString(2131362671));
+          paramString.setPositiveButton(this.a.getString(2131362670), new bmz(this, paramString));
+          paramString.setPositiveButtonContentDescription(this.a.getString(2131362670));
+          paramString.show();
+          return;
+        }
+        paramString = this.a.getString(2131363887);
+      }
     }
-    if (((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.r == 2) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.r == 3)) && (this.a.jdField_a_of_type_Long != -1L) && (this.a.jdField_a_of_type_Long <= this.a.b))
-    {
-      paramView = DialogUtil.a(this.a, 230);
-      paramView.setTitle(null);
-      paramView.setMessage(this.a.getString(2131362662));
-      paramView.setPositiveButton(this.a.getString(2131362663), new bmz(this, paramView));
-      paramView.setPositiveButtonContentDescription(this.a.getString(2131362663));
-      paramView.show();
-      return;
-    }
-    this.a.j();
   }
 }
 

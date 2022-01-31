@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.view.View;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ahv
-  implements DialogInterface.OnKeyListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public ahv(DetailProfileActivity paramDetailProfileActivity) {}
+  public ahv(DetailProfileActivity paramDetailProfileActivity, ActionSheet paramActionSheet) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void a(View paramView, int paramInt)
   {
-    return false;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte != paramInt) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Boolean = true;
+    }
+    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity;
+    if (paramInt == 0) {}
+    for (paramInt = 0;; paramInt = 1)
+    {
+      paramView.a(paramInt, true);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+    }
   }
 }
 

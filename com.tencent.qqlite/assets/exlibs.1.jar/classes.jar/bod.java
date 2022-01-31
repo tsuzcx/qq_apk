@@ -1,24 +1,45 @@
-import com.tencent.mobileqq.activity.TroopMemberGagActivity.TroopGagListAdapter;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagItem;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bod
+  implements View.OnClickListener
 {
-  public TroopGagMgr.GagItem a;
-  public boolean a;
-  public boolean b;
+  public bod(TroopMemberCardActivity paramTroopMemberCardActivity, CheckBox paramCheckBox, Dialog paramDialog) {}
   
-  public bod(TroopMemberGagActivity.TroopGagListAdapter paramTroopGagListAdapter, TroopGagMgr.GagItem paramGagItem, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem = paramGagItem;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = false;
-  }
-  
-  public bod(TroopMemberGagActivity.TroopGagListAdapter paramTroopGagListAdapter, TroopGagMgr.GagItem paramGagItem, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem = paramGagItem;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
+    paramView = new ArrayList();
+    paramView.add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.e)));
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.a.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.c), paramView, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+    paramView = "";
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.p == 3)
+    {
+      paramView = "0";
+      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label161;
+      }
+    }
+    label161:
+    for (String str = "0";; str = "1")
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.app, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.c, paramView, str, "");
+      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.p != 2) {
+        break;
+      }
+      paramView = "1";
+      break;
+    }
   }
 }
 

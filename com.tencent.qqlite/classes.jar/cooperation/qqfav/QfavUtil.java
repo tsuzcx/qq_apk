@@ -20,7 +20,7 @@ import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import fky;
+import fne;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -419,11 +419,11 @@ public final class QfavUtil
     }
     try
     {
-      String str = paramContext1.getString(2131362689);
+      String str = paramContext1.getString(2131362696);
       if (paramBoolean) {}
-      for (paramContext2 = paramContext1.getString(2131362691);; paramContext2 = paramContext1.getString(2131362690))
+      for (paramContext2 = paramContext1.getString(2131362698);; paramContext2 = paramContext1.getString(2131362697))
       {
-        paramContext1 = DialogUtil.a(paramContext1, 230, str, paramContext2, 2131362794, 2131362692, new fky(), null);
+        paramContext1 = DialogUtil.a(paramContext1, 230, str, paramContext2, 2131362801, 2131362699, new fne(), null);
         paramContext1.setMessageCount(null);
         paramContext1.setOnDismissListener(paramOnDismissListener);
         paramContext1.show();

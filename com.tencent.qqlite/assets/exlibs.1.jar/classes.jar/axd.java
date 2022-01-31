@@ -1,49 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NearbyPeopleListFrame;
+import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
 
 public class axd
-  implements View.OnClickListener
+  extends Handler
 {
-  public axd(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(View paramView)
+  public axd(NearbyPeopleListFrame paramNearbyPeopleListFrame1, NearbyPeopleListFrame paramNearbyPeopleListFrame2)
   {
-    if (!NetworkUtil.e(BaseApplication.getContext()))
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramNearbyPeopleListFrame2);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    NearbyPeopleListFrame localNearbyPeopleListFrame = (NearbyPeopleListFrame)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localNearbyPeopleListFrame == null) {}
+    do
     {
-      QQToast.a(this.a, 2131363516, 0).b(this.a.getTitleBarHeight());
       return;
-    }
-    if (NearbyPeopleProfileActivity.a(this.a).size() <= 1)
-    {
-      paramView = DialogUtil.a(this.a, "交友相册需要至少一张照片\n仅陌生人可见，秀出精彩的自己！", 0, 0, null, null);
-      paramView.setNegativeButton(2131362794, new axe(this, paramView));
-      paramView.setPositiveButton("立即上传", new axf(this, paramView));
-      paramView.show();
-      return;
-    }
-    paramView = NearbyPeopleProfileActivity.a(this.a).getText().toString();
-    if ((!StringUtil.b(paramView)) && (StringUtil.e(paramView).length() == 0))
-    {
-      QQToast.a(this.a, "交友昵称不允许全为空格", 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    NearbyPeopleProfileActivity.c(this.a);
-    if (NearbyPeopleProfileActivity.a(this.a).size() > 0)
-    {
-      NearbyPeopleProfileActivity.f(this.a);
-      return;
-    }
-    NearbyPeopleProfileActivity.g(this.a);
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 0: 
+        NearbyPeopleListFrame.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleListFrame);
+        localNearbyPeopleListFrame.a.B();
+      }
+    } while (paramMessage.arg1 != 1);
+    NearbyPeopleListFrame.a(localNearbyPeopleListFrame, 1, 2131363366);
+    return;
+    NearbyPeopleListFrame.b(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleListFrame);
+    localNearbyPeopleListFrame.a.B();
+    NearbyPeopleListFrame.a(localNearbyPeopleListFrame, 1, localNearbyPeopleListFrame.a(2131363527));
   }
 }
 

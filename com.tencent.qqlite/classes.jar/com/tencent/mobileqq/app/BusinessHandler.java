@@ -4,14 +4,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import cqk;
+import crl;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public abstract class BusinessHandler
 {
@@ -32,7 +36,7 @@ public abstract class BusinessHandler
   
   private void a(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2, BusinessObserver paramBusinessObserver, Handler paramHandler)
   {
-    paramObject = new cqk(this, paramBusinessObserver, paramInt, paramHandler, paramBoolean1, paramObject);
+    paramObject = new crl(this, paramBusinessObserver, paramInt, paramHandler, paramBoolean1, paramObject);
     if (paramBoolean2)
     {
       paramHandler.postAtFrontOfQueue(paramObject);
@@ -44,6 +48,40 @@ public abstract class BusinessHandler
   public ToServiceMsg a(String paramString)
   {
     return new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), paramString);
+  }
+  
+  public ToServiceMsg a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  {
+    return a(paramString, paramInt1, paramInt2, paramArrayOfByte, 30000L);
+  }
+  
+  public ToServiceMsg a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte, long paramLong)
+  {
+    return a(paramString, paramInt1, paramInt2, paramArrayOfByte, paramLong, null, false);
+  }
+  
+  public ToServiceMsg a(String arg1, int paramInt1, int paramInt2, byte[] paramArrayOfByte, long paramLong, BusinessObserver paramBusinessObserver, boolean paramBoolean)
+  {
+    Object localObject = new oidb_sso.OIDBSSOPkg();
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(paramInt1);
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(paramInt2);
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.set(0);
+    ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+    paramArrayOfByte = a(???);
+    paramArrayOfByte.putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject).toByteArray());
+    paramArrayOfByte.setTimeout(paramLong);
+    if ((paramBusinessObserver == null) || (paramBoolean)) {}
+    synchronized (this.jdField_b_of_type_JavaUtilMap)
+    {
+      ???.put(Long.valueOf(this.jdField_a_of_type_Long), paramBusinessObserver);
+      paramBusinessObserver = paramArrayOfByte.extraData;
+      localObject = jdField_a_of_type_JavaLangString;
+      paramLong = this.jdField_a_of_type_Long;
+      this.jdField_a_of_type_Long = (1L + paramLong);
+      paramBusinessObserver.putLong((String)localObject, paramLong);
+      return paramArrayOfByte;
+      ??? = this.jdField_a_of_type_JavaUtilMap;
+    }
   }
   
   public ToServiceMsg a(String paramString, BusinessObserver paramBusinessObserver)

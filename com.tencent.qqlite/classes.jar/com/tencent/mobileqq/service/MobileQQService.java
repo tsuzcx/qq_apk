@@ -49,9 +49,9 @@ import com.tencent.qphone.base.remote.IBaseActionListener;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import edl;
-import edm;
-import edn;
+import eeq;
+import eer;
+import ees;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -74,9 +74,9 @@ public class MobileQQService
   public static volatile int c = 0;
   private static final String c = "sendtimekey";
   private NotificationManager jdField_a_of_type_AndroidAppNotificationManager;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new edn(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ees(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ActionListener jdField_a_of_type_ComTencentMobileqqCompatibleActionListener = new edl(this);
+  private ActionListener jdField_a_of_type_ComTencentMobileqqCompatibleActionListener = new eeq(this);
   private DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("0.00");
   private Random jdField_a_of_type_JavaUtilRandom = new Random();
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
@@ -97,14 +97,14 @@ public class MobileQQService
     int i;
     if (!MobileIssueSettings.e)
     {
-      localNotification = KapalaiAdapterUtil.a().a(BaseApplication.getContext(), 2130838143);
+      localNotification = KapalaiAdapterUtil.a().a(BaseApplication.getContext(), 2130838162);
       paramIntent = localNotification;
       if (QLog.isColorLevel())
       {
         QLog.i("MobileQQService", 2, "buildIdleNotification by newNotificationForMeizu. nf=" + localNotification);
         paramIntent = localNotification;
       }
-      paramIntent.icon = 2130838143;
+      paramIntent.icon = 2130838162;
       if (!this.jdField_a_of_type_Boolean) {
         break label189;
       }
@@ -123,7 +123,7 @@ public class MobileQQService
       do
       {
         return paramIntent;
-        localNotification = new Notification(2130838143, null, System.currentTimeMillis());
+        localNotification = new Notification(2130838162, null, System.currentTimeMillis());
         paramIntent = localNotification;
         if (!QLog.isColorLevel()) {
           break;
@@ -146,7 +146,7 @@ public class MobileQQService
     if (QLog.isColorLevel()) {
       QLog.i("MobileQQService", 2, "buildNotification by getActivity. contentIntent=" + paramIntent);
     }
-    paramString1 = new NotificationCompat.Builder(BaseApplication.getContext()).setSmallIcon(2130838144).setAutoCancel(true).setWhen(System.currentTimeMillis()).setTicker(paramString1);
+    paramString1 = new NotificationCompat.Builder(BaseApplication.getContext()).setSmallIcon(2130838163).setAutoCancel(true).setWhen(System.currentTimeMillis()).setTicker(paramString1);
     if (bool) {
       paramString1.setOngoing(true);
     }
@@ -332,7 +332,7 @@ public class MobileQQService
   
   public void a(ToServiceMsg paramToServiceMsg)
   {
-    paramToServiceMsg = new edm(this, paramToServiceMsg);
+    paramToServiceMsg = new eer(this, paramToServiceMsg);
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
       ThreadManager.a().post(paramToServiceMsg);

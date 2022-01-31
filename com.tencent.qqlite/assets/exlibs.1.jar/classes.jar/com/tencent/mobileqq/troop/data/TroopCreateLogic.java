@@ -13,9 +13,9 @@ import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import emn;
-import emo;
-import emp;
+import eoc;
+import eod;
+import eoe;
 import java.util.Timer;
 import mqq.manager.Manager;
 
@@ -37,7 +37,7 @@ public class TroopCreateLogic
   public static final int k = 51;
   public Activity a;
   public Dialog a;
-  private BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new emn(this);
+  private BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new eoc(this);
   public QQAppInterface a;
   public TroopCreateLogic.TroopCreateCallback a;
   private TroopCreateLogic.TroopCreateInfo jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo = new TroopCreateLogic.TroopCreateInfo();
@@ -88,7 +88,7 @@ public class TroopCreateLogic
     localObject = new QQProgressDialog((Context)localObject, ((BaseActivity)localObject).getTitleBarHeight());
     ((QQProgressDialog)localObject).a(paramString);
     ((QQProgressDialog)localObject).setCancelable(false);
-    ((QQProgressDialog)localObject).setOnDismissListener(new emo(this));
+    ((QQProgressDialog)localObject).setOnDismissListener(new eod(this));
     this.jdField_a_of_type_AndroidAppDialog = ((Dialog)localObject);
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
@@ -146,12 +146,12 @@ public class TroopCreateLogic
     if (paramBaseActivity == null) {
       return;
     }
-    QQToast.a(paramBaseActivity, paramBaseActivity.getString(2131362325), 1).b(paramBaseActivity.getTitleBarHeight());
+    QQToast.a(paramBaseActivity, paramBaseActivity.getString(2131362326), 1).b(paramBaseActivity.getTitleBarHeight());
   }
   
   public void a(TroopCreateLogic.TroopCreateCallback paramTroopCreateCallback)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo == null) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateAdvanceData == null)) {
       return;
     }
     TroopCreateAdvanceData localTroopCreateAdvanceData = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateAdvanceData;
@@ -246,7 +246,7 @@ public class TroopCreateLogic
     for (int n = ((BaseActivity)paramActivity).getTitleBarHeight();; n = 0)
     {
       if (paramActivity != null) {
-        QQToast.a(paramActivity, 2131362916, 0).b(n);
+        QQToast.a(paramActivity, 2131362923, 0).b(n);
       }
       a(paramActivity);
       return;
@@ -260,9 +260,9 @@ public class TroopCreateLogic
       {
         long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
         this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-        b(paramActivity.getString(2131362324));
+        b(paramActivity.getString(2131362325));
         this.jdField_a_of_type_JavaUtilTimer = new Timer();
-        this.jdField_a_of_type_JavaUtilTimer.schedule(new emp(this), 10000L);
+        this.jdField_a_of_type_JavaUtilTimer.schedule(new eoe(this), 10000L);
         this.l = 1;
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
         localBizTroopHandler.a(l1);

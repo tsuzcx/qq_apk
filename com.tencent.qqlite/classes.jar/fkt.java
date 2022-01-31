@@ -1,19 +1,23 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qqfav.QfavBuilder;
+import com.tencent.widget.ListView;
 
 public class fkt
-  implements View.OnClickListener
+  implements Runnable
 {
-  public fkt(QfavBuilder paramQfavBuilder) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void onClick(View paramView)
+  private fkt(ListView paramListView) {}
+  
+  public fkt a(int paramInt1, int paramInt2)
   {
-    if ((QfavBuilder.a(this.a) != null) && (QfavBuilder.a(this.a).isShowing())) {
-      QfavBuilder.a(this.a).dismiss();
-    }
-    QfavBuilder.a(this.a, null);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    return this;
+  }
+  
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentWidgetListView.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
   }
 }
 

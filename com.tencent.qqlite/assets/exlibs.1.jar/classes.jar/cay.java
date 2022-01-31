@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.widget.UpScrollHideView.onViewHideListener;
+import android.content.res.Resources;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class cay
-  implements UpScrollHideView.onViewHideListener
+class cay
+  implements Runnable
 {
-  public cay(TroopAssistTipsBar paramTroopAssistTipsBar) {}
+  cay(cax paramcax, String paramString) {}
   
-  public void a()
+  public void run()
   {
-    if (this.a.a()) {
-      TroopAssistantManager.a().a(TroopAssistTipsBar.a(this.a), TroopAssistTipsBar.a(this.a).a);
-    }
+    TroopChatPie.d(this.jdField_a_of_type_Cax.a).setText(TroopChatPie.k(this.jdField_a_of_type_Cax.a).getResources().getString(2131362622) + this.jdField_a_of_type_JavaLangString);
   }
 }
 

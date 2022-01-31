@@ -1,61 +1,30 @@
-import android.annotation.SuppressLint;
-import android.view.ActionMode;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.MultiChoiceModeListener;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.UpdateManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
-@SuppressLint({"NewApi"})
 public class fhf
-  implements AbsListView.MultiChoiceModeListener
+  implements Runnable
 {
-  private AbsListView.MultiChoiceModeListener jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener;
+  public fhf(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  public fhf(AbsListView paramAbsListView) {}
-  
-  public void a(ActionMode paramActionMode, int paramInt, long paramLong, boolean paramBoolean)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.a(paramActionMode, paramInt, paramLong, paramBoolean);
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView.c() == 0) {
-      paramActionMode.finish();
-    }
-  }
-  
-  public void a(AbsListView.MultiChoiceModeListener paramMultiChoiceModeListener)
-  {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener = paramMultiChoiceModeListener;
-  }
-  
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
-  {
-    return this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.onActionItemClicked(paramActionMode, paramMenuItem);
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.onCreateActionMode(paramActionMode, paramMenu))
+    try
     {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.setLongClickable(false);
-      bool = true;
+      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h) != null)
+      {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h).mSavePath;
+        UpdateManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      }
+      return;
     }
-    return bool;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode)
-  {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.onDestroyActionMode(paramActionMode);
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.a = null;
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.e();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.q = true;
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.q();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.requestLayout();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.setLongClickable(true);
-  }
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.onPrepareActionMode(paramActionMode, paramMenu);
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
+    }
   }
 }
 

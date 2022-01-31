@@ -10,7 +10,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import fkm;
+import fms;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.util.HashMap;
@@ -125,7 +125,7 @@ public class PluginInstaller
     do
     {
       return false;
-      paramString = new File(this.b).list(new fkm(this, paramString));
+      paramString = new File(this.b).list(new fms(this, paramString));
     } while ((paramString == null) || (paramString.length <= 0));
     return true;
   }

@@ -1,39 +1,86 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
+import com.tencent.mobileqq.app.ShieldListObserver;
+import com.tencent.mobileqq.util.Utils;
+import java.util.List;
 
 public class cas
-  implements View.OnClickListener
+  extends ShieldListObserver
 {
-  public cas(FraudTipsBar paramFraudTipsBar, int paramInt) {}
+  public cas(StrangerChatPie paramStrangerChatPie) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, List paramList)
   {
-    FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar, 2);
-    FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar).a();
-    ReportController.b(FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar), "P_CliOper", "Safe_AntiFraud", FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar).a, "banner", "userclick", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    Object localObject = AntiFraudConfigFileUtil.a().a("SecWarningCfg", "BannerURL", 146, this.jdField_a_of_type_Int);
-    paramView = (View)localObject;
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      paramView = "http://jubao.qq.com/cn/jubao?appname=KQQ&subapp=$SUBAPP$&jubaotype=uin&system=$SYSTEM$&eviluin=$EVILUIN$&impeachuin=$USERUIN$";
+    
+    if (this.a.a == null) {
+      return;
     }
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (paramView = paramView.replace("$SUBAPP$", "notice");; paramView = paramView.replace("$SUBAPP$", "tips"))
+    String str = this.a.a.jdField_a_of_type_JavaLangString;
+    if (this.a.a.jdField_a_of_type_Int == 1006) {
+      str = this.a.a.f;
+    }
+    for (;;)
     {
-      paramView = paramView.replace("$SYSTEM$", "android").replace("$EVILUIN$", FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar).a).replace("$USERUIN$", FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar).getAccount());
-      localObject = new Intent(FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar), QQBrowserDelegationActivity.class);
-      ((Intent)localObject).putExtra("injectrecommend", true);
-      ((Intent)localObject).putExtra("url", paramView);
-      FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar).startActivity((Intent)localObject);
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      ChatActivityUtils.a(StrangerChatPie.a(this.a), paramBoolean, false);
+      if (!paramBoolean) {
+        break;
+      }
+      this.a.h();
+      return;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List paramList)
+  {
+    int k = 0;
+    ChatActivityUtils.a();
+    if (this.a.a == null) {
+      return;
+    }
+    String str = this.a.a.jdField_a_of_type_JavaLangString;
+    if (this.a.a.jdField_a_of_type_Int == 1006) {
+      str = this.a.a.f;
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      ChatActivityUtils.a();
+      if (!paramBoolean) {
+        break;
+      }
+      this.a.h();
       return;
     }
   }

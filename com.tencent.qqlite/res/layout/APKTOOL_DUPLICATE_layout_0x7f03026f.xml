@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0903d5" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00b0" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00ab" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00ac" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a02e8" style="@style/APKTOOL_DUPLICATE_style_0x7f0e003c"
+<com.tencent.mobileqq.widget.GridListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a2c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02009c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null"
   xmlns:android="http://schemas.android.com/apk/res/android" />

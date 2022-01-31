@@ -8,8 +8,8 @@ import com.tencent.mobileqq.persistence.TableBuilder;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dcu;
-import dcw;
+import ddw;
+import ddy;
 
 public class QQEntityManagerFactory$SQLiteOpenHelperImpl
   extends SQLiteOpenHelper
@@ -21,13 +21,13 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
   
   public QQEntityManagerFactory$SQLiteOpenHelperImpl(QQEntityManagerFactory paramQQEntityManagerFactory, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)
   {
-    super(BaseApplication.getContext(), paramString, new dcu(paramQQEntityManagerFactory, null), paramInt);
+    super(BaseApplication.getContext(), paramString, new ddw(paramQQEntityManagerFactory, null), paramInt);
     this.databaseName = paramString;
   }
   
-  public QQEntityManagerFactory$SQLiteOpenHelperImpl(QQEntityManagerFactory paramQQEntityManagerFactory, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt, dcw paramdcw)
+  public QQEntityManagerFactory$SQLiteOpenHelperImpl(QQEntityManagerFactory paramQQEntityManagerFactory, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt, ddy paramddy)
   {
-    super(BaseApplication.getContext(), paramString, new dcu(paramQQEntityManagerFactory, null), paramInt, paramdcw);
+    super(BaseApplication.getContext(), paramString, new ddw(paramQQEntityManagerFactory, null), paramInt, paramddy);
     this.databaseName = paramString;
   }
   

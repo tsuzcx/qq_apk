@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.aio.PlusPanel android:id="@id/panelLayout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="196.0dip"
+<com.tencent.mobileqq.activity.aio.PlusPanel android:id="@id/panelLayout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v4.view.ViewPager android:id="@id/icon_viewPager" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f09012b" android:layout_centerHorizontal="true" />
-    <com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09012b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <android.support.v4.view.ViewPager android:id="@id/icon_viewPager" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f09012e" android:layout_centerHorizontal="true" />
+    <com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09012e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="0.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
 </com.tencent.mobileqq.activity.aio.PlusPanel>

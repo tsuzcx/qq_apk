@@ -1,22 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.managers.LoadingStateManager;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ahc
-  extends Handler
+  extends SearchResultDialog
 {
-  public ahc(Conversation paramConversation) {}
-  
-  public void handleMessage(Message paramMessage)
+  public ahc(Conversation paramConversation, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    LoadingStateManager.a().a(paramMessage.what);
-    if (paramMessage.what == 4)
-    {
-      Conversation.a(this.a, 1134013, 0L, false);
-      return;
-    }
-    Conversation.a(this.a, true);
+    super(paramContext, paramQQAppInterface, paramInt, paramOnItemClickListener);
+  }
+  
+  @SuppressLint({"UseSparseArrays"})
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(a(paramContext, paramQQAppInterface));
+    localArrayList.addAll(super.a(paramContext, paramQQAppInterface, paramInt));
+    return localArrayList;
   }
 }
 

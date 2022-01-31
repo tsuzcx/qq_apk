@@ -15,7 +15,7 @@ public class wy
     if (paramInt == 1)
     {
       this.a.a.dismiss();
-      QQToast.a(this.a, 1, 2131363386, 1).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a, 1, 2131363397, 1).b(this.a.getTitleBarHeight());
     }
   }
   
@@ -26,12 +26,12 @@ public class wy
     {
     default: 
       this.a.a.dismiss();
-      QQToast.a(this.a, 1, 2131363386, 1).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a, 1, 2131363397, 1).b(this.a.getTitleBarHeight());
       return;
     case 0: 
     case 1: 
       this.a.a.dismiss();
-      QQToast.a(this.a, 2, 2131363385, 1).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a, 2, 2131363396, 1).b(this.a.getTitleBarHeight());
       paramString = this.a.getIntent().getStringExtra("param_return_addr");
       if (paramString != null) {
         try
@@ -56,7 +56,7 @@ public class wy
       return;
     }
     this.a.a.dismiss();
-    QQToast.a(this.a, 1, 2131363368, 1).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a, 1, 2131363379, 1).b(this.a.getTitleBarHeight());
   }
   
   protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2) {}

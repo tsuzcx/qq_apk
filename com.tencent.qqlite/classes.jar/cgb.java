@@ -1,16 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class cgb
-  implements View.OnClickListener
+class cgb
+  implements DialogInterface.OnCancelListener
 {
-  public cgb(BaseActivityView paramBaseActivityView) {}
+  cgb(cfz paramcfz) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.f();
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

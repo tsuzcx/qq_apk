@@ -22,7 +22,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.CompoundButton;
 import com.tencent.qqlite.R.styleable;
-import fiv;
+import flb;
 
 public class Switch
   extends CompoundButton
@@ -69,7 +69,7 @@ public class Switch
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130772077);
+    this(paramContext, paramAttributeSet, 2130772082);
   }
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -95,7 +95,7 @@ public class Switch
     this.l = paramContext.getScaledMinimumFlingVelocity();
     refreshDrawableState();
     setChecked(isChecked());
-    setOnClickListener(new fiv(this));
+    setOnClickListener(new flb(this));
   }
   
   private Layout a(CharSequence paramCharSequence)

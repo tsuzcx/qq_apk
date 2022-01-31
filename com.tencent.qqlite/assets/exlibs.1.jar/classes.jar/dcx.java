@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.QQPhotoInfo;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.mobileqq.remind.widget.WheelView;
+import com.tencent.widget.VerticalGallery;
+import com.tencent.widget.VerticalGallery.OnEndMovementListener;
 
-public final class dcx
-  implements Parcelable.Creator
+public class dcx
+  implements VerticalGallery.OnEndMovementListener
 {
-  public QQPhotoInfo a(Parcel paramParcel)
+  private int jdField_a_of_type_Int;
+  
+  public dcx(IphonePickerView paramIphonePickerView, int paramInt)
   {
-    return new QQPhotoInfo(paramParcel, null);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public QQPhotoInfo[] a(int paramInt)
+  public void a(VerticalGallery paramVerticalGallery)
   {
-    return new QQPhotoInfo[paramInt];
+    paramVerticalGallery = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView)[this.jdField_a_of_type_Int];
+    int i = paramVerticalGallery.p();
+    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null)
+    {
+      String str = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.jdField_a_of_type_Int, i);
+      paramVerticalGallery.setContentDescription(str + "已选中");
+    }
+    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null) {
+      IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.jdField_a_of_type_Int, i);
+    }
   }
 }
 

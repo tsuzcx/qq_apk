@@ -1,35 +1,56 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.dataline.util.DataLineReportUtil;
+import com.dataline.util.DatalineSessionAdapter;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class ac
-  implements View.OnTouchListener
+class ac
+  implements DialogInterface.OnClickListener
 {
-  public ac(LiteActivity paramLiteActivity) {}
+  ac(ab paramab) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(LiteActivity.a, 2, "ontouch--fcc----: " + paramMotionEvent.getAction());
-    }
-    if ((LiteActivity.a(this.a) != null) && (LiteActivity.a(this.a).getVisibility() == 0))
+    DataLineHandler localDataLineHandler = (DataLineHandler)this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isReportPause) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335))
     {
-      LiteActivity.a(this.a).setVisibility(8);
-      if ((LiteActivity.a(this.a) != null) && (LiteActivity.a(this.a).getVisibility() == 0)) {
-        LiteActivity.a(this.a, false);
+      this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isReportPause = true;
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle()) {
+        DataLineReportUtil.m(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
       }
-      LiteActivity.a(this.a).requestFocus();
     }
-    LiteActivity.a(this.a).setImageResource(2130837545);
-    LiteActivity.a(this.a);
-    LiteActivity.a(this.a).postDelayed(new ad(this), 200L);
-    return false;
+    else
+    {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2000) && (!this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle())) {
+        DataLineReportUtil.o(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle()) || (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335)) {
+        break label220;
+      }
+      localDataLineHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupId(), 0L, true);
+    }
+    for (;;)
+    {
+      localDataLineHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet);
+      LiteActivity.a(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity).notifyDataSetChanged();
+      paramDialogInterface.dismiss();
+      return;
+      DataLineReportUtil.k(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
+      break;
+      label220:
+      Iterator localIterator = this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
+      while (localIterator.hasNext())
+      {
+        DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
+        localDataLineHandler.a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, true);
+      }
+    }
   }
 }
 

@@ -1,36 +1,29 @@
-import android.content.SharedPreferences;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
 public class bky
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bky(SplashActivity paramSplashActivity, int paramInt) {}
+  public bky(SplashActivity paramSplashActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str2 = SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity);
-    if (("消息".equals(str2)) || ("联系人".equals(str2))) {
-      if (!"消息".equals(str2)) {
-        break label171;
-      }
-    }
-    label171:
-    for (String str1 = "Msg_tab";; str1 = "Contacts_tab")
+    if (SplashActivity.a(this.a) == null)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app, "CliOper", "", "", str1, str1, 0, 0, "", "", "", "");
-      if ((SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity) != null) && (SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity).getBoolean("theme_voice_setting_" + this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.a(), true))) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.b(this.jdField_a_of_type_Int + 1);
+      SplashActivity.a(this.a, (ActionSheet)ActionSheetHelper.a(this.a, null));
+      SplashActivity.a(this.a).c(this.a.getString(2131363980));
+      SplashActivity.a(this.a).c(this.a.getString(2131363370));
+      SplashActivity.a(this.a).c(this.a.getString(2131363773));
+      SplashActivity.a(this.a).c(this.a.getString(2131364086));
+      if (SplashActivity.c()) {
+        SplashActivity.a(this.a).c(this.a.getString(2131363745));
       }
-      if (str2 != null)
-      {
-        SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, "消息", str2);
-        SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, "联系人", str2);
-        SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, "我", str2);
-      }
-      return;
     }
+    SplashActivity.a(this.a).a(new bkz(this));
+    SplashActivity.a(this.a).show();
   }
 }
 

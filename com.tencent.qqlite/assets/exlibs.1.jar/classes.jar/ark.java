@@ -1,45 +1,46 @@
-import QQService.DiscussMemberInfo;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.FriendListObserver;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.IndividuationSetActivity;
+import com.tencent.mobileqq.theme.NightModeLogic.NightModeCallback;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Switch;
 
 public class ark
-  extends FriendListObserver
+  extends NightModeLogic.NightModeCallback
 {
-  private ark(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  public ark(IndividuationSetActivity paramIndividuationSetActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void a(Bundle paramBundle)
   {
-    Object localObject;
-    if ((paramBoolean) && (this.a.jdField_a_of_type_JavaUtilList != null))
+    this.a.b();
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("start_status");
+    if (i == 1)
     {
-      localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-      } while (!String.valueOf(((DiscussMemberInfo)((Iterator)localObject).next()).Uin).equals(paramString));
+      IndividuationSetActivity.a(this.a).setClickable(false);
+      this.a.a.setText("");
     }
-    for (int i = 1;; i = 0)
+    do
     {
-      if ((i != 0) && (!this.a.jdField_a_of_type_JavaUtilArrayList.contains(paramString)))
-      {
-        this.a.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        localObject = new StringBuilder();
-        JoinDiscussionActivity localJoinDiscussionActivity = this.a;
-        localJoinDiscussionActivity.f = (localJoinDiscussionActivity.f + paramString + ";");
-        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() == this.a.c)
-        {
-          paramString = this.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(this.a.f);
-          this.a.runOnUiThread(new arl(this, paramString));
-        }
-      }
       return;
+      if (i == 2)
+      {
+        this.a.b();
+        return;
+      }
+    } while (i != 3);
+    IndividuationSetActivity.a(this.a).setClickable(false);
+    i = paramBundle.getInt("percent");
+    paramBundle = this.a.getString(2131364526);
+    paramBundle = paramBundle + "  " + String.valueOf(i) + "%";
+    if (QLog.isDevelopLevel()) {
+      QLog.d("spooner", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
     }
+    this.a.a.setText(paramBundle);
+    this.a.a.setContentDescription(paramBundle);
   }
 }
 

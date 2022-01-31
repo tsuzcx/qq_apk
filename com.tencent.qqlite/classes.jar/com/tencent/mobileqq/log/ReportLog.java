@@ -16,8 +16,8 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.BaseApplication;
-import dxf;
-import dxg;
+import dyi;
+import dyj;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import mqq.app.CrashHandler;
@@ -28,8 +28,8 @@ public class ReportLog
 {
   static final int jdField_a_of_type_Int = 10000001;
   public static ProgressDialog a;
-  private static Handler jdField_a_of_type_AndroidOsHandler = new dxf(Looper.getMainLooper());
-  private static IHttpCommunicatorListener jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorListener = new dxg();
+  private static Handler jdField_a_of_type_AndroidOsHandler = new dyi(Looper.getMainLooper());
+  private static IHttpCommunicatorListener jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorListener = new dyj();
   public static final String a = "/Tencent/QQLite/log/";
   private static Thread.UncaughtExceptionHandler jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler;
   public static boolean a = false;

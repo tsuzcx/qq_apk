@@ -19,7 +19,7 @@ public class wc
       if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty()))
       {
         this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.a.c.setText(2131363379);
+        this.a.c.setText(2131363390);
       }
     }
     for (;;)
@@ -38,7 +38,7 @@ public class wc
       else
       {
         this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.a.c.setText(2131363378);
+        this.a.c.setText(2131363389);
       }
     }
   }

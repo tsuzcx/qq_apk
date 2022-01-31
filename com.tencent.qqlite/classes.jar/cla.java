@@ -1,15 +1,23 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import com.tencent.mobileqq.data.PhoneContact;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
 
 public class cla
-  extends TroopMemberListActivity.ViewHolder
+  implements View.OnClickListener
 {
-  public CheckBox a;
-  public PhoneContact a;
+  public cla(BannerManager paramBannerManager) {}
   
-  private cla(ContactsInnerFrame paramContactsInnerFrame) {}
+  public void onClick(View paramView)
+  {
+    if (UpgradeController.a().a() == 4)
+    {
+      UpgradeController.a().a(BannerManager.a(this.a));
+      return;
+    }
+    UpgradeDetailActivity.a(BannerManager.a(this.a), UpgradeController.a().a(), true, true, true);
+  }
 }
 
 

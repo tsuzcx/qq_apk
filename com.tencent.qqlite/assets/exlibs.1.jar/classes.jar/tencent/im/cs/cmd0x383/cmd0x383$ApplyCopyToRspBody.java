@@ -10,9 +10,6 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class cmd0x383$ApplyCopyToRspBody
   extends MessageMicro
 {
-  public static final int BOOL_SAFE_CHECK_FLAG_FIELD_NUMBER = 11;
-  public static final int STR_SAVE_FILE_PATH_FIELD_NUMBER = 1;
-  public static final int UINT32_SAFE_CHECK_RES_FIELD_NUMBER = 12;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 88, 96 }, new String[] { "str_save_file_path", "bool_safe_check_flag", "uint32_safe_check_res" }, new Object[] { "", Boolean.valueOf(false), Integer.valueOf(0) }, ApplyCopyToRspBody.class);
   public final PBBoolField bool_safe_check_flag = PBField.initBool(false);
   public final PBStringField str_save_file_path = PBField.initString("");

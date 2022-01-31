@@ -1,39 +1,35 @@
-import android.content.Context;
-import android.view.KeyEvent;
-import android.view.inputmethod.InputConnection;
-import android.view.inputmethod.InputConnectionWrapper;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.widget.AbsListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
-public class fgx
-  extends InputConnectionWrapper
+class fgx
+  implements DialogInterface.OnClickListener
 {
-  public fgx(AbsListView paramAbsListView, InputConnection paramInputConnection, boolean paramBoolean)
-  {
-    super(paramInputConnection, paramBoolean);
-  }
+  fgx(fgv paramfgv) {}
   
-  public boolean performEditorAction(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 6)
+    try
     {
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getContext().getSystemService("input_method");
-      if (localInputMethodManager != null) {
-        localInputMethodManager.hideSoftInputFromWindow(this.a.getWindowToken(), 0);
-      }
-      return true;
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.a);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.i);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.e);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.h);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.k);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.x, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_Int, bool);
+      this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(10, paramDialogInterface);
+      return;
     }
-    return false;
-  }
-  
-  public boolean reportFullscreenMode(boolean paramBoolean)
-  {
-    return AbsListView.a(this.a).reportFullscreenMode(paramBoolean);
-  }
-  
-  public boolean sendKeyEvent(KeyEvent paramKeyEvent)
-  {
-    return AbsListView.a(this.a).sendKeyEvent(paramKeyEvent);
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 

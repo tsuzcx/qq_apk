@@ -1,31 +1,14 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.open.downloadnew.DownloadListener;
+import com.tencent.open.downloadnew.DownloadManager;
 
-public class fgk
-  implements TextWatcher
+public final class fgk
+  implements Runnable
 {
-  public fgk(Login paramLogin) {}
+  public fgk(DownloadListener paramDownloadListener) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    if (paramInt3 < 2)
-    {
-      this.a.jdField_b_of_type_Boolean = false;
-      if (paramCharSequence.length() == 0) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    DownloadManager.a().a(this.a);
   }
 }
 

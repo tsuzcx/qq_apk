@@ -24,8 +24,8 @@ import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
-import efk;
-import efl;
+import ego;
+import egp;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInput;
@@ -46,9 +46,9 @@ public class StructMsgForHypertext
   public int mHypertextContentLayout = 0;
   public String mSourceIcon = null;
   public String mSourceName = null;
-  protected View.OnClickListener mSourceOnClickListener = new efl(this);
+  protected View.OnClickListener mSourceOnClickListener = new egp(this);
   public String mSourceUrl = null;
-  private URLDrawableDownListener.Adapter mUrlAdapter = new efk(this);
+  private URLDrawableDownListener.Adapter mUrlAdapter = new ego(this);
   
   StructMsgForHypertext() {}
   
@@ -179,18 +179,18 @@ public class StructMsgForHypertext
     }
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(paramContext).inflate(2130903652, null);
+      localView = LayoutInflater.from(paramContext).inflate(2130903661, null);
     }
     Object localObject2 = paramContext.getResources();
-    Object localObject1 = (TextView)localView.findViewById(2131298833);
-    paramView = (URLImageView)localView.findViewById(2131298832);
+    Object localObject1 = (TextView)localView.findViewById(2131298859);
+    paramView = (URLImageView)localView.findViewById(2131298858);
     ((TextView)localObject1).setText(this.mSourceName);
     boolean bool;
     if (!TextUtils.isEmpty(this.mSourceIcon))
     {
       paramView.setVisibility(0);
       localObject1 = this.mSourceIcon;
-      localObject2 = ((Resources)localObject2).getDrawable(2130839366);
+      localObject2 = ((Resources)localObject2).getDrawable(2130839431);
       localObject2 = URLDrawable.getDrawable((String)localObject1, (Drawable)localObject2, (Drawable)localObject2);
       if ((AbsDownloader.a((String)localObject1)) || (!URLDrawableHelper.a(paramContext)))
       {

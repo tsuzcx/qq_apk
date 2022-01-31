@@ -1,19 +1,31 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SecSvcObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class evb
-  implements View.OnClickListener
+  extends SecSvcObserver
 {
-  public evb(QQCustomSingleButtonDialog paramQQCustomSingleButtonDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public evb(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil) {}
   
-  public void onClick(View paramView)
+  protected void b(int paramInt, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog, 0);
+    QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localQQAppInterface != null) {
+      localQQAppInterface.c(AntiFraudConfigFileUtil.a(this.a));
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.dismiss();
+    if (paramInt != 1) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SecSvcObserver", 2, "invalid notification type for onGetUinSafetyWordingConfig:" + Integer.toString(paramInt));
+      }
+    }
+    while (paramBundle == null) {
+      return;
+    }
+    ThreadManager.a(new evc(this, paramBundle.getString("config_name"), paramBundle.getInt("effect_time", 0), paramBundle.getString("md5"), paramBundle.getString("download_url")));
   }
 }
 

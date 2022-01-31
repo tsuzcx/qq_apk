@@ -13,7 +13,7 @@ import android.graphics.drawable.Drawable.ConstantState;
 import android.util.DisplayMetrics;
 import android.util.StateSet;
 import com.tencent.mobileqq.utils.ImageUtil;
-import dar;
+import dbt;
 
 public class VipBubbleDrawable
   extends Drawable
@@ -22,7 +22,7 @@ public class VipBubbleDrawable
   private static int[] jdField_a_of_type_ArrayOfInt = { 16842919 };
   private int jdField_a_of_type_Int = 160;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private dar jdField_a_of_type_Dar;
+  private dbt jdField_a_of_type_Dbt;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -30,27 +30,27 @@ public class VipBubbleDrawable
   
   public VipBubbleDrawable(Resources paramResources, Bitmap paramBitmap, byte[] paramArrayOfByte)
   {
-    this(paramResources, new dar(new NinePatch(paramBitmap, paramArrayOfByte, null)));
+    this(paramResources, new dbt(new NinePatch(paramBitmap, paramArrayOfByte, null)));
   }
   
-  public VipBubbleDrawable(Resources paramResources, dar paramdar)
+  public VipBubbleDrawable(Resources paramResources, dbt paramdbt)
   {
-    this.jdField_a_of_type_Dar = paramdar;
+    this.jdField_a_of_type_Dbt = paramdbt;
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
     if (paramResources != null) {
       this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;
     }
-    int i = paramdar.a.getDensity();
+    int i = paramdbt.a.getDensity();
     int j = this.jdField_a_of_type_Int;
     if (i == j)
     {
-      this.jdField_b_of_type_Int = paramdar.a.getWidth();
-      this.c = paramdar.a.getHeight();
+      this.jdField_b_of_type_Int = paramdbt.a.getWidth();
+      this.c = paramdbt.a.getHeight();
       return;
     }
-    this.jdField_b_of_type_Int = ImageUtil.a(paramdar.a.getWidth(), i, j);
-    this.c = ImageUtil.a(paramdar.a.getHeight(), i, j);
+    this.jdField_b_of_type_Int = ImageUtil.a(paramdbt.a.getWidth(), i, j);
+    this.c = ImageUtil.a(paramdbt.a.getHeight(), i, j);
   }
   
   public void a(int paramInt)
@@ -71,13 +71,13 @@ public class VipBubbleDrawable
     if (this.jdField_b_of_type_Boolean) {
       paramCanvas.scale(-1.0F, 1.0F, localRect.centerX(), localRect.centerY());
     }
-    this.jdField_a_of_type_Dar.a.draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_Dbt.a.draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
     paramCanvas.restoreToCount(i);
   }
   
   public Drawable.ConstantState getConstantState()
   {
-    return this.jdField_a_of_type_Dar;
+    return this.jdField_a_of_type_Dbt;
   }
   
   public int getIntrinsicHeight()
@@ -92,7 +92,7 @@ public class VipBubbleDrawable
   
   public int getOpacity()
   {
-    if ((this.jdField_a_of_type_Dar.a.hasAlpha()) || ((this.jdField_a_of_type_AndroidGraphicsPaint != null) && (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() < 255))) {
+    if ((this.jdField_a_of_type_Dbt.a.hasAlpha()) || ((this.jdField_a_of_type_AndroidGraphicsPaint != null) && (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() < 255))) {
       return -3;
     }
     return -1;

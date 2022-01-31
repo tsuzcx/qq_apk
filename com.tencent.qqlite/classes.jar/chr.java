@@ -1,58 +1,15 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.BaseActivityView.IPhoneContext;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-public class chr
-  implements BaseActivityView.IPhoneContext
+class chr
+  implements Runnable
 {
-  public chr(PhoneFrameActivity paramPhoneFrameActivity) {}
+  chr(chq paramchq) {}
   
-  public View a()
+  public void run()
   {
-    return this.a.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public ImageView a()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView a()
-  {
-    return PhoneFrameActivity.a(this.a);
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
-  
-  public View b()
-  {
-    return this.a.jdField_b_of_type_AndroidViewView;
-  }
-  
-  public ImageView b()
-  {
-    return this.a.jdField_b_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView b()
-  {
-    return PhoneFrameActivity.c(this.a);
-  }
-  
-  public TextView c()
-  {
-    return PhoneFrameActivity.b(this.a);
-  }
-  
-  public TextView d()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetTextView;
+    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.f();
+    this.a.a.jdField_a_of_type_Cid.sendEmptyMessage(3);
   }
 }
 

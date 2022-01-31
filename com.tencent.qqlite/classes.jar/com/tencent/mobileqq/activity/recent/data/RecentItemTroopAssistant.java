@@ -30,8 +30,8 @@ public class RecentItemTroopAssistant
   {
     if (this.v > 0)
     {
-      this.jdField_c_of_type_JavaLangCharSequence = String.format(paramContext.getString(2131364245), new Object[] { Integer.valueOf(this.v) });
-      this.y = paramContext.getResources().getColor(2131427509);
+      this.jdField_c_of_type_JavaLangCharSequence = String.format(paramContext.getString(2131364256), new Object[] { Integer.valueOf(this.v) });
+      this.y = paramContext.getResources().getColor(2131427515);
       return;
     }
     this.jdField_c_of_type_JavaLangCharSequence = "";
@@ -63,7 +63,7 @@ public class RecentItemTroopAssistant
       return;
     }
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = paramContext.getString(2131363618);
+      this.jdField_a_of_type_JavaLangString = paramContext.getString(2131363629);
     }
     QQMessageFacade localQQMessageFacade = paramQQAppInterface.a();
     Object localObject2;
@@ -110,7 +110,7 @@ public class RecentItemTroopAssistant
         if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangCharSequence)) || (localMessage == null) || (localObject2 == null) || (!AnonymousChatHelper.a(localMessage))) {
           break label327;
         }
-        this.jdField_b_of_type_JavaLangCharSequence = ((MsgSummary)localObject2).a(paramContext, paramContext.getResources().getString(2131362566), -1);
+        this.jdField_b_of_type_JavaLangCharSequence = ((MsgSummary)localObject2).a(paramContext, paramContext.getResources().getString(2131362568), -1);
         return;
         this.v = 0;
         this.jdField_a_of_type_Long = 0L;

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import abd;
-import abe;
+import abh;
+import abi;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -40,16 +40,16 @@ public class BaseSystemActivity
     int j = (int)((System.currentTimeMillis() + jdField_a_of_type_Int) / 86400000L);
     int k = (int)((jdField_a_of_type_Int + paramLong) / 86400000L);
     if (k == j) {
-      i = 2131363456;
+      i = 2131363467;
     }
     do
     {
       return i;
       if (k == j - 1) {
-        return 2131363457;
+        return 2131363468;
       }
     } while (k != j - 2);
-    return 2131363458;
+    return 2131363469;
   }
   
   public static String a(long paramLong, boolean paramBoolean)
@@ -60,7 +60,7 @@ public class BaseSystemActivity
     int k = a(paramLong);
     if (k != -1)
     {
-      if (k != 2131363456) {
+      if (k != 2131363467) {
         jdField_a_of_type_JavaLangStringBuffer.append(BaseApplication.getContext().getString(k));
       }
       i = 1;
@@ -68,7 +68,7 @@ public class BaseSystemActivity
     int m = jdField_a_of_type_JavaUtilCalendar.get(11);
     int j = jdField_a_of_type_JavaUtilCalendar.get(12);
     if (i != 0) {
-      if (k == 2131363456) {
+      if (k == 2131363467) {
         if (m == 24)
         {
           i = 24;
@@ -119,9 +119,9 @@ public class BaseSystemActivity
   
   private void c()
   {
-    setContentView(2130903546);
-    d(2130837635);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131298502));
+    setContentView(2130903555);
+    d(2130837660);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131298527));
     this.jdField_a_of_type_JavaLangString = b();
     if (this.jdField_a_of_type_JavaLangString == null) {
       throw new Exception("peerUin is null");
@@ -155,7 +155,7 @@ public class BaseSystemActivity
   {
     super.a();
     this.j.setVisibility(0);
-    this.j.setCompoundDrawablesWithIntrinsicBounds(2130839416, 0, 0, 0);
+    this.j.setCompoundDrawablesWithIntrinsicBounds(2130839481, 0, 0, 0);
     return this.j;
   }
   
@@ -244,10 +244,10 @@ public class BaseSystemActivity
       if ((this.jdField_a_of_type_JavaLangString.equals(paramObservable.frienduin)) && (paramObservable.istroop == 0))
       {
         this.app.a().c(this.jdField_a_of_type_JavaLangString, 0);
-        runOnUiThread(new abd(this));
+        runOnUiThread(new abh(this));
       }
       if (!paramObservable.isSendFromLocal()) {
-        runOnUiThread(new abe(this));
+        runOnUiThread(new abi(this));
       }
     }
   }

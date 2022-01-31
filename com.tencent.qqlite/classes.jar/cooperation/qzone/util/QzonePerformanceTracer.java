@@ -20,13 +20,13 @@ import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import flr;
-import fls;
-import flt;
-import flu;
-import flv;
-import flw;
-import flx;
+import fnx;
+import fny;
+import fnz;
+import foa;
+import fob;
+import foc;
+import fod;
 import java.lang.reflect.Field;
 
 public class QzonePerformanceTracer
@@ -40,23 +40,23 @@ public class QzonePerformanceTracer
   private static final String jdField_e_of_type_JavaLangString = QzonePerformanceTracer.class.getSimpleName();
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new fls(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new flr(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new fny(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new fnx(this);
   private View jdField_a_of_type_AndroidViewView;
   private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   private boolean jdField_a_of_type_Boolean = false;
   private final int jdField_b_of_type_Int = 200;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new flt(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new fnz(this);
   private View jdField_b_of_type_AndroidViewView;
   private final int jdField_c_of_type_Int = 300;
-  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new flu(this);
+  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new foa(this);
   private View jdField_c_of_type_AndroidViewView;
   private int jdField_d_of_type_Int = 200;
-  private View.OnClickListener jdField_d_of_type_AndroidViewView$OnClickListener = new flv(this);
+  private View.OnClickListener jdField_d_of_type_AndroidViewView$OnClickListener = new fob(this);
   private View jdField_d_of_type_AndroidViewView;
   private int jdField_e_of_type_Int = 300;
-  private View.OnClickListener jdField_e_of_type_AndroidViewView$OnClickListener = new flw(this);
+  private View.OnClickListener jdField_e_of_type_AndroidViewView$OnClickListener = new foc(this);
   private View jdField_e_of_type_AndroidViewView;
   private int f = 0;
   private int g = 0;
@@ -153,7 +153,7 @@ public class QzonePerformanceTracer
   
   private void g()
   {
-    ThreadManager.a(new flx(this));
+    ThreadManager.a(new fod(this));
   }
   
   public void a()
@@ -171,16 +171,16 @@ public class QzonePerformanceTracer
       this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 51;
       this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -2;
       this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -2;
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903588, null);
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298657);
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903597, null);
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298683);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_e_of_type_AndroidViewView$OnClickListener);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298658);
+      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298684);
       this.jdField_c_of_type_AndroidViewView.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
-      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298659);
+      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298685);
       this.jdField_d_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131298661).setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131298687).setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298660);
+      this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298686);
       this.jdField_e_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
       if (b())
       {

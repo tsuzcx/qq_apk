@@ -33,14 +33,14 @@ public class TroopAssistantEmptyItemBuilder
       paramDrawable = null;
       if (!"TroopAssistantEmptyItemBuilder".equals(paramDrawable))
       {
-        paramView = View.inflate(paramContext, 2130903666, null);
+        paramView = View.inflate(paramContext, 2130903675, null);
         paramView.setTag("TroopAssistantEmptyItemBuilder");
         paramDrawable = paramContext.getResources();
         this.b = paramDrawable.getDimensionPixelSize(2131492950);
         this.a = paramDrawable.getDimensionPixelSize(2131492951);
         this.j = paramDrawable.getDimensionPixelSize(2131492952);
-        i = paramDrawable.getDimensionPixelSize(2131493027);
-        this.k = (paramDrawable.getDimensionPixelSize(2131493028) + i);
+        i = paramDrawable.getDimensionPixelSize(2131493029);
+        this.k = (paramDrawable.getDimensionPixelSize(2131493030) + i);
       }
       i = paramViewGroup.getMeasuredHeight() - this.a - this.b - 10 - this.k;
       if (i <= this.j) {
@@ -54,11 +54,11 @@ public class TroopAssistantEmptyItemBuilder
       if ((paramObject instanceof Integer))
       {
         paramObject = (Integer)paramObject;
-        paramDrawable = (TextView)paramView.findViewById(2131298852);
+        paramDrawable = (TextView)paramView.findViewById(2131298878);
         if (paramObject.intValue() != 4) {
           break label219;
         }
-        paramDrawable.setText(2131363850);
+        paramDrawable.setText(2131363861);
       }
     }
     for (;;)
@@ -71,7 +71,7 @@ public class TroopAssistantEmptyItemBuilder
       i = this.j;
       break label124;
       label219:
-      paramDrawable.setText(2131364052);
+      paramDrawable.setText(2131364063);
     }
   }
 }

@@ -14,7 +14,7 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import ehi;
+import eim;
 
 public class LbsTransfileProcessor
   extends CommenTransFileProcessor
@@ -26,7 +26,7 @@ public class LbsTransfileProcessor
   public LbsTransfileProcessor(String paramString1, int paramInt, String paramString2, boolean paramBoolean, TransFileController paramTransFileController)
   {
     super(paramString1, paramInt, paramString2, paramBoolean, paramTransFileController);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ehi(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new eim(this);
     b(false);
     this.ac = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
   }
@@ -351,7 +351,7 @@ public class LbsTransfileProcessor
         ((MessageForPic)localObject2).size = this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_Long;
         ((MessageForPic)localObject2).uuid = this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_c_of_type_JavaLangString;
         ((MessageForPic)localObject2).path = ((String)localObject1);
-        if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.aa != 1) {
+        if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.ab != 1) {
           break label161;
         }
         paramBoolean = true;

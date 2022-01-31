@@ -1,63 +1,68 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.EmosmHandler;
+import com.tencent.mobileqq.app.EmosmHandler.EmosmHandlerListener;
+import com.tencent.mobileqq.data.EmosmResp;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.emoticon.ReqInfo;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class dey
-  implements Runnable
+  implements EmosmHandler.EmosmHandlerListener
 {
-  public dey(EmoticonMainPanel paramEmoticonMainPanel, int paramInt, long paramLong, HashMap paramHashMap) {}
+  public dey(EmojiManager paramEmojiManager, ReqInfo paramReqInfo, EmosmHandler paramEmosmHandler, boolean paramBoolean, ArrayList paramArrayList, Object paramObject) {}
   
-  public void run()
+  public void a(boolean paramBoolean, int paramInt, EmosmResp paramEmosmResp)
   {
-    String str;
-    SharedPreferences localSharedPreferences;
-    int i;
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    int i = paramEmosmResp.epId;
+    int j = paramEmosmResp.timestamp;
+    Object localObject1 = (ArrayList)paramEmosmResp.data;
+    Object localObject3;
+    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_JavaLangString.equals(paramEmosmResp.keySeq)))
     {
-      str = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_AndroidContentContext != null) && (str != null))
-      {
-        localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_AndroidContentContext.getSharedPreferences("emoticon_panel_" + str, 0);
-        long l = localSharedPreferences.getLong("sp_key_emoticon_panel_last_report_time", 0L);
-        i = localSharedPreferences.getInt("sp_key_emoticon_panel_report_count", 0);
-        if (System.currentTimeMillis() - l <= 86400000L) {
-          break label270;
-        }
-        localObject = localSharedPreferences.edit();
-        ((SharedPreferences.Editor)localObject).putLong("sp_key_emoticon_panel_last_report_time", System.currentTimeMillis());
-        ((SharedPreferences.Editor)localObject).putInt("sp_key_emoticon_panel_report_count", 0);
-        ((SharedPreferences.Editor)localObject).commit();
-        i = 0;
+      this.jdField_a_of_type_ComTencentMobileqqAppEmosmHandler.b(this);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.jdField_a_of_type_JavaUtilArrayList.remove(this);
+      if (!paramBoolean) {
+        break label281;
       }
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        ??? = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (((Iterator)???).hasNext())
+        {
+          localObject3 = (Emoticon)((Iterator)???).next();
+          this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a().a((Emoticon)localObject3);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_Int = paramEmosmResp.resultcode;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.b = paramEmosmResp.timeoutReason;
     }
-    label270:
     for (;;)
     {
-      if (i < 10)
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        localObject = "report_AIOEmoticonPanel_OpenFirstTimeInProcess";
-        switch (this.jdField_a_of_type_Int)
+        this.jdField_a_of_type_JavaLangObject.notify();
+        if (QLog.isColorLevel())
         {
+          ??? = this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.jdField_a_of_type_JavaLangString;
+          localObject3 = new StringBuilder().append("fetchEmoticonEncryptKeys|net get key backepId=").append(i).append(" tstamp=").append(j).append(" list.size=");
+          if (localObject1 == null)
+          {
+            localObject1 = "null";
+            QLog.d((String)???, 2, localObject1 + " encryptSuccess=" + paramBoolean + " type=" + paramInt + " er.resultCode=" + paramEmosmResp.resultcode);
+          }
+        }
+        else
+        {
+          return;
+          label281:
+          this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_Boolean = false;
         }
       }
-      for (;;)
-      {
-        StatisticCollector.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_AndroidContentContext).a(str, (String)localObject, true, this.jdField_a_of_type_Long, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
-        localObject = localSharedPreferences.edit();
-        ((SharedPreferences.Editor)localObject).putInt("sp_key_emoticon_panel_report_count", i + 1);
-        ((SharedPreferences.Editor)localObject).commit();
-        return;
-        localObject = "report_AIOEmoticonPanel_OpenFirstTimeInProcess";
-        continue;
-        localObject = "report_AIOEmoticonPanel_OpenFirstTimeInAIO";
-        continue;
-        localObject = "report_AIOEmoticonPanel_ReopenInAIO";
-      }
+      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
     }
   }
 }

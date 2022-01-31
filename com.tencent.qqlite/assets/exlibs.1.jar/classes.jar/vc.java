@@ -23,7 +23,7 @@ public class vc
       if (localView1 != null) {
         ((ShaderAnimLayout)localView1).a();
       }
-      paramView.setContentDescription(this.a.getString(2131364358));
+      paramView.setContentDescription(this.a.getString(2131364369));
       return;
     }
     if (this.a.a == paramView)
@@ -36,7 +36,7 @@ public class vc
         ((ShaderAnimLayout)localView1).d();
       }
       this.a.a = null;
-      paramView.setContentDescription(this.a.getString(2131364359));
+      paramView.setContentDescription(this.a.getString(2131364370));
       return;
     }
     this.a.a(this.a.a, 2130968579, 3);
@@ -48,8 +48,8 @@ public class vc
     localObject = localView2.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject).width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.j(this.a) * 75.0F));
     localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    paramView.setContentDescription(this.a.getString(2131364358));
-    this.a.a.setContentDescription(this.a.getString(2131364359));
+    paramView.setContentDescription(this.a.getString(2131364369));
+    this.a.a.setContentDescription(this.a.getString(2131364370));
     if (localView1 != null) {
       ((ShaderAnimLayout)localView1).a();
     }

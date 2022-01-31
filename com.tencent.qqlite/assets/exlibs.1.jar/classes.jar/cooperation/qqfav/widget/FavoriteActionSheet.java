@@ -7,8 +7,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import cooperation.qqfav.QfavReport;
-import fld;
-import fle;
+import fnj;
+import fnk;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.AppRuntime;
@@ -43,31 +43,31 @@ public class FavoriteActionSheet
     this.h = paramInt2;
     this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
     if (paramBoolean) {}
-    for (this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(paramActivity, null, 2131624119));; this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(paramActivity, null)))
+    for (this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(paramActivity, null, 2131624120));; this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(paramActivity, null)))
     {
       if ((this.g & 0x10) != 0)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131363436, 5);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131363447, 5);
         this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(16));
       }
       if ((this.g & 0x20) != 0)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362775, 5);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362782, 5);
         this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(32));
       }
       if ((this.g & 0x1) != 0)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131363562, 5);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131363573, 5);
         this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
       }
       if ((this.g & 0x2) != 0)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362429, 5);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362430, 5);
         this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(2));
       }
       if ((this.g & 0x4) != 0)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362666, 5);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362673, 5);
         this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(4));
       }
       if ((this.g & 0x8) != 0)
@@ -75,9 +75,9 @@ public class FavoriteActionSheet
         this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362003, 5);
         this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(8));
       }
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362794);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new fld(this));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new fle(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362801);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new fnj(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new fnk(this));
       return;
     }
   }

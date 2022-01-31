@@ -1,47 +1,23 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 
 public class bin
-  extends BaseAdapter
+  implements Runnable
 {
-  private bin(SearchFriendListActivity paramSearchFriendListActivity) {}
+  public bin(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public int getCount()
+  public void run()
   {
-    return SearchFriendListActivity.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return SearchFriendListActivity.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null)
+    if (RegisterSendUpSms.a(this.a) == 1)
     {
-      localView = this.a.getLayoutInflater().inflate(2130903602, paramViewGroup, false);
-      paramView = new bio();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131298092));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131298093));
-      paramView.b = ((TextView)localView.findViewById(2131298702));
-      localView.setTag(paramView);
-      localView.setOnClickListener(this.a);
+      RegisterSendUpSms.a(this.a).setText(2131363353);
+      RegisterSendUpSms.a(this.a).setEnabled(true);
+      return;
     }
-    this.a.a(localView, paramInt);
-    return localView;
+    RegisterSendUpSms.b(this.a);
+    RegisterSendUpSms.a(this.a).setText(this.a.getString(2131363353) + "(" + RegisterSendUpSms.a(this.a) + ")");
+    this.a.b.postDelayed(this, 1000L);
   }
 }
 

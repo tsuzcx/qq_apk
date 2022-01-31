@@ -1,52 +1,43 @@
-import com.tencent.mobileqq.util.FaceDecodeTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.MediaControllerX.MediaPlayerControlX;
 
 public class erq
-  extends Thread
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private boolean a = true;
+  public erq(MediaControllerX paramMediaControllerX) {}
   
-  public void a()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.a = false;
+    if (!paramBoolean) {}
+    long l;
+    do
+    {
+      return;
+      MediaControllerX.a(this.a).a();
+      l = MediaControllerX.a(this.a).a() * paramInt / 1000L;
+      MediaControllerX.a(this.a).a((int)l);
+    } while (MediaControllerX.a(this.a) == null);
+    MediaControllerX.a(this.a).setText(MediaControllerX.a(this.a, (int)l));
   }
   
-  public void run()
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    setName("FaceDecodeThread" + getId());
-    Object localObject1 = null;
-    while (this.a) {
-      synchronized (FaceDecodeTask.a())
-      {
-        int i = FaceDecodeTask.a().size();
-        if (i == 0) {}
-        try
-        {
-          FaceDecodeTask.a().wait();
-          localObject3 = localObject1;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            Object localObject3;
-            Object localObject4 = localObject2;
-          }
-        }
-        localObject1 = localObject3;
-        if (localObject3 != null)
-        {
-          FaceDecodeTask.b((FaceDecodeTask)localObject3);
-          localObject1 = null;
-          continue;
-          localObject3 = (FaceDecodeTask)FaceDecodeTask.a().remove(0);
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.FaceDecodeTask", 2, "FaceDecodeThread thread exit. isRunning=" + this.a + ", id=" + getId());
-    }
+    this.a.a(3600000);
+    MediaControllerX.b(this.a, true);
+    MediaControllerX.a(this.a).removeMessages(2);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    MediaControllerX.b(this.a, false);
+    MediaControllerX.a(this.a);
+    this.a.d();
+    this.a.a(5000);
+    MediaControllerX.a(this.a).sendEmptyMessage(2);
   }
 }
 

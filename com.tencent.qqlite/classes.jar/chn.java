@@ -1,16 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class chn
+class chn
   implements DialogInterface.OnClickListener
 {
-  public chn(DialogBaseActivity paramDialogBaseActivity) {}
+  chn(chm paramchm) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setResult(1);
-    this.a.finish();
+    this.a.a.app.a(new cho(this));
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

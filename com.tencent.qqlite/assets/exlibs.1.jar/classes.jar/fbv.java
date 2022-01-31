@@ -1,35 +1,41 @@
-import android.graphics.Bitmap;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.widget.Scroller;
+import com.tencent.mobileqq.widget.TCTransitDrawable;
 
 public class fbv
   extends Handler
 {
-  public fbv(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public fbv(TCTransitDrawable paramTCTransitDrawable) {}
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
+    if (paramMessage.what == 1) {
+      if ((this.a.jdField_a_of_type_Boolean) && (!this.a.b) && (this.a.c)) {}
     }
-    do
+    while (paramMessage.what != 2)
     {
-      do
-      {
-        return;
-        paramMessage = (Bitmap)paramMessage.obj;
-      } while (paramMessage == null);
-      this.a.a.a("", "", paramMessage, true);
       return;
-      paramMessage = (Bitmap)paramMessage.obj;
-    } while (paramMessage == null);
-    this.a.a.a("", paramMessage);
+      if (this.a.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+      {
+        int i = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
+        int j = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
+        int k = this.a.f;
+        int m = this.a.g;
+        this.a.f = i;
+        this.a.g = j;
+        paramMessage = this.a;
+        paramMessage.d += i - k;
+        paramMessage = this.a;
+        paramMessage.e += j - m;
+        this.a.invalidateSelf();
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 50L);
+        return;
+      }
+      this.a.d();
+      return;
+    }
+    this.a.d();
   }
 }
 

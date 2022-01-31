@@ -1,49 +1,31 @@
-import android.media.MediaScannerConnection;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileLocalImageExpandableListAdapter.ImageHolder;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileBaseExpandableListAdapter.LocalItemHolder;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
 
-class dkg
-  implements View.OnClickListener
+public class dkg
+  implements Runnable
 {
-  dkg(dkf paramdkf, View paramView) {}
+  public dkg(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((paramView instanceof QfileLocalImageExpandableListAdapter.ImageHolder))
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      paramView = (FileInfo)((QfileLocalImageExpandableListAdapter.ImageHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-      if ((!FileUtil.a(paramView.d())) || (FileUtil.c(paramView.d())))
-      {
-        FileManagerUtil.d(paramView.d());
-        this.jdField_a_of_type_Dkf.a.a(paramView);
-        MediaScannerConnection.scanFile(this.jdField_a_of_type_Dkf.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity, new String[] { paramView.d() }, null, null);
-        QfileBaseLocalFileTabView.a(this.jdField_a_of_type_Dkf.a);
+      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
+      String str = QfileTimeUtils.a(localWeiYunFileInfo.b);
+      if (!this.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
+        this.a.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
       }
+      ((List)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).add(localWeiYunFileInfo);
     }
-    else
-    {
-      do
-      {
-        return;
-        if ((paramView instanceof QfileLocalFileBaseExpandableListAdapter.LocalItemHolder))
-        {
-          paramView = (FileInfo)((QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "unknow Object");
-      return;
-    }
-    FMToastUtil.a(2131361978);
+    this.a.i();
+    this.a.setSelect(0);
+    this.a.b(true);
   }
 }
 

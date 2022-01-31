@@ -1,27 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
 
-public class bma
-  extends Handler
+class bma
+  implements Runnable
 {
-  public bma(TroopAssistantActivity paramTroopAssistantActivity) {}
+  bma(blz paramblz) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (!this.a.app.isLogin()) {
-      return;
+    if ((this.a.a.a.a() instanceof BaseAdapter)) {
+      ((BaseAdapter)this.a.a.a.a()).notifyDataSetChanged();
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.d();
-      return;
-    }
-    this.a.d();
   }
 }
 

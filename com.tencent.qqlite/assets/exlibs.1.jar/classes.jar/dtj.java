@@ -1,23 +1,44 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.DataLineHandler.EFILETYPE;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar.IActionBarClickEvent;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter.HlistViewHolder;
+import com.tencent.widget.ActionSheet;
 
-class dtj
-  implements Runnable
+public final class dtj
+  implements View.OnClickListener
 {
-  dtj(dti paramdti) {}
+  public dtj(String paramString, DataLineHandler paramDataLineHandler, BaseActivity paramBaseActivity, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LocalVideoFileView.a(this.a.a).setVisibility(8);
-    if ((LocalVideoFileView.a(this.a.a) != null) && (LocalVideoFileView.b(this.a.a) != null))
+    int i = FileManagerUtil.a(this.jdField_a_of_type_JavaLangString);
+    DataLineHandler.EFILETYPE localEFILETYPE = DataLineHandler.EFILETYPE.FILE_TYPE_FILE;
+    switch (i)
     {
-      LocalVideoFileView.a(this.a.a).setVisibility(8);
-      LocalVideoFileView.b(this.a.a).setVisibility(8);
     }
-    if (LocalVideoFileView.a(this.a.a) != null) {
-      LocalVideoFileView.b(this.a.a).c(true);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, localEFILETYPE);
+      if ((paramView.getTag() instanceof HorizontalListViewAdapter.HlistViewHolder))
+      {
+        paramView = (HorizontalListViewAdapter.HlistViewHolder)paramView.getTag();
+        if (paramView.a.isShowing()) {
+          paramView.a.dismiss();
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent != null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent.e();
+      }
+      return;
+      localEFILETYPE = DataLineHandler.EFILETYPE.FILE_TYPE_IMAGE;
+      continue;
+      localEFILETYPE = DataLineHandler.EFILETYPE.FILE_TYPE_VIDEO;
+      continue;
+      localEFILETYPE = DataLineHandler.EFILETYPE.FILE_TYPE_AUDIO;
     }
   }
 }

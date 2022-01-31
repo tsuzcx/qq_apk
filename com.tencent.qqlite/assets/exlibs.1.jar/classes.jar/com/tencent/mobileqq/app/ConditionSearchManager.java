@@ -11,12 +11,12 @@ import com.tencent.mobileqq.utils.ChnToSpell;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cqq;
-import cqr;
-import cqt;
-import cqu;
-import cqv;
-import cqx;
+import crr;
+import crs;
+import cru;
+import crv;
+import crw;
+import cry;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -78,7 +78,7 @@ public class ConditionSearchManager
   private static final String z = "key_home_city_code";
   public long a;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cqx(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cry(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private AddressData jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData = null;
   public Object a;
@@ -214,7 +214,7 @@ public class ConditionSearchManager
       return 3;
     }
     this.g = true;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cqr(this, localFile));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new crs(this, localFile));
     return 0;
   }
   
@@ -407,7 +407,7 @@ public class ConditionSearchManager
     {
       localArrayList = new ArrayList(this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData.a.size());
       localArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData.a.values());
-      Collections.sort(localArrayList, new cqq(this));
+      Collections.sort(localArrayList, new crr(this));
     }
     return localArrayList;
   }
@@ -416,7 +416,7 @@ public class ConditionSearchManager
   {
     this.jdField_c_of_type_Boolean = true;
     a(this.jdField_a_of_type_JavaLangObject);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new cqv(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new crw(this));
   }
   
   public void a(int paramInt)
@@ -578,12 +578,12 @@ public class ConditionSearchManager
       a(false);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cqt(this, (String)localObject, paramGetResourceRespInfo));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cru(this, (String)localObject, paramGetResourceRespInfo));
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new cqu(this, paramBoolean));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new crv(this, paramBoolean));
   }
   
   public void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, String[] paramArrayOfString1, String[] paramArrayOfString2)

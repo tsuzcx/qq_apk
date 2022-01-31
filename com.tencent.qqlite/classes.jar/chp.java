@@ -1,34 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class chp
-  extends Handler
+  extends FriendListObserver
 {
-  private WeakReference a;
+  public chp(ContactListView paramContactListView) {}
   
-  public chp(DialogBaseActivity paramDialogBaseActivity)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    this.a = new WeakReference(paramDialogBaseActivity);
+    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
+      this.a.j();
+    }
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
-    if (localDialogBaseActivity == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      localDialogBaseActivity.a(paramMessage.arg1);
-      return;
-    }
-    localDialogBaseActivity.finish();
-  }
+  protected void a_(String paramString) {}
 }
 
 

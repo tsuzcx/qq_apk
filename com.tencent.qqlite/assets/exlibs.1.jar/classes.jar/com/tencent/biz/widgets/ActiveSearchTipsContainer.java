@@ -51,7 +51,7 @@ public class ActiveSearchTipsContainer
       return;
     }
     Button localButton = new Button(getContext());
-    localButton.setBackgroundResource(2130838192);
+    localButton.setBackgroundResource(2130838211);
     localButton.setText(paramString);
     localButton.setTextSize(14.0F);
     localButton.setTextColor(-16777216);

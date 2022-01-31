@@ -1,43 +1,37 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-public class fgm
-  implements View.OnClickListener
+public final class fgm
+  implements Parcelable.Creator
 {
-  public fgm(Login paramLogin) {}
-  
-  public void onClick(View paramView)
+  public DownloadInfo a(Parcel paramParcel)
   {
-    if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton) {
-      this.a.d();
-    }
-    do
+    DownloadInfo localDownloadInfo = new DownloadInfo();
+    localDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localDownloadInfo.d = paramParcel.readString();
+    localDownloadInfo.e = paramParcel.readString();
+    localDownloadInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+    localDownloadInfo.a = paramParcel.readInt();
+    localDownloadInfo.g = paramParcel.readString();
+    localDownloadInfo.h = paramParcel.readString();
+    localDownloadInfo.jdField_f_of_type_Int = paramParcel.readInt();
+    localDownloadInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
+    localDownloadInfo.j = paramParcel.readInt();
+    localDownloadInfo.jdField_k_of_type_Int = paramParcel.readInt();
+    localDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    if (paramParcel.readByte() != 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      return;
-      if (paramView == Login.a(this.a))
-      {
-        this.a.setResult(0);
-        this.a.finish();
-        return;
-      }
-      if (paramView == this.a.jdField_a_of_type_AndroidViewView)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-        return;
-      }
-      if (paramView == this.a.jdField_b_of_type_AndroidViewView)
-      {
-        this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
-        return;
-      }
-    } while (paramView != this.a.jdField_a_of_type_AndroidWidgetTextView);
-    paramView = new Intent(this.a, LoginPhoneNumActivity2.class);
-    paramView.putExtra("key_req_src", this.a.j);
-    this.a.startActivityForResult(paramView, 10000);
+      localDownloadInfo.jdField_c_of_type_Boolean = bool;
+      return localDownloadInfo;
+    }
+  }
+  
+  public DownloadInfo[] a(int paramInt)
+  {
+    return new DownloadInfo[paramInt];
   }
 }
 

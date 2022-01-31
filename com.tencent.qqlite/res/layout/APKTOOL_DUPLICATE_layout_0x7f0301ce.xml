@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200ff" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c0015" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a5" android:gravity="center" android:id="@id/loading" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020083" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="正在加载..." />
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090761" android:paddingBottom="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020474" />
-        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c0014" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a5" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0900a6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0a51" />
-        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a5" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0900a8" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="轻触屏幕重新筛选" />
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" tencent:skintype="contact_list_bg"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.qqlite">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907bf" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" tencent:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907c0" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" tencent:showArrow="true" />
+        <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201fa" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00ee" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00ee" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907c1" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" tencent:showArrow="true" />
     </LinearLayout>
-    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090797" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201e8" android:dividerHeight="1.0px" />
-</RelativeLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

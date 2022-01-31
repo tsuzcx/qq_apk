@@ -1,32 +1,103 @@
-import PersonalState.HotRishState;
-import android.os.Handler;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.StatusObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.SystemClock;
+import android.view.animation.AccelerateInterpolator;
 
 public class ebn
-  extends StatusObserver
+  extends BitmapDrawable
 {
-  public ebn(EditActivity paramEditActivity) {}
+  private static final int c = 0;
+  private static final int d = 1;
+  private static final int e = 2;
+  private static final int f = 3;
+  private static int h;
+  private static int i;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = 0L;
+  private AccelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator = new AccelerateInterpolator(1.5F);
+  private float jdField_b_of_type_Float = 0.5F;
+  private int jdField_b_of_type_Int = 50;
+  private int g = 0;
   
-  protected void a(boolean paramBoolean, ArrayList paramArrayList)
+  public ebn(Resources paramResources, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("get_hot_rich_status", 2, "EditActivity.mHotRichStatusObserver.onGetHotStatus, isSuccess:" + paramBoolean);
-    }
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0) && (!EditActivity.c(this.a)))
+    super(paramResources, paramBitmap);
+  }
+  
+  public static ebn[] a(int paramInt, Resources paramResources, Bitmap paramBitmap)
+  {
+    if ((paramBitmap != null) && (paramResources != null))
     {
-      EditActivity.a(this.a).removeMessages(1);
-      ArrayList localArrayList = new ArrayList();
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext()) {
-        localArrayList.add(Integer.valueOf(((HotRishState)paramArrayList.next()).iActId));
+      ebn[] arrayOfebn2 = new ebn[paramInt];
+      i = paramBitmap.getWidth() / 2;
+      h = paramBitmap.getHeight() / 2;
+      int j = 0;
+      for (;;)
+      {
+        arrayOfebn1 = arrayOfebn2;
+        if (j >= paramInt) {
+          break;
+        }
+        arrayOfebn2[j] = new ebn(paramResources, paramBitmap);
+        j += 1;
       }
-      EditActivity.a(this.a).clear();
-      EditActivity.a(this.a).addAll(localArrayList);
-      EditActivity.b(this.a);
+    }
+    ebn[] arrayOfebn1 = null;
+    return arrayOfebn1;
+  }
+  
+  public void a() {}
+  
+  public void a(long paramLong, int paramInt)
+  {
+    this.jdField_a_of_type_Float = ((float)paramLong);
+    this.jdField_a_of_type_Int = paramInt;
+    this.g = 1;
+    invalidateSelf();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    int k = 1;
+    int j = k;
+    switch (this.g)
+    {
+    default: 
+      j = k;
+    }
+    float f2;
+    for (;;)
+    {
+      if (j == 0) {
+        invalidateSelf();
+      }
+      return;
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      this.g = 2;
+      j = 0;
+      continue;
+      f2 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.jdField_a_of_type_Float;
+      if (f2 <= 1.0F) {
+        break;
+      }
+      this.g = 3;
+      j = k;
+    }
+    paramCanvas.save();
+    float f3 = this.jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator.getInterpolation(f2);
+    if (f3 > 0.5F) {}
+    for (float f1 = -f3 * this.jdField_b_of_type_Int;; f1 = -(1.0F - f3) * this.jdField_b_of_type_Int)
+    {
+      paramCanvas.translate(f1, this.jdField_a_of_type_Int - f3 * this.jdField_a_of_type_Int);
+      paramCanvas.scale(this.jdField_b_of_type_Float * f2, this.jdField_b_of_type_Float * f2, i, h);
+      setAlpha((int)(255.0F - f2 * 255.0F));
+      super.draw(paramCanvas);
+      paramCanvas.restore();
+      j = 0;
+      break;
     }
   }
 }

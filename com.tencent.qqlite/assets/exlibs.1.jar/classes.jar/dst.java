@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarLocalFile.ActionBarLocalMusciFile;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class dst
-  implements View.OnClickListener
+class dst
+  implements FMDialogUtil.FMDialogInterface
 {
-  public dst(FileBrowserActivity paramFileBrowserActivity) {}
+  dst(dss paramdss, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.onBackPressed();
+    this.jdField_a_of_type_Dss.a.a.a().a().a(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Dss.a.h();
   }
+  
+  public void b() {}
 }
 
 

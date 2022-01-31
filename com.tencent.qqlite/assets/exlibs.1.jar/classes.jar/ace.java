@@ -1,20 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.data.ChatBackgroundInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class ace
-  implements DialogInterface.OnClickListener
+public final class ace
+  implements Runnable
 {
-  ace(acc paramacc, ChatBackgroundInfo paramChatBackgroundInfo, View paramView, int paramInt) {}
+  public ace(String paramString, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Acc.a.b = this.jdField_a_of_type_ComTencentMobileqqDataChatBackgroundInfo;
-    this.jdField_a_of_type_Acc.a.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView;
-    this.jdField_a_of_type_Acc.a.k = this.jdField_a_of_type_Int;
-    ChatBackgroundSettingActivity.a(this.jdField_a_of_type_Acc.a, "OPENVIP_SET", 3);
+    ChatBackgroundSettingActivity.j = ChatBackgroundSettingActivity.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString);
+    Message localMessage = ChatBackgroundSettingActivity.a.obtainMessage();
+    localMessage.what = 1;
+    localMessage.obj = new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface };
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ThemeDownloadTrace", 2, "bgin to report chat bg info");
+      QLog.d("ThemeDownloadTrace", 2, "initCurrChatBgNameForReport is:" + ChatBackgroundSettingActivity.j);
+    }
+    ChatBackgroundSettingActivity.a.sendMessage(localMessage);
   }
 }
 

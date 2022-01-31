@@ -1,18 +1,24 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.CardObserver;
 
-class bbl
-  implements View.OnLongClickListener
+public class bbl
+  extends CardObserver
 {
-  bbl(bbk parambbk, long paramLong) {}
+  public bbl(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public boolean onLongClick(View paramView)
+  protected void onImpeach(boolean paramBoolean, String paramString)
   {
-    DialogUtil.a(this.jdField_a_of_type_Bbk.a, 230).setTitle(this.jdField_a_of_type_Bbk.a.getString(2131363524)).setItems(2131230724, new bbm(this)).show();
-    return true;
+    if (!this.a.a.a.equals(paramString)) {
+      return;
+    }
+    this.a.h();
+    if (paramBoolean)
+    {
+      this.a.a(2131363034, 2);
+      return;
+    }
+    this.a.a(2131363033, 1);
   }
 }
 

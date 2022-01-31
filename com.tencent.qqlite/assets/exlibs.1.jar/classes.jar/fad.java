@@ -1,60 +1,26 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import android.widget.Button;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
 
+@TargetApi(16)
 public class fad
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public fad(AuthorityActivity paramAuthorityActivity) {}
+  fad(ContextMenuTextView paramContextMenuTextView) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Object localObject = this.a;
-    int i = ((AuthorityActivity)localObject).y;
-    ((AuthorityActivity)localObject).y = (i - 1);
-    if (i > 0)
-    {
-      localObject = (String)this.a.getResources().getText(2131363833);
-      AuthorityActivity localAuthorityActivity = this.a;
-      i = localAuthorityActivity.z;
-      localAuthorityActivity.z = (i + 1);
-      switch (i % 3)
-      {
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.b, 500L);
-        return;
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText((String)localObject + "·  ");
-        continue;
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText((String)localObject + "·· ");
-        continue;
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText((String)localObject + "···");
-      }
+    if (Build.VERSION.SDK_INT < 16) {
+      ContextMenuTextView.a(this.a, null);
     }
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.a.g = true;
-    this.a.h = false;
-    if (this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse != null)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SDKQQAgentPref", 2, "AutoAuth:" + SystemClock.elapsedRealtime());
-      }
-      localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-      ((Message)localObject).what = 1;
-      ((Message)localObject).obj = this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse;
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-      this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = null;
+      ContextMenuTextView.a(this.a, null);
       return;
+      ContextMenuTextView.b(this.a, null);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKQQAgentPref", 2, "AutoAuth -- doAuthorize(): " + SystemClock.elapsedRealtime());
-    }
-    this.a.l();
   }
 }
 

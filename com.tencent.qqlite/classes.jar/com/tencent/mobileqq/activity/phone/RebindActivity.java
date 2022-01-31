@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import chx;
+import ciy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
@@ -44,16 +44,16 @@ public class RebindActivity
   {
     if (!NetworkUtil.e(this))
     {
-      b(2131363450);
+      b(2131363461);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new chx(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ciy(this);
       this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
     this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.b(this.e, this.d, this.f);
-    b(2131363381, 1000L);
+    b(2131363392, 1000L);
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)

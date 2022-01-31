@@ -15,7 +15,7 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.PinnedHeaderExpandableListView;
-import eqm;
+import esc;
 import java.lang.reflect.Field;
 
 public class PinnedHeaderIphoneTreeView
@@ -39,7 +39,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext);
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new eqm(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new esc(this);
     b();
   }
   
@@ -48,7 +48,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext, paramAttributeSet);
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new eqm(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new esc(this);
     b();
   }
   
@@ -57,7 +57,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new eqm(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new esc(this);
     b();
   }
   

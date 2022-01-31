@@ -20,10 +20,10 @@ public class sk
     case -2: 
     case -1: 
     default: 
-      QRUtils.a(1, 2131363689);
+      QRUtils.a(1, 2131363700);
       return;
     }
-    QRUtils.a(2, 2131363688);
+    QRUtils.a(2, 2131363699);
   }
 }
 

@@ -1,16 +1,22 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.managers.LoadingStateManager;
 
-class ahh
-  implements Runnable
+public class ahh
+  extends Handler
 {
-  ahh(ahf paramahf, String paramString) {}
+  public ahh(Conversation paramConversation) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (Conversation.a(this.jdField_a_of_type_Ahf.a) != null) {
-      Conversation.a(this.jdField_a_of_type_Ahf.a).a(this.jdField_a_of_type_JavaLangString, true);
+    LoadingStateManager.a().a(paramMessage.what);
+    if (paramMessage.what == 4)
+    {
+      Conversation.a(this.a, 1134013, 0L, false);
+      return;
     }
+    Conversation.a(this.a, true);
   }
 }
 

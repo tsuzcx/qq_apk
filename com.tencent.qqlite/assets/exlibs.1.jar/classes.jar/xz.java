@@ -13,7 +13,7 @@ public class xz
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     AssistantSettingActivity.b(this.a).setContentDescription("2G/3G/4G下自动接收图片");
-    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131363052), "qqsetting_auto_receive_pic_key", paramBoolean);
+    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131363062), "qqsetting_auto_receive_pic_key", paramBoolean);
     paramCompoundButton = this.a.app;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)

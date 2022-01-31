@@ -1,27 +1,43 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.NoC2CExtensionInfo;
 
 public class btt
   implements Runnable
 {
-  public btt(PressToSpeakPanel paramPressToSpeakPanel, int paramInt, double paramDouble) {}
+  public btt(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
   
   public void run()
   {
-    int i = AudioPanel.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.c(i);
-    if (PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel) == 1) {
-      PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).setText("松手试听");
+    Object localObject = (FriendsManager)ListenChangeVoicePanel.a(this.a).getManager(43);
+    int i;
+    if (!this.a.a.g())
+    {
+      localObject = ((FriendsManager)localObject).a(this.a.a.a.jdField_a_of_type_JavaLangString, this.a.a.a.jdField_a_of_type_Int, true);
+      if (localObject == null) {
+        break label141;
+      }
+      i = ((NoC2CExtensionInfo)localObject).pttChangeVoiceType;
     }
     for (;;)
     {
-      PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel, this.jdField_a_of_type_Double);
+      if (i != -1)
+      {
+        ListenChangeVoicePanel.a(this.a, i);
+        ListenChangeVoicePanel.b(this.a, i);
+        ListenChangeVoicePanel.a(this.a)[ListenChangeVoicePanel.a(this.a)] = 1;
+      }
       return;
-      if (PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel) == 2) {
-        PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).setText("松手取消发送");
+      localObject = ((FriendsManager)localObject).a(this.a.a.a.jdField_a_of_type_JavaLangString, true);
+      if (localObject != null) {
+        i = ((ExtensionInfo)localObject).pttChangeVoiceType;
       } else {
-        PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).setText(AudioPanel.a(this.jdField_a_of_type_Double));
+        label141:
+        i = -1;
       }
     }
   }

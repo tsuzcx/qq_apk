@@ -1,9 +1,11 @@
 package com.tencent.smtt.utils;
 
-import android.annotation.TargetApi;
 import android.util.Base64;
 import com.tencent.smtt.sdk.stat.DesUtils;
 import java.security.KeyFactory;
+import java.security.Provider;
+import java.security.Security;
+import java.security.spec.KeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Random;
 import javax.crypto.Cipher;
@@ -65,18 +67,78 @@ public class PostEncryption
     return DesUtils.DesEncrypt(this.mDesKeyStr.getBytes(), paramArrayOfByte, 1);
   }
   
-  @TargetApi(8)
+  public String RSAEncode(String paramString)
+    throws Exception
+  {
+    byte[] arrayOfByte = paramString.getBytes();
+    paramString = null;
+    try
+    {
+      localObject = Cipher.getInstance("RSA/ECB/NoPadding");
+      paramString = (String)localObject;
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        try
+        {
+          Object localObject;
+          addBouncyCastleProvider();
+          Cipher localCipher = Cipher.getInstance("RSA/ECB/NoPadding");
+          paramString = localCipher;
+        }
+        catch (Exception localException2)
+        {
+          localException2.printStackTrace();
+        }
+      }
+    }
+    localObject = new X509EncodedKeySpec(Base64.decode("MCwwDQYJKoZIhvcNAQEBBQADGwAwGAIRAMRB/Q0hTCD+XtnQhpQJefUCAwEAAQ==".getBytes(), 0));
+    paramString.init(1, KeyFactory.getInstance("RSA").generatePublic((KeySpec)localObject));
+    return bytesToHex(paramString.doFinal(arrayOfByte));
+  }
+  
+  public void addBouncyCastleProvider()
+    throws Exception
+  {
+    Security.addProvider((Provider)Class.forName("com.android.org.bouncycastle.jce.provider.BouncyCastleProvider", true, ClassLoader.getSystemClassLoader()).newInstance());
+  }
+  
   public String initRSAKey()
     throws Exception
   {
+    byte[] arrayOfByte;
     if (this.mRsaKeyStr == null)
     {
-      byte[] arrayOfByte = this.mRsaKeyStrTemp.getBytes();
-      Cipher localCipher = Cipher.getInstance("RSA/ECB/NoPadding");
-      X509EncodedKeySpec localX509EncodedKeySpec = new X509EncodedKeySpec(Base64.decode("MCwwDQYJKoZIhvcNAQEBBQADGwAwGAIRAMRB/Q0hTCD+XtnQhpQJefUCAwEAAQ==".getBytes(), 0));
-      localCipher.init(1, KeyFactory.getInstance("RSA").generatePublic(localX509EncodedKeySpec));
-      this.mRsaKeyStr = bytesToHex(localCipher.doFinal(arrayOfByte));
+      arrayOfByte = this.mRsaKeyStrTemp.getBytes();
+      localObject1 = null;
     }
+    try
+    {
+      localObject2 = Cipher.getInstance("RSA/ECB/NoPadding");
+      localObject1 = localObject2;
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        try
+        {
+          Object localObject2;
+          addBouncyCastleProvider();
+          Cipher localCipher = Cipher.getInstance("RSA/ECB/NoPadding");
+          localObject1 = localCipher;
+        }
+        catch (Exception localException2)
+        {
+          localException2.printStackTrace();
+        }
+      }
+    }
+    localObject2 = new X509EncodedKeySpec(Base64.decode("MCwwDQYJKoZIhvcNAQEBBQADGwAwGAIRAMRB/Q0hTCD+XtnQhpQJefUCAwEAAQ==".getBytes(), 0));
+    localObject1.init(1, KeyFactory.getInstance("RSA").generatePublic((KeySpec)localObject2));
+    this.mRsaKeyStr = bytesToHex(localObject1.doFinal(arrayOfByte));
     return this.mRsaKeyStr;
   }
 }

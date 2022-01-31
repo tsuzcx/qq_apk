@@ -60,7 +60,7 @@ public class ProfilePhotoBoard
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new LinearInterpolator());
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838855);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838913);
       paramInt = getResources().getDimensionPixelSize(2131492994);
       if (paramInt <= 0)
       {
@@ -132,7 +132,7 @@ public class ProfilePhotoBoard
         if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && ((paramInt == 1) || (paramInt == 2) || (paramInt == 5) || (paramInt == 3) || (paramInt == 4))) {}
         try
         {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838855);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838913);
           if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
             this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
           }
@@ -282,7 +282,7 @@ public class ProfilePhotoBoard
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#4CFFFFFF"));
         this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(14.0F * f);
       }
-      this.jdField_a_of_type_JavaLangString = getResources().getString(2131364267);
+      this.jdField_a_of_type_JavaLangString = getResources().getString(2131364278);
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsPaint = null;

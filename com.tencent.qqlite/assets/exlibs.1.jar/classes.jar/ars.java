@@ -1,34 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
 
-public class ars
-  implements View.OnClickListener
+class ars
+  implements Runnable
 {
-  public ars(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
+  ars(arr paramarr, Bitmap paramBitmap) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReportController.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.app, "CliOper", "", "", "0X8004444", "0X8004444", 0, 0, "", "", "", "");
-    if (NetworkUtil.e(BaseApplication.getContext()))
-    {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.app.e(false);
-      if ((LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity) != null) && (LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).isShowing())) {
-        LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).dismiss();
-      }
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.a(1, 2131362916);
-    } while ((LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity) == null) || (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).isShowing()));
-    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).dismiss();
+    this.jdField_a_of_type_Arr.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

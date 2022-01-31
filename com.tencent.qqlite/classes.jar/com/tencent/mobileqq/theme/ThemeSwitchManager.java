@@ -207,7 +207,7 @@ public class ThemeSwitchManager
     if ((i & 0x100) == 256)
     {
       notifyCallbacks(false, true, paramBundle);
-      QQToast.a(this.mContext, 1, this.mContext.getResources().getString(2131363272), 0).b(this.mContext.getResources().getDimensionPixelSize(2131492887));
+      QQToast.a(this.mContext, 1, this.mContext.getResources().getString(2131363282), 0).b(this.mContext.getResources().getDimensionPixelSize(2131492887));
       paramBundle = BaseApplicationImpl.a.a();
       if ((paramBundle != null) && ((paramBundle instanceof QQAppInterface))) {
         ReportController.b((QQAppInterface)paramBundle, "CliOper", "", "", "Setting_tab", "Night_mode_dl_fail", 0, 0, "", "", "", "");

@@ -1,26 +1,18 @@
-import android.content.Context;
-import android.widget.Toast;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class eza
-  extends Toast
+public final class eza
+  implements Runnable
 {
-  public eza(Context paramContext)
-  {
-    super(paramContext);
-  }
+  public eza(String paramString, File paramFile) {}
   
-  public void show()
+  public void run()
   {
-    try
-    {
-      super.show();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QQToast", 2, "", localThrowable);
+    boolean bool = HttpDownloadUtil.a(null, EmosmUtils.insertMtype("VIP_other", this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaIoFile);
+    if (QLog.isColorLevel()) {
+      QLog.d("ClubContentJsonTask", 2, "downloadAllIfNotExists, " + this.jdField_a_of_type_JavaLangString + ",ret=" + bool);
     }
   }
 }

@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
+import java.util.Comparator;
 
 public class bqx
-  implements DialogInterface.OnClickListener
+  implements Comparator
 {
-  public bqx(UpgradeActivity paramUpgradeActivity) {}
+  private bqx(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(TroopTransferActivity.TroopMemberItem paramTroopMemberItem1, TroopTransferActivity.TroopMemberItem paramTroopMemberItem2)
   {
-    UpgradeActivity.a(this.a);
-    this.a.finish();
+    return paramTroopMemberItem1.f.compareToIgnoreCase(paramTroopMemberItem2.f);
   }
 }
 

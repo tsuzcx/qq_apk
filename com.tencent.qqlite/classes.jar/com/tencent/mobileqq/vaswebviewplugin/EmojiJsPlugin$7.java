@@ -24,7 +24,7 @@ class EmojiJsPlugin$7
       try
       {
         paramDialogInterface.put("result", 2);
-        paramDialogInterface.put("message", this.this$0.mRuntime.a().getString(2131364083));
+        paramDialogInterface.put("message", this.this$0.mRuntime.a().getString(2131364094));
         if (QLog.isColorLevel()) {
           QLog.i(EmojiJsPlugin.TAG, 2, "startDownloadEmoji resp to js:" + paramDialogInterface.toString());
         }

@@ -33,12 +33,12 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.util.WeakReferenceHandler;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import eie;
-import eif;
-import eig;
-import eih;
-import eii;
-import eij;
+import ejk;
+import ejl;
+import ejm;
+import ejn;
+import ejo;
+import ejp;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -77,7 +77,7 @@ public class NearbyTroopsActivity
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public String[] a;
   public int b;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new eii(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new ejo(this);
   protected TextView b;
   public BrowserAppInterface b;
   private NearbyTroopsBaseView jdField_b_of_type_ComTencentMobileqqTroopActivityNearbyTroopsBaseView = null;
@@ -99,7 +99,7 @@ public class NearbyTroopsActivity
     this.jdField_b_of_type_ComTencentMobileqqAppBrowserAppInterface = null;
     this.jdField_d_of_type_Boolean = false;
     this.jdField_b_of_type_ArrayOfJavaLangString = new String[] { "886.100170", "886.100171", "886.100172" };
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new eie(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ejk(this);
   }
   
   private NearbyTroopsBaseView a(int paramInt)
@@ -122,12 +122,12 @@ public class NearbyTroopsActivity
   
   private void x()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsBaseView$INearbyTroopContext = new eih(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsBaseView$INearbyTroopContext = new ejn(this);
   }
   
   private void y()
   {
-    this.p.setContentDescription(getString(2131362836));
+    this.p.setContentDescription(getString(2131362843));
   }
   
   protected void a(int paramInt1, int paramInt2)
@@ -148,7 +148,7 @@ public class NearbyTroopsActivity
   {
     if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 8)
     {
-      findViewById(2131297715).setVisibility(8);
+      findViewById(2131297719).setVisibility(8);
       super.setTitle(paramCharSequence);
       return;
     }
@@ -178,10 +178,10 @@ public class NearbyTroopsActivity
     }
     if (paramBoolean)
     {
-      setContentView(2130903327);
+      setContentView(2130903330);
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
-      this.p.setImageResource(2130838038);
+      this.p.setImageResource(2130838057);
       this.p.setVisibility(0);
       this.p.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
       this.jdField_c_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131297592));
@@ -202,12 +202,12 @@ public class NearbyTroopsActivity
     for (;;)
     {
       if ((paramBoolean) && (this.jdField_b_of_type_Int == 0)) {
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(this.jdField_b_of_type_ArrayOfJavaLangString, new eif(this));
+        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(this.jdField_b_of_type_ArrayOfJavaLangString, new ejl(this));
       }
       if ((!TextUtils.isEmpty(this.h.getText())) || (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 8)) {
         break;
       }
-      this.h.setText(2131362833);
+      this.h.setText(2131362840);
       return;
       String str = paramIntent.getStringExtra("config_res_plugin_item_name");
       if (!TextUtils.isEmpty(str))
@@ -215,7 +215,7 @@ public class NearbyTroopsActivity
         b(str);
         break label107;
       }
-      b(2131362833, -1);
+      b(2131362840, -1);
       break label107;
       label230:
       if (i == 10) {
@@ -289,7 +289,7 @@ public class NearbyTroopsActivity
   protected String b_()
   {
     if (this.jdField_b_of_type_Boolean) {
-      return getString(2131362942);
+      return getString(2131362949);
     }
     return super.b_();
   }
@@ -460,7 +460,7 @@ public class NearbyTroopsActivity
       if (paramMessage.arg1 == 0)
       {
         bool = true;
-        runOnUiThread(new eig(this, bool));
+        runOnUiThread(new ejm(this, bool));
       }
     }
     for (;;)
@@ -511,20 +511,20 @@ public class NearbyTroopsActivity
       return;
       this.jdField_c_of_type_Float = getResources().getDisplayMetrics().density;
       super.setContentViewC(paramInt);
-      getWindow().setFeatureInt(7, 2130903328);
-      ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130839259));
+      getWindow().setFeatureInt(7, 2130903331);
+      ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130839317));
     } while (this.h != null);
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131296890));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131296891));
     setLayerType(this.jdField_b_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296891));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297716));
-    this.j = ((TextView)findViewById(2131296901));
-    this.p = ((ImageView)findViewById(2131296902));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296892));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297720));
+    this.j = ((TextView)findViewById(2131296902));
+    this.p = ((ImageView)findViewById(2131296903));
     setLayerType(this.j);
     setLayerType(this.p);
-    this.f = ((ImageView)findViewById(2131297717));
-    this.h = ((TextView)findViewById(2131296897));
-    this.h.setContentDescription(getString(2131364516));
+    this.f = ((ImageView)findViewById(2131297721));
+    this.h = ((TextView)findViewById(2131296898));
+    this.h.setContentDescription(getString(2131364539));
     this.h.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     setLayerType(this.h);
   }
@@ -533,7 +533,7 @@ public class NearbyTroopsActivity
   {
     if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 8)
     {
-      findViewById(2131297715).setVisibility(8);
+      findViewById(2131297719).setVisibility(8);
       super.setTitle(paramInt);
       return;
     }
@@ -553,10 +553,10 @@ public class NearbyTroopsActivity
     if (this.jdField_b_of_type_ComTencentWidgetActionSheet == null)
     {
       this.jdField_b_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-      this.jdField_b_of_type_ComTencentWidgetActionSheet.c(getString(2131362842));
-      this.jdField_b_of_type_ComTencentWidgetActionSheet.c(getString(2131363763));
+      this.jdField_b_of_type_ComTencentWidgetActionSheet.c(getString(2131362849));
+      this.jdField_b_of_type_ComTencentWidgetActionSheet.c(getString(2131363774));
     }
-    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new eij(this));
+    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new ejp(this));
     this.jdField_b_of_type_ComTencentWidgetActionSheet.show();
   }
   

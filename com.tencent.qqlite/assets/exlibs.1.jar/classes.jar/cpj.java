@@ -1,27 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter.CornerListItemHolder;
+import android.view.SurfaceView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class cpj
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public cpj(LebaListViewAdapter paramLebaListViewAdapter, LebaListViewAdapter.CornerListItemHolder paramCornerListItemHolder, Drawable paramDrawable, int paramInt) {}
+  public cpj(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    boolean bool = true;
-    LebaListViewAdapter localLebaListViewAdapter = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter;
-    ImageView localImageView1 = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter$CornerListItemHolder.f;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    ImageView localImageView2 = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter$CornerListItemHolder.g;
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
-      LebaListViewAdapter.a(localLebaListViewAdapter, localImageView1, localDrawable, localImageView2, bool);
-      return;
-      bool = false;
+    ShortVideoPreviewActivity.a(this.a, ShortVideoPreviewActivity.a(this.a).getWidth());
+    ShortVideoPreviewActivity.b(this.a, ShortVideoPreviewActivity.a(this.a).getHeight());
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + ShortVideoPreviewActivity.a(this.a) + ",mSurfaceViewHeight:" + ShortVideoPreviewActivity.b(this.a));
     }
+    ShortVideoPreviewActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

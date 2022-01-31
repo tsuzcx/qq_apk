@@ -24,7 +24,7 @@ import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.transfile.TransfileUtile;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dno;
+import doq;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -822,7 +822,7 @@ public class FileManagerDataCenter
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null))
     {
       if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new dno(this);
+        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new doq(this);
       }
       IntentFilter localIntentFilter = new IntentFilter("com.opensdk.downloadmanager.renameFilename");
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);

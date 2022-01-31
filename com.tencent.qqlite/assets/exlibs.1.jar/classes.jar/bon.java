@@ -1,16 +1,19 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class bon
-  implements View.OnClickListener
+  implements Runnable
 {
   public bon(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.b.cancel();
+    if ((this.a.t == 1) || (this.a.t == 10)) {}
+    for (Object[] arrayOfObject = this.a.a(this.a.i);; arrayOfObject = this.a.b(this.a.i))
+    {
+      this.a.a.sendMessage(this.a.a.obtainMessage(1, arrayOfObject));
+      return;
+    }
   }
 }
 

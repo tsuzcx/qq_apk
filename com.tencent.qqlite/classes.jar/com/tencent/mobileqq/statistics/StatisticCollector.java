@@ -28,9 +28,9 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import dalvik.system.DexFile;
-import eeu;
-import eev;
-import eew;
+import efy;
+import efz;
+import ega;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -62,19 +62,19 @@ public class StatisticCollector
   public static final String K = "actGroupPicSmallDownV1";
   public static final String L = "actGrpPttUp";
   public static final String M = "actGrpPttDown";
-  public static final String N = "actDiscussPicUpload";
-  public static final String O = "actDiscussPicUploadV2";
-  public static final String P = "actDiscussPicDown";
-  public static final String Q = "actDiscussPicSmallDown";
-  public static final String R = "actDisscusPttUp";
-  public static final String S = "actDisscusPttDown";
-  public static final String T = "actMultiMsgUpload";
-  public static final String U = "actMultiMsgDownload";
-  public static final String V = "actSendDiscussProcess";
-  public static final String W = "actSendDiscussPictureProcess";
-  public static final String X = "dim.actSendDiscussionPttMsg";
-  public static final String Y = "actIntroPttUpload";
-  public static final String Z = "actIntroPttDownload";
+  public static final String N = "actPttPlayBluetooth";
+  public static final String O = "actDiscussPicUpload";
+  public static final String P = "actDiscussPicUploadV2";
+  public static final String Q = "actDiscussPicDown";
+  public static final String R = "actDiscussPicSmallDown";
+  public static final String S = "actDisscusPttUp";
+  public static final String T = "actDisscusPttDown";
+  public static final String U = "actMultiMsgUpload";
+  public static final String V = "actMultiMsgDownload";
+  public static final String W = "actSendDiscussProcess";
+  public static final String X = "actSendDiscussPictureProcess";
+  public static final String Y = "dim.actSendDiscussionPttMsg";
+  public static final String Z = "actIntroPttUpload";
   public static final int a = 5;
   private static long jdField_a_of_type_Long = 86400000L;
   private static Context jdField_a_of_type_AndroidContentContext;
@@ -83,35 +83,43 @@ public class StatisticCollector
   public static final String a = "StatisticCollector";
   private static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat;
   private static boolean jdField_a_of_type_Boolean = false;
-  private static final String aA = "AndroidQQUseApp";
-  private static final String aB = "AndroidQQRunTime";
-  private static final String aC = "mqq_dailyUse";
-  public static final String aa = "dim.actSendWpaMsg";
-  public static final String ab = "actQzoneUnread";
-  public static final String ac = "actPluginUnread";
-  public static final String ad = "actNearbyPeoplePicUpload";
-  public static final String ae = "actSendCltMsg";
-  public static final String af = "dim.pttRecordInit";
-  public static final String ag = "dim.pttRecordTime";
-  public static final String ah = "actForegroundT";
-  public static final String ai = "actMessageEvent";
-  public static final String aj = "multiMsgNickTimeOut";
-  public static final String ak = "multiMsgNickTimeoutR";
-  public static final String al = "multiMsgSend";
-  public static final String am = "multiMsgReceive";
-  public static final String an = "actShortVideoUpload";
-  public static final String ao = "actShortVideoDownloadVideo";
-  public static final String ap = "actShortVideoDownloadThumb";
-  public static final String aq = "actShortVideoDiscussgroupUpload";
-  public static final String ar = "actShortVideoDiscussgroupDownloadVideo";
-  public static final String as = "actShortVideoDiscussgroupDownloadThumb";
-  public static final String at = "actSqliteDatabaseCorrupt";
-  public static final String au = "evSpError";
-  private static final String av = "Statistics_time";
-  private static final String aw = "fg_duration";
-  private static final String ax = "bg_duration";
-  private static final String ay = "next_reportTime";
-  private static final String az = "End_Info";
+  public static final String aA = "actShortVideoDiscussgroupDownloadThumb";
+  public static final String aB = "actSqliteDatabaseCorrupt";
+  public static final String aC = "evSpError";
+  private static final String aD = "Statistics_time";
+  private static final String aE = "fg_duration";
+  private static final String aF = "bg_duration";
+  private static final String aG = "next_reportTime";
+  private static final String aH = "End_Info";
+  private static final String aI = "AndroidQQUseApp";
+  private static final String aJ = "AndroidQQRunTime";
+  private static final String aK = "mqq_dailyUse";
+  public static final String aa = "actIntroPttDownload";
+  public static final String ab = "dim.actSendWpaMsg";
+  public static final String ac = "actQzoneUnread";
+  public static final String ad = "actPluginUnread";
+  public static final String ae = "actNearbyPeoplePicUpload";
+  public static final String af = "actSendCltMsg";
+  public static final String ag = "dim.pttRecordInit";
+  public static final String ah = "dim.pttRecordTime";
+  public static final String ai = "actAllC2CPttUp";
+  public static final String aj = "actPttLongPressFate";
+  public static final String ak = "actPttSoUpdate";
+  public static final String al = "actPttUserWaiting";
+  public static final String am = "actPttDownloadStream2Offline";
+  public static final String an = "actPttPlayCount";
+  public static final String ao = "actPttPlayMoreThanTwice";
+  public static final String ap = "actForegroundT";
+  public static final String aq = "actMessageEvent";
+  public static final String ar = "multiMsgNickTimeOut";
+  public static final String as = "multiMsgNickTimeoutR";
+  public static final String at = "multiMsgSend";
+  public static final String au = "multiMsgReceive";
+  public static final String av = "actShortVideoUpload";
+  public static final String aw = "actShortVideoDownloadVideo";
+  public static final String ax = "actShortVideoDownloadThumb";
+  public static final String ay = "actShortVideoDiscussgroupUpload";
+  public static final String az = "actShortVideoDiscussgroupDownloadVideo";
   private static int jdField_b_of_type_Int = 28800000;
   public static final String b = "actLoginT";
   private static boolean jdField_b_of_type_Boolean = false;
@@ -146,7 +154,7 @@ public class StatisticCollector
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   private Stack jdField_a_of_type_JavaUtilStack = new Stack();
-  private eew[] jdField_a_of_type_ArrayOfEew = { new eew(this, "com.tencent.mtt", "qqBrowser"), new eew(this, "com.tencent.android.qqdownloader", "qqMarket"), new eew(this, "com.tencent.qqgame", "qqGame"), new eew(this, "com.tencent.qqmusic", "qqMusic"), new eew(this, "com.tencent.news", "qqNews"), new eew(this, "com.qq.reader", "qqReader"), new eew(this, "com.tencent.qqlive", "qqVideo"), new eew(this, "com.tencent.wblog", "qqMicroblog"), new eew(this, "com.tencent.qqphonebook", "qqPhonebook") };
+  private ega[] jdField_a_of_type_ArrayOfEga = { new ega(this, "com.tencent.mtt", "qqBrowser"), new ega(this, "com.tencent.android.qqdownloader", "qqMarket"), new ega(this, "com.tencent.qqgame", "qqGame"), new ega(this, "com.tencent.qqmusic", "qqMusic"), new ega(this, "com.tencent.news", "qqNews"), new ega(this, "com.qq.reader", "qqReader"), new ega(this, "com.tencent.qqlive", "qqVideo"), new ega(this, "com.tencent.wblog", "qqMicroblog"), new ega(this, "com.tencent.qqphonebook", "qqPhonebook") };
   private long jdField_b_of_type_Long;
   private int jdField_c_of_type_Int;
   private boolean f;
@@ -226,12 +234,12 @@ public class StatisticCollector
       return null;
     }
     int i1 = 0;
-    if (i1 < this.jdField_a_of_type_ArrayOfEew.length)
+    if (i1 < this.jdField_a_of_type_ArrayOfEga.length)
     {
-      String str = this.jdField_a_of_type_ArrayOfEew[i1].a;
+      String str = this.jdField_a_of_type_ArrayOfEga[i1].a;
       if (!paramString.toLowerCase().contains(str)) {}
     }
-    for (paramString = this.jdField_a_of_type_ArrayOfEew[i1].b;; paramString = null)
+    for (paramString = this.jdField_a_of_type_ArrayOfEga[i1].b;; paramString = null)
     {
       return paramString;
       i1 += 1;
@@ -399,11 +407,11 @@ public class StatisticCollector
     for (;;)
     {
       return;
-      paramString1 = new eev(System.currentTimeMillis(), paramString1, paramString2);
+      paramString1 = new efz(System.currentTimeMillis(), paramString1, paramString2);
       this.jdField_a_of_type_JavaUtilLinkedList.add(paramString1);
       int i1 = this.c;
       for (this.c = (paramString1.a + i1); (this.c > 15360L) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 1); this.c -= paramString1.a) {
-        paramString1 = (eev)this.jdField_a_of_type_JavaUtilLinkedList.removeLast();
+        paramString1 = (efz)this.jdField_a_of_type_JavaUtilLinkedList.removeLast();
       }
     }
   }
@@ -792,7 +800,7 @@ public class StatisticCollector
     if (QLog.isColorLevel()) {
       QLog.d("StatisticCollector", 2, "initCrashReport ... process:" + BaseApplicationImpl.getMobileQQ().getProcessName() + " pid=" + android.os.Process.myPid());
     }
-    CrashReport.initCrashReport(BaseApplication.getContext(), new eeu(this), null, true, paramString, 30000L);
+    CrashReport.initCrashReport(BaseApplication.getContext(), new efy(this), null, true, paramString, 30000L);
     if (jdField_b_of_type_Boolean) {
       NativeExceptionUpload.setNativeLogMode(3);
     }

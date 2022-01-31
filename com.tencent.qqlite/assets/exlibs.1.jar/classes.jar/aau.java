@@ -1,14 +1,21 @@
-import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
 
 public class aau
   implements Runnable
 {
-  public aau(BaseChatPie paramBaseChatPie, Intent paramIntent) {}
+  public aau(BaseChatPie paramBaseChatPie, FriendsManager paramFriendsManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, this.jdField_a_of_type_AndroidContentIntent);
+    ExtensionInfo localExtensionInfo = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true);
+    if ((localExtensionInfo != null) && (localExtensionInfo.audioPanelType != -1) && (BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie) != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidOsHandler.obtainMessage(33, localExtensionInfo.audioPanelType, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int).sendToTarget();
+    }
   }
 }
 

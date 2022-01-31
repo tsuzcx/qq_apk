@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.CustomAlertDialog;
+import com.tencent.mobileqq.widget.CustomAlertDialog.OnOptionMenuClick;
+import java.util.HashMap;
+import java.util.List;
 
 class fag
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  fag(faf paramfaf) {}
+  fag(faf paramfaf, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Faf.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.a != null) {
+      this.jdField_a_of_type_Faf.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.a.a(((Integer)((HashMap)this.jdField_a_of_type_Faf.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).get("commandId")).intValue());
+    }
+    this.jdField_a_of_type_Faf.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.dismiss();
   }
 }
 

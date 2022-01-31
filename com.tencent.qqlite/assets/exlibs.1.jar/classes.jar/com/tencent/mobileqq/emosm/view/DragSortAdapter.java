@@ -60,7 +60,7 @@ public class DragSortAdapter
   {
     this.mContext = paramContext;
     this.mData = paramList;
-    this.mDefaultIcon = this.mContext.getResources().getDrawable(2130837694);
+    this.mDefaultIcon = this.mContext.getResources().getDrawable(2130837717);
     this.mWordingList = ClubContentJsonTask.a((QQAppInterface)((BaseActivity)this.mContext).getAppRuntime());
     this.handler = new Handler();
     this.mUpdateListener = new HashMap();
@@ -166,12 +166,12 @@ public class DragSortAdapter
       paramViewGroup = View.inflate(this.mContext, 2130903197, null);
     }
     paramViewGroup.setVisibility(0);
-    ImageView localImageView1 = (ImageView)paramViewGroup.findViewById(2131296544);
+    ImageView localImageView1 = (ImageView)paramViewGroup.findViewById(2131296547);
     ImageView localImageView2 = (ImageView)paramViewGroup.findViewById(2131297116);
     ImageView localImageView3 = (ImageView)paramViewGroup.findViewById(2131296286);
     Object localObject2 = (ImageView)paramViewGroup.findViewById(2131297117);
     ((ImageView)localObject2).setVisibility(8);
-    View localView2 = paramViewGroup.findViewById(2131296441);
+    View localView2 = paramViewGroup.findViewById(2131296444);
     EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.mData.get(paramInt);
     View localView1 = paramViewGroup.findViewById(2131297121);
     localView1.setTag(localEmoticonPackage.epId);
@@ -183,13 +183,13 @@ public class DragSortAdapter
     Object localObject1;
     if (localEmoticonPackage.valid)
     {
-      ((Button)localObject3).setText(2131364030);
+      ((Button)localObject3).setText(2131364041);
       EmojiManager localEmojiManager = (EmojiManager)((QQAppInterface)((BaseActivity)this.mContext).getAppRuntime()).getManager(39);
       float f = localEmojiManager.a(localEmoticonPackage.epId);
       if (f >= 0.0F) {
         if (EmoticonUtils.a(localEmoticonPackage))
         {
-          ((Button)localObject3).setText(2131364030);
+          ((Button)localObject3).setText(2131364041);
           localView1.setVisibility(0);
           ((Button)localObject3).setVisibility(8);
           localProgressCircle.setVisibility(0);
@@ -204,7 +204,7 @@ public class DragSortAdapter
           localObject1 = paramView;
           if (EmoticonUtils.a((EmoticonPackage)this.mData.get(paramInt)))
           {
-            ((Button)localObject3).setText(2131364030);
+            ((Button)localObject3).setText(2131364041);
             if (this.mUpdateListener.get(localEmoticonPackage.epId) != null)
             {
               localObject1 = (EmoticonPackageDownloadListener)this.mUpdateListener.get(localEmoticonPackage.epId);
@@ -227,7 +227,7 @@ public class DragSortAdapter
           {
             localView1.setVisibility(0);
             ((Button)localObject3).setVisibility(0);
-            ((Button)localObject3).setText(2131364031);
+            ((Button)localObject3).setText(2131364042);
             paramView = (EmojiManager)((QQAppInterface)((BaseActivity)this.mContext).getAppRuntime()).getManager(39);
             f = paramView.a(localEmoticonPackage.epId);
             if (f < 0.0F) {
@@ -249,7 +249,7 @@ public class DragSortAdapter
           }
           ((TextView)paramViewGroup.findViewById(2131297119)).setText(localEmoticonPackage.name);
           localImageView1.setImageDrawable(getEPIcon(localEmoticonPackage));
-          paramView = (ImageView)paramViewGroup.findViewById(2131296545);
+          paramView = (ImageView)paramViewGroup.findViewById(2131296548);
           if (localEmoticonPackage.hasSound != true) {
             break label1094;
           }
@@ -271,7 +271,7 @@ public class DragSortAdapter
       {
         if (!getSelectStatus(paramInt))
         {
-          paramViewGroup.setContentDescription(this.mContext.getString(2131364026) + " " + localEmoticonPackage.name + "," + (String)localObject1);
+          paramViewGroup.setContentDescription(this.mContext.getString(2131364037) + " " + localEmoticonPackage.name + "," + (String)localObject1);
           return paramViewGroup;
           localView1.setVisibility(8);
           localProgressCircle.setVisibility(8);
@@ -280,7 +280,7 @@ public class DragSortAdapter
             break;
             if (EmoticonUtils.a(localEmoticonPackage))
             {
-              ((Button)localObject3).setText(2131364030);
+              ((Button)localObject3).setText(2131364041);
               localView1.setVisibility(0);
               ((Button)localObject3).setVisibility(0);
               localProgressCircle.setVisibility(8);
@@ -308,13 +308,13 @@ public class DragSortAdapter
           boolean bool = getSelectStatus(paramInt);
           localImageView2.setVisibility(0);
           if (bool) {
-            localImageView2.setImageResource(2130838968);
+            localImageView2.setImageResource(2130839001);
           }
           for (;;)
           {
             localImageView3.setVisibility(0);
             break;
-            localImageView2.setImageResource(2130838967);
+            localImageView2.setImageResource(2130839000);
           }
           label1094:
           paramView.setVisibility(8);
@@ -323,7 +323,7 @@ public class DragSortAdapter
           paramView.setText((CharSequence)localObject1);
           continue;
         }
-        paramViewGroup.setContentDescription(this.mContext.getString(2131364027) + " " + localEmoticonPackage.name + "," + (String)localObject1);
+        paramViewGroup.setContentDescription(this.mContext.getString(2131364038) + " " + localEmoticonPackage.name + "," + (String)localObject1);
         return paramViewGroup;
       }
     }

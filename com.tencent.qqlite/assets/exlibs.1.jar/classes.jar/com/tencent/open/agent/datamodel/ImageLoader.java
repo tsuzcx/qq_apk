@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.open.base.img.ImageCache;
-import fcg;
+import fem;
 
 public class ImageLoader
 {
@@ -60,7 +60,7 @@ public class ImageLoader
   
   public void a(String paramString, ImageLoader.ImageLoadListener paramImageLoadListener)
   {
-    ImageCache.a("app", paramString, new fcg(this, paramImageLoadListener, paramString));
+    ImageCache.a("app", paramString, new fem(this, paramImageLoadListener, paramString));
   }
 }
 

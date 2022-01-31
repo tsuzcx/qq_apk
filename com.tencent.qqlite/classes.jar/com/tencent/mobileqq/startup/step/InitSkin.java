@@ -16,7 +16,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlite.R.color;
 import com.tencent.qqlite.R.drawable;
 import com.tencent.theme.SkinEngine;
-import eei;
+import efn;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,7 +32,7 @@ public class InitSkin
   static
   {
     jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130837508, 2130837509, 2130837511, 2130837512, 2130837514, 2130837515, 2130837517, 2130837518, 2130837746, 2130837745, 2130839181, 2130839348, 2130839347, 2130839045, 2130838040, 2130838039, 2130839422, 2130839257, 2130839259, 2130839261, 2130839262, 2130839263, 2130839264, 2130839265, 2130839266, 2130839267, 2130839424, 2130839450, 2130839449, 2130838062, 2130838060, 2130838061, 2130838059, 2130838057, 2130838058, 2130838485, 2130838483, 2130838484, 2130838065, 2130838063, 2130838064, 2130837630, 2130839451, 2130838178, 2130838179, 2130838180, 2130838181, 2130839331, 2130839214, 2130839247, 2130839249, 2130838266, 2130838264, 2130838268, 2130839290, 2130839289, 2130839291, 2130838269, 2130838271, 2130839256, 2130838275, 2130838274, 2130838270, 2130839292, 2130837991, 2130837992, 2130839293 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130837508, 2130837509, 2130837511, 2130837512, 2130837514, 2130837515, 2130837517, 2130837518, 2130837906, 2130837905, 2130839217, 2130839413, 2130839412, 2130839078, 2130838059, 2130838058, 2130839487, 2130839315, 2130839317, 2130839319, 2130839320, 2130839321, 2130839322, 2130839323, 2130839324, 2130839325, 2130839489, 2130839515, 2130839514, 2130838081, 2130838079, 2130838080, 2130838078, 2130838076, 2130838077, 2130838510, 2130838508, 2130838509, 2130838084, 2130838082, 2130838083, 2130837655, 2130839516, 2130838197, 2130838198, 2130838199, 2130838200, 2130839396, 2130839272, 2130839305, 2130839307, 2130838285, 2130838283, 2130838287, 2130839349, 2130839347, 2130839351, 2130838288, 2130838290, 2130839314, 2130838294, 2130838293, 2130838289, 2130839352, 2130838010, 2130838011, 2130839353 };
   }
   
   public static final boolean a(Context paramContext)
@@ -84,7 +84,7 @@ public class InitSkin
           QLog.d("SkinEngine", 2, "web skin cache time out");
         }
         SkinEngine.init(paramContext, jdField_a_of_type_ArrayOfInt, R.color.class, 2131427328, null);
-        ThreadManager.b().postDelayed(new eei("/skin/web_config", "/skin/web_skin_cache"), 10000L);
+        ThreadManager.b().postDelayed(new efn("/skin/web_config", "/skin/web_skin_cache"), 10000L);
         continue;
       }
       try
@@ -96,7 +96,7 @@ public class InitSkin
         i = localObjectInputStream.readInt();
         str = localObjectInputStream.readUTF();
         localObjectInputStream.close();
-        if ((i != AppSetting.a) || (!"108074".equals(str))) {
+        if ((i != AppSetting.a) || (!"108360".equals(str))) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -125,12 +125,12 @@ public class InitSkin
         }
         QLog.d("SkinEngine", 2, "No cache found");
         SkinEngine.init(paramContext, jdField_a_of_type_ArrayOfInt, R.color.class, 2131427328, null);
-        ThreadManager.b().postDelayed(new eei("/skin/web_config", "/skin/web_skin_cache"), 10000L);
+        ThreadManager.b().postDelayed(new efn("/skin/web_config", "/skin/web_skin_cache"), 10000L);
         continue;
       }
       SkinEngine.getInstances().setSkinEngineHandler(new OOMHandler(BaseApplicationImpl.a()));
-      SkinEngine.getInstances().addDrawableResource(2130837635);
-      SkinEngine.getInstances().addDrawableResource(2130837759);
+      SkinEngine.getInstances().addDrawableResource(2130837660);
+      SkinEngine.getInstances().addDrawableResource(2130837920);
       l2 = SystemClock.uptimeMillis();
       try
       {
@@ -178,9 +178,9 @@ public class InitSkin
           long l1;
           if (paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData.getBoolean("com.sec.android.support.multiwindow"))
           {
-            SkinEngine.mIconResourceID = Integer.valueOf(2130838046);
+            SkinEngine.mIconResourceID = Integer.valueOf(2130838065);
             if (QLog.isColorLevel()) {
-              QLog.d("SkinEngine", 2, "Set icon resouceID to " + 2130838046);
+              QLog.d("SkinEngine", 2, "Set icon resouceID to " + 2130838065);
             }
           }
           File localFile1 = new File(localFile2, "/skin/config");
@@ -194,7 +194,7 @@ public class InitSkin
             int i = localObjectInputStream.readInt();
             String str = localObjectInputStream.readUTF();
             localObjectInputStream.close();
-            if ((i != AppSetting.a) || (!"108074".equals(str))) {
+            if ((i != AppSetting.a) || (!"108360".equals(str))) {
               break;
             }
             if (QLog.isColorLevel()) {
@@ -222,14 +222,14 @@ public class InitSkin
                 QLog.d("SkinEngine", 2, "No cache found");
               }
               SkinEngine.init(paramContext, R.drawable.class, 2130837504, R.color.class, 2131427328, null);
-              ThreadManager.b().postDelayed(new eei("/skin/config", "/skin/skin_cache"), 10000L);
+              ThreadManager.b().postDelayed(new efn("/skin/config", "/skin/skin_cache"), 10000L);
             }
           }
           SkinEngine.getInstances().setSkinEngineHandler(new OOMHandler(BaseApplicationImpl.a()));
-          SkinEngine.getInstances().addDrawableResource(2130837635);
-          SkinEngine.getInstances().addDrawableResource(2130837676);
-          SkinEngine.getInstances().addDrawableResource(2130837759);
-          SkinEngine.getInstances().addDrawableResource(2130837685);
+          SkinEngine.getInstances().addDrawableResource(2130837660);
+          SkinEngine.getInstances().addDrawableResource(2130837701);
+          SkinEngine.getInstances().addDrawableResource(2130837920);
+          SkinEngine.getInstances().addDrawableResource(2130837710);
           l2 = SystemClock.uptimeMillis();
           try
           {
@@ -278,7 +278,7 @@ public class InitSkin
             QLog.d("SkinEngine", 2, "cache time out");
           }
           SkinEngine.init(paramContext, R.drawable.class, 2130837504, R.color.class, 2131427328, null);
-          ThreadManager.b().postDelayed(new eei("/skin/config", "/skin/skin_cache"), 10000L);
+          ThreadManager.b().postDelayed(new efn("/skin/config", "/skin/skin_cache"), 10000L);
         }
       }
     }

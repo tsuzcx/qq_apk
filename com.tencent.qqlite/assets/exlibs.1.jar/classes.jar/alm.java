@@ -1,15 +1,19 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
 
-public final class alm
-  implements Runnable
+public class alm
+  extends EmoticonPackageDownloadListener
 {
-  public alm(Context paramContext) {}
+  public alm(EmosmActivity paramEmosmActivity) {}
   
-  public void run()
+  public void onCoverComplete(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
   {
-    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131363409), 0).b(this.a.getResources().getDimensionPixelSize(2131492887));
+    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
+    while (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
+      return;
+    }
+    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

@@ -1,17 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.activity.DevlockPushActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class aii
-  implements DialogInterface.OnClickListener
+public class aii
+  implements Runnable
 {
-  aii(aih paramaih) {}
+  public aii(DevlockPushActivity paramDevlockPushActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.a();
-    DevlockQuickLoginActivity.c(this.a.a);
-    DevlockQuickLoginActivity.b(this.a.a, 0, 2130968593);
+    try
+    {
+      if ((DevlockPushActivity.a(this.a) != null) && (DevlockPushActivity.a(this.a).isShowing()))
+      {
+        DevlockPushActivity.a(this.a).dismiss();
+        DevlockPushActivity.a(this.a).cancel();
+      }
+      DevlockPushActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

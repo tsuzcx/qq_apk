@@ -1,42 +1,15 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.dataline.mpfile.MpFileConstant;
-import com.dataline.mpfile.MpfileDataCenter;
-import java.util.TimerTask;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.dataline.mpfile.MpfileTaskListAdapter;
 
 public class cz
-  extends TimerTask
+  implements View.OnLongClickListener
 {
-  private long jdField_a_of_type_Long = System.currentTimeMillis();
-  private long b = 0L;
+  public cz(MpfileTaskListAdapter paramMpfileTaskListAdapter) {}
   
-  private cz(MpfileDataCenter paramMpfileDataCenter) {}
-  
-  public void a(long paramLong)
+  public boolean onLongClick(View paramView)
   {
-    this.b = paramLong;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.jdField_a_of_type_Boolean) {
-      cancel();
-    }
-    long l;
-    do
-    {
-      return;
-      l = System.currentTimeMillis();
-    } while ((l <= this.jdField_a_of_type_Long) || (l - this.jdField_a_of_type_Long <= 30000L));
-    cancel();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(MpFileConstant.e, MpfileDataCenter.q);
-    localBundle.putLong(MpFileConstant.f, this.b);
-    Intent localIntent = new Intent();
-    localIntent.setAction(MpFileConstant.d);
-    localIntent.putExtras(localBundle);
-    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
+    return false;
   }
 }
 

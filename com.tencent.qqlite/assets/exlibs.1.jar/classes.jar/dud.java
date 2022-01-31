@@ -1,27 +1,22 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.SeekBar;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 
 public class dud
-  extends WebViewClient
+  implements View.OnClickListener
 {
-  public dud(PreviewingOfflineFileViewBase paramPreviewingOfflineFileViewBase) {}
+  public dud(LocalMusicFileView paramLocalMusicFileView) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onClick(View paramView)
   {
-    if (PreviewingOfflineFileViewBase.a(this.a) == null) {
-      return;
+    FileManagerReporter.a("0X8004BE2");
+    if (LocalMusicFileView.c(this.a) != null) {
+      LocalMusicFileView.d(this.a).b(LocalMusicFileView.a(this.a));
     }
-    PreviewingOfflineFileViewBase.c(this.a).runOnUiThread(new duf(this));
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    QLog.e("PreviewingOfflineFileViewBase<FileAssistant>", 1, "load url[" + paramString2 + "] error! errCode[" + String.valueOf(paramInt) + "],description[" + String.valueOf(paramString1) + "]");
-    PreviewingOfflineFileViewBase.b(this.a).runOnUiThread(new due(this, paramInt, paramString1));
+    LocalMusicFileView.a(this.a).setProgress(0);
   }
 }
 

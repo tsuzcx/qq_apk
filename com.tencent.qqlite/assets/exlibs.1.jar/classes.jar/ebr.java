@@ -1,22 +1,34 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.ptt.player.AmrPlayer;
+import com.tencent.mobileqq.ptt.player.IPttPlayerListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 
-class ebr
-  implements Animation.AnimationListener
+public class ebr
+  extends Thread
 {
-  ebr(ebq paramebq) {}
+  private ebr(AmrPlayer paramAmrPlayer) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("AmrPlayer", 2, "playAmr " + AmrPlayer.a(this.a));
+    }
+    try
+    {
+      AmrPlayer.a(this.a).b();
+      AmrPlayer.a(this.a).start();
+      if (AmrPlayer.a(this.a, 1000) > 0) {
+        AmrPlayer.a(this.a).seekTo(AmrPlayer.a(this.a));
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (AmrPlayer.a(this.a) == null) {}
+      AmrPlayer.a(this.a).sendEmptyMessage(1);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

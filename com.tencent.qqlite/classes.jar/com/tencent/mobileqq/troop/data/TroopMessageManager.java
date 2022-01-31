@@ -31,7 +31,7 @@ import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
 import com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
-import eno;
+import epe;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -43,33 +43,6 @@ public class TroopMessageManager
   public TroopMessageManager(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
   {
     super(paramQQAppInterface, paramQQMessageFacade);
-  }
-  
-  private void d(String paramString, int paramInt, long paramLong)
-  {
-    if ((paramString == null) || (paramLong < 0L)) {}
-    RecentUser localRecentUser;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-          localRecentUser = ((RecentUserProxy)localObject).a(paramString, paramInt);
-        } while ((localRecentUser == null) || (!localRecentUser.shouldShowInRecentList()) || (((!(localRecentUser.msg instanceof TroopAtMeMsg)) || (((TroopAtMeMsg)localRecentUser.msg).a.a > paramLong)) && ((!(localRecentUser.msg instanceof TroopSpecialAttentionMsg)) || (((TroopSpecialAttentionMsg)localRecentUser.msg).a.a > paramLong)) && ((!(localRecentUser.msg instanceof TroopAtAllMsg)) || (((TroopAtAllMsg)localRecentUser.msg).a.a > paramLong))));
-        localRecentUser.cleanMsgAndMsgData(localRecentUser.msgType);
-        ((RecentUserProxy)localObject).a(localRecentUser);
-        Object localObject = (TroopInfoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33);
-        ((TroopInfoManager)localObject).a(paramString, 4);
-        ((TroopInfoManager)localObject).a(paramString, 2);
-        ((TroopInfoManager)localObject).a(paramString, 3);
-      } while (paramInt != 1);
-      paramInt = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(paramString);
-    } while ((paramInt == 1) || (paramInt == 4));
-    RecentDataListManager.a().a(localRecentUser.uin + "-" + localRecentUser.type);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localRecentUser);
   }
   
   public int a(int paramInt, ConversationInfo paramConversationInfo)
@@ -87,7 +60,7 @@ public class TroopMessageManager
   protected String a(String paramString1, String paramString2)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().equals(paramString1)) {}
-    for (paramString2 = "我"; paramString2 == null; paramString2 = ContactUtils.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1)) {
+    for (paramString2 = "我"; paramString2 == null; paramString2 = ContactUtils.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1)) {
       return paramString1;
     }
     return paramString2;
@@ -187,7 +160,7 @@ public class TroopMessageManager
     {
       localObject = localTroopInfoManager.a(str1);
       if (localObject != null) {
-        if (((MessageInfo)localObject).a() != paramMessageRecord.shmsgseq) {
+        if (((MessageInfo)localObject).b() != paramMessageRecord.shmsgseq) {
           localObject = null;
         }
       }
@@ -213,7 +186,7 @@ public class TroopMessageManager
           if (k >= localRecentUser.msgType)
           {
             localRecentUser.msgType = k;
-            localRecentUser.msg = MessageInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1, (MessageInfo)localObject, localRecentUser.msg);
+            localRecentUser.msg = MessageInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1, (MessageInfo)localObject, localRecentUser.msg, paramMessageRecord, true);
           }
         }
         if (localMap1.containsKey(MsgProxyUtils.a(localRecentUser.uin, localRecentUser.type))) {
@@ -224,7 +197,7 @@ public class TroopMessageManager
           if (!MsgProxyUtils.d(paramMessageRecord.msgtype))
           {
             if ((j != 1) || (i == 1) || (i == 4)) {
-              break label1013;
+              break label1015;
             }
             if ((localObject != null) && ((((MessageInfo)localObject).a() == 3) || (((MessageInfo)localObject).a() == 4) || (((MessageInfo)localObject).a() == 2)))
             {
@@ -247,7 +220,7 @@ public class TroopMessageManager
             super.a(paramMessageRecord, paramEntityManager, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramAddMessageContext);
             return;
             if (!paramMessageRecord.isread) {
-              break label1076;
+              break label1078;
             }
             localTroopInfoManager.b(str1);
             localObject = null;
@@ -269,7 +242,7 @@ public class TroopMessageManager
                   break label230;
                 }
                 if (i != 1) {
-                  break label1010;
+                  break label1012;
                 }
                 ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Appear_sfsign_norm", 0, 0, localRecentUser.uin, "", "", "");
                 break label230;
@@ -291,9 +264,9 @@ public class TroopMessageManager
                 }
               }
             }
-            label1010:
+            label1012:
             break label230;
-            label1013:
+            label1015:
             localRecentUser.uin = str1;
             localRecentUser.type = j;
             if (l > localRecentUser.lastmsgtime) {
@@ -304,7 +277,7 @@ public class TroopMessageManager
         }
         i = -9999;
       }
-      label1076:
+      label1078:
       continue;
       localObject = null;
     }
@@ -328,7 +301,7 @@ public class TroopMessageManager
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b.put(MsgProxyUtils.a(paramString, paramInt), Boolean.valueOf(true));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new eno(this, paramString, paramInt, paramLong2, paramRefreshMessageContext, paramBoolean));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new epe(this, paramString, paramInt, paramLong2, paramRefreshMessageContext, paramBoolean));
   }
   
   public void a(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong)
@@ -445,6 +418,33 @@ public class TroopMessageManager
       d(paramString, paramInt, paramLong);
     }
     super.c(paramString, paramInt, paramLong);
+  }
+  
+  protected void d(String paramString, int paramInt, long paramLong)
+  {
+    if ((paramString == null) || (paramLong < 0L)) {}
+    RecentUser localRecentUser;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+          localRecentUser = ((RecentUserProxy)localObject).a(paramString, paramInt);
+        } while ((localRecentUser == null) || (!localRecentUser.shouldShowInRecentList()) || (((!(localRecentUser.msg instanceof TroopAtMeMsg)) || (((TroopAtMeMsg)localRecentUser.msg).a.a > paramLong)) && ((!(localRecentUser.msg instanceof TroopSpecialAttentionMsg)) || (((TroopSpecialAttentionMsg)localRecentUser.msg).a.a > paramLong)) && ((!(localRecentUser.msg instanceof TroopAtAllMsg)) || (((TroopAtAllMsg)localRecentUser.msg).a.a > paramLong))));
+        localRecentUser.cleanMsgAndMsgData(localRecentUser.msgType);
+        ((RecentUserProxy)localObject).a(localRecentUser);
+        Object localObject = (TroopInfoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33);
+        ((TroopInfoManager)localObject).a(paramString, 4);
+        ((TroopInfoManager)localObject).a(paramString, 2);
+        ((TroopInfoManager)localObject).a(paramString, 3);
+      } while (paramInt != 1);
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(paramString);
+    } while ((paramInt == 1) || (paramInt == 4));
+    RecentDataListManager.a().a(localRecentUser.uin + "-" + localRecentUser.type);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localRecentUser);
   }
 }
 

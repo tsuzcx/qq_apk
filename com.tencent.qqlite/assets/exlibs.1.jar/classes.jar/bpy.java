@@ -1,21 +1,46 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class bpy
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public bpy(TroopTransferActivity paramTroopTransferActivity) {}
+  public bpy(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
-    if (paramMotionEvent != null) {
-      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    long l = System.currentTimeMillis();
+    if ((l - TroopRequestActivity.d > 0L) && (l - TroopRequestActivity.d < 800L)) {
+      return;
     }
-    return false;
+    TroopRequestActivity.d = l;
+    if (((FriendManager)this.a.app.getManager(8)).b(TroopRequestActivity.c(this.a))) {
+      paramView = new ProfileActivity.AllInOne(TroopRequestActivity.c(this.a), 1);
+    }
+    for (;;)
+    {
+      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, TroopRequestActivity.a(this.a).msg.group_code.get() + "", "3", "", "");
+      ProfileActivity.b(this.a, paramView);
+      return;
+      if ((TroopRequestActivity.a(this.a).msg.group_msg_type.get() == 2) && (TroopRequestActivity.a(this.a).msg.sub_type.get() == 3))
+      {
+        paramView = new ProfileActivity.AllInOne(TroopRequestActivity.c(this.a), 26);
+        paramView.d = 1;
+      }
+      else
+      {
+        paramView = new ProfileActivity.AllInOne(TroopRequestActivity.c(this.a), 19);
+      }
+    }
   }
 }
 

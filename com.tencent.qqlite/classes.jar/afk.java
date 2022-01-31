@@ -1,22 +1,27 @@
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-public class afk
+class afk
   implements Runnable
 {
-  public afk(ChatSettingForTroop paramChatSettingForTroop, View paramView) {}
+  afk(afj paramafj, boolean paramBoolean) {}
   
   public void run()
   {
-    LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131297090);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, -this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.ao, 0.0F, 0.0F);
-    localTranslateAnimation.setDuration(800L);
-    localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new afl(this, localLinearLayout));
-    localLinearLayout.startAnimation(localTranslateAnimation);
+    View localView = this.jdField_a_of_type_Afj.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ArrayOfAndroidViewView[2];
+    if ((localView != null) && (this.jdField_a_of_type_Afj.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null))
+    {
+      ((TextView)localView.findViewById(2131296934)).setText(this.jdField_a_of_type_Afj.jdField_a_of_type_JavaLangString);
+      TextView localTextView = (TextView)localView.findViewById(2131296953);
+      localTextView.setText(this.jdField_a_of_type_Afj.b);
+      localTextView.setMaxLines(3);
+      this.jdField_a_of_type_Afj.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.a(true);
+      this.jdField_a_of_type_Afj.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a(true);
+      this.jdField_a_of_type_Afj.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a(localView, 0, this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Afj.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a(localView, this.jdField_a_of_type_Afj.b);
+    }
   }
 }
 

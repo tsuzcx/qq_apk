@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
-import com.tencent.mobileqq.troop.data.TroopFilePreviewController;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.PreviewInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.activity.VideoRecordActivity;
 
 public class enk
-  extends BizTroopObserver
+  implements DialogInterface.OnClickListener
 {
-  public enk(TroopFilePreviewController paramTroopFilePreviewController) {}
+  public enk(VideoRecordActivity paramVideoRecordActivity) {}
   
-  protected void c(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopFileTransferManager.PreviewInfo localPreviewInfo = (TroopFileTransferManager.PreviewInfo)paramObject;
-    this.a.a.a(localPreviewInfo.jdField_a_of_type_Boolean, localPreviewInfo.jdField_a_of_type_JavaLangString, localPreviewInfo.b, localPreviewInfo.jdField_a_of_type_Int, localPreviewInfo.c, localPreviewInfo.d, localPreviewInfo.e);
-    super.c(paramObject);
+    VideoRecordActivity.a(this.a);
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("output_path", VideoRecordActivity.a(this.a));
+    this.a.setResult(-1, paramDialogInterface);
+    VideoRecordActivity.b(this.a);
   }
 }
 

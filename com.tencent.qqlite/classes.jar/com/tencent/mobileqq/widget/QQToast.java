@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import eza;
+import fbg;
 
 public class QQToast
 {
@@ -38,9 +38,9 @@ public class QQToast
     {
     case 1: 
     default: 
-      return 2130837715;
+      return 2130837732;
     }
-    return 2130839124;
+    return 2130839158;
   }
   
   public static QQToast a(Context paramContext, int paramInt1, int paramInt2)
@@ -102,7 +102,7 @@ public class QQToast
   
   public Toast a(int paramInt)
   {
-    eza localeza = new eza(this.jdField_a_of_type_AndroidContentContext);
+    fbg localfbg = new fbg(this.jdField_a_of_type_AndroidContentContext);
     View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903251, null);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       ((ImageView)localView.findViewById(2131297374)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
@@ -112,10 +112,10 @@ public class QQToast
       if (this.jdField_a_of_type_JavaLangCharSequence != null) {
         ((TextView)localView.findViewById(2131297375)).setText(this.jdField_a_of_type_JavaLangCharSequence);
       }
-      localeza.setGravity(55, 0, paramInt);
-      localeza.setView(localView);
-      localeza.setDuration(this.e);
-      return localeza;
+      localfbg.setGravity(55, 0, paramInt);
+      localfbg.setView(localView);
+      localfbg.setDuration(this.e);
+      return localfbg;
       ImageView localImageView = (ImageView)localView.findViewById(2131297374);
     }
   }

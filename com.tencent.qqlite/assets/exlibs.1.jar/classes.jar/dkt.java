@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileBaseExpandableListAdapter.LocalItemHolder;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
 public class dkt
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dkt(QfileLocalFileDocTabView paramQfileLocalFileDocTabView) {}
+  public dkt(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    HashMap localHashMap = new HashMap();
-    FileCategoryUtil.a(AppConstants.ay, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, this.a);
-    FileCategoryUtil.a(localHashMap);
-    QfileLocalFileDocTabView.a(this.a, new dku(this));
+    paramView = (QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)paramView.getTag();
+    FileInfo localFileInfo = (FileInfo)paramView.a;
+    switch (paramView.c)
+    {
+    }
+    for (;;)
+    {
+      this.a.i();
+      return;
+      this.a.a.a().ac();
+      this.a.c(localFileInfo);
+    }
   }
 }
 

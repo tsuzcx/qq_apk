@@ -19,9 +19,9 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import cgh;
-import cgi;
-import cgj;
+import chi;
+import chj;
+import chk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
@@ -67,7 +67,7 @@ public class BindNumberActivity
     for (;;)
     {
       if (this.jdField_a_of_type_Boolean) {
-        setLeftButton(2131362794, null);
+        setLeftButton(2131362801, null);
       }
       this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297380));
       this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297381));
@@ -106,7 +106,7 @@ public class BindNumberActivity
   {
     if (!NetworkUtil.e(this))
     {
-      b(2131363450);
+      b(2131363461);
       return;
     }
     if (this.jdField_b_of_type_Boolean)
@@ -172,7 +172,7 @@ public class BindNumberActivity
     setContentView(2130903253);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("key_is_first_activity", true);
-    this.j = (getResources().getDimensionPixelSize(2131493107) - getResources().getDimensionPixelSize(2131493108));
+    this.j = (getResources().getDimensionPixelSize(2131493111) - getResources().getDimensionPixelSize(2131493112));
     this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("kNeedUnbind", false);
     c();
     return true;
@@ -196,14 +196,14 @@ public class BindNumberActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_AndroidWidgetEditText.postDelayed(new cgh(this), 300L);
+    this.jdField_a_of_type_AndroidWidgetEditText.postDelayed(new chi(this), 300L);
   }
   
   public void finish()
   {
     super.finish();
     if (this.jdField_a_of_type_Boolean) {
-      overridePendingTransition(2130968589, 2130968637);
+      overridePendingTransition(2130968589, 2130968641);
     }
   }
   
@@ -215,10 +215,10 @@ public class BindNumberActivity
     default: 
       throw new RuntimeException("Unknown message: " + paramMessage.what);
     case 0: 
-      this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cgi(this);
+      this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new chj(this);
       this.app.registObserver(this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
       paramMessage = (PhoneContactManager)this.app.getManager(10);
-      b(2131363381, 1000L);
+      b(2131363392, 1000L);
       paramMessage.d();
     }
     for (;;)
@@ -226,13 +226,13 @@ public class BindNumberActivity
       return true;
       if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cgj(this);
+        this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new chk(this);
         this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
       }
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.a(this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
       if (3 != paramMessage.what) {
-        b(2131363381, 1000L);
+        b(2131363392, 1000L);
       }
     }
   }

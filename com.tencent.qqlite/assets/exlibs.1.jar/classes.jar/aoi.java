@@ -1,8 +1,7 @@
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.VipUtils;
 
 public class aoi
   implements DialogInterface.OnClickListener
@@ -11,16 +10,8 @@ public class aoi
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.b == 1) {
-      VipUtils.a(this.a, 1, ProfileCardUtil.a(3));
-    }
-    for (;;)
-    {
-      this.a.p();
-      return;
-      if (this.a.b == 2) {
-        VipUtils.b(this.a, 1, ProfileCardUtil.a(6));
-      }
+    if ((FriendProfileCardActivity.a(this.a) != null) && (FriendProfileCardActivity.a(this.a).isShowing())) {
+      FriendProfileCardActivity.a(this.a).dismiss();
     }
   }
 }

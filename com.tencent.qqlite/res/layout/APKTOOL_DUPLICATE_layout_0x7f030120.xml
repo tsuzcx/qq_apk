@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:background="@drawable/skin_header_bar_bg" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height"
+<RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="200.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206dc" android:drawablePadding="6.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
-    <LinearLayout android:gravity="center|left" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="160.0dip" android:layout_height="wrap_content" android:layout_toRightOf="@id/ivTitleBtnLeft" android:layout_centerInParent="true">
-        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0905b3" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@null" android:singleLine="true" style="@style/TitleText" />
-            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b0088" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0905b4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="@null" android:singleLine="true" />
-        </LinearLayout>
-        <ImageView android:layout_gravity="center" android:id="@id/loading" android:visibility="invisible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/common_loading6" />
-    </LinearLayout>
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f090284" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03005c" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_centerInParent="true" android:layout_centerVertical="true">
+        <ProgressBar android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090131" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="12.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020246" android:indeterminateBehavior="repeat" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00ab" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09041f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f090131" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="75.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00ab" android:gravity="center" android:id="@id/info" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09041e" android:layout_width="8.0dip" android:layout_height="13.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
 </RelativeLayout>

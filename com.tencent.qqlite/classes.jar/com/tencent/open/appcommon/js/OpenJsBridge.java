@@ -8,7 +8,7 @@ import com.tencent.mobileqq.jsbridge.JsBridge.JsHandler;
 import com.tencent.open.base.LogUtility;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import fcx;
+import ffd;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.HashMap;
@@ -86,7 +86,7 @@ public class OpenJsBridge
       localUri = Uri.parse(paramString);
     } while ((localUri == null) || (localUri.getScheme() == null) || (!localUri.getScheme().equals("jsbridge")));
     LogUtility.b("Request", "canHandleBatchUrl AsyncInterface_start:" + paramString);
-    ThreadManager.b(new fcx(this, paramString, paramWebView));
+    ThreadManager.b(new ffd(this, paramString, paramWebView));
     return true;
   }
 }

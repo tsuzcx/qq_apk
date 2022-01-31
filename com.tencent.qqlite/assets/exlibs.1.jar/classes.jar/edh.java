@@ -1,33 +1,28 @@
-import com.tencent.mobileqq.service.HttpNotify;
-import com.tencent.mobileqq.service.HttpRequestWifiphotoHandler;
-import java.util.HashMap;
+import com.tencent.mobileqq.richstatus.MovieDetailActivity;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 public class edh
-  implements HttpNotify
+  extends WebChromeClient
 {
-  public edh(HttpRequestWifiphotoHandler paramHttpRequestWifiphotoHandler) {}
+  private edh(MovieDetailActivity paramMovieDetailActivity) {}
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void a(long paramLong1, boolean paramBoolean, long paramLong2)
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    HashMap localHashMap;
-    if (this.a.a != null)
-    {
-      localHashMap = this.a.a;
-      if (!paramBoolean) {
-        break label45;
-      }
-    }
-    label45:
-    for (String str = "0";; str = "3")
-    {
-      localHashMap.put("wifiphoto_qualityReport_ErrCode", str);
-      this.a.a();
-      return;
-    }
+    super.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
+    paramGeolocationPermissionsCallback.invoke(paramString, true, false);
+  }
+  
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    super.onProgressChanged(paramWebView, paramInt);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    this.a.setTitle(paramString);
+    this.a.c();
   }
 }
 

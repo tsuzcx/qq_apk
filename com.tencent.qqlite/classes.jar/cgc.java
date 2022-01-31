@@ -1,16 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import android.content.DialogInterface.OnDismissListener;
 
-public class cgc
-  implements DialogInterface.OnClickListener
+class cgc
+  implements DialogInterface.OnDismissListener
 {
-  public cgc(BaseActivityView paramBaseActivityView) {}
+  cgc(cfz paramcfz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.f();
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

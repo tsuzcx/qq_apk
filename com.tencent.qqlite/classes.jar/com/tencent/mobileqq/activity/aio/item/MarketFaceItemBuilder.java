@@ -19,14 +19,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bvl;
-import bvm;
-import bvq;
-import bvr;
-import bvs;
-import bvt;
-import bvu;
-import bvv;
+import bwk;
+import bwl;
+import bwp;
+import bwq;
+import bwr;
+import bws;
+import bwt;
+import bwu;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
@@ -92,9 +92,9 @@ public class MarketFaceItemBuilder
   public static final int k = 1;
   public static final int l = 2;
   public static int m = 1;
-  bvt jdField_a_of_type_Bvt = new bvl(this);
+  bws jdField_a_of_type_Bws = new bwk(this);
   public EmojiManager a;
-  MagicFaceDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonMagicFaceDownloadListener = new bvm(this);
+  MagicFaceDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonMagicFaceDownloadListener = new bwl(this);
   public List a;
   public Context b;
   public String b;
@@ -115,18 +115,18 @@ public class MarketFaceItemBuilder
     this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager = ((EmojiManager)paramQQAppInterface.getManager(39));
   }
   
-  private URLDrawable a(ChatMessage paramChatMessage, bvu parambvu, Context paramContext)
+  private URLDrawable a(ChatMessage paramChatMessage, bwt parambwt, Context paramContext)
   {
-    if (parambvu.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.b()) {
-      if (parambvu.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a()) {
+    if (parambwt.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.b()) {
+      if (parambwt.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a()) {
         if (b(paramChatMessage))
         {
-          parambvu = parambvu.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.b();
-          paramChatMessage = parambvu;
+          parambwt = parambwt.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.b();
+          paramChatMessage = parambwt;
           if (QLog.isColorLevel())
           {
             QLog.d(this.jdField_b_of_type_JavaLangString, 2, "generateEmotionDrawable| local existBig getSoundBigDrawable");
-            paramChatMessage = parambvu;
+            paramChatMessage = parambwt;
           }
         }
       }
@@ -138,36 +138,36 @@ public class MarketFaceItemBuilder
         do
         {
           return paramChatMessage;
-          parambvu = parambvu.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a(true);
-          paramChatMessage = parambvu;
+          parambwt = parambwt.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a(true);
+          paramChatMessage = parambwt;
         } while (!QLog.isColorLevel());
         QLog.d(this.jdField_b_of_type_JavaLangString, 2, "generateEmotionDrawable| local existBig sound getLoadingDrawable");
-        return parambvu;
-        parambvu = parambvu.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a(paramContext, BaseChatItemLayout.d);
-        paramChatMessage = parambvu;
+        return parambwt;
+        parambwt = parambwt.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a(paramContext, BaseChatItemLayout.d);
+        paramChatMessage = parambwt;
       } while (!QLog.isColorLevel());
       QLog.d(this.jdField_b_of_type_JavaLangString, 2, "generateEmotionDrawable| local existBig getBigDrawable");
-      return parambvu;
+      return parambwt;
       int i1 = NetworkUtil.a(this.jdField_b_of_type_AndroidContentContext);
       if ((i1 != 1) && (i1 != 3) && (i1 != 4))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(parambvu.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a, 4)) {
-          return parambvu.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a(true);
+        if (this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(parambwt.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a, 4)) {
+          return parambwt.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a(true);
         }
-        if (parambvu.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.c()) {
-          return parambvu.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a();
+        if (parambwt.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.c()) {
+          return parambwt.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a();
         }
       }
-      parambvu = parambvu.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a(false);
-      paramChatMessage = parambvu;
+      parambwt = parambwt.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a(false);
+      paramChatMessage = parambwt;
     } while (!QLog.isColorLevel());
     QLog.d(this.jdField_b_of_type_JavaLangString, 2, "generateEmotionDrawable| getLoadingDrawable local not exist");
-    return parambvu;
+    return parambwt;
   }
   
-  private void a(bvu parambvu)
+  private void a(bwt parambwt)
   {
-    parambvu.jdField_a_of_type_Boolean = false;
+    parambwt.jdField_a_of_type_Boolean = false;
   }
   
   private boolean b(ChatMessage paramChatMessage)
@@ -190,7 +190,7 @@ public class MarketFaceItemBuilder
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramBaseChatItemLayout = (MessageForMarketFace)paramChatMessage;
-    paramViewHolder = (bvu)paramViewHolder;
+    paramViewHolder = (bwt)paramViewHolder;
     int i1;
     if (paramView == null)
     {
@@ -200,7 +200,7 @@ public class MarketFaceItemBuilder
       Object localObject1 = new RelativeLayout.LayoutParams(-2, -2);
       ((RelativeLayout.LayoutParams)localObject1).addRule(0, 2131296305);
       ((RelativeLayout.LayoutParams)localObject1).addRule(15, 2131296305);
-      localImageView.setImageResource(2130838956);
+      localImageView.setImageResource(2130838989);
       paramView.addView(localImageView, (ViewGroup.LayoutParams)localObject1);
       localImageView.setOnClickListener(this);
       localObject1 = new FrameLayout(this.jdField_b_of_type_AndroidContentContext);
@@ -212,7 +212,7 @@ public class MarketFaceItemBuilder
       ((FrameLayout)localObject1).setOnClickListener(this);
       ((FrameLayout)localObject1).setOnTouchListener(paramOnLongClickAndTouchListener);
       ((FrameLayout)localObject1).setOnLongClickListener(paramOnLongClickAndTouchListener);
-      paramOnLongClickAndTouchListener = new bvv(this, this.jdField_b_of_type_AndroidContentContext);
+      paramOnLongClickAndTouchListener = new bwu(this, this.jdField_b_of_type_AndroidContentContext);
       ((FrameLayout)localObject1).addView(paramOnLongClickAndTouchListener, -2, -2);
       localObject2 = new ImageView(this.jdField_b_of_type_AndroidContentContext);
       Object localObject3 = new FrameLayout.LayoutParams(-2, -2);
@@ -225,7 +225,7 @@ public class MarketFaceItemBuilder
       ((RelativeLayout.LayoutParams)localObject4).addRule(1, 2131296339);
       ((RelativeLayout.LayoutParams)localObject4).addRule(8, 2131296339);
       ((RelativeLayout.LayoutParams)localObject4).leftMargin = 10;
-      ((ImageView)localObject3).setImageResource(2130838989);
+      ((ImageView)localObject3).setImageResource(2130839022);
       paramView.addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
       ((ImageView)localObject3).setOnClickListener(this);
       localObject4 = new ImageView(this.jdField_b_of_type_AndroidContentContext);
@@ -234,7 +234,7 @@ public class MarketFaceItemBuilder
       ((RelativeLayout.LayoutParams)localObject5).addRule(1, 2131296339);
       ((RelativeLayout.LayoutParams)localObject5).addRule(15, 2131296339);
       ((RelativeLayout.LayoutParams)localObject5).leftMargin = 10;
-      ((ImageView)localObject4).setImageResource(2130838956);
+      ((ImageView)localObject4).setImageResource(2130838989);
       paramView.addView((View)localObject4, (ViewGroup.LayoutParams)localObject5);
       ((ImageView)localObject4).setOnClickListener(this);
       localObject5 = new ImageView(this.jdField_b_of_type_AndroidContentContext);
@@ -249,7 +249,7 @@ public class MarketFaceItemBuilder
       ((ImageView)localObject5).setOnClickListener(this);
       localObject6 = new ProgressBar(this.jdField_b_of_type_AndroidContentContext);
       ((ProgressBar)localObject6).setId(2131296303);
-      ((ProgressBar)localObject6).setIndeterminateDrawable(this.jdField_b_of_type_AndroidContentContext.getResources().getDrawable(2130837906));
+      ((ProgressBar)localObject6).setIndeterminateDrawable(this.jdField_b_of_type_AndroidContentContext.getResources().getDrawable(2130837924));
       i1 = AIOUtils.a(16.0F, this.jdField_b_of_type_AndroidContentContext.getResources());
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i1, i1);
       localLayoutParams.gravity = 17;
@@ -279,7 +279,7 @@ public class MarketFaceItemBuilder
       return paramView;
       paramViewHolder.e.setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
       if ((paramViewHolder.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo != null) && (paramViewHolder.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a()) && (paramViewHolder.b != null) && ((paramViewHolder.b.getDrawable() instanceof AnimationDrawable))) {
-        paramViewHolder.b.setImageResource(2130838989);
+        paramViewHolder.b.setImageResource(2130839022);
       }
       paramViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout.setContentDescription("");
     }
@@ -343,7 +343,7 @@ public class MarketFaceItemBuilder
       }
       paramViewHolder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       i1 = NetworkUtil.a(this.jdField_b_of_type_AndroidContentContext);
-      boolean bool = SettingCloneUtil.readValue(this.jdField_b_of_type_AndroidContentContext, null, this.jdField_b_of_type_AndroidContentContext.getString(2131363052), "qqsetting_auto_receive_magic_face_key", true);
+      boolean bool = SettingCloneUtil.readValue(this.jdField_b_of_type_AndroidContentContext, null, this.jdField_b_of_type_AndroidContentContext.getString(2131363062), "qqsetting_auto_receive_magic_face_key", true);
       if (((i1 == 1) || (i1 == 3) || (i1 == 4)) && (2 == paramViewHolder.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.jobType) && (!this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.c(paramViewHolder.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId)) && (((i1 != 3) && (i1 != 4)) || (bool))) {
         break label972;
       }
@@ -363,7 +363,7 @@ public class MarketFaceItemBuilder
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new bvu(this);
+    return new bwt(this);
   }
   
   protected String a(ChatMessage paramChatMessage)
@@ -395,7 +395,7 @@ public class MarketFaceItemBuilder
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt == 2131298932) {
+    if (paramInt == 2131298958) {
       ChatActivityFacade.a(this.jdField_b_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
     }
     do
@@ -405,7 +405,7 @@ public class MarketFaceItemBuilder
       {
         paramContext = new QQProgressDialog(this.jdField_b_of_type_AndroidContentContext);
         EmosmDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, "ep_mall", "Clk_collect", 0);
-        paramContext.a(this.jdField_b_of_type_AndroidContentContext.getString(2131364037));
+        paramContext.a(this.jdField_b_of_type_AndroidContentContext.getString(2131364048));
         paramContext.show();
         paramChatMessage = ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).a(jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId);
         if ((paramChatMessage != null) && (paramChatMessage.name != null) && ((paramChatMessage.mobileFeetype != 0) || (paramChatMessage.downloadCount != 0)))
@@ -414,15 +414,15 @@ public class MarketFaceItemBuilder
           i1 = (int)(System.currentTimeMillis() / 1000L);
           if ((i1 - paramInt > 86400) || (i1 < paramInt))
           {
-            this.jdField_a_of_type_Bvt.a(6, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_AndroidContentContext, jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-            this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, EmojiManager.c, this.jdField_a_of_type_Bvt);
+            this.jdField_a_of_type_Bws.a(6, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_AndroidContentContext, jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+            this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, EmojiManager.c, this.jdField_a_of_type_Bws);
             return;
           }
           EmosmDetailActivity.a(6, this.jdField_b_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, null, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
           return;
         }
-        this.jdField_a_of_type_Bvt.a(6, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_AndroidContentContext, jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, EmojiManager.c, this.jdField_a_of_type_Bvt);
+        this.jdField_a_of_type_Bws.a(6, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_AndroidContentContext, jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, EmojiManager.c, this.jdField_a_of_type_Bws);
         return;
       }
     } while ((paramInt != 2131296290) && (paramInt != 2131296291));
@@ -432,13 +432,13 @@ public class MarketFaceItemBuilder
     {
       if ((2 == jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.jobType) && (!this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a()))
       {
-        ChatActivityUtils.a(this.jdField_b_of_type_AndroidContentContext, 2131364108, 0);
+        ChatActivityUtils.a(this.jdField_b_of_type_AndroidContentContext, 2131364119, 0);
         return;
       }
       m = 1;
       EmosmDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, "ep_mall", "Clk_button_forward_aio", 0);
       i1 = 7;
-      paramContext.a(this.jdField_b_of_type_AndroidContentContext.getString(2131364038));
+      paramContext.a(this.jdField_b_of_type_AndroidContentContext.getString(2131364049));
     }
     for (;;)
     {
@@ -446,17 +446,17 @@ public class MarketFaceItemBuilder
       if (((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).a(jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId) != null) {
         break;
       }
-      this.jdField_a_of_type_Bvt.a(i1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_AndroidContentContext, jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, EmojiManager.c, this.jdField_a_of_type_Bvt);
+      this.jdField_a_of_type_Bws.a(i1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_AndroidContentContext, jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, EmojiManager.c, this.jdField_a_of_type_Bws);
       return;
       if (paramInt == 2131296291)
       {
         if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) && (((TroopGagMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(42)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true).jdField_a_of_type_Boolean))
         {
-          ChatActivityUtils.a(this.jdField_b_of_type_AndroidContentContext, 2131362553, 0);
+          ChatActivityUtils.a(this.jdField_b_of_type_AndroidContentContext, 2131362555, 0);
           return;
         }
-        paramContext.a(this.jdField_b_of_type_AndroidContentContext.getString(2131364039));
+        paramContext.a(this.jdField_b_of_type_AndroidContentContext.getString(2131364050));
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "ep_mall", "Clk_button_follow_aio", 0, 0, "", jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, "", "");
         i1 = 107;
       }
@@ -466,13 +466,13 @@ public class MarketFaceItemBuilder
   
   protected void a(View paramView)
   {
-    paramView = (bvu)AIOUtils.a(paramView);
+    paramView = (bwt)AIOUtils.a(paramView);
     String str1;
     String str2;
     if (paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSendFromLocal())
     {
-      str1 = this.jdField_b_of_type_AndroidContentContext.getString(2131363073);
-      str2 = this.jdField_b_of_type_AndroidContentContext.getString(2131363074);
+      str1 = this.jdField_b_of_type_AndroidContentContext.getString(2131363083);
+      str2 = this.jdField_b_of_type_AndroidContentContext.getString(2131363084);
       if ((paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage.sendFailCode == 41) && (paramView.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo != null) && (paramView.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a != null)) {
         a((MessageForMarketFace)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage, paramView.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo);
       }
@@ -480,23 +480,23 @@ public class MarketFaceItemBuilder
     do
     {
       return;
-      DialogUtil.a(this.jdField_b_of_type_AndroidContentContext, 230, str1, str2, new bvq(this, paramView), new bvr(this)).show();
+      DialogUtil.a(this.jdField_b_of_type_AndroidContentContext, 230, str1, str2, new bwp(this, paramView), new bwq(this)).show();
       return;
       paramView = paramView.e.getDrawable();
     } while (!(paramView instanceof URLDrawable));
     ((URLDrawable)paramView).restartDownload();
   }
   
-  public void a(bvu parambvu, URLDrawable paramURLDrawable)
+  public void a(bwt parambwt, URLDrawable paramURLDrawable)
   {
-    parambvu.b.setVisibility(8);
-    parambvu.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    parambvu.f.setVisibility(8);
+    parambwt.b.setVisibility(8);
+    parambwt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    parambwt.f.setVisibility(8);
     String str = paramURLDrawable.getURL().getHost();
     int i1 = paramURLDrawable.getStatus();
     if ("aio_preview".equals(str)) {
-      if (parambvu.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a()) {
-        parambvu.b.setVisibility(0);
+      if (parambwt.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a()) {
+        parambwt.b.setVisibility(0);
       }
     }
     do
@@ -506,31 +506,31 @@ public class MarketFaceItemBuilder
         do
         {
           return;
-        } while ((i1 != 1) || (parambvu.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.h != 3));
-        parambvu.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        } while ((i1 != 1) || (parambwt.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.h != 3));
+        parambwt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         return;
         if (!"big_img".equals(str)) {
           break;
         }
         paramURLDrawable = paramURLDrawable.getHeader("image_dl_extra_info");
       } while ((paramURLDrawable == null) || (!Boolean.TRUE.toString().equals(paramURLDrawable.getValue())) || (i1 == 1));
-      if (parambvu.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a())
+      if (parambwt.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a())
       {
-        parambvu.b.setVisibility(0);
+        parambwt.b.setVisibility(0);
         return;
       }
-      parambvu.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      parambwt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       return;
     } while (!"big_sound".equals(str));
-    if (b(parambvu.jdField_a_of_type_ComTencentMobileqqDataChatMessage))
+    if (b(parambwt.jdField_a_of_type_ComTencentMobileqqDataChatMessage))
     {
-      parambvu.b.setVisibility(0);
-      paramURLDrawable = (AnimationDrawable)this.jdField_b_of_type_AndroidContentContext.getResources().getDrawable(2130968634);
-      parambvu.b.setImageDrawable(paramURLDrawable);
+      parambwt.b.setVisibility(0);
+      paramURLDrawable = (AnimationDrawable)this.jdField_b_of_type_AndroidContentContext.getResources().getDrawable(2130968638);
+      parambwt.b.setImageDrawable(paramURLDrawable);
       paramURLDrawable.start();
       return;
     }
-    parambvu.b.setVisibility(0);
+    parambwt.b.setVisibility(0);
   }
   
   protected void a(MessageForMarketFace paramMessageForMarketFace, PicEmoticonInfo paramPicEmoticonInfo)
@@ -538,12 +538,12 @@ public class MarketFaceItemBuilder
     if ((paramMessageForMarketFace == null) || (paramPicEmoticonInfo == null) || (paramPicEmoticonInfo.a == null) || (paramPicEmoticonInfo.a.epId == null)) {
       return;
     }
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_b_of_type_AndroidContentContext, null, 2131624119);
-    localActionSheet.a(this.jdField_b_of_type_AndroidContentContext.getString(2131364034));
-    localActionSheet.a(this.jdField_b_of_type_AndroidContentContext.getResources().getString(2131364035), 1);
-    localActionSheet.a(this.jdField_b_of_type_AndroidContentContext.getResources().getString(2131364036), 1);
-    localActionSheet.d(2131362794);
-    localActionSheet.a(new bvs(this, paramPicEmoticonInfo, localActionSheet, paramMessageForMarketFace));
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_b_of_type_AndroidContentContext, null, 2131624120);
+    localActionSheet.a(this.jdField_b_of_type_AndroidContentContext.getString(2131364045));
+    localActionSheet.a(this.jdField_b_of_type_AndroidContentContext.getResources().getString(2131364046), 1);
+    localActionSheet.a(this.jdField_b_of_type_AndroidContentContext.getResources().getString(2131364047), 1);
+    localActionSheet.d(2131362801);
+    localActionSheet.a(new bwr(this, paramPicEmoticonInfo, localActionSheet, paramMessageForMarketFace));
     localActionSheet.show();
   }
   
@@ -551,11 +551,11 @@ public class MarketFaceItemBuilder
   {
     if (paramView != null)
     {
-      paramXListView = (bvu)AIOUtils.a(paramView);
+      paramXListView = (bwt)AIOUtils.a(paramView);
       if (EmosmDetailActivity.f != null) {
-        EmosmDetailActivity.f.setImageResource(2130838989);
+        EmosmDetailActivity.f.setImageResource(2130839022);
       }
-      paramXListView.b.setImageResource(2130838989);
+      paramXListView.b.setImageResource(2130839022);
       paramView = paramXListView.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a(true);
       if (EmosmDetailActivity.e != null) {
         EmosmDetailActivity.e.setImageDrawable(paramView);
@@ -576,7 +576,7 @@ public class MarketFaceItemBuilder
   
   public boolean a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, AudioPlayer paramAudioPlayer)
   {
-    paramXListView = (bvu)AIOUtils.a(paramView);
+    paramXListView = (bwt)AIOUtils.a(paramView);
     if ((paramXListView == null) || (paramXListView.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo == null) || (paramXListView.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a == null)) {
       return false;
     }
@@ -587,7 +587,7 @@ public class MarketFaceItemBuilder
       {
         EmosmDetailActivity.e.setImageDrawable(paramView);
         PicEmoticonInfo.a(paramView);
-        paramView = (AnimationDrawable)this.jdField_b_of_type_AndroidContentContext.getResources().getDrawable(2130968634);
+        paramView = (AnimationDrawable)this.jdField_b_of_type_AndroidContentContext.getResources().getDrawable(2130968638);
         if (EmosmDetailActivity.f == null) {
           break label144;
         }
@@ -608,16 +608,16 @@ public class MarketFaceItemBuilder
   
   public QQCustomMenuItem[] a(View paramView)
   {
-    paramView = (bvu)AIOUtils.a(paramView);
+    paramView = (bwt)AIOUtils.a(paramView);
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
     if (paramView.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.jobType != 1)
     {
       jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo = paramView.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo;
       jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-      localQQCustomMenu.a(2131296289, this.jdField_b_of_type_AndroidContentContext.getString(2131363932));
-      localQQCustomMenu.a(2131296290, this.jdField_b_of_type_AndroidContentContext.getString(2131363562));
+      localQQCustomMenu.a(2131296289, this.jdField_b_of_type_AndroidContentContext.getString(2131363943));
+      localQQCustomMenu.a(2131296290, this.jdField_b_of_type_AndroidContentContext.getString(2131363573));
       if (paramView.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.jobType != 2) {
-        localQQCustomMenu.a(2131296291, this.jdField_b_of_type_AndroidContentContext.getString(2131363931));
+        localQQCustomMenu.a(2131296291, this.jdField_b_of_type_AndroidContentContext.getString(2131363942));
       }
       EmosmDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, "ep_mall", "Ap_show_forward", 0);
     }
@@ -637,7 +637,7 @@ public class MarketFaceItemBuilder
       if (paramView.getId() != 2131296339) {
         break label680;
       }
-      paramView = (bvu)AIOUtils.a(paramView);
+      paramView = (bwt)AIOUtils.a(paramView);
       localObject1 = paramView.e.getDrawable();
       if ((localObject1 instanceof URLDrawable))
       {
@@ -718,10 +718,10 @@ public class MarketFaceItemBuilder
     label680:
     if (paramView.getId() == 2131296334)
     {
-      localObject1 = (bvu)AIOUtils.a(paramView);
-      if ((((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo != null) && (((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a != null) && (((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.isSound))
+      localObject1 = (bwt)AIOUtils.a(paramView);
+      if ((((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo != null) && (((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a != null) && (((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.isSound))
       {
-        if (!b(((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage)) {
+        if (!b(((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage)) {
           break label756;
         }
         MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(false);
@@ -734,55 +734,55 @@ public class MarketFaceItemBuilder
       label756:
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.d())
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2131363140, 0).b(this.jdField_b_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131492887));
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2131363150, 0).b(this.jdField_b_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131492887));
       }
       else
       {
-        MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+        MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage);
         continue;
         if ((paramView.getId() == 2131296336) || (paramView.getId() == 2131296335))
         {
-          localObject1 = (bvu)AIOUtils.a(paramView);
-          if ((((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo != null) && (((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a != null))
+          localObject1 = (bwt)AIOUtils.a(paramView);
+          if ((((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo != null) && (((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a != null))
           {
             localObject2 = new QQProgressDialog(this.jdField_b_of_type_AndroidContentContext);
-            ((QQProgressDialog)localObject2).a(this.jdField_b_of_type_AndroidContentContext.getString(2131364039));
+            ((QQProgressDialog)localObject2).a(this.jdField_b_of_type_AndroidContentContext.getString(2131364050));
             ((QQProgressDialog)localObject2).show();
-            localObject3 = ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).a(((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId);
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "ep_mall", "Clk_button_follow", 0, 0, "", ((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.eId, "", "");
+            localObject3 = ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).a(((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId);
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "ep_mall", "Clk_button_follow", 0, 0, "", ((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.eId, "", "");
             if (localObject3 == null)
             {
-              this.jdField_a_of_type_Bvt.a(107, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_AndroidContentContext, ((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, (QQProgressDialog)localObject2, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-              this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, EmojiManager.c, this.jdField_a_of_type_Bvt);
+              this.jdField_a_of_type_Bws.a(107, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_AndroidContentContext, ((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, (QQProgressDialog)localObject2, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+              this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, EmojiManager.c, this.jdField_a_of_type_Bws);
             }
             else
             {
-              EmosmDetailActivity.a(107, this.jdField_b_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, null, (QQProgressDialog)localObject2, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+              EmosmDetailActivity.a(107, this.jdField_b_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, null, (QQProgressDialog)localObject2, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
             }
           }
         }
         else if (paramView.getId() == 2131296337)
         {
-          localObject1 = (bvu)AIOUtils.a(paramView);
-          if ((((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo != null) && (((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a != null) && (2 == ((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.jobType))
+          localObject1 = (bwt)AIOUtils.a(paramView);
+          if ((((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo != null) && (((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a != null) && (2 == ((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.jobType))
           {
-            if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, Boolean.valueOf(false)))
+            if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, Boolean.valueOf(false)))
             {
               this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonMagicFaceDownloadListener);
               localObject2 = new EmoticonPackage();
-              ((EmoticonPackage)localObject2).epId = ((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId;
+              ((EmoticonPackage)localObject2).epId = ((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId;
               ((EmoticonPackage)localObject2).jobType = 3;
               ((EmoticonPackage)localObject2).type = 1;
               ((EmoticonPackage)localObject2).isMagicFaceDownloading = true;
-              ((bvu)localObject1).jdField_a_of_type_Boolean = false;
-              ((MessageForMarketFace)((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage).needToPlay = false;
-              ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).a(((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a);
+              ((bwt)localObject1).jdField_a_of_type_Boolean = false;
+              ((MessageForMarketFace)((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage).needToPlay = false;
+              ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).a(((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a);
               this.jdField_a_of_type_JavaUtilList.add(localObject1);
-              ((bvu)localObject1).f.setVisibility(8);
-              ((bvu)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+              ((bwt)localObject1).f.setVisibility(8);
+              ((bwt)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
               this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a((EmoticonPackage)localObject2, false);
             }
-            ReportController.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongBofang", 0, 0, ((bvu)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, "", "", "");
+            ReportController.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongBofang", 0, 0, ((bwt)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, "", "", "");
           }
         }
       }

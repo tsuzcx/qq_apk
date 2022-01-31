@@ -46,10 +46,10 @@ public class MultiMsgUpHandler
     paramReqCommon = (RichProto.RichProtoReq.MultiMsgUpReq)paramReqCommon;
     MultiMsg.MultiMsgApplyUpReq localMultiMsgApplyUpReq = new MultiMsg.MultiMsgApplyUpReq();
     localMultiMsgApplyUpReq.setHasFlag(true);
-    localMultiMsgApplyUpReq.uint64_dst_uin.set(Long.valueOf(paramReqCommon.d).longValue());
+    localMultiMsgApplyUpReq.uint64_dst_uin.set(Long.valueOf(paramReqCommon.jdField_d_of_type_JavaLangString).longValue());
     localMultiMsgApplyUpReq.uint64_msg_size.set(paramReqCommon.jdField_a_of_type_Long);
     localMultiMsgApplyUpReq.bytes_msg_md5.set(ByteStringMicro.copyFrom(paramReqCommon.jdField_a_of_type_ArrayOfByte));
-    localMultiMsgApplyUpReq.uint32_msg_type.set(a(paramReqCommon.c));
+    localMultiMsgApplyUpReq.uint32_msg_type.set(a(paramReqCommon.jdField_d_of_type_Int));
     localMultiMsgApplyUpReq.uint32_apply_id.set(0);
     paramReqBody.rpt_multimsg_applyup_req.add(localMultiMsgApplyUpReq);
   }

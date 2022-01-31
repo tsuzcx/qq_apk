@@ -128,6 +128,8 @@ public abstract interface IX5WebViewExtension
   
   public abstract void leaveSelectionMode();
   
+  public abstract boolean needSniff();
+  
   public abstract void onAppExit();
   
   public abstract void onFingerSearchResult(String paramString, int paramInt1, int paramInt2);
@@ -178,6 +180,8 @@ public abstract interface IX5WebViewExtension
   
   public abstract void sendResumeMsg(String paramString1, String paramString2, String paramString3, Message paramMessage);
   
+  public abstract void setAudioAutoPlayNotify(boolean paramBoolean);
+  
   public abstract void setBackFromSystem();
   
   public abstract void setDisableDrawingWhileLosingFocus(boolean paramBoolean);
@@ -186,6 +190,8 @@ public abstract interface IX5WebViewExtension
   
   public abstract void setEmbTitleView(View paramView, ViewGroup.LayoutParams paramLayoutParams);
   
+  public abstract void setForceEnableZoom(boolean paramBoolean);
+  
   public abstract void setHorizontalScrollBarDrawable(Drawable paramDrawable);
   
   public abstract void setHorizontalScrollBarEnabled(boolean paramBoolean);
@@ -193,6 +199,8 @@ public abstract interface IX5WebViewExtension
   public abstract void setHorizontalTrackDrawable(Drawable paramDrawable);
   
   public abstract void setIsForVideoSniff(boolean paramBoolean);
+  
+  public abstract void setLongPressTextExtensionMenu(int paramInt);
   
   public abstract void setOrientation(int paramInt);
   

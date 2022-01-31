@@ -1,35 +1,27 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.EmosmDetailActivity;
 
-class amb
-  implements URLDrawable.URLDrawableListener
+public class amb
+  implements Animation.AnimationListener
 {
-  amb(ama paramama, ImageView paramImageView) {}
+  public amb(EmosmDetailActivity paramEmosmDetailActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.EmosmDetailActivity", 2, "ImageonLoadFail ");
-    }
+    this.a.d = true;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.EmosmDetailActivity", 2, "ImageonLoadProgress ");
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.EmosmDetailActivity", 2, "ImageonLoadSuccessed ");
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    this.a.b.setVisibility(0);
+    paramAnimation = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+    paramAnimation.height = (this.a.a.getHeight() - this.a.b.getHeight());
+    this.a.a.setLayoutParams(paramAnimation);
   }
 }
 

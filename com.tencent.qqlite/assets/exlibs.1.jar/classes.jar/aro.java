@@ -1,27 +1,15 @@
-import android.text.format.DateFormat;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.utils.StringUtil;
-import java.util.List;
 
-class aro
-  implements Runnable
+public class aro
+  implements View.OnClickListener
 {
-  aro(arm paramarm) {}
+  public aro(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str1 = StringUtil.a(this.a.a.c, 0, 32);
-    String str2 = StringUtil.a(this.a.a.e, 0, 32);
-    if (this.a.a.jdField_a_of_type_JavaUtilList != null) {
-      this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + String.format("(%d人)", new Object[] { Integer.valueOf(this.a.a.jdField_a_of_type_JavaUtilList.size()) }));
-    }
-    for (;;)
-    {
-      this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(str2 + " 创建于 " + DateFormat.format("yy-M-d", this.a.a.jdField_b_of_type_Long));
-      return;
-      this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
-    }
+    this.a.a();
   }
 }
 

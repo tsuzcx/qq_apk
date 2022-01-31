@@ -74,7 +74,7 @@ public class wv
       switch (i)
       {
       default: 
-        QQToast.a(this.a.app.getApplication(), 2131363383, 0).b(this.a.getTitleBarHeight());
+        QQToast.a(this.a.app.getApplication(), 2131363394, 0).b(this.a.getTitleBarHeight());
         this.a.finish();
         return;
       case 0: 
@@ -86,7 +86,7 @@ public class wv
         this.a.a(i, paramBundle.booleanValue(), (ArrayList)localObject, AddFriendVerifyActivity.class);
         return;
       case 2: 
-        QQToast.a(this.a.app.getApplication(), 2131363382, 0).b(this.a.getTitleBarHeight());
+        QQToast.a(this.a.app.getApplication(), 2131363393, 0).b(this.a.getTitleBarHeight());
         this.a.finish();
         return;
       }
@@ -95,7 +95,7 @@ public class wv
       this.a.finish();
       return;
     }
-    QQToast.a(this.a.app.getApplication(), 2131363383, 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a.app.getApplication(), 2131363394, 0).b(this.a.getTitleBarHeight());
     this.a.finish();
   }
 }

@@ -59,16 +59,16 @@ import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.util.VersionUtils;
 import com.tencent.util.WeakReferenceHandler;
-import eny;
-import eob;
-import eoc;
-import eod;
-import eoe;
-import eof;
-import eog;
-import eoh;
-import eoi;
-import eoj;
+import epo;
+import epr;
+import eps;
+import ept;
+import epu;
+import epv;
+import epw;
+import epx;
+import epy;
+import epz;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,7 +82,7 @@ public class VideoPlayLogic
   private static final int jdField_e_of_type_Int = 3;
   private Context jdField_a_of_type_AndroidContentContext = null;
   protected final Handler a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new eoh(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new epx(this);
   private View jdField_a_of_type_AndroidViewView = null;
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation = null;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
@@ -90,14 +90,14 @@ public class VideoPlayLogic
   private TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity = null;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new eoi(this);
+  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new epy(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   private StructMsgForGeneralShare jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare = null;
   private MediaControllerX jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX = null;
   private MessageSubtitleView jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView = null;
   private VideoViewX jdField_a_of_type_ComTencentMobileqqTroopWidgetVideoViewX = null;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new eog(this);
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new epw(this);
   private String jdField_a_of_type_JavaLangString;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean = false;
@@ -163,7 +163,7 @@ public class VideoPlayLogic
         break label407;
       }
       localObject1 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838215);
+      localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838234);
       ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds((Drawable)localObject2, null, null, null);
       ((Animatable)localObject2).start();
       if ((!this.jdField_g_of_type_Boolean) && (((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetVideoViewX.b() == 0)) || (this.jdField_h_of_type_Boolean) || (this.jdField_g_of_type_Int != 0)))
@@ -183,8 +183,8 @@ public class VideoPlayLogic
       {
         localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
         ((ImageView)localObject1).setId(2131296384);
-        ((ImageView)localObject1).setImageResource(2130838206);
-        ((ImageView)localObject1).setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362353));
+        ((ImageView)localObject1).setImageResource(2130838225);
+        ((ImageView)localObject1).setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362354));
         ((ImageView)localObject1).setOnClickListener(this);
         ((ImageView)localObject1).setContentDescription("按钮关闭视频");
         localObject2 = new RelativeLayout.LayoutParams(-2, -2);
@@ -203,7 +203,7 @@ public class VideoPlayLogic
       label407:
       if (paramInt == 2)
       {
-        this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838205);
+        this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838224);
         if ((!this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetVideoViewX.b() == 0))
         {
           localObject1 = new TextView(this.jdField_a_of_type_AndroidContentContext);
@@ -217,13 +217,13 @@ public class VideoPlayLogic
         this.jdField_c_of_type_AndroidWidgetRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
         localObject3 = new TextView(this.jdField_a_of_type_AndroidContentContext);
         ((TextView)localObject3).setId(2131296381);
-        ((TextView)localObject3).setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362572));
-        ((TextView)localObject3).setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362574));
+        ((TextView)localObject3).setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362574));
+        ((TextView)localObject3).setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362576));
         localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
         ((TextView)localObject2).setId(2131296382);
-        ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362573));
-        ((TextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131427454));
-        ((TextView)localObject2).setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362574));
+        ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362575));
+        ((TextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131427457));
+        ((TextView)localObject2).setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362576));
         ((TextView)localObject2).getPaint().setFlags(8);
         ((TextView)localObject2).setOnClickListener(this);
         ((RelativeLayout)localObject1).addView((View)localObject3, -2, -2);
@@ -233,7 +233,7 @@ public class VideoPlayLogic
       }
       else if (paramInt == 3)
       {
-        this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838205);
+        this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838224);
         if ((!this.jdField_g_of_type_Boolean) && (((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetVideoViewX.b() == 0)) || (this.jdField_h_of_type_Boolean)))
         {
           localObject1 = new TextView(this.jdField_a_of_type_AndroidContentContext);
@@ -247,7 +247,7 @@ public class VideoPlayLogic
         this.jdField_c_of_type_AndroidWidgetRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
         localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
         ((ImageView)localObject2).setId(2131296383);
-        ((ImageView)localObject2).setImageResource(2130838209);
+        ((ImageView)localObject2).setImageResource(2130838228);
         ((ImageView)localObject2).setOnClickListener(this);
         new TextView(this.jdField_a_of_type_AndroidContentContext).setId(2131296382);
         localObject3 = new RelativeLayout.LayoutParams(-2, -2);
@@ -304,8 +304,8 @@ public class VideoPlayLogic
     Uri localUri = Uri.parse((String)this.jdField_a_of_type_JavaUtilList.get(this.jdField_f_of_type_Int));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX = new MediaControllerX(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX.setMediaControllerListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX.setOnSwitchSubTitleBtnClickListener(new eoj(this));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX.setonOutLinkBtnClickListener(new eob(this));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX.setOnSwitchSubTitleBtnClickListener(new epz(this));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX.setonOutLinkBtnClickListener(new epr(this));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetVideoViewX.setMediaController(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX);
     if (!this.jdField_g_of_type_Boolean) {
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX.a();
@@ -388,7 +388,7 @@ public class VideoPlayLogic
       localBadTokenException.printStackTrace();
       return;
     }
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(this.jdField_a_of_type_JavaLangString, new eof(this));
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(this.jdField_a_of_type_JavaLangString, new epv(this));
   }
   
   private void l()
@@ -419,7 +419,7 @@ public class VideoPlayLogic
   private void n()
   {
     Object localObject1 = null;
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131296890);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131296891);
     if (localObject2 != null) {
       localObject1 = (View)((View)localObject2).getParent();
     }
@@ -592,7 +592,7 @@ public class VideoPlayLogic
   public void a(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
     if (paramCharSequence2 != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new eoe(this, paramCharSequence1, paramCharSequence2));
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new epu(this, paramCharSequence1, paramCharSequence2));
     }
   }
   
@@ -634,18 +634,18 @@ public class VideoPlayLogic
         }
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a("正在加载中");
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-        new eny(this, paramString).execute(new Void[0]);
+        new epo(this, paramString).execute(new Void[0]);
         return;
       }
     }
     if (TroopFileUtils.a(this.jdField_a_of_type_AndroidContentContext) == 0)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362571), 1).a();
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362573), 1).a();
       return;
     }
     if (TroopFileUtils.a(this.jdField_a_of_type_AndroidContentContext) != 2)
     {
-      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131362238), this.jdField_a_of_type_AndroidContentContext.getString(2131362337), 2131362794, 2131362338, new eoc(this), new eod(this)).show();
+      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131362239), this.jdField_a_of_type_AndroidContentContext.getString(2131362338), 2131362801, 2131362339, new eps(this), new ept(this)).show();
       return;
     }
     k();
@@ -829,7 +829,7 @@ public class VideoPlayLogic
     if (k == 2131296383) {
       if (TroopFileUtils.a(this.jdField_a_of_type_AndroidContentContext) == 0)
       {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362571), 1).a();
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362573), 1).a();
         if (this.jdField_g_of_type_Boolean) {
           ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "video", "Clk_play", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "1", "", "");
         }

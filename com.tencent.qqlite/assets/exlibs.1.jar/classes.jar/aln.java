@@ -1,15 +1,29 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortAdapter;
+import com.tencent.mobileqq.emosm.view.DragSortListView.DropListener;
+import com.tencent.mobileqq.emoticon.EmojiListenerManager;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class aln
-  implements Runnable
+public class aln
+  implements DragSortListView.DropListener
 {
-  public aln(Context paramContext) {}
+  public aln(EmosmActivity paramEmosmActivity) {}
   
-  public void run()
+  public void a_(int paramInt1, int paramInt2)
   {
-    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131363406), 0).b(this.a.getResources().getDimensionPixelSize(2131492887));
+    if (paramInt1 != paramInt2)
+    {
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
+      this.a.a.remove(localEmoticonPackage);
+      this.a.a.setNotifyOnChange(true);
+      this.a.a.insert(localEmoticonPackage, paramInt2);
+      ((EmojiManager)this.a.app.getManager(39)).a.a(localEmoticonPackage, paramInt1, paramInt2);
+      this.a.c = true;
+      ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
+    }
   }
 }
 

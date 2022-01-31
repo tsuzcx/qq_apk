@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bpj;
-import bpk;
+import bpr;
+import bps;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopHandler;
@@ -39,26 +39,26 @@ public class TroopPrivilegeActivity
     case 0: 
       return "";
     case 1: 
-      return getString(2131362358);
+      return getString(2131362359);
     }
-    return getString(2131362359);
+    return getString(2131362360);
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    paramBundle = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130903334, null);
+    paramBundle = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130903337, null);
     setContentView(paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramBundle.findViewById(2131296779));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramBundle.findViewById(2131296780));
     this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity$PrivilegeAdapter = new TroopPrivilegeActivity.PrivilegeAdapter(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity$PrivilegeAdapter.a(getString(2131362362), 0);
     this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity$PrivilegeAdapter.a(getString(2131362361), 0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity$PrivilegeAdapter.a(getString(2131362360), 0);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity$PrivilegeAdapter);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("troopuin");
     this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity$PrivilegeTroopObserver = new TroopPrivilegeActivity.PrivilegeTroopObserver(this);
     addObserver(this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity$PrivilegeTroopObserver);
     ((TroopHandler)this.app.a(17)).l(this.jdField_a_of_type_JavaLangString);
-    setTitle(getString(2131363723));
+    setTitle(getString(2131363734));
     return true;
   }
   
@@ -73,18 +73,18 @@ public class TroopPrivilegeActivity
     boolean bool2 = true;
     Object localObject = paramView.getTag();
     String str;
-    if ((localObject instanceof bpk))
+    if ((localObject instanceof bps))
     {
-      paramView = (bpk)localObject;
+      paramView = (bps)localObject;
       this.jdField_a_of_type_JavaLangObject = localObject;
       localObject = (ActionSheet)ActionSheetHelper.a(this, null);
-      str = getString(2131362358);
+      str = getString(2131362359);
       if (paramView.a != 1) {
         break label118;
       }
       bool1 = true;
       ((ActionSheet)localObject).a(str, bool1);
-      str = getString(2131362359);
+      str = getString(2131362360);
       if (paramView.a != 2) {
         break label123;
       }
@@ -94,8 +94,8 @@ public class TroopPrivilegeActivity
     for (boolean bool1 = bool2;; bool1 = false)
     {
       ((ActionSheet)localObject).a(str, bool1);
-      ((ActionSheet)localObject).a(new bpj(this, (ActionSheet)localObject));
-      ((ActionSheet)localObject).d(2131362794);
+      ((ActionSheet)localObject).a(new bpr(this, (ActionSheet)localObject));
+      ((ActionSheet)localObject).d(2131362801);
       ((ActionSheet)localObject).show();
       return;
       bool1 = false;

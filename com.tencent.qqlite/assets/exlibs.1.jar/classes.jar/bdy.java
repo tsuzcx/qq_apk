@@ -1,16 +1,15 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class bdy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bdy(QQSetting paramQQSetting, String paramString) {}
+  public bdy(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityQQSetting.a.b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSetting.b(new bdz(this, localDrawable));
+    this.a.k();
   }
 }
 

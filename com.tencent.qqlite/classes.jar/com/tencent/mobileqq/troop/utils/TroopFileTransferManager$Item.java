@@ -81,7 +81,7 @@ public class TroopFileTransferManager$Item
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.HasThumbnailFile_Large = bool1;
-      this.NickName = paramTroopFileInfo.i;
+      this.NickName = paramTroopFileInfo.k;
       return;
       bool1 = false;
       break;

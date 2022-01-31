@@ -1,9 +1,4 @@
-public abstract interface etz
-{
-  public static final int a = 256;
-  public static final int b = 256;
-  public static final int c = 512;
-}
+public class etz {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.qqlite\classes.jar

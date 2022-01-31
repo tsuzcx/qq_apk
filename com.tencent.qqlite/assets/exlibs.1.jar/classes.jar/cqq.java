@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.adapter.WebBaseFacePreloadExpandableListAdapter;
 
 public class cqq
-  implements Comparator
+  extends Handler
 {
-  public cqq(ConditionSearchManager paramConditionSearchManager) {}
+  public cqq(WebBaseFacePreloadExpandableListAdapter paramWebBaseFacePreloadExpandableListAdapter) {}
   
-  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
+  public void handleMessage(Message paramMessage)
   {
-    int j = paramBaseAddress1.d.compareTo(paramBaseAddress2.d);
-    int i = j;
-    if (j == 0) {
-      i = paramBaseAddress1.c.compareTo(paramBaseAddress2.c);
+    if (paramMessage.what == 1) {
+      this.a.c();
     }
-    return i;
   }
 }
 

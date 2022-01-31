@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
 
 public class ahr
-  implements View.OnClickListener
+  implements Runnable
 {
   public ahr(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a();
+    Card localCard = ((FriendsManager)this.a.app.getManager(43)).b(this.a.app.a());
+    this.a.app.runOnUiThread(new ahs(this, localCard));
   }
 }
 

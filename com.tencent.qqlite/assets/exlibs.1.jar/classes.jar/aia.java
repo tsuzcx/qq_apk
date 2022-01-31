@@ -1,10 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.DevlockPushActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.DetailProfileActivity;
 
 public class aia
-  extends Handler
+  implements DialogInterface.OnKeyListener
 {
-  public aia(DevlockPushActivity paramDevlockPushActivity) {}
+  public aia(DetailProfileActivity paramDetailProfileActivity) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    return false;
+  }
 }
 
 

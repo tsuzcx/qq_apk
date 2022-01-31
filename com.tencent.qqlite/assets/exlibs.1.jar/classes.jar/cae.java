@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class cae
-  implements Runnable
+  extends MessageObserver
 {
-  public cae(TroopChatPie paramTroopChatPie) {}
+  public cae(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void run()
+  protected void e(boolean paramBoolean)
   {
-    this.a.a.E();
+    super.e(paramBoolean);
+    BusinessCmrTmpChatPie.a(this.a).sendEmptyMessage(0);
   }
 }
 

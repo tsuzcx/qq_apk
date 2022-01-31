@@ -34,7 +34,7 @@ public class TroopLocationActivity$UIHandler
     }
     TroopLocationActivity.a(localTroopLocationActivity);
     localTroopLocationActivity.a.B();
-    localTroopLocationActivity.a(1, localTroopLocationActivity.getString(2131363356));
+    localTroopLocationActivity.a(1, localTroopLocationActivity.getString(2131363366));
   }
 }
 

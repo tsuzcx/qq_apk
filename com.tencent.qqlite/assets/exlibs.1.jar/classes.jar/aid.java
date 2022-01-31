@@ -1,29 +1,17 @@
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DetailProfileActivity;
 
 public class aid
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aid(DevlockPushActivity paramDevlockPushActivity) {}
+  public aid(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if ((DevlockPushActivity.a(this.a) != null) && (DevlockPushActivity.a(this.a).isShowing()))
-      {
-        DevlockPushActivity.a(this.a).dismiss();
-        DevlockPushActivity.a(this.a).cancel();
-      }
-      DevlockPushActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {
+      this.a.a.dismiss();
     }
   }
 }

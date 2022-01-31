@@ -114,7 +114,7 @@ public class ImagePreviewActivity
     this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297429));
     this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131297428));
     this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131297427));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296932));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296934));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297421));
     this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131297183));
     this.jdField_a_of_type_AndroidWidgetCheckBox.setOnClickListener(this);
@@ -141,7 +141,7 @@ public class ImagePreviewActivity
   
   private void e()
   {
-    String str = getString(2131363946);
+    String str = getString(2131363957);
     if (this.d != null) {
       str = this.d;
     }
@@ -193,7 +193,7 @@ public class ImagePreviewActivity
       this.jdField_b_of_type_AndroidWidgetTextView.setText(paramInt + 1 + " / " + this.jdField_a_of_type_JavaUtilArrayList.size());
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131363438));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131363449));
   }
   
   protected boolean b()

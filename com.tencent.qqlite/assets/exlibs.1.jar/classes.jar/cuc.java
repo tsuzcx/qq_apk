@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.FriendListHandler;
 
 public class cuc
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
+  public int a;
+  public long a;
+  public String a;
+  public long b = 0L;
+  public long c = 0L;
+  public long d = 0L;
+  public long e;
+  private long f;
   
-  public cuc(MessageHandler paramMessageHandler) {}
-  
-  public cuc(MessageHandler paramMessageHandler, int paramInt1, int paramInt2, int paramInt3)
+  public cuc(FriendListHandler paramFriendListHandler)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

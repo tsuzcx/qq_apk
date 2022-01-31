@@ -1,13 +1,15 @@
 import com.tencent.mobileqq.activity.QQSetting;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
-class bec
-  implements Runnable
+public class bec
+  extends AccountObserver
 {
-  bec(beb parambeb, String paramString) {}
+  public bec(QQSetting paramQQSetting) {}
   
-  public void run()
+  protected void onlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Beb.a.b(this.jdField_a_of_type_JavaLangString);
+    this.a.m();
   }
 }
 

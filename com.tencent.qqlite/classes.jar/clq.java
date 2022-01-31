@@ -1,16 +1,28 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.DiscussionListInnerFrame;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.activity.recent.LocalSearchBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class clq
+  extends SearchResultDialog
 {
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public TextView b;
+  public clq(LocalSearchBar paramLocalSearchBar, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, AdapterView.OnItemClickListener paramOnItemClickListener)
+  {
+    super(paramContext, paramQQAppInterface, paramInt, paramOnItemClickListener);
+  }
   
-  private clq(DiscussionListInnerFrame paramDiscussionListInnerFrame) {}
+  @SuppressLint({"UseSparseArrays"})
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(a(paramContext, paramQQAppInterface));
+    localArrayList.addAll(super.a(paramContext, paramQQAppInterface, paramInt));
+    return localArrayList;
+  }
 }
 
 

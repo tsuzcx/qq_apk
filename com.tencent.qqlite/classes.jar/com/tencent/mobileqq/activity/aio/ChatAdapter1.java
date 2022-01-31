@@ -3,7 +3,8 @@ package com.tencent.mobileqq.activity.aio;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import bso;
+import bsw;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.item.ItemBuilderFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -28,7 +29,7 @@ public class ChatAdapter1
   @Deprecated
   public static String a;
   private Context jdField_a_of_type_AndroidContentContext;
-  bso jdField_a_of_type_Bso = new bso(this, null);
+  bsw jdField_a_of_type_Bsw = new bsw(this, null);
   AIOTimeReporter jdField_a_of_type_ComTencentMobileqqActivityAioAIOTimeReporter;
   SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   public ItemBuilderFactory a;
@@ -42,21 +43,21 @@ public class ChatAdapter1
     jdField_a_of_type_Long = -1L;
   }
   
-  public ChatAdapter1(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public ChatAdapter1(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemItemBuilderFactory = new ItemBuilderFactory(paramContext, paramQQAppInterface, paramSessionInfo);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemItemBuilderFactory = new ItemBuilderFactory(paramContext, paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
   }
   
-  public ChatAdapter1(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, AIOTimeReporter paramAIOTimeReporter)
+  public ChatAdapter1(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, AIOTimeReporter paramAIOTimeReporter, BaseChatPie paramBaseChatPie)
   {
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemItemBuilderFactory = new ItemBuilderFactory(paramContext, paramQQAppInterface, paramSessionInfo);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemItemBuilderFactory = new ItemBuilderFactory(paramContext, paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAIOTimeReporter = paramAIOTimeReporter;
   }
@@ -228,8 +229,8 @@ public class ChatAdapter1
   
   public void b()
   {
-    if (this.jdField_a_of_type_Bso.a != null) {
-      this.jdField_a_of_type_Bso.a.dismiss();
+    if (this.jdField_a_of_type_Bsw.a != null) {
+      this.jdField_a_of_type_Bsw.a.dismiss();
     }
   }
   
@@ -275,7 +276,7 @@ public class ChatAdapter1
         localChatMessage1.mNeedTimeStamp = true;
       }
     }
-    paramView = localChatItemBuilder.a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage1, paramView, paramViewGroup, this.jdField_a_of_type_Bso);
+    paramView = localChatItemBuilder.a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage1, paramView, paramViewGroup, this.jdField_a_of_type_Bsw);
     if (paramView != null) {
       paramView.setTag(2131296295, localChatMessage1);
     }

@@ -1,30 +1,15 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import com.tencent.mobileqq.servlet.ReduFriendObserver;
 
 public class cam
-  implements Runnable
+  extends ReduFriendObserver
 {
-  public cam(TroopChatPie paramTroopChatPie) {}
+  public cam(FriendChatPie paramFriendChatPie) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((TroopChatPie.F(this.a).jdField_a_of_type_Int == 1) && (BaseApplicationImpl.getContext().getSharedPreferences("troop_new_guid", 0).getBoolean(TroopChatPie.G(this.a).jdField_a_of_type_JavaLangString, false))) {}
-    try
-    {
-      long l1 = Long.parseLong(TroopChatPie.H(this.a).jdField_a_of_type_JavaLangString);
-      long l2 = Long.parseLong(TroopChatPie.k(this.a).a());
-      TroopNotificationHelper.a(TroopChatPie.l(this.a), 0, l1, l1, l2, "", (int)System.currentTimeMillis(), "OidbSvc.0x852_48", (short)34, true, false);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    if (paramBoolean) {}
   }
 }
 

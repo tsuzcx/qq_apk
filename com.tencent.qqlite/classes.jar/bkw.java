@@ -1,19 +1,33 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Contacts;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQSetting;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bkw
-  implements Runnable
+  implements View.OnClickListener
 {
   public bkw(SplashActivity paramSplashActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Intent localIntent = new Intent("mqql.intent.action.NOTICE_ON_PCACTIVE");
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("uin", this.a.app.getAccount());
-    BaseApplicationImpl.a().startActivity(localIntent);
+    Object localObject = null;
+    switch (paramView.getId())
+    {
+    default: 
+      paramView = localObject;
+    }
+    for (;;)
+    {
+      this.a.onTabChanged(paramView);
+      return;
+      paramView = Conversation.class.getName();
+      continue;
+      paramView = Contacts.class.getName();
+      continue;
+      paramView = QQSetting.class.getName();
+    }
   }
 }
 

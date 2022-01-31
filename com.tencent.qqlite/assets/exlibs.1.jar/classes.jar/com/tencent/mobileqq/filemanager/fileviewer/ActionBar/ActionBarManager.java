@@ -66,7 +66,7 @@ public class ActionBarManager
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
       ((RelativeLayout)localObject).removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(((RelativeLayout)localObject).getContext(), 2130903405, null));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(((RelativeLayout)localObject).getContext(), 2130903410, null));
     ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a();
     if (localObject == null)

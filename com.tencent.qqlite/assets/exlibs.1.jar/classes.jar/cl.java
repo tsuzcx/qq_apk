@@ -1,13 +1,20 @@
-import com.dataline.mpfile.LiteMpFileFileListActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.mpfile.LiteMpFileDownloadActivity;
+import com.dataline.mpfile.LiteMpFileMainActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class cl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cl(LiteMpFileFileListActivity paramLiteMpFileFileListActivity) {}
+  public cl(LiteMpFileMainActivity paramLiteMpFileMainActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.b();
+    paramView = new Intent(this.a, LiteMpFileDownloadActivity.class);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800421B", "0X800421B", 0, 0, "", "", "", "");
   }
 }
 

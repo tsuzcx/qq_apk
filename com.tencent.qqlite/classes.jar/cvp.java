@@ -1,82 +1,109 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.os.AsyncTask;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.LBSHandler;
+import com.tencent.mobileqq.app.ContactSorter;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQMapActivityProxy;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class cvp
-  extends BroadcastReceiver
+  extends AsyncTask
 {
-  public cvp(QQMapActivityProxy paramQQMapActivityProxy) {}
+  private static final String jdField_a_of_type_JavaLangString = "PhoneContactManager.ContactFriendTask";
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private cvp(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  
+  protected List a(RespondQueryQQBindingStat... paramVarArgs)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("com.tencent.qqlite.addLbsObserver")) {
-      if (QQMapActivityProxy.a(this.a) != null) {
-        QQMapActivityProxy.a(this.a).a(QQMapActivityProxy.a(this.a));
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactManager.ContactFriendTask", 2, "doInBackground");
     }
+    Object localObject = paramVarArgs[0];
+    paramVarArgs = new ArrayList();
+    paramVarArgs.addAll(PhoneContactManagerImp.a(this.a).values());
+    Collections.sort(paramVarArgs, new cvq(this));
+    ArrayList localArrayList = new ArrayList();
+    FriendManager localFriendManager = (FriendManager)PhoneContactManagerImp.a(this.a).getManager(8);
+    Iterator localIterator;
+    if (paramVarArgs.size() > 0)
+    {
+      localObject = ((RespondQueryQQBindingStat)localObject).mobileNo;
+      localIterator = paramVarArgs.iterator();
+    }
+    PhoneContact localPhoneContact;
     do
     {
       do
       {
-        do
+        if (localIterator.hasNext())
         {
-          return;
-          if (!paramContext.equals("com.tencent.mobileqq.removeLbsObserver")) {
-            break;
-          }
-        } while (QQMapActivityProxy.a(this.a) == null);
-        QQMapActivityProxy.a(this.a).c(QQMapActivityProxy.a(this.a));
-        return;
-        if (paramContext.equals("com.tencent.mobileqq.getStreetViewUrl"))
-        {
-          ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).b((int)(paramIntent.getDoubleExtra("latitude", 0.0D) * 1000000.0D), (int)(paramIntent.getDoubleExtra("longitude", 0.0D) * 1000000.0D));
-          return;
+          paramVarArgs = (PhoneContact)localIterator.next();
+          if (!isCancelled()) {}
         }
-        if (paramContext.equals("com.tencent.mobileqq.unregisterReceiver"))
+        else
         {
-          QQMapActivityProxy.a(this.a).unregisterReceiver(QQMapActivityProxy.a(this.a));
-          return;
+          Collections.sort(localArrayList, new cvr(this));
+          return localArrayList;
         }
-        int i;
-        int j;
-        int k;
-        int m;
-        int n;
-        if (paramContext.equals("com.tencent.mobileqq.getLbsShareSearch"))
-        {
-          i = paramIntent.getIntExtra("latitude", 0);
-          j = paramIntent.getIntExtra("longitude", 0);
-          k = paramIntent.getIntExtra("coordinate", 0);
-          paramContext = paramIntent.getStringExtra("keyword");
-          String str = paramIntent.getStringExtra("category");
-          m = paramIntent.getIntExtra("page", 0);
-          n = paramIntent.getIntExtra("count", 0);
-          int i1 = paramIntent.getIntExtra("requireMyLbs", 0);
-          ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).a(i, j, k, paramContext, str, m, n, i1);
-          return;
-        }
-        if (paramContext.equals("com.tencent.mobileqq.getLbsShareShop"))
-        {
-          i = paramIntent.getIntExtra("latitude", 0);
-          j = paramIntent.getIntExtra("longitude", 0);
-          k = paramIntent.getIntExtra("coordinate", 0);
-          m = paramIntent.getIntExtra("begin", 0);
-          n = paramIntent.getIntExtra("count", 0);
-          ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).a(i, j, k, m, n);
-          return;
-        }
-      } while (!paramContext.equals("com.tencent.mobileqq.getShareShopDetail"));
-      paramContext = paramIntent.getStringExtra("shop_id");
-    } while (TextUtils.isEmpty(paramContext));
-    paramIntent = new ArrayList();
-    paramIntent.add(paramContext);
-    ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).a(paramIntent);
+      } while ((localObject != null) && (((String)localObject).endsWith(paramVarArgs.mobileNo.trim())));
+      localPhoneContact = (PhoneContact)paramVarArgs.clone();
+      if (localPhoneContact.pinyinFirst == null) {
+        localPhoneContact.pinyinFirst = PhoneContactManagerImp.d(localPhoneContact.pinyinInitial);
+      }
+    } while (TextUtils.isEmpty(localPhoneContact.uin));
+    if (localPhoneContact.uin.equals("0"))
+    {
+      paramVarArgs = null;
+      label222:
+      if ((paramVarArgs == null) || (paramVarArgs.groupid < 0)) {
+        break label295;
+      }
+      localPhoneContact.nickName = ContactSorter.a(paramVarArgs);
+      localPhoneContact.remark = paramVarArgs.remark;
+      localPhoneContact.faceUrl = Short.toString(paramVarArgs.faceid);
+      localPhoneContact.sortWeight = 262144;
+    }
+    for (;;)
+    {
+      localArrayList.add(localPhoneContact);
+      break;
+      paramVarArgs = localFriendManager.c(localPhoneContact.uin);
+      break label222;
+      label295:
+      localPhoneContact.uin = "0";
+      if (localFriendManager.e(localPhoneContact.nationCode + localPhoneContact.mobileCode))
+      {
+        localPhoneContact.sortWeight = 131072;
+        localPhoneContact.hasSendAddReq = true;
+      }
+      else
+      {
+        localPhoneContact.sortWeight = 65536;
+      }
+    }
+  }
+  
+  protected void a(List paramList)
+  {
+    if (!isCancelled()) {
+      this.a.a(paramList);
+    }
+  }
+  
+  protected void onCancelled()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactManager.ContactFriendTask", 2, "on cancelled");
+    }
+    PhoneContactManagerImp.a(this.a, null);
   }
 }
 

@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901e7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="3.0dip" android:max="100" android:progress="1" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020028" android:minHeight="3.0dip" style="?android:attr/progressBarStyleHorizontal"
+<ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901e8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="3.0dip" android:max="100" android:progress="1" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020028" android:minHeight="3.0dip" style="?android:attr/progressBarStyleHorizontal"
   xmlns:android="http://schemas.android.com/apk/res/android" />

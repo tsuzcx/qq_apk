@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.filemanager.data.OnlineFileSessionInfo;
 
 public class doe
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
+  public doe(FileTransferHandler paramFileTransferHandler, int paramInt1, String paramString1, String paramString2, long paramLong1, short paramShort, boolean paramBoolean, int paramInt2, String paramString3, OnlineFileSessionInfo paramOnlineFileSessionInfo, long paramLong2) {}
   
-  public doe(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = MessageCache.a();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Short, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataOnlineFileSessionInfo, this.jdField_b_of_type_Long);
   }
 }
 

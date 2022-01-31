@@ -1,94 +1,26 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
-import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 
 public class bme
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public bme(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
+  public bme(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public int getCount()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.a.getLayoutInflater().inflate(2130903668, null);
-    }
-    TextView localTextView1 = (TextView)paramViewGroup.findViewById(2131298854);
-    TextView localTextView2 = (TextView)paramViewGroup.findViewById(2131298856);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131298855);
-    GroupCatalogBean localGroupCatalogBean2 = (GroupCatalogBean)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    Object localObject;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean != null) && (localGroupCatalogBean2.jdField_a_of_type_Int < this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean.jdField_a_of_type_Int))
+    if (TroopAssistantActivity.a(this.a) != null)
     {
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
-      paramView = ((GroupCatalogBean)localObject).jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
-      if ((paramView == null) || (paramView.jdField_a_of_type_Int < localGroupCatalogBean2.jdField_a_of_type_Int)) {
-        break label310;
-      }
-      if (!localGroupCatalogBean2.b.equals(paramView.b)) {}
+      TroopAssistantActivity.a(this.a).a(4);
+      this.a.e();
+      this.a.d();
     }
-    label302:
-    label310:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt != 0)
-      {
-        localTextView2.setVisibility(0);
-        localTextView2.setText(((GroupCatalogBean)localObject).jdField_a_of_type_JavaLangString);
-        localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839427, 0);
-      }
-      for (;;)
-      {
-        localTextView1.setText(localGroupCatalogBean2.jdField_a_of_type_JavaLangString);
-        if ((localGroupCatalogBean2.jdField_a_of_type_JavaUtilArrayList == null) || (localGroupCatalogBean2.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-          break label302;
-        }
-        localImageView.setVisibility(0);
-        return paramViewGroup;
-        GroupCatalogBean localGroupCatalogBean1 = paramView.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
-        localObject = paramView;
-        paramView = localGroupCatalogBean1;
-        break;
-        localTextView2.setVisibility(4);
-        continue;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean != null) && (localGroupCatalogBean2.b.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean.b)))
-        {
-          localTextView2.setVisibility(0);
-          localTextView2.setText("");
-          localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839427, 0);
-        }
-        else
-        {
-          localTextView2.setVisibility(4);
-        }
-      }
-      localImageView.setVisibility(4);
-      return paramViewGroup;
+    if (TroopAssistantManager.a().c()) {
+      TroopAssistantManager.a().f(this.a.app);
     }
+    TroopAssistantActivity.a(this.a);
   }
 }
 

@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.TransFileController;
 
 public class aik
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aik(DialogActivity paramDialogActivity) {}
+  public aik(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = this.a.app.a();
-    paramDialogInterface.f();
-    paramDialogInterface.d();
-    this.a.finish();
+    Object localObject = this.a.app.a();
+    localObject = this.a.app.b((String)localObject);
+    this.a.runOnUiThread(new ail(this, (Drawable)localObject));
   }
 }
 

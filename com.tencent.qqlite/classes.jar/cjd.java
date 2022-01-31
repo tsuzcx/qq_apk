@@ -1,20 +1,15 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.phone.TosActivity;
 
 public class cjd
-  implements FMDialogUtil.FMDialogInterface
+  implements View.OnLongClickListener
 {
-  public cjd(PhotoListActivity paramPhotoListActivity) {}
+  public cjd(TosActivity paramTosActivity) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    PhotoListActivity.e(this.a);
-  }
-  
-  public void b()
-  {
-    this.a.c.setClickable(true);
+    return true;
   }
 }
 

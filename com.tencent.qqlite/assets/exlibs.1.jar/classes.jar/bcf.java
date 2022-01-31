@@ -1,7 +1,6 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.widget.ActionSheet;
 
 public class bcf
   implements View.OnClickListener
@@ -10,9 +9,7 @@ public class bcf
   
   public void onClick(View paramView)
   {
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
-    }
+    this.a.finish();
   }
 }
 

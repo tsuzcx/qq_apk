@@ -1,7 +1,7 @@
 package com.tencent.wstt.SSCM;
 
 import com.tencent.mobileqq.utils.httputils.HttpMsg;
-import fjj;
+import flp;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -36,7 +36,7 @@ public class SSCMTimer
   
   private TimerTask a()
   {
-    return new fjj(this);
+    return new flp(this);
   }
   
   public int a()

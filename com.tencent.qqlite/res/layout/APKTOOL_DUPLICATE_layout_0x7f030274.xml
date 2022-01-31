@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/common_strip_setting_top" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="44.0dip"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a6" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a26" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a27" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b008f" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a28" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="16.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f090a27" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a33" android:layout_width="160.0dip" android:layout_height="wrap_content" android:text="" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a34" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a35" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="" />
+</LinearLayout>

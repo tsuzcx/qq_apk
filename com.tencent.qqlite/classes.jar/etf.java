@@ -1,13 +1,22 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.media.MediaPlayer.OnVideoSizeChangedListener;
+import android.view.SurfaceHolder;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
 
-public final class etf
-  implements MediaPlayer.OnCompletionListener
+public class etf
+  implements MediaPlayer.OnVideoSizeChangedListener
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public etf(VideoViewX paramVideoViewX) {}
+  
+  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    paramMediaPlayer.release();
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
+    VideoViewX.a(this.a, paramMediaPlayer.getVideoWidth());
+    VideoViewX.b(this.a, paramMediaPlayer.getVideoHeight());
+    if ((VideoViewX.b(this.a) != 0) && (VideoViewX.c(this.a) != 0))
+    {
+      this.a.getHolder().setFixedSize(VideoViewX.b(this.a), VideoViewX.c(this.a));
+      this.a.requestLayout();
+    }
   }
 }
 

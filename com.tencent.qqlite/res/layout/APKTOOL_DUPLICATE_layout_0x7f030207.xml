@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0908ed" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02009c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0905d0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e010c" />
-    <RelativeLayout android:id="@id/head" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0905d0" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
-        <TextView android:id="@id/title" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0108" />
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09064b" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0115" />
-        <LinearLayout android:id="@id/content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0112">
-            <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e011a" />"
-<TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0908db" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0114" />"
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0904e3" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03005b" />
+    <com.tencent.widget.XListView android:id="@id/common_xlistview" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02009c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0b0011" android:divider="@null" android:dividerHeight="0.0dip" />
 </LinearLayout>
-    </RelativeLayout>
-    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a9" android:id="@id/info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="0.0dip" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c009d" android:layout_marginBottom="20.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0905d0" android:layout_below="@id/head" android:layout_alignParentLeft="true" />
-    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_below="@id/info" />
-</RelativeLayout>

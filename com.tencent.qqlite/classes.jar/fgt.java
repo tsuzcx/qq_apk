@@ -1,23 +1,33 @@
-import com.tencent.util.DumpMemInfoHandler;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
 public class fgt
-  implements Comparator
+  implements Runnable
 {
-  public fgt(DumpMemInfoHandler paramDumpMemInfoHandler) {}
+  public fgt(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void run()
   {
-    int i = ((Integer)((Map.Entry)paramObject1).getValue()).intValue();
-    int j = ((Integer)((Map.Entry)paramObject2).getValue()).intValue();
-    if (i == j) {
-      return 0;
+    try
+    {
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      if (localTMAssistantDownloadTaskInfo != null)
+      {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = localTMAssistantDownloadTaskInfo.mSavePath;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      }
+      StaticAnalyz.a("300", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      return;
     }
-    if (i < j) {
-      return 2;
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
     }
-    return -1;
   }
 }
 

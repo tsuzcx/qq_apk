@@ -1,15 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
 import com.tencent.mobileqq.activity.NearbyPeopleListFrame;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-class aww
+public class aww
   implements View.OnClickListener
 {
-  aww(awu paramawu) {}
+  public aww(NearbyPeopleListFrame paramNearbyPeopleListFrame) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.m();
+    if (!NetworkUtil.e(NearbyPeopleListFrame.a(this.a)))
+    {
+      NearbyPeopleListFrame.a(this.a, 1, NearbyPeopleListFrame.b(this.a).getString(2131363527));
+      return;
+    }
+    this.a.a(false, true);
   }
 }
 

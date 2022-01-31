@@ -1,15 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class bic
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public bic(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public bic(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    RegisterSendUpSms.c(this.a);
+    try
+    {
+      if ((RegisterQQNumberActivity.a(this.a) == null) && (!this.a.isFinishing()))
+      {
+        RegisterQQNumberActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
+        RegisterQQNumberActivity.a(this.a).b(2131363569);
+      }
+      if ((RegisterQQNumberActivity.a(this.a) != null) && (!RegisterQQNumberActivity.a(this.a).isShowing())) {
+        RegisterQQNumberActivity.a(this.a).show();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

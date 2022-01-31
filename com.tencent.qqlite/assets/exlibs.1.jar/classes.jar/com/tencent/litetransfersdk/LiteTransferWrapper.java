@@ -20,11 +20,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.transfile.NetworkCenter;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.uncompress.UncompressSo;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -63,10 +63,26 @@ public class LiteTransferWrapper
   
   static
   {
-    if (BaseApplicationImpl.jdField_a_of_type_Int == 0)
+    try
     {
-      System.load(UncompressSo.GetInstance().GetPath("xplatform"));
-      System.load(UncompressSo.GetInstance().GetPath("litetransfer"));
+      SoLoadUtil.a(BaseApplicationImpl.getContext(), "xplatform", 0, false);
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
+    {
+      for (;;)
+      {
+        try
+        {
+          SoLoadUtil.a(BaseApplicationImpl.getContext(), "litetransfer", 0, false);
+          return;
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+        {
+          localUnsatisfiedLinkError2.printStackTrace();
+        }
+        localUnsatisfiedLinkError1 = localUnsatisfiedLinkError1;
+        localUnsatisfiedLinkError1.printStackTrace();
+      }
     }
   }
   

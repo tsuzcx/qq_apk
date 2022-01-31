@@ -1,26 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.OnTroopListClickListener;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListItem;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListViewItemTag;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class cpn
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public cpn(TroopListAdapter2 paramTroopListAdapter2) {}
+  public cpn(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof TroopListAdapter2.TroopListViewItemTag)) {}
-    do
-    {
-      return;
-      paramView = (TroopListAdapter2.TroopListViewItemTag)paramView;
-    } while ((paramView.a == null) || (paramView.a.a == null));
-    this.a.a.a(paramView.a.a, paramView.a.g);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,21 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.adapter.ContactsSearchResultAdapter;
+import com.tencent.mobileqq.search.ConversationSearchAdapter.SearchResultCallBack;
 
 public class cnm
-  implements Runnable
+  implements ConversationSearchAdapter.SearchResultCallBack
 {
-  public cnm(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public cnm(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListInnerFrame", 2, "read troop members from database before updating data from server");
+    if (1 == paramInt)
+    {
+      if (SelectMemberActivity.a(this.a).getCount() == 0) {
+        SelectMemberActivity.a(this.a).setVisibility(0);
+      }
     }
-    Object localObject = TroopMemberListInnerFrame.a(this.a, this.a.b);
-    localObject = this.a.a.obtainMessage(1, localObject);
-    this.a.a.sendMessage((Message)localObject);
+    else {
+      return;
+    }
+    SelectMemberActivity.a(this.a).setVisibility(8);
   }
 }
 

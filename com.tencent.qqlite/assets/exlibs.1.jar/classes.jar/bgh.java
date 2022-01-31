@@ -1,21 +1,36 @@
-import QQService.SvcDevLoginInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.SecSvcObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bgh
-  implements View.OnClickListener
+  extends SecSvcObserver
 {
-  public bgh(RecentLoginDevActivity paramRecentLoginDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
+  public bgh(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramView.stDeviceItemDes);
-    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, paramView.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
+    boolean bool = true;
+    if (this.a.isFinishing()) {}
+    do
+    {
+      return;
+      if (paramBoolean)
+      {
+        paramString = this.a;
+        if (paramInt == 1) {}
+        for (paramBoolean = bool;; paramBoolean = false)
+        {
+          paramString.a(paramBoolean);
+          return;
+        }
+      }
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(true);
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+    } while (!this.a.isResume());
+    paramString = this.a.getString(2131364230);
+    QQToast.a(this.a.getApplicationContext(), paramString, 0).b(this.a.getTitleBarHeight());
   }
 }
 

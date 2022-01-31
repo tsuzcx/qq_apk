@@ -1,14 +1,16 @@
+import android.view.View;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class asf
-  extends GetRedPointExObserver
+  implements AdapterView.OnItemClickListener
 {
   public asf(Leba paramLeba) {}
   
-  protected void a()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Leba.b(this.a);
+    this.a.a(paramView, paramInt, null);
   }
 }
 

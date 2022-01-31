@@ -1,21 +1,36 @@
-import android.os.Handler;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class aso
-  extends ResourcePluginListener
+  extends CardObserver
 {
   public aso(Leba paramLeba) {}
   
-  public void a(byte paramByte)
+  protected void onNearByProfileSymbolGet(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("CardHandler", 2, "Leba.onNearbyProfileSymbolGet(), isSuccess: " + paramBoolean + " symbol is: " + paramInt + " is leba resume :" + Leba.c(this.a));
     }
-    if (paramByte != -1) {
-      this.a.a.sendEmptyMessage(11340002);
+    if ((Leba.a(this.a) != null) && (Leba.a(this.a).isShowing()))
+    {
+      Leba.a(this.a).dismiss();
+      if (Leba.d(this.a))
+      {
+        if (!paramBoolean) {
+          break label128;
+        }
+        Intent localIntent = new Intent(this.a.a(), NearbyActivity.class);
+        this.a.a(localIntent);
+      }
     }
+    return;
+    label128:
+    QQToast.a(this.a.a(), "检查资料失败，请稍后重试。", 1).a();
   }
 }
 

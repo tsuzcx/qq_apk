@@ -8,22 +8,22 @@ import android.util.Pair;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.Transformation;
-import ewc;
-import ewd;
-import ewe;
-import ewf;
-import ewg;
-import ewh;
+import eyh;
+import eyi;
+import eyj;
+import eyk;
+import eyl;
+import eym;
 import java.lang.reflect.Field;
 
 public class ValueAnimation
   extends Animation
 {
-  static final ewh jdField_a_of_type_Ewh = new ewc();
-  static final ewh b;
-  static final ewh c;
-  static final ewh d = new ewf();
-  static final ewh e = new ewg();
+  static final eym jdField_a_of_type_Eym = new eyh();
+  static final eym b;
+  static final eym c;
+  static final eym d = new eyk();
+  static final eym e = new eyl();
   protected ValueAnimation.AnimationUpdateListener a;
   protected Object a;
   protected boolean a;
@@ -32,12 +32,12 @@ public class ValueAnimation
   protected boolean b;
   protected Object c;
   protected boolean c;
-  protected ewh f;
+  protected eym f;
   
   static
   {
-    jdField_b_of_type_Ewh = new ewd();
-    jdField_c_of_type_Ewh = new ewe();
+    jdField_b_of_type_Eym = new eyi();
+    jdField_c_of_type_Eym = new eyj();
   }
   
   public ValueAnimation(Object paramObject1, Object paramObject2, ValueAnimation.AnimationUpdateListener paramAnimationUpdateListener)
@@ -50,11 +50,11 @@ public class ValueAnimation
     this(paramObject1, paramObject2, paramAnimationUpdateListener, paramBoolean1, paramBoolean2, null);
   }
   
-  public ValueAnimation(Object paramObject1, Object paramObject2, ValueAnimation.AnimationUpdateListener paramAnimationUpdateListener, boolean paramBoolean1, boolean paramBoolean2, ewh paramewh)
+  public ValueAnimation(Object paramObject1, Object paramObject2, ValueAnimation.AnimationUpdateListener paramAnimationUpdateListener, boolean paramBoolean1, boolean paramBoolean2, eym parameym)
   {
     Class localClass = paramObject1.getClass();
-    if (paramewh != null) {
-      this.f = paramewh;
+    if (parameym != null) {
+      this.f = parameym;
     }
     for (;;)
     {
@@ -66,15 +66,15 @@ public class ValueAnimation
       return;
       if (localClass == Integer.class)
       {
-        this.f = jdField_a_of_type_Ewh;
+        this.f = jdField_a_of_type_Eym;
       }
       else if (Float.class == localClass)
       {
-        this.f = jdField_b_of_type_Ewh;
+        this.f = jdField_b_of_type_Eym;
       }
       else if (Rect.class == localClass)
       {
-        this.f = jdField_c_of_type_Ewh;
+        this.f = jdField_c_of_type_Eym;
       }
       else if (Point.class == localClass)
       {

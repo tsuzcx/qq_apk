@@ -1,15 +1,34 @@
-import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public final class abt
-  implements View.OnClickListener
+class abt
+  implements ActionSheet.OnButtonClickListener
 {
-  public abt(Handler paramHandler, Runnable paramRunnable) {}
+  abt(abs paramabs, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 0L);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      ChatActivityFacade.b(this.jdField_a_of_type_Abs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Abs.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      if (!(this.jdField_a_of_type_Abs.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))
+      {
+        this.jdField_a_of_type_Abs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Abs.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+        return;
+      }
+      ((ChatActivity)this.jdField_a_of_type_Abs.jdField_a_of_type_AndroidContentContext).a().a(this.jdField_a_of_type_Abs.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    }
   }
 }
 

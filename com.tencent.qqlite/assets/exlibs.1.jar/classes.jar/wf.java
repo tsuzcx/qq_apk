@@ -21,13 +21,13 @@ public class wf
         this.a.a(paramString);
         return;
       }
-      this.a.a(2131363380);
+      this.a.a(2131363391);
       return;
     }
     paramObject = (RespSearch)paramObject;
     if ((paramObject.vRecords == null) || (paramObject.vRecords.isEmpty()))
     {
-      this.a.a(2131363505);
+      this.a.a(2131363516);
       return;
     }
     if (paramObject.vRecords.size() == 1)

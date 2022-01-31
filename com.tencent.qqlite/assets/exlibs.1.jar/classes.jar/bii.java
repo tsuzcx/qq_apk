@@ -1,23 +1,15 @@
-import android.os.Handler;
-import android.widget.Button;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterSendUpSms;
 
 public class bii
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   public bii(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (RegisterSendUpSms.a(this.a) == 1)
-    {
-      RegisterSendUpSms.a(this.a).setText(2131363343);
-      RegisterSendUpSms.a(this.a).setEnabled(true);
-      return;
-    }
-    RegisterSendUpSms.b(this.a);
-    RegisterSendUpSms.a(this.a).setText(this.a.getString(2131363343) + "(" + RegisterSendUpSms.a(this.a) + ")");
-    this.a.b.postDelayed(this, 1000L);
+    paramDialogInterface.dismiss();
   }
 }
 

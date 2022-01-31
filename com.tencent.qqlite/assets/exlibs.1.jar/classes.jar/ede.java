@@ -1,11 +1,16 @@
-class ede
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.RichStatusEditText;
+
+public class ede
   implements Runnable
 {
-  ede(edd paramedd, long paramLong1, long paramLong2) {}
+  public ede(EditActivity paramEditActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Edd.b(this.jdField_a_of_type_Long, this.b);
+    EditActivity.a(this.a).requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(EditActivity.a(this.a), 2);
   }
 }
 

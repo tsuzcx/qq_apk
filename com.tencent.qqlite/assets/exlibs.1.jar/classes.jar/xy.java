@@ -18,7 +18,7 @@ public class xy
     for (int i = 1;; i = 0)
     {
       ReportController.b(paramCompoundButton, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131363054), "qqsetting_screenshot_key", paramBoolean);
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131363064), "qqsetting_screenshot_key", paramBoolean);
       if (!paramBoolean) {
         break;
       }

@@ -1,15 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
 
 public class ego
-  implements Runnable
+  extends URLDrawableDownListener.Adapter
 {
-  public ego(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
+  public ego(StructMsgForHypertext paramStructMsgForHypertext) {}
   
-  public void run()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    QQToast.a(BaseApplicationImpl.a, "WebP格式的图片不支持原图发送，请使用标清质量来发送。", 1).a();
+    paramView.setBackgroundDrawable(null);
   }
 }
 

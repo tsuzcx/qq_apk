@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import bdw;
+import beb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.startup.step.Step;
@@ -15,7 +15,7 @@ public class QQMapActivity$MapRuntime
   extends PluginRuntime
   implements Thread.UncaughtExceptionHandler
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bdw(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new beb(this);
   private Thread.UncaughtExceptionHandler jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler;
   
   protected void onCreate(Bundle paramBundle)

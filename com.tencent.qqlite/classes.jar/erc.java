@@ -1,49 +1,37 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
 
-public class erc
-  implements AudioManager.OnAudioFocusChangeListener
+class erc
+  implements Runnable
 {
-  public erc(VideoViewX paramVideoViewX) {}
+  erc(erb paramerb, TroopUploadingThread.UploadState paramUploadState) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    AvatarWallAdapter.m = 0;
+    this.jdField_a_of_type_Erb.a.n = 0;
+    int i = this.jdField_a_of_type_Erb.a.b - this.jdField_a_of_type_Erb.a.j;
+    if (i >= 8) {}
+    String str;
+    do
     {
-    case 0: 
-    default: 
-    case -2: 
-    case -1: 
-    case -3: 
       do
       {
-        return;
-        if (this.a.a())
+        do
         {
-          this.a.c = true;
-          this.a.b();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(VideoViewX.a(this.a), 2, "onAudioFocusChange,loss focus");
-        }
-        this.a.b = false;
+          return;
+          if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.a != 1) {
+            break;
+          }
+          this.jdField_a_of_type_Erb.a.a(i, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.b, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.c);
+        } while (this.jdField_a_of_type_Erb.a.a(this.jdField_a_of_type_Erb.a.g));
+        this.jdField_a_of_type_Erb.a.d = false;
+        this.jdField_a_of_type_Erb.a.b();
         return;
-      } while ((this.a.a()) && (!QLog.isColorLevel()));
-      QLog.d(VideoViewX.a(this.a), 2, "onAudioFocusChange,temporarily lost audio focus");
-      return;
-    }
-    if (VideoViewX.a(this.a) != null) {
-      VideoViewX.a(this.a).setVolume(1.0F, 1.0F);
-    }
-    if ((!this.a.a()) && (this.a.c)) {
-      this.a.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoViewX.a(this.a), 2, "onAudioFocusChange,gain focus");
-    }
-    this.a.b = true;
+      } while (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.a != 2);
+      str = this.jdField_a_of_type_Erb.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.b);
+    } while (str == null);
+    this.jdField_a_of_type_Erb.a.a(str, i);
   }
 }
 

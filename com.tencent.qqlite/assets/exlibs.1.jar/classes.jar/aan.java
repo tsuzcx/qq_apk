@@ -1,18 +1,15 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View.OnTouchListener;
 
 class aan
-  implements Runnable
+  implements View.OnTouchListener
 {
   aan(aam paramaam) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((BaseChatPie.b(this.a.a.a) != null) && (BaseChatPie.b(this.a.a.a).getParent() != null)) {
-      ((ViewGroup)BaseChatPie.b(this.a.a.a).getParent()).removeView(BaseChatPie.b(this.a.a.a));
-    }
-    BaseChatPie.b(this.a.a.a, null);
+    return true;
   }
 }
 

@@ -1,37 +1,19 @@
-import android.hardware.SensorManager;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
 
 public class adk
-  implements AudioPlayer.AudioPlayerListener
+  implements DialogInterface.OnClickListener
 {
   public adk(ChatHistory paramChatHistory) {}
   
-  public void a(AudioPlayer paramAudioPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.k();
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-    this.a.setVolumeControlStream(3);
-    ChatHistory.a(this.a).unregisterListener(this.a);
+    ChatHistory.a(this.a).setEnabled(true);
+    this.a.c.dismiss();
   }
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.a(2131363178);
-    this.a.setVolumeControlStream(3);
-    ChatHistory.a(this.a).unregisterListener(this.a);
-  }
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.setVolumeControlStream(paramInt);
-  }
-  
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

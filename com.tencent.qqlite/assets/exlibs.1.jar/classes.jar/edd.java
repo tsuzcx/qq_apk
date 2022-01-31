@@ -1,69 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.service.HttpNotify;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.richstatus.EditActivity;
 
 public class edd
-  implements HttpNotify
+  implements DialogInterface.OnDismissListener
 {
-  private long jdField_a_of_type_Long = 0L;
-  private HttpNotify jdField_a_of_type_ComTencentMobileqqServiceHttpNotify;
+  public edd(EditActivity paramEditActivity) {}
   
-  public edd(HttpNotify paramHttpNotify)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify = paramHttpNotify;
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new ede(this, paramLong1, paramLong2));
-      return;
+    if (this.a.c != 0) {
+      this.a.f();
     }
-    b(paramLong1, paramLong2);
-  }
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 200L) {
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new edf(this, paramLong1, paramLong2, paramLong3));
-      return;
-    }
-    b(paramLong1, paramLong2, paramLong3);
-  }
-  
-  public void a(long paramLong1, boolean paramBoolean, long paramLong2)
-  {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new edg(this, paramLong1, paramBoolean, paramLong2));
-      return;
-    }
-    b(paramLong1, paramBoolean, paramLong2);
-  }
-  
-  public void b(long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify.a(paramLong1, paramLong2);
-  }
-  
-  public void b(long paramLong1, long paramLong2, long paramLong3)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify.a(paramLong1, paramLong2, paramLong3);
-  }
-  
-  public void b(long paramLong1, boolean paramBoolean, long paramLong2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify.a(paramLong1, paramBoolean, paramLong2);
   }
 }
 

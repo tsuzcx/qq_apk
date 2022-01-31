@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.SystemMsgController;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ehg
   implements Runnable
 {
-  public ehg(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
+  public ehg(SystemMsgController paramSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
   
   public void run()
   {
-    this.a.w();
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean("system_msg_nomore_msg", this.jdField_a_of_type_Boolean).commit();
+    }
   }
 }
 

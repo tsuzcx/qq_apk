@@ -1,33 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
 
 public class bjk
-  extends Handler
+  implements View.OnClickListener
 {
   public bjk(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if ((SetTroopAdminsActivity.a(this.a) > 0) && (SetTroopAdminsActivity.a(this.a) <= SetTroopAdminsActivity.a(this.a).size()))
     {
-    default: 
-    case 1: 
-    case 2: 
-      do
-      {
-        return;
-        SetTroopAdminsActivity.a(this.a);
-        SetTroopAdminsActivity.a(this.a).clear();
-        SetTroopAdminsActivity.a(this.a).addAll((ArrayList)paramMessage.obj);
-        SetTroopAdminsActivity.a(this.a).notifyDataSetChanged();
-        SetTroopAdminsActivity.a(this.a);
-      } while (SetTroopAdminsActivity.b(this.a));
-      SetTroopAdminsActivity.c(this.a);
+      QQToast.a(this.a, 1, String.format(this.a.getString(2131362875), new Object[] { Integer.valueOf(SetTroopAdminsActivity.a(this.a)) }), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    SetTroopAdminsActivity.d(this.a);
+    paramView = new Intent(this.a, TroopMemberListActivity.class);
+    paramView.putExtra("troop_code", SetTroopAdminsActivity.a(this.a));
+    paramView.putExtra("troop_uin", SetTroopAdminsActivity.b(this.a));
+    paramView.putExtra("param_from", 2);
+    this.a.startActivityForResult(paramView, 0);
+    try
+    {
+      ReportController.b(this.a.app, "P_CliOper", "Grp_mber", "", "mber_list", "Clk_mberlist", 0, 0, SetTroopAdminsActivity.a(this.a), "3", "0", "");
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import arh;
+import arm;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
 public class JobSelectionActivity
@@ -20,21 +20,21 @@ public class JobSelectionActivity
   public static final String e = "param_need_no_limit";
   private int jdField_a_of_type_Int;
   private ListView jdField_a_of_type_AndroidWidgetListView;
-  private arh jdField_a_of_type_Arh;
+  private arm jdField_a_of_type_Arm;
   private boolean jdField_a_of_type_Boolean = false;
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903491);
-    setTitle(2131362831);
-    setLeftViewName(2131364492);
+    setContentView(2130903499);
+    setTitle(2131362838);
+    setLeftViewName(2131364503);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("param_id", -1);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("param_need_no_limit", false);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131298199));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131298221));
     this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Arh = new arh(this, null);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Arh);
+    this.jdField_a_of_type_Arm = new arm(this, null);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Arm);
     return true;
   }
   
@@ -43,7 +43,7 @@ public class JobSelectionActivity
     if (this.jdField_a_of_type_Boolean) {}
     for (this.jdField_a_of_type_Int = paramInt;; this.jdField_a_of_type_Int = (paramInt + 1))
     {
-      this.jdField_a_of_type_Arh.notifyDataSetChanged();
+      this.jdField_a_of_type_Arm.notifyDataSetChanged();
       paramAdapterView = new Intent();
       paramAdapterView.putExtra("param_id", this.jdField_a_of_type_Int);
       paramAdapterView.putExtra("param_tag", com.tencent.mobileqq.util.NearbyProfileUtil.e[this.jdField_a_of_type_Int]);

@@ -65,7 +65,7 @@ public class AboutActivity
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText("有新版本可用");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839338));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130839403));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new uw(this));
   }
   
@@ -78,7 +78,7 @@ public class AboutActivity
     }
     paramFormSimpleItem.setVisibility(0);
     if (paramResourcePluginInfo.isNew == 0) {
-      paramFormSimpleItem.setRightIcon(getResources().getDrawable(2130839338));
+      paramFormSimpleItem.setRightIcon(getResources().getDrawable(2130839403));
     }
     for (;;)
     {
@@ -100,72 +100,81 @@ public class AboutActivity
     this.app.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper = UpgradeController.a().a();
     setContentView(2130903040);
-    setTitle(2131363806);
+    setTitle(2131363817);
     paramBundle = this.app.a();
-    Object localObject = (TextView)findViewById(2131296421);
-    ((TextView)localObject).setText("V 3.4.0.607");
+    Object localObject = (TextView)findViewById(2131296423);
+    ((TextView)localObject).setText("V 3.5.0.660");
     ((TextView)localObject).setFocusable(true);
     ((TextView)localObject).setFocusableInTouchMode(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296434));
-    localObject = new SpannableString(this.jdField_a_of_type_AndroidWidgetTextView.getText());
-    ((SpannableString)localObject).setSpan(new uz(this, this.jdField_a_of_type_JavaLangString), 0, this.jdField_a_of_type_AndroidWidgetTextView.getText().length(), 17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296435));
-    localObject = new SpannableString(this.jdField_b_of_type_AndroidWidgetTextView.getText());
-    ((SpannableString)localObject).setSpan(new uz(this, this.jdField_b_of_type_JavaLangString), 0, this.jdField_b_of_type_AndroidWidgetTextView.getText().length(), 17);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    this.jdField_b_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
-    findViewById(2131296433).setFocusable(true);
-    findViewById(2131296433).setFocusableInTouchMode(true);
-    findViewById(2131296437).setFocusable(true);
-    findViewById(2131296437).setFocusableInTouchMode(true);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296436));
-    localObject = new SpannableString(this.jdField_c_of_type_AndroidWidgetTextView.getText());
-    ((SpannableString)localObject).setSpan(new uz(this, this.jdField_c_of_type_JavaLangString + "&sid=" + this.app.getSid()), 0, this.jdField_c_of_type_AndroidWidgetTextView.getText().length(), 17);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    this.jdField_c_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131296423));
-    a(paramBundle);
-    localObject = paramBundle.a("com.tx.aboutfunction");
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131296425));
-    if (localObject != null)
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296436));
+    if (!"10000512".equals(AppSetting.a(this)))
     {
-      a(paramBundle, (ResourcePluginInfo)localObject, this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem);
-      localObject = paramBundle.a("com.tx.aboutimage");
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131296427));
+      localObject = new SpannableString(this.jdField_a_of_type_AndroidWidgetTextView.getText());
+      ((SpannableString)localObject).setSpan(new uz(this, this.jdField_a_of_type_JavaLangString), 0, this.jdField_a_of_type_AndroidWidgetTextView.getText().length(), 17);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296438));
+      localObject = new SpannableString(this.jdField_b_of_type_AndroidWidgetTextView.getText());
+      ((SpannableString)localObject).setSpan(new uz(this, this.jdField_b_of_type_JavaLangString), 0, this.jdField_b_of_type_AndroidWidgetTextView.getText().length(), 17);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      this.jdField_b_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
+      findViewById(2131296435).setFocusable(true);
+      findViewById(2131296435).setFocusableInTouchMode(true);
+      findViewById(2131296440).setFocusable(true);
+      findViewById(2131296440).setFocusableInTouchMode(true);
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296439));
+      localObject = new SpannableString(this.jdField_c_of_type_AndroidWidgetTextView.getText());
+      ((SpannableString)localObject).setSpan(new uz(this, this.jdField_c_of_type_JavaLangString + "&sid=" + this.app.getSid()), 0, this.jdField_c_of_type_AndroidWidgetTextView.getText().length(), 17);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      this.jdField_c_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131296425));
+      if ("10000512".equals(AppSetting.a(this))) {
+        break label1049;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(0);
+      a(paramBundle);
+      label429:
+      localObject = paramBundle.a("com.tx.aboutfunction");
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131296427));
       if (localObject == null) {
-        break label1000;
+        break label1073;
+      }
+      a(paramBundle, (ResourcePluginInfo)localObject, this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem);
+      label465:
+      localObject = paramBundle.a("com.tx.aboutimage");
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131296429));
+      if (localObject == null) {
+        break label1085;
       }
       a(paramBundle, (ResourcePluginInfo)localObject, this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem);
-      label464:
+      label501:
       localObject = paramBundle.a("com.tx.abouthelp");
-      this.d = ((FormSimpleItem)findViewById(2131296431));
+      this.d = ((FormSimpleItem)findViewById(2131296433));
       if (localObject == null) {
-        break label1012;
+        break label1097;
       }
       a(paramBundle, (ResourcePluginInfo)localObject, this.d);
     }
     for (;;)
     {
-      this.e = ((FormSimpleItem)findViewById(2131296429));
+      this.e = ((FormSimpleItem)findViewById(2131296431));
       this.e.setVisibility(0);
       this.e.setOnClickListener(new ut(this));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296420));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296422));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new uu(this));
       paramBundle = "appid: " + String.valueOf(AppSetting.jdField_a_of_type_Int) + "\n";
-      paramBundle = paramBundle + "LC: B4663756AFAD5954\n";
-      paramBundle = paramBundle + "buildNum: 607\n";
+      paramBundle = paramBundle + "LC: A806C1BBC858BBCE\n";
+      paramBundle = paramBundle + "buildNum: 660\n";
       paramBundle = paramBundle + "isDebugVersion: " + String.valueOf(false) + "\n";
-      paramBundle = paramBundle + "subVersion: 3.4.0\n";
+      paramBundle = paramBundle + "subVersion: 3.5.0\n";
       paramBundle = paramBundle + "productID: 130\n";
       paramBundle = paramBundle + "quaAppName: AQQ_2013 4.6\n";
       paramBundle = paramBundle + "supVersion: 2013\n";
-      paramBundle = paramBundle + "revision: 108074\n";
+      paramBundle = paramBundle + "revision: 108360\n";
       paramBundle = paramBundle + "isSkinEngieAccelerated: " + String.valueOf(true) + "\n";
-      paramBundle = paramBundle + "reportVersionName: 3.4.0.607\n";
-      paramBundle = paramBundle + "aboutSubVersionName: V 3.4.0.607\n";
-      paramBundle = paramBundle + "aboutSubVersionLog: 3.4.0.607.2015-11-16.r108074.YingYongBao\n";
+      paramBundle = paramBundle + "reportVersionName: 3.5.0.660\n";
+      paramBundle = paramBundle + "aboutSubVersionName: V 3.5.0.660\n";
+      paramBundle = paramBundle + "aboutSubVersionLog: 3.5.0.660.2016-06-24.r108360.YingYongBao\n";
       paramBundle = paramBundle + "isPublicVersion: true\n";
       paramBundle = paramBundle + "versioncode: " + ApkUtils.a(this) + "\n";
       paramBundle = paramBundle + "amem: " + DeviceInfoUtil.d() / 1024L / 1024L + "\n";
@@ -173,12 +182,20 @@ public class AboutActivity
         QLog.d("script", 2, paramBundle);
       }
       return true;
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      findViewById(2131296437).setVisibility(8);
       break;
-      label1000:
+      label1049:
+      findViewById(2131296424).setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
+      break label429;
+      label1073:
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
+      break label465;
+      label1085:
       this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
-      break label464;
-      label1012:
+      break label501;
+      label1097:
       this.d.setVisibility(8);
     }
   }

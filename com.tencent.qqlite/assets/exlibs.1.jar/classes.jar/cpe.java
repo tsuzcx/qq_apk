@@ -1,23 +1,31 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class cpe
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public cpe(DiscussionListAdapter2 paramDiscussionListAdapter2) {}
+  public cpe(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof cpf)) {}
-    do
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
+    }
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
     {
-      return;
-      paramView = (cpf)paramView;
-    } while (paramView.a == null);
-    this.a.a.a(paramView.a);
+      ShortVideoPlayActivity.c(this.a);
+      if (ShortVideoPlayActivity.a(this.a) != null) {
+        ShortVideoPlayActivity.a(this.a).setVisibility(0);
+      }
+      if (ShortVideoPlayActivity.b(this.a) != null) {
+        ShortVideoPlayActivity.b(this.a).setVisibility(0);
+      }
+    }
   }
 }
 

@@ -1,28 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.thridappshare.ThridAppShareHelper;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.ForwardOperations.CancelCallback;
 
-class ane
-  implements Runnable
+public class ane
+  implements DialogInterface.OnClickListener
 {
-  ane(ana paramana, Drawable paramDrawable) {}
+  public ane(ForwardOperations paramForwardOperations) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()))
-    {
-      ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a.get("PhotoConst.PHOTO_PATHS");
-      if (localArrayList != null) {
-        this.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true, localArrayList.size());
-      }
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true, 0);
+    ThridAppShareHelper.a(this.a.H, "app_share_cancle", "", "", "");
   }
 }
 

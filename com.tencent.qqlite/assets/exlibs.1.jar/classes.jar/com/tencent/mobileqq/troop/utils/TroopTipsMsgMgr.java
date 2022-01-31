@@ -474,11 +474,16 @@ public class TroopTipsMsgMgr
   
   public void a(TroopTipsEntity paramTroopTipsEntity)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (paramTroopTipsEntity == null)) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (paramTroopTipsEntity == null)) {}
+    ArrayList localArrayList;
+    MessageForGrayTips localMessageForGrayTips;
+    do
+    {
       return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(a(paramTroopTipsEntity));
+      localArrayList = new ArrayList();
+      localMessageForGrayTips = a(paramTroopTipsEntity);
+    } while (TextUtils.isEmpty(localMessageForGrayTips.msg));
+    localArrayList.add(localMessageForGrayTips);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
     b(paramTroopTipsEntity.troopUin, paramTroopTipsEntity.msgSeq + "");
   }

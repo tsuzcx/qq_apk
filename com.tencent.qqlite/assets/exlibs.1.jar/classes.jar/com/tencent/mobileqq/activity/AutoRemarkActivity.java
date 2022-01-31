@@ -119,18 +119,18 @@ public class AutoRemarkActivity
   {
     if (this.e == 0)
     {
-      paramInt = 2131363617;
+      paramInt = 2131363628;
       setTitle(paramInt);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131296593);
-      this.b = findViewById(2131296595);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131296594));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296596));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131296596);
+      this.b = findViewById(2131296598);
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131296597));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296599));
       if (this.e != 0) {
-        break label349;
+        break label351;
       }
     }
-    label349:
-    for (paramInt = 2131363072;; paramInt = 2131363433)
+    label351:
+    for (paramInt = 2131363082;; paramInt = 2131363444)
     {
       a(paramInt, this);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(a(this.jdField_g_of_type_Int));
@@ -155,10 +155,10 @@ public class AutoRemarkActivity
       c(true);
       this.h.setContentDescription("返回" + this.h.getText().toString() + "界面");
       this.jdField_a_of_type_AndroidViewView.setFocusable(true);
-      this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131363031) + this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+      this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131363041) + this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
       this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(null);
       return;
-      paramInt = 2131362802;
+      paramInt = 2131362809;
       break;
     }
   }
@@ -231,7 +231,7 @@ public class AutoRemarkActivity
   {
     if (NetworkUtil.e(this))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363381);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363392);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       Intent localIntent = getIntent();
       int m = localIntent.getIntExtra("friend_setting", 0);
@@ -248,7 +248,7 @@ public class AutoRemarkActivity
       }
       return;
     }
-    QQToast.a(this.app.a(), 1, getString(2131363450), 0).b(getTitleBarHeight());
+    QQToast.a(this.app.a(), 1, getString(2131363461), 0).b(getTitleBarHeight());
   }
   
   private boolean c()
@@ -262,19 +262,19 @@ public class AutoRemarkActivity
     {
       if (a(0))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363381);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363392);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
       return;
     }
-    QQToast.a(this.app.a(), 1, getString(2131363450), 0).b(getTitleBarHeight());
+    QQToast.a(this.app.a(), 1, getString(2131363461), 0).b(getTitleBarHeight());
   }
   
   private void e()
   {
     if (NetworkUtil.e(this))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363381);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363392);
       Intent localIntent = getIntent();
       long l1 = localIntent.getLongExtra("lToMobile", 0L);
       byte[] arrayOfByte = localIntent.getByteArrayExtra("sig");
@@ -284,7 +284,7 @@ public class AutoRemarkActivity
       this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(0, Long.parseLong(this.jdField_f_of_type_JavaLangString), l1, arrayOfByte, (byte)this.jdField_g_of_type_Int, str, l2, l3);
       return;
     }
-    QQToast.a(this.app.a(), 1, getString(2131363450), 0).b(getTitleBarHeight());
+    QQToast.a(this.app.a(), 1, getString(2131363461), 0).b(getTitleBarHeight());
   }
   
   private void f()
@@ -356,7 +356,7 @@ public class AutoRemarkActivity
         this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramEditable.length());
       }
     }
-    this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131363031) + this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+    this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131363041) + this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -385,7 +385,7 @@ public class AutoRemarkActivity
   {
     super.doOnCreate(paramBundle);
     setContentView(2130903072);
-    d(2130837635);
+    d(2130837660);
     this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.app.a(1));
     Intent localIntent = getIntent();
     this.e = localIntent.getIntExtra("param_mode", 0);
@@ -399,7 +399,7 @@ public class AutoRemarkActivity
     if (((paramBundle == null) || (this.e == 1)) && (NetworkUtil.e(this)) && (c()))
     {
       this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(this.jdField_f_of_type_JavaLangString, getIntent().getIntExtra("source_id", 10004), getIntent().getIntExtra("sub_source_id", 0));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363215);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363225);
     }
     f();
     return true;
@@ -417,7 +417,7 @@ public class AutoRemarkActivity
     if (paramView == this.jdField_a_of_type_AndroidViewView)
     {
       paramView = new Intent(this, EditActivity.class);
-      paramView.putExtra("title", 2131363613).putExtra("limit", 96).putExtra("canPostNull", true).putExtra("hint", getResources().getString(2131363616)).putExtra("multiLine", false);
+      paramView.putExtra("title", 2131363624).putExtra("limit", 96).putExtra("canPostNull", true).putExtra("hint", getResources().getString(2131363627)).putExtra("multiLine", false);
       if ((this.jdField_a_of_type_AndroidWidgetEditText.getText() != null) && (this.jdField_a_of_type_AndroidWidgetEditText.getText().length() > 0)) {
         paramView.putExtra("current", this.jdField_a_of_type_AndroidWidgetEditText.getText());
       }

@@ -8,12 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import bv;
+import bw;
 import by;
 import bz;
+import ca;
 import cb;
-import cc;
-import cd;
-import ce;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -35,7 +35,7 @@ public class LiteMpFileDownloadActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener, AdapterView.OnItemClickListener, Observer
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cc(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bz(this);
   public View.OnClickListener a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private MpfileTaskListAdapter jdField_a_of_type_ComDatalineMpfileMpfileTaskListAdapter;
@@ -43,11 +43,11 @@ public class LiteMpFileDownloadActivity
   private SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView;
   private String jdField_a_of_type_JavaLangString = "";
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  public View.OnClickListener b = new ce(this);
+  public View.OnClickListener b = new cb(this);
   
   public LiteMpFileDownloadActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new cd(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ca(this);
   }
   
   public void a()
@@ -81,24 +81,24 @@ public class LiteMpFileDownloadActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903445);
+    setContentView(2130903450);
     setTitle(getResources().getString(2131361920));
     this.jdField_a_of_type_ComDatalineMpfileMpfileTaskListAdapter = new MpfileTaskListAdapter(this, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.b);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_ComDatalineMpfileMpfileTaskListAdapter.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131296662));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131296665));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_ComDatalineMpfileMpfileTaskListAdapter);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setLongClickable(true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = new ScrollerRunnable(this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView);
     this.jdField_a_of_type_ComDatalineMpfileMpfileTaskListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(new by(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(new bv(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setTranscriptMode(0);
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.dataline.mpfile.download_progress");
     paramBundle.addAction("com.dataline.mpfile.download_completed");
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-    ThreadManager.b(new bz(this));
+    ThreadManager.b(new bw(this));
     return false;
   }
   
@@ -115,7 +115,7 @@ public class LiteMpFileDownloadActivity
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    runOnUiThread(new cb(this));
+    runOnUiThread(new by(this));
   }
 }
 

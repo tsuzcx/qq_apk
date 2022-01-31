@@ -1,40 +1,83 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.Frame;
-import com.tencent.mobileqq.app.FrameActivity.TabInfo;
-import java.util.List;
 
 public class awq
-  extends PagerAdapter
+  implements Animation.AnimationListener
 {
-  private awq(NearbyActivity paramNearbyActivity) {}
+  public awq(NearbyActivity paramNearbyActivity, int paramInt) {}
   
-  public void destroyItem(View paramView, int paramInt, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramObject != null) {
-      ((ViewPager)paramView).removeView((View)paramObject);
+    if (this.jdField_a_of_type_Int == 0) {
+      if (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity) != null)
+      {
+        paramAnimation = new Message();
+        paramAnimation.what = 1;
+        paramAnimation.arg1 = (this.jdField_a_of_type_Int + 1);
+        NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity).sendMessageDelayed(paramAnimation, 100L);
+      }
     }
+    label214:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if ((this.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Int != 6)) {
+            break;
+          }
+        } while (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity) == null);
+        paramAnimation = new Message();
+        paramAnimation.what = 1;
+        paramAnimation.arg1 = (this.jdField_a_of_type_Int + 1);
+        paramAnimation.arg2 = 1001;
+        NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity).sendMessageDelayed(paramAnimation, 200L);
+        return;
+        if (this.jdField_a_of_type_Int != 7) {
+          break label214;
+        }
+        if (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity)) {
+          break;
+        }
+      } while (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity) == null);
+      paramAnimation = new Message();
+      paramAnimation.what = 1;
+      paramAnimation.arg1 = (this.jdField_a_of_type_Int + 1);
+      NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity).sendMessageDelayed(paramAnimation, 50L);
+      return;
+      NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity, this.jdField_a_of_type_Int, 7, 70L);
+      return;
+      if (this.jdField_a_of_type_Int != 8) {
+        break;
+      }
+      NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity, true);
+      NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity)[this.jdField_a_of_type_Int].clearAnimation();
+      ((ViewGroup.MarginLayoutParams)NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity)[this.jdField_a_of_type_Int].getLayoutParams()).topMargin = ((int)(55.0F * this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.getResources().getDisplayMetrics().density));
+      NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity)[this.jdField_a_of_type_Int].requestLayout();
+    } while (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity) == null);
+    paramAnimation = new Message();
+    paramAnimation.what = 1;
+    paramAnimation.arg1 = 7;
+    paramAnimation.arg2 = 1002;
+    NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity).sendMessageDelayed(paramAnimation, 300L);
+    return;
+    NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity, this.jdField_a_of_type_Int, 10, 50L);
   }
   
-  public int getCount()
-  {
-    return NearbyActivity.a(this.a).size();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public Object instantiateItem(View paramView, int paramInt)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    View localView = ((FrameActivity.TabInfo)NearbyActivity.a(this.a).get(paramInt)).a.a();
-    if ((localView.getParent() != paramView) && (paramInt < getCount())) {
-      ((ViewPager)paramView).addView(localView);
-    }
-    return localView;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity)[this.jdField_a_of_type_Int].setVisibility(0);
   }
 }
 

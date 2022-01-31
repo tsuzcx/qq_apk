@@ -1,32 +1,27 @@
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.widget.MenuPopupDialog;
 
-public class bhx
-  implements Runnable
+class bhx
+  implements View.OnClickListener
 {
-  public bhx(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  bhx(bhw parambhw) {}
   
-  public void run()
+  @SuppressLint({"NewApi"})
+  public void onClick(View paramView)
   {
-    try
+    if (RegisterQQNumberActivity.a(this.a.a) != null) {
+      RegisterQQNumberActivity.a(this.a.a).dismiss();
+    }
+    if (Build.VERSION.SDK_INT < 11)
     {
-      if ((RegisterQQNumberActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        RegisterQQNumberActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-        RegisterQQNumberActivity.a(this.a).b(2131363558);
-      }
-      if ((RegisterQQNumberActivity.a(this.a) != null) && (!RegisterQQNumberActivity.a(this.a).isShowing())) {
-        RegisterQQNumberActivity.a(this.a).show();
-      }
+      ((android.text.ClipboardManager)this.a.a.getSystemService("clipboard")).setText(RegisterQQNumberActivity.a(this.a.a) + "");
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    ((android.content.ClipboardManager)this.a.a.getSystemService("clipboard")).setText(RegisterQQNumberActivity.a(this.a.a) + "");
   }
 }
 

@@ -1,24 +1,24 @@
-import android.content.Context;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.mobileqq.vas.ClubContentJsonTask;
-import com.tencent.mobileqq.vas.ClubContentJsonTask.TaskInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 
-public final class eww
-  implements Runnable
+public class eww
+  implements View.OnClickListener
 {
-  public eww(ClubContentJsonTask.TaskInfo paramTaskInfo, File paramFile, Context paramContext, int paramInt) {}
+  int jdField_a_of_type_Int;
   
-  public void run()
+  public eww(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, int paramInt)
   {
-    boolean bool = HttpDownloadUtil.a(null, EmosmUtils.insertMtype("VIP_other", this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo.b), this.jdField_a_of_type_JavaIoFile);
-    if (QLog.isColorLevel()) {
-      QLog.d("ClubContentJsonTask", 2, "updateJson, " + this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo.b + ",ret=" + bool);
-    }
-    if (bool) {
-      ClubContentJsonTask.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo.d, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
     }
   }
 }

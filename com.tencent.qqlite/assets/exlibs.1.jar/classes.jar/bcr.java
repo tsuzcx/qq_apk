@@ -1,102 +1,80 @@
-import android.content.res.Resources;
-import android.text.TextUtils.TruncateAt;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.biz.anonymous.AnonymousChatHelper;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.NewFriendManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.managers.QQLSRecentManager;
 import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.utils.ActionMsgUtil;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.newfriend.NewFriendMessage;
+import com.tencent.mobileqq.utils.RoamSettingController;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class bcr
-  extends BaseAdapter
+  implements Runnable
 {
-  public List a;
+  public bcr(QQLSActivity paramQQLSActivity, Object paramObject) {}
   
-  public bcr(QQLSActivity paramQQLSActivity)
+  public void run()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public void a(List paramList)
-  {
-    if (paramList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll((List)((ArrayList)paramList).clone());
-      notifyDataSetChanged();
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    Object localObject;
-    if (paramView == null)
-    {
-      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.getLayoutInflater().inflate(2130903499, null);
-      paramView = new bct();
-      localObject = (TextView)paramViewGroup.findViewById(2131298241);
-      ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
-      ((TextView)localObject).setMaxLines(10);
-      paramView.a = ((TextView)localObject);
-      paramViewGroup.setTag(paramView);
-    }
-    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
-      return paramViewGroup;
-    }
-    MessageRecord localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    bct localbct = (bct)paramViewGroup.getTag();
-    if (localMessageRecord.istroop == 1001)
-    {
-      localObject = ((FriendManager)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).getManager(8)).a(localMessageRecord.senderuin);
-      paramView = (View)localObject;
-      if (localObject == null) {
-        paramView = "";
-      }
-      paramView = paramView + ": " + QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a().a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, localMessageRecord, false);
-      if ((localMessageRecord.istroop != 0) || (!ActionMsgUtil.b(localMessageRecord.msgtype))) {
-        break label330;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.isFinishing()) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQLSActivity", 2, "LS is finish but still update");
       }
     }
-    for (;;)
+    label182:
+    do
     {
-      localbct.a.setText(new QQText(paramView, 5, 16, QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a()));
-      return paramViewGroup;
-      if (AnonymousChatHelper.a(localMessageRecord))
+      ChatMessage localChatMessage;
+      RoamSettingController localRoamSettingController;
+      do
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.getResources().getString(2131362566) + QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a().a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, localMessageRecord, false);
-        break;
-      }
-      paramView = QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a().a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, localMessageRecord, false);
-      break;
-      label330:
-      localbct.a.setTextColor(-4210755);
-    }
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                  if ((this.jdField_a_of_type_JavaLangObject == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof NewFriendMessage))) {
+                    break label182;
+                  }
+                  if (QLog.isColorLevel()) {
+                    QLog.d("QQLSActivity", 2, "data is NewFriendMessage" + Thread.currentThread().getId());
+                  }
+                  if (((NewFriendManager)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).getManager(31)).a() != 0) {
+                    break;
+                  }
+                } while (!QLog.isColorLevel());
+                QLog.d("QQLSActivity", 2, "data is NewFriendMessage unread=0 update return");
+                return;
+              } while ((QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).getVisibility() == 0) && (!TextUtils.isEmpty(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).getText())));
+              this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), AppConstants.V, 4000);
+              QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
+              QQLSActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
+              return;
+              if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof ChatMessage))) {
+                break;
+              }
+            } while ((!QLog.isColorLevel()) || (this.jdField_a_of_type_JavaLangObject == null));
+            QLog.d("QQLSActivity", 2, "update data is not chatMessage return" + this.jdField_a_of_type_JavaLangObject.getClass());
+            return;
+            localChatMessage = (ChatMessage)this.jdField_a_of_type_JavaLangObject;
+          } while ((localChatMessage.isSend()) || (localChatMessage.istroop == 6000) || (localChatMessage.istroop == 1009));
+          if (localChatMessage.istroop != 1) {
+            break;
+          }
+        } while (((FriendManager)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).getManager(8)).f(localChatMessage.frienduin));
+        localRoamSettingController = (RoamSettingController)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).getManager(28);
+      } while ((localRoamSettingController != null) && (localRoamSettingController.a(localChatMessage.frienduin, 1) != 1));
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), localChatMessage.frienduin, localChatMessage.istroop);
+    } while ((QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).getVisibility() == 0) && (!TextUtils.isEmpty(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).getText())));
+    QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
   }
 }
 

@@ -1,18 +1,58 @@
-import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class bei
-  implements IIconListener
+  extends FriendListObserver
 {
   public bei(QQSetting paramQQSetting) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    if ((QQSetting.d(this.a)) && (paramBitmap != null) && (QQSetting.a(this.a).a().b == paramInt1) && (paramInt2 == 201)) {
-      this.a.n();
+    if ((paramBoolean) && (this.a.a != null) && (paramString != null) && (paramString.equals(this.a.a.a()))) {
+      this.a.b(new bek(this));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingActivity", 2, "onUpdateCustomHead: uin:" + paramString + ", success :" + paramBoolean);
+    }
+    if ((paramBoolean) && (paramString != null) && (this.a.a != null) && (paramString.equals(this.a.a.a()))) {
+      this.a.b(new bej(this, paramString));
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean2) {
+      this.a.b();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    String str;
+    int i;
+    if ((paramBoolean) && (paramArrayOfString != null) && (paramArrayOfString.length > 0))
+    {
+      str = this.a.a.a();
+      i = 0;
+    }
+    for (;;)
+    {
+      if ((str != null) && (i < paramArrayOfString.length))
+      {
+        if (str.equals(paramArrayOfString[i])) {
+          this.a.n();
+        }
+      }
+      else {
+        return;
+      }
+      i += 1;
     }
   }
 }

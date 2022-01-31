@@ -1,18 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.TroopDisbandActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class bmk
-  implements DialogInterface.OnClickListener
+public class bmk
+  extends Thread
 {
-  bmk(bmi parambmi, QQCustomDialog paramQQCustomDialog) {}
+  public bmk(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReportController.a(this.jdField_a_of_type_Bmi.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Bmi.a.b, "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    try
+    {
+      TroopHandler localTroopHandler = (TroopHandler)this.a.app.a(17);
+      if (localTroopHandler != null)
+      {
+        long l = Long.parseLong(this.a.b);
+        localTroopHandler.a(l, 0L, 5, null, 6, 1);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(Long.valueOf(l));
+        localTroopHandler.a(localArrayList);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("Q.troopdisband.disband", 2, localException.toString());
+    }
   }
 }
 

@@ -1,16 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
 
 public class dbu
-  implements VerticalGallery.OnSelectViewDataUpdateListener
+  implements TextWatcher
 {
-  public dbu(IphonePickerView paramIphonePickerView) {}
+  public dbu(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    IphonePickerView.a(this.a, paramView, 1);
+    this.a.b = true;
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

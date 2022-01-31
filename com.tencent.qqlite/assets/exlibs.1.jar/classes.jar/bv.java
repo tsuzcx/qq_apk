@@ -1,15 +1,42 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.LiteWifiphotoActivity;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import com.dataline.mpfile.LiteMpFileDownloadActivity;
+import com.dataline.mpfile.MpfileTaskInfo;
+import com.dataline.mpfile.MpfileTaskListAdapter;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
 
 public class bv
-  implements View.OnClickListener
+  implements SlideDetectListView.OnSlideListener
 {
-  public bv(LiteWifiphotoActivity paramLiteWifiphotoActivity) {}
+  public bv(LiteMpFileDownloadActivity paramLiteMpFileDownloadActivity) {}
   
-  public void onClick(View paramView)
+  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    this.a.finish();
+    paramSlideDetectListView = (MpfileTaskInfo)LiteMpFileDownloadActivity.a(this.a).getItem(paramInt);
+    if (paramSlideDetectListView == null) {
+      return;
+    }
+    paramView = paramView.findViewById(2131296444);
+    if (paramView != null)
+    {
+      Button localButton = (Button)paramView.findViewById(2131297123);
+      LiteMpFileDownloadActivity.a(this.a).a(paramSlideDetectListView);
+      LiteMpFileDownloadActivity.a(this.a, paramSlideDetectListView.c);
+      localButton.setOnClickListener(this.a.a);
+      ((ShaderAnimLayout)paramView).a();
+      LiteMpFileDownloadActivity.a(this.a).setDeleteAreaDim(paramView.getLayoutParams().width, paramView.getLayoutParams().height);
+    }
+    this.a.a();
+  }
+  
+  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  {
+    LiteMpFileDownloadActivity.a(this.a, "");
+    LiteMpFileDownloadActivity.a(this.a).a(null);
+    this.a.a();
   }
 }
 

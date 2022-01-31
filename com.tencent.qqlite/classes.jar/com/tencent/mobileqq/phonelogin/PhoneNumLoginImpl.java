@@ -10,8 +10,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import dzf;
-import dzg;
+import eah;
+import eai;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -193,12 +193,12 @@ public class PhoneNumLoginImpl
       return true;
     }
     QQCustomDialog localQQCustomDialog = DialogUtil.a(paramActivity, 230);
-    localQQCustomDialog.setTitle(2131363349);
-    localQQCustomDialog.setMessage(2131363350);
-    paramQQAppInterface = new dzf(this, str, paramActivity, paramQQAppInterface);
-    paramActivity = new dzg(this);
-    localQQCustomDialog.setPositiveButton(2131363351, paramQQAppInterface);
-    localQQCustomDialog.setNegativeButton(2131362794, paramActivity);
+    localQQCustomDialog.setTitle(2131363359);
+    localQQCustomDialog.setMessage(2131363360);
+    paramQQAppInterface = new eah(this, str, paramActivity, paramQQAppInterface);
+    paramActivity = new eai(this);
+    localQQCustomDialog.setPositiveButton(2131363361, paramQQAppInterface);
+    localQQCustomDialog.setNegativeButton(2131362801, paramActivity);
     localQQCustomDialog.show();
     return false;
   }

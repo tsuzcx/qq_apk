@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<set android:shareInterpolator="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="200" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205a3" />
-    <item android:duration="200" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205a4" />
-    <item android:duration="200" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205a5" />
-</animation-list>
+    <alpha android:duration="700" android:fromAlpha="1.0" android:toAlpha="0.0" />
+</set>

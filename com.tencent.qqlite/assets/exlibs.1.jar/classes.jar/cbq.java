@@ -1,23 +1,50 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
-import com.tencent.mobileqq.util.ThreadPriorityManager;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.biz.common.util.Util;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qphone.base.util.QLog;
 
-class cbq
-  extends AnimateUtils.AnimationAdapter
+public final class cbq
+  implements DialogInterface.OnClickListener
 {
-  cbq(cbp paramcbp) {}
+  public cbq(AbsShareMsg paramAbsShareMsg, Activity paramActivity, Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a = true;
-    paramAnimation = new Intent(this.a.a, SearchContactsActivity.class);
-    paramAnimation.putExtra("from_key", this.a.a.a());
-    this.a.a.startActivity(paramAnimation);
-    this.a.a.overridePendingTransition(0, 0);
-    ThreadPriorityManager.a(false);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      if (QLog.isColorLevel()) {
+        QLog.i("ChatActivity", 2, "qbShowWpaResultDialog back");
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
+      {
+        paramDialogInterface = this.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("appid");
+        if (paramDialogInterface != null) {
+          ForwardOperations.a(this.jdField_a_of_type_AndroidAppActivity, true, this.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("callback_type"), Long.parseLong(paramDialogInterface));
+        }
+      }
+      Util.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8004B56", "0X8004B56", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      return;
+    }
+    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
+    paramDialogInterface.putExtra("tab_index", 0);
+    paramDialogInterface.setFlags(335544320);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8004B55", "0X8004B55", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 

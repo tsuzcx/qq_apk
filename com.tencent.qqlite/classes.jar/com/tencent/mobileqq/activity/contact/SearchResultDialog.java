@@ -24,18 +24,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import cbd;
-import cbe;
-import cbf;
-import cbg;
-import cbh;
-import cbi;
-import cbj;
-import cbk;
-import cbl;
-import cbm;
-import cbn;
-import cbo;
+import cce;
+import ccf;
+import ccg;
+import cch;
+import cci;
+import ccj;
+import cck;
+import ccl;
+import ccm;
+import ccn;
+import cco;
+import ccp;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.adapter.CircleSearchResultAdapter;
@@ -112,7 +112,7 @@ public class SearchResultDialog
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private List jdField_a_of_type_JavaUtilList;
   private Map jdField_a_of_type_JavaUtilMap;
-  private AdapterView.OnItemClickListener jdField_b_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new cbg(this);
+  private AdapterView.OnItemClickListener jdField_b_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new cch(this);
   private XListView jdField_b_of_type_ComTencentWidgetXListView;
   private List jdField_b_of_type_JavaUtilList;
   private String jdField_d_of_type_JavaLangString;
@@ -141,13 +141,13 @@ public class SearchResultDialog
     ((WindowManager.LayoutParams)localObject).width = -1;
     ((WindowManager.LayoutParams)localObject).windowAnimations = 16973824;
     ((WindowManager.LayoutParams)localObject).gravity = 51;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296867));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296868));
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter = new ContactsSearchResultAdapter(paramQQAppInterface, paramContext, this.jdField_a_of_type_ComTencentWidgetXListView, null, new cbd(this), false);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new cbh(this, paramContext));
-    this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296866));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296868));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296869));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter = new ContactsSearchResultAdapter(paramQQAppInterface, paramContext, this.jdField_a_of_type_ComTencentWidgetXListView, null, new cce(this), false);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new cci(this, paramContext));
+    this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296867));
     if (4 == paramInt) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface = new ConversationSearchAdapter(paramContext, paramQQAppInterface, this.jdField_b_of_type_ComTencentWidgetXListView, new cbi(this), false);
+      this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface = new ConversationSearchAdapter(paramContext, paramQQAppInterface, this.jdField_b_of_type_ComTencentWidgetXListView, new ccj(this), false);
     }
     for (;;)
     {
@@ -159,9 +159,9 @@ public class SearchResultDialog
         ((Message)localObject).what = 2;
         this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage((Message)localObject);
       }
-      new Thread(new cbl(this)).start();
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298408));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new cbm(this));
+      new Thread(new ccm(this)).start();
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298430));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ccn(this));
       b();
       c();
       a(paramContext, paramQQAppInterface);
@@ -170,15 +170,15 @@ public class SearchResultDialog
         this.jdField_e_of_type_JavaLangString = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
         if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
         {
-          findViewById(2131296865).setVisibility(0);
+          findViewById(2131296866).setVisibility(0);
           paramContext = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903124, null);
-          paramContext.setOnClickListener(new cbn(this, paramInt));
-          ((TextView)paramContext.findViewById(2131296870)).setText(this.jdField_e_of_type_JavaLangString);
+          paramContext.setOnClickListener(new cco(this, paramInt));
+          ((TextView)paramContext.findViewById(2131296871)).setText(this.jdField_e_of_type_JavaLangString);
           this.jdField_a_of_type_ComTencentWidgetXListView.a(paramContext);
           if (this.jdField_b_of_type_JavaUtilList.size() > 0)
           {
             paramContext = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903118, null);
-            ((TextView)paramContext.findViewById(2131296841)).setText("你可能想找");
+            ((TextView)paramContext.findViewById(2131296842)).setText("你可能想找");
             this.jdField_a_of_type_ComTencentWidgetXListView.a(paramContext);
           }
           this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter);
@@ -187,12 +187,12 @@ public class SearchResultDialog
       return;
       if ((13 == paramInt) || (14 == paramInt))
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface = new CircleSearchResultAdapter(paramQQAppInterface, paramContext, this.jdField_b_of_type_ComTencentWidgetXListView, new cbj(this));
-        ((EditText)findViewById(2131297957)).setHint(2131362957);
+        this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface = new CircleSearchResultAdapter(paramQQAppInterface, paramContext, this.jdField_b_of_type_ComTencentWidgetXListView, new cck(this));
+        ((EditText)findViewById(2131297962)).setHint(2131362964);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface = new ContactsSearchResultAdapter(paramQQAppInterface, paramContext, this.jdField_b_of_type_ComTencentWidgetXListView, null, new cbk(this), false);
+        this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface = new ContactsSearchResultAdapter(paramQQAppInterface, paramContext, this.jdField_b_of_type_ComTencentWidgetXListView, null, new ccl(this), false);
       }
     }
   }
@@ -373,11 +373,11 @@ public class SearchResultDialog
   
   private void a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = (TextView)findViewById(2131296867);
+    paramQQAppInterface = (TextView)findViewById(2131296868);
     paramQQAppInterface.setCompoundDrawables(null, null, null, null);
-    paramQQAppInterface.setText(2131363155);
+    paramQQAppInterface.setText(2131363165);
     this.jdField_b_of_type_ComTencentWidgetXListView.setAdapter((BaseAdapter)this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface);
-    this.jdField_b_of_type_ComTencentWidgetXListView.setOnTouchListener(new cbf(this, paramContext));
+    this.jdField_b_of_type_ComTencentWidgetXListView.setOnTouchListener(new ccg(this, paramContext));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -499,8 +499,8 @@ public class SearchResultDialog
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297957));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new cbo(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297962));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ccp(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
   }
@@ -542,7 +542,7 @@ public class SearchResultDialog
   
   private void c()
   {
-    ((ImageButton)findViewById(2131297950)).setOnClickListener(new cbe(this));
+    ((ImageButton)findViewById(2131297955)).setOnClickListener(new ccf(this));
   }
   
   private void d()
@@ -739,12 +739,12 @@ public class SearchResultDialog
   
   public void a(int paramInt)
   {
-    findViewById(2131296865).setVisibility(0);
+    findViewById(2131296866).setVisibility(0);
     if (1 == paramInt) {
       if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface.getCount() == 0)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363154);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363164);
       }
     }
     for (;;)
@@ -838,7 +838,7 @@ public class SearchResultDialog
     if (paramString1.equals(""))
     {
       if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-        findViewById(2131296865).setVisibility(8);
+        findViewById(2131296866).setVisibility(8);
       }
       for (;;)
       {

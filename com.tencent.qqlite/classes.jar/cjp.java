@@ -1,25 +1,21 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.AlbumUtil;
 
 public class cjp
-  implements AdapterView.OnItemClickListener
+  implements View.OnClickListener
 {
-  public cjp(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public cjp(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (PhotoPreviewActivity.a(this.a))
-    {
-      PhotoPreviewActivity.a(this.a, false);
-      this.a.a.setVisibility(4);
-      this.a.b.setVisibility(4);
-      return;
+    if (this.a.b) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
     }
-    PhotoPreviewActivity.a(this.a, true);
-    this.a.a.setVisibility(0);
-    this.a.b.setVisibility(0);
+    this.a.finish();
+    AlbumUtil.a(this.a, true, false);
   }
 }
 

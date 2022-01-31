@@ -19,15 +19,15 @@ public class yg
       return;
       if (!this.a.isFinishing())
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131363253));
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2130839124);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131363263));
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2130839158);
         this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(false);
       }
       this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
       return;
     } while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()));
     this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131363252));
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131363262));
     this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(true);
     this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
     this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);

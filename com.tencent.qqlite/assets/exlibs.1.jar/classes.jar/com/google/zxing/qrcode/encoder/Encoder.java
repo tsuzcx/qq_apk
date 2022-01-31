@@ -10,9 +10,9 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.google.zxing.qrcode.decoder.Mode;
 import com.google.zxing.qrcode.decoder.Version;
 import com.google.zxing.qrcode.decoder.Version.ECBlocks;
+import du;
+import dw;
 import dx;
-import dz;
-import ea;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,7 +44,7 @@ public final class Encoder
     int i = 0;
     if (i < 8)
     {
-      ea.a(paramBitArray, paramErrorCorrectionLevel, paramVersion, i, paramByteMatrix);
+      dx.a(paramBitArray, paramErrorCorrectionLevel, paramVersion, i, paramByteMatrix);
       int m = a(paramByteMatrix);
       if (m >= j) {
         break label59;
@@ -63,7 +63,7 @@ public final class Encoder
   
   private static int a(ByteMatrix paramByteMatrix)
   {
-    return dz.a(paramByteMatrix) + dz.b(paramByteMatrix) + dz.c(paramByteMatrix) + dz.d(paramByteMatrix);
+    return dw.a(paramByteMatrix) + dw.b(paramByteMatrix) + dw.c(paramByteMatrix) + dw.d(paramByteMatrix);
   }
   
   public static int a(String paramString, ErrorCorrectionLevel paramErrorCorrectionLevel, Map paramMap)
@@ -112,7 +112,7 @@ public final class Encoder
       arrayOfByte = new byte[n];
       paramBitArray.a(j * 8, arrayOfByte, 0, n);
       localObject2 = a(arrayOfByte, localObject2[0]);
-      localArrayList.add(new dx(arrayOfByte, (byte[])localObject2));
+      localArrayList.add(new du(arrayOfByte, (byte[])localObject2));
       m = Math.max(m, n);
       i = Math.max(i, localObject2.length);
       n = localObject1[0];
@@ -128,7 +128,7 @@ public final class Encoder
       localObject1 = localArrayList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        arrayOfByte = ((dx)((Iterator)localObject1).next()).a();
+        arrayOfByte = ((du)((Iterator)localObject1).next()).a();
         if (paramInt2 < arrayOfByte.length) {
           paramBitArray.b(arrayOfByte[paramInt2], 8);
         }
@@ -141,7 +141,7 @@ public final class Encoder
       localObject1 = localArrayList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        arrayOfByte = ((dx)((Iterator)localObject1).next()).b();
+        arrayOfByte = ((du)((Iterator)localObject1).next()).b();
         if (paramInt2 < arrayOfByte.length) {
           paramBitArray.b(arrayOfByte[paramInt2], 8);
         }
@@ -285,7 +285,7 @@ public final class Encoder
       localObject1 = new ByteMatrix(i, i);
       i = a(paramString, paramErrorCorrectionLevel, paramMap, (ByteMatrix)localObject1);
       ((QRCode)localObject2).a(i);
-      ea.a(paramString, paramErrorCorrectionLevel, paramMap, i, (ByteMatrix)localObject1);
+      dx.a(paramString, paramErrorCorrectionLevel, paramMap, i, (ByteMatrix)localObject1);
       ((QRCode)localObject2).a((ByteMatrix)localObject1);
       return localObject2;
       localObject1 = (String)paramMap.get(EncodeHintType.CHARACTER_SET);
@@ -482,7 +482,7 @@ public final class Encoder
   
   static void a(String paramString1, Mode paramMode, BitArray paramBitArray, String paramString2)
   {
-    switch (dy.a[paramMode.ordinal()])
+    switch (dv.a[paramMode.ordinal()])
     {
     default: 
       throw new WriterException("Invalid mode: " + paramMode);

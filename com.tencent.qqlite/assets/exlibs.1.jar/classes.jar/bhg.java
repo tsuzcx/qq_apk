@@ -1,20 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bhg
-  extends Handler
+class bhg
+  implements DialogInterface.OnClickListener
 {
-  public bhg(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  bhg(bhf parambhf) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -9,8 +9,8 @@ import android.widget.RelativeLayout;
 import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
-import dso;
-import dsp;
+import dtq;
+import dtr;
 import java.util.ArrayList;
 
 public class BaseActionBar
@@ -28,8 +28,8 @@ public class BaseActionBar
     this.jdField_a_of_type_ComTencentWidgetActionSheet = null;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent = null;
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131297964);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131297974).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131297969);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131297979).setVisibility(8);
   }
   
   private Button a(int paramInt)
@@ -47,13 +47,13 @@ public class BaseActionBar
         QLog.e("BaseActinBar<FileAssistant>", 1, "addActionBar getButton index is[" + paramInt + "]");
       }
       return localButton;
-      localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297970);
+      localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297975);
       continue;
-      localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297971);
+      localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297976);
       continue;
-      localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297972);
+      localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297977);
       continue;
-      localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297973);
+      localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297978);
     }
   }
   
@@ -86,7 +86,7 @@ public class BaseActionBar
   
   public void a(Activity paramActivity)
   {
-    a(3, "更多", new dsp(this, paramActivity));
+    a(3, "更多", new dtr(this, paramActivity));
   }
   
   public void a(Context paramContext, String paramString, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener)
@@ -118,7 +118,7 @@ public class BaseActionBar
   
   public void b(Activity paramActivity)
   {
-    a(1, "分享", new dso(this, paramActivity));
+    a(1, "分享", new dtq(this, paramActivity));
   }
   
   public void b(Context paramContext, String paramString, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener)

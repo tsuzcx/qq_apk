@@ -16,10 +16,10 @@ public class td
   int jdField_a_of_type_Int = 0;
   Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
   Rect jdField_a_of_type_AndroidGraphicsRect;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838355);
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838374);
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 0;
-  Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838365);
+  Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838384);
   protected int c;
   long c;
   protected int d = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();

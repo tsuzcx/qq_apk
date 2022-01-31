@@ -203,7 +203,7 @@ public class EnterpriseDetailActivity
     for (;;)
     {
       label116:
-      ((TextView)((View)localObject1).findViewById(2131296932)).setText(paramConfigInfo.title.get());
+      ((TextView)((View)localObject1).findViewById(2131296934)).setText(paramConfigInfo.title.get());
       localObject2 = new LinearLayout.LayoutParams(-1, -2);
       switch (paramInt)
       {
@@ -212,17 +212,17 @@ public class EnterpriseDetailActivity
         ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
         if (paramConfigInfo.type.get() == 5)
         {
-          ((View)localObject1).setBackgroundResource(2130839315);
+          ((View)localObject1).setBackgroundResource(2130839380);
           label216:
           if (paramConfigInfo.state_id.get() != 5) {
             break label1218;
           }
           paramViewGroup.addView((View)localObject3);
-          localObject2 = getString(2131362460);
+          localObject2 = getString(2131362461);
           if (paramConfigInfo.state.get() != 1) {
             break label1207;
           }
-          paramViewGroup = getString(2131363609);
+          paramViewGroup = getString(2131363620);
           label259:
           ((View)localObject1).setContentDescription(String.format((String)localObject2, new Object[] { paramViewGroup }));
           label277:
@@ -239,8 +239,8 @@ public class EnterpriseDetailActivity
           QLog.d(this.jdField_a_of_type_JavaLangString, 2, "addDetailItem exit");
         }
         return;
-        localObject2 = ((LayoutInflater)localObject2).inflate(2130903343, null);
-        ((TextView)((View)localObject2).findViewById(2131296566)).setText((CharSequence)localObject1);
+        localObject2 = ((LayoutInflater)localObject2).inflate(2130903346, null);
+        ((TextView)((View)localObject2).findViewById(2131296569)).setText((CharSequence)localObject1);
         break;
         label346:
         if (paramConfigInfo.event_id.get() == 8)
@@ -267,8 +267,8 @@ public class EnterpriseDetailActivity
         {
           if (paramConfigInfo.content.has())
           {
-            localObject1 = ((LayoutInflater)localObject2).inflate(2130903343, null);
-            ((TextView)((View)localObject1).findViewById(2131296566)).setText(paramConfigInfo.content.get());
+            localObject1 = ((LayoutInflater)localObject2).inflate(2130903346, null);
+            ((TextView)((View)localObject1).findViewById(2131296569)).setText(paramConfigInfo.content.get());
           }
           for (;;)
           {
@@ -285,9 +285,9 @@ public class EnterpriseDetailActivity
         {
           if (paramConfigInfo.state_id.get() == 5)
           {
-            localObject1 = ((LayoutInflater)localObject2).inflate(2130903656, null);
-            localObject2 = ((View)localObject1).findViewById(2131298836);
-            ((TextView)((View)localObject1).findViewById(2131298837)).setVisibility(0);
+            localObject1 = ((LayoutInflater)localObject2).inflate(2130903665, null);
+            localObject2 = ((View)localObject1).findViewById(2131298862);
+            ((TextView)((View)localObject1).findViewById(2131298863)).setVisibility(0);
             label642:
             localObject3 = (Switch)((View)localObject2).findViewById(2131296954);
             ((Switch)localObject3).setContentDescription(paramConfigInfo.title.get());
@@ -302,7 +302,7 @@ public class EnterpriseDetailActivity
             localObject3 = localObject1;
             localObject1 = localObject2;
             break;
-            localObject2 = ((LayoutInflater)localObject2).inflate(2130903656, null);
+            localObject2 = ((LayoutInflater)localObject2).inflate(2130903665, null);
             localObject1 = null;
             break label642;
             label730:
@@ -312,7 +312,7 @@ public class EnterpriseDetailActivity
         if (paramConfigInfo.type.get() == 4)
         {
           localObject1 = ((LayoutInflater)localObject2).inflate(2130903168, null);
-          ((TextView)((View)localObject1).findViewById(2131296566)).setText(paramConfigInfo.content.get());
+          ((TextView)((View)localObject1).findViewById(2131296569)).setText(paramConfigInfo.content.get());
           localObject3 = localObject4;
           break label116;
         }
@@ -331,7 +331,7 @@ public class EnterpriseDetailActivity
             {
               localObject2 = new JSONObject(paramConfigInfo.content.get());
               localObject3 = ((JSONObject)localObject2).getString("content");
-              ((TextView)((View)localObject1).findViewById(2131296566)).setText((CharSequence)localObject3);
+              ((TextView)((View)localObject1).findViewById(2131296569)).setText((CharSequence)localObject3);
               localObject3 = ((JSONObject)localObject2).getJSONArray("pic_list");
               localObject2 = ((JSONObject)localObject2).getJSONArray("thumb_list");
               a(bool, (LinearLayout)((View)localObject1).findViewById(2131297432), (JSONArray)localObject3, (JSONArray)localObject2);
@@ -356,40 +356,40 @@ public class EnterpriseDetailActivity
         ((View)localObject1).setLayoutParams(localJSONException);
         if (paramConfigInfo.type.get() == 5)
         {
-          ((View)localObject1).setBackgroundResource(2130839315);
+          ((View)localObject1).setBackgroundResource(2130839380);
           break label216;
         }
-        ((View)localObject1).setBackgroundResource(2130837924);
+        ((View)localObject1).setBackgroundResource(2130837942);
         break label216;
         localJSONException.setMargins(0, j, 0, 0);
         ((View)localObject1).setLayoutParams(localJSONException);
         if (paramConfigInfo.type.get() == 5)
         {
-          ((View)localObject1).setBackgroundResource(2130839320);
+          ((View)localObject1).setBackgroundResource(2130839385);
           break label216;
         }
-        ((View)localObject1).setBackgroundResource(2130837927);
+        ((View)localObject1).setBackgroundResource(2130837945);
         break label216;
         localJSONException.setMargins(0, 0, 0, j);
         ((View)localObject1).setLayoutParams(localJSONException);
         if (paramConfigInfo.type.get() == 5)
         {
-          ((View)localObject1).setBackgroundResource(2130839315);
+          ((View)localObject1).setBackgroundResource(2130839380);
           break label216;
         }
-        ((View)localObject1).setBackgroundResource(2130837926);
+        ((View)localObject1).setBackgroundResource(2130837944);
         break label216;
         if (paramConfigInfo.type.get() == 5)
         {
-          ((View)localObject1).setBackgroundResource(2130839320);
+          ((View)localObject1).setBackgroundResource(2130839385);
           break label216;
         }
-        ((View)localObject1).setBackgroundResource(2130837927);
+        ((View)localObject1).setBackgroundResource(2130837945);
         break label216;
-        ((View)localObject1).setBackgroundResource(2130837924);
+        ((View)localObject1).setBackgroundResource(2130837942);
         break label216;
         label1207:
-        paramViewGroup = getString(2131363610);
+        paramViewGroup = getString(2131363621);
         break label259;
         label1218:
         paramViewGroup.addView((View)localObject1);
@@ -495,7 +495,7 @@ public class EnterpriseDetailActivity
   private void a(mobileqq_mp.ConfigInfo paramConfigInfo, Switch paramSwitch, boolean paramBoolean)
   {
     int j = 1;
-    b(2131362447);
+    b(2131362448);
     NewIntent localNewIntent = new NewIntent(super.getApplicationContext(), PublicAccountServlet.class);
     localNewIntent.putExtra("cmd", "set_function_flag");
     mobileqq_mp.SetFunctionFlagRequset localSetFunctionFlagRequset = new mobileqq_mp.SetFunctionFlagRequset();
@@ -608,15 +608,15 @@ public class EnterpriseDetailActivity
     super.setContentView(2130903294);
     this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131297563));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131296453));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131296456));
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297560));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296989));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297561));
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297558));
     this.jdField_a_of_type_AndroidViewView = super.findViewById(2131297557);
-    this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838759, 0, 0, 0);
+    this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838800, 0, 0, 0);
     this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131297564));
-    super.setTitle(2131362438);
+    super.setTitle(2131362439);
     this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131296952));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.getTitleBarHeight());
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(true);
@@ -625,9 +625,9 @@ public class EnterpriseDetailActivity
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.j.setText("");
     this.p.setVisibility(0);
-    this.p.setImageResource(2130837741);
+    this.p.setImageResource(2130837758);
     this.p.setOnClickListener(this);
-    this.p.setContentDescription(getResources().getString(2131362575));
+    this.p.setContentDescription(getResources().getString(2131362577));
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "initView exit");
     }
@@ -737,7 +737,7 @@ public class EnterpriseDetailActivity
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "unfollow");
     }
-    b(2131362448);
+    b(2131362449);
     if (this.jdField_c_of_type_MqqAppNewIntent != null) {
       this.jdField_c_of_type_MqqAppNewIntent.setObserver(null);
     }
@@ -764,7 +764,7 @@ public class EnterpriseDetailActivity
     }
     this.jdField_f_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new mn(this), 3000L);
-    b(2131362449);
+    b(2131362450);
     ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(this.jdField_b_of_type_JavaLangString);
     this.jdField_b_of_type_MqqAppNewIntent = new NewIntent(super.getApplicationContext(), PublicAccountServlet.class);
     this.jdField_b_of_type_MqqAppNewIntent.putExtra("cmd", "follow");
@@ -789,7 +789,7 @@ public class EnterpriseDetailActivity
     Resources localResources;
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.a(this, 2131624119);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.a(this, 2131624120);
       localResources = super.getResources();
       if (this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null) {
         break label138;
@@ -798,10 +798,10 @@ public class EnterpriseDetailActivity
     label138:
     for (String str = "";; str = this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.name)
     {
-      str = String.format(localResources.getString(2131362442, new Object[] { str }), new Object[0]);
+      str = String.format(localResources.getString(2131362443, new Object[] { str }), new Object[0]);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(str);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362439, 3);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362794);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362440, 3);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362801);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new mq(this));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new mr(this));
       if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())
@@ -826,7 +826,7 @@ public class EnterpriseDetailActivity
       if (!this.jdField_a_of_type_Boolean) {
         break label72;
       }
-      c(2131362447);
+      c(2131362448);
       o();
     }
     for (;;)
@@ -852,7 +852,7 @@ public class EnterpriseDetailActivity
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.displayNumber != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.displayNumber.length() > 0))
       {
-        this.jdField_c_of_type_JavaLangString = String.format(super.getResources().getString(2131362437), new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.displayNumber });
+        this.jdField_c_of_type_JavaLangString = String.format(super.getResources().getString(2131362438), new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.displayNumber });
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_JavaLangString);
       }
@@ -865,7 +865,7 @@ public class EnterpriseDetailActivity
       }
       k();
       return;
-      localObject = getResources().getDrawable(2130838338);
+      localObject = getResources().getDrawable(2130838357);
       ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
       localObject = new ImageSpan((Drawable)localObject, 1);
       SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.name + "[certified]");
@@ -883,11 +883,11 @@ public class EnterpriseDetailActivity
     }
     if (this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType == 1)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131362439);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131362440);
       this.jdField_a_of_type_AndroidWidgetButton.setTextAppearance(this, 2131624044);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131362436);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131362437);
     this.jdField_a_of_type_AndroidWidgetButton.setTextAppearance(this, 2131624044);
   }
   
@@ -1042,7 +1042,7 @@ public class EnterpriseDetailActivity
       return;
     }
     if (paramBoolean) {}
-    for (int j = getWindow().getWindowManager().getDefaultDisplay().getWidth() - getResources().getDimensionPixelSize(2131493038); n == 1; j = getWindow().getWindowManager().getDefaultDisplay().getWidth() - getResources().getDimensionPixelSize(2131493039))
+    for (int j = getWindow().getWindowManager().getDefaultDisplay().getWidth() - getResources().getDimensionPixelSize(2131493040); n == 1; j = getWindow().getWindowManager().getDefaultDisplay().getWidth() - getResources().getDimensionPixelSize(2131493041))
     {
       localObject = new ImageView(this);
       ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);

@@ -37,12 +37,12 @@ import com.tencent.open.base.http.HttpCgiAsyncTask;
 import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoRequest;
 import com.tencent.qphone.base.util.QLog;
-import fau;
-import fav;
-import fax;
-import faz;
-import fba;
-import fbb;
+import fda;
+import fdb;
+import fdd;
+import fdf;
+import fdg;
+import fdh;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
@@ -93,19 +93,19 @@ public class BindGroupConfirmActivity
   
   public BindGroupConfirmActivity()
   {
-    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask$Callback = new fau(this);
-    this.jdField_a_of_type_AndroidOsHandler = new fav(this);
-    this.jdField_a_of_type_JavaLangRunnable = new fba(this);
+    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask$Callback = new fda(this);
+    this.jdField_a_of_type_AndroidOsHandler = new fdb(this);
+    this.jdField_a_of_type_JavaLangRunnable = new fdg(this);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296897));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296901));
-    this.c = ((TextView)super.findViewById(2131296891));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297784));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296898));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296902));
+    this.c = ((TextView)super.findViewById(2131296892));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297788));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.d = ((TextView)super.findViewById(2131297783));
+    this.d = ((TextView)super.findViewById(2131297787));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297600));
     if (!TextUtils.isEmpty(this.g))
     {
@@ -124,9 +124,9 @@ public class BindGroupConfirmActivity
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297779));
-      ThreadManager.b(new fax(this, BitmapFactory.decodeResource(super.getResources(), 2130838330)));
-      this.e = ((TextView)super.findViewById(2131297780));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297783));
+      ThreadManager.b(new fdd(this, BitmapFactory.decodeResource(super.getResources(), 2130838349)));
+      this.e = ((TextView)super.findViewById(2131297784));
       this.e.setText(this.j);
       if (!TextUtils.isEmpty(this.h)) {
         a(Long.valueOf(this.h).longValue());
@@ -155,7 +155,7 @@ public class BindGroupConfirmActivity
       ((NewIntent)localObject).putExtra("uin", this.app.a());
       ((NewIntent)localObject).putExtra("data", localGetAppinfoRequest.toByteArray());
       ((NewIntent)localObject).putExtra("cmd", "ConnAuthSvr.get_app_info");
-      ((NewIntent)localObject).setObserver(new fbb(this));
+      ((NewIntent)localObject).setObserver(new fdh(this));
       super.getAppRuntime().startServlet((NewIntent)localObject);
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
@@ -171,7 +171,7 @@ public class BindGroupConfirmActivity
   public void a(String paramString, Bitmap paramBitmap)
   {
     LogUtility.c("BindGroupConfirmActivity", "-->onImageLoaded() url = " + paramString);
-    this.jdField_a_of_type_AndroidOsHandler.post(new faz(this, paramBitmap));
+    this.jdField_a_of_type_AndroidOsHandler.post(new fdf(this, paramBitmap));
   }
   
   public void a(JSONObject paramJSONObject)
@@ -303,7 +303,7 @@ public class BindGroupConfirmActivity
     {
     default: 
       return;
-    case 2131296897: 
+    case 2131296898: 
       finish();
       return;
     }
@@ -315,8 +315,8 @@ public class BindGroupConfirmActivity
   {
     super.onCreate(paramBundle);
     super.requestWindowFeature(1);
-    super.setTheme(2131624275);
-    super.setContentView(2130903345);
+    super.setTheme(2131624276);
+    super.setContentView(2130903348);
     this.jdField_a_of_type_AndroidContentResResources = super.getResources();
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a("正在加载...");

@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
 
-public final class edq
-  implements Parcelable.Creator
+public class edq
+  extends Handler
 {
-  public FriendGroupListInfo a(Parcel paramParcel)
+  public edq(StatusHistoryActivity paramStatusHistoryActivity, Looper paramLooper)
   {
-    return new FriendGroupListInfo(paramParcel);
+    super(paramLooper);
   }
   
-  public FriendGroupListInfo[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new FriendGroupListInfo[paramInt];
+    if (paramMessage.what == 1) {
+      this.a.a = false;
+    }
   }
 }
 

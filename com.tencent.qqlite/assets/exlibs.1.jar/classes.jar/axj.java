@@ -1,23 +1,18 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class axj
-  implements View.OnClickListener
+class axj
+  implements DialogInterface.OnClickListener
 {
-  public axj(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  axj(axi paramaxi, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((NearbyPeopleProfileActivity.b(this.a) != null) && (!this.a.isFinishing()))
-    {
-      NearbyPeopleProfileActivity.b(this.a).dismiss();
-      NearbyPeopleProfileActivity.b(this.a, null);
-    }
-    NearbyPeopleProfileActivity.h(this.a);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004BB0", "0X8004BB0", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    ReportController.b(this.jdField_a_of_type_Axi.a.app, "CliOper", "", "", "0X800481E", "0X800481E", 0, 0, "", "", "", "");
   }
 }
 

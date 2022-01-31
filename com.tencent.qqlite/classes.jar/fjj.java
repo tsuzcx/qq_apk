@@ -1,48 +1,33 @@
-import com.tencent.wstt.SSCM.SSCMTimer;
-import com.tencent.wstt.SSCM.SSCMTimer.SSCMTimerObserver;
-import com.tencent.wstt.SSCM.Utils;
-import java.util.TimerTask;
+import android.annotation.TargetApi;
+import android.view.VelocityTracker;
+import com.tencent.util.VersionUtils;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.OverScroller;
 
-public class fjj
-  extends TimerTask
+class fjj
+  implements Runnable
 {
-  public fjj(SSCMTimer paramSSCMTimer) {}
+  fjj(fji paramfji) {}
   
+  @TargetApi(8)
   public void run()
   {
-    long l;
-    int i;
-    if (SSCMTimer.a(this.a))
-    {
-      l = Long.parseLong(Utils.a());
-      if (l == -1L)
-      {
-        SSCMTimer.a(this.a, false);
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if (i > 0) {
-        SSCMTimer.a(this.a, 0);
-      }
-      do
-      {
-        do
-        {
-          return;
-          i = (int)(l - SSCMTimer.a(this.a));
-          SSCMTimer.a(this.a, l);
-          break;
-          SSCMTimer.b(this.a, SSCMTimer.a(this.a));
-        } while (SSCMTimer.b(this.a) < 120000);
-        SSCMTimer.c(this.a, 1);
-        cancel();
-      } while (SSCMTimer.a(this.a) == null);
-      SSCMTimer.a(this.a).b(SSCMTimer.a(this.a));
+    int i = AbsListView.c(this.a.a);
+    VelocityTracker localVelocityTracker = AbsListView.a(this.a.a);
+    OverScroller localOverScroller = fji.a(this.a);
+    if ((localVelocityTracker == null) || (i == -1)) {
       return;
-      i = 0;
     }
+    localVelocityTracker.computeCurrentVelocity(1000, AbsListView.d(this.a.a));
+    if (VersionUtils.b()) {}
+    for (float f = -localVelocityTracker.getYVelocity(i); (Math.abs(f) >= AbsListView.e(this.a.a)) && (localOverScroller.a(0.0F, f)); f = -localVelocityTracker.getYVelocity())
+    {
+      this.a.a.postDelayed(this, 40L);
+      return;
+    }
+    this.a.a();
+    this.a.a.ab = 3;
+    this.a.a.a(1);
   }
 }
 

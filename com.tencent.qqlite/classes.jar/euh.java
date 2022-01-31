@@ -1,11 +1,23 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import java.lang.ref.WeakReference;
 
 public class euh
+  extends BitmapDrawable
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private final WeakReference a;
   
-  private euh(QQCustomDialog paramQQCustomDialog) {}
+  public euh(Resources paramResources, Bitmap paramBitmap, eui parameui)
+  {
+    super(paramResources, paramBitmap);
+    this.a = new WeakReference(parameui);
+  }
+  
+  public eui a()
+  {
+    return (eui)this.a.get();
+  }
 }
 
 

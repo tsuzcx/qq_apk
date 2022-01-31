@@ -1,27 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class bie
-  implements Runnable
+  implements View.OnClickListener
 {
   public bie(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if ((RegisterSendUpSms.a(this.a) != null) && (RegisterSendUpSms.a(this.a).isShowing()) && (!this.a.isFinishing()))
-      {
-        RegisterSendUpSms.a(this.a).dismiss();
-        RegisterSendUpSms.a(this.a).cancel();
-      }
-      RegisterSendUpSms.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    RegisterSendUpSms.a(this.a, this.a.getString(2131363352));
+    RegisterSendUpSms.a(this.a);
   }
 }
 

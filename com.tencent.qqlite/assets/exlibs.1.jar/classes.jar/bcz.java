@@ -1,6 +1,9 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class bcz
   implements View.OnClickListener
@@ -9,7 +12,17 @@ public class bcz
   
   public void onClick(View paramView)
   {
-    this.a.q();
+    if (!NetworkUtil.e(this.a))
+    {
+      this.a.p();
+      return;
+    }
+    if (NetworkUtil.b(this.a))
+    {
+      this.a.l();
+      return;
+    }
+    DialogUtil.a(this.a, 230).setTitle(this.a.getString(2131364134)).setMessage(2131364133).setPositiveButton(2131364135, new bdb(this)).setNegativeButton(2131362801, new bda(this)).show();
   }
 }
 

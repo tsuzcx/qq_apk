@@ -11,11 +11,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import bxf;
-import bxg;
-import bxh;
-import bxi;
+import byd;
+import bye;
+import byf;
+import byg;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -54,7 +55,7 @@ public class TextItemBuilder
   public TextItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bxf(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new byd(this);
   }
   
   public int a(ChatMessage paramChatMessage)
@@ -70,12 +71,12 @@ public class TextItemBuilder
     if (paramView == null)
     {
       paramViewHolder = new AnimationTextView(paramBaseChatItemLayout);
-      paramViewHolder.setTextColor(paramBaseChatItemLayout.getResources().getColorStateList(2131427473));
-      paramViewHolder.setLinkTextColor(paramBaseChatItemLayout.getResources().getColorStateList(2131427472));
+      paramViewHolder.setTextColor(paramBaseChatItemLayout.getResources().getColorStateList(2131427476));
+      paramViewHolder.setLinkTextColor(paramBaseChatItemLayout.getResources().getColorStateList(2131427475));
       paramViewHolder.setSpannableFactory(QQText.a);
       paramViewHolder.setMaxWidth(BaseChatItemLayout.f);
       paramViewHolder.setMovementMethod(LinkMovementMethod.getInstance());
-      paramViewHolder.setId(2131296698);
+      paramViewHolder.setId(2131296699);
       localHolder.a = paramViewHolder;
     }
     localHolder.a.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
@@ -92,7 +93,7 @@ public class TextItemBuilder
       paramView = (MessageForText)paramChatMessage;
       if (paramChatMessage.msgtype == -2008) {
         if (paramChatMessage.isSend()) {
-          localHolder.a.setText(paramBaseChatItemLayout.getString(2131364066));
+          localHolder.a.setText(paramBaseChatItemLayout.getString(2131364077));
         }
       }
     }
@@ -102,10 +103,10 @@ public class TextItemBuilder
       localHolder.a.setOnLongClickListener(paramOnLongClickAndTouchListener);
       localHolder.a.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       if ((localHolder.a instanceof AnimationTextView)) {
-        ((AnimationTextView)localHolder.a).a = new bxg(this);
+        ((AnimationTextView)localHolder.a).a = new bye(this);
       }
       return paramViewHolder;
-      localHolder.a.setText(paramBaseChatItemLayout.getString(2131364065));
+      localHolder.a.setText(paramBaseChatItemLayout.getString(2131364076));
       continue;
       localHolder.a.setText(paramView.sb);
       continue;
@@ -131,8 +132,8 @@ public class TextItemBuilder
     switch (paramInt)
     {
     default: 
-    case 2131298932: 
-    case 2131298937: 
+    case 2131298958: 
+    case 2131298963: 
       do
       {
         do
@@ -150,10 +151,10 @@ public class TextItemBuilder
       } while (!QLog.isColorLevel());
       QLog.e(jdField_a_of_type_JavaLangString, 2, paramContext.toString());
       return;
-    case 2131298938: 
+    case 2131298964: 
       ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramChatMessage.msg, paramChatMessage.uniseq);
       return;
-    case 2131296652: 
+    case 2131296655: 
       paramContext = new Bundle();
       paramContext.putInt("forward_type", -1);
       paramContext.putString("forward_text", paramChatMessage.msg);
@@ -162,7 +163,7 @@ public class TextItemBuilder
       ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(paramChatMessage, 21);
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004045", "0X8004045", 0, 0, "", "", "", "");
       return;
-    case 2131298945: 
+    case 2131298971: 
       StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "", "Translate_external", "Clk_about_translate", 0, 1, 0);
       paramContext = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
       paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
@@ -172,7 +173,7 @@ public class TextItemBuilder
       paramContext.putExtra("url", "http://183.62.127.31/MobileQQ/translate.html");
       this.jdField_a_of_type_AndroidContentContext.startActivity(paramContext);
       return;
-    case 2131296656: 
+    case 2131296659: 
       b(paramChatMessage);
       return;
     }
@@ -189,10 +190,10 @@ public class TextItemBuilder
     {
       return;
       paramView = (MessageForText)AIOUtils.a(paramView);
-      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131363073);
-      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131363074);
+      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131363083);
+      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131363084);
     } while (!paramView.isSendFromLocal());
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new bxh(this, paramView), new bxi(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new byf(this, paramView), new byg(this)).show();
   }
   
   protected void a(View paramView, ChatMessage paramChatMessage)
@@ -213,18 +214,18 @@ public class TextItemBuilder
       paramView = paramView.getResources();
       if (paramChatMessage.isSend())
       {
-        paramViewHolder = paramView.getColorStateList(2131427476);
+        paramViewHolder = paramView.getColorStateList(2131427479);
         localHolder.a.setTextColor(paramViewHolder);
         if (!paramChatMessage.isSend()) {
           break label86;
         }
       }
       label86:
-      for (paramViewHolder = paramView.getColorStateList(2131427475);; paramViewHolder = paramView.getColorStateList(2131427474))
+      for (paramViewHolder = paramView.getColorStateList(2131427478);; paramViewHolder = paramView.getColorStateList(2131427477))
       {
         localHolder.a.setLinkTextColor(paramViewHolder);
         return;
-        paramViewHolder = paramView.getColorStateList(2131427473);
+        paramViewHolder = paramView.getColorStateList(2131427476);
         break;
       }
     }
@@ -233,7 +234,7 @@ public class TextItemBuilder
     }
     while (paramBubbleInfo.d == 0)
     {
-      localHolder.a.setLinkTextColor(paramView.getResources().getColorStateList(2131427474));
+      localHolder.a.setLinkTextColor(paramView.getResources().getColorStateList(2131427477));
       return;
       localHolder.a.setTextColor(paramBubbleInfo.c);
     }
@@ -244,14 +245,14 @@ public class TextItemBuilder
   {
     paramView = (MessageForText)AIOUtils.a(paramView);
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131298937, "复制");
+    localQQCustomMenu.a(2131298963, "复制");
     if ((paramView.extraflag == 32768) && (paramView.isSendFromLocal())) {
-      localQQCustomMenu.a(2131298938, this.jdField_a_of_type_AndroidContentContext.getString(2131363126));
+      localQQCustomMenu.a(2131298964, this.jdField_a_of_type_AndroidContentContext.getString(2131363136));
     }
-    localQQCustomMenu.a(2131296652, this.jdField_a_of_type_AndroidContentContext.getString(2131363562));
-    if (!AnonymousChatHelper.a(paramView))
+    localQQCustomMenu.a(2131296655, this.jdField_a_of_type_AndroidContentContext.getString(2131363573));
+    if ((!AnonymousChatHelper.a(paramView)) && (!"10000512".equals(AppSetting.a(this.jdField_a_of_type_AndroidContentContext))))
     {
-      localQQCustomMenu.a(2131296656, this.jdField_a_of_type_AndroidContentContext.getString(2131362666));
+      localQQCustomMenu.a(2131296659, this.jdField_a_of_type_AndroidContentContext.getString(2131362673));
       a(localQQCustomMenu);
     }
     ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);

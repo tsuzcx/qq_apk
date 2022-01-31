@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberGagActivity.TroopGagListAdapter;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagItem;
 
-class boi
-  implements Runnable
+public class boi
 {
-  boi(boh paramboh) {}
+  public TroopGagMgr.GagItem a;
+  public boolean a;
+  public boolean b;
   
-  public void run()
+  public boi(TroopMemberGagActivity.TroopGagListAdapter paramTroopGagListAdapter, TroopGagMgr.GagItem paramGagItem, boolean paramBoolean)
   {
-    this.a.a.o();
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem = paramGagItem;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = false;
+  }
+  
+  public boi(TroopMemberGagActivity.TroopGagListAdapter paramTroopGagListAdapter, TroopGagMgr.GagItem paramGagItem, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem = paramGagItem;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
   }
 }
 

@@ -115,11 +115,11 @@ public class C2CPttDownHandler
       {
         this.ap = 3;
         localObject = new cmd0x346.ApplyDownloadReq();
-        ((cmd0x346.ApplyDownloadReq)localObject).uint64_uin.set(Long.parseLong(paramList.jdField_c_of_type_JavaLangString));
+        ((cmd0x346.ApplyDownloadReq)localObject).uint64_uin.set(Long.parseLong(paramList.c));
         ((cmd0x346.ApplyDownloadReq)localObject).bytes_uuid.set(ByteStringMicro.copyFromUtf8(paramList.jdField_a_of_type_JavaLangString));
         PBUInt32Field localPBUInt32Field = ((cmd0x346.ApplyDownloadReq)localObject).uint32_owner_type;
         if (!paramList.jdField_a_of_type_Boolean) {
-          break label324;
+          break label336;
         }
         label101:
         localPBUInt32Field.set(i);
@@ -128,11 +128,11 @@ public class C2CPttDownHandler
         localReqBody.uint32_business_id.set(this.ap);
         localReqBody.uint32_client_type.set(104);
         localReqBody.msg_apply_download_req.set((MessageMicro)localObject);
-        if (paramList.jdField_c_of_type_Int != 0)
+        if (paramList.d != 0)
         {
           localObject = new cmd0x346.ExtensionReq();
           ((cmd0x346.ExtensionReq)localObject).uint64_id.set(3L);
-          switch (paramList.jdField_c_of_type_Int)
+          switch (paramList.d)
           {
           default: 
             i = 0;
@@ -142,6 +142,7 @@ public class C2CPttDownHandler
       for (;;)
       {
         ((cmd0x346.ExtensionReq)localObject).uint64_type.set(i);
+        ((cmd0x346.ExtensionReq)localObject).uint32_ptt_format.set(paramList.jdField_a_of_type_Int);
         localReqBody.msg_extension_req.set((MessageMicro)localObject);
         return localReqBody.toByteArray();
         if (!"pttcenter".equals(paramList.b)) {
@@ -149,7 +150,7 @@ public class C2CPttDownHandler
         }
         this.ap = 17;
         break;
-        label324:
+        label336:
         i = 2;
         break label101;
         i = 0;

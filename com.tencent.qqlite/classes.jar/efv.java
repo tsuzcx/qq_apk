@@ -1,19 +1,43 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import android.content.Context;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public class efv
-  implements Runnable
+public final class efv
+  extends AsyncTask
 {
-  public efv(GroupSystemMsgController paramGroupSystemMsgController, QQAppInterface paramQQAppInterface, String paramString) {}
+  public efv(Context paramContext, long paramLong, String paramString) {}
   
-  public void run()
+  protected Void a(Void... paramVarArgs)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putString("group_display", this.jdField_a_of_type_JavaLangString).commit();
+    paramVarArgs = MainAcitivityReportHelper.b(this.jdField_a_of_type_AndroidContentContext);
+    HashMap localHashMap = new HashMap();
+    int i;
+    if (this.jdField_a_of_type_Long < 500L) {
+      i = MainAcitivityReportHelper.a();
+    }
+    for (;;)
+    {
+      localHashMap.put("param_FailCode", String.valueOf(i));
+      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, paramVarArgs, false, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+      return null;
+      if (this.jdField_a_of_type_Long < 1000L) {
+        i = MainAcitivityReportHelper.a() + 1;
+      } else if (this.jdField_a_of_type_Long < 2000L) {
+        i = MainAcitivityReportHelper.a() + 2;
+      } else if (this.jdField_a_of_type_Long < 3000L) {
+        i = MainAcitivityReportHelper.a() + 3;
+      } else if (this.jdField_a_of_type_Long < 5000L) {
+        i = MainAcitivityReportHelper.a() + 4;
+      } else if (this.jdField_a_of_type_Long < 7000L) {
+        i = MainAcitivityReportHelper.a() + 5;
+      } else if (this.jdField_a_of_type_Long < 10000L) {
+        i = MainAcitivityReportHelper.a() + 6;
+      } else {
+        i = MainAcitivityReportHelper.a() + 7;
+      }
     }
   }
 }

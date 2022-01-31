@@ -15,9 +15,9 @@ import com.tencent.util.VersionUtils;
 import com.tencent.widget.FadeIconImageView;
 import cooperation.qqfav.QfavHelper;
 import cooperation.qqfav.QfavUtil;
-import flf;
-import flg;
-import flh;
+import fnl;
+import fnm;
+import fnn;
 
 public class LocationDetailActivity
   extends PoiMapActivity
@@ -83,21 +83,21 @@ public class LocationDetailActivity
     this.t = ((Bundle)localObject).getString("lat");
     this.u = ((Bundle)localObject).getString("lon");
     this.jdField_a_of_type_Long = ((Bundle)localObject).getLong("favId");
-    TextView localTextView = (TextView)findViewById(2131296897);
-    localTextView.setText(2131362706);
-    localTextView.setOnClickListener(new flf(this));
-    ((TextView)super.findViewById(2131296891)).setText(2131362706);
-    localTextView = (TextView)super.findViewById(2131296901);
+    TextView localTextView = (TextView)findViewById(2131296898);
+    localTextView.setText(2131362713);
+    localTextView.setOnClickListener(new fnl(this));
+    ((TextView)super.findViewById(2131296892)).setText(2131362713);
+    localTextView = (TextView)super.findViewById(2131296902);
     if (!((Bundle)localObject).getBoolean("forNewFavorite", false))
     {
-      localObject = new flg(this, this, new LocationDetailActivity.LocationActions(this), 33, 7, null, false);
+      localObject = new fnm(this, this, new LocationDetailActivity.LocationActions(this), 33, 7, null, false);
       localTextView.setVisibility(8);
-      this.f = ((ImageView)super.findViewById(2131296902));
+      this.f = ((ImageView)super.findViewById(2131296903));
       this.f.setVisibility(0);
-      this.f.setImageResource(2130838038);
-      this.f.setContentDescription(super.getString(2131363196));
+      this.f.setImageResource(2130838057);
+      this.f.setContentDescription(super.getString(2131363206));
       this.f.setOnClickListener((View.OnClickListener)localObject);
-      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131296903));
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131296904));
       if (!QfavUtil.a()) {
         if (this.jdField_a_of_type_ComTencentWidgetFadeIconImageView != null)
         {
@@ -114,8 +114,8 @@ public class LocationDetailActivity
       {
         this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(8);
         continue;
-        localTextView.setText(2131363508);
-        localTextView.setOnClickListener(new flh(this));
+        localTextView.setText(2131363519);
+        localTextView.setOnClickListener(new fnn(this));
       }
     }
   }
@@ -172,7 +172,7 @@ public class LocationDetailActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.g = ((TextView)super.findViewById(2131297906));
+    this.g = ((TextView)super.findViewById(2131297911));
     this.w = super.getIntent().getStringExtra("note");
     this.l = true;
     if (this.h != null) {
@@ -194,7 +194,7 @@ public class LocationDetailActivity
       super.setContentView(paramInt);
       return;
     }
-    super.setContentView(2130903384);
+    super.setContentView(2130903389);
   }
 }
 

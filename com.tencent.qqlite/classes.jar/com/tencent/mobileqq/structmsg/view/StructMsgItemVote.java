@@ -69,7 +69,7 @@ public class StructMsgItemVote
         for (f = e();; f = Integer.parseInt(this.j))
         {
           localTextView.setTextSize(f);
-          Drawable localDrawable = paramContext.getResources().getDrawable(2130839367);
+          Drawable localDrawable = paramContext.getResources().getDrawable(2130839432);
           localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
           localTextView.setCompoundDrawables(localDrawable, null, null, null);
           localTextView.setText(" " + ((StructMsgItemVote.OptionItem)localObject1).b);

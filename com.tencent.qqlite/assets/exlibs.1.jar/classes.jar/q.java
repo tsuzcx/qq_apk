@@ -1,74 +1,44 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
 import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.DataLineHandler.EFILETYPE;
-import com.tencent.mobileqq.app.DataLineObserver;
+import com.dataline.util.DatalineSessionAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.DatalineMessageManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import java.io.File;
 
-public class q
-  extends DataLineObserver
+class q
+  implements Runnable
 {
-  public q(LiteActivity paramLiteActivity) {}
+  q(p paramp, long paramLong, String paramString) {}
   
-  protected void a()
+  public void run()
   {
-    this.a.runOnUiThread(new s(this));
-  }
-  
-  @TargetApi(11)
-  protected void a(int paramInt, String paramString)
-  {
-    if (Build.VERSION.SDK_INT < 11)
-    {
-      this.a.runOnUiThread(new y(this, paramString));
-      return;
+    Object localObject = this.jdField_a_of_type_P.a.app.a().a().b(this.jdField_a_of_type_Long);
+    DataLineMsgSet localDataLineMsgSet = this.jdField_a_of_type_P.a.app.a().a(this.jdField_a_of_type_Long);
+    if ((localDataLineMsgSet != null) && (!localDataLineMsgSet.isSingle())) {
+      if (!LiteActivity.a(this.jdField_a_of_type_P.a).a(this.jdField_a_of_type_Long, LiteActivity.a(this.jdField_a_of_type_P.a))) {
+        LiteActivity.a(this.jdField_a_of_type_P.a).notifyDataSetChanged();
+      }
     }
-    this.a.runOnUiThread(new z(this, paramString));
-  }
-  
-  protected void a(long paramLong)
-  {
-    this.a.runOnUiThread(new aa(this));
-  }
-  
-  protected void a(long paramLong, float paramFloat)
-  {
-    super.a(paramLong, paramFloat);
-    this.a.runOnUiThread(new u(this, paramLong, paramFloat));
-  }
-  
-  protected void a(long paramLong1, String paramString, DataLineHandler.EFILETYPE paramEFILETYPE, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
-  {
-    super.a(paramLong1, paramString, paramEFILETYPE, paramBoolean1, paramBoolean2, paramLong2);
-    this.a.runOnUiThread(new v(this, paramLong1, paramBoolean2));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong)
-  {
-    super.a(paramBoolean, paramLong);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.a(paramBoolean, paramLong, paramString);
-    this.a.runOnUiThread(new t(this, paramBoolean, paramLong, paramString));
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
-  {
-    super.a(paramBoolean, paramLong, paramString);
-    this.a.runOnUiThread(new x(this));
-  }
-  
-  protected void b(long paramLong1, String paramString, DataLineHandler.EFILETYPE paramEFILETYPE, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
-  {
-    super.b(paramLong1, paramString, paramEFILETYPE, paramBoolean1, paramBoolean2, paramLong2);
-    this.a.runOnUiThread(new w(this, paramLong1));
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    this.a.runOnUiThread(new r(this, paramLong, paramString));
+    for (;;)
+    {
+      if ((localObject != null) && (((DataLineMsgRecord)localObject).path != null) && (((DataLineMsgRecord)localObject).thumbPath != null) && (((DataLineMsgRecord)localObject).path.equals(this.jdField_a_of_type_JavaLangString)))
+      {
+        localObject = new File(((DataLineMsgRecord)localObject).thumbPath);
+        if (((File)localObject).exists()) {
+          ((File)localObject).delete();
+        }
+      }
+      return;
+      LiteActivity.a(this.jdField_a_of_type_P.a).notifyDataSetChanged();
+      if ((localObject != null) && (!((DataLineMsgRecord)localObject).bIsResendOrRecvFile))
+      {
+        LiteActivity.a(this.jdField_a_of_type_P.a.a, LiteActivity.a(this.jdField_a_of_type_P.a));
+        LiteActivity.a(LiteActivity.a(this.jdField_a_of_type_P.a));
+      }
+    }
   }
 }
 

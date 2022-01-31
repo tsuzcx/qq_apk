@@ -1,18 +1,15 @@
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
 
-public class aod
-  implements DialogInterface.OnClickListener
+class aod
+  implements DialogInterface.OnDismissListener
 {
-  public aod(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  aod(aoc paramaoc, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((FriendProfileCardActivity.a(this.a) != null) && (FriendProfileCardActivity.a(this.a).isShowing())) {
-      FriendProfileCardActivity.a(this.a).dismiss();
-    }
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

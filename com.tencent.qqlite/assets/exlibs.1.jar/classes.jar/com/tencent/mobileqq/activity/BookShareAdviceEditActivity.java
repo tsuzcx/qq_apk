@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import abf;
-import abg;
-import abh;
+import abj;
+import abk;
+import abl;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -49,7 +49,7 @@ public class BookShareAdviceEditActivity
   
   public BookShareAdviceEditActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new abf(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new abj(this);
   }
   
   private int a(Context paramContext, float paramFloat)
@@ -124,7 +124,7 @@ public class BookShareAdviceEditActivity
       long l = i;
       localObject1 = MessageRecordFactory.a(this.app, (String)localObject2, str, (String)localObject2, 0, l, (AbsStructMsg)localObject1);
       this.app.a().a((MessageRecord)localObject1, null);
-      QQToast.a(this, 2, getString(2131364129), 0).b(getTitleBarHeight());
+      QQToast.a(this, 2, getString(2131364140), 0).b(getTitleBarHeight());
       setResult(-1);
       finish();
     }
@@ -132,13 +132,13 @@ public class BookShareAdviceEditActivity
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout = ((ResizeLayout)findViewById(2131296625));
-    this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText = ((BookEditText)findViewById(2131296628));
+    this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout = ((ResizeLayout)findViewById(2131296628));
+    this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText = ((BookEditText)findViewById(2131296631));
     this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.setCanInputWhenLenghtLimit(true);
     this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.setTextLengthLimit(120);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296629));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296630));
-    this.b = ((TextView)findViewById(2131296626));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296632));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296633));
+    this.b = ((TextView)findViewById(2131296629));
     Object localObject = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("qrreceivername");
     this.jdField_c_of_type_AndroidWidgetTextView.setText(ContactUtils.g(this.app, this.app.a()));
     this.d = ContactUtils.b(this.app, (String)localObject, 0);
@@ -167,8 +167,8 @@ public class BookShareAdviceEditActivity
     {
       this.jdField_c_of_type_Int = ((120 - this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.a((String)localObject) + 2) / 3);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_Int + "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.addTextChangedListener(new abg(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout.setOnResizeListener(new abh(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.addTextChangedListener(new abk(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout.setOnResizeListener(new abl(this));
       return;
       label346:
       this.k.setEnabled(true);
@@ -179,7 +179,7 @@ public class BookShareAdviceEditActivity
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.setBackgroundResource(2130839060);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.setBackgroundResource(2130839093);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }
@@ -191,10 +191,10 @@ public class BookShareAdviceEditActivity
   {
     super.onCreate(paramBundle);
     setContentView(2130903077);
-    setTitle(getString(2131364128));
-    a(2131364126, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    setTitle(getString(2131364139));
+    a(2131364137, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     c(true);
-    setLeftViewName(2131364492);
+    setLeftViewName(2131364503);
     this.jdField_a_of_type_AndroidContentIntent = getIntent();
     d();
   }

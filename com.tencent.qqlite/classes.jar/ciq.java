@@ -1,15 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import java.lang.ref.WeakReference;
 
 public class ciq
-  implements DialogInterface.OnCancelListener
+  extends Handler
 {
-  public ciq(CameraPreviewActivity paramCameraPreviewActivity) {}
+  private WeakReference a;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public ciq(DialogBaseActivity paramDialogBaseActivity)
   {
-    this.a.a = null;
+    this.a = new WeakReference(paramDialogBaseActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
+    if (localDialogBaseActivity == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      localDialogBaseActivity.a(paramMessage.arg1);
+      return;
+    }
+    localDialogBaseActivity.finish();
   }
 }
 

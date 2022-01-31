@@ -10,12 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import blj;
-import blk;
-import bll;
-import blm;
-import bln;
 import blo;
+import blp;
+import blq;
+import blr;
+import bls;
+import blt;
 import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
 import com.tencent.mobileqq.app.ContactFacade;
 import com.tencent.mobileqq.app.FriendListObserver;
@@ -43,9 +43,9 @@ public class TroopAssisSettingActivity
   extends IphoneTitleBarActivity
   implements Observer
 {
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new blj(this);
+  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new blo(this);
   public TroopMessageSettingAdapter a;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bln(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bls(this);
   private XExpandableListView jdField_a_of_type_ComTencentWidgetXExpandableListView;
   public String a;
   public List a;
@@ -93,7 +93,7 @@ public class TroopAssisSettingActivity
     if (TroopAssistantManager.a().d(this.app)) {
       TroopAssistantManager.a().g(this.app);
     }
-    for (int i = 2131363854;; i = 2131363853)
+    for (int i = 2131363865;; i = 2131363864)
     {
       ((TextView)localObject).setText(i);
       ((TextView)localObject).setFocusable(true);
@@ -121,35 +121,35 @@ public class TroopAssisSettingActivity
   {
     this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setGroupIndicator(null);
     this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnItemClickListener(null);
-    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnGroupClickListener(new bll(this));
-    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnChildClickListener(new blm(this));
+    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnGroupClickListener(new blq(this));
+    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnChildClickListener(new blr(this));
   }
   
   public void a(TroopInfo paramTroopInfo)
   {
     boolean bool2 = true;
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624120);
     int i = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramTroopInfo.troopuin)).intValue();
     int j = DBUtils.a().a(paramTroopInfo.troopuin, this.app);
-    String str2 = getString(2131363858, new Object[] { StringUtil.a(getBaseContext(), j) });
+    String str2 = getString(2131363869, new Object[] { StringUtil.a(getBaseContext(), j) });
     String str1;
     if (TextUtils.isEmpty(paramTroopInfo.troopname))
     {
       str1 = paramTroopInfo.troopuin;
-      localActionSheet.a(getString(2131363857, new Object[] { str1 }));
+      localActionSheet.a(getString(2131363868, new Object[] { str1 }));
       localActionSheet.b(str2);
       if (i != 1) {
         break label217;
       }
       bool1 = true;
       label126:
-      localActionSheet.a(2131362532, bool1);
+      localActionSheet.a(2131362534, bool1);
       if (i != 2) {
         break label223;
       }
       bool1 = true;
       label144:
-      localActionSheet.a(2131362533, bool1);
+      localActionSheet.a(2131362535, bool1);
       if (i != 3) {
         break label229;
       }
@@ -159,9 +159,9 @@ public class TroopAssisSettingActivity
     label229:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      localActionSheet.a(2131362534, bool1);
-      localActionSheet.d(getString(2131362794));
-      localActionSheet.a(new blk(this, i, paramTroopInfo, localActionSheet));
+      localActionSheet.a(2131362536, bool1);
+      localActionSheet.d(getString(2131362801));
+      localActionSheet.a(new blp(this, i, paramTroopInfo, localActionSheet));
       localActionSheet.show();
       return;
       str1 = paramTroopInfo.troopname;
@@ -188,15 +188,15 @@ public class TroopAssisSettingActivity
         if (i <= 99) {
           break label80;
         }
-        this.h.setText(getString(2131362950) + "(" + "99+" + ")");
+        this.h.setText(getString(2131362957) + "(" + "99+" + ")");
       }
     }
     return;
     label80:
-    this.h.setText(getString(2131362950) + "(" + i + ")");
+    this.h.setText(getString(2131362957) + "(" + i + ")");
     return;
     label124:
-    this.h.setText(getString(2131362950));
+    this.h.setText(getString(2131362957));
   }
   
   public void d()
@@ -219,8 +219,8 @@ public class TroopAssisSettingActivity
   {
     super.onCreate(paramBundle);
     setContentView(d());
-    d(2130837635);
-    setTitle(2131363848);
+    d(2130837660);
+    setTitle(2131363859);
     d();
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     this.app.a().addObserver(this);
@@ -262,7 +262,7 @@ public class TroopAssisSettingActivity
   public void update(Observable paramObservable, Object paramObject)
   {
     if (((paramObject instanceof MessageRecord)) && (!((MessageRecord)paramObject).isSendFromLocal())) {
-      runOnUiThread(new blo(this));
+      runOnUiThread(new blt(this));
     }
   }
 }

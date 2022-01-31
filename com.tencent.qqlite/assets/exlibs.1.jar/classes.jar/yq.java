@@ -57,7 +57,7 @@ public class yq
     }
     for (;;)
     {
-      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131364213), 0).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131364224), 0).b(this.a.getTitleBarHeight());
       return;
       label304:
       QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
@@ -88,12 +88,12 @@ public class yq
           AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
         }
       }
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131364215), 0).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131364226), 0).b(this.a.getTitleBarHeight());
       return;
     }
     if (TextUtils.isEmpty(paramString))
     {
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131364214), 0).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131364225), 0).b(this.a.getTitleBarHeight());
       return;
     }
     QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.getTitleBarHeight());

@@ -46,23 +46,23 @@ public class NightModeLogic
     if ((paramString != null) && (!"".equals(paramString))) {}
     for (paramString = String.format((String)localObject1, new Object[] { paramString });; paramString = (String)localObject1)
     {
-      localObject1 = new Dialog(this.mActivity, 2131624119);
+      localObject1 = new Dialog(this.mActivity, 2131624120);
       ((Dialog)localObject1).setContentView(2130903135);
-      TextView localTextView = (TextView)((Dialog)localObject1).findViewById(2131296911);
+      TextView localTextView = (TextView)((Dialog)localObject1).findViewById(2131296912);
       if (localTextView != null) {
         localTextView.setText((CharSequence)localObject2);
       }
-      localObject2 = (TextView)((Dialog)localObject1).findViewById(2131296470);
+      localObject2 = (TextView)((Dialog)localObject1).findViewById(2131296473);
       if (localObject2 != null) {
         ((TextView)localObject2).setText(paramString);
       }
-      paramString = (TextView)((Dialog)localObject1).findViewById(2131296914);
+      paramString = (TextView)((Dialog)localObject1).findViewById(2131296915);
       if (paramString != null)
       {
         paramString.setText(str2);
         paramString.setOnClickListener(paramOnClickListener1);
       }
-      paramString = (TextView)((Dialog)localObject1).findViewById(2131296915);
+      paramString = (TextView)((Dialog)localObject1).findViewById(2131296916);
       if (paramString != null)
       {
         paramString.setText(str1);
@@ -77,7 +77,7 @@ public class NightModeLogic
     if (QLog.isColorLevel()) {
       QLog.i("ThemeSwitch", 2, "showDownloadDialog");
     }
-    this.downloadDialog = newCustomDialog(2131363268, 2131363269, 2131362794, 2131363448, (float)Math.round(getNightThemeInfo().size / 1024.0D / 1024.0D * 100.0D) / 100.0F + "", new NightModeLogic.1(this), new NightModeLogic.2(this));
+    this.downloadDialog = newCustomDialog(2131363278, 2131363279, 2131362801, 2131363459, (float)Math.round(getNightThemeInfo().size / 1024.0D / 1024.0D * 100.0D) / 100.0F + "", new NightModeLogic.1(this), new NightModeLogic.2(this));
     this.downloadDialog.setOnDismissListener(new NightModeLogic.3(this));
     this.downloadDialog.show();
   }

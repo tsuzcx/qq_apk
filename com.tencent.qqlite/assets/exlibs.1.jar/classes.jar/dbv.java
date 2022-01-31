@@ -1,32 +1,21 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.remind.widget.WheelView;
-import com.tencent.widget.VerticalGallery;
-import com.tencent.widget.VerticalGallery.OnEndMovementListener;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
 
 public class dbv
-  implements VerticalGallery.OnEndMovementListener
+  extends LBSObserver
 {
-  private int jdField_a_of_type_Int;
+  public dbv(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public dbv(IphonePickerView paramIphonePickerView, int paramInt)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(VerticalGallery paramVerticalGallery)
-  {
-    paramVerticalGallery = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView)[this.jdField_a_of_type_Int];
-    int i = paramVerticalGallery.p();
-    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null)
-    {
-      String str = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.jdField_a_of_type_Int, i);
-      paramVerticalGallery.setContentDescription(str + "已选中");
+    if (paramBoolean) {
+      this.a.c = paramLBSInfo.a();
     }
-    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null) {
-      IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.jdField_a_of_type_Int, i);
+    if ((this.a.c == null) || (this.a.c.length != 4)) {
+      this.a.c = new String[] { "-1", "-1", "-1", "-1" };
     }
+    this.a.c();
   }
 }
 

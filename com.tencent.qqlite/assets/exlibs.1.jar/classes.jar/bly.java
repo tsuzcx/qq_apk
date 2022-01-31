@@ -1,28 +1,26 @@
-import android.os.Handler;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class bly
-  extends TroopObserver
+  extends MessageObserver
 {
   public bly(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  protected void a(int paramInt, byte paramByte, String paramString)
+  protected void a(String paramString1, boolean paramBoolean, String paramString2, int paramInt)
   {
-    if (paramInt == 6) {
-      if (paramByte == 0) {
-        this.a.a.sendEmptyMessage(1);
-      }
+    if (!paramBoolean) {
+      this.a.d();
     }
-    while ((paramInt != 2) || (paramByte != 0)) {
-      return;
-    }
-    TroopAssistantManager.a().b(paramString, this.a.app);
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b()
+  {
     this.a.d();
   }
   
-  protected void a(String paramString)
+  protected void d(boolean paramBoolean, String paramString)
   {
     this.a.d();
   }

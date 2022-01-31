@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
-public class dmv
-  extends FMObserver
+class dmv
+  implements Runnable
 {
-  public dmv(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  dmv(dmu paramdmu) {}
   
-  protected void a(ThumbnailInfo paramThumbnailInfo)
+  public void run()
   {
-    super.a(paramThumbnailInfo);
-    if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() > 0)) {
-      this.a.i();
-    }
+    QfileBaseRecentFileTabView.a(this.a.a);
   }
 }
 

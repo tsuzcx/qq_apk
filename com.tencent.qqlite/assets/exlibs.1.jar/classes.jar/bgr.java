@@ -9,7 +9,8 @@ public class bgr
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.a = 0;
+    this.a.finish();
   }
 }
 

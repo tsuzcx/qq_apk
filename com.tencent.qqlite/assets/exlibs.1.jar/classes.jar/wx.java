@@ -35,13 +35,13 @@ public class wx
         return;
       }
       if ((paramBundle.getString("ErrorString") != null) && (!paramBundle.getString("ErrorString").trim().equals(""))) {}
-      for (paramString = paramBundle.getString("ErrorString");; paramString = this.a.getString(2131363394))
+      for (paramString = paramBundle.getString("ErrorString");; paramString = this.a.getString(2131363405))
       {
         QQToast.a(this.a, 1, paramString, 1).b(this.a.getTitleBarHeight());
         return;
       }
     }
-    QQToast.a(this.a, 1, this.a.getString(2131363386), 1).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a, 1, this.a.getString(2131363397), 1).b(this.a.getTitleBarHeight());
   }
 }
 

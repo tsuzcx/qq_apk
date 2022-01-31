@@ -55,9 +55,9 @@ import com.tencent.theme.SkinEngine;
 import com.tencent.theme.SkinnableActivityProcesser;
 import com.tencent.theme.SkinnableActivityProcesser.Callback;
 import cooperation.qqfav.widget.QfavJumpActivity;
-import cqb;
-import cqc;
-import cqd;
+import crc;
+import crd;
+import cre;
 import java.io.File;
 import java.lang.reflect.Field;
 import mqq.app.AppActivity;
@@ -187,7 +187,7 @@ public class BaseActivity
   
   public String b_()
   {
-    return getString(2131363113);
+    return getString(2131363123);
   }
   
   public void b_() {}
@@ -280,14 +280,14 @@ public class BaseActivity
     }
     if (!jdField_a_of_type_Boolean)
     {
-      if (SettingCloneUtil.readValue(this, null, getString(2131363054), "qqsetting_screenshot_key", false)) {
+      if (SettingCloneUtil.readValue(this, null, getString(2131363064), "qqsetting_screenshot_key", false)) {
         turnOnShake();
       }
       jdField_a_of_type_Boolean = true;
     }
     paramBundle = new IntentFilter();
     paramBundle.addAction("android.intent.action.SCREEN_OFF");
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new cqd(this, null);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new cre(this, null);
     try
     {
       registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
@@ -695,7 +695,7 @@ public class BaseActivity
   
   public void turnOnShake()
   {
-    ThreadManager.b().post(new cqb(this));
+    ThreadManager.b().post(new crc(this));
   }
   
   public void w()
@@ -705,7 +705,7 @@ public class BaseActivity
     }
     startActivity(new Intent(getActivity(), GesturePWDUnlockActivity.class));
     u = true;
-    new Handler().postDelayed(new cqc(this), 1000L);
+    new Handler().postDelayed(new crd(this), 1000L);
   }
 }
 

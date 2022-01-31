@@ -1,15 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import com.tencent.qphone.base.util.QLog;
 
 public class dkc
-  implements DialogInterface.OnDismissListener
+  extends IClickListener_Ver51
 {
-  public dkc(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public dkc(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    QfileBaseLocalFileTabView.a(this.a);
+    this.a.a.a().a();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().g();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().h();
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(QfileBaseCloudFileTabView.a, 2, "wy saveto wy?" + FileManagerUtil.a());
+    }
+  }
+  
+  public void e()
+  {
+    this.a.a.a().j();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().k();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().F();
   }
 }
 

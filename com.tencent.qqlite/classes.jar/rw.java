@@ -92,7 +92,7 @@ public class rw
       }
       localOfflineUpdateStatus.b(3);
     } while (localActivity == null);
-    paramMessage = localActivity.getResources().getDrawable(2130837747);
+    paramMessage = localActivity.getResources().getDrawable(2130837907);
     paramMessage.setBounds(0, 0, 40, 40);
     this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramMessage, null, null, null);
     this.a.jdField_a_of_type_AndroidWidgetTextView.setText(localOfflineUpdateStatus.d);
@@ -105,7 +105,7 @@ public class rw
       localOfflineUpdateStatus.b(4);
       return;
     }
-    QRUtils.a(1, 2131362500);
+    QRUtils.a(1, 2131362502);
     this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     localOfflineUpdateStatus.b(4);
   }

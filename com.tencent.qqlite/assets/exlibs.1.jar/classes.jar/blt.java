@@ -1,28 +1,15 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 
 public class blt
-  extends MessageObserver
+  implements Runnable
 {
-  public blt(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public blt(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  protected void a(String paramString1, boolean paramBoolean, String paramString2, int paramInt)
+  public void run()
   {
-    if (!paramBoolean) {
-      this.a.d();
+    if ((this.a.a != null) && (this.a.a.equals("conversation"))) {
+      this.a.c();
     }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void b()
-  {
-    this.a.d();
-  }
-  
-  protected void d(boolean paramBoolean, String paramString)
-  {
-    this.a.d();
   }
 }
 

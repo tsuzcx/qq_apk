@@ -1,21 +1,13 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
 
-class dgq
+public class dgq
   implements Runnable
 {
-  dgq(dgn paramdgn) {}
+  public dgq(HorizonEmoticonTabs paramHorizonEmoticonTabs, int paramInt) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    String str = (String)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.getText();
-    if ((str == null) || (str.length() == 0)) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.clearAnimation();
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs.scrollBy(this.jdField_a_of_type_Int, 0);
   }
 }
 

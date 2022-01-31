@@ -1,15 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.biz.common.download.OfflineDownloader;
 import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.widget.SelectPicPopupWindow;
 
 public class bdq
-  implements View.OnClickListener
+  implements PopupWindow.OnDismissListener
 {
   public bdq(QQMapActivity paramQQMapActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    this.a.onBackPressed();
+    if (this.a.r != null)
+    {
+      OfflineDownloader.d(this.a.r);
+      this.a.a.a(this.a.getString(2131362616));
+    }
   }
 }
 

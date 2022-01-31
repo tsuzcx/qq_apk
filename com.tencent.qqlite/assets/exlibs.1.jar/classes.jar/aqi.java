@@ -1,15 +1,10 @@
+import android.os.Handler;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
 
 public class aqi
-  implements Runnable
+  extends Handler
 {
   public aqi(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
-  
-  public void run()
-  {
-    this.a.a.a();
-  }
 }
 
 

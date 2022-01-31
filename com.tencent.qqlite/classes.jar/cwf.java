@@ -1,15 +1,31 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class cwf
-  implements View.OnLongClickListener
+public class cwf
+  implements SosoInterface.OnLocationListener
 {
-  cwf(cwe paramcwe, ScreenShot paramScreenShot) {}
+  public cwf(QQAppInterface paramQQAppInterface) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo, byte[] paramArrayOfByte, SosoInterface paramSosoInterface)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("LBS", 2, "onLocationFinish result:" + paramInt);
+    }
+    com.tencent.mobileqq.app.LBSHandler.A = paramInt;
+    paramSosoInterface = QQAppInterface.a(this.a);
+    if (paramInt == 0) {}
+    try
+    {
+      QQAppInterface.a(this.a, paramArrayOfByte);
+      QQAppInterface.a(this.a, paramSosoLbsInfo);
+      QQAppInterface.a(this.a, QQAppInterface.a(paramSosoLbsInfo));
+      QQAppInterface.a(this.a).notifyAll();
+      return;
+    }
+    finally {}
   }
 }
 

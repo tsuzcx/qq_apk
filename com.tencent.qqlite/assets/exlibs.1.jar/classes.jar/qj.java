@@ -42,7 +42,7 @@ public class qj
       if (i == 0) {
         if ((arrayOfByte2 == null) || (arrayOfByte2.length == 0))
         {
-          this.a.d = this.a.getString(2131362418);
+          this.a.d = this.a.getString(2131362419);
           i = 0;
           j = 0;
           paramMessage = str;
@@ -104,12 +104,12 @@ public class qj
         }
         else
         {
-          localObject1 = this.a.getString(2131362419);
+          localObject1 = this.a.getString(2131362420);
         }
         paramMessage = this.a.app.a();
         this.a.jdField_b_of_type_AndroidWidgetTextView.setText(ContactUtils.g(this.a.app, paramMessage));
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getString(2131362407, new Object[] { this.a.d, localObject1 }));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getString(2131362409, new Object[] { this.a.d }));
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getString(2131362408, new Object[] { this.a.d, localObject1 }));
+        this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getString(2131362410, new Object[] { this.a.d }));
         this.a.e = ((String)localObject1);
         new qk(this, paramMessage).start();
         return;

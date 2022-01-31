@@ -35,17 +35,17 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.utils.TroopFileUtils;
 import com.tencent.mobileqq.widget.QQToast;
-import epr;
-import eps;
-import ept;
-import epu;
-import epv;
-import epw;
-import epx;
-import epy;
-import epz;
-import eqa;
-import eqb;
+import erh;
+import eri;
+import erj;
+import erk;
+import erl;
+import erm;
+import ern;
+import ero;
+import erp;
+import erq;
+import err;
 import java.lang.reflect.Method;
 import java.util.Formatter;
 import java.util.Locale;
@@ -63,10 +63,10 @@ public class MediaControllerX
   private static final int jdField_h_of_type_Int = 2;
   private Context jdField_a_of_type_AndroidContentContext;
   public final SensorEventListener a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new epy(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new ero(this);
   public View.OnClickListener a;
-  private View.OnLayoutChangeListener jdField_a_of_type_AndroidViewView$OnLayoutChangeListener = new epr(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new epu(this);
+  private View.OnLayoutChangeListener jdField_a_of_type_AndroidViewView$OnLayoutChangeListener = new erh(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new erk(this);
   private View jdField_a_of_type_AndroidViewView;
   private Window jdField_a_of_type_AndroidViewWindow;
   private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
@@ -74,7 +74,7 @@ public class MediaControllerX
   private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new eqa(this);
+  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new erq(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private MediaControllerX.MediaControllerListener jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX$MediaControllerListener = null;
@@ -83,7 +83,7 @@ public class MediaControllerX
   StringBuilder jdField_a_of_type_JavaLangStringBuilder;
   Formatter jdField_a_of_type_JavaUtilFormatter;
   public boolean a;
-  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new epw(this);
+  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new erm(this);
   private View jdField_b_of_type_AndroidViewView;
   private ImageButton jdField_b_of_type_AndroidWidgetImageButton;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -93,7 +93,7 @@ public class MediaControllerX
   private ImageButton jdField_c_of_type_AndroidWidgetImageButton;
   public boolean c;
   public int d;
-  View.OnClickListener jdField_d_of_type_AndroidViewView$OnClickListener = new epx(this);
+  View.OnClickListener jdField_d_of_type_AndroidViewView$OnClickListener = new ern(this);
   private ImageButton jdField_d_of_type_AndroidWidgetImageButton;
   private boolean jdField_d_of_type_Boolean;
   public int e;
@@ -103,13 +103,13 @@ public class MediaControllerX
   private View.OnClickListener jdField_f_of_type_AndroidViewView$OnClickListener;
   private ImageButton jdField_f_of_type_AndroidWidgetImageButton;
   private boolean jdField_f_of_type_Boolean;
-  private View.OnClickListener jdField_g_of_type_AndroidViewView$OnClickListener = new epz(this);
+  private View.OnClickListener jdField_g_of_type_AndroidViewView$OnClickListener = new erp(this);
   private ImageButton jdField_g_of_type_AndroidWidgetImageButton;
   private boolean jdField_g_of_type_Boolean;
-  private View.OnClickListener jdField_h_of_type_AndroidViewView$OnClickListener = new eqb(this);
+  private View.OnClickListener jdField_h_of_type_AndroidViewView$OnClickListener = new err(this);
   private ImageButton jdField_h_of_type_AndroidWidgetImageButton;
   private boolean jdField_h_of_type_Boolean;
-  private View.OnClickListener jdField_i_of_type_AndroidViewView$OnClickListener = new eps(this);
+  private View.OnClickListener jdField_i_of_type_AndroidViewView$OnClickListener = new eri(this);
   private boolean jdField_i_of_type_Boolean = false;
   private boolean j = false;
   private boolean k = false;
@@ -124,7 +124,7 @@ public class MediaControllerX
     this.jdField_d_of_type_Int = -1;
     this.jdField_e_of_type_Int = -1;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new ept(this);
+    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new erj(this);
     this.jdField_b_of_type_AndroidViewView = this;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_f_of_type_Boolean = true;
@@ -146,7 +146,7 @@ public class MediaControllerX
     this.jdField_d_of_type_Int = -1;
     this.jdField_e_of_type_Int = -1;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new ept(this);
+    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new erj(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -214,29 +214,29 @@ public class MediaControllerX
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131297871));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131297876));
     if (this.jdField_a_of_type_AndroidWidgetImageButton != null)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX$MediaPlayerControlX.a())
       {
-        this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131362350));
+        this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131362351));
         this.jdField_a_of_type_AndroidWidgetImageButton.requestFocus();
         this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_g_of_type_AndroidViewView$OnClickListener);
       }
     }
     else
     {
-      this.jdField_f_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131297880));
+      this.jdField_f_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131297885));
       if ((this.jdField_f_of_type_AndroidWidgetImageButton != null) && (!this.jdField_g_of_type_Boolean) && (!this.jdField_h_of_type_Boolean))
       {
         this.jdField_f_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
         if (!c()) {
           break label438;
         }
-        this.jdField_f_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131362352));
+        this.jdField_f_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131362353));
       }
       label138:
-      this.jdField_g_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131297878));
+      this.jdField_g_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131297883));
       if (this.jdField_g_of_type_AndroidWidgetImageButton != null)
       {
         this.jdField_g_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
@@ -251,35 +251,35 @@ public class MediaControllerX
       if (this.j) {
         this.jdField_g_of_type_AndroidWidgetImageButton.setVisibility(8);
       }
-      this.jdField_h_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131297879));
+      this.jdField_h_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131297884));
       if (this.jdField_h_of_type_AndroidWidgetImageButton != null)
       {
-        this.jdField_h_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131362357));
-        this.jdField_h_of_type_AndroidWidgetImageButton.setOnClickListener(new epv(this));
+        this.jdField_h_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131362358));
+        this.jdField_h_of_type_AndroidWidgetImageButton.setOnClickListener(new erl(this));
       }
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131297872));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131297877));
       if (this.jdField_a_of_type_AndroidWidgetProgressBar != null)
       {
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setContentDescription(getResources().getString(2131362354));
+        this.jdField_a_of_type_AndroidWidgetProgressBar.setContentDescription(getResources().getString(2131362355));
         if ((this.jdField_a_of_type_AndroidWidgetProgressBar instanceof SeekBar)) {
           ((SeekBar)this.jdField_a_of_type_AndroidWidgetProgressBar).setOnSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
         }
         this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(1000);
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131297874));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131297879));
       if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297877));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297875));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297882));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297880));
       this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
       this.jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder, Locale.getDefault());
       l();
       return;
-      this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131362349));
+      this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131362350));
       break;
       label438:
-      this.jdField_f_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131362351));
+      this.jdField_f_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131362352));
       break label138;
       label458:
       this.jdField_g_of_type_AndroidWidgetImageButton.setVisibility(8);
@@ -389,7 +389,7 @@ public class MediaControllerX
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "P_CliOper", "Grp_AIO", "", "video", "Clk_play", 0, 0, this.jdField_a_of_type_JavaLangString, "0", "", "");
       if (TroopFileUtils.a(this.jdField_a_of_type_AndroidContentContext) == 0)
       {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362571), 1).a();
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362573), 1).a();
       }
       else
       {
@@ -445,7 +445,7 @@ public class MediaControllerX
   
   protected View a()
   {
-    this.jdField_b_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130903376, null);
+    this.jdField_b_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130903381, null);
     a(this.jdField_b_of_type_AndroidViewView);
     return this.jdField_b_of_type_AndroidViewView;
   }
@@ -494,7 +494,7 @@ public class MediaControllerX
         this.jdField_g_of_type_AndroidWidgetImageButton.setVisibility(0);
       }
       if (this.jdField_f_of_type_AndroidWidgetImageButton != null) {
-        this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838463);
+        this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838482);
       }
     }
     for (;;)
@@ -509,7 +509,7 @@ public class MediaControllerX
           this.jdField_g_of_type_AndroidWidgetImageButton.setVisibility(8);
         }
         if (this.jdField_f_of_type_AndroidWidgetImageButton != null) {
-          this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838464);
+          this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838483);
         }
       }
     }
@@ -536,7 +536,7 @@ public class MediaControllerX
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().addFlags(1024);
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setRequestedOrientation(0);
       if (this.jdField_f_of_type_AndroidWidgetImageButton != null) {
-        this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838463);
+        this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838482);
       }
     }
     for (;;)
@@ -555,7 +555,7 @@ public class MediaControllerX
         this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().clearFlags(1024);
         this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setRequestedOrientation(1);
         if (this.jdField_f_of_type_AndroidWidgetImageButton != null) {
-          this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838464);
+          this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838483);
         }
       }
     }
@@ -608,12 +608,12 @@ public class MediaControllerX
     }
     if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX$MediaPlayerControlX.a())
     {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838466);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131362350));
+      this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838485);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131362351));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838467);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131362349));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundResource(2130838486);
+    this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(getResources().getString(2131362350));
   }
   
   public boolean d()

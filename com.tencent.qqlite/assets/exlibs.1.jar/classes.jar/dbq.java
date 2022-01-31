@@ -1,10 +1,20 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
-public class dbq
+class dbq
+  implements Runnable
 {
-  public ProgressBar a;
-  public TextView a;
+  dbq(dbp paramdbp, Runnable paramRunnable) {}
+  
+  public void run()
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_Dbp.a();
+    }
+  }
 }
 
 

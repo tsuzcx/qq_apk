@@ -103,12 +103,12 @@ public class FontManager
     {
       try
       {
-        m = paramAppInterface.getApplication().getResources().getDimensionPixelSize(2131493054);
-        n = paramAppInterface.getApplication().getResources().getDimensionPixelSize(2131493055);
+        m = paramAppInterface.getApplication().getResources().getDimensionPixelSize(2131493056);
+        n = paramAppInterface.getApplication().getResources().getDimensionPixelSize(2131493057);
         if (paramInt != 0) {
           continue;
         }
-        localObject1 = BitmapManager.a(paramAppInterface.a().getResources(), 2130838952, m, n);
+        localObject1 = BitmapManager.a(paramAppInterface.a().getResources(), 2130838985, m, n);
       }
       catch (Throwable localThrowable)
       {

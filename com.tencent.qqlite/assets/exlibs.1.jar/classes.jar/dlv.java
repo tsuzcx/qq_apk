@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.HashMap;
 
-class dlv
+public class dlv
   implements Runnable
 {
-  dlv(dls paramdls) {}
+  public dlv(QfileLocalFileDocTabView paramQfileLocalFileDocTabView) {}
   
   public void run()
   {
-    QfileBaseRecentFileTabView.a(this.a.a);
+    HashMap localHashMap = new HashMap();
+    FileCategoryUtil.a(AppConstants.ay, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, this.a);
+    FileCategoryUtil.a(localHashMap);
+    QfileLocalFileDocTabView.a(this.a, new dlw(this));
   }
 }
 

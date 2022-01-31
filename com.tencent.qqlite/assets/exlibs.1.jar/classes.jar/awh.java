@@ -1,32 +1,16 @@
-import com.tencent.mobileqq.activity.NearPeopleFilterActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.ActionSheet;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
 
 public class awh
-  implements IphonePickerView.IphonePickListener
+  implements Runnable
 {
-  public awh(NearPeopleFilterActivity paramNearPeopleFilterActivity) {}
+  public awh(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
   
-  public void a()
+  public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.a.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = null;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.a.i == 0)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters.a[paramInt2]);
-      this.a.c = paramInt2;
-      return;
-    }
-    this.a.b.setRightText(com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters.b[paramInt2]);
-    this.a.d = paramInt2;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_f_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.g = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_f_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.g);
   }
 }
 

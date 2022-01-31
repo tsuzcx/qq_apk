@@ -1,18 +1,10 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.DevlockPushActivity;
 
 public class aif
-  implements Runnable
+  extends Handler
 {
-  public aif(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
-  
-  public void run()
-  {
-    Object localObject = this.a.app.a();
-    localObject = this.a.app.b((String)localObject);
-    this.a.runOnUiThread(new aig(this, (Drawable)localObject));
-  }
+  public aif(DevlockPushActivity paramDevlockPushActivity) {}
 }
 
 

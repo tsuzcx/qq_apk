@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bgc;
-import bgd;
+import bgh;
+import bgi;
 import com.tencent.mobileqq.app.ConfigObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -40,8 +40,8 @@ public class QQSettingSettingActivity
   public ProgressBar a;
   public RelativeLayout a;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new bgd(this);
-  SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new bgc(this);
+  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new bgi(this);
+  SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new bgh(this);
   private UpgradeDetailWrapper jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper;
   TextView b = null;
   
@@ -54,8 +54,8 @@ public class QQSettingSettingActivity
   private void d()
   {
     int i = 1;
-    View localView = findViewById(2131298451);
-    Drawable localDrawable = BaseApplication.getContext().getResources().getDrawable(2130839338);
+    View localView = findViewById(2131298476);
+    Drawable localDrawable = BaseApplication.getContext().getResources().getDrawable(2130839403);
     if ((this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper != null) && (this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.a != null))
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.a.iUpgradeType > 0) && (this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper.a.bNewSwitch == 1)) {}
@@ -77,15 +77,15 @@ public class QQSettingSettingActivity
     if (localView == null) {
       return;
     }
-    TextView localTextView = (TextView)localView.findViewById(2131298410);
+    TextView localTextView = (TextView)localView.findViewById(2131298435);
     localTextView.setText(paramInt2);
     localTextView.setContentDescription(getString(paramInt2));
     if (paramInt3 > 0) {
       localTextView.setCompoundDrawablesWithIntrinsicBounds(getActivity().getResources().getDrawable(paramInt3), null, null, null);
     }
-    localView.setBackgroundResource(2130837754);
+    localView.setBackgroundResource(2130837914);
     localView.setOnClickListener(this);
-    if (paramInt1 == 2131298449)
+    if (paramInt1 == 2131298474)
     {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView);
       this.b = localTextView;
@@ -99,13 +99,13 @@ public class QQSettingSettingActivity
   
   public void a(View paramView, int paramInt, Drawable paramDrawable)
   {
-    View localView2 = paramView.findViewById(2131298412);
+    View localView2 = paramView.findViewById(2131298437);
     View localView1 = localView2;
     if (localView2 == null) {
-      localView1 = ((ViewStub)paramView.findViewById(2131298411)).inflate();
+      localView1 = ((ViewStub)paramView.findViewById(2131298436)).inflate();
     }
     localView1.setVisibility(paramInt);
-    paramView = (ImageView)localView1.findViewById(2131298409);
+    paramView = (ImageView)localView1.findViewById(2131298434);
     paramView.setVisibility(0);
     paramView.setImageDrawable(paramDrawable);
   }
@@ -119,13 +119,13 @@ public class QQSettingSettingActivity
     if (paramBoolean)
     {
       EquipmentLockImpl.a().a(this.app, this, this.app.a(), true);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131364194));
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838667);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131364205));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838694);
       return;
     }
     EquipmentLockImpl.a().a(this.app, this, this.app.a(), false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131364193));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838666);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131364204));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838693);
   }
   
   public void c()
@@ -136,7 +136,7 @@ public class QQSettingSettingActivity
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      QQToast.a(this, getString(2131364219), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131364230), 0).b(getTitleBarHeight());
       return;
     }
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(false);
@@ -164,15 +164,15 @@ public class QQSettingSettingActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903539);
-    setTitle(2131362943);
-    d(2130837635);
-    a(2131298446, 2131364281, 0);
-    a(2131298447, 2131364291, 0);
-    a(2131298448, 2131364282, 0);
-    a(2131298449, 2131364283, 0);
-    a(2131298450, 2131364284, 0);
-    a(2131298451, 2131364285, 0);
+    setContentView(2130903548);
+    setTitle(2131362950);
+    d(2130837660);
+    a(2131298471, 2131364292, 0);
+    a(2131298472, 2131364302, 0);
+    a(2131298473, 2131364293, 0);
+    a(2131298474, 2131364294, 0);
+    a(2131298475, 2131364295, 0);
+    a(2131298476, 2131364296, 0);
     this.app.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper = UpgradeController.a().a();
@@ -213,24 +213,24 @@ public class QQSettingSettingActivity
     {
     default: 
       return;
-    case 2131298446: 
+    case 2131298471: 
       startActivity(new Intent(getActivity(), NotifyPushSettingActivity.class));
       ReportController.b(this.app, "CliOper", "", "", "Setting_tab", "Clk_notifications", 0, 0, "", "", "", "");
       return;
-    case 2131298447: 
+    case 2131298472: 
       paramView = new Intent(getActivity(), QQSettingMsgHistoryActivity.class);
       getActivity().startActivity(paramView);
       ReportController.b(this.app, "CliOper", "", "", "Setting_tab", "My_settab_log", 0, 0, "", "", "", "");
       return;
-    case 2131298448: 
+    case 2131298473: 
       startActivity(new Intent(getActivity(), PermisionPrivacyActivity.class));
       ReportController.b(this.app, "CliOper", "", "", "Setting_tab", "Clk_privacy_safe", 0, 0, "", "", "", "");
       return;
-    case 2131298449: 
+    case 2131298474: 
       startActivityForResult(new Intent(getActivity(), LoginInfoActivity.class), 0);
       ReportController.b(this.app, "CliOper", "", "", "Setting_tab", "My_settab_safe", 0, 0, "", "", "", "");
       return;
-    case 2131298450: 
+    case 2131298475: 
       startActivity(new Intent(getActivity(), AssistantSettingActivity.class));
       ReportController.b(this.app, "CliOper", "", "", "Setting_tab", "Clk_accessibility", 0, 0, "", "", "", "");
       return;

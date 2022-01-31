@@ -1,49 +1,84 @@
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.EmosmHandler;
+import com.tencent.mobileqq.app.EmosmHandler.EmosmHandlerListener;
+import com.tencent.mobileqq.app.EmoticonManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmosmResp;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class cto
-  extends cti
+  implements EmosmHandler.EmosmHandlerListener
 {
-  protected void a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_Long >= cte.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b, MemoryManager.a(Process.myPid())) / 12000L) {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(7, null);
-    }
-    while (this.b != 1L) {
-      return;
-    }
-    MemoryManager.a().a();
-  }
+  public cto(EmoticonManagerImp paramEmoticonManagerImp, EmosmHandler paramEmosmHandler) {}
   
-  protected void a(String paramString)
+  public void a(boolean paramBoolean, int paramInt, EmosmResp paramEmosmResp)
   {
-    GuardManager localGuardManager = this.jdField_a_of_type_ComTencentMobileqqAppGuardManager;
-    if ("com.tencent.qqlite".equals(paramString)) {}
-    for (int i = 2;; i = 3)
+    Object localObject;
+    if ((paramInt == 2) && (paramBoolean == true))
     {
-      localGuardManager.a(i, paramString);
+      this.jdField_a_of_type_ComTencentMobileqqAppEmosmHandler.b(this);
+      localObject = paramEmosmResp.data;
+      ((List)localObject).addAll(paramEmosmResp.magicData);
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonManagerImp", 2, "getEmosmList respone in updateEmoticonAuth,rlistSuze=" + ((List)localObject).size());
+      }
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramEmosmResp = new ArrayList();
+        i = 0;
+        paramInt = 0;
+        if (i < ((List)localObject).size())
+        {
+          EmoticonPackage localEmoticonPackage1 = (EmoticonPackage)((List)localObject).get(i);
+          this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp.a.put(localEmoticonPackage1.epId, localEmoticonPackage1);
+          EmoticonPackage localEmoticonPackage2 = this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp.b(localEmoticonPackage1.epId);
+          if ((localEmoticonPackage2 == null) || ((localEmoticonPackage2.valid == localEmoticonPackage1.valid) && (localEmoticonPackage2.wordingId == localEmoticonPackage1.wordingId))) {
+            break label363;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("EmoticonManagerImp", 2, "update EmosmList in updateEmoticonAuth,epid=" + localEmoticonPackage2.epId + ";valid=" + localEmoticonPackage2.valid + ";wordingId=" + localEmoticonPackage2.wordingId);
+          }
+          localEmoticonPackage2.expiretime = localEmoticonPackage1.expiretime;
+          localEmoticonPackage2.valid = localEmoticonPackage1.valid;
+          localEmoticonPackage2.wordingId = localEmoticonPackage1.wordingId;
+          paramEmosmResp.add(localEmoticonPackage2);
+          paramInt = 1;
+          break label363;
+        }
+        if (paramInt != 0)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp.a(paramEmosmResp);
+          localObject = (EmojiManager)EmoticonManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp).getManager(39);
+          paramEmosmResp = paramEmosmResp.iterator();
+          if (paramEmosmResp.hasNext())
+          {
+            ((EmojiManager)localObject).b((EmoticonPackage)paramEmosmResp.next());
+            continue;
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception paramEmosmResp)
+      {
+        paramEmosmResp.printStackTrace();
+      }
+      EmoticonManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp, true, 300L);
       return;
+      label363:
+      i += 1;
     }
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Long > 2L) {
-      this.jdField_a_of_type_Long -= 2L;
-    }
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    CoreService.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.e();
-    BaseApplicationImpl.a.a().onGuardEvent(3, 0L, 0L);
   }
 }
 

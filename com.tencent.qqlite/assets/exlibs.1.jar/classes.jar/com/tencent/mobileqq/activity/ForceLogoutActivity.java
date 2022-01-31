@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import amd;
+import ami;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -31,7 +31,7 @@ public class ForceLogoutActivity
     if ((str != null) && (str.length() > 0)) {
       ((TextView)findViewById(2131297135)).setText(str);
     }
-    ((Button)findViewById(2131297136)).setOnClickListener(new amd(this));
+    ((Button)findViewById(2131297136)).setOnClickListener(new ami(this));
     return true;
   }
 }

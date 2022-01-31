@@ -1,21 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
-
 public class eqx
-  implements View.OnClickListener
 {
-  public eqx(VideoViewX paramVideoViewX) {}
-  
-  public void onClick(View paramView)
-  {
-    if (VideoViewX.a(this.a) == -1) {
-      this.a.d = true;
-    }
-    if ((VideoViewX.a(this.a) != null) && (VideoViewX.a(this.a) != 0) && (VideoViewX.a(this.a) != 1) && (VideoViewX.a(this.a) != null)) {
-      VideoViewX.a(this.a);
-    }
-  }
+  public static final int a = 1;
+  public static final int b = 2;
+  public long a;
+  public String a;
+  public byte[] a;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
 }
 
 

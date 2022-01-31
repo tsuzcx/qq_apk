@@ -1,22 +1,30 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.AsyncTask;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class ads
-  implements Animation.AnimationListener
+class ads
+  extends AsyncTask
 {
-  public ads(ChatHistory paramChatHistory, View paramView, int paramInt) {}
+  ads(adr paramadr) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    this.a.a.app.a().a(paramVarArgs[0], true);
+    return null;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    ChatHistory.a(this.a.a).removeMessages(1);
+    if ((this.a.a.a != null) && (this.a.a.a.isShowing())) {
+      this.a.a.a.dismiss();
+    }
+  }
 }
 
 

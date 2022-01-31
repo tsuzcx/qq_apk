@@ -25,7 +25,7 @@ public class NetworkBanner
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
       this.jdField_a_of_type_AndroidViewView = View.inflate(paramContext, 2130903246, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296886));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296887));
       if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
         this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
@@ -39,13 +39,13 @@ public class NetworkBanner
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
       if (paramInt == 1) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363965);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363976);
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363964);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363975);
   }
 }
 

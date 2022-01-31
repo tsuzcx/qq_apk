@@ -1,23 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 
 public class ckl
   implements View.OnClickListener
 {
-  public ckl(BannerManager paramBannerManager) {}
+  public ckl(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.a(null);
-    if (UpgradeController.a().a() == 4)
-    {
-      UpgradeController.a().a(BannerManager.a(this.a));
-      return;
-    }
-    UpgradeDetailActivity.a(BannerManager.a(this.a), UpgradeController.a().a(), true, true, true);
+    this.a.onBackPressed();
   }
 }
 

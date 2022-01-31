@@ -1,11 +1,24 @@
-import com.tencent.qqprotect.singleupdate.QPSinlgeUpdInfo;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 
 public class fgq
+  implements Runnable
 {
-  public String a;
-  public String b;
+  public fgq(DownloadManager paramDownloadManager, String paramString) {}
   
-  public fgq(QPSinlgeUpdInfo paramQPSinlgeUpdInfo) {}
+  public void run()
+  {
+    try
+    {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().pauseDownloadTask(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
+    }
+  }
 }
 
 

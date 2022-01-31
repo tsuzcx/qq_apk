@@ -1,20 +1,15 @@
+import android.content.Context;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
 
 public class ahj
-  extends BizTroopObserver
+  implements Runnable
 {
-  public ahj(Conversation paramConversation) {}
+  public ahj(Conversation paramConversation, Context paramContext) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      TroopAssistantManager.a().b(paramString1, this.a.a);
-      this.a.a(8, AppConstants.U, 5000);
-    }
+    ((OnDrawCompleteListener)this.jdField_a_of_type_AndroidContentContext).d();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ciz;
+import cka;
 import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
@@ -12,7 +12,7 @@ public class PhotoCropForPortraitActivity
   {
     ExtensionInfo localExtensionInfo = ((FriendsManagerImp)this.app.getManager(8)).a(this.app.a());
     if ((localExtensionInfo != null) && (localExtensionInfo.isPendantValid())) {
-      this.a = new ciz(this, paramInt1, paramInt2);
+      this.a = new cka(this, paramInt1, paramInt2);
     }
     super.a(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
   }

@@ -10,7 +10,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bun;
+import bvm;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
@@ -38,7 +38,7 @@ public class EnterTroopChatItemBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     int j = 0;
-    paramOnLongClickAndTouchListener = (bun)paramViewHolder;
+    paramOnLongClickAndTouchListener = (bvm)paramViewHolder;
     paramViewHolder = paramView;
     Object localObject1;
     Object localObject2;
@@ -134,7 +134,7 @@ public class EnterTroopChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new bun(this);
+    return new bvm(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

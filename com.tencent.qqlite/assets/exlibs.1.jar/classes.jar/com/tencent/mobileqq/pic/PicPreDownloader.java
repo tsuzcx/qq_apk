@@ -19,12 +19,12 @@ import com.tencent.mobileqq.utils.ActionMsgUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dzr;
-import dzs;
-import dzt;
-import dzu;
-import dzv;
-import dzw;
+import eat;
+import eau;
+import eav;
+import eaw;
+import eax;
+import eay;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -73,7 +73,7 @@ public class PicPreDownloader
     ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
     ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
     ((IntentFilter)localObject).addAction("android.intent.action.USER_PRESENT");
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new dzw(paramQQAppInterface.a());
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new eay(paramQQAppInterface.a());
     paramQQAppInterface.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
     if (this.jdField_a_of_type_Boolean) {}
     for (localObject = new PreDownloadStrategyBeta();; localObject = new PreDownloadStrategyAlpha())
@@ -117,7 +117,7 @@ public class PicPreDownloader
       }
     }
     label152:
-    ThreadManager.a().post(new dzt(this, localPicReq));
+    ThreadManager.a().post(new eav(this, localPicReq));
     Logger.a("PIC_TAG_PRELOAD", "run picreq thumb", "uniseq:" + paramMessageForPic.uniseq + ",subMsgId:" + paramMessageForPic.subMsgId);
   }
   
@@ -216,7 +216,7 @@ public class PicPreDownloader
   
   private void b(MessageRecord paramMessageRecord, int paramInt1, int paramInt2, int paramInt3)
   {
-    ThreadManager.a().postDelayed(new dzs(this, paramMessageRecord, paramInt1, paramInt2, paramInt3), 100L);
+    ThreadManager.a().postDelayed(new eau(this, paramMessageRecord, paramInt1, paramInt2, paramInt3), 100L);
   }
   
   private void c(MessageRecord paramMessageRecord, int paramInt1, int paramInt2, int paramInt3)
@@ -295,7 +295,7 @@ public class PicPreDownloader
     if (localIterator.hasNext())
     {
       localObject = (PicReq)localIterator.next();
-      ThreadManager.a().post(new dzu(this, (PicReq)localObject));
+      ThreadManager.a().post(new eaw(this, (PicReq)localObject));
       if (((PicReq)localObject).jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo == null) {
         break label158;
       }
@@ -343,7 +343,7 @@ public class PicPreDownloader
       this.jdField_a_of_type_JavaUtilTimer.purge();
     }
     this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimer.schedule(new dzr(this), 60000L);
+    this.jdField_a_of_type_JavaUtilTimer.schedule(new eat(this), 60000L);
   }
   
   public void a(MessageForPic paramMessageForPic, long paramLong)
@@ -415,7 +415,7 @@ public class PicPreDownloader
   public boolean a()
   {
     boolean bool1 = false;
-    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131363052), "qqsetting_auto_receive_pic_key", true);
+    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131363062), "qqsetting_auto_receive_pic_key", true);
     if ((NetworkUtil.b(BaseApplication.getContext()) == 1) || (bool2)) {}
     for (int i = 1;; i = 0)
     {
@@ -536,7 +536,7 @@ public class PicPreDownloader
         }
         this.jdField_a_of_type_ComTencentMobileqqPicPicStatisticsManager.a(k, i);
       }
-      ThreadManager.a().post(new dzv(this, localPicReq));
+      ThreadManager.a().post(new eax(this, localPicReq));
       label605:
       Logger.a("PIC_TAG_PRELOAD", "consume", "END");
       break;

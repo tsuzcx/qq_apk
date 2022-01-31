@@ -1,13 +1,26 @@
 import com.dataline.mpfile.LiteMpFileMainActivity;
+import com.dataline.mpfile.MpFileDataReportCenter;
+import com.dataline.mpfile.MpfileDataCenter;
+import com.dataline.mpfile.MpfileDataReportInfo;
+import com.dataline.util.DBNetworkUtil;
 
-public class cq
+class cq
   implements Runnable
 {
-  public cq(LiteMpFileMainActivity paramLiteMpFileMainActivity) {}
+  cq(cp paramcp) {}
   
   public void run()
   {
-    this.a.a(false);
+    MpfileDataReportInfo localMpfileDataReportInfo = new MpfileDataReportInfo();
+    localMpfileDataReportInfo.jdField_b_of_type_Int = 254;
+    localMpfileDataReportInfo.jdField_a_of_type_Int = 1;
+    localMpfileDataReportInfo.jdField_a_of_type_JavaLangString = MpfileDataCenter.k;
+    localMpfileDataReportInfo.jdField_b_of_type_JavaLangString = DBNetworkUtil.b();
+    localMpfileDataReportInfo.d = MpfileDataCenter.E;
+    localMpfileDataReportInfo.jdField_b_of_type_Long = LiteMpFileMainActivity.b(this.a.a);
+    localMpfileDataReportInfo.c = LiteMpFileMainActivity.c(this.a.a);
+    MpFileDataReportCenter.a(this.a.a.app, localMpfileDataReportInfo);
+    this.a.a.a(MpfileDataCenter.t);
   }
 }
 

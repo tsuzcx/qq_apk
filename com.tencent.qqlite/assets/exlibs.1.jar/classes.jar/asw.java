@@ -1,24 +1,17 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-class asw
-  implements Animation.AnimationListener
+public class asw
+  implements View.OnClickListener
 {
-  asw(asv paramasv) {}
+  public asw(Leba paramLeba) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.a.a.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.invalidate();
+    this.a.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener.a(this.a.jdField_a_of_type_ComTencentWidgetXListView, paramView, ((Integer)paramView.getTag(-1)).intValue(), 0L);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

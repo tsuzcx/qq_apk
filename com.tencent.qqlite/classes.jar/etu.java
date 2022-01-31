@@ -1,20 +1,35 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.JumpAction;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.util.FaceDecodeTask;
+import com.tencent.mobileqq.util.FaceDecodeTask.DecodeCompletionListener;
 
-public class etu
-  implements View.OnClickListener
+public final class etu
+  extends Handler
 {
-  public etu(JumpAction paramJumpAction) {}
-  
-  public void onClick(View paramView)
+  public etu(Looper paramLooper)
   {
-    if ((JumpAction.a(this.a) != null) && (JumpAction.a(this.a).isShowing())) {
-      JumpAction.a(this.a).dismiss();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (paramMessage.what != FaceDecodeTask.a());
+      paramMessage = (FaceDecodeTask)paramMessage.obj;
+    } while ((paramMessage == null) || (FaceDecodeTask.a(paramMessage) == null) || (FaceDecodeTask.a(paramMessage) == null));
+    if (FaceDecodeTask.a(paramMessage))
+    {
+      FaceDecodeTask.a(paramMessage).b = 2;
+      FaceDecodeTask.a(paramMessage).a(FaceDecodeTask.a(paramMessage), FaceDecodeTask.a(paramMessage));
+      return;
     }
-    ((BaseActivity)JumpAction.a(this.a)).finish();
+    FaceDecodeTask.a(paramMessage).a(FaceDecodeTask.a(paramMessage), FaceDecodeTask.a(paramMessage));
   }
 }
 

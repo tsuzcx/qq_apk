@@ -71,8 +71,8 @@ public class RecentTroopAssistantItem
           this.v = ((ConversationFacade)localObject1).a(localMessage.frienduin, localMessage.istroop);
           if ((TroopNotificationHelper.a(str)) || (TroopNotificationHelper.d(str)))
           {
-            this.jdField_c_of_type_JavaLangCharSequence = BaseApplicationImpl.getContext().getString(2131363039);
-            this.y = paramContext.getResources().getColor(2131427509);
+            this.jdField_c_of_type_JavaLangCharSequence = BaseApplicationImpl.getContext().getString(2131363049);
+            this.y = paramContext.getResources().getColor(2131427515);
           }
           i = this.A & 0xFFFFF0FF;
           localObject1 = (FriendManager)paramQQAppInterface.getManager(8);
@@ -125,7 +125,7 @@ public class RecentTroopAssistantItem
         if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangCharSequence)) || (localMessage == null) || (localObject3 == null) || (!AnonymousChatHelper.a(localMessage))) {
           break;
         }
-        this.b = ((MsgSummary)localObject3).a(paramContext, paramContext.getResources().getString(2131362566), -1);
+        this.b = ((MsgSummary)localObject3).a(paramContext, paramContext.getResources().getString(2131362568), -1);
         return;
         this.v = 0;
         break label90;

@@ -1,10 +1,9 @@
-import android.widget.TextView;
+import android.view.View;
 
 public class diz
 {
-  public int a;
-  public TextView a;
-  public TextView b;
+  private static final int a = 12;
+  public View[] a = new View[12];
 }
 
 

@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
+import java.util.TimerTask;
 
-class cbr
-  extends AnimateUtils.AnimationAdapter
+public class cbr
+  extends TimerTask
 {
-  cbr(cbp paramcbp) {}
+  public cbr(FraudTipsBar paramFraudTipsBar) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.findViewById(16908290).setBackgroundDrawable(null);
+    FraudTipsBar.a(this.a).post(new cbs(this));
   }
 }
 

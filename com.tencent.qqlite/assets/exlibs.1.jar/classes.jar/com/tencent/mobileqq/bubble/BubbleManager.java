@@ -28,9 +28,9 @@ import com.tencent.mobileqq.vip.IPCDownloadListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
-import dag;
-import dah;
-import dai;
+import dbi;
+import dbj;
+import dbk;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -76,13 +76,13 @@ public class BubbleManager
   protected AppInterface a;
   public BubbleManager.BubbleInfoLruCache a;
   public BubbleManager.LruLinkedHashMap a;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new dag(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new dbi(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
   private DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory = null;
   public IPCDownloadListener a;
   private Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
   protected Vector a;
   JSONArray jdField_a_of_type_OrgJsonJSONArray = null;
-  DownloadListener b = new dah(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
+  DownloadListener b = new dbj(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
   
   static
   {
@@ -775,7 +775,7 @@ public class BubbleManager
       }
     }
     if (0 == 0) {
-      return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837679);
+      return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837704);
     }
     return null;
   }
@@ -1441,7 +1441,7 @@ public class BubbleManager
     if ((paramBoolean) && (!this.jdField_a_of_type_JavaUtilVector.contains(Integer.valueOf(paramInt)))) {
       synchronized (this.jdField_a_of_type_JavaUtilVector)
       {
-        localObject2 = new dai(this, paramInt);
+        localObject2 = new dbk(this, paramInt);
         this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(paramInt));
         ThreadManager.b((Runnable)localObject2);
       }

@@ -1,36 +1,16 @@
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.NewIntent;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.mobileqq.text.QQTextBuilder;
 
-public class eho
-  implements Runnable
+public final class eho
+  extends Editable.Factory
 {
-  public long a;
-  public ProtoReqManager.ProtoResp a;
-  public NewIntent a;
-  public boolean a;
-  long b;
-  public boolean b;
-  public long c;
-  public boolean c = false;
-  
-  public eho(ProtoReqManager paramProtoReqManager)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public void run()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_MqqAppNewIntent.putExtra("key_timeout", this.jdField_a_of_type_Long);
-    MessageObserver.StatictisInfo localStatictisInfo = this.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp.a;
-    localStatictisInfo.c += 1;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a.put(this.jdField_a_of_type_MqqAppNewIntent, this.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(this.jdField_a_of_type_MqqAppNewIntent);
+    if ((paramCharSequence instanceof QQTextBuilder)) {
+      return (Editable)paramCharSequence;
+    }
+    return new QQTextBuilder(paramCharSequence, 3);
   }
 }
 

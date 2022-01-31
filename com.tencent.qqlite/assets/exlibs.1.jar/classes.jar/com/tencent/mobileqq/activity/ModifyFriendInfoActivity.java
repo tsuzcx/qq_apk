@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
-import avj;
-import avk;
 import avo;
 import avp;
-import avq;
-import avr;
+import avt;
+import avu;
+import avv;
+import avw;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -31,12 +31,12 @@ public class ModifyFriendInfoActivity
   private static final int d = 1000;
   public int a;
   public Handler a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new avj(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new avo(this);
   private View jdField_a_of_type_AndroidViewView;
   public TextView a;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new avr(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new avw(this);
   public String a;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new avq(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new avv(this);
   private View jdField_b_of_type_AndroidViewView;
   public TextView b;
   public String b;
@@ -48,22 +48,22 @@ public class ModifyFriendInfoActivity
   public ModifyFriendInfoActivity()
   {
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new avp(this);
+    this.jdField_a_of_type_AndroidOsHandler = new avu(this);
   }
   
   private void d()
   {
-    new avo(this).start();
+    new avt(this).start();
   }
   
   private void e()
   {
     this.jdField_c_of_type_AndroidWidgetTextView = this.i;
-    this.j.setText(2131363433);
+    this.j.setText(2131363444);
     this.j.setVisibility(0);
     this.j.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297305));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296844));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296845));
     this.jdField_a_of_type_AndroidViewView = findViewById(2131297303);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
     this.jdField_b_of_type_AndroidViewView = findViewById(2131297306);
@@ -76,7 +76,7 @@ public class ModifyFriendInfoActivity
   {
     super.a();
     this.j.setVisibility(0);
-    this.j.setText(2131362936);
+    this.j.setText(2131362943);
     this.j.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     this.j.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     return this.j;
@@ -84,7 +84,7 @@ public class ModifyFriendInfoActivity
   
   public void c()
   {
-    new avk(this).start();
+    new avp(this).start();
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -113,7 +113,7 @@ public class ModifyFriendInfoActivity
             ((FriendListHandler)localQQAppInterface1.a(1)).a(this.jdField_a_of_type_JavaLangString, paramIntent, false);
             return;
           }
-          Toast.makeText(this.app.a(), getString(2131363449), 1).show();
+          Toast.makeText(this.app.a(), getString(2131363460), 1).show();
           return;
         }
       } while (paramInt1 != 0);
@@ -127,7 +127,7 @@ public class ModifyFriendInfoActivity
   {
     super.onCreate(paramBundle);
     setContentView(2130903238);
-    d(2130837635);
+    d(2130837660);
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("uin");
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("uinname");
@@ -135,7 +135,7 @@ public class ModifyFriendInfoActivity
     for (paramBundle = this.jdField_a_of_type_JavaLangString;; paramBundle = this.jdField_b_of_type_JavaLangString)
     {
       this.jdField_b_of_type_JavaLangString = paramBundle;
-      setTitle(2131363617);
+      setTitle(2131363628);
       this.jdField_c_of_type_Float = getResources().getDisplayMetrics().density;
       d();
       c();

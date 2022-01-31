@@ -1,27 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
-public class aiy
-  implements DialogInterface.OnClickListener
+class aiy
+  implements View.OnClickListener
 {
-  public aiy(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  aiy(aix paramaix) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (NetworkUtil.e(this.a.getActivity()))
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, "", "", "", "");
-      DiscussionInfoCardActivity.a(this.a).d(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue());
-      this.a.a(this.a.getString(2131363671));
-      DiscussionInfoCardActivity.a(this.a).show();
-      return;
-    }
-    this.a.a(1, this.a.getString(2131363450));
+    paramView = new Intent(this.a.a, DiscussionMemberActivity.class);
+    paramView.putExtra("uin", DiscussionInfoCardActivity.a(this.a.a));
+    this.a.a.startActivity(paramView);
   }
 }
 

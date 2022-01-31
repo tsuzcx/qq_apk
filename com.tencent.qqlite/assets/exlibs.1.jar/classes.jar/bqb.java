@@ -1,21 +1,37 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bqb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bqb(TroopTransferActivity paramTroopTransferActivity) {}
+  public bqb(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
+    if (NetworkUtil.e(BaseApplication.getContext())) {}
     try
     {
-      if (this.a.a != null) {
-        this.a.a.notifyDataSetChanged();
+      paramView = this.a.app.a();
+      ProfileCardUtil.a(this.a, "", TroopRequestActivity.d(this.a), paramView, false);
+      for (;;)
+      {
+        label38:
+        ReportController.b(this.a.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "report", 0, 0, this.a.p, TroopRequestActivity.e(this.a), "", "");
+        return;
+        QQToast.a(this.a, 2131363527, 0).b(this.a.getTitleBarHeight());
       }
-      return;
     }
-    catch (Throwable localThrowable) {}
+    catch (Exception paramView)
+    {
+      break label38;
+    }
   }
 }
 

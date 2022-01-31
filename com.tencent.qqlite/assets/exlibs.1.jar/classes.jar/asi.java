@@ -1,21 +1,20 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class asi
-  extends FriendListObserver
+  implements Runnable
 {
-  public asi(Leba paramLeba) {}
+  public asi(Leba paramLeba, LebaViewItem paramLebaViewItem) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    while ((QZoneManagerImp)this.a.a.getManager(9) == null) {
-      return;
-    }
-    Leba.b(this.a);
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a().createEntityManager();
+    ResourcePluginInfo.persistOrReplace(localEntityManager, this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a);
+    localEntityManager.a();
   }
 }
 

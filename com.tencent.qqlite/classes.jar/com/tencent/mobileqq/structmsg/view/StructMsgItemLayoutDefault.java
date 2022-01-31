@@ -55,7 +55,7 @@ public class StructMsgItemLayoutDefault
       }
       paramView.setPadding(m, i, n, k);
       if (!TextUtils.isEmpty(this.c)) {
-        paramView.setBackgroundResource(2130837924);
+        paramView.setBackgroundResource(2130837942);
       }
       View localView;
       if (paramView.getChildCount() == this.a.size())

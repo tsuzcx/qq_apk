@@ -1,51 +1,33 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.plugin.IPluginManager.OnPluginReadyListener;
-import cooperation.plugin.IPluginManager.PluginParams;
-import cooperation.plugin.PluginManagerV2;
+import android.graphics.Matrix;
+import android.view.ViewDebug.ExportedProperty;
 
 public class fkq
-  implements DialogInterface.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  IPluginManager.OnPluginReadyListener jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener;
-  IPluginManager.PluginParams jdField_a_of_type_CooperationPluginIPluginManager$PluginParams;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  @ViewDebug.ExportedProperty
+  public float a;
+  private final Matrix a;
+  public boolean a;
+  @ViewDebug.ExportedProperty
+  public float b;
+  private boolean b;
+  @ViewDebug.ExportedProperty
+  public float c = 0.0F;
+  @ViewDebug.ExportedProperty
+  public float d = 1.0F;
+  @ViewDebug.ExportedProperty
+  public float e = 1.0F;
+  @ViewDebug.ExportedProperty
+  public float f = 0.0F;
+  @ViewDebug.ExportedProperty
+  public float g = 0.0F;
   
-  private fkq(PluginManagerV2 paramPluginManagerV2, IPluginManager.OnPluginReadyListener paramOnPluginReadyListener, boolean paramBoolean1, Context paramContext, IPluginManager.PluginParams paramPluginParams, boolean paramBoolean2)
+  public fkq()
   {
-    this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
-    this.b = paramBoolean2;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    int i = 0;
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case -1: 
-      PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2, 1, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      paramInt = i;
-    }
-    for (;;)
-    {
-      PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2, paramInt, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
-      return;
-      paramInt = i;
-      if (this.b) {
-        paramInt = 2;
-      }
-    }
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
   }
 }
 

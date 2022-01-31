@@ -27,8 +27,8 @@ import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.ListView;
-import dd;
-import de;
+import da;
+import db;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -49,13 +49,13 @@ public class DatalineFilesAdapter
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private DataLineMsgSet jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet;
   private final long jdField_b_of_type_Long = 1048576L;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new dd(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new da(this);
   private final int jdField_c_of_type_Int = 2;
   private final long jdField_c_of_type_Long = 1073741824L;
   
   public DatalineFilesAdapter(Context paramContext, DataLineMsgSet paramDataLineMsgSet, DLFilesViewerActivity paramDLFilesViewerActivity, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new de(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new db(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet = paramDataLineMsgSet;
     this.jdField_a_of_type_ComDatalineActivitiesDLFilesViewerActivity = paramDLFilesViewerActivity;
@@ -306,7 +306,7 @@ public class DatalineFilesAdapter
         localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
         localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localItemHolder);
         localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131296945));
-        localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838501);
+        localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838526);
         localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);
         localItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296946));
         localItemHolder.b = ((TextView)paramView.findViewById(2131296948));
@@ -349,7 +349,7 @@ public class DatalineFilesAdapter
         localItemHolder.jdField_a_of_type_Int = paramViewGroup.msgtype;
         if ((paramViewGroup.strMoloKey != null) && (paramViewGroup.bIsApkFile))
         {
-          localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838501);
+          localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838526);
           localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setAsyncImage(paramViewGroup.strMoloIconUrl);
         }
         for (;;)

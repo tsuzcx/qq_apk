@@ -1,18 +1,16 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 
 public class bue
   implements Runnable
 {
-  public bue(RecordSoundPanel paramRecordSoundPanel, int paramInt, double paramDouble) {}
+  public bue(PressToChangeVoicePanel paramPressToChangeVoicePanel, String paramString, QQRecorder.RecorderParam paramRecorderParam) {}
   
   public void run()
   {
-    int i = AudioPanel.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.c(i);
-    RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel).setText(AudioPanel.a(this.jdField_a_of_type_Double));
-    RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel, this.jdField_a_of_type_Double);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToChangeVoicePanel.g();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToChangeVoicePanel.a.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam);
   }
 }
 

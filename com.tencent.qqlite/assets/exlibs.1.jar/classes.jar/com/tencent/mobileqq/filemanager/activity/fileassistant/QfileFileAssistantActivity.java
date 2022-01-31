@@ -23,8 +23,8 @@ import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantRe
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.XListView;
-import djh;
-import dji;
+import dkj;
+import dkk;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class QfileFileAssistantActivity
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   List jdField_a_of_type_JavaUtilList = new ArrayList();
   TextView jdField_b_of_type_AndroidWidgetTextView;
-  private FMObserver jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dji(this);
+  private FMObserver jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dkk(this);
   private volatile boolean d = false;
   
   static
@@ -51,26 +51,26 @@ public class QfileFileAssistantActivity
   
   public QfileFileAssistantActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new djh(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dkj(this);
   }
   
   private void n()
   {
-    String str1 = getString(2131364061);
-    String str2 = getString(2131364062);
+    String str1 = getString(2131364072);
+    String str2 = getString(2131364073);
     String str3 = getString(2131361943);
     String str4 = getString(2131361941);
     String str5 = getString(2131361947);
     String str6 = getString(2131361940);
-    a(2130903412, 2130838715, 2, "", 0, false, 0, "video", 1, false, false);
-    a(2130903409, 2130838503, 0, str1, 0, false, 12, "offline", 2, true, false);
-    a(2130903426, 2130838715, 1, str6, 0, true, 0, "other", 1, false, false);
-    a(2130903410, 2130838520, 0, str5, 0, false, 13, "picture", 2, false, this.app.a().d());
-    a(2130903410, 2130838522, 0, str4, 0, false, 15, "other", 3, false, false);
+    a(2130903417, 2130838742, 2, "", 0, false, 0, "video", 1, false, false);
+    a(2130903414, 2130838528, 0, str1, 0, false, 12, "offline", 2, true, false);
+    a(2130903431, 2130838742, 1, str6, 0, true, 0, "other", 1, false, false);
+    a(2130903415, 2130838545, 0, str5, 0, false, 13, "picture", 2, false, this.app.a().d());
+    a(2130903415, 2130838547, 0, str4, 0, false, 15, "other", 3, false, false);
     if ((((RegisterProxySvcPackHandler)this.app.a(9)).a() != 0) && (NetworkUtil.g(this))) {
-      a(2130903410, 2130838504, 0, str2, 0, false, 19, "music", 3, false, false);
+      a(2130903415, 2130838529, 0, str2, 0, false, 19, "music", 3, false, false);
     }
-    a(2130903410, 2130838517, 0, str3, 0, false, 14, "music", 4, false, false);
+    a(2130903415, 2130838542, 0, str3, 0, false, 14, "music", 4, false, false);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
   }
   
@@ -89,7 +89,7 @@ public class QfileFileAssistantActivity
       startActivityForResult(localIntent, 101);
       return;
     }
-    FMToastUtil.a(BaseApplication.getContext().getString(2131362916));
+    FMToastUtil.a(BaseApplication.getContext().getString(2131362923));
   }
   
   private void p()
@@ -157,9 +157,9 @@ public class QfileFileAssistantActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903414);
+    setContentView(2130903419);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131298004));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131298009));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = new FileCategoryAdapter(this, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter);
     r();

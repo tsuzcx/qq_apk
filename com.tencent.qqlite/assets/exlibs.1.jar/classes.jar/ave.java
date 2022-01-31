@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.MayKnowManActivity;
 
 public class ave
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
   public ave(MayKnowManActivity paramMayKnowManActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a = null;
+    if (MayKnowManActivity.a(this.a, 10, this.a.c)) {
+      MayKnowManActivity.a(this.a);
+    }
   }
 }
 

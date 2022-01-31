@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020083" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03005b" />
-    <com.tencent.mobileqq.widget.SlideDetectListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090668" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" />
-</LinearLayout>
+    <com.tencent.mobileqq.widget.SlideDetectListView android:id="@id/qb_troop_list_view" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201a0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" />
+    <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a9" android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090588" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="15.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00d4" android:singleLine="true" />
+</RelativeLayout>

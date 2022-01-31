@@ -8,14 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import cjj;
-import cjk;
-import cjl;
-import cjm;
-import cjo;
-import cjp;
-import cjq;
-import cjr;
+import ckk;
+import ckl;
+import ckm;
+import ckn;
+import ckp;
+import ckq;
+import ckr;
+import cks;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 import com.tencent.mobileqq.utils.AlbumUtil;
@@ -36,7 +36,7 @@ public class PhotoPreviewActivity
   Button jdField_a_of_type_AndroidWidgetButton;
   public CheckBox a;
   public TextView a;
-  cjr jdField_a_of_type_Cjr;
+  cks jdField_a_of_type_Cks;
   ProGallery jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery;
   String jdField_a_of_type_JavaLangString;
   public ArrayList a;
@@ -82,7 +82,7 @@ public class PhotoPreviewActivity
   {
     if (new File(paramString).length() > 19922944L)
     {
-      QQToast.a(this, getResources().getString(2131363955), 0).b(getResources().getDimensionPixelSize(2131492887));
+      QQToast.a(this, getResources().getString(2131363966), 0).b(getResources().getDimensionPixelSize(2131492887));
       this.jdField_c_of_type_Int = 0;
       f();
     }
@@ -90,10 +90,10 @@ public class PhotoPreviewActivity
   
   private void a(ArrayList paramArrayList, int paramInt1, int paramInt2)
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624120);
     PhotoMagicStickUtils.a(this, paramArrayList, localActionSheet, paramInt1);
-    localActionSheet.d(2131362794);
-    localActionSheet.a(new cjq(this, paramArrayList, localActionSheet));
+    localActionSheet.d(2131362801);
+    localActionSheet.a(new ckr(this, paramArrayList, localActionSheet));
     localActionSheet.e(paramInt2);
     localActionSheet.show();
   }
@@ -111,7 +111,7 @@ public class PhotoPreviewActivity
       if (QLog.isColorLevel()) {
         QLog.d("_photo", 2, "onQualityBtnClick clikedBtn text:" + str);
       }
-      if ((str == null) || (!str.contains(getString(2131363943)))) {
+      if ((str == null) || (!str.contains(getString(2131363954)))) {
         break label90;
       }
       this.jdField_c_of_type_Int = 0;
@@ -122,7 +122,7 @@ public class PhotoPreviewActivity
       paramActionSheet.dismiss();
       return;
       label90:
-      if ((str != null) && (str.contains(getString(2131363944))))
+      if ((str != null) && (str.contains(getString(2131363955))))
       {
         this.jdField_c_of_type_Int = 2;
         if (QLog.isColorLevel()) {
@@ -203,17 +203,17 @@ public class PhotoPreviewActivity
     {
       this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131297429));
       this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131297427));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296932));
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnClickListener(new cjj(this));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296934));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnClickListener(new ckk(this));
       this.jdField_c_of_type_AndroidViewView = findViewById(2131297421);
-      this.jdField_c_of_type_AndroidViewView.setOnClickListener(new cjk(this));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new cjl(this));
-      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new cjm(this));
+      this.jdField_c_of_type_AndroidViewView.setOnClickListener(new ckl(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ckm(this));
+      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new ckn(this));
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery = ((ProGallery)findViewById(2131297183));
-      this.jdField_a_of_type_Cjr = new cjr(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setAdapter(this.jdField_a_of_type_Cjr);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setOnNoBlankListener(this.jdField_a_of_type_Cjr);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setOnItemSelectedListener(new cjo(this));
+      this.jdField_a_of_type_Cks = new cks(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setAdapter(this.jdField_a_of_type_Cks);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setOnNoBlankListener(this.jdField_a_of_type_Cks);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setOnItemSelectedListener(new ckp(this));
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setSpacing(getResources().getDimensionPixelSize(2131492920));
       this.jdField_b_of_type_Int = (this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setSelection(this.jdField_b_of_type_Int);
@@ -223,7 +223,7 @@ public class PhotoPreviewActivity
         this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setOnItemClickListener(new cjp(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setOnItemClickListener(new ckq(this));
       return;
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
     }
@@ -232,7 +232,7 @@ public class PhotoPreviewActivity
   private void e()
   {
     if (this.jdField_b_of_type_Boolean) {}
-    for (String str = getString(2131363945);; str = getString(2131363946))
+    for (String str = getString(2131363956);; str = getString(2131363957))
     {
       if (this.jdField_e_of_type_JavaLangString != null) {
         str = this.jdField_e_of_type_JavaLangString;
@@ -267,10 +267,10 @@ public class PhotoPreviewActivity
     default: 
       return;
     case 0: 
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363943);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363954);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131363944);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131363955);
   }
   
   private void g()

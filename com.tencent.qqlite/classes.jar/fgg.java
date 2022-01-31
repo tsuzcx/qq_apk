@@ -1,21 +1,56 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadApi;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.DownloadQueryListener;
+import java.util.ArrayList;
+import java.util.List;
 
-public class fgg
-  implements TextView.OnEditorActionListener
+public final class fgg
+  implements Runnable
 {
-  public fgg(Login paramLogin) {}
+  public fgg(List paramList, DownloadQueryListener paramDownloadQueryListener) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if (paramInt == 6)
+    LogUtility.a(DownloadApi.a, "getQueryDownloadAction enter");
+    DownloadManager.a().a();
+    for (;;)
     {
-      this.a.d();
-      return true;
+      int i;
+      try
+      {
+        ArrayList localArrayList = new ArrayList();
+        int j = this.jdField_a_of_type_JavaUtilList.size();
+        i = 0;
+        if (i < j)
+        {
+          DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+          if (DownloadManager.a().a(localDownloadInfo))
+          {
+            LogUtility.a(DownloadApi.a, "refreshDownloadInfo true " + localDownloadInfo);
+            localArrayList.add(localDownloadInfo);
+          }
+        }
+        else
+        {
+          if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null) {
+            this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.b(localArrayList);
+          }
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        LogUtility.c(DownloadApi.a, "Exception>>>", localException);
+        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener == null) {
+          continue;
+        }
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(-1, localException.getMessage());
+        return;
+      }
+      i += 1;
     }
-    return false;
   }
 }
 

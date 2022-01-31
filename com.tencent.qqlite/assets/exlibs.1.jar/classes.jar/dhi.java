@@ -1,35 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter.LocalFileItemHolder;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.widget.MenuPopupDialog;
-import java.util.ArrayList;
+import android.view.animation.AlphaAnimation;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.eAnimType;
+import com.tencent.qphone.base.util.QLog;
 
-class dhi
-  implements View.OnClickListener
+public class dhi
+  implements Runnable
 {
-  dhi(dhh paramdhh, View paramView) {}
+  public dhi(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (LocalFileBrowserActivity.a(this.jdField_a_of_type_Dhh.a) != null) {
-      LocalFileBrowserActivity.a(this.jdField_a_of_type_Dhh.a).dismiss();
+    if (this.a.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue == null) {
+      this.a.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue = new FilePreviewAnimQueue(this.a.jdField_a_of_type_AndroidWidgetLinearLayout);
     }
-    paramView = (LocalFileAdapter.LocalFileItemHolder)this.jdField_a_of_type_AndroidViewView.getTag();
-    this.jdField_a_of_type_Dhh.a.b = paramView.a;
-    paramView = (FileInfo)this.jdField_a_of_type_Dhh.a.a.get(this.jdField_a_of_type_Dhh.a.b);
-    if ((!FileUtil.a(paramView.d())) || (FileUtil.c(paramView.d())))
-    {
-      FileManagerUtil.d(paramView.d());
-      this.jdField_a_of_type_Dhh.a.a.remove(this.jdField_a_of_type_Dhh.a.b);
-      LocalFileBrowserActivity.a(this.jdField_a_of_type_Dhh.a);
-      return;
+    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    this.a.jdField_c_of_type_AndroidWidgetTextView.setText(2131363577);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
+    localAlphaAnimation.setFillAfter(true);
+    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
+    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
+    localFilePreviewAnim.jdField_a_of_type_Boolean = true;
+    localFilePreviewAnim.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue$eAnimType = FilePreviewAnimQueue.eAnimType.eAlphaAnim;
+    localFilePreviewAnim.jdField_a_of_type_Int = 1000;
+    this.a.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a(localFilePreviewAnim);
+    this.a.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("<FileAssistant>FilePreviewActivity", 2, "showGetmore(1000)");
     }
-    FMToastUtil.a(2131361978);
   }
 }
 

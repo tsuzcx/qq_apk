@@ -1,31 +1,19 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 
 public class cht
-  extends ContactBindObserver
+  implements DialogInterface.OnKeyListener
 {
-  public cht(PhoneMatchActivity paramPhoneMatchActivity) {}
+  public cht(ContactListView paramContactListView) {}
   
-  protected void a(boolean paramBoolean)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.a.a != null)
-    {
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
+    if (paramInt == 4) {
+      this.a.f();
     }
-    this.a.d();
-    if (paramBoolean)
-    {
-      if (this.a.a != null)
-      {
-        this.a.app.unRegistObserver(this.a.a);
-        this.a.a = null;
-      }
-      this.a.finish();
-      return;
-    }
-    this.a.a("更新失败，请稍后重试。");
+    return false;
   }
 }
 

@@ -12,8 +12,8 @@ import android.view.ViewConfiguration;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
-import ezl;
-import ezm;
+import fbr;
+import fbs;
 import java.util.ArrayList;
 
 public class SlideDetectListView
@@ -22,7 +22,7 @@ public class SlideDetectListView
 {
   public static final float a = 1.73F;
   public int a;
-  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new ezl(this);
+  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new fbr(this);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = null;
   public View a;
   private SlideDetectListView.OnScrollGroupFloatingListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnScrollGroupFloatingListener = null;
@@ -48,7 +48,7 @@ public class SlideDetectListView
     this.jdField_c_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_b_of_type_Float = 0.0F;
-    super.setOnScrollListener(new ezm(this));
+    super.setOnScrollListener(new fbs(this));
     this.d = (ViewConfiguration.getTouchSlop() + 2);
   }
   
@@ -189,7 +189,7 @@ public class SlideDetectListView
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131296441);
+      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131296444);
       if (localView != null) {
         localView.setVisibility(8);
       }

@@ -121,7 +121,7 @@ public class RecentItemTroopMsgData
           b(paramQQAppInterface, paramContext);
         }
         if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangCharSequence)) && (localMessage != null) && (localMsgSummary != null) && (AnonymousChatHelper.a(localMessage))) {
-          this.jdField_b_of_type_JavaLangCharSequence = localMsgSummary.a(paramContext, paramContext.getResources().getString(2131362566), -1);
+          this.jdField_b_of_type_JavaLangCharSequence = localMsgSummary.a(paramContext, paramContext.getResources().getString(2131362568), -1);
         }
         paramQQAppInterface = a();
         if ((paramQQAppInterface != null) && (paramQQAppInterface.msg == null)) {
@@ -192,14 +192,14 @@ public class RecentItemTroopMsgData
   
   public void b(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    int i = 2131427509;
+    int i = 2131427515;
     if ((a().msg instanceof TroopSpecialAttentionMsg))
     {
       paramQQAppInterface = (TroopSpecialAttentionMsg)a().msg;
       if (paramQQAppInterface != null)
       {
         this.jdField_c_of_type_JavaLangCharSequence = paramQQAppInterface.jdField_c_of_type_JavaLangString;
-        i = 2131427509;
+        i = 2131427515;
       }
     }
     for (;;)

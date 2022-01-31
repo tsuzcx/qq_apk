@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.app.MessageObserver;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
 
 public class ceg
-  extends MessageObserver
+  implements Animation.AnimationListener
 {
-  private ceg(TroopView paramTroopView) {}
+  public ceg(BaseTroopView paramBaseTroopView, int paramInt) {}
   
-  protected void d()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.c.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.c.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.c.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

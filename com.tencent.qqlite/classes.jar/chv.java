@@ -1,42 +1,24 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.app.Dialog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.activity.phone.PhoneMatchView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class chv
-  extends ContactBindObserver
+  implements Animation.AnimationListener
 {
-  public chv(PhoneMatchView paramPhoneMatchView) {}
+  public chv(ContactListView paramContactListView) {}
   
-  protected void a(boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
-      this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
-    }
-    this.a.g();
-    if (paramBoolean)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
-        this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
-      }
-      if (this.a.jdField_a_of_type_Int == 2)
-      {
-        this.a.jdField_a_of_type_AndroidAppActivity.setResult(-1);
-        this.a.f();
-        return;
-      }
-      Intent localIntent = new Intent(this.a.getContext(), ContactListView.class);
-      this.a.a(localIntent);
-      return;
-    }
-    this.a.b("更新失败，请稍后重试。");
+    ContactListView.a(this.a).show();
+    this.a.b.setAnimation(null);
+    this.a.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView;
+import java.util.LinkedHashMap;
 
-public class dmf
-  implements DialogInterface.OnCancelListener
+class dmf
+  implements Runnable
 {
-  public dmf(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  dmf(dme paramdme, LinkedHashMap paramLinkedHashMap) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a.a(Integer.valueOf(-1));
-    QfileBaseRecentFileTabView.a(this.a);
+    this.jdField_a_of_type_Dme.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
+    this.jdField_a_of_type_Dme.a.i();
+    this.jdField_a_of_type_Dme.a.setSelect(0);
   }
 }
 

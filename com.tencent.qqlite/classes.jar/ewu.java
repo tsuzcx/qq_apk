@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.mobileqq.vas.ClubContentJsonTask.TaskInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 
-public final class ewu
-  implements Runnable
+public class ewu
+  implements View.OnClickListener
 {
-  public ewu(ClubContentJsonTask.TaskInfo paramTaskInfo, File paramFile) {}
+  public ewu(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    boolean bool = HttpDownloadUtil.a(null, EmosmUtils.insertMtype("VIP_emosm", this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo.b), this.jdField_a_of_type_JavaIoFile);
-    if (QLog.isColorLevel()) {
-      QLog.d("ClubContentJsonTask", 2, "downloadIfNotExists, " + this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo.a + ",ret=" + bool);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
     }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
   }
 }
 

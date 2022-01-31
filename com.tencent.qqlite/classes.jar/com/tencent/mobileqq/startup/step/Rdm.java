@@ -5,14 +5,14 @@ import com.tencent.feedback.eup.CrashReport;
 import com.tencent.mobileqq.log.ReportLog;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.remote.SimpleAccount;
-import eem;
+import efq;
 import java.util.List;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 public class Rdm
   extends Step
 {
-  private static final ScheduledThreadPoolExecutor a = new ScheduledThreadPoolExecutor(3, new eem());
+  private static final ScheduledThreadPoolExecutor a = new ScheduledThreadPoolExecutor(3, new efq());
   
   protected boolean a()
   {

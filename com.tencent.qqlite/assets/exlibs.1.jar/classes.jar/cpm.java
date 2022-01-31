@@ -1,22 +1,24 @@
-import EncounterSvc.RespEncounterInfo;
-import com.tencent.mobileqq.adapter.PeopleAroundAdapter;
-import com.tencent.mobileqq.util.FaceDecoder;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class cpm
-  implements Runnable
+  implements MediaPlayer.OnPreparedListener
 {
-  public cpm(PeopleAroundAdapter paramPeopleAroundAdapter, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
+  public cpm(ShortVideoPreviewActivity paramShortVideoPreviewActivity, int paramInt) {}
   
-  public void run()
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    FaceDecoder localFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.a;
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp > 0) {}
-    for (long l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp;; l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.common_face_timestamp)
-    {
-      localFaceDecoder.a(str, 3000, l);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + ShortVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity));
     }
+    ShortVideoPreviewActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity);
+    ShortVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity).start();
+    if (this.jdField_a_of_type_Int > 0) {
+      ShortVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity).seekTo(this.jdField_a_of_type_Int);
+    }
+    ShortVideoPreviewActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity, 1);
   }
 }
 

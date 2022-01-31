@@ -1,15 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.servlet.ReduFriendObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
 
 public class bzl
-  extends ReduFriendObserver
+  implements DialogInterface.OnDismissListener
 {
-  public bzl(FriendChatPie paramFriendChatPie) {}
+  public bzl(AIOImageListScene paramAIOImageListScene) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean) {}
+    AIOImageListScene.a(this.a, null);
   }
 }
 

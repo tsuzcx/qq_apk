@@ -1,92 +1,23 @@
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
-import android.view.View;
-import com.tencent.mobileqq.util.ImageCache;
-import com.tencent.mobileqq.util.ImageCreator;
-import com.tencent.mobileqq.util.ImageLoader;
-import com.tencent.mobileqq.util.ImageWorker;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.troop.widget.RedDotImageView;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import mqq.app.MobileQQ;
 
 public class esd
-  extends AsyncTask
+  implements Runnable
 {
-  private Object jdField_a_of_type_JavaLangObject;
-  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  public esd(RedDotImageView paramRedDotImageView, AppInterface paramAppInterface, String paramString) {}
   
-  public esd(ImageWorker paramImageWorker, View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-  }
-  
-  private View a()
-  {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!this.jdField_a_of_type_Boolean) {}
-    while (this == ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker, localView)) {
-      return localView;
+    MobileQQ localMobileQQ = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication();
+    int i = SharedPreUtils.c(localMobileQQ);
+    boolean bool = SharedPreUtils.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.a(), i, this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, this.jdField_a_of_type_JavaLangString + " show redDot: " + bool);
     }
-    return null;
-  }
-  
-  public Drawable a(Object... paramVarArgs)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramVarArgs[0];
-    String str = String.valueOf(this.jdField_a_of_type_JavaLangObject);
-    ImageCreator localImageCreator = (ImageCreator)paramVarArgs[1];
-    this.jdField_a_of_type_Boolean = ((Boolean)paramVarArgs[2]).booleanValue();
-    if (((ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker) == null) || (isCancelled()) || (a() == null) || (ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker))) || ((0 == 0) && (!isCancelled()) && (a() != null) && (!ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker)))) {}
-    for (;;)
-    {
-      try
-      {
-        paramVarArgs = localImageCreator.a();
-        if ((ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker) != null) && (paramVarArgs != null)) {
-          ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker).a(str, paramVarArgs);
-        }
-        return paramVarArgs;
-      }
-      catch (OutOfMemoryError paramVarArgs)
-      {
-        if (ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker) != null) {
-          ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker).a();
-        }
-        System.gc();
-        Thread.yield();
-        try
-        {
-          paramVarArgs = localImageCreator.a();
-        }
-        catch (OutOfMemoryError paramVarArgs)
-        {
-          QLog.w("ImageWorker", 2, "OutOfMemoryError!!!!!");
-        }
-      }
-      paramVarArgs = null;
-    }
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    View localView = a();
-    esf localesf = (esf)ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker).remove(localView);
-    if ((isCancelled()) || (ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker))) {
-      paramDrawable = null;
-    }
-    if (localView != null)
-    {
-      if (paramDrawable != null) {
-        break label72;
-      }
-      if ((localesf != null) && (localesf.a != null)) {
-        localesf.a.a(localView, null);
-      }
-    }
-    return;
-    label72:
-    ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker, this.jdField_a_of_type_Boolean, localView, paramDrawable, localesf);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.a(bool);
   }
 }
 

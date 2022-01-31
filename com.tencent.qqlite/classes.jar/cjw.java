@@ -1,23 +1,22 @@
-import android.content.Intent;
-import com.dataline.activities.LiteActivity;
-import com.dataline.util.DataLineReportUtil;
-import com.tencent.mobileqq.activity.qfileJumpActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.PhotoCropAction;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class cjw
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public cjw(qfileJumpActivity paramqfileJumpActivity) {}
+  public cjw(PhotoCropAction paramPhotoCropAction, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void a(View paramView, int paramInt)
   {
-    DataLineReportUtil.r(this.a.app);
-    Intent localIntent = new Intent(this.a, LiteActivity.class);
-    localIntent.addFlags(67108864);
-    localIntent.putExtra("leftViewText", this.a.app.a().getString(2131363113));
-    this.a.startActivity(localIntent);
-    this.a.finish();
+    if (paramInt != this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.jdField_a_of_type_ArrayOfJavaLangString.length)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.a(paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.c();
+    }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

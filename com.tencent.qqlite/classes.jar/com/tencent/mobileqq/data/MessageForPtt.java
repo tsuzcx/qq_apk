@@ -20,12 +20,18 @@ public class MessageForPtt
   public static final int PTT_SIZE_RECV_ERROR = -4;
   public static final int PTT_SIZE_SATUTS_ERROR = -1;
   public static final int PTT_SIZE_UI_SEND = -3;
+  public static final int STT_ABLE = 1;
+  public static final int STT_DONE = 2;
   public static final int STT_EMPTY = 0;
   public static final int VIPFLAG_NONE = 0;
   public static final int VIPFLAG_SVIP = 2;
   public static final int VIPFLAG_VIP = 1;
+  public static final int VOICE_CHANDE_YES = 1;
+  public static final int VOICE_CHANGE_NO = 0;
+  public int busiType;
   public boolean c2cViaOffline;
-  public boolean expandStt = false;
+  public String directUrl = "";
+  public boolean expandStt = true;
   public long fileSize;
   public long groupFileID;
   public String groupFileKeyStr = null;
@@ -34,24 +40,61 @@ public class MessageForPtt
   public int itemType;
   public int longPttVipFlag;
   public String md5;
+  public long msgRecTime = 0L;
+  public long msgTime = 0L;
+  public int sampleRate;
   public String storageSource;
   public int sttAbility = 0;
   public String sttText;
   public int subVersion = 5;
-  public int timeLength;
+  public String timeStr;
   public String url;
   public String urlAtServer;
+  public int voiceChangeFlag;
+  public int voiceLength;
+  public int voiceType;
+  
+  public static String getLocalFilePath(int paramInt, String paramString)
+  {
+    String str = paramString;
+    if (paramInt == 1)
+    {
+      str = paramString;
+      if (paramString.endsWith(".amr"))
+      {
+        paramString = paramString.substring(0, paramString.length() - ".amr".length());
+        str = paramString + ".slk";
+      }
+    }
+    return str;
+  }
+  
+  public static String getMsgFilePath(int paramInt, String paramString)
+  {
+    String str = paramString;
+    if (paramInt == 1)
+    {
+      str = paramString;
+      if (paramString.endsWith(".slk"))
+      {
+        paramString = paramString.substring(0, paramString.length() - ".slk".length());
+        str = paramString + ".amr";
+      }
+    }
+    return str;
+  }
   
   public void doParse()
   {
     boolean bool = true;
+    int j = 0;
     Object localObject = new RichMsg.PttRec();
     int i;
     try
     {
       RichMsg.PttRec localPttRec = (RichMsg.PttRec)((RichMsg.PttRec)localObject).mergeFrom(this.msgData);
-      i = 1;
       localObject = localPttRec;
+      i = 1;
     }
     catch (Exception localException2)
     {
@@ -59,9 +102,23 @@ public class MessageForPtt
       {
         localException2.printStackTrace();
         i = 0;
+        continue;
+        bool = true;
+        continue;
+        long l = 0L;
+        continue;
+        l = 0L;
+        continue;
+        i = 0;
+        continue;
+        i = 0;
+        continue;
+        i = 0;
+        continue;
+        localObject = "";
       }
       if (this.msg != null) {
-        break label245;
+        break label507;
       }
     }
     if (i != 0)
@@ -79,23 +136,67 @@ public class MessageForPtt
       this.groupFileID = ((RichMsg.PttRec)localObject).groupFileID.get();
       this.sttText = ((RichMsg.PttRec)localObject).sttText.get();
       this.longPttVipFlag = ((RichMsg.PttRec)localObject).longPttVipFlag.get();
-      this.expandStt = false;
-      if (((RichMsg.PttRec)localObject).group_file_key.has()) {
-        this.groupFileKeyStr = ((RichMsg.PttRec)localObject).group_file_key.get();
+      if (((RichMsg.PttRec)localObject).expandStt.has())
+      {
+        bool = ((RichMsg.PttRec)localObject).expandStt.get();
+        this.expandStt = bool;
+        if (((RichMsg.PttRec)localObject).group_file_key.has()) {
+          this.groupFileKeyStr = ((RichMsg.PttRec)localObject).group_file_key.get();
+        }
+        if (!((RichMsg.PttRec)localObject).msgTime.has()) {
+          break label442;
+        }
+        l = ((RichMsg.PttRec)localObject).msgTime.get();
+        this.msgTime = l;
+        if (!((RichMsg.PttRec)localObject).msgRecTime.has()) {
+          break label448;
+        }
+        l = ((RichMsg.PttRec)localObject).msgRecTime.get();
+        this.msgRecTime = l;
+        if (!((RichMsg.PttRec)localObject).voiceType.has()) {
+          break label454;
+        }
+        i = ((RichMsg.PttRec)localObject).voiceType.get();
+        this.voiceType = i;
+        if (!((RichMsg.PttRec)localObject).voiceLength.has()) {
+          break label459;
+        }
+        i = ((RichMsg.PttRec)localObject).voiceLength.get();
+        this.voiceLength = i;
+        if (!((RichMsg.PttRec)localObject).voiceChangeFlag.has()) {
+          break label464;
+        }
+        i = ((RichMsg.PttRec)localObject).voiceChangeFlag.get();
+        this.voiceChangeFlag = i;
+        i = j;
+        if (((RichMsg.PttRec)localObject).busiType.has()) {
+          i = ((RichMsg.PttRec)localObject).busiType.get();
+        }
+        this.busiType = i;
+        if (!((RichMsg.PttRec)localObject).directUrl.has()) {
+          break label469;
+        }
+        localObject = ((RichMsg.PttRec)localObject).directUrl.get();
+        this.directUrl = ((String)localObject);
       }
-      return;
     }
     for (;;)
     {
       try
       {
+        label442:
+        label448:
+        label454:
+        label459:
+        label464:
+        label469:
         if (this.versionCode > 0) {
           this.msg = new String(this.msgData, "UTF-8");
         }
-        label245:
+        label507:
         this.subVersion = 0;
         if ((this.msg == null) || (this.msgtype != -1031)) {
-          break label608;
+          break label890;
         }
         this.msg = ActionMsgUtil.a(this.msg).msg;
         i = 1;
@@ -172,9 +273,14 @@ public class MessageForPtt
       this.url = "";
       this.urlAtServer = "";
       return;
-      label608:
+      label890:
       i = 0;
     }
+  }
+  
+  public String getLocalFilePath()
+  {
+    return getLocalFilePath(this.voiceType, this.url);
   }
   
   public boolean isReady()
@@ -208,21 +314,21 @@ public class MessageForPtt
       localPttRec.isRead.set(this.isReadPtt);
       localPBStringField = localPttRec.uuid;
       if (this.urlAtServer == null) {
-        break label260;
+        break label344;
       }
       str = this.urlAtServer;
       label93:
       localPBStringField.set(str);
       localPBStringField = localPttRec.md5;
       if (this.md5 == null) {
-        break label266;
+        break label350;
       }
       str = this.md5;
       label115:
       localPBStringField.set(str);
       localPBStringField = localPttRec.serverStorageSource;
       if (this.storageSource == null) {
-        break label272;
+        break label356;
       }
       str = this.storageSource;
       label137:
@@ -233,21 +339,28 @@ public class MessageForPtt
       localPttRec.groupFileID.set(this.groupFileID);
       localPBStringField = localPttRec.sttText;
       if (this.sttText == null) {
-        break label278;
+        break label362;
       }
     }
-    label260:
-    label266:
-    label272:
-    label278:
+    label344:
+    label350:
+    label356:
+    label362:
     for (String str = this.sttText;; str = "")
     {
       localPBStringField.set(str);
       localPttRec.longPttVipFlag.set(this.longPttVipFlag);
-      localPttRec.expandStt.set(false);
+      localPttRec.expandStt.set(this.expandStt);
       if (this.groupFileKeyStr != null) {
         localPttRec.group_file_key.set(this.groupFileKeyStr);
       }
+      localPttRec.msgTime.set(this.msgTime);
+      localPttRec.msgRecTime.set(this.msgRecTime);
+      localPttRec.voiceType.set(this.voiceType);
+      localPttRec.voiceLength.set(Utils.a(this.voiceLength));
+      localPttRec.voiceChangeFlag.set(this.voiceChangeFlag);
+      localPttRec.busiType.set(this.busiType);
+      localPttRec.directUrl.set(this.directUrl);
       try
       {
         this.msgData = localPttRec.toByteArray();

@@ -1,29 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileCategoryBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-class dlq
-  implements FMDialogUtil.FMDialogInterface
+public class dlq
+  implements AbsListView.OnScrollListener
 {
-  dlq(dlp paramdlp, FileManagerEntity paramFileManagerEntity) {}
+  public dlq(QfileLocalFileCategoryBrowserActivity paramQfileLocalFileCategoryBrowserActivity) {}
   
-  public void a()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_Dlp.a.a.a().ad();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType == 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectPhotoTrace", 2, QfileLocalFileCategoryBrowserActivity.c + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
+    }
+    if (paramInt == 0)
     {
-      QfileBaseRecentFileTabView.e(this.jdField_a_of_type_Dlp.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      URLDrawable.resume();
       return;
     }
-    QfileBaseRecentFileTabView.f(this.jdField_a_of_type_Dlp.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    URLDrawable.pause();
   }
   
-  public void b() {}
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if (paramInt1 != 0) {
+        URLDrawable.resume();
+      }
+      return;
+    }
+  }
 }
 
 

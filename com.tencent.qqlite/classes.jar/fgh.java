@@ -1,28 +1,13 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.open.downloadnew.DownloadManager;
 
-public class fgh
-  implements View.OnFocusChangeListener
+public final class fgh
+  implements Runnable
 {
-  public fgh(Login paramLogin) {}
+  public fgh(String paramString1, String paramString2, boolean paramBoolean) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void run()
   {
-    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
-    {
-      if (true == paramBoolean) {
-        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
-      }
-      if (!paramBoolean) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
-      }
-    }
-    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    DownloadManager.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 

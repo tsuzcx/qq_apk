@@ -1,25 +1,14 @@
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import com.dataline.activities.LiteActivity;
 import com.dataline.util.DatalineSessionAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.DatalineMessageManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.widget.XListView;
 
 class z
   implements Runnable
 {
-  z(q paramq, String paramString) {}
+  z(p paramp) {}
   
   public void run()
   {
-    LiteActivity.a(this.jdField_a_of_type_Q.a).notifyDataSetChanged();
-    ((ClipboardManager)LiteActivity.a(this.jdField_a_of_type_Q.a).getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("msg", this.jdField_a_of_type_JavaLangString));
-    LiteActivity.a(this.jdField_a_of_type_Q.a.a, LiteActivity.a(this.jdField_a_of_type_Q.a));
-    LiteActivity.a(LiteActivity.a(this.jdField_a_of_type_Q.a));
-    this.jdField_a_of_type_Q.a.app.a().a().d();
+    LiteActivity.a(this.a.a).notifyDataSetChanged();
   }
 }
 

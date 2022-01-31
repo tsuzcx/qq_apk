@@ -11,14 +11,14 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.pic.LoggerInterface;
 import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import dcs;
+import ddu;
 import localpb.richMsg.RichMsg.VideoFile;
 
 public class MessageForShortVideo
   extends ChatMessage
   implements Parcelable, LoggerInterface
 {
-  public static final Parcelable.Creator CREATOR = new dcs();
+  public static final Parcelable.Creator CREATOR = new ddu();
   public String fileSource;
   public int fileType;
   public long lastModified;

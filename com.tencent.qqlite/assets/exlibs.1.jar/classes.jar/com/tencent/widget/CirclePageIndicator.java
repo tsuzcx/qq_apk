@@ -64,8 +64,8 @@ public class CirclePageIndicator
     int i = ((Resources)localObject).getColor(2131427402);
     int j = ((Resources)localObject).getColor(2131427401);
     int k = ((Resources)localObject).getColor(2131427403);
-    float f1 = ((Resources)localObject).getDimension(2131493045);
-    float f2 = ((Resources)localObject).getDimension(2131493044);
+    float f1 = ((Resources)localObject).getDimension(2131493047);
+    float f2 = ((Resources)localObject).getDimension(2131493046);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.b, paramInt, 0);
     this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(2, true);
     this.e = paramAttributeSet.getInt(0, 0);

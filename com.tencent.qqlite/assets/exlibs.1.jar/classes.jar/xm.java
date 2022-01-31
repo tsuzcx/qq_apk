@@ -21,7 +21,7 @@ public class xm
     if ((AddRequestActivity.a(this.a) != null) && (AddRequestActivity.a(this.a).isShowing()))
     {
       AddRequestActivity.a(this.a).dismiss();
-      paramString = this.a.getString(2131362896);
+      paramString = this.a.getString(2131362903);
       QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
     }
   }
@@ -31,7 +31,7 @@ public class xm
     if ((this.a.a != null) && (this.a.a.isShowing())) {
       this.a.dismissDialog(2);
     }
-    this.a.a(2130837985, this.a.getString(2131363413));
+    this.a.a(2130838004, this.a.getString(2131363424));
   }
   
   protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
@@ -81,7 +81,7 @@ public class xm
     if ((this.a.a != null) && (this.a.a.isShowing())) {
       this.a.dismissDialog(2);
     }
-    this.a.a(2130837985, this.a.getString(2131363414));
+    this.a.a(2130838004, this.a.getString(2131363425));
   }
 }
 

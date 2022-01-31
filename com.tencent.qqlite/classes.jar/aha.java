@@ -1,19 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
 import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class aha
-  implements DialogInterface.OnDismissListener
+  implements Comparator
 {
-  public aha(Conversation paramConversation, View paramView, TranslateAnimation paramTranslateAnimation) {}
+  public aha(Conversation paramConversation) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(0);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
+    if (((paramRecentBaseData1 instanceof RecentUserBaseData)) && ((paramRecentBaseData2 instanceof RecentUserBaseData)))
+    {
+      paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
+      paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
+      if ((paramRecentBaseData1.a.showUpTime > 0L) || (paramRecentBaseData2.a.showUpTime > 0L)) {
+        return Conversation.a(this.a, paramRecentBaseData1.a, paramRecentBaseData2.a);
+      }
+      return Conversation.b(this.a, paramRecentBaseData1.a, paramRecentBaseData2.a);
+    }
+    return 0;
   }
 }
 

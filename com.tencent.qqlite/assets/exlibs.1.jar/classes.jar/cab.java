@@ -1,16 +1,31 @@
+import com.tencent.biz.eqq.CrmUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.app.EnterpriseQQObserver;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import java.util.List;
 
 public class cab
-  implements Runnable
+  extends EnterpriseQQObserver
 {
-  public cab(TroopChatPie paramTroopChatPie, TroopTipsMsgMgr paramTroopTipsMsgMgr) {}
+  public cab(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTipsMsgMgr.a(TroopChatPie.o(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie), TroopChatPie.P(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie).a);
+    if (paramBoolean)
+    {
+      this.a.b = EnterpriseQQManager.a(BusinessCmrTmpChatPie.e(this.a)).a(BusinessCmrTmpChatPie.d(this.a), this.a.a());
+      if ((1024 == this.a.a.jdField_a_of_type_Int) && (!CrmUtils.a(BusinessCmrTmpChatPie.f(this.a), this.a.a.jdField_a_of_type_JavaLangString))) {
+        this.a.b = null;
+      }
+      BusinessCmrTmpChatPie.a(this.a, this.a.b);
+      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
+        BusinessCmrTmpChatPie.a(this.a, false);
+      }
+    }
   }
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

@@ -1,27 +1,14 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.widget.MenuPopupDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bhs
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  bhs(bhr parambhr) {}
+  bhs(bhq parambhq) {}
   
-  @SuppressLint({"NewApi"})
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (RegisterQQNumberActivity.a(this.a.a) != null) {
-      RegisterQQNumberActivity.a(this.a.a).dismiss();
-    }
-    if (Build.VERSION.SDK_INT < 11)
-    {
-      ((android.text.ClipboardManager)this.a.a.getSystemService("clipboard")).setText(RegisterQQNumberActivity.a(this.a.a) + "");
-      return;
-    }
-    ((android.content.ClipboardManager)this.a.a.getSystemService("clipboard")).setText(RegisterQQNumberActivity.a(this.a.a) + "");
+    paramDialogInterface.dismiss();
   }
 }
 

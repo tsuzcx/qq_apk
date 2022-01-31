@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.emoticonview.RecommendEmoticonViewBinder;
-import com.tencent.mobileqq.vas.ClubContentJsonTask.PromotionEmoticonPkg;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
 
 public class dfp
-  implements View.OnClickListener
+  implements Runnable
 {
-  public dfp(RecommendEmoticonViewBinder paramRecommendEmoticonViewBinder, ClubContentJsonTask.PromotionEmoticonPkg paramPromotionEmoticonPkg) {}
+  public dfp(EmoticonLinearLayout paramEmoticonLinearLayout) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRecommendEmoticonViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$PromotionEmoticonPkg);
+    if (this.a.a != null)
+    {
+      this.a.a.a();
+      this.a.postDelayed(this, 100L);
+    }
   }
 }
 

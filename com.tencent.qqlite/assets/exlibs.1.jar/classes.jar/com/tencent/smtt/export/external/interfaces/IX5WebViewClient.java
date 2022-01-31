@@ -27,13 +27,19 @@ public abstract interface IX5WebViewClient
   
   public abstract void onContentSizeChanged(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2);
   
+  public abstract void onDetectedBlankScreen(IX5WebViewBase paramIX5WebViewBase, String paramString, int paramInt);
+  
   public abstract void onFormResubmission(IX5WebViewBase paramIX5WebViewBase, Message paramMessage1, Message paramMessage2);
   
   public abstract void onLoadResource(IX5WebViewBase paramIX5WebViewBase, String paramString);
   
   public abstract void onPageFinished(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2, String paramString);
   
+  public abstract void onPageFinished(IX5WebViewBase paramIX5WebViewBase, String paramString);
+  
   public abstract void onPageStarted(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap);
+  
+  public abstract void onPageStarted(IX5WebViewBase paramIX5WebViewBase, String paramString, Bitmap paramBitmap);
   
   public abstract void onReceivedError(IX5WebViewBase paramIX5WebViewBase, int paramInt, String paramString1, String paramString2);
   
@@ -49,6 +55,8 @@ public abstract interface IX5WebViewClient
   public abstract void onTooManyRedirects(IX5WebViewBase paramIX5WebViewBase, Message paramMessage1, Message paramMessage2);
   
   public abstract void onUnhandledKeyEvent(IX5WebViewBase paramIX5WebViewBase, KeyEvent paramKeyEvent);
+  
+  public abstract WebResourceResponse shouldInterceptRequest(IX5WebViewBase paramIX5WebViewBase, WebResourceRequest paramWebResourceRequest);
   
   public abstract WebResourceResponse shouldInterceptRequest(IX5WebViewBase paramIX5WebViewBase, String paramString);
   

@@ -37,7 +37,7 @@ public class yi
     if (QLog.isColorLevel()) {
       QLog.d("Q.devlock.AuthDevActivity", 2, "onClick.CloseDevLock fail ret =" + i);
     }
-    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131364210), 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131364221), 0).b(this.a.getTitleBarHeight());
   }
 }
 

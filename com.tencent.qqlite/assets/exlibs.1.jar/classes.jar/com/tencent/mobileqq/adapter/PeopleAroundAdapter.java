@@ -25,8 +25,8 @@ import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.widget.StatableBitmapDrawable;
-import cpl;
-import cpm;
+import cqm;
+import cqn;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -81,7 +81,7 @@ public class PeopleAroundAdapter
           if ((localBoolean == null) || (!localBoolean.booleanValue()))
           {
             this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramRespEncounterInfo.tiny_id), Boolean.valueOf(true));
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cpl(this, str, paramRespEncounterInfo));
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cqm(this, str, paramRespEncounterInfo));
           }
         }
         paramRespEncounterInfo = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(32, str, 3001);
@@ -114,7 +114,7 @@ public class PeopleAroundAdapter
         if ((localBoolean == null) || (!localBoolean.booleanValue()))
         {
           this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(paramRespEncounterInfo.lEctID), Boolean.valueOf(true));
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cpm(this, str, paramRespEncounterInfo));
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cqn(this, str, paramRespEncounterInfo));
         }
       }
       paramRespEncounterInfo = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(32, str, 3000);
@@ -134,7 +134,7 @@ public class PeopleAroundAdapter
   public static void a(VipBaseInfo paramVipBaseInfo, ImageView paramImageView, TextView paramTextView)
   {
     paramImageView.setVisibility(8);
-    paramTextView.setTextColor(paramTextView.getResources().getColorStateList(2131427488));
+    paramTextView.setTextColor(paramTextView.getResources().getColorStateList(2131427492));
     if ((paramVipBaseInfo != null) && (paramVipBaseInfo.mOpenInfo != null))
     {
       VipOpenInfo localVipOpenInfo = (VipOpenInfo)paramVipBaseInfo.mOpenInfo.get(Integer.valueOf(3));
@@ -142,8 +142,8 @@ public class PeopleAroundAdapter
         break label83;
       }
       paramImageView.setVisibility(0);
-      paramImageView.setImageResource(2130839371);
-      paramTextView.setTextColor(paramTextView.getResources().getColorStateList(2131427512));
+      paramImageView.setImageResource(2130839436);
+      paramTextView.setTextColor(paramTextView.getResources().getColorStateList(2131427518));
     }
     label83:
     do
@@ -152,8 +152,8 @@ public class PeopleAroundAdapter
       paramVipBaseInfo = (VipOpenInfo)paramVipBaseInfo.mOpenInfo.get(Integer.valueOf(1));
     } while ((paramVipBaseInfo == null) || (!paramVipBaseInfo.bOpen));
     paramImageView.setVisibility(0);
-    paramImageView.setImageResource(2130839448);
-    paramTextView.setTextColor(paramTextView.getResources().getColorStateList(2131427512));
+    paramImageView.setImageResource(2130839513);
+    paramTextView.setTextColor(paramTextView.getResources().getColorStateList(2131427518));
   }
   
   private void a(TextView paramTextView, int paramInt)
@@ -249,7 +249,7 @@ public class PeopleAroundAdapter
       paramViewGroup = new PeopleAroundAdapter.ViewHolder();
       paramView.setTag(paramViewGroup);
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(16908294));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296847));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296848));
       paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297350));
       paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297351));
       paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131297352));
@@ -310,7 +310,7 @@ public class PeopleAroundAdapter
           switch (localRespEncounterInfo.cSex)
           {
           default: 
-            paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setBackgroundResource(2130838734);
+            paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setBackgroundResource(2130838761);
             int k = 0;
             i = paramInt;
             paramInt = k;
@@ -370,25 +370,25 @@ public class PeopleAroundAdapter
           paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setText("");
           paramInt = 0;
           break label503;
-          paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setBackgroundResource(2130838734);
+          paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setBackgroundResource(2130838761);
           localObject2 = paramViewGroup.jdField_d_of_type_AndroidWidgetTextView;
           StringBuilder localStringBuilder = new StringBuilder().append("男");
           if (localRespEncounterInfo.cAge > 0) {}
           for (localObject1 = localRespEncounterInfo.cAge + "岁";; localObject1 = "")
           {
             ((TextView)localObject2).setContentDescription((String)localObject1);
-            paramInt = 2130838083;
+            paramInt = 2130838102;
             i = 1;
             break;
           }
-          paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setBackgroundResource(2130838733);
+          paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setBackgroundResource(2130838760);
           localObject2 = paramViewGroup.jdField_d_of_type_AndroidWidgetTextView;
           localStringBuilder = new StringBuilder().append("女");
           if (localRespEncounterInfo.cAge > 0) {}
           for (localObject1 = localRespEncounterInfo.cAge + "岁";; localObject1 = "")
           {
             ((TextView)localObject2).setContentDescription((String)localObject1);
-            paramInt = 2130838078;
+            paramInt = 2130838097;
             i = 1;
             break;
           }
@@ -397,7 +397,7 @@ public class PeopleAroundAdapter
           break label578;
           paramInt += 1;
           paramViewGroup.e.setText(ProfileCardUtil.a(localRespEncounterInfo.constellation));
-          paramViewGroup.e.setBackgroundResource(2130838736);
+          paramViewGroup.e.setBackgroundResource(2130838763);
           paramViewGroup.e.setVisibility(0);
           break label595;
           paramInt += 1;

@@ -1,36 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsData.QzoneGpsInfo;
-import cooperation.qzone.LbsData.QzonePoiInfo;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.widget.XCursorAdapter;
 
-public final class fll
-  implements Parcelable.Creator
+public class fll
+  extends ContentObserver
 {
-  public LbsData.QzonePoiInfo a(Parcel paramParcel)
+  public fll(XCursorAdapter paramXCursorAdapter)
   {
-    LbsData.QzonePoiInfo localQzonePoiInfo = new LbsData.QzonePoiInfo();
-    localQzonePoiInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQzonePoiInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localQzonePoiInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localQzonePoiInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localQzonePoiInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localQzonePoiInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localQzonePoiInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localQzonePoiInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localQzonePoiInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localQzonePoiInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localQzonePoiInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localQzonePoiInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localQzonePoiInfo.g = paramParcel.readString();
-    if (paramParcel.readInt() == 1) {
-      localQzonePoiInfo.jdField_a_of_type_CooperationQzoneLbsData$QzoneGpsInfo = ((LbsData.QzoneGpsInfo)paramParcel.readParcelable(LbsData.QzoneGpsInfo.class.getClassLoader()));
-    }
-    return localQzonePoiInfo;
+    super(new Handler());
   }
   
-  public LbsData.QzonePoiInfo[] a(int paramInt)
+  public boolean deliverSelfNotifications()
   {
-    return null;
+    return true;
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    this.a.a();
   }
 }
 

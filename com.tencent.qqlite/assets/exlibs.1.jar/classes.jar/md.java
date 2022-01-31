@@ -31,14 +31,14 @@ public class md
       if (this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo.state_id.get() != 5) {
         break label396;
       }
-      str = this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.getString(2131362460);
+      str = this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.getString(2131362461);
       if (this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo.state.get() == 1) {
         break label398;
       }
     }
     label396:
     label398:
-    for (paramCompoundButton = this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.getString(2131363609);; paramCompoundButton = this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.getString(2131363610))
+    for (paramCompoundButton = this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.getString(2131363620);; paramCompoundButton = this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.getString(2131363621))
     {
       paramCompoundButton = String.format(str, new Object[] { paramCompoundButton });
       this.jdField_a_of_type_AndroidViewView.setContentDescription(paramCompoundButton);

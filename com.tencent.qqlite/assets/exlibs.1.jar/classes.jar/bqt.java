@@ -1,12 +1,17 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class bqt
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements View.OnClickListener
 {
-  public TextView a;
-  public TroopTransferActivity.TroopMemberItem a;
+  public bqt(TroopTransferActivity paramTroopTransferActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.setText("");
+  }
 }
 
 

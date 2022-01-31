@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Handler;
-import bye;
-import byf;
-import byg;
-import byh;
-import byi;
+import bze;
+import bzf;
+import bzg;
+import bzh;
+import bzi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
@@ -48,7 +48,7 @@ public class AIOGalleryUtils
   {
     if (BaseApplicationImpl.a.getProcessName().endsWith(":peak"))
     {
-      a = new byi();
+      a = new bzi();
       return;
     }
   }
@@ -105,18 +105,18 @@ public class AIOGalleryUtils
       {
         do
         {
-          QQToast.a(paramActivity, paramActivity.getString(2131363441), 0).a();
+          QQToast.a(paramActivity, paramActivity.getString(2131363452), 0).a();
         } while (!QLog.isColorLevel());
         QLog.e("AIOGalleryUtils", 2, "", paramFile);
         return;
       }
     }
-    DialogUtil.a(paramActivity, 230).setTitle(paramActivity.getString(2131363443)).setMessage(paramActivity.getString(2131363445)).setPositiveButton(paramActivity.getString(2131363444), new byf(paramActivity, paramFile, paramString)).setNegativeButton(paramActivity.getString(2131362791), new bye()).show();
+    DialogUtil.a(paramActivity, 230).setTitle(paramActivity.getString(2131363454)).setMessage(paramActivity.getString(2131363456)).setPositiveButton(paramActivity.getString(2131363455), new bzf(paramActivity, paramFile, paramString)).setNegativeButton(paramActivity.getString(2131362798), new bze()).show();
   }
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, URLDrawable paramURLDrawable, String paramString, int paramInt)
   {
-    new byh(paramContext, paramInt, paramQQAppInterface, paramURLDrawable, paramString).execute(new Void[0]);
+    new bzh(paramContext, paramInt, paramQQAppInterface, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   private static int b(Context paramContext, String paramString)
@@ -165,7 +165,7 @@ public class AIOGalleryUtils
   
   private static void b(Activity paramActivity, File paramFile1, File paramFile2)
   {
-    new byg(paramFile2, paramFile1, paramActivity).execute(new Void[0]);
+    new bzg(paramFile2, paramFile1, paramActivity).execute(new Void[0]);
   }
   
   private static boolean b(Context paramContext, String paramString)

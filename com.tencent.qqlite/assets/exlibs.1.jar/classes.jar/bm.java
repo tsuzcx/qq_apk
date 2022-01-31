@@ -1,13 +1,21 @@
-import com.dataline.activities.LiteMutiPicViewerActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.LiteVideoActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-class bm
-  implements Runnable
+public class bm
+  implements View.OnClickListener
 {
-  bm(bg parambg) {}
+  public bm(LiteVideoActivity paramLiteVideoActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LiteMutiPicViewerActivity.a(this.a.a);
+    if ((this.a.a) && (NetworkUtil.f(this.a)) && (!NetworkUtil.g(this.a)) && (LiteVideoActivity.a(this.a) > LiteVideoActivity.a()))
+    {
+      LiteVideoActivity.a(this.a);
+      return;
+    }
+    LiteVideoActivity.b(this.a);
   }
 }
 

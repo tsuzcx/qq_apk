@@ -1,19 +1,12 @@
-import android.app.Activity;
-import com.tencent.open.downloadnew.MyAppApi;
+import java.io.File;
+import java.util.Comparator;
 
 public class ffh
-  implements Runnable
+  implements Comparator
 {
-  public ffh(MyAppApi paramMyAppApi, Activity paramActivity) {}
-  
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.e) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a != null))
-    {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d(this.jdField_a_of_type_AndroidAppActivity);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_AndroidAppActivity);
+    return paramFile1.getName().compareTo(paramFile2.getName());
   }
 }
 

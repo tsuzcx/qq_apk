@@ -22,11 +22,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import cif;
-import cig;
-import cih;
-import cii;
-import cij;
+import cjg;
+import cjh;
+import cji;
+import cjj;
+import cjk;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.QQAlbumInfo;
@@ -82,10 +82,10 @@ public class AlbumListAdapter
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_AndroidContentResResources = paramActivity.getResources();
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoIMediaFilter = paramIMediaFilter;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130837716).getConstantState();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130837733).getConstantState();
     this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131492953);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    ThreadManager.a().post(new cif(this));
+    ThreadManager.a().post(new cjg(this));
   }
   
   private static Cursor a(Context paramContext, String paramString, String[] paramArrayOfString, int paramInt)
@@ -319,7 +319,7 @@ public class AlbumListAdapter
           if (j == 0) {
             break;
           }
-          ThreadManager.a().post(new cii(this));
+          ThreadManager.a().post(new cjj(this));
           return;
         }
         paramInt = n;
@@ -327,7 +327,7 @@ public class AlbumListAdapter
           paramInt = localList.size();
         }
         StatisticConstants.a(paramInt, k);
-        ThreadManager.a().post(new cij(this));
+        ThreadManager.a().post(new cjk(this));
         return;
         label355:
         paramInt = i1;
@@ -522,7 +522,7 @@ public class AlbumListAdapter
       a(paramQQAlbumInfo);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new cih(this, paramQQAlbumInfo));
+    this.jdField_a_of_type_AndroidOsHandler.post(new cji(this, paramQQAlbumInfo));
   }
   
   private void b(List paramList)
@@ -532,7 +532,7 @@ public class AlbumListAdapter
       a(paramList);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new cig(this, paramList));
+    this.jdField_a_of_type_AndroidOsHandler.post(new cjh(this, paramList));
   }
   
   public QQAlbumInfo a(int paramInt)
@@ -1362,7 +1362,7 @@ public class AlbumListAdapter
     Object localObject;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2130903467, null);
+      localView = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2130903475, null);
       paramViewGroup = (TextView)localView;
       localQQAlbumInfo = a(paramInt);
       localView.setContentDescription(localQQAlbumInfo.name + "，" + localQQAlbumInfo.mMediaFileCount + "张照片");
@@ -1405,7 +1405,7 @@ public class AlbumListAdapter
         paramViewGroup = (TextView)paramView;
         localView = paramView;
         break;
-        paramView = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130838367);
+        paramView = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130838386);
       }
     }
   }

@@ -1,17 +1,15 @@
-import java.io.File;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.app.ScreenShot;
 
 class cxg
-  implements Comparator
+  implements View.OnLongClickListener
 {
-  cxg(cxe paramcxe) {}
+  cxg(cxf paramcxf, ScreenShot paramScreenShot) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public boolean onLongClick(View paramView)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
+    return false;
   }
 }
 

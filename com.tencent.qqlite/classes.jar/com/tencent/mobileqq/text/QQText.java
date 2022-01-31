@@ -22,8 +22,8 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mtt.MttBrowerWrapper;
 import com.tencent.mobileqq.utils.Patterns;
 import com.tencent.widget.ActionSheet;
-import egi;
-import egj;
+import ehm;
+import ehn;
 import java.lang.reflect.Array;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -71,7 +71,7 @@ public class QQText
     jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile(f);
     jdField_b_of_type_JavaUtilRegexPattern = Pattern.compile("\\d{5,}");
     jdField_a_of_type_ArrayOfJavaLangObject = new Object[0];
-    jdField_a_of_type_AndroidTextSpannable$Factory = new egi();
+    jdField_a_of_type_AndroidTextSpannable$Factory = new ehm();
     try
     {
       StaticLayout.class.getDeclaredMethod("generate2", new Class[] { CharSequence.class, Integer.TYPE, Integer.TYPE, TextPaint.class, Integer.TYPE, Layout.Alignment.class, Float.TYPE, Float.TYPE, Boolean.TYPE, Boolean.TYPE });
@@ -313,21 +313,21 @@ public class QQText
   
   public static void a(Context paramContext, String paramString, boolean paramBoolean)
   {
-    ActionSheet localActionSheet = ActionSheet.a(paramContext, 2131624119);
-    localActionSheet.a(2131363563, 1);
-    localActionSheet.a(2131363564, 1);
+    ActionSheet localActionSheet = ActionSheet.a(paramContext, 2131624120);
+    localActionSheet.a(2131363574, 1);
+    localActionSheet.a(2131363575, 1);
     if (paramBoolean)
     {
-      localActionSheet.a(2131362802, 1);
-      localActionSheet.a(2131362806, 1);
+      localActionSheet.a(2131362809, 1);
+      localActionSheet.a(2131362813, 1);
     }
-    localActionSheet.d(2131362794);
+    localActionSheet.d(2131362801);
     if (paramBoolean) {
-      localActionSheet.a(String.format(paramContext.getString(2131363578), new Object[] { paramString }));
+      localActionSheet.a(String.format(paramContext.getString(2131363589), new Object[] { paramString }));
     }
     for (;;)
     {
-      localActionSheet.a(new egj(paramString, paramContext, localActionSheet));
+      localActionSheet.a(new ehn(paramString, paramContext, localActionSheet));
       localActionSheet.show();
       return;
       localActionSheet.a(paramString);

@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.widget.MenuPopupDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
-public class bhr
-  implements View.OnLongClickListener
+class bhr
+  implements DialogInterface.OnClickListener
 {
-  public bhr(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  bhr(bhq parambhq) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new QQCustomMenu();
-    paramView.a(2131298937, this.a.getString(2131363564));
-    RegisterQQNumberActivity.a(this.a, MenuPopupDialog.a(RegisterQQNumberActivity.a(this.a), this.a.getString(2131363277), paramView, new bhs(this), new bht(this)));
-    return true;
+    paramDialogInterface.dismiss();
+    this.a.a.a(2131363309);
+    RegisterPhoneNumActivity.a(this.a.a);
   }
 }
 

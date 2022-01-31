@@ -1,71 +1,31 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.search.ContactsSearchableRecentUser;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class anr
-  extends SearchResultDialog
+  implements DialogInterface.OnClickListener
 {
-  public anr(ForwardRecentActivity paramForwardRecentActivity, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
-  {
-    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
-  }
+  public anr(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  @SuppressLint({"UseSparseArrays"})
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (ForwardRecentActivity.a(this.a) != null)
+    if (paramInt == 1)
     {
-      Iterator localIterator = ForwardRecentActivity.a(this.a).iterator();
-      if (localIterator.hasNext())
-      {
-        RecentUser localRecentUser = (RecentUser)localIterator.next();
-        long l = 0L;
-        switch (localRecentUser.type)
-        {
-        }
-        for (;;)
-        {
-          localArrayList.add(new ContactsSearchableRecentUser(paramContext, paramQQAppInterface, localRecentUser, l, a()));
-          break;
-          l = 38654705664L;
-          continue;
-          l = 12884901888L;
-          continue;
-          l = 21474836480L;
-          continue;
-          l = 21474836480L;
-        }
+      if ((this.a.b) && (this.a.f == 11)) {
+        ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131362373));
       }
+      StatisticCollector.a(BaseApplication.getContext()).a(this.a.app, this.a.app.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
     }
-    if ((FriendManager)paramQQAppInterface.getManager(8) == null) {
-      return localArrayList;
+    while (paramInt != 0) {
+      return;
     }
-    if (ForwardRecentActivity.a(this.a)) {
-      localArrayList.addAll(a(paramContext, paramQQAppInterface, 34359738368L, paramInt, false, null));
-    }
-    if (ForwardRecentActivity.b(this.a)) {
-      localArrayList.addAll(a(paramContext, paramQQAppInterface, 30064771072L));
-    }
-    if (ForwardRecentActivity.c(this.a)) {
-      localArrayList.addAll(a(paramContext, paramQQAppInterface, 25769803776L, paramInt, null, a()));
-    }
-    if (ForwardRecentActivity.d(this.a)) {
-      localArrayList.addAll(b(paramContext, paramQQAppInterface, 17179869184L, paramInt));
-    }
-    if (ForwardRecentActivity.e(this.a)) {
-      localArrayList.addAll(a(paramContext, paramQQAppInterface, 17179869184L, paramInt));
-    }
-    return localArrayList;
+    this.a.setResult(0);
+    StatisticCollector.a(BaseApplication.getContext()).a(this.a.app, this.a.app.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
+    this.a.finish();
   }
 }
 

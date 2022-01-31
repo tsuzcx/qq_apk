@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09086a" android:paddingLeft="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="10.0dip" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0039" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0903f1" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02048a" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0903f2" android:layout_centerVertical="true" android:contentDescription="@null" />
-    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a7" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0903f2" android:visibility="invisible" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0961" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f090323" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="15.0dip" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02018f" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <TextView android:id="@id/title" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0822" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e9" />
+    <com.tencent.mobileqq.widget.StatableSpanTextView android:ellipsize="end" android:id="@id/info" android:maxLines="2" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ea" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0905d4" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00eb" />
+</LinearLayout>

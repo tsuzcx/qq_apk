@@ -1,32 +1,14 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
 
-public class aqc
-  implements View.OnClickListener
+class aqc
+  implements Runnable
 {
-  public aqc(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  aqc(aqa paramaqa) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
-    {
-    case 2131297162: 
-    case 2131297163: 
-    default: 
-      return;
-    case 2131297161: 
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.a(), 21);
-      this.a.a();
-      return;
-    }
-    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
-    this.a.startActivityForResult(paramView, 11);
-    this.a.overridePendingTransition(2130968592, 2130968589);
+    this.a.a.a.a();
   }
 }
 

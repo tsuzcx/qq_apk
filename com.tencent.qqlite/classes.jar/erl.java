@@ -1,18 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
 
 public class erl
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public erl(TroopShareUtility paramTroopShareUtility) {}
+  public erl(MediaControllerX paramMediaControllerX) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    TroopShareUtility.b(this.a, false);
-    if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
-      ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+    if (this.a.a != null) {
+      this.a.a.onClick(paramView);
     }
   }
 }

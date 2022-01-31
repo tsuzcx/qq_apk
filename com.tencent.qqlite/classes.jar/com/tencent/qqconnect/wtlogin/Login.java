@@ -22,15 +22,15 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.open.agent.util.AuthorityUtil;
 import com.tencent.qphone.base.util.QLog;
-import fgf;
-import fgg;
-import fgh;
-import fgi;
-import fgj;
-import fgk;
-import fgl;
-import fgm;
-import fgn;
+import fil;
+import fim;
+import fin;
+import fio;
+import fip;
+import fiq;
+import fir;
+import fis;
+import fit;
 import java.util.HashMap;
 import java.util.List;
 import mqq.manager.WtloginManager;
@@ -59,10 +59,10 @@ public class Login
   protected static final int i = 3104;
   public long a;
   public Handler a;
-  TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new fgj(this);
+  TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new fip(this);
   protected View.OnClickListener a;
-  View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new fgh(this);
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new fgi(this);
+  View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new fin(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new fio(this);
   public View a;
   public Button a;
   public EditText a;
@@ -91,11 +91,11 @@ public class Login
   {
     this.jdField_b_of_type_Boolean = true;
     this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new fgf(this);
-    this.jdField_b_of_type_AndroidTextTextWatcher = new fgk(this);
-    this.jdField_a_of_type_AndroidOsHandler = new fgl(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new fil(this);
+    this.jdField_b_of_type_AndroidTextTextWatcher = new fiq(this);
+    this.jdField_a_of_type_AndroidOsHandler = new fir(this);
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fgm(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fis(this);
   }
   
   public static String a(String paramString1, String paramString2)
@@ -114,7 +114,7 @@ public class Login
   public void a(String paramString)
   {
     if (!isFinishing()) {
-      DialogUtil.b(this, 230).setMessageWithUrl(paramString).setTitle(getString(2131363274)).setPositiveButton(17039370, new fgn(this)).show();
+      DialogUtil.b(this, 230).setMessageWithUrl(paramString).setTitle(getString(2131363284)).setPositiveButton(17039370, new fit(this)).show();
     }
   }
   
@@ -194,7 +194,7 @@ public class Login
     boolean bool = false;
     if ("".equals(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim()))
     {
-      a(String.format(getResources().getString(2131363830), new Object[] { getResources().getString(2131362920), Integer.valueOf(3103) }));
+      a(String.format(getResources().getString(2131363841), new Object[] { getResources().getString(2131362927), Integer.valueOf(3103) }));
       localObject = new HashMap();
       ((HashMap)localObject).put("error", "3103");
       StatisticCollector.a(this).a("0", "connect_sso_authfail", false, 0L, 0L, (HashMap)localObject, "");
@@ -202,7 +202,7 @@ public class Login
     }
     if ("".equals(this.jdField_b_of_type_AndroidWidgetEditText.getText().toString().trim()))
     {
-      a(String.format(getResources().getString(2131363830), new Object[] { getResources().getString(2131362921), Integer.valueOf(3104) }));
+      a(String.format(getResources().getString(2131363841), new Object[] { getResources().getString(2131362928), Integer.valueOf(3104) }));
       localObject = new HashMap();
       ((HashMap)localObject).put("error", "3104");
       StatisticCollector.a(this).a("0", "connect_sso_authfail", false, 0L, 0L, (HashMap)localObject, "");
@@ -263,7 +263,7 @@ public class Login
   
   protected void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getResources().getString(2131363827));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getResources().getString(2131363838));
     if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
@@ -329,38 +329,38 @@ public class Login
     if (QLog.isColorLevel()) {
       QLog.d("Q.quicklogin.Login", 2, "oncreate mReqSrc:" + this.j);
     }
-    setContentView(2130903641);
+    setContentView(2130903650);
     if (getIntent().getBooleanExtra("is_first_login", false))
     {
-      setTitle(2131363821);
-      this.h.setText(2131363113);
+      setTitle(2131363832);
+      this.h.setText(2131363123);
     }
     for (;;)
     {
       this.h.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131298798);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131298799);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298801));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131298824);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131298825);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298827));
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131296456));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131296459));
       this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297281));
       this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297484));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-      findViewById(2131298800).requestFocus();
+      findViewById(2131298826).requestFocus();
       this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
       this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       this.jdField_b_of_type_AndroidWidgetEditText.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       this.jdField_b_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
-      this.jdField_b_of_type_AndroidWidgetEditText.setOnEditorActionListener(new fgg(this));
+      this.jdField_b_of_type_AndroidWidgetEditText.setOnEditorActionListener(new fim(this));
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
       this.jdField_b_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_b_of_type_AndroidTextTextWatcher);
       c();
       this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(Login.class, this.jdField_a_of_type_AndroidOsHandler);
       return;
-      setTitle(2131363820);
+      setTitle(2131363831);
     }
   }
   

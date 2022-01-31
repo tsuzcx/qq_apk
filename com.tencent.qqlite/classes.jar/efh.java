@@ -1,16 +1,19 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
 
 public class efh
-  implements View.OnLongClickListener
+  extends Handler
 {
-  public efh(StructMsgForGeneralShare paramStructMsgForGeneralShare, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
-  
-  public boolean onLongClick(View paramView)
+  public efh(BaseShortVideoOprerator paramBaseShortVideoOprerator, Looper paramLooper)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onLongClick(paramView);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    BaseShortVideoOprerator.a(this.a, paramMessage);
   }
 }
 

@@ -1,28 +1,53 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.open.agent.AuthorityActivity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.CustomAlertDialog;
+import com.tencent.mobileqq.widget.CustomAlertDialog.OnPrepareOptionMenuItem;
+import java.util.HashMap;
+import java.util.List;
 
 public class faf
-  implements Runnable
+  extends BaseAdapter
 {
-  public faf(AuthorityActivity paramAuthorityActivity) {}
+  List jdField_a_of_type_JavaUtilList;
   
-  public void run()
+  public faf(CustomAlertDialog paramCustomAlertDialog, List paramList)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130903104, null);
     }
-    if (this.a.w == 0) {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131363828);
+    ((TextView)paramViewGroup.findViewById(2131296761)).setText((String)((HashMap)this.jdField_a_of_type_JavaUtilList.get(paramInt)).get("optionStr"));
+    paramViewGroup.setOnClickListener(new fag(this, paramInt));
+    ((ImageView)paramViewGroup.findViewById(2131296760)).setImageResource(((Integer)((HashMap)this.jdField_a_of_type_JavaUtilList.get(paramInt)).get("imgId")).intValue());
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog$OnPrepareOptionMenuItem != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog$OnPrepareOptionMenuItem.a(paramInt, paramViewGroup);
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      this.a.a(this.a.getResources().getString(2131363825), new fag(this));
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.x);
-    }
+    return paramViewGroup;
   }
 }
 

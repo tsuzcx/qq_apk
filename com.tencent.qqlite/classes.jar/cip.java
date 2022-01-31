@@ -1,15 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class cip
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  public cip(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public cip(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a = null;
+    return paramInt == 4;
   }
 }
 

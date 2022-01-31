@@ -20,9 +20,9 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.SharedPreferencesHandler;
 import com.tencent.qphone.base.util.QLog;
-import exb;
-import exc;
-import exd;
+import ezh;
+import ezi;
+import ezj;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -68,7 +68,7 @@ public class WebProcessManager
   public WebProcessManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new exd(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ezj(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     a();
     c();
@@ -276,7 +276,7 @@ public class WebProcessManager
     if (QLog.isColorLevel()) {
       QLog.d("WebProcessManager", 2, "startWebProcess");
     }
-    ThreadManager.b(new exb(this));
+    ThreadManager.b(new ezh(this));
   }
   
   protected boolean e()
@@ -350,7 +350,7 @@ public class WebProcessManager
       QLog.d("WebProcessManager", 2, "restartWebProcess");
     }
     g();
-    new Handler().postDelayed(new exc(this), 500L);
+    new Handler().postDelayed(new ezi(this), 500L);
   }
   
   public void i()

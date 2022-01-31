@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/skin_setting_strip_bg_unpressed" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="54.0dip"
+<LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f090460" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:scrollbarStyle="outsideOverlay" android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0b00ae" android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090733" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201eb" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00ec" android:paddingTop="5.0dip" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00ec" android:paddingBottom="5.0dip" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0a069e" android:singleLine="true" android:includeFontPadding="false" android:layout_centerVertical="true" android:imeOptions="actionDone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0002" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09072e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201bc" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901f8" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02045b" />
+        <TextView android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09072f" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0042" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0042" />
+        <ImageView android:gravity="center" android:clickable="true" android:layout_width="9.0dip" android:layout_height="14.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201ba" />
+    </LinearLayout>
+</LinearLayout>

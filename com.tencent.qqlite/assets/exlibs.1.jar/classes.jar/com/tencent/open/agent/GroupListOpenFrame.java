@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.tencent.open.agent.datamodel.FriendDataManager;
 import com.tencent.open.base.LogUtility;
 import com.tencent.widget.XListView;
-import fbo;
+import fdu;
 
 public class GroupListOpenFrame
   extends OpenFrame
@@ -40,9 +40,9 @@ public class GroupListOpenFrame
   {
     super.a(paramBundle);
     LogUtility.c("GroupListOpenFrame", "-->onCreate()");
-    super.setContentView(2130903631);
+    super.setContentView(2130903640);
     this.jdField_a_of_type_ComTencentOpenAgentGroupListOpenFrame$GroupListAdapter = new GroupListOpenFrame.GroupListAdapter(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131297772));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131297776));
     paramBundle = (LinearLayout)super.a().getLayoutInflater().inflate(2130903287, null);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131297521));
     this.b = ((TextView)paramBundle.findViewById(2131297528));
@@ -52,8 +52,8 @@ public class GroupListOpenFrame
     this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131427345);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(paramBundle);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentOpenAgentGroupListOpenFrame$GroupListAdapter);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBundle.findViewById(2131297957));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new fbo(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBundle.findViewById(2131297962));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new fdu(this));
   }
   
   public void a(String paramString)

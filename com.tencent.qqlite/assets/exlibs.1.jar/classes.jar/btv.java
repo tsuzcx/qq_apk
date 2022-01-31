@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.ChangeVoiceView;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
 
 public class btv
   implements Runnable
 {
-  public btv(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public btv(ListenChangeVoicePanel paramListenChangeVoicePanel, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    this.a.g();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelListenChangeVoicePanel.a[ListenChangeVoicePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelListenChangeVoicePanel)].a(this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

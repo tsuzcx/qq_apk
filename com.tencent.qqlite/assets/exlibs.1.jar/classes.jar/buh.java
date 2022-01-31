@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
 
 public class buh
   implements Runnable
 {
-  public buh(RecordSoundPanel paramRecordSoundPanel) {}
+  public buh(PressToChangeVoicePanel paramPressToChangeVoicePanel, String paramString) {}
   
   public void run()
   {
-    this.a.g();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToChangeVoicePanel.a.b(this.jdField_a_of_type_JavaLangString, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToChangeVoicePanel.g();
   }
 }
 

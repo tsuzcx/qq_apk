@@ -1,25 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.item.ItemBuilderFactory;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.aio.AIOInputTypeHelper;
 
-class bsp
-  implements DialogInterface.OnDismissListener
+public final class bsp
+  implements Runnable
 {
-  bsp(bso parambso) {}
+  public bsp(SharedPreferences paramSharedPreferences) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.jdField_a_of_type_ComTencentWidgetMenuPopupDialog = null;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)
-    {
-      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a.a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1);
-      if ((paramDialogInterface instanceof BaseBubbleBuilder)) {
-        ((BaseBubbleBuilder)paramDialogInterface).b();
-      }
-    }
-    com.tencent.widget.MenuPopupDialog.a = false;
+    this.a.edit().putInt("open_times", AIOInputTypeHelper.b).commit();
   }
 }
 

@@ -16,10 +16,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.view.View;
-import bsv;
-import bsw;
-import bsx;
-import bsy;
+import btd;
+import bte;
+import btf;
+import btg;
 import com.tencent.av.audio.AudioSettingManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.item.ItemBuilderFactory;
@@ -43,9 +43,9 @@ public class MediaPlayerManager
   public float a;
   private Sensor jdField_a_of_type_AndroidHardwareSensor;
   private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private MediaPlayer.OnCompletionListener jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener = new bsv(this);
+  private MediaPlayer.OnCompletionListener jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener = new btd(this);
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private bsy jdField_a_of_type_Bsy;
+  private btg jdField_a_of_type_Btg;
   private AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
   private ChatAdapter1 jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1;
   private MediaPlayerManager.Listener jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager$Listener;
@@ -170,7 +170,7 @@ public class MediaPlayerManager
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
       if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null)) {
         a();
       }
@@ -184,7 +184,7 @@ public class MediaPlayerManager
       if (!((MediaPlayerManager.Callback)this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1)).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage)) {
         break;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
       a();
     }
     return false;
@@ -321,7 +321,7 @@ public class MediaPlayerManager
               if (j != 0)
               {
                 this.jdField_b_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(1);
-                this.jdField_a_of_type_Bsy = new bsy(this);
+                this.jdField_a_of_type_Btg = new btg(this);
               }
               this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(8);
               if (f1 <= 0.5F) {
@@ -417,7 +417,7 @@ public class MediaPlayerManager
       }
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new bsw(this, paramAudioPlayer, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new bte(this, paramAudioPlayer, paramInt));
   }
   
   public void a(XListView paramXListView, ChatAdapter1 paramChatAdapter1, MediaPlayerManager.Listener paramListener)
@@ -475,7 +475,7 @@ public class MediaPlayerManager
           if ((this.jdField_b_of_type_AndroidHardwareSensor != null) && (this.jdField_a_of_type_AndroidHardwareSensor != null))
           {
             this.jdField_a_of_type_Boolean = false;
-            this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Bsy, this.jdField_b_of_type_AndroidHardwareSensor, 3);
+            this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Btg, this.jdField_b_of_type_AndroidHardwareSensor, 3);
           }
           if (this.jdField_a_of_type_AndroidHardwareSensor != null) {
             this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, this.jdField_a_of_type_AndroidHardwareSensor, 3);
@@ -557,7 +557,7 @@ public class MediaPlayerManager
   
   public void c(AudioPlayer paramAudioPlayer, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new bsx(this, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new btf(this, paramInt));
   }
   
   public void d()
@@ -568,7 +568,7 @@ public class MediaPlayerManager
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager$Listener != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager$Listener.J();
     }
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Bsy);
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Btg);
     this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this);
   }
   

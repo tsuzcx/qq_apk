@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
 
-public class axq
-  implements Animation.AnimationListener
+class axq
+  implements Runnable
 {
-  public axq(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  axq(axp paramaxp) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    NearbyPeopleProfileActivity.a(this.a).setVisibility(8);
+    NearbyPeopleProfileActivity.f(this.a.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

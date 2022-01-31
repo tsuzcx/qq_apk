@@ -10,8 +10,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TabWidget;
 import com.tencent.common.app.BaseApplicationImpl;
-import ezn;
-import ezo;
+import fbt;
+import fbu;
 
 public class SlideTabWidget
   extends TabWidget
@@ -24,7 +24,7 @@ public class SlideTabWidget
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = -1;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Handler jdField_a_of_type_AndroidOsHandler = new ezn(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new fbt(this);
   private SlideTabWidget.OnTabSlideCompleteListener jdField_a_of_type_ComTencentMobileqqWidgetSlideTabWidget$OnTabSlideCompleteListener;
   private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = -1;
@@ -34,13 +34,13 @@ public class SlideTabWidget
   public SlideTabWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131427469));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131427472));
   }
   
   public SlideTabWidget(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131427469));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131427472));
   }
   
   public void dispatchDraw(Canvas paramCanvas)
@@ -74,7 +74,7 @@ public class SlideTabWidget
       }
     } while ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqWidgetSlideTabWidget$OnTabSlideCompleteListener == null) || (!this.jdField_c_of_type_Boolean));
     this.jdField_c_of_type_Boolean = false;
-    post(new ezo(this));
+    post(new fbu(this));
   }
   
   public void setCurrentTab(int paramInt)

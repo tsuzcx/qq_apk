@@ -1,62 +1,63 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class cgj
-  extends ContactBindObserver
+  extends GameCenterObserver
 {
-  public cgj(BindNumberActivity paramBindNumberActivity) {}
+  public cgj(MainAssistObserver paramMainAssistObserver) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.a.a.setEnabled(true);
-    this.a.d();
     int i;
-    if (paramBoolean)
+    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2))
     {
-      i = paramBundle.getInt("k_result");
-      if ((i == 104) || (i == 0))
+      if (QLog.isColorLevel()) {
+        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
+      }
+      i = this.a.b() + this.a.c();
+      this.a.a(34, 16, Integer.valueOf(i));
+    }
+    switch (paramInt)
+    {
+    case 2: 
+    case 3: 
+    default: 
+    case 0: 
+    case 1: 
+    case 4: 
+      do
       {
-        paramBundle = new Intent(this.a, BindVerifyActivity.class);
-        paramBundle.putExtra("k_number", this.a.c);
-        if ((paramBundle != null) && (!this.a.isFinishing()))
+        do
         {
-          paramBundle.addFlags(536870912);
-          this.a.startActivityForResult(paramBundle, 2);
-        }
-      }
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(BindNumberActivity.b(this.a));
-      BindNumberActivity.b(this.a, null);
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+              } while (i <= 0);
+              this.a.a(34, 17, Boolean.valueOf(false));
+              this.a.a(34, 18, Boolean.valueOf(false));
+              return;
+            } while (i != 0);
+            paramBoolean1 = MainAssistObserver.a(this.a);
+            this.a.a(34, 17, Boolean.valueOf(paramBoolean1));
+          } while (!paramBoolean1);
+          this.a.a(34, 18, Boolean.valueOf(false));
+          this.a.a(34, 16, Integer.valueOf(0));
+          return;
+        } while (i != 0);
+        paramBoolean1 = MainAssistObserver.b(this.a);
+        this.a.a(34, 18, Boolean.valueOf(paramBoolean1));
+      } while (!paramBoolean1);
+      this.a.a(34, 17, Boolean.valueOf(false));
+      this.a.a(34, 16, Integer.valueOf(0));
       return;
-      if (i == 107)
-      {
-        Intent localIntent = new Intent(this.a, RebindActivity.class);
-        localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
-        localIntent.putExtra("k_number", this.a.c);
-        localIntent.putExtra("k_country_code", this.a.b);
-        paramBundle = localIntent;
-        break;
-      }
-      if (i == 106)
-      {
-        this.a.setResult(-1);
-        this.a.finish();
-        paramBundle = null;
-        break;
-      }
-      this.a.a(a(i));
-      paramBundle = null;
-      break;
-      this.a.b(2131363383);
     }
+    this.a.g();
+    this.a.f();
   }
 }
 

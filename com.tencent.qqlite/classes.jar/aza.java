@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
 
-public class aza
-  implements DialogInterface.OnClickListener
+class aza
+  implements Runnable
 {
-  public aza(NotificationActivity paramNotificationActivity) {}
+  aza(ayz paramayz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.finish();
+    try
+    {
+      Thread.sleep(1000L);
+      this.a.a.c();
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        localInterruptedException.printStackTrace();
+      }
+    }
   }
 }
 

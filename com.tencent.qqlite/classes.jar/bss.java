@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
+import android.media.AudioManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
+import com.tencent.mobileqq.utils.AudioHelper.AudioPlayerParameter;
 
-public final class bss
-  implements Parcelable.Creator
+public class bss
+  extends Handler
 {
-  public ForwardUtils.SectionBase a(Parcel paramParcel)
-  {
-    return new ForwardUtils.SectionBase(paramParcel);
-  }
+  public bss(AudioPlayer paramAudioPlayer) {}
   
-  public ForwardUtils.SectionBase[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new ForwardUtils.SectionBase[paramInt];
+    if ((paramMessage.what == 1000) && (AudioPlayer.a(this.a) == 0) && (this.a.a()))
+    {
+      int i = AudioPlayer.a(this.a).getStreamVolume(AudioPlayer.a(this.a).b);
+      int j = AudioPlayer.a(this.a).getStreamMaxVolume(AudioPlayer.a(this.a).b);
+      if (i / j <= 0.1F) {
+        break label126;
+      }
+      AudioPlayer.a(this.a, 1);
+      if (AudioPlayer.a(this.a) != null) {
+        AudioPlayer.a(this.a).c(this.a, AudioPlayer.a(this.a));
+      }
+    }
+    return;
+    label126:
+    AudioPlayer.a(this.a).sendEmptyMessageDelayed(1000, 200L);
   }
 }
 

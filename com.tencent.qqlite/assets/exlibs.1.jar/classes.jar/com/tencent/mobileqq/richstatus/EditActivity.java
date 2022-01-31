@@ -39,19 +39,19 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.MaxHeightRelativelayout;
-import ebl;
-import ebm;
-import ebn;
-import ebo;
-import ebs;
-import ebt;
-import ebu;
-import ebv;
-import ebw;
-import ebx;
-import eby;
-import ebz;
-import eca;
+import ecq;
+import ecr;
+import ecs;
+import ect;
+import ecx;
+import ecy;
+import ecz;
+import eda;
+import edb;
+import edc;
+import edd;
+import ede;
+import edf;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -82,26 +82,26 @@ public class EditActivity
   private static final String m = "...";
   public long a;
   private Intent jdField_a_of_type_AndroidContentIntent;
-  private Handler jdField_a_of_type_AndroidOsHandler = new ebm(this);
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ebu(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new ecr(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ecz(this);
   private View jdField_a_of_type_AndroidViewView;
   private GridView jdField_a_of_type_AndroidWidgetGridView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private IActionListener jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener = new ebl(this);
-  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new ebs(this);
-  private IStatusListener jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new ebt(this);
+  private IActionListener jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener = new ecq(this);
+  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new ecx(this);
+  private IStatusListener jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new ecy(this);
   private RichStatus jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
-  private RichStatusEditText.RichStatusEditListener jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener = new ebv(this);
+  private RichStatusEditText.RichStatusEditListener jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener = new eda(this);
   private RichStatusEditText jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText;
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
-  private StatusObserver jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = new ebn(this);
-  private ClickableImageSpan.ClickableImageSpanListener jdField_a_of_type_ComTencentMobileqqWidgetClickableImageSpan$ClickableImageSpanListener = new ebw(this);
+  private StatusObserver jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = new ecs(this);
+  private ClickableImageSpan.ClickableImageSpanListener jdField_a_of_type_ComTencentMobileqqWidgetClickableImageSpan$ClickableImageSpanListener = new edb(this);
   private ClickableImageSpan jdField_a_of_type_ComTencentMobileqqWidgetClickableImageSpan;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
   public ActionSheet a;
-  private eca jdField_a_of_type_Eca;
+  private edf jdField_a_of_type_Edf;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(6);
   private boolean jdField_a_of_type_Boolean = true;
   private View jdField_b_of_type_AndroidViewView;
@@ -159,12 +159,12 @@ public class EditActivity
     localImageView.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.b, 200));
     localTextView.setPressed(paramBoolean);
     if (paramBoolean) {
-      localView.setBackgroundResource(2130839079);
+      localView.setBackgroundResource(2130839112);
     }
     for (;;)
     {
       return a(localView);
-      localView.setBackgroundResource(2130839078);
+      localView.setBackgroundResource(2130839111);
     }
   }
   
@@ -261,15 +261,15 @@ public class EditActivity
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
     if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.jdField_e_of_type_JavaLangString))
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131364132);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839444);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131427494));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131364143);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839509);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131427498));
       this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription("位置信息");
       return;
     }
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.jdField_e_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838114);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131427471));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838133);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131427474));
     this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription("所在地:" + this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.jdField_e_of_type_JavaLangString);
   }
   
@@ -311,33 +311,33 @@ public class EditActivity
   private void h()
   {
     setTitle("个性签名");
-    a(2131364138, this);
+    a(2131364149, this);
     c(true);
-    ((MaxHeightRelativelayout)findViewById(2131298802)).setMaxHeight((int)(getResources().getDisplayMetrics().heightPixels * 0.31D));
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText = ((RichStatusEditText)findViewById(2131298803));
+    ((MaxHeightRelativelayout)findViewById(2131298828)).setMaxHeight((int)(getResources().getDisplayMetrics().heightPixels * 0.31D));
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText = ((RichStatusEditText)findViewById(2131298829));
     this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setEditListener(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296629));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296632));
     this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131298805);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131298831);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     if (!this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    this.jdField_h_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364516));
+    this.jdField_h_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364539));
     this.j.setContentDescription(this.j.getText() + "按钮");
     this.jdField_a_of_type_AndroidViewView.setContentDescription("做什么按钮");
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131298804);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131298830);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839087);
+    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839120);
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131297233));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131297234));
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298806));
-      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131298808));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298832));
+      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131298834));
       this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(this);
-      this.jdField_a_of_type_Eca = new eca(this, null);
-      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Eca);
+      this.jdField_a_of_type_Edf = new edf(this, null);
+      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Edf);
       if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
       }
@@ -402,8 +402,8 @@ public class EditActivity
   private void k()
   {
     this.d = false;
-    this.jdField_a_of_type_Eca.notifyDataSetChanged();
-    this.jdField_a_of_type_AndroidWidgetGridView.postDelayed(new ebo(this), 200L);
+    this.jdField_a_of_type_Edf.notifyDataSetChanged();
+    this.jdField_a_of_type_AndroidWidgetGridView.postDelayed(new ect(this), 200L);
   }
   
   protected void a(int paramInt)
@@ -417,7 +417,7 @@ public class EditActivity
     {
       if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.b() > 47)
       {
-        a(2131364137);
+        a(2131364148);
         return true;
       }
       Intent localIntent = new Intent();
@@ -500,17 +500,17 @@ public class EditActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903642);
+    setContentView(2130903651);
     this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager = ((StatusManager)this.app.getManager(14));
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager == null)
     {
-      a(2131363286);
+      a(2131363296);
       finish();
       return false;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a())
     {
-      a(2131364135);
+      a(2131364146);
       finish();
       return false;
     }
@@ -520,11 +520,11 @@ public class EditActivity
     if (this.jdField_i_of_type_Int == 1)
     {
       setTitle("交友宣言");
-      setLeftViewName(2131364492);
+      setLeftViewName(2131364503);
       this.jdField_a_of_type_Boolean = false;
-      ((MaxHeightRelativelayout)findViewById(2131298802)).setMaxHeight((int)(getResources().getDisplayMetrics().heightPixels * 0.31D));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296629));
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText = ((RichStatusEditText)findViewById(2131298803));
+      ((MaxHeightRelativelayout)findViewById(2131298828)).setMaxHeight((int)(getResources().getDisplayMetrics().heightPixels * 0.31D));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296632));
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText = ((RichStatusEditText)findViewById(2131298829));
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setHint("你想对附近的人说点什么？");
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setEditListener(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener);
       paramBundle = getIntent().getByteArrayExtra("param_old_xuan_yan");
@@ -559,13 +559,13 @@ public class EditActivity
       }
       j();
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131298804);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131298830);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131298805);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131298831);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297080));
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298806));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298832));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       for (;;)
       {
@@ -662,17 +662,17 @@ public class EditActivity
   
   void e()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null, 2131624119));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131364133, 0);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131364134, 3);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362794);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new ebx(this));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new eby(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null, 2131624120));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131364144, 0);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131364145, 3);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362801);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new edc(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new edd(this));
   }
   
   public void f()
   {
-    new Handler().postDelayed(new ebz(this), 500L);
+    new Handler().postDelayed(new ede(this), 500L);
   }
   
   void g()
@@ -686,11 +686,11 @@ public class EditActivity
     {
     default: 
       if (!NetworkUtil.e(this)) {
-        a(2131364136);
+        a(2131364147);
       }
       break;
-    case 2131298805: 
-    case 2131298804: 
+    case 2131298831: 
+    case 2131298830: 
       do
       {
         return;
@@ -711,7 +711,7 @@ public class EditActivity
     }
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.b() > 47)
     {
-      a(2131364137);
+      a(2131364148);
       return;
     }
     paramView = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;

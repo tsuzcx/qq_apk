@@ -15,10 +15,6 @@ public final class cmd0x383$ApplyGetFileListReqBody
   public static final int REQ_FROM_PC_CLIENT_INNERWEB = 11;
   public static final int REQ_FROM_PC_CLIENT_INNERWEB_PAGE = 12;
   public static final int REQ_FROM_PC_GROUP_CARD = 1;
-  public static final int STR_PARENT_FOLDER_PATH_FIELD_NUMBER = 4;
-  public static final int UINT32_FILE_COUNT_FIELD_NUMBER = 2;
-  public static final int UINT32_REQ_FROM_FIELD_NUMBER = 3;
-  public static final int UINT32_START_INDEX_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_start_index", "uint32_file_count", "uint32_req_from", "str_parent_folder_path" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "" }, ApplyGetFileListReqBody.class);
   public final PBStringField str_parent_folder_path = PBField.initString("");
   public final PBUInt32Field uint32_file_count = PBField.initUInt32(0);

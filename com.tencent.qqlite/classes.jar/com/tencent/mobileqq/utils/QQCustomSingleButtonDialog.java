@@ -20,10 +20,10 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.mobileqq.text.QQText;
-import euz;
-import eva;
-import evb;
-import evc;
+import exe;
+import exf;
+import exg;
+import exh;
 
 public class QQCustomSingleButtonDialog
   extends Dialog
@@ -33,7 +33,7 @@ public class QQCustomSingleButtonDialog
   public DialogInterface.OnClickListener a;
   public LayoutInflater a;
   View jdField_a_of_type_AndroidViewView;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new euz(this);
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new exe(this);
   Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -84,7 +84,7 @@ public class QQCustomSingleButtonDialog
     this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(paramInt1);
     this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getContext().getString(paramInt2));
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new evb(this, paramOnClickListener));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new exg(this, paramOnClickListener));
     a();
     return this;
   }
@@ -138,10 +138,10 @@ public class QQCustomSingleButtonDialog
       }
       if (paramInt == 2)
       {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838031);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838050);
         return this;
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838032);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838051);
       return this;
     }
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
@@ -223,7 +223,7 @@ public class QQCustomSingleButtonDialog
     this.d.setText(new QQText(paramString, 5, 20));
     this.d.setContentDescription(paramString);
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new eva(this, paramOnClickListener));
+    this.d.setOnClickListener(new exf(this, paramOnClickListener));
     a();
     return this;
   }
@@ -276,7 +276,7 @@ public class QQCustomSingleButtonDialog
     this.d.setText(paramInt);
     this.d.setContentDescription(getContext().getString(paramInt));
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new evc(this, paramOnClickListener));
+    this.d.setOnClickListener(new exh(this, paramOnClickListener));
     a();
     return this;
   }
@@ -355,19 +355,19 @@ public class QQCustomSingleButtonDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296911));
-    this.b = ((TextView)findViewById(2131296470));
-    this.c = ((TextView)findViewById(2131296925));
-    this.f = ((TextView)findViewById(2131296921));
-    this.e = ((TextView)findViewById(2131296922));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296924));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131296923);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131296914));
-    this.d = ((TextView)findViewById(2131296915));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296912));
+    this.b = ((TextView)findViewById(2131296473));
+    this.c = ((TextView)findViewById(2131296926));
+    this.f = ((TextView)findViewById(2131296922));
+    this.e = ((TextView)findViewById(2131296923));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296925));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131296924);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131296915));
+    this.d = ((TextView)findViewById(2131296916));
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
     this.d.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131296827));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131296918));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131296828));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131296919));
   }
   
   public void setTitle(int paramInt)

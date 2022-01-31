@@ -1,16 +1,11 @@
-import android.graphics.Bitmap;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import android.widget.TextView;
 
-class arn
-  implements Runnable
+public class arn
 {
-  arn(arm paramarm, Bitmap paramBitmap) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_Arm.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-  }
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

@@ -1,55 +1,27 @@
-import android.content.Context;
-import android.os.Environment;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPHandler;
-import com.tencent.mobileqq.data.ChatBackgroundInfo;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.BaseApplication;
 
-class acm
+public class acm
   implements View.OnClickListener
 {
-  acm(acl paramacl) {}
+  public acm(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    if (!Environment.getExternalStorageState().equals("mounted"))
-    {
-      Toast.makeText(this.a.a.jdField_a_of_type_AndroidAppActivity, this.a.a.getBaseContext().getString(2131363511), 0).show();
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.h == 0) {
+      ChatBackgroundSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity, "OPENVIP_BUTTON", this.jdField_a_of_type_Int);
     }
-    paramView = (ChatBackgroundInfo)((View)paramView.getParent()).getTag();
-    if (paramView.type.equals("1"))
+    do
     {
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler.c() >= 1)
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.h == 1)
       {
-        str = AppConstants.bb + paramView.id + ".png";
-        if (!NetworkUtil.e(BaseApplication.getContext()))
-        {
-          Toast.makeText(this.a.a.jdField_a_of_type_AndroidAppActivity, this.a.a.getBaseContext().getString(2131363376), 0).show();
-          return;
-        }
-        this.a.a.app.a().a(paramView.url, str);
+        ChatBackgroundSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity, "XUFEI_VIP", this.jdField_a_of_type_Int);
         return;
       }
-      DialogUtil.a(this.a.a, 230).setTitle(this.a.a.getString(2131362939)).setMessage(this.a.a.getString(2131364068)).setPositiveButton(this.a.a.getString(2131364293), new aco(this, paramView)).setNegativeButton(this.a.a.getString(2131362794), new acn(this)).show();
-      return;
-    }
-    String str = AppConstants.bb + paramView.id + ".png";
-    if (!NetworkUtil.e(BaseApplication.getContext()))
-    {
-      Toast.makeText(this.a.a.jdField_a_of_type_AndroidAppActivity, this.a.a.getBaseContext().getString(2131363376), 0).show();
-      return;
-    }
-    this.a.a.app.a().a(paramView.url, str);
+    } while (this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.h != 2);
+    ChatBackgroundSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity, "XUFEI_SVIP", this.jdField_a_of_type_Int);
   }
 }
 

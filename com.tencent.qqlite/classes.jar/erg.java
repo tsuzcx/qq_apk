@@ -1,19 +1,41 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
-import com.tencent.mobileqq.troop.widget.VideoViewX.OnSeekListener;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.mobileqq.troop.widget.AvatarWallView;
 
 public class erg
-  implements MediaPlayer.OnSeekCompleteListener
+  implements Animation.AnimationListener
 {
-  public erg(VideoViewX paramVideoViewX) {}
+  public erg(AvatarWallView paramAvatarWallView) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (VideoViewX.a(this.a) != null) {
-      VideoViewX.a(this.a).i();
+    int i = 0;
+    paramAnimation = this.a;
+    paramAnimation.p -= 1;
+    if (this.a.p <= 0)
+    {
+      this.a.e = true;
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c(this.a.jdField_a_of_type_Int, this.a.m);
+      if (this.a.d)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.e();
+        this.a.d = false;
+      }
+      int j = this.a.getChildCount();
+      while (i < j)
+      {
+        this.a.getChildAt(i).clearAnimation();
+        i += 1;
+      }
+      this.a.jdField_a_of_type_Int = this.a.m;
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

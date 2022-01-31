@@ -117,10 +117,9 @@ public class SkinEngine
       IS_PROBLEM_CM11 = false;
       mIconResourceID = null;
       String[] arrayOfString1 = { "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" };
-      String[] arrayOfString2 = { "drawable-hdpi/", "drawable-xhdpi/", "drawable-mdpi/", "drawable/" };
-      String[] arrayOfString3 = { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/" };
-      String[] arrayOfString4 = { "drawable-xxhdpi", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" };
-      c = new String[][] { arrayOfString1, arrayOfString2, arrayOfString3, { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable/" }, arrayOfString4 };
+      String[] arrayOfString2 = { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable/" };
+      String[] arrayOfString3 = { "drawable-xxhdpi", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" };
+      c = new String[][] { arrayOfString1, { "drawable-hdpi/", "drawable-xhdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/" }, arrayOfString2, arrayOfString3 };
       d = new int[][] { { 320, 240, 160, 160 }, { 240, 320, 160, 160 }, { 160, 160, 240, 320 }, { 120, 160, 240, 320, 160 }, { 480, 320, 240, 160, 160 } };
       e = 0;
       f = 1;

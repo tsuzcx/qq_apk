@@ -1,27 +1,32 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.activity.recent.LocalSearchBar;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ckp
-  extends SearchResultDialog
+  implements AdapterView.OnItemSelectedListener
 {
-  public ckp(LocalSearchBar paramLocalSearchBar, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, AdapterView.OnItemClickListener paramOnItemClickListener)
-  {
-    super(paramContext, paramQQAppInterface, paramInt, paramOnItemClickListener);
-  }
+  public ckp(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  @SuppressLint({"UseSparseArrays"})
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(a(paramContext, paramQQAppInterface));
-    localArrayList.addAll(super.a(paramContext, paramQQAppInterface, paramInt));
-    return localArrayList;
+    this.a.jdField_b_of_type_Int = paramInt;
+    if (this.a.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(this.a.jdField_b_of_type_Int))) {
+      this.a.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+    }
+    while (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 1)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt + 1 + " / " + this.a.jdField_a_of_type_JavaUtilArrayList.size());
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getResources().getString(2131363449));
   }
 }
 

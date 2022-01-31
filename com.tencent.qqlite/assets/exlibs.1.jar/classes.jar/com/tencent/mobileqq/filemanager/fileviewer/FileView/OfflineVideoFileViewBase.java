@@ -36,8 +36,8 @@ public abstract class OfflineVideoFileViewBase
     }
     e();
     a().c();
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297985)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297646);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297990)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297650);
     if (2 == this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.c()) {}
     for (String str = FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()) + BaseApplicationImpl.getContext().getString(2131361977);; str = FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()) + BaseApplicationImpl.getContext().getString(2131361977) + FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.c(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.b(), false) + BaseApplicationImpl.getContext().getString(2131361974))
     {
@@ -52,7 +52,7 @@ public abstract class OfflineVideoFileViewBase
   
   public View a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903439, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903444, paramViewGroup, false);
     g();
     return this.jdField_a_of_type_AndroidViewView;
   }
@@ -76,7 +76,7 @@ public abstract class OfflineVideoFileViewBase
   
   public void e()
   {
-    AsyncImageView localAsyncImageView = (AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297644);
+    AsyncImageView localAsyncImageView = (AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297648);
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.f() != null)
     {
       localAsyncImageView.setAsyncImage(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.f());

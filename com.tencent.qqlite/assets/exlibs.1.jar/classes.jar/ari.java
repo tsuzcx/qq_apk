@@ -1,11 +1,23 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.IndividuationSetActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ari
+  implements Runnable
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public ari(IndividuationSetActivity paramIndividuationSetActivity) {}
+  
+  public void run()
+  {
+    int i = (int)(35.0F * this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeDownloadTrace", 2, "reqWidth is:" + i + ",reqHeight is:" + i);
+    }
+    Bitmap localBitmap = IndividuationSetActivity.a(this.a, i, i);
+    if (localBitmap != null) {
+      this.a.runOnUiThread(new arj(this, localBitmap));
+    }
+  }
 }
 
 

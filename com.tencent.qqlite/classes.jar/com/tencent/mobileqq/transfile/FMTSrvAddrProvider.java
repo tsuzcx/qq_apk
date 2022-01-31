@@ -18,7 +18,7 @@ import com.tencent.mobileqq.highway.utils.EndPoint;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import egz;
+import eid;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class FMTSrvAddrProvider
   private static final String d = AppConstants.bs + "srvAddr.ini";
   private long jdField_a_of_type_Long = -1L;
   private FileStoragePushFSSvcList jdField_a_of_type_ConfigPushFileStoragePushFSSvcList = a();
-  private egz jdField_a_of_type_Egz = new egz(this);
+  private eid jdField_a_of_type_Eid = new eid(this);
   private Hashtable jdField_a_of_type_JavaUtilHashtable = new Hashtable();
   private String jdField_b_of_type_JavaLangString = "";
   private Hashtable jdField_b_of_type_JavaUtilHashtable = new Hashtable();
@@ -219,7 +219,7 @@ public class FMTSrvAddrProvider
       d(i);
       i += 1;
     }
-    this.jdField_a_of_type_Egz.a(this.jdField_a_of_type_ConfigPushFileStoragePushFSSvcList);
+    this.jdField_a_of_type_Eid.a(this.jdField_a_of_type_ConfigPushFileStoragePushFSSvcList);
     if ((this.jdField_a_of_type_ConfigPushFileStoragePushFSSvcList != null) && (this.jdField_a_of_type_ConfigPushFileStoragePushFSSvcList.fmtIPInfo != null))
     {
       this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ConfigPushFileStoragePushFSSvcList.fmtIPInfo.sGateIp;
@@ -531,9 +531,9 @@ public class FMTSrvAddrProvider
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 76	com/tencent/mobileqq/transfile/FMTSrvAddrProvider:jdField_a_of_type_Egz	Legz;
+    //   3: getfield 76	com/tencent/mobileqq/transfile/FMTSrvAddrProvider:jdField_a_of_type_Eid	Leid;
     //   6: iload_1
-    //   7: invokevirtual 433	egz:a	(I)LConfigPush/FileStorageServerListInfo;
+    //   7: invokevirtual 433	eid:a	(I)LConfigPush/FileStorageServerListInfo;
     //   10: astore_2
     //   11: aload_2
     //   12: ifnull +70 -> 82
@@ -615,7 +615,7 @@ public class FMTSrvAddrProvider
         QLog.d("FMT_ADDR", 2, "FMT SERVER LIST CLEARED!!!");
       }
       a(null);
-      this.jdField_a_of_type_Egz.a();
+      this.jdField_a_of_type_Eid.a();
       this.jdField_a_of_type_JavaUtilHashtable.clear();
       this.jdField_b_of_type_JavaUtilHashtable.clear();
       return;
@@ -627,7 +627,7 @@ public class FMTSrvAddrProvider
   {
     try
     {
-      this.jdField_a_of_type_Egz.a(paramInt, paramString);
+      this.jdField_a_of_type_Eid.a(paramInt, paramString);
       return;
     }
     finally
@@ -712,9 +712,9 @@ public class FMTSrvAddrProvider
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 76	com/tencent/mobileqq/transfile/FMTSrvAddrProvider:jdField_a_of_type_Egz	Legz;
+    //   3: getfield 76	com/tencent/mobileqq/transfile/FMTSrvAddrProvider:jdField_a_of_type_Eid	Leid;
     //   6: iload_1
-    //   7: invokevirtual 467	egz:a	(I)Ljava/util/ArrayList;
+    //   7: invokevirtual 467	eid:a	(I)Ljava/util/ArrayList;
     //   10: astore 4
     //   12: aload 4
     //   14: ifnull +91 -> 105
@@ -735,21 +735,21 @@ public class FMTSrvAddrProvider
     //   44: invokevirtual 277	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   47: checkcast 288	ConfigPush/FileStorageServerListInfo
     //   50: astore 5
-    //   52: new 470	ehp
+    //   52: new 470	eiv
     //   55: dup
-    //   56: invokespecial 471	ehp:<init>	()V
+    //   56: invokespecial 471	eiv:<init>	()V
     //   59: astore 6
     //   61: aload 6
     //   63: aload 5
     //   65: getfield 297	ConfigPush/FileStorageServerListInfo:sIP	Ljava/lang/String;
-    //   68: putfield 472	ehp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   68: putfield 472	eiv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   71: aload 6
     //   73: aload 5
     //   75: getfield 304	ConfigPush/FileStorageServerListInfo:iPort	I
-    //   78: putfield 473	ehp:b	I
+    //   78: putfield 473	eiv:b	I
     //   81: aload 6
     //   83: iload_1
-    //   84: putfield 475	ehp:jdField_a_of_type_Int	I
+    //   84: putfield 475	eiv:jdField_a_of_type_Int	I
     //   87: aload_3
     //   88: iload_2
     //   89: aload 6
@@ -780,7 +780,7 @@ public class FMTSrvAddrProvider
     //   110	4	3	localObject	Object
     //   10	32	4	localArrayList2	ArrayList
     //   50	24	5	localFileStorageServerListInfo	FileStorageServerListInfo
-    //   59	31	6	localehp	ehp
+    //   59	31	6	localeiv	eiv
     // Exception table:
     //   from	to	target	type
     //   2	12	110	finally

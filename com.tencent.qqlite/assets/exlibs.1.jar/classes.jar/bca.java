@@ -9,6 +9,8 @@ public class bca
   
   public void onClick(View paramView)
   {
+    QQBrowserActivity.b(this.a).setVisibility(8);
+    this.a.b.setVisibility(8);
     this.a.finish();
   }
 }

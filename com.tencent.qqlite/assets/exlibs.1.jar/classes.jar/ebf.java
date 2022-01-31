@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.richstatus.ActionUrlActivity;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.view.CircularProgressBar;
 
 public class ebf
-  extends WebChromeClient
+  extends Handler
 {
-  private ebf(ActionUrlActivity paramActionUrlActivity) {}
+  public ebf(CircularProgressBar paramCircularProgressBar) {}
   
-  public void onProgressChanged(WebView paramWebView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    super.onProgressChanged(paramWebView, paramInt);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    this.a.setTitle(paramString);
+    this.a.invalidate();
+    if (CircularProgressBar.a(this.a))
+    {
+      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a));
+      if (CircularProgressBar.b(this.a) > 360) {
+        CircularProgressBar.b(this.a, 0);
+      }
+      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
+    }
   }
 }
 

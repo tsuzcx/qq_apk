@@ -1,21 +1,16 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.SurfaceView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
 
 class dui
   implements Runnable
 {
-  dui(dug paramdug) {}
+  dui(duh paramduh, Bitmap paramBitmap) {}
   
   public void run()
   {
-    PreviewingOfflineFileViewBase.a(this.a.a).removeCallbacksAndMessages(null);
-    String str = (String)PreviewingOfflineFileViewBase.a(this.a.a).getText();
-    if ((str == null) || (str.length() == 0)) {
-      return;
-    }
-    PreviewingOfflineFileViewBase.a(this.a.a).clearAnimation();
-    PreviewingOfflineFileViewBase.a(this.a.a).setVisibility(0);
+    LocalVideoFileView.a(this.jdField_a_of_type_Duh.a).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap));
   }
 }
 

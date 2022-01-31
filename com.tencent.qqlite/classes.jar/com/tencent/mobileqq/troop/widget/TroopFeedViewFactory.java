@@ -33,9 +33,9 @@ import com.tencent.mobileqq.troop.utils.TroopFileUtils;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.troop.TroopProxyActivity;
-import eqq;
-import eqr;
-import eqt;
+import esi;
+import esj;
+import esl;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -51,7 +51,7 @@ public class TroopFeedViewFactory
   public SessionInfo a;
   public QQAppInterface a;
   public TroopFeedsDataManager a;
-  public eqq a;
+  public esi a;
   protected HashMap a;
   public boolean a;
   public Drawable b;
@@ -65,7 +65,7 @@ public class TroopFeedViewFactory
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
     this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_Eqq = new eqq(this, null);
+    this.jdField_a_of_type_Esi = new esi(this, null);
     this.jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
     this.jdField_a_of_type_Long = 0L;
     this.jdField_c_of_type_Int = 1000;
@@ -105,11 +105,11 @@ public class TroopFeedViewFactory
     switch (paramInt)
     {
     default: 
-      return new eqr(this);
+      return new esj(this);
     case 0: 
-      return new eqr(this);
+      return new esj(this);
     }
-    return new eqt(this);
+    return new esl(this);
   }
   
   public void a(View paramView)
@@ -217,7 +217,7 @@ public class TroopFeedViewFactory
         localIntent.putExtra("fileSize", 0);
       }
     }
-    TroopFileError.a(localActivity, String.format(localActivity.getString(2131362275), new Object[] { TroopFileUtils.a(localNumberFormatException.e) }));
+    TroopFileError.a(localActivity, String.format(localActivity.getString(2131362276), new Object[] { TroopFileUtils.a(localNumberFormatException.e) }));
   }
   
   void a(TroopFeedItem paramTroopFeedItem, int paramInt)

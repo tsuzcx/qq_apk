@@ -1,19 +1,21 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.mobileqq.utils.SecUtil;
 
-public class evc
-  implements View.OnClickListener
+class evc
+  implements Runnable
 {
-  public evc(QQCustomSingleButtonDialog paramQQCustomSingleButtonDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  evc(evb paramevb, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog, 1);
+    this.jdField_a_of_type_Evb.a.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    String str = SecUtil.a(AntiFraudConfigFileUtil.a(this.jdField_a_of_type_Evb.a, this.jdField_a_of_type_JavaLangString));
+    if (!this.b.equalsIgnoreCase(str))
+    {
+      AntiFraudConfigFileUtil.a(this.jdField_a_of_type_Evb.a, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.dismiss();
+    this.jdField_a_of_type_Evb.a.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
   }
 }
 

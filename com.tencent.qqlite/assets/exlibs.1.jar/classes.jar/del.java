@@ -1,34 +1,41 @@
-import android.view.ViewParent;
-import com.tencent.mobileqq.emoticonview.ClassicEmoticonPanelView;
+import android.content.Context;
+import com.tencent.mobileqq.activity.IndividuationSetActivity.EmojiJsBridgeListener;
+import com.tencent.mobileqq.emoji.EmojiJsHandler;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class del
-  implements Runnable
+  extends QQCustomDialog
 {
-  private int jdField_a_of_type_Int;
-  
-  public del(ClassicEmoticonPanelView paramClassicEmoticonPanelView) {}
-  
-  public void a()
+  public del(EmojiJsHandler paramEmojiJsHandler, Context paramContext, int paramInt, IndividuationSetActivity.EmojiJsBridgeListener paramEmojiJsBridgeListener)
   {
-    this.jdField_a_of_type_Int = ClassicEmoticonPanelView.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView);
+    super(paramContext, paramInt);
   }
   
-  public void run()
+  public void onBackPressed()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.getParent() != null) && (this.jdField_a_of_type_Int == ClassicEmoticonPanelView.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView)) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.b != -1) && (ClassicEmoticonPanelView.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView) != null))
+    if (QLog.isColorLevel()) {
+      QLog.i("Emoji.EmojiJsHandler", 2, "back button clicked");
+    }
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.getParent().requestDisallowInterceptTouchEvent(true);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.sendAccessibilityEvent(2);
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.b == 20)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.jdField_a_of_type_JavaLangRunnable.run();
-        return;
-      }
-      ClassicEmoticonPanelView.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.b);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("result", 2);
+      localJSONObject.put("message", "user cancel download emoji in not wifi network");
+      localJSONObject.put("what", 1014);
+      this.jdField_a_of_type_ComTencentMobileqqActivityIndividuationSetActivity$EmojiJsBridgeListener.a(localJSONObject);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.b = -1;
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      return;
+    }
+    finally
+    {
+      super.onBackPressed();
+    }
   }
 }
 

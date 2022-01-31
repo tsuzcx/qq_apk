@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aik;
-import ail;
-import aim;
-import ain;
+import aip;
+import aiq;
+import air;
+import ais;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,7 +35,7 @@ public class DialogActivity
       if (QLog.isColorLevel()) {
         QLog.e("raw_photo", 2, "showDialog ", localBadTokenException);
       }
-      getWindow().getDecorView().post(new ain(this, paramQQCustomDialog));
+      getWindow().getDecorView().post(new ais(this, paramQQCustomDialog));
     }
   }
   
@@ -43,7 +43,7 @@ public class DialogActivity
   {
     Intent localIntent = getIntent();
     if (localIntent != null) {
-      this.a = localIntent.getIntExtra("key_dialog_msg_id", 2131364043);
+      this.a = localIntent.getIntExtra("key_dialog_msg_id", 2131364054);
     }
     return super.doOnCreate(paramBundle);
   }
@@ -51,8 +51,8 @@ public class DialogActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230).setMessage(getString(this.a)).setPositiveButton(getString(2131362793), new ail(this)).setNegativeButton(getString(2131362792), new aik(this));
-    localQQCustomDialog.setOnCancelListener(new aim(this));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230).setMessage(getString(this.a)).setPositiveButton(getString(2131362800), new aiq(this)).setNegativeButton(getString(2131362799), new aip(this));
+    localQQCustomDialog.setOnCancelListener(new air(this));
     a(localQQCustomDialog);
   }
   

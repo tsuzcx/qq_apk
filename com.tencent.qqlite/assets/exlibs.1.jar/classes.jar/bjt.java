@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.SnapScreenActivity;
-import com.tencent.mobileqq.app.ScreenShotDisableListener;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class bjt
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public bjt(SnapScreenActivity paramSnapScreenActivity) {}
+  public bjt(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.a();
-    if ((this.a.a instanceof ScreenShotDisableListener)) {
-      ((ScreenShotDisableListener)this.a.a).a();
-    }
-    SettingCloneUtil.writeValue(this.a.a, null, this.a.getString(2131363054), "qqsetting_screenshot_key", false);
-    Toast.makeText(this.a.a, 2131363188, 1).show();
+    this.a.finish();
+    return true;
   }
 }
 

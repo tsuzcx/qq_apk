@@ -8,6 +8,7 @@ import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.MsgUtils;
 import java.io.UnsupportedEncodingException;
@@ -126,6 +127,8 @@ public class MessageRecord
   public int longMsgCount;
   public int longMsgId;
   public int longMsgIndex;
+  @notColumn
+  public MessageInfo mMessageInfo;
   @notColumn
   public String msg;
   public byte[] msgData;

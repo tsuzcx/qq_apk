@@ -6,9 +6,9 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import blf;
-import blg;
-import bli;
+import blk;
+import bll;
+import bln;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.NightModeLogic;
@@ -29,8 +29,8 @@ public class ThemeSwitchDlgActivity
     }
     if (this.jdField_a_of_type_AndroidAppDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppDialog = a(2131363268, 2131363270, 2131362794, 2131363271, new blf(this), new blg(this));
-      this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new bli(this));
+      this.jdField_a_of_type_AndroidAppDialog = a(2131363278, 2131363280, 2131362801, 2131363281, new blk(this), new bll(this));
+      this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new bln(this));
     }
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
@@ -41,23 +41,23 @@ public class ThemeSwitchDlgActivity
     Object localObject1 = getResources().getString(paramInt2);
     String str2 = getResources().getString(paramInt3);
     String str1 = getResources().getString(paramInt4);
-    Dialog localDialog = new Dialog(this, 2131624119);
+    Dialog localDialog = new Dialog(this, 2131624120);
     localDialog.setContentView(2130903135);
-    TextView localTextView = (TextView)localDialog.findViewById(2131296911);
+    TextView localTextView = (TextView)localDialog.findViewById(2131296912);
     if (localTextView != null) {
       localTextView.setText((CharSequence)localObject2);
     }
-    localObject2 = (TextView)localDialog.findViewById(2131296470);
+    localObject2 = (TextView)localDialog.findViewById(2131296473);
     if (localObject2 != null) {
       ((TextView)localObject2).setText((CharSequence)localObject1);
     }
-    localObject1 = (TextView)localDialog.findViewById(2131296914);
+    localObject1 = (TextView)localDialog.findViewById(2131296915);
     if (localObject1 != null)
     {
       ((TextView)localObject1).setText(str2);
       ((TextView)localObject1).setOnClickListener(paramOnClickListener1);
     }
-    paramOnClickListener1 = (TextView)localDialog.findViewById(2131296915);
+    paramOnClickListener1 = (TextView)localDialog.findViewById(2131296916);
     if (paramOnClickListener1 != null)
     {
       paramOnClickListener1.setText(str1);

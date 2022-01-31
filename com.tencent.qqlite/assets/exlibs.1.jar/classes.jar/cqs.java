@@ -1,42 +1,17 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.adapter.WebFacePreloadBaseAdapter;
 
-class cqs
-  implements Runnable
+public class cqs
+  extends Handler
 {
-  cqs(cqr paramcqr) {}
+  public cqs(WebFacePreloadBaseAdapter paramWebFacePreloadBaseAdapter) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ConditionSearchManager.a(this.a.a, false);
-    if (this.a.a.jdField_b_of_type_Boolean)
-    {
-      if (this.a.a.jdField_b_of_type_JavaUtilLinkedList != null)
-      {
-        Iterator localIterator = this.a.a.jdField_b_of_type_JavaUtilLinkedList.iterator();
-        if (localIterator.hasNext())
-        {
-          ConditionSearchManager.IConfigListener localIConfigListener = (ConditionSearchManager.IConfigListener)localIterator.next();
-          if (ConditionSearchManager.a(this.a.a) != null) {}
-          for (boolean bool = true;; bool = false)
-          {
-            localIConfigListener.a(2, bool);
-            break;
-          }
-        }
-      }
-      if (this.a.a.c) {
-        this.a.a.a();
-      }
-      return;
+    if (paramMessage.what == 1) {
+      this.a.c();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "updateLocal | SearchActivity is not running");
-    }
-    ConditionSearchManager.a(this.a.a, null);
   }
 }
 

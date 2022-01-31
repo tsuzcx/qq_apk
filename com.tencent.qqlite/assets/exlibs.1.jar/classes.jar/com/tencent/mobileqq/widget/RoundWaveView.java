@@ -11,7 +11,7 @@ import android.view.View;
 import com.tencent.mobileqq.ptt.SoundLevelSource;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlite.R.styleable;
-import ezf;
+import fbl;
 
 public class RoundWaveView
   extends View
@@ -20,7 +20,7 @@ public class RoundWaveView
   private final float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private SoundLevelSource jdField_a_of_type_ComTencentMobileqqPttSoundLevelSource;
-  private ezf jdField_a_of_type_Ezf;
+  private fbl jdField_a_of_type_Fbl;
   private final float jdField_b_of_type_Float;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private final float c;
@@ -68,16 +68,16 @@ public class RoundWaveView
   {
     QLog.i("RoundWaveView", 4, "start wave animation");
     b();
-    this.jdField_a_of_type_Ezf = new ezf(this, 0.4F, 0.0F, this.jdField_b_of_type_Float, this.e, 1000L);
-    ViewCompat.postOnAnimation(this, this.jdField_a_of_type_Ezf);
+    this.jdField_a_of_type_Fbl = new fbl(this, 0.4F, 0.0F, this.jdField_b_of_type_Float, this.e, 1000L);
+    ViewCompat.postOnAnimation(this, this.jdField_a_of_type_Fbl);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Ezf != null)
+    if (this.jdField_a_of_type_Fbl != null)
     {
-      this.jdField_a_of_type_Ezf.a();
-      this.jdField_a_of_type_Ezf = null;
+      this.jdField_a_of_type_Fbl.a();
+      this.jdField_a_of_type_Fbl = null;
     }
   }
   

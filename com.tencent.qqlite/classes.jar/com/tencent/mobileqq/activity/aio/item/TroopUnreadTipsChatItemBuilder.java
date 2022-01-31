@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bxo;
+import bym;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
@@ -29,25 +29,25 @@ public class TroopUnreadTipsChatItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramViewHolder = (bxo)paramViewHolder;
+    paramViewHolder = (bym)paramViewHolder;
     paramViewHolder = paramView;
     if (paramView == null)
     {
       paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903112, null);
-      paramViewHolder = (TextView)paramView.findViewById(2131296823);
+      paramViewHolder = (TextView)paramView.findViewById(2131296824);
       paramViewHolder.setMovementMethod(null);
       paramViewHolder.setGravity(17);
       paramViewHolder = paramView;
       if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
-        paramViewHolder = (TextView)paramView.findViewById(2131296834);
-        paramLinearLayout = (TextView)paramView.findViewById(2131296835);
-        paramViewHolder.setBackgroundColor(2130838315);
-        paramLinearLayout.setBackgroundColor(2130838315);
+        paramViewHolder = (TextView)paramView.findViewById(2131296835);
+        paramLinearLayout = (TextView)paramView.findViewById(2131296836);
+        paramViewHolder.setBackgroundColor(2130838334);
+        paramLinearLayout.setBackgroundColor(2130838334);
         paramViewHolder = paramView;
       }
     }
-    paramView = (TextView)paramViewHolder.findViewById(2131296823);
+    paramView = (TextView)paramViewHolder.findViewById(2131296824);
     if ((paramMessageRecord.istroop == 1) && (AnonymousChatHelper.a().a(paramMessageRecord.senderuin)))
     {
       paramView.setTextColor(AnonymousChatHelper.d);
@@ -59,7 +59,7 @@ public class TroopUnreadTipsChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new bxo(this);
+    return new bym(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

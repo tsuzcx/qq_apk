@@ -1,24 +1,51 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.AsyncTask;
+import android.preference.PreferenceManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public class efw
-  extends Handler
+public final class efw
+  extends AsyncTask
 {
-  public efw(GroupSystemMsgController paramGroupSystemMsgController, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public efw(String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  protected Void a(Void... paramVarArgs)
   {
-    if ((GroupSystemMsgController.a(this.a)) && (GroupSystemMsgController.a(this.a) != null))
+    paramVarArgs = BaseApplicationImpl.getContext();
+    Object localObject = PreferenceManager.getDefaultSharedPreferences(paramVarArgs);
+    if (((SharedPreferences)localObject).getBoolean("hasReportDeviceProfile", false)) {
+      return null;
+    }
+    ((SharedPreferences)localObject).edit().putBoolean("hasReportDeviceProfile", true);
+    localObject = new HashMap();
+    int i = MainAcitivityReportHelper.a(paramVarArgs);
+    int j = DeviceInfoUtil.b() * 100 + MainAcitivityReportHelper.b();
+    if (i <= 240) {
+      i = j + 1;
+    }
+    for (;;)
     {
-      GroupSystemMsgController.a(this.a, false);
-      GroupSystemMsgController.a(this.a).a().a(3);
+      ((HashMap)localObject).put("param_FailCode", String.valueOf(i));
+      StatisticCollector.a(BaseApplication.getContext()).a(this.a, "reportDeviceProfile", false, 0L, 0L, (HashMap)localObject, "");
+      return null;
+      if (i <= 320) {
+        i = j + 2;
+      } else if (i <= 480) {
+        i = j + 3;
+      } else if (i <= 640) {
+        i = j + 4;
+      } else if (i <= 720) {
+        i = j + 5;
+      } else if (i <= 1080) {
+        i = j + 6;
+      } else {
+        i = j + 7;
+      }
     }
   }
 }

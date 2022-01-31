@@ -33,20 +33,20 @@ public class wg
     AddFriendActivity.b(this.a);
     if (paramInt1 == 0)
     {
-      this.a.a(2131363774);
+      this.a.a(2131363785);
       return;
     }
     if (paramInt1 == 68)
     {
-      this.a.a(2131363774);
+      this.a.a(2131363785);
       return;
     }
     if (!NetworkUtil.e(BaseApplication.getContext()))
     {
-      this.a.a(2131363377);
+      this.a.a(2131363388);
       return;
     }
-    this.a.a(2131363380);
+    this.a.a(2131363391);
   }
   
   protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
@@ -70,28 +70,28 @@ public class wg
     {
       if (!NetworkUtil.e(BaseApplication.getContext()))
       {
-        this.a.a(2131363377);
+        this.a.a(2131363388);
         return;
       }
-      this.a.a(2131363380);
+      this.a.a(2131363391);
       return;
     }
     if (paramByte == 2)
     {
-      this.a.a(2131363529);
+      this.a.a(2131363540);
       return;
     }
     if (paramByte == 3)
     {
-      this.a.a(2131363530);
+      this.a.a(2131363541);
       return;
     }
     if (paramByte == 4)
     {
-      this.a.a(2131363531);
+      this.a.a(2131363542);
       return;
     }
-    this.a.a(2131363528);
+    this.a.a(2131363539);
   }
 }
 

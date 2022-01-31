@@ -1,22 +1,27 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
 
 public class ahx
-  implements View.OnClickListener
+  implements IphonePickerView.PickerViewAdapter
 {
   public ahx(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void onClick(View paramView)
+  public int a()
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {
-      this.a.a.dismiss();
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 2;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {
+      return this.a.getString(2131363209);
     }
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004920", "0X8004920", 0, 0, "", "", "", "");
-    this.a.finish();
-    this.a.overridePendingTransition(0, 2130968584);
+    return this.a.getString(2131363210);
   }
 }
 

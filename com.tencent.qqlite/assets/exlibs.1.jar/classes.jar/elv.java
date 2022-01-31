@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.VideoRecordActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateAvatarActivity;
 
 public class elv
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public elv(VideoRecordActivity paramVideoRecordActivity) {}
+  public elv(TroopCreateAvatarActivity paramTroopCreateAvatarActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    VideoRecordActivity.a(this.a);
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("output_path", VideoRecordActivity.a(this.a));
-    this.a.setResult(-1, paramDialogInterface);
-    VideoRecordActivity.b(this.a);
+    this.a.a.putExtra("isBack", 1);
+    this.a.setResult(-1, this.a.a);
+    this.a.finish();
   }
 }
 

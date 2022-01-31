@@ -1,19 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.transfile.DataLineDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import java.net.URL;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
 
 public class egw
-  implements BitmapDecoder
+  extends Handler
 {
-  public egv a;
-  
-  public egw(DataLineDownloader paramDataLineDownloader) {}
-  
-  public Bitmap a(URL paramURL)
+  public egw(FriendSystemMsgController paramFriendSystemMsgController, Looper paramLooper)
   {
-    this.jdField_a_of_type_Egv = this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader.a(paramURL);
-    return DataLineDownloader.a(this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader, this.jdField_a_of_type_Egv);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((FriendSystemMsgController.a(this.a)) && (FriendSystemMsgController.a(this.a) != null))
+    {
+      FriendSystemMsgController.a(this.a, false);
+      FriendSystemMsgController.a(this.a).a().a(2);
+    }
   }
 }
 

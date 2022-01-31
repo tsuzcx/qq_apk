@@ -1,27 +1,16 @@
 import com.tencent.mobileqq.activity.DetailProfileActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.data.Card;
 
-public class ahs
-  implements IphonePickerView.PickerViewAdapter
+class ahs
+  implements Runnable
 {
-  public ahs(DetailProfileActivity paramDetailProfileActivity) {}
+  ahs(ahr paramahr, Card paramCard) {}
   
-  public int a()
+  public void run()
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {
-      return this.a.getString(2131363199);
-    }
-    return this.a.getString(2131363200);
+    this.jdField_a_of_type_Ahr.a.a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    this.jdField_a_of_type_Ahr.a.a.f();
   }
 }
 

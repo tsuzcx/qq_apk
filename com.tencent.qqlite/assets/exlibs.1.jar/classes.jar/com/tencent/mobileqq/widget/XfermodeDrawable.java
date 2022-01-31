@@ -9,12 +9,12 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import com.tencent.theme.SkinnableBitmapDrawable;
-import ezz;
+import fcf;
 
 public class XfermodeDrawable
   extends DrawableContainer
 {
-  private ezz a;
+  private fcf a;
   
   public XfermodeDrawable(Drawable paramDrawable)
   {
@@ -26,13 +26,13 @@ public class XfermodeDrawable
     if (!a(paramDrawable)) {
       throw new RuntimeException("No xfermode support for " + paramDrawable.getClass().getSimpleName());
     }
-    this.a = new ezz(paramDrawable, this, paramXfermode);
+    this.a = new fcf(paramDrawable, this, paramXfermode);
     a(this.a);
   }
   
-  private XfermodeDrawable(ezz paramezz, Resources paramResources)
+  private XfermodeDrawable(fcf paramfcf, Resources paramResources)
   {
-    this.a = paramezz;
+    this.a = paramfcf;
     a(this.a);
   }
   

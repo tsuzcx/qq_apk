@@ -69,7 +69,7 @@ public class QRResultHandler
       return 2;
       a(paramQQAppInterface, paramActivity, paramQRActionEntity.a().a() + "", paramBundle);
       return 3;
-      QQToast.a(paramActivity, 2131364486, 0).a();
+      QQToast.a(paramActivity, 2131364497, 0).a();
       return 4;
       a(paramActivity, paramQRActionEntity);
       int i = paramQRActionEntity.r;
@@ -90,7 +90,7 @@ public class QRResultHandler
   {
     paramQQAppInterface = new Intent(paramActivity, QQBrowserActivity.class);
     paramString = 1024 + "http://qm.qq.com/cgi-bin/result" + "?p=a&v=" + DeviceInfoUtil.c() + "&r=" + URLEncoder.encode(paramString).replaceAll("\\+", "%20") + "&_wv=1027";
-    paramQQAppInterface.putExtra("title", paramActivity.getString(2131362378));
+    paramQQAppInterface.putExtra("title", paramActivity.getString(2131362379));
     paramQQAppInterface.putExtra("url", paramString);
     paramQQAppInterface.putExtra("key_isReadModeEnabled", true);
     paramActivity.startActivity(paramQQAppInterface);

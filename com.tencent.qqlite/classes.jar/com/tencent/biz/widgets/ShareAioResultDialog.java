@@ -22,23 +22,23 @@ public class ShareAioResultDialog
   
   public ShareAioResultDialog(Context paramContext)
   {
-    super(paramContext, 2131624119);
-    super.setContentView(2130903361);
+    super(paramContext, 2131624120);
+    super.setContentView(2130903364);
     a();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296914));
-    this.b = ((TextView)super.findViewById(2131296915));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296915));
+    this.b = ((TextView)super.findViewById(2131296916));
     this.c = ((TextView)super.findViewById(2131297108));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297827));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297831));
   }
   
   public void a(DialogInterface.OnClickListener paramOnClickListener)
   {
     Resources localResources = getContext().getResources();
-    this.b.setContentDescription(localResources.getString(2131364495, new Object[] { localResources.getString(2131362481) }));
+    this.b.setContentDescription(localResources.getString(2131364506, new Object[] { localResources.getString(2131362482) }));
     this.b.setOnClickListener(new sz(this, paramOnClickListener));
   }
   
@@ -58,7 +58,7 @@ public class ShareAioResultDialog
     if (paramString == null) {
       str = "";
     }
-    localTextView.setContentDescription(localResources.getString(2131364495, new Object[] { str }));
+    localTextView.setContentDescription(localResources.getString(2131364506, new Object[] { str }));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new sy(this, paramOnClickListener));
   }
   
@@ -81,7 +81,7 @@ public class ShareAioResultDialog
     if (paramString == null) {
       str = "";
     }
-    localTextView.setContentDescription(localResources.getString(2131364495, new Object[] { str }));
+    localTextView.setContentDescription(localResources.getString(2131364506, new Object[] { str }));
     this.b.setOnClickListener(new ta(this, paramOnClickListener));
   }
   

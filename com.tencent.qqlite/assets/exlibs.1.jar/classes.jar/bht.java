@@ -1,12 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
-class bht
-  implements DialogInterface.OnDismissListener
+public class bht
+  implements Runnable
 {
-  bht(bhr parambhr) {}
+  public bht(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void run()
+  {
+    Object localObject2 = this.jdField_a_of_type_JavaLangString;
+    if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
+      return;
+    }
+    Object localObject1 = localObject2;
+    if (!((String)localObject2).startsWith("http://")) {
+      localObject1 = "http://" + (String)localObject2;
+    }
+    localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.getActivity(), QQBrowserActivity.class);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
+  }
 }
 
 

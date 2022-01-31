@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.widgets.ElasticHorScrView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class bcl
-  extends MessageObserver
+  implements Runnable
 {
-  public bcl(QQLSActivity paramQQLSActivity) {}
+  public bcl(QQBrowserActivity paramQQBrowserActivity, int paramInt1, int paramInt2) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    super.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.getWidth() < this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.setMove(true);
     }
-    this.a.finish();
+    while (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.getWidth() < this.b)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.setMove(true);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.setMove(false);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.setMove(false);
   }
 }
 

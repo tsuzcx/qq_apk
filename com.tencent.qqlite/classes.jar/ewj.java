@@ -1,66 +1,26 @@
-import android.media.MediaPlayer;
-import android.os.Handler;
-import com.tencent.mobileqq.utils.VoicePlayer;
-import com.tencent.mobileqq.utils.VoicePlayer.VoicePlayerListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ewj
-  implements Runnable
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
+  public ewj(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public ewj(VoicePlayer paramVoicePlayer) {}
-  
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 4) || (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 5) || (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 6) || (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 8)) {
-      this.jdField_a_of_type_Int = 0;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 0);
     }
-    do
+    try
     {
-      return;
-      if (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 3)
-      {
-        this.jdField_a_of_type_Int = VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer).getCurrentPosition();
-        return;
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
       }
-    } while (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == null);
-    int k = VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer).getDuration();
-    int i = VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer).getCurrentPosition();
-    if (i < this.jdField_a_of_type_Int) {
-      i = this.jdField_a_of_type_Int;
-    }
-    for (;;)
-    {
-      int j = k;
-      if (this.jdField_a_of_type_Int != 0)
-      {
-        j = k;
-        if (this.jdField_a_of_type_Int == i)
-        {
-          j = k;
-          if (this.jdField_a_of_type_Int > k - 200)
-          {
-            QLog.d("Q.profilecard.VoicePlayer", 2, "change duration from " + i + " to " + i);
-            j = i;
-          }
-        }
-      }
-      if (i > this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Int = i;
-      }
-      Iterator localIterator = VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer).iterator();
-      while (localIterator.hasNext()) {
-        ((VoicePlayer.VoicePlayerListener)localIterator.next()).a(VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer), j, i);
-      }
-      if (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == null) {
-        break;
-      }
-      VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer).postDelayed(this, 50L);
       return;
     }
+    catch (Exception paramView) {}
   }
 }
 

@@ -1,20 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cannon.Visitor;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.activity.MayKnowManActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 class avi
-  implements View.OnClickListener
+  implements Runnable
 {
-  avi(avh paramavh, Visitor paramVisitor) {}
+  avi(avh paramavh, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = AddFriendLogicActivity.a(this.jdField_a_of_type_Avh.a, 1, String.valueOf(this.jdField_a_of_type_CannonVisitor.uin), null, 3003, 0, this.jdField_a_of_type_CannonVisitor.name, null, null, MayKnowManActivity.a(this.jdField_a_of_type_Avh.a));
-    this.jdField_a_of_type_Avh.a.startActivity(paramView);
-    ReportController.b(this.jdField_a_of_type_Avh.a.app, "CliOper", "", "", "Contacts_tab", "Contacts_tab_frdoffer_add", 0, 0, "", "", "", "");
+    MayKnowManActivity.a(this.jdField_a_of_type_Avh.a.a, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Avh.a.a.app.a());
   }
 }
 

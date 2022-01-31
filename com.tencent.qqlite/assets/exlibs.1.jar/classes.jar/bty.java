@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.ChangeVoiceView;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
 
 public class bty
   implements Runnable
 {
-  public bty(PressToSpeakPanel paramPressToSpeakPanel, String paramString) {}
+  public bty(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
   
   public void run()
   {
-    PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).c(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.g();
+    this.a.a[ListenChangeVoicePanel.a(this.a)].a();
   }
 }
 

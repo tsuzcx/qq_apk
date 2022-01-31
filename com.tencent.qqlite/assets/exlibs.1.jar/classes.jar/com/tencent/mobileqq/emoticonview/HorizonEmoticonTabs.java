@@ -21,11 +21,11 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import dfk;
-import dfl;
-import dfm;
-import dfn;
-import dfo;
+import dgm;
+import dgn;
+import dgo;
+import dgp;
+import dgq;
 
 public class HorizonEmoticonTabs
   extends HorizontalScrollView
@@ -48,8 +48,8 @@ public class HorizonEmoticonTabs
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    this.jdField_b_of_type_Int = ((int)paramContext.getResources().getDimension(2131493015));
-    this.c = ((int)paramContext.getResources().getDimension(2131493016));
+    this.jdField_b_of_type_Int = ((int)paramContext.getResources().getDimension(2131493017));
+    this.c = ((int)paramContext.getResources().getDimension(2131493018));
     if (Build.VERSION.SDK_INT > 8) {
       setOverScrollMode(2);
     }
@@ -63,9 +63,9 @@ public class HorizonEmoticonTabs
     localImageView.setSelected(paramBoolean);
     if (!paramBoolean)
     {
-      localView.setBackgroundResource(2130838959);
+      localView.setBackgroundResource(2130838992);
       if (paramInt > 0) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt - 1).findViewById(2131297083).setBackgroundResource(2130838959);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt - 1).findViewById(2131297083).setBackgroundResource(2130838992);
       }
     }
     do
@@ -92,7 +92,7 @@ public class HorizonEmoticonTabs
       if (this.jdField_a_of_type_Int < j)
       {
         View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(this.jdField_a_of_type_Int);
-        j = (int)getResources().getDimension(2131493012);
+        j = (int)getResources().getDimension(2131493014);
         int m = super.getMeasuredWidth();
         int[] arrayOfInt = new int[2];
         localView.getLocationOnScreen(arrayOfInt);
@@ -103,7 +103,7 @@ public class HorizonEmoticonTabs
         }
         while (i != 0)
         {
-          post(new dfo(this, i));
+          post(new dgq(this, i));
           return;
           if (k < j) {
             i = k - j;
@@ -124,7 +124,7 @@ public class HorizonEmoticonTabs
   
   public void a(Drawable paramDrawable, int paramInt)
   {
-    post(new dfm(this, paramInt, paramDrawable));
+    post(new dgo(this, paramInt, paramDrawable));
   }
   
   public void a(EmoticonViewBinder paramEmoticonViewBinder, int paramInt, boolean paramBoolean)
@@ -140,7 +140,7 @@ public class HorizonEmoticonTabs
     {
       try
       {
-        View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903580, null);
+        View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903589, null);
         ImageView localImageView = (ImageView)localView.findViewById(2131297086);
         Object localObject = localView.findViewById(2131297083);
         if (paramBoolean)
@@ -163,7 +163,7 @@ public class HorizonEmoticonTabs
               paramEmoticonViewBinder = (BigEmoticonViewBinder)paramEmoticonViewBinder;
               localObject = BigEmoticonViewBinder.b(this.jdField_a_of_type_AndroidContentContext);
               paramEmoticonViewBinder.a.status = 0;
-              ThreadManager.b(new dfk(this, localQQAppInterface, paramEmoticonViewBinder));
+              ThreadManager.b(new dgm(this, localQQAppInterface, paramEmoticonViewBinder));
             }
           }
           if (localObject != null)
@@ -229,7 +229,7 @@ public class HorizonEmoticonTabs
               localObject2 = (BigEmoticonViewBinder)paramEmoticonViewBinder;
               localObject1 = BigEmoticonViewBinder.b(this.jdField_a_of_type_AndroidContentContext);
               ((BigEmoticonViewBinder)localObject2).a.status = 0;
-              ThreadManager.b(new dfl(this, localQQAppInterface, (BigEmoticonViewBinder)localObject2));
+              ThreadManager.b(new dgn(this, localQQAppInterface, (BigEmoticonViewBinder)localObject2));
             }
           }
           if (localObject1 != null)
@@ -366,7 +366,7 @@ public class HorizonEmoticonTabs
     }
     onClick(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt));
     this.jdField_a_of_type_Int = paramInt;
-    super.postDelayed(new dfn(this), 200L);
+    super.postDelayed(new dgp(this), 200L);
   }
   
   public void setSelectedIndex(int paramInt, boolean paramBoolean)

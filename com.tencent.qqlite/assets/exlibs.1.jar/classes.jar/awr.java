@@ -1,23 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.NearbyPeopleListFrame;
-import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class awr
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public awr(NearbyPeopleListFrame paramNearbyPeopleListFrame) {}
+  public awr(NearbyActivity paramNearbyActivity, boolean paramBoolean, int paramInt1, int paramInt2, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!NetworkUtil.e(NearbyPeopleListFrame.a(this.a)))
+    if (this.jdField_a_of_type_Boolean)
     {
-      NearbyPeopleListFrame.a(this.a, 1, NearbyPeopleListFrame.b(this.a).getString(2131363516));
+      if (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity) != null)
+      {
+        paramAnimation = new Message();
+        paramAnimation.what = 1;
+        paramAnimation.arg1 = this.jdField_a_of_type_Int;
+        paramAnimation.arg2 = 1003;
+        NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity).sendMessageDelayed(paramAnimation, 400L);
+      }
       return;
     }
-    this.a.a(false, true);
+    NearbyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

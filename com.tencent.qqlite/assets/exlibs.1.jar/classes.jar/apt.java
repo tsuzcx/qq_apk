@@ -1,34 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
 import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
-import com.tencent.mobileqq.activity.FriendProfileImagePortraits;
-import java.util.HashMap;
-import java.util.Stack;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class apt
-  extends Handler
+  implements Runnable
 {
-  public apt(FriendProfileImagePortraits paramFriendProfileImagePortraits) {}
+  public apt(FriendProfileImageAvatar paramFriendProfileImageAvatar, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.a().createEntityManager();
+    if (localEntityManager != null) {}
+    try
     {
-    }
-    do
-    {
-      return;
-      paramMessage = (String)FriendProfileImagePortraits.a(this.a).pop();
-      if ((TextUtils.isEmpty(paramMessage)) && (FriendProfileImagePortraits.a(this.a) != null))
+      Setting localSetting = (Setting)localEntityManager.a(Setting.class, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.e);
+      if ((localSetting != null) && ((localSetting.headImgTimestamp != 0L) || (localSetting.updateTimestamp != 0L)))
       {
-        paramMessage = (FriendProfileImageModel.ProfileImageInfo)FriendProfileImagePortraits.a(this.a).get(paramMessage);
-        if (paramMessage != null) {
-          this.a.e(paramMessage);
-        }
+        localSetting.headImgTimestamp = 0L;
+        localSetting.updateTimestamp = 0L;
+        localEntityManager.a(localSetting);
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.a(localSetting);
       }
-    } while (FriendProfileImagePortraits.a(this.a).isEmpty());
-    FriendProfileImagePortraits.a(this.a).sendEmptyMessageDelayed(1, 300L);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localEntityManager.a();
+      }
+    }
+    finally
+    {
+      localEntityManager.a();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.b);
   }
 }
 

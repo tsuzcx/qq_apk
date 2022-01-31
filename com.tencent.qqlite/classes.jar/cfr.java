@@ -1,15 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.TimerTask;
 
 public class cfr
-  implements View.OnClickListener
+  extends TimerTask
 {
-  public cfr(MessageSearchDialog paramMessageSearchDialog) {}
+  public cfr(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.dismiss();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app == null)) {
+      return;
+    }
+    try
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqStatisticsMainAcitivityReportHelper.b(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app);
+      StatisticCollector.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity);
+      MultiMsgManager.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app);
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

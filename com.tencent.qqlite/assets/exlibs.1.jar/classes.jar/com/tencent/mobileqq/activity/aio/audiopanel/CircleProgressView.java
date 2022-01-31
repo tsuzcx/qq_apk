@@ -25,6 +25,7 @@ public class CircleProgressView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private int d = -1;
   
   public CircleProgressView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -70,13 +71,17 @@ public class CircleProgressView
       {
         localObject = null;
         continue;
-        this.jdField_a_of_type_AndroidGraphicsRectF.set(2.5F, 2.5F, j - 2.5F, k - 2.5F);
+      }
+      if (this.d > 0) {}
+      for (float f = this.d;; f = 2.5F)
+      {
+        this.jdField_a_of_type_AndroidGraphicsRectF.set(f, f, j - f, k - f);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(5.0F);
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-15158035);
         j = this.jdField_a_of_type_Int * 360 / 100;
         paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 270.0F, j, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-        continue;
+        break;
       }
       Object localObject = null;
     }
@@ -91,6 +96,11 @@ public class CircleProgressView
   public void setProgressBitmap(Bitmap paramBitmap)
   {
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public void setStrokeWidth(int paramInt)
+  {
+    this.d = paramInt;
   }
 }
 

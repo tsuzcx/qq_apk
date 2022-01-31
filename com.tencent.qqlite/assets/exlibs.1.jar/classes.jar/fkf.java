@@ -1,19 +1,42 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.OnPluginReadyListener;
-import cooperation.plugin.IPluginManager.PluginParams;
+import android.database.Cursor;
+import android.widget.Filter;
+import android.widget.Filter.FilterResults;
 
-public final class fkf
-  implements IPluginManager.OnPluginReadyListener
+public class fkf
+  extends Filter
 {
-  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  fkg a;
+  
+  public fkf(fkg paramfkg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
+    this.a = paramfkg;
+  }
+  
+  public CharSequence convertResultToString(Object paramObject)
+  {
+    return this.a.a((Cursor)paramObject);
+  }
+  
+  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
+  {
+    paramCharSequence = this.a.a(paramCharSequence);
+    Filter.FilterResults localFilterResults = new Filter.FilterResults();
+    if (paramCharSequence != null)
+    {
+      localFilterResults.count = paramCharSequence.getCount();
+      localFilterResults.values = paramCharSequence;
+      return localFilterResults;
     }
-    if (paramBoolean) {
-      IPluginManager.c(paramContext, paramPluginParams);
+    localFilterResults.count = 0;
+    localFilterResults.values = null;
+    return localFilterResults;
+  }
+  
+  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
+  {
+    paramCharSequence = this.a.a();
+    if ((paramFilterResults.values != null) && (paramFilterResults.values != paramCharSequence)) {
+      this.a.a((Cursor)paramFilterResults.values);
     }
   }
 }

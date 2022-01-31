@@ -1,41 +1,43 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQProfileItem;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.RegisterPush;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.Executor;
 
 public class cxv
-  extends AccountObserver
+  implements Executor
 {
-  private cxv(RegisterPush paramRegisterPush) {}
+  Runnable jdField_a_of_type_JavaLangRunnable;
+  final Queue jdField_a_of_type_JavaUtilQueue = new LinkedList();
   
-  public void onlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2)
+  protected void a()
   {
-    RegisterPush.a(this.a).g = true;
-    if (paramStatus == AppRuntime.Status.online) {
-      RegisterPush.b(this.a).a.a(11L, false);
-    }
-    for (;;)
+    try
     {
-      RegisterPush.e(this.a).a(paramBoolean2);
-      if (!paramBoolean2)
-      {
-        paramStatus = new QQProfileItem(RegisterPush.f(this.a).a);
-        RegisterPush.g(this.a).a(101, paramStatus);
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
+      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
+      if (localRunnable != null) {
+        ThreadManager.a.execute(this.jdField_a_of_type_JavaLangRunnable);
       }
-      if (!paramBoolean1) {
-        break;
-      }
-      this.a.a(7);
       return;
-      if (paramStatus == AppRuntime.Status.away) {
-        RegisterPush.c(this.a).a.a(31L, false);
-      } else if (paramStatus == AppRuntime.Status.invisiable) {
-        RegisterPush.d(this.a).a.a(41L, false);
-      }
     }
-    this.a.a(6);
+    finally {}
+  }
+  
+  public void execute(Runnable paramRunnable)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilQueue.offer(new cxw(this, paramRunnable));
+      if (this.jdField_a_of_type_JavaLangRunnable == null) {
+        a();
+      }
+      return;
+    }
+    finally
+    {
+      paramRunnable = finally;
+      throw paramRunnable;
+    }
   }
 }
 

@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
 
-public class dkl
+class dkl
   implements Runnable
 {
-  public dkl(QfileLocalFileAppTabView paramQfileLocalFileAppTabView, FileInfo paramFileInfo) {}
+  dkl(dkk paramdkk, boolean paramBoolean) {}
   
   public void run()
   {
-    QfileLocalFileAppTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileAppTabView, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      QfileFileAssistantActivity.c(this.jdField_a_of_type_Dkk.a);
+      return;
+    }
+    QfileFileAssistantActivity.d(this.jdField_a_of_type_Dkk.a);
   }
 }
 

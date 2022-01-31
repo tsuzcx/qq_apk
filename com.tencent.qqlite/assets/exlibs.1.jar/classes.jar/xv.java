@@ -50,13 +50,13 @@ public class xv
       if (AddRequestActivity.a(this.a) != null) {
         AddRequestActivity.a(this.a).dismiss();
       }
-      this.a.a(2130837975, this.a.getString(2131363388));
+      this.a.a(2130837994, this.a.getString(2131363399));
       return;
     }
     if (AddRequestActivity.a(this.a) != null) {
       AddRequestActivity.a(this.a).dismiss();
     }
-    this.a.a(2130837985, this.a.getString(2131362826));
+    this.a.a(2130838004, this.a.getString(2131362833));
   }
 }
 

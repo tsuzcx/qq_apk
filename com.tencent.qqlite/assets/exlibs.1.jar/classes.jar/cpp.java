@@ -1,18 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.adapter.WebBaseFacePreloadExpandableListAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class cpp
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public cpp(WebBaseFacePreloadExpandableListAdapter paramWebBaseFacePreloadExpandableListAdapter) {}
+  public cpp(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1) {
-      this.a.c();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

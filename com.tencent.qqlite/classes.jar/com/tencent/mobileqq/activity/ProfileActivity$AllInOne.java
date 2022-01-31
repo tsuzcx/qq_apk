@@ -3,13 +3,13 @@ package com.tencent.mobileqq.activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bay;
+import bbd;
 import java.util.ArrayList;
 
 public class ProfileActivity$AllInOne
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new bay();
+  public static final Parcelable.Creator CREATOR = new bbd();
   public byte a;
   public int a;
   public String a;

@@ -1,16 +1,19 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.IActionListener;
 
 public class bfs
-  implements IActionListener
+  implements View.OnClickListener
 {
   public bfs(QQSettingMe paramQQSettingMe) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if ((this.a.b) && (paramInt1 == 102) && (paramInt2 == 300)) {
-      this.a.q();
+    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).isShowing())) {
+      QQSettingMe.a(this.a).dismiss();
     }
+    QQSettingMe.a(this.a, null);
   }
 }
 

@@ -1,9 +1,35 @@
-import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.widget.FileWebView.TitilebarEventInterface;
 
 public class dhu
+  implements FileWebView.TitilebarEventInterface
 {
-  private static final int a = 12;
-  public View[] a = new View[12];
+  public dhu(FilePreviewActivity paramFilePreviewActivity) {}
+  
+  public void a() {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b()
+  {
+    if ((this.a.jdField_a_of_type_Boolean) || (this.a.e)) {
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.l = "3";
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.e = System.currentTimeMillis();
+    }
+    this.a.runOnUiThread(new dhv(this));
+  }
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
 }
 
 

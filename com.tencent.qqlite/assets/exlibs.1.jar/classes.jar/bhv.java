@@ -1,34 +1,50 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class bhv
-  extends WtloginObserver
+  implements Runnable
 {
-  public bhv(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public bhv(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, Bundle paramBundle) {}
   
-  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, ErrMsg paramErrMsg)
+  public void run()
   {
-    if (QLog.isColorLevel())
+    if (this.jdField_a_of_type_AndroidOsBundle == null) {}
+    do
     {
-      QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      boolean bool1;
+      String str1;
+      boolean bool2;
+      String str2;
+      String str3;
+      do
+      {
+        return;
+        bool1 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("visibility", false);
+        str1 = this.jdField_a_of_type_AndroidOsBundle.getString("enableVersion");
+        bool2 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("checked", false);
+        str2 = this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockText");
+        str3 = this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockHelpText");
+        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockHelpURL"));
+      } while ((!bool1) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, "3.5.0", str1) < 0));
+      if (QLog.isColorLevel()) {
+        QLog.d("RegisterPhoneNumActivity", 2, "update ui.");
       }
-    }
-    if (paramInt2 == 0) {
-      return;
-    }
-    RegisterQQNumberActivity.a(this.a);
-    paramString = new Intent(this.a, LoginActivity.class);
-    paramString.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-    paramString.putExtra("tab_index", 0);
-    paramString.addFlags(131072);
-    this.a.startActivity(paramString);
-    this.a.finish();
+      if ((bool2) && (RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity) != null)) {
+        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).setChecked(bool2);
+      }
+      if (RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity) != null) {
+        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).setText(str2);
+      }
+      if (RegisterPhoneNumActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity) != null) {
+        RegisterPhoneNumActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).setText(str3);
+      }
+    } while (RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity) == null);
+    RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).setVisibility(0);
   }
 }
 

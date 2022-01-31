@@ -1,75 +1,25 @@
-import com.tencent.mobileqq.app.BizTroopObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import java.util.Map;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 public class eov
-  extends BizTroopObserver
+  implements DialogInterface.OnClickListener
 {
-  static
-  {
-    if (!TroopFileManager.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  public eov(TroopFileItemOperation paramTroopFileItemOperation, TroopFileInfo paramTroopFileInfo) {}
   
-  public eov(TroopFileManager paramTroopFileManager) {}
-  
-  protected void a(Object arg1)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = true;
-    if ((??? == null) || (!(??? instanceof TroopFileStatusInfo))) {}
-    TroopFileStatusInfo localTroopFileStatusInfo1;
-    do
+    switch (paramInt)
     {
-      return;
-      localTroopFileStatusInfo1 = (TroopFileStatusInfo)???;
-    } while (localTroopFileStatusInfo1.jdField_a_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.jdField_b_of_type_Long);
-    if (localTroopFileStatusInfo1.b == 12)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.b(localTroopFileStatusInfo1.jdField_a_of_type_JavaUtilUUID);
+    case 0: 
+    default: 
       return;
     }
-    TroopFileInfo localTroopFileInfo;
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager)
-    {
-      localTroopFileInfo = (TroopFileInfo)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.jdField_b_of_type_JavaUtilMap.get(localTroopFileStatusInfo1.jdField_a_of_type_JavaUtilUUID);
-      if ((!jdField_a_of_type_Boolean) && (localTroopFileInfo == null)) {
-        throw new AssertionError();
-      }
-    }
-    if (localTroopFileInfo == null) {
-      return;
-    }
-    int i = localTroopFileInfo.g;
-    if (localTroopFileInfo.jdField_a_of_type_Boolean) {
-      if (localTroopFileStatusInfo2.b != 11) {
-        break label271;
-      }
-    }
-    for (;;)
-    {
-      for (localTroopFileInfo.jdField_a_of_type_Boolean = bool;; localTroopFileInfo.jdField_a_of_type_Boolean = true) {
-        do
-        {
-          if ((localTroopFileInfo.b == null) && (localTroopFileStatusInfo2.d != null)) {
-            this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.c.put(localTroopFileStatusInfo2.d, localTroopFileInfo);
-          }
-          localTroopFileInfo.a(localTroopFileStatusInfo2, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.a);
-          if ((localTroopFileStatusInfo2.b == 6) && (i != 6)) {
-            this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.a(localTroopFileStatusInfo2.d);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.c(localTroopFileInfo);
-          return;
-        } while ((localTroopFileStatusInfo2.b != 11) || (localTroopFileInfo.g == 11));
-      }
-      label271:
-      bool = false;
-    }
+    TroopFileTransferManager.a(TroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TroopFileItemOperation.jdField_a_of_type_Long).a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
+    ReportController.b(TroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_download", 0, 0, "", TroopFileItemOperation.jdField_a_of_type_Long + "", "", "");
   }
 }
 

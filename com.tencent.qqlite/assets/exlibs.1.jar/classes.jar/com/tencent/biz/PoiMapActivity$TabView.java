@@ -32,13 +32,13 @@ public class PoiMapActivity$TabView
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(paramPoiMapActivity.c);
     paramString = new RelativeLayout.LayoutParams(-2, (int)(3.0F * paramPoiMapActivity.jdField_a_of_type_Float));
     paramString.addRule(12, -1);
-    paramInt = paramContext.getResources().getDimensionPixelSize(2131493048);
+    paramInt = paramContext.getResources().getDimensionPixelSize(2131493050);
     paramString.rightMargin = paramInt;
     paramString.leftMargin = paramInt;
     this.jdField_a_of_type_AndroidViewView.setVisibility(4);
     addView(this.jdField_a_of_type_AndroidViewView, paramString);
     this.b = new View(paramContext);
-    this.b.setBackgroundResource(2130838473);
+    this.b.setBackgroundResource(2130838492);
     paramContext = new RelativeLayout.LayoutParams((int)(2.0F * paramPoiMapActivity.jdField_a_of_type_Float), (int)(20.0F * paramPoiMapActivity.jdField_a_of_type_Float));
     paramContext.addRule(15, -1);
     paramContext.addRule(11, -1);

@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import baj;
-import bal;
-import bam;
-import ban;
 import bao;
-import bap;
+import baq;
+import bar;
+import bas;
+import bat;
+import bau;
 import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.FriendListObserver;
@@ -34,10 +34,10 @@ public class PermisionPrivacyActivity
   View jdField_a_of_type_AndroidViewView;
   public CompoundButton.OnCheckedChangeListener a;
   public CompoundButton a;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new ban(this);
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bal(this);
-  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new bam(this);
-  private IStatusListener jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new bap(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new bas(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new baq(this);
+  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new bar(this);
+  private IStatusListener jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new bau(this);
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   public FormSwitchItem a;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
@@ -52,7 +52,7 @@ public class PermisionPrivacyActivity
   public PermisionPrivacyActivity()
   {
     this.jdField_a_of_type_AndroidWidgetCompoundButton = null;
-    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new bao(this);
+    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new bat(this);
   }
   
   private void a(int paramInt)
@@ -69,18 +69,18 @@ public class PermisionPrivacyActivity
   
   private void f()
   {
-    this.d = ((FormSwitchItem)findViewById(2131298441));
+    this.d = ((FormSwitchItem)findViewById(2131298466));
     Object localObject = (ContactSyncManager)this.app.getManager(37);
     if (((ContactSyncManager)localObject).d())
     {
       this.d.setChecked(((ContactSyncManager)localObject).c());
       this.d.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      this.c = ((FormSwitchItem)findViewById(2131298442));
+      this.c = ((FormSwitchItem)findViewById(2131298467));
       this.c.setChecked(this.app.c(false));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298443));
-      this.b = ((FormSwitchItem)findViewById(2131298445));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298468));
+      this.b = ((FormSwitchItem)findViewById(2131298470));
       ((CardHandler)this.app.a(2)).h();
-      this.e = ((FormSwitchItem)findViewById(2131298440));
+      this.e = ((FormSwitchItem)findViewById(2131298465));
       localObject = this.e;
       if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.b())) {
         break label300;
@@ -92,7 +92,7 @@ public class PermisionPrivacyActivity
       ((FormSwitchItem)localObject).setChecked(bool);
       b(this.app.p());
       a(this.app.o());
-      ThreadManager.b(new baj(this));
+      ThreadManager.b(new bao(this));
       this.b.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
       this.c.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
@@ -132,24 +132,24 @@ public class PermisionPrivacyActivity
     if (paramBoolean)
     {
       this.b.setVisibility(0);
-      findViewById(2131298444).setVisibility(0);
+      findViewById(2131298469).setVisibility(0);
       return;
     }
     this.b.setVisibility(8);
-    findViewById(2131298444).setVisibility(8);
+    findViewById(2131298469).setVisibility(8);
   }
   
   public void b(boolean paramBoolean) {}
   
   protected String b_()
   {
-    return getString(2131364282);
+    return getString(2131364293);
   }
   
   void c()
   {
     Intent localIntent = new Intent(this, QQBrowserActivity.class);
-    localIntent.putExtra("title", getString(2131364287));
+    localIntent.putExtra("title", getString(2131364298));
     startActivity(localIntent.putExtra("url", "http://ti.qq.com/friendship_auth/index.html?_wv=3&_bid=173#p1"));
   }
   
@@ -162,15 +162,15 @@ public class PermisionPrivacyActivity
     localIntent.putExtra("uin", this.app.a());
     localIntent.putExtra("hide_more_button", true);
     localIntent.putExtra("reqType", 1);
-    localIntent.putExtra("title", getString(2131363748));
+    localIntent.putExtra("title", getString(2131363759));
     startActivity(localIntent.putExtra("url", str));
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903538);
-    setTitle(2131364282);
+    setContentView(2130903547);
+    setTitle(2131364293);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this);
     this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager = ((StatusManager)this.app.getManager(14));
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager != null) {

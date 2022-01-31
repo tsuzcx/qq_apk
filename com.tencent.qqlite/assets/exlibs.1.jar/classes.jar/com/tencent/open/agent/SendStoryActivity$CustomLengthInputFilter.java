@@ -6,7 +6,7 @@ import android.widget.EditText;
 import com.tencent.open.agent.datamodel.Friend;
 import com.tencent.open.base.LengthInputFilter;
 import com.tencent.open.base.StringAddition;
-import fby;
+import fee;
 import java.util.Arrays;
 
 public class SendStoryActivity$CustomLengthInputFilter
@@ -23,7 +23,7 @@ public class SendStoryActivity$CustomLengthInputFilter
     paramSpanned = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText();
     StringBuilder localStringBuilder = new StringBuilder(paramSpanned.toString());
     Friend[] arrayOfFriend = (Friend[])paramSpanned.getSpans(0, paramSpanned.length(), Friend.class);
-    Arrays.sort(arrayOfFriend, new fby(this, paramSpanned));
+    Arrays.sort(arrayOfFriend, new fee(this, paramSpanned));
     paramInt4 = arrayOfFriend.length;
     while (paramInt3 < paramInt4)
     {
@@ -50,14 +50,14 @@ public class SendStoryActivity$CustomLengthInputFilter
       {
         paramInt4 -= j;
         if (paramInt4 < 0) {
-          break label253;
+          break label257;
         }
         paramInt3 = i + paramInt3;
         break;
         j = StringAddition.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
       }
     }
-    label253:
+    label257:
     if (paramInt3 == paramInt1) {
       return "";
     }

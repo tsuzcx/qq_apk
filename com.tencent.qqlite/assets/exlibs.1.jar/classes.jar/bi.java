@@ -3,11 +3,11 @@ import com.dataline.activities.LiteMutiPicViewerActivity;
 class bi
   implements Runnable
 {
-  bi(bg parambg) {}
+  bi(bd parambd) {}
   
   public void run()
   {
-    LiteMutiPicViewerActivity.a(this.a.a);
+    LiteMutiPicViewerActivity.b(this.a.a);
   }
 }
 

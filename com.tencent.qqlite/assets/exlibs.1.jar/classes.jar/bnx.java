@@ -1,18 +1,41 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity.ViewHolder;
 
 public class bnx
   implements View.OnClickListener
 {
-  public bnx(TroopMemberCardActivity paramTroopMemberCardActivity, Dialog paramDialog) {}
+  public bnx(TroopMemberCardActivity paramTroopMemberCardActivity) {}
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    paramView = paramView.getTag();
+    if ((paramView == null) || (!(paramView instanceof TroopMemberCardActivity.ViewHolder))) {}
+    do
+    {
+      return;
+      paramView = (TroopMemberCardActivity.ViewHolder)paramView;
+      if (paramView.a == 0)
+      {
+        this.a.c(this.a.e);
+        this.a.e("Clk_account");
+        return;
+      }
+      if (paramView.a == 1)
+      {
+        this.a.b(this.a.c, this.a.e);
+        this.a.e("Clk_name");
+        return;
+      }
+      if (paramView.a == 3)
+      {
+        this.a.a(this.a.c, this.a.e);
+        this.a.e("Clk_set");
+        return;
+      }
+    } while (paramView.a != 2);
+    this.a.n();
   }
 }
 

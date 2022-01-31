@@ -18,7 +18,7 @@ public class yd
     for (int i = 1;; i = 0)
     {
       ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "System_icon", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131363991), "qqsetting_notify_icon_key", paramBoolean);
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131364002), "qqsetting_notify_icon_key", paramBoolean);
       return;
     }
   }

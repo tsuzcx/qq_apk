@@ -24,7 +24,7 @@ public class QWalletGetContactJsPlugin$ChooseQQFriendForTransferReceiver
       this.mJsPlugin.dochooseQQFriendsForTransferResult(null);
       return;
     }
-    QQToast.a(QWalletGetContactJsPlugin.access$300(this.mJsPlugin), 2131364486, 0).a();
+    QQToast.a(QWalletGetContactJsPlugin.access$300(this.mJsPlugin), 2131364497, 0).a();
   }
 }
 

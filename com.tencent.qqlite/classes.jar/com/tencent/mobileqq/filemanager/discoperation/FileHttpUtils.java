@@ -16,8 +16,8 @@ public class FileHttpUtils
     int i;
     if (paramLong3 == 0L)
     {
-      FMConstants.Y = paramSSCM.a(BaseApplication.getContext(), paramLong1, paramLong3);
-      if (paramLong1 < FMConstants.Y) {}
+      FMConstants.Z = paramSSCM.a(BaseApplication.getContext(), paramLong1, paramLong3);
+      if (paramLong1 < FMConstants.Z) {}
       for (;;)
       {
         i = (int)paramLong1;
@@ -40,12 +40,12 @@ public class FileHttpUtils
           QLog.d("FileHttpUtils<FileAssistant>", 2, "sendFilePakage transferedSize[" + paramLong2 + "], size[" + i + "]");
         }
         return i;
-        paramLong1 = FMConstants.Y;
+        paramLong1 = FMConstants.Z;
       }
     }
-    FMConstants.W = paramSSCM.a(BaseApplication.getContext(), paramLong1, paramLong2);
-    if (paramLong1 < FMConstants.W + paramLong2) {}
-    for (paramLong1 -= paramLong2;; paramLong1 = FMConstants.W)
+    FMConstants.X = paramSSCM.a(BaseApplication.getContext(), paramLong1, paramLong2);
+    if (paramLong1 < FMConstants.X + paramLong2) {}
+    for (paramLong1 -= paramLong2;; paramLong1 = FMConstants.X)
     {
       i = (int)paramLong1;
       break;

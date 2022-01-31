@@ -1,41 +1,20 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.qphone.base.util.QLog;
 
 public class cty
-  extends FriendListObserver
+  implements Runnable
 {
-  public cty(MessageHandler paramMessageHandler) {}
+  public cty(FriendListHandler paramFriendListHandler) {}
   
-  protected void a(boolean paramBoolean, String paramString, int paramInt)
+  public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "onUpdateAnswerAddedFriend isSuccess = " + paramBoolean + ", uin = " + paramString + ", flag = " + paramInt);
+      QLog.d("StatusPush", 2, "handlePushBatchFStatus notifyUI uin:" + this.a.a.a() + " at " + System.currentTimeMillis());
     }
-    if (paramBoolean) {
-      this.a.a.a().k();
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "onUpdateFriendList isSuccess = " + paramBoolean1 + ", isComplete = " + paramBoolean2);
-    }
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a.a().k();
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    if ((paramBoolean1) && (paramBoolean2) && (paramBoolean3) && (!TextUtils.isEmpty(paramString))) {
-      this.a.a.a().k();
-    }
+    this.a.a(1, true, Boolean.valueOf(true));
+    this.a.a(7, true, Boolean.valueOf(true));
+    FriendListHandler.a(this.a, 0);
   }
 }
 

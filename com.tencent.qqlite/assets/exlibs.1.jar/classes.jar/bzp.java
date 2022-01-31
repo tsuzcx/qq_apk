@@ -1,21 +1,17 @@
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
 
-class bzp
-  implements Runnable
+public class bzp
+  implements View.OnClickListener
 {
-  bzp(bzo parambzo, MultiForwardChatPie paramMultiForwardChatPie, CharSequence paramCharSequence) {}
+  public bzp(AIOImageListScene paramAIOImageListScene) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(8);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.J);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.b, this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.k();
+    AIOImageListScene.a(this.a, ((TextView)paramView).getText().toString());
+    AIOImageListScene.b(this.a);
   }
 }
 

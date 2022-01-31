@@ -1,28 +1,30 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.appcommon.js.BaseInterface;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmassistantsdk.downloadclient.ITMAssistantDownloadSDKClientListener;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.smtt.sdk.WebView;
+import java.util.List;
 
 public class few
-  implements ITMAssistantDownloadSDKClientListener
+  implements Runnable
 {
-  public few(DownloadManager paramDownloadManager) {}
+  public few(BaseInterface paramBaseInterface, long paramLong, List paramList, WebView paramWebView) {}
   
-  public void OnDownloadSDKTaskProgressChanged(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, String paramString, long paramLong1, long paramLong2)
+  public void run()
   {
-    ThreadManager.b().post(new fey(this, paramLong1, paramLong2, paramString));
-  }
-  
-  public void OnDownloadSDKTaskStateChanged(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    ThreadManager.b().post(new fex(this, paramTMAssistantDownloadSDKClient, paramInt1, paramString1, paramInt2, paramString2));
-  }
-  
-  public void OnDwonloadSDKServiceInvalid(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient)
-  {
-    LogUtility.e(DownloadManager.a, "OnDwonloadSDKServiceInvalid");
+    String str = "javascript:QzoneApp.fire('batchCallback',{'guid':" + this.jdField_a_of_type_Long + ",'r':0,'data':" + this.jdField_a_of_type_JavaUtilList.toString() + "});";
+    if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(str);
+      label58:
+      LogUtility.b(BaseInterface.TAG, "Response<callBatch> AsyncInterface result : " + str);
+      return;
+      LogUtility.e(BaseInterface.TAG, "Response<callBatch> AsyncInterface result : webview is null !!!");
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label58;
+    }
   }
 }
 

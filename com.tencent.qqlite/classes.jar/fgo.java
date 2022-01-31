@@ -1,28 +1,21 @@
-import android.os.Bundle;
-import com.tencent.qqconnect.wtlogin.LoginHelper;
-import com.tencent.qqconnect.wtlogin.LoginHelper.Callback;
-import mqq.observer.SSOAccountObserver;
+import com.tencent.open.base.ImageUtil;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.img.ImageCache;
+import com.tencent.open.base.img.ImageDownCallback;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
 public class fgo
-  extends SSOAccountObserver
+  implements ImageDownCallback
 {
-  public fgo(LoginHelper paramLoginHelper) {}
+  public fgo(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    this.a.a.a();
-    this.a.a = null;
-  }
+  public void a(String paramString1, String paramString2, String paramString3) {}
   
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  public void b(String paramString1, String paramString2, String paramString3)
   {
-    if (paramInt == 4096) {}
-    for (paramArrayOfByte = new String(paramArrayOfByte);; paramArrayOfByte = null)
-    {
-      this.a.a.a(paramString, paramArrayOfByte);
-      this.a.a = null;
-      return;
-    }
+    LogUtility.d(DownloadManager.a, ">>download apk icon err,should load another size icon");
+    ImageCache.a("app", ImageUtil.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b, 75), null);
   }
 }
 

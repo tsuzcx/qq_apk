@@ -41,12 +41,12 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.StartupTracker;
 import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import dep;
-import der;
-import det;
-import dev;
-import dex;
-import dey;
+import dfr;
+import dft;
+import dfv;
+import dfx;
+import dfz;
+import dga;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -82,9 +82,9 @@ public class EmoticonMainPanel
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ClubContentUpdateHandler.ClubContentUpdateListener jdField_a_of_type_ComTencentMobileqqAppClubContentUpdateHandler$ClubContentUpdateListener = new dep(this);
+  ClubContentUpdateHandler.ClubContentUpdateListener jdField_a_of_type_ComTencentMobileqqAppClubContentUpdateHandler$ClubContentUpdateListener = new dfr(this);
   public QQAppInterface a;
-  EmoticonPackageDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new der(this);
+  EmoticonPackageDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new dft(this);
   EmoticonCallback jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback;
   public EmoticonPageIndicator a;
   public EmoticonPagerAdapter a;
@@ -93,7 +93,7 @@ public class EmoticonMainPanel
   public boolean a;
   private View jdField_b_of_type_AndroidViewView;
   private Button jdField_b_of_type_AndroidWidgetButton;
-  EmoticonPackageDownloadListener jdField_b_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new det(this);
+  EmoticonPackageDownloadListener jdField_b_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new dfv(this);
   private HorizonEmoticonTabs jdField_b_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs;
   public List b;
   public boolean b;
@@ -487,7 +487,7 @@ public class EmoticonMainPanel
           localObject = (EmoticonViewBinder)this.jdField_c_of_type_JavaUtilList.get(m);
           if (((EmoticonViewBinder)localObject).n == 8)
           {
-            int i1 = (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131493011);
+            int i1 = (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131493013);
             this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs.a((EmoticonViewBinder)localObject, i1, true);
           }
           for (;;)
@@ -968,7 +968,7 @@ public class EmoticonMainPanel
     while (jdField_g_of_type_Int != 2) {
       return;
     }
-    ThreadManager.b(new dev(this));
+    ThreadManager.b(new dfx(this));
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
@@ -988,7 +988,7 @@ public class EmoticonMainPanel
     {
       localHashMap.put("panelMode", paramCanvas);
       localHashMap.put("duration", String.valueOf(l1));
-      ThreadManager.b(new dey(this, m, l1, localHashMap));
+      ThreadManager.b(new dga(this, m, l1, localHashMap));
       StartupTracker.a("AIO_EmoticonPanel_OpenDuration", null);
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonMainPanel", 2, "[Performance] dispatchDraw over, duration=" + l1 + ",openCondition=" + m + ",panelMode=" + paramCanvas);
@@ -1011,7 +1011,7 @@ public class EmoticonMainPanel
       this.d = true;
       return;
     }
-    postDelayed(new dex(this), 200L);
+    postDelayed(new dfz(this), 200L);
     this.d = false;
   }
   

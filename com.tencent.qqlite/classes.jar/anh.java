@@ -1,24 +1,18 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class anh
-  extends Handler
+class anh
+  implements Runnable
 {
-  public anh(ForwardOperations paramForwardOperations) {}
+  anh(anf paramanf, URLDrawable paramURLDrawable) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 0) {
-      QQToast.a(this.a.a, "网络异常", 0).a();
+    if ((this.jdField_a_of_type_Anf.a != null) && (this.jdField_a_of_type_Anf.a.isShowing()))
+    {
+      this.jdField_a_of_type_Anf.a.setPreviewImage(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new ani(this));
     }
-    while (1 != paramMessage.what) {
-      return;
-    }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
   }
 }
 

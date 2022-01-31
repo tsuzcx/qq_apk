@@ -15,8 +15,8 @@ import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.AdapterView.OnItemLongClickListener;
 import com.tencent.widget.AdapterView.OnItemSelectedListener;
-import dvz;
-import dwb;
+import dxc;
+import dxe;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -24,8 +24,8 @@ public class QfileHorizontalListView
   extends AdapterView
 {
   protected int a;
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new dvz(this);
-  private GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = new dwb(this);
+  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new dxc(this);
+  private GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = new dxe(this);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   public ListAdapter a;
   protected Scroller a;
@@ -318,10 +318,10 @@ public class QfileHorizontalListView
     //   162: invokevirtual 236	android/widget/Scroller:isFinished	()Z
     //   165: ifne -141 -> 24
     //   168: aload_0
-    //   169: new 238	dwa
+    //   169: new 238	dxd
     //   172: dup
     //   173: aload_0
-    //   174: invokespecial 239	dwa:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileHorizontalListView;)V
+    //   174: invokespecial 239	dxd:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileHorizontalListView;)V
     //   177: invokevirtual 243	com/tencent/mobileqq/filemanager/widget/QfileHorizontalListView:post	(Ljava/lang/Runnable;)Z
     //   180: pop
     //   181: goto -157 -> 24

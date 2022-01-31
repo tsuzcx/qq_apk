@@ -11,9 +11,6 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class cmd0x383$ApplyResendReqBody
   extends MessageMicro
 {
-  public static final int BYTES_SHA_FIELD_NUMBER = 3;
-  public static final int STR_FILE_PATH_FIELD_NUMBER = 2;
-  public static final int UINT32_BUS_ID_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_sha = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBStringField str_file_path = PBField.initString("");

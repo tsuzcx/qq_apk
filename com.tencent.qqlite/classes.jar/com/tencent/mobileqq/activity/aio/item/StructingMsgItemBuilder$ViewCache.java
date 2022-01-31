@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import android.view.View;
 import android.view.ViewGroup;
-import bxd;
+import byb;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,12 +23,12 @@ public class StructingMsgItemBuilder$ViewCache
     return i;
   }
   
-  private bxd a(String paramString, ViewGroup paramViewGroup)
+  private byb a(String paramString, ViewGroup paramViewGroup)
   {
     Iterator localIterator = this.b.get(paramString).iterator();
     while (localIterator.hasNext())
     {
-      paramString = (bxd)localIterator.next();
+      paramString = (byb)localIterator.next();
       if (paramString != null) {
         paramString.a(paramViewGroup);
       }
@@ -69,24 +69,24 @@ public class StructingMsgItemBuilder$ViewCache
   
   public void a(String paramString, View paramView, ViewGroup paramViewGroup)
   {
-    this.a.add(new bxd(paramString, paramView, paramViewGroup));
+    this.a.add(new byb(paramString, paramView, paramViewGroup));
   }
   
   public void a(String paramString, ViewGroup paramViewGroup)
   {
     if (paramViewGroup == null) {}
-    bxd localbxd;
+    byb localbyb;
     do
     {
       return;
       while (!paramString.hasNext()) {
         paramString = this.a.get(paramString).iterator();
       }
-      localbxd = (bxd)paramString.next();
-    } while ((localbxd == null) || ((localbxd.a() != paramViewGroup) && (localbxd.a() != null)));
-    localbxd.a().removeAllViews();
-    this.a.remove(localbxd);
-    this.b.add(localbxd);
+      localbyb = (byb)paramString.next();
+    } while ((localbyb == null) || ((localbyb.a() != paramViewGroup) && (localbyb.a() != null)));
+    localbyb.a().removeAllViews();
+    this.a.remove(localbyb);
+    this.b.add(localbyb);
   }
 }
 

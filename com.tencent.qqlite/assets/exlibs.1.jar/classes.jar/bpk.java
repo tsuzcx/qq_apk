@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.TroopPrivilegeActivity.PrivilegeAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class bpk
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
+  public bpk(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public bpk(TroopPrivilegeActivity.PrivilegeAdapter paramPrivilegeAdapter, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 

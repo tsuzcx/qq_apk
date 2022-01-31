@@ -25,10 +25,10 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import fho;
-import fhp;
-import fhr;
-import fhs;
+import fju;
+import fjv;
+import fjx;
+import fjy;
 import java.util.ArrayList;
 
 public class ActionSheet
@@ -55,21 +55,21 @@ public class ActionSheet
   private Handler jdField_a_of_type_AndroidOsHandler;
   private SparseArray jdField_a_of_type_AndroidUtilSparseArray;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new fhr(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new fjx(this);
   private View jdField_a_of_type_AndroidViewView;
   private Window jdField_a_of_type_AndroidViewWindow;
   private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
   private Button jdField_a_of_type_AndroidWidgetButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  public LinearLayout a;
   private ActionSheet.OnButtonClickListener jdField_a_of_type_ComTencentWidgetActionSheet$OnButtonClickListener = null;
   private ActionSheet.OnDismissListener jdField_a_of_type_ComTencentWidgetActionSheet$OnDismissListener = null;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean = false;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new fhs(this);
+  public boolean a;
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new fjy(this);
   private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
   private CharSequence jdField_b_of_type_JavaLangCharSequence;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private CharSequence jdField_c_of_type_JavaLangCharSequence;
   private boolean jdField_c_of_type_Boolean;
   private int m = -1;
@@ -77,22 +77,22 @@ public class ActionSheet
   
   protected ActionSheet(Context paramContext)
   {
-    this(paramContext, 2131624166, true);
+    this(paramContext, 2131624167, true);
   }
   
   protected ActionSheet(Context paramContext, int paramInt, boolean paramBoolean)
   {
     super(paramContext, paramInt);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_c_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     this.jdField_a_of_type_AndroidContentResResources = paramContext.getResources();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903052, null);
     super.setContentView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131296500));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131296501));
-    if (this.jdField_b_of_type_Boolean) {
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131296503));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131296504));
+    if (this.jdField_c_of_type_Boolean) {
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
     }
     setCanceledOnTouchOutside(true);
@@ -100,13 +100,13 @@ public class ActionSheet
   
   private int a(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidContentResResources.getColor(2131427511);
+    return this.jdField_a_of_type_AndroidContentResResources.getColor(2131427517);
   }
   
   public static ActionSheet a(Context paramContext)
   {
     paramContext = new ActionSheet(paramContext);
-    paramContext.getWindow().setWindowAnimations(2131624165);
+    paramContext.getWindow().setWindowAnimations(2131624166);
     return paramContext;
   }
   
@@ -118,18 +118,18 @@ public class ActionSheet
   private void a(View paramView, int paramInt)
   {
     int i2 = 0;
-    if (this.jdField_b_of_type_Boolean)
+    if (this.jdField_c_of_type_Boolean)
     {
-      i1 = (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131493104);
+      i1 = (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131493106);
       if (4 != paramInt) {
         break label72;
       }
     }
     label72:
-    for (ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(i1, -2);; localLayoutParams = new ViewGroup.LayoutParams(i1, (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131493105)))
+    for (ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(i1, -2);; localLayoutParams = new ViewGroup.LayoutParams(i1, (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131493107)))
     {
       paramView.setLayoutParams(localLayoutParams);
-      if (this.jdField_b_of_type_Boolean) {
+      if (this.jdField_c_of_type_Boolean) {
         break label98;
       }
       return;
@@ -137,7 +137,7 @@ public class ActionSheet
       break;
     }
     label98:
-    int i1 = (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131493106);
+    int i1 = (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131493108);
     switch (paramInt)
     {
     default: 
@@ -168,8 +168,8 @@ public class ActionSheet
   
   public static ActionSheet b(Context paramContext)
   {
-    paramContext = new ActionSheet(paramContext, 2131624166, false);
-    paramContext.getWindow().setWindowAnimations(2131624165);
+    paramContext = new ActionSheet(paramContext, 2131624167, false);
+    paramContext.getWindow().setWindowAnimations(2131624166);
     return paramContext;
   }
   
@@ -179,12 +179,12 @@ public class ActionSheet
     int i3;
     int i2;
     Object localObject2;
-    if (this.jdField_c_of_type_Boolean)
+    if (this.jdField_a_of_type_Boolean)
     {
       i1 = 0;
-      while (i1 < this.jdField_b_of_type_AndroidWidgetLinearLayout.getChildCount())
+      while (i1 < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
       {
-        localObject1 = this.jdField_b_of_type_AndroidWidgetLinearLayout.getChildAt(i1);
+        localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i1);
         if ((localObject1 instanceof RelativeLayout))
         {
           i3 = ((RelativeLayout)localObject1).getChildCount();
@@ -207,19 +207,19 @@ public class ActionSheet
       localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903054, null);
       a((View)localObject1, 4);
       ((View)localObject1).setBackgroundDrawable(a(4));
-      localObject2 = (TextView)((View)localObject1).findViewById(2131296507);
+      localObject2 = (TextView)((View)localObject1).findViewById(2131296510);
       ((TextView)localObject2).setVisibility(0);
       ((TextView)localObject2).setText(this.jdField_a_of_type_JavaLangCharSequence);
       ((TextView)localObject2).setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
       if (this.jdField_b_of_type_JavaLangCharSequence != null)
       {
-        localObject2 = (TextView)((View)localObject1).findViewById(2131296508);
+        localObject2 = (TextView)((View)localObject1).findViewById(2131296511);
         ((TextView)localObject2).setVisibility(0);
         ((TextView)localObject2).setText(this.jdField_b_of_type_JavaLangCharSequence);
         ((TextView)localObject2).setContentDescription(this.jdField_b_of_type_JavaLangCharSequence);
       }
       ((View)localObject1).setEnabled(false);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, 0);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, 0);
     }
     for (int i1 = 1;; i1 = 0)
     {
@@ -231,17 +231,17 @@ public class ActionSheet
         if (i1 < i3)
         {
           localObject2 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903053, null);
-          if (((this.jdField_a_of_type_JavaLangCharSequence == null) && (i1 == 0)) || (this.jdField_b_of_type_Boolean)) {
-            ((View)localObject2).findViewById(2131296502).setVisibility(8);
+          if (((this.jdField_a_of_type_JavaLangCharSequence == null) && (i1 == 0)) || (this.jdField_c_of_type_Boolean)) {
+            ((View)localObject2).findViewById(2131296505).setVisibility(8);
           }
-          if (this.jdField_b_of_type_Boolean)
+          if (this.jdField_c_of_type_Boolean)
           {
-            localObject1 = (TextView)((View)localObject2).findViewById(2131296504);
+            localObject1 = (TextView)((View)localObject2).findViewById(2131296507);
             label342:
             Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
             if (((Integer)((Pair)localPair.first).first).intValue() != -1)
             {
-              ImageView localImageView = (ImageView)((View)localObject2).findViewById(2131296503);
+              ImageView localImageView = (ImageView)((View)localObject2).findViewById(2131296506);
               localImageView.setBackgroundResource(((Integer)((Pair)localPair.first).first).intValue());
               localImageView.setVisibility(0);
             }
@@ -259,8 +259,8 @@ public class ActionSheet
             ((View)localObject2).setBackgroundDrawable((Drawable)localObject1);
             ((View)localObject2).setId(i1);
             ((View)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-            this.jdField_b_of_type_AndroidWidgetLinearLayout.addView((View)localObject2);
-            if (this.jdField_a_of_type_Boolean)
+            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject2);
+            if (this.jdField_b_of_type_Boolean)
             {
               if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
                 this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
@@ -268,13 +268,13 @@ public class ActionSheet
               this.jdField_a_of_type_AndroidUtilSparseArray.append(i1, localObject2);
               if (i1 == this.m)
               {
-                ((View)localObject2).findViewById(2131296506).setVisibility(0);
-                ((View)localObject2).findViewById(2131296506).setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131364358));
+                ((View)localObject2).findViewById(2131296509).setVisibility(0);
+                ((View)localObject2).findViewById(2131296509).setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131364369));
               }
             }
             i1 += 1;
             break;
-            localObject1 = (TextView)((View)localObject2).findViewById(2131296505);
+            localObject1 = (TextView)((View)localObject2).findViewById(2131296508);
             ((TextView)localObject1).setVisibility(0);
             break label342;
             label639:
@@ -296,7 +296,7 @@ public class ActionSheet
           }
         }
       }
-      this.jdField_c_of_type_Boolean = true;
+      this.jdField_a_of_type_Boolean = true;
       return;
     }
   }
@@ -304,13 +304,13 @@ public class ActionSheet
   private void c()
   {
     this.jdField_a_of_type_AndroidViewWindow = getWindow();
-    if (this.jdField_b_of_type_Boolean)
+    if (this.jdField_c_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidViewWindow.setGravity(51);
       WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindow.getAttributes();
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
       this.jdField_a_of_type_AndroidViewWindow.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-      localLayoutParams.x = ((int)(localDisplayMetrics.widthPixels - this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131493104) - 6.0F));
+      localLayoutParams.x = ((int)(localDisplayMetrics.widthPixels - this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131493106) - 6.0F));
       localLayoutParams.y = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131492887) + 6);
       this.jdField_a_of_type_AndroidViewWindow.setAttributes(localLayoutParams);
       return;
@@ -320,12 +320,12 @@ public class ActionSheet
   
   public Drawable a(int paramInt)
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.jdField_c_of_type_Boolean)
     {
       switch (paramInt)
       {
       default: 
-        return this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130838130);
+        return this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130838149);
       case 0: 
         return this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130837513);
       case 1: 
@@ -340,9 +340,9 @@ public class ActionSheet
     switch (paramInt)
     {
     default: 
-      return this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130838130);
+      return this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130838149);
     }
-    return this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130839287);
+    return this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130839345);
   }
   
   public String a(int paramInt)
@@ -393,7 +393,7 @@ public class ActionSheet
       if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramCharSequence)) {
         this.jdField_a_of_type_JavaUtilArrayList.add(paramCharSequence);
       }
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.jdField_b_of_type_Boolean) {
         throw new UnsupportedOperationException("ActionSheet is in radio group mode,shouldn't call addButton!");
       }
     }
@@ -403,10 +403,10 @@ public class ActionSheet
   {
     if ((paramInt1 >= 0) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size()))
     {
-      Object localObject = this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(paramInt1);
+      Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(paramInt1);
       if (localObject != null)
       {
-        localObject = ((View)localObject).findViewById(2131296504);
+        localObject = ((View)localObject).findViewById(2131296507);
         if ((localObject != null) && (TextView.class.isInstance(localObject)))
         {
           localObject = (TextView)localObject;
@@ -426,7 +426,7 @@ public class ActionSheet
   
   public void a(View paramView)
   {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(paramView);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView);
   }
   
   @Deprecated
@@ -438,7 +438,7 @@ public class ActionSheet
       if (paramLayoutParams == null) {
         localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
       }
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(paramView, 0, localLayoutParams);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView, 0, localLayoutParams);
     }
   }
   
@@ -470,7 +470,7 @@ public class ActionSheet
       if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramCharSequence)) {
         this.jdField_a_of_type_JavaUtilArrayList.add(paramCharSequence);
       }
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.jdField_b_of_type_Boolean) {
         throw new UnsupportedOperationException("ActionSheet is in radio group mode,shouldn't call addButton!");
       }
     }
@@ -480,7 +480,7 @@ public class ActionSheet
   {
     if (paramCharSequence != null)
     {
-      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
         throw new UnsupportedOperationException("ActionSheet is in normal button mode,shouldn't call addRadioButton!");
       }
       if (this.jdField_a_of_type_JavaUtilArrayList == null) {
@@ -493,7 +493,7 @@ public class ActionSheet
       if (paramBoolean) {
         this.m = (this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.jdField_b_of_type_Boolean = true;
     }
   }
   
@@ -516,12 +516,12 @@ public class ActionSheet
   {
     if (paramView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.removeAllViews();
       LinearLayout.LayoutParams localLayoutParams = paramLayoutParams;
       if (paramLayoutParams == null) {
         localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView, localLayoutParams);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(paramView, localLayoutParams);
     }
   }
   
@@ -556,12 +556,12 @@ public class ActionSheet
   
   public void dismiss()
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.jdField_c_of_type_Boolean)
     {
       a(this);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new fhp(this), 0L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new fjv(this), 0L);
   }
   
   public void e(int paramInt)
@@ -574,8 +574,8 @@ public class ActionSheet
         View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.m);
         if (localView != null)
         {
-          localView.findViewById(2131296506).setVisibility(0);
-          localView.findViewById(2131296506).setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131364358));
+          localView.findViewById(2131296509).setVisibility(0);
+          localView.findViewById(2131296509).setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131364369));
         }
       }
     }
@@ -590,7 +590,7 @@ public class ActionSheet
   
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
-    if (this.jdField_b_of_type_Boolean) {}
+    if (this.jdField_c_of_type_Boolean) {}
     try
     {
       dismiss();
@@ -627,10 +627,10 @@ public class ActionSheet
   {
     super.show();
     b();
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.jdField_c_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new fho(this), 0L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new fju(this), 0L);
   }
 }
 

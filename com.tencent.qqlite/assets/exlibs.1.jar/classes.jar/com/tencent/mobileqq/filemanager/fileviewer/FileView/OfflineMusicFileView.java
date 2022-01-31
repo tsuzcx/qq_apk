@@ -34,18 +34,18 @@ public class OfflineMusicFileView
       }
       return;
     }
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297985)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297990)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
   }
   
   public View a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903438, paramViewGroup, false);
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297646);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903443, paramViewGroup, false);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297650);
     if (2 == this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.c()) {}
     for (paramViewGroup = FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()) + BaseApplicationImpl.getContext().getString(2131361977);; paramViewGroup = FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()) + BaseApplicationImpl.getContext().getString(2131361977) + FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.c(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.b(), false) + BaseApplicationImpl.getContext().getString(2131361974))
     {
       localTextView.setText(paramViewGroup);
-      ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131298065)).setEnabled(false);
+      ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131298070)).setEnabled(false);
       e();
       return this.jdField_a_of_type_AndroidViewView;
     }

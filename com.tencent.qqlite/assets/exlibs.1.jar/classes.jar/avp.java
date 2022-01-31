@@ -1,27 +1,36 @@
 import android.os.Handler;
 import android.os.Message;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.model.FriendManager;
 
 public class avp
-  extends Handler
+  extends Thread
 {
   public avp(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    Object localObject = (FriendManager)this.a.app.getManager(8);
+    Friends localFriends = ((FriendManager)localObject).c(this.a.jdField_a_of_type_JavaLangString);
+    if (localFriends != null)
     {
-    default: 
-    case 1: 
-      do
-      {
-        return;
-      } while ((this.a.c == null) || (this.a.c.length() <= 0));
-      this.a.b.setText(this.a.c);
+      this.a.jdField_a_of_type_Int = localFriends.groupid;
+      localObject = ((FriendManager)localObject).a(this.a.jdField_a_of_type_Int + "");
+      if (localObject != null) {
+        this.a.d = ((Groups)localObject).group_name;
+      }
+    }
+    if (this.a.jdField_a_of_type_Int == -1)
+    {
+      this.a.runOnUiThread(new avq(this));
       return;
     }
-    this.a.a.setText(this.a.d);
+    localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+    ((Message)localObject).what = 2;
+    ((Message)localObject).sendToTarget();
   }
 }
 

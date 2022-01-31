@@ -2,7 +2,7 @@ package com.tencent.mobileqq.search;
 
 public abstract interface ISearchable
 {
-  public static final long z = -9223372036854775808L;
+  public static final long B = -9223372036854775808L;
   
   public abstract void a(long paramLong);
   

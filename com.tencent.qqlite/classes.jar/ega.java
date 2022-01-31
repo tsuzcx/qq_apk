@@ -1,20 +1,14 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.SystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 
 public class ega
-  implements Runnable
 {
-  public ega(SystemMsgController paramSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
+  public String a;
+  public String b;
   
-  public void run()
+  public ega(StatisticCollector paramStatisticCollector, String paramString1, String paramString2)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putInt("unread_system_msg", this.jdField_a_of_type_Int).commit();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

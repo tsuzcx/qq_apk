@@ -1,22 +1,19 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
 
 public class erk
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnTouchListener
 {
-  public erk(TroopShareUtility paramTroopShareUtility) {}
+  public erk(MediaControllerX paramMediaControllerX) {}
   
-  public void a(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (TroopShareUtility.a(this.a)) {
-      return;
+    if ((paramMotionEvent.getAction() == 0) && (MediaControllerX.a(this.a))) {
+      this.a.c();
     }
-    TroopShareUtility.a(this.a, -1);
-    TroopShareUtility.b(this.a, -1);
-    TroopShareUtility.a(this.a, true);
-    TroopShareUtility.a(this.a).dismiss();
+    return false;
   }
 }
 

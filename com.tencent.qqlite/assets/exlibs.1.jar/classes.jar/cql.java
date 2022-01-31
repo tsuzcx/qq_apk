@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter.CornerListItemHolder;
 
 public class cql
-  extends Thread
+  implements Runnable
 {
-  public cql(CardHandler paramCardHandler, int paramInt, ArrayList paramArrayList) {}
+  public cql(LebaListViewAdapter paramLebaListViewAdapter, LebaListViewAdapter.CornerListItemHolder paramCornerListItemHolder, Drawable paramDrawable, int paramInt) {}
   
   public void run()
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a.a();
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a.getManager(43);
-    Card localCard = localFriendsManager.a(str);
-    if (localCard != null)
+    boolean bool = true;
+    LebaListViewAdapter localLebaListViewAdapter = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter;
+    ImageView localImageView1 = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter$CornerListItemHolder.d;
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    ImageView localImageView2 = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter$CornerListItemHolder.g;
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (;;)
     {
-      localCard.iVoteIncrement = this.jdField_a_of_type_Int;
-      localFriendsManager.a(localCard);
-    }
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      CardHandler.a(str, this.jdField_a_of_type_JavaUtilArrayList);
+      LebaListViewAdapter.b(localLebaListViewAdapter, localImageView1, localDrawable, localImageView2, bool);
+      return;
+      bool = false;
     }
   }
 }

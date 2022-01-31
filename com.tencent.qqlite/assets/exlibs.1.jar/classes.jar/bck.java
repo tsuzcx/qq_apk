@@ -1,18 +1,18 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.widget.XEditTextEx;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.widget.ActionSheet;
 
 public class bck
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public bck(QQLSActivity paramQQLSActivity) {}
+  public bck(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    QQLSActivity.a(this.a).setCursorVisible(true);
-    return false;
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
+    }
   }
 }
 

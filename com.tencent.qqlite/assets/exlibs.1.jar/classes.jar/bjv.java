@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.SnapScreenActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
-class bjv
-  implements View.OnLongClickListener
+public class bjv
+  implements DialogInterface.OnClickListener
 {
-  bjv(bju parambju, SnapScreenActivity paramSnapScreenActivity) {}
+  public bjv(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return false;
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

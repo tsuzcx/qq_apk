@@ -1,26 +1,18 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.mobileqq.redtouch.VipBannerInfo;
 
 public class agv
-  implements Comparator
+  extends GameCenterObserver
 {
   public agv(Conversation paramConversation) {}
   
-  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (((paramRecentBaseData1 instanceof RecentUserBaseData)) && ((paramRecentBaseData2 instanceof RecentUserBaseData)))
-    {
-      paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
-      paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
-      if ((paramRecentBaseData1.a.showUpTime > 0L) || (paramRecentBaseData2.a.showUpTime > 0L)) {
-        return Conversation.a(this.a, paramRecentBaseData1.a, paramRecentBaseData2.a);
-      }
-      return Conversation.b(this.a, paramRecentBaseData1.a, paramRecentBaseData2.a);
+    super.a(paramBoolean1, paramBoolean2, paramInt);
+    if ((paramBoolean1) && (paramInt != 2) && (Conversation.d(this.a))) {
+      VipBannerInfo.a(this.a);
     }
-    return 0;
   }
 }
 

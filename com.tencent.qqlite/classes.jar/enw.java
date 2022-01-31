@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
-import com.tencent.mobileqq.troop.widget.TroopAioFeedsCenterView.FlingGestureListener;
+import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
 
 public class enw
-  extends TroopAioFeedsCenterView.FlingGestureListener
+  implements Runnable
 {
-  public enw(TroopFeedsCenterLogic paramTroopFeedsCenterLogic) {}
+  public enw(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar) {}
   
-  public void a()
+  public void run()
   {
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Clk_fold", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "1", "", "");
-    this.a.b();
+    TroopAioMsgNavigateBar.a(this.a);
   }
 }
 

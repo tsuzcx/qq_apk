@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0909db" android:background="@drawable/skin_slidetab_slider_current" android:padding="0.0px" android:layout_width="2.0dip" android:layout_height="4.0dip" tencent:skintype="title_slidetab"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.qqlite" />
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02019d" android:layout_width="fill_parent" android:layout_height="62.0dip" android:minHeight="62.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0900ba" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b008d" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090542" android:padding="0.0dip" android:layout_width="210.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="20.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0900ba" android:layout_centerVertical="true" android:textIsSelectable="false" />
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+</RelativeLayout>

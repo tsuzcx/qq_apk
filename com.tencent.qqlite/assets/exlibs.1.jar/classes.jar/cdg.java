@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 
 public class cdg
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public cdg(BaseTroopView paramBaseTroopView, int paramInt1, int paramInt2, TranslateAnimation paramTranslateAnimation) {}
+  public cdg(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.c.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.b.setVisibility(this.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.c.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.jdField_a_of_type_AndroidAppDialog = null;
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
   }
 }
 

@@ -1,20 +1,17 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.richstatus.EditActivity;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
 
-public class ebu
-  implements TextWatcher
+public final class ebu
+  implements Runnable
 {
-  public ebu(EditActivity paramEditActivity) {}
+  public ebu(RedTouchManager paramRedTouchManager, SharedPreferences paramSharedPreferences, Conversation paramConversation, Handler paramHandler) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    EditActivity.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager.a(new ebv(this));
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,5 +1,5 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: QQ轻聊版_3.4.0.apk
+apkFileName: QQ轻聊版_3.5.0.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
@@ -112,5 +112,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '164'
-  versionName: 3.4.0
+  versionCode: '174'
+  versionName: 3.5.0

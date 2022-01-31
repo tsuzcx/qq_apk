@@ -1,28 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase.IControllProxyInterface;
+import android.view.View.OnClickListener;
+import android.widget.SeekBar;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 
 public class duc
-  implements FileManagerUtil.TipsClickedInterface
+  implements View.OnClickListener
 {
-  public duc(PreviewingOfflineFileViewBase paramPreviewingOfflineFileViewBase) {}
+  public duc(LocalMusicFileView paramLocalMusicFileView) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.a().b();
-    PreviewingOfflineFileViewBase.a(this.a).a(false);
-    PreviewingOfflineFileViewBase.b(this.a).b(true);
-    PreviewingOfflineFileViewBase.a(this.a);
-    PreviewingOfflineFileViewBase.b(this.a);
-    PreviewingOfflineFileViewBase.c(this.a).c(false);
-    if (PreviewingOfflineFileViewBase.a(this.a) != null) {
-      PreviewingOfflineFileViewBase.b(this.a).c();
+    FileManagerReporter.a("0X8004BE3");
+    if (LocalMusicFileView.a(this.a) != null) {
+      LocalMusicFileView.b(this.a).a(LocalMusicFileView.a(this.a));
     }
-    PreviewingOfflineFileViewBase.c(this.a).b(0);
-    PreviewingOfflineFileViewBase.a(this.a, false, 9037L, "User Click Cancel");
+    LocalMusicFileView.a(this.a).setProgress(0);
   }
 }
 

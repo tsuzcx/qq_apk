@@ -1,17 +1,13 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.TroopAssistSetGuideActivity;
 
-class blv
+public class blv
   implements Runnable
 {
-  blv(blu paramblu) {}
+  public blv(TroopAssistSetGuideActivity paramTroopAssistSetGuideActivity) {}
   
   public void run()
   {
-    if ((this.a.a.a.a() instanceof BaseAdapter)) {
-      ((BaseAdapter)this.a.a.a.a()).notifyDataSetChanged();
-    }
+    this.a.c();
   }
 }
 

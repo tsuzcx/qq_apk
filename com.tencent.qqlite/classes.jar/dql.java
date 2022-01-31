@@ -1,19 +1,30 @@
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadNfn;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 import com.tencent.qphone.base.util.QLog;
 
 public class dql
-  implements Runnable
+  extends dpp
 {
-  public dql(UniformDownloadNfn paramUniformDownloadNfn) {}
-  
-  public void run()
+  public dql(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    this.a.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quit();
-    this.a.jdField_a_of_type_AndroidOsHandlerThread = null;
-    this.a.jdField_a_of_type_AndroidOsHandler = null;
-    QLog.i(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL] >>>stop thread:D_NFThread...");
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateSaveToWeiYunByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "]. recvOnLineFile entity is null");
+      return;
+    }
+    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 7);
+    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 7);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Dpp.a() + "->StateSaveToWeiYunByPC)");
+    this.jdField_a_of_type_Dpp = new dqj(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
   }
 }
 

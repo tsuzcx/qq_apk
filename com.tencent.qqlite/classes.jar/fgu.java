@@ -1,12 +1,22 @@
-import com.tencent.util.DumpMemInfoHandler;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.downloadnew.UpdateManager;
 
 public class fgu
+  implements Runnable
 {
-  public long a;
-  public long b;
-  public long c;
+  public fgu(DownloadManager paramDownloadManager) {}
   
-  private fgu(DumpMemInfoHandler paramDumpMemInfoHandler) {}
+  public void run()
+  {
+    this.a.a = null;
+    if (UpdateManager.a()) {
+      UpdateManager.a().a();
+    }
+    if (MyAppApi.d()) {
+      MyAppApi.a().h();
+    }
+  }
 }
 
 

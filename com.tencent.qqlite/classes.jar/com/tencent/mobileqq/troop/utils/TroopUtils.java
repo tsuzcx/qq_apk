@@ -23,6 +23,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import tencent.im.kqq.searchgroup.SearchGroup.GroupInfo;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
@@ -283,6 +284,11 @@ public class TroopUtils
     }
     paramQQAppInterface = ((FriendManager)paramQQAppInterface.getManager(8)).a(paramLong + "");
     return (paramQQAppInterface != null) && (((paramQQAppInterface.troopowneruin != null) && (paramString.equals(paramQQAppInterface.troopowneruin))) || ((paramQQAppInterface.Administrator != null) && (paramQQAppInterface.Administrator.contains(paramString))));
+  }
+  
+  public static boolean a(List paramList)
+  {
+    return (paramList == null) || (paramList.size() < 1);
   }
 }
 

@@ -1,15 +1,19 @@
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class bmp
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements DialogInterface.OnClickListener
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  bmp(bmn parambmn, QQCustomDialog paramQQCustomDialog) {}
   
-  private bmp(bmo parambmo) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ReportController.a(this.jdField_a_of_type_Bmn.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Bmn.a.b, "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+  }
 }
 
 

@@ -26,8 +26,8 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableActivityProcesser;
 import com.tencent.theme.SkinnableActivityProcesser.Callback;
-import cqf;
-import cqg;
+import crg;
+import crh;
 import mqq.app.BaseActivity;
 
 public class BaseActivity2
@@ -65,7 +65,7 @@ public class BaseActivity2
   {
     if (paramBoolean) {
       if (jdField_a_of_type_ComTencentMobileqqAppShakeListener == null) {
-        new cqf(this).start();
+        new crg(this).start();
       }
     }
     while (jdField_a_of_type_ComTencentMobileqqAppShakeListener == null) {
@@ -211,14 +211,14 @@ public class BaseActivity2
     }
     if (!jdField_a_of_type_Boolean)
     {
-      if (SettingCloneUtil.readValue(this, null, getString(2131363054), "qqsetting_screenshot_key", false)) {
+      if (SettingCloneUtil.readValue(this, null, getString(2131363064), "qqsetting_screenshot_key", false)) {
         a(true);
       }
       jdField_a_of_type_Boolean = true;
     }
     paramBundle = new IntentFilter();
     paramBundle.addAction("android.intent.action.SCREEN_OFF");
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new cqg(this, null);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new crh(this, null);
     label278:
     label309:
     return;

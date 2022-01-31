@@ -1,56 +1,26 @@
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class cca
-  extends FriendListObserver
+  implements View.OnClickListener
 {
-  public cca(ContactSearchFacade paramContactSearchFacade) {}
+  public cca(TroopAssistTipsBar paramTroopAssistTipsBar) {}
   
-  protected void a(boolean paramBoolean, int paramInt1, Object paramObject, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d(ContactSearchFacade.a, 2, "onSearchFriendResult  searchType = " + paramInt1 + " isSuccess = " + paramBoolean);
-    }
-    this.a.b();
-    Object localObject;
-    if (paramInt1 == 86) {
-      if (ContactSearchFacade.a(this.a) != null)
-      {
-        localObject = ContactSearchFacade.a(this.a);
-        if (i == 0) {
-          break label203;
-        }
-      }
-    }
-    for (;;)
-    {
-      ((ContactSearchFacade.ISearchListener)localObject).a(paramInt1, paramBoolean, paramObject, paramInt2, paramString);
-      return;
-      if (paramInt1 == 87)
-      {
-        if (paramBoolean)
-        {
-          localObject = (ArrayList)paramObject;
-          if ((localObject != null) && (ContactSearchFacade.a(this.a) != 80000002) && (((ArrayList)localObject).size() == 1)) {
-            ContactSearchFacade.a(this.a, ((SearchResult)((ArrayList)localObject).get(0)).b);
-          }
-          i = 0;
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(ContactSearchFacade.a, 2, "search failed error msg = " + paramString);
-        }
-      }
-      i = 0;
-      break;
-      label203:
-      paramInt1 = ContactSearchFacade.a(this.a);
-    }
+    TroopAssistTipsBar.a(this.a).a(TroopAssistTipsBar.a(this.a).a, Integer.valueOf(4));
+    TroopAssistTipsBar.a(this.a).a();
+    TroopAssistantManager.a().a(TroopAssistTipsBar.a(this.a), TroopAssistTipsBar.a(this.a).a);
+    QQToast.a(TroopAssistTipsBar.a(this.a).a(), 2, 2131364157, 0).b(TroopAssistTipsBar.a(this.a).getTitleBarHeight());
+    ReportController.b(TroopAssistTipsBar.a(this.a), "P_CliOper", "Grp_msg", "", "AIOchat", "Clk_setmsg", 0, 0, TroopAssistTipsBar.a(this.a).a, "", "", "");
   }
 }
 

@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import aqb;
-import aqc;
+import aqg;
+import aqh;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
@@ -19,7 +19,7 @@ public class GesturePWDSettingActivity
   public static final String a = "key_reset";
   static final int jdField_b_of_type_Int = 11;
   private static final int jdField_c_of_type_Int = 10;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aqc(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aqh(this);
   private View jdField_a_of_type_AndroidViewView;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private boolean jdField_a_of_type_Boolean = false;
@@ -30,14 +30,14 @@ public class GesturePWDSettingActivity
   
   private void c()
   {
-    setTitle(2131363996);
+    setTitle(2131364007);
     this.jdField_a_of_type_AndroidViewView = findViewById(2131297161);
     this.b = findViewById(2131297164);
     this.c = findViewById(2131297162);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.b.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131297160));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new aqb(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new aqg(this));
   }
   
   private void d()
@@ -52,7 +52,7 @@ public class GesturePWDSettingActivity
       if (this.jdField_a_of_type_Boolean)
       {
         if ((this.h != null) && ((this.h instanceof TextView))) {
-          this.h.setText(2131363642);
+          this.h.setText(2131363653);
         }
         startActivityForResult(new Intent(this, GesturePWDCreateActivity.class), 10);
         overridePendingTransition(2130968592, 2130968589);
@@ -127,9 +127,9 @@ public class GesturePWDSettingActivity
   protected String b_()
   {
     if (this.d == 0) {
-      return getString(2131364283);
+      return getString(2131364294);
     }
-    return getString(2131363996);
+    return getString(2131364007);
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)

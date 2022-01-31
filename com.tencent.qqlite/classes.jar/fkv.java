@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqfav.QfavBuilder;
+import android.content.Context;
+import android.view.ViewParent;
+import android.widget.FrameLayout;
 
 public class fkv
-  implements DialogInterface.OnDismissListener
+  extends FrameLayout
 {
-  public fkv(QfavBuilder paramQfavBuilder) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public fkv(Context paramContext)
   {
-    QfavBuilder.a(this.a, null);
+    super(paramContext);
+  }
+  
+  private void a(ViewParent paramViewParent)
+  {
+    this.mParent = paramViewParent;
   }
 }
 

@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
 
 public class bhz
-  implements View.OnClickListener
+  implements Runnable
 {
-  public bhz(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public bhz(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    RegisterSendUpSms.a(this.a, this.a.getString(2131363342));
-    RegisterSendUpSms.a(this.a);
+    ((PhoneContactManager)this.a.app.getManager(10)).f();
   }
 }
 

@@ -1,7 +1,4 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
-import com.tencent.widget.Gallery;
 
 class apj
   implements Runnable
@@ -10,18 +7,9 @@ class apj
   
   public void run()
   {
-    if (this.a.a.jdField_a_of_type_Int != this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b()) {
-      this.a.a.jdField_a_of_type_Int = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b();
+    if ((this.a.a != null) && (!this.a.a.isFinishing())) {
+      this.a.a.a(2131363457, 1);
     }
-    View localView;
-    do
-    {
-      return;
-      localView = this.a.a.jdField_a_of_type_ComTencentWidgetGallery.a();
-    } while (localView == null);
-    this.a.a.jdField_a_of_type_AndroidViewView = localView;
-    this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
-    this.a.a.a(this.a.a.jdField_a_of_type_ComTencentWidgetGallery, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
   }
 }
 

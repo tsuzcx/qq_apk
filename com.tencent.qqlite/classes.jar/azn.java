@@ -1,36 +1,15 @@
-import android.app.ProgressDialog;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.mobileqq.utils.DialogUtil;
-import mqq.manager.ServerConfigManager.ConfigType;
 
 public class azn
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public azn(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ProgressDialog localProgressDialog = DialogUtil.a(this.a, this.a.getResources().getDrawable(2130839101), 2131363556);
-    localProgressDialog.setOnDismissListener(new azo(this));
-    ReportLog.a(this.a.app.getAccount());
-    paramView = null;
-    if (this.a.app.getSid() != null) {
-      paramView = this.a.app.getSid().getBytes();
-    }
-    ReportLog.a(paramView);
-    paramView = this.a.app.a(ServerConfigManager.ConfigType.app, "log_upload");
-    if ((!TextUtils.isEmpty(paramView)) && (paramView.equals("1")))
-    {
-      ReportLog.a(this.a.app.a(), this.a.app.a(), localProgressDialog);
-      return;
-    }
-    ReportLog.a(this.a.app.a(), this.a.app.a(), localProgressDialog);
+    this.a.finish();
   }
 }
 

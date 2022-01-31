@@ -1,24 +1,18 @@
-import android.app.Dialog;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class boj
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public boj(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation) {}
+  public boj(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b.show();
-    }
+    this.a.l();
+    paramView = this.a.p;
+    this.a.a("Clk_find", paramView, "");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

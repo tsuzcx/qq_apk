@@ -1,17 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter.ItemHolder;
+import com.tencent.qphone.base.util.QLog;
 
 public class dhg
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  public dhg(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public dhg(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a.a(null);
-    LocalFileBrowserActivity.a(this.a);
+    if (!this.a.c()) {
+      if (QLog.isColorLevel()) {
+        QLog.i(FMLocalFileActivity.c, 2, "click too fast , wait a minute.");
+      }
+    }
+    do
+    {
+      return;
+      this.a.g();
+      paramView = (FileCategoryAdapter.ItemHolder)paramView.getTag();
+    } while (paramView.a == 0);
+    int i = paramView.a;
+    FMLocalFileActivity.a(this.a, i);
   }
 }
 

@@ -1,19 +1,14 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
 import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aui
-  extends ClickableSpan
+class aui
+  implements Runnable
 {
-  private aui(LoginInfoActivity paramLoginInfoActivity) {}
+  aui(auh paramauh) {}
   
-  public void onClick(View paramView) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void run()
   {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    QQToast.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131364172), 0).b(this.a.a.a.getTitleBarHeight());
   }
 }
 

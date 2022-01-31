@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.widget.ListView;
-import ezg;
+import fbm;
 
 public class ScrollerRunnable
   implements Runnable
@@ -59,7 +59,7 @@ public class ScrollerRunnable
       return;
       localView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(this.j - m);
     } while (localView == null);
-    localView.postDelayed(new ezg(this, localView), 300L);
+    localView.postDelayed(new fbm(this, localView), 300L);
   }
   
   public void a()

@@ -52,6 +52,8 @@ public abstract interface IX5WebViewBase
   
   public abstract IX5WebBackForwardList copyBackForwardList();
   
+  public abstract Object createPrintDocumentAdapter(String paramString);
+  
   public abstract void destroy();
   
   public abstract void documentHasImages(Message paramMessage);
@@ -230,6 +232,11 @@ public abstract interface IX5WebViewBase
     private Point mPoint;
     private int mType = 0;
     
+    protected Bitmap getBitmapData()
+    {
+      return null;
+    }
+    
     public Object getData()
     {
       return this.mData;
@@ -242,7 +249,7 @@ public abstract interface IX5WebViewBase
     
     public Point getHitTestPoint()
     {
-      return this.mPoint;
+      return new Point(this.mPoint);
     }
     
     public int getType()
@@ -304,6 +311,11 @@ public abstract interface IX5WebViewBase
       public long mRawDataSize;
       
       public ImageAnchorData() {}
+      
+      public Bitmap getBitmap()
+      {
+        return IX5WebViewBase.HitTestResult.this.getBitmapData();
+      }
     }
     
     public class ImageData
@@ -313,6 +325,11 @@ public abstract interface IX5WebViewBase
       public long mRawDataSize;
       
       public ImageData() {}
+      
+      public Bitmap getBitmap()
+      {
+        return IX5WebViewBase.HitTestResult.this.getBitmapData();
+      }
     }
   }
   

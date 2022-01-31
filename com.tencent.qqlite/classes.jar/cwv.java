@@ -1,11 +1,22 @@
-public class cwv
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.RoamInfoListWrapper;
+import java.util.ArrayList;
+
+public final class cwv
+  implements Parcelable.Creator
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b = 0;
-  public int c = 0;
+  public RoamInfoListWrapper a(Parcel paramParcel)
+  {
+    RoamInfoListWrapper localRoamInfoListWrapper = new RoamInfoListWrapper();
+    localRoamInfoListWrapper.a = paramParcel.readArrayList(ArrayList.class.getClassLoader());
+    return localRoamInfoListWrapper;
+  }
+  
+  public RoamInfoListWrapper[] a(int paramInt)
+  {
+    return new RoamInfoListWrapper[paramInt];
+  }
 }
 
 

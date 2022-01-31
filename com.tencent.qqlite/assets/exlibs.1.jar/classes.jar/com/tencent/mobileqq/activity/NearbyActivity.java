@@ -22,14 +22,14 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
-import awj;
-import awk;
-import awl;
-import awm;
-import awn;
 import awo;
 import awp;
 import awq;
+import awr;
+import aws;
+import awt;
+import awu;
+import awv;
 import com.tencent.mobileqq.app.ConditionSearchManager;
 import com.tencent.mobileqq.app.Frame;
 import com.tencent.mobileqq.app.FrameActivity;
@@ -75,7 +75,7 @@ public class NearbyActivity
   private Handler jdField_a_of_type_AndroidOsHandler;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private awq jdField_a_of_type_Awq;
+  private awv jdField_a_of_type_Awv;
   private ConditionSearchManager jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager;
   private LBSHandler jdField_a_of_type_ComTencentMobileqqAppLBSHandler;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
@@ -119,7 +119,7 @@ public class NearbyActivity
     for (boolean bool = true;; bool = false)
     {
       TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.jdField_a_of_type_ArrayOfInt[paramInt1], this.jdField_a_of_type_ArrayOfInt[paramInt1] - paramInt2);
-      localTranslateAnimation.setAnimationListener(new awm(this, bool, paramInt1, paramInt2, paramLong));
+      localTranslateAnimation.setAnimationListener(new awr(this, bool, paramInt1, paramInt2, paramLong));
       localTranslateAnimation.setDuration(paramLong);
       if (!bool) {
         localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
@@ -147,7 +147,7 @@ public class NearbyActivity
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_ArrayOfInt[paramInt]);
     localAnimationSet.addAnimation(new AlphaAnimation(0.0F, 1.0F));
     localAnimationSet.addAnimation(localTranslateAnimation);
-    localAnimationSet.setAnimationListener(new awl(this, paramInt));
+    localAnimationSet.setAnimationListener(new awq(this, paramInt));
     localAnimationSet.setDuration(this.jdField_a_of_type_ArrayOfLong[paramInt]);
     localAnimationSet.setFillAfter(true);
     localAnimationSet.setInterpolator(new DecelerateInterpolator());
@@ -167,7 +167,7 @@ public class NearbyActivity
       if (i1 == 0) {
         break label90;
       }
-      localTranslateAnimation.setAnimationListener(new awn(this, paramInt1));
+      localTranslateAnimation.setAnimationListener(new aws(this, paramInt1));
     }
     for (;;)
     {
@@ -177,21 +177,21 @@ public class NearbyActivity
       break;
       label90:
       localTranslateAnimation.setInterpolator(new AccelerateInterpolator());
-      localTranslateAnimation.setAnimationListener(new awo(this, paramInt1));
+      localTranslateAnimation.setAnimationListener(new awt(this, paramInt1));
     }
   }
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296891));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296897));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296902));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296901));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363560);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131363560);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296892));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296898));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296903));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296902));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363571);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131363571);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838038);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838057);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
     a(0, NearbyPeopleListFrame.class, null);
@@ -236,14 +236,14 @@ public class NearbyActivity
         localIntent.putExtra("AllInOne", paramView);
         startActivityForResult(localIntent, 1000);
         continue;
-        a(new awp(this));
+        a(new awu(this));
       }
     }
   }
   
   protected void a(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 2131363203, 2131363204, 2131362794, 2131363211, new awj(this), new awk(this, paramRunnable));
+    this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 2131363213, 2131363214, 2131362801, 2131363221, new awo(this), new awp(this, paramRunnable));
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
   
@@ -264,10 +264,10 @@ public class NearbyActivity
   protected void c()
   {
     this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131364469);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131363862);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131364470);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362794);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131364480);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131363873);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131364481);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362801);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a(this);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a(this);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
@@ -286,7 +286,7 @@ public class NearbyActivity
       bool = true;
       return bool;
       label20:
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837910);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837928);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.jdField_b_of_type_AndroidWidgetTextView.getCompoundDrawables();
       this.o = this.jdField_b_of_type_AndroidWidgetTextView.getCompoundDrawablePadding();
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
@@ -324,7 +324,7 @@ public class NearbyActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903501);
+    setContentView(2130903509);
     getWindow().setBackgroundDrawable(null);
     this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager = ((ConditionSearchManager)this.app.getManager(49));
     this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(this);
@@ -334,8 +334,8 @@ public class NearbyActivity
     }
     f();
     this.jdField_a_of_type_JavaUtilList = a();
-    this.jdField_a_of_type_Awq = new awq(this, null);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Awq);
+    this.jdField_a_of_type_Awv = new awv(this, null);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Awv);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(0);
     paramBundle = (NearbyFrame)a();
     if (paramBundle != null) {
@@ -371,7 +371,7 @@ public class NearbyActivity
     {
     default: 
       return;
-    case 2131296897: 
+    case 2131296898: 
       if ((this.jdField_a_of_type_ArrayOfBoolean[0] != 0) && (this.jdField_a_of_type_ArrayOfBoolean[1] == 0)) {
         ReportController.b(this.app, "CliOper", "", "", "0X8004A15", "0X8004A15", 0, 0, "", "", "", "");
       }

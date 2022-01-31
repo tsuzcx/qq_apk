@@ -1,16 +1,4 @@
-import com.tencent.mobileqq.data.MessageRecord;
-
-public class czc
-{
-  public MessageRecord a;
-  public boolean a;
-  
-  public czc(MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-}
+public class czc {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.qqlite\classes.jar

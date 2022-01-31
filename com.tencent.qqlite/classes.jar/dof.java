@@ -1,71 +1,17 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
 import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 import com.tencent.qphone.base.util.QLog;
 
 public class dof
+  implements Runnable
 {
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Thread jdField_a_of_type_JavaLangThread = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private Object jdField_b_of_type_JavaLangObject = new Object();
-  private boolean jdField_b_of_type_Boolean = true;
+  public dof(FileTransferHandler paramFileTransferHandler, long paramLong, String paramString) {}
   
-  private dof(OnlineFileSessionCenter paramOnlineFileSessionCenter) {}
-  
-  public void a()
+  public void run()
   {
-    if (!a())
-    {
-      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make pump thread is  running!!!");
-      return;
-    }
-    a(false);
-    this.jdField_a_of_type_JavaLangThread = new Thread(new dog(this));
-    this.jdField_a_of_type_JavaLangThread.start();
-  }
-  
-  void a(boolean paramBoolean)
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      return;
-    }
-  }
-  
-  boolean a()
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      boolean bool = this.jdField_b_of_type_Boolean;
-      return bool;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaLangThread != null)
-    {
-      b(true);
-      this.jdField_a_of_type_JavaLangThread = null;
-    }
-  }
-  
-  void b(boolean paramBoolean)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-  }
-  
-  boolean b()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
+    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "]  handle cmd 0x211-0x1.save to weiyun");
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 4);
   }
 }
 

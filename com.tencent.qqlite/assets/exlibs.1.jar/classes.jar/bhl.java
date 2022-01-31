@@ -1,22 +1,20 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class bhl
-  implements Runnable
+  extends Handler
 {
-  public bhl(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, String paramString1, String paramString2) {}
+  public bhl(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, 230);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
-    localQQCustomDialog.setMessage(this.b);
-    bhm localbhm = new bhm(this);
-    bhn localbhn = new bhn(this);
-    localQQCustomDialog.setPositiveButton(2131363346, localbhm);
-    localQQCustomDialog.setNegativeButton(2131362794, localbhn);
-    localQQCustomDialog.show();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 

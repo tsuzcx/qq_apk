@@ -1,19 +1,16 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MayKnowManActivity;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
-class avl
-  implements Runnable
+public class avl
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  avl(avk paramavk) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void run()
-  {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a.a, 230).setTitle(this.a.a.getString(2131363614)).setMessage(String.format(this.a.a.getString(2131363615), new Object[] { this.a.a.b })).setPositiveButton(2131363042, new avm(this));
-    localQQCustomDialog.setOnDismissListener(new avn(this));
-    localQQCustomDialog.show();
-  }
+  private avl(MayKnowManActivity paramMayKnowManActivity) {}
 }
 
 

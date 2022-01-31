@@ -1,41 +1,132 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MusicSharePlayActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import com.tencent.mobileqq.activity.photo.RegionView;
+import com.tencent.mobileqq.transfile.bitmapcreator.ExifBitmapCreator;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.File;
 
 public class cjy
-  implements View.OnClickListener
+  extends AsyncTask
 {
-  public cjy(BannerManager paramBannerManager) {}
+  private int jdField_a_of_type_Int;
   
-  public void onClick(View paramView)
+  private cjy(PhotoCropActivity paramPhotoCropActivity) {}
+  
+  private int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
-    paramView = QQPlayerService.a();
-    int i;
-    if (paramView != null)
+    int i = 1;
+    int j = 1;
+    int m = j;
+    if (paramInt1 != 0)
     {
-      BannerManager.a(this.a).startActivity(paramView);
-      paramView = paramView.getComponent().getClassName();
-      if (!paramView.equals(MusicSharePlayActivity.class.getName())) {
-        break label92;
+      m = j;
+      if (paramInt2 != 0)
+      {
+        m = j;
+        if (paramInt1 != -1)
+        {
+          if (paramInt2 != -1) {
+            break label43;
+          }
+          m = j;
+        }
       }
-      i = 0;
+    }
+    label43:
+    int k;
+    label55:
+    do
+    {
+      return m;
+      j = paramOptions.outHeight;
+      k = paramOptions.outWidth;
+      if (j > paramInt2) {
+        break;
+      }
+      m = i;
+    } while (k <= paramInt1);
+    int n = Math.round(j / paramInt2);
+    m = Math.round(k / paramInt1);
+    if (n > m) {}
+    for (;;)
+    {
+      m = i;
+      if (n < 2) {
+        break;
+      }
+      k /= 2;
+      j /= 2;
+      i *= 2;
+      break label55;
+      n = m;
+    }
+  }
+  
+  protected Bitmap a(Void... paramVarArgs)
+  {
+    try
+    {
+      paramVarArgs = new BitmapFactory.Options();
+      paramVarArgs.inPreferredConfig = Bitmap.Config.RGB_565;
+      paramVarArgs.inJustDecodeBounds = true;
+      if (!new File(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString).exists())
+      {
+        this.jdField_a_of_type_Int = 3;
+        return null;
+      }
+      BitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString, paramVarArgs);
+      paramVarArgs.inSampleSize = a(paramVarArgs, 1280, 1280);
+      paramVarArgs.inJustDecodeBounds = false;
+      paramVarArgs = BitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString, paramVarArgs);
+      paramVarArgs = new ExifBitmapCreator(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString).a(paramVarArgs);
+      return paramVarArgs;
+    }
+    catch (OutOfMemoryError paramVarArgs)
+    {
+      this.jdField_a_of_type_Int = 1;
+      return null;
+    }
+    catch (Exception paramVarArgs)
+    {
+      this.jdField_a_of_type_Int = 2;
+    }
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setRestrict(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setImageBitmap(paramBitmap);
+      paramBitmap = new ViewGroup.LayoutParams(-1, -1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView = new RegionView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.d, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.e, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.f);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, paramBitmap);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView, paramBitmap);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(-1, 250L);
+      }
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 1) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, "内存不足，加载失败", 0).a();
     }
     for (;;)
     {
-      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.finish();
       return;
-      label92:
-      if (paramView.equals(MusicGeneQQBrowserActivity.class.getName())) {
-        i = 1;
-      } else {
-        i = -1;
+      if (this.jdField_a_of_type_Int == 2) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, "图片加载失败", 0).a();
+      } else if (this.jdField_a_of_type_Int != 3) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, "图片加载失败，图片可能已损坏", 0).a();
       }
     }
   }

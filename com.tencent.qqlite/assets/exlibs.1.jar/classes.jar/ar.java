@@ -1,22 +1,14 @@
-import android.text.Editable;
-import android.text.SpannableStringBuilder;
-import android.text.TextWatcher;
 import com.dataline.activities.LiteActivity;
 
 public class ar
-  implements TextWatcher
+  implements Runnable
 {
   public ar(LiteActivity paramLiteActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    if ((paramEditable instanceof SpannableStringBuilder)) {}
-    LiteActivity.a(this.a);
+    this.a.a(this.a.getIntent());
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

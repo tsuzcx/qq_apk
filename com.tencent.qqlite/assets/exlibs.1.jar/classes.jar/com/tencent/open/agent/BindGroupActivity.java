@@ -33,9 +33,9 @@ import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
-import far;
-import fas;
-import fat;
+import fcx;
+import fcy;
+import fcz;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
@@ -89,7 +89,7 @@ public class BindGroupActivity
   public BindGroupActivity()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new fas(this);
+    this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new fcy(this);
   }
   
   private void e()
@@ -112,10 +112,10 @@ public class BindGroupActivity
     {
       if ((localOpenID == null) || (TextUtils.isEmpty(localOpenID.openID)))
       {
-        this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363369);
+        this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363380);
         this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
         this.jdField_a_of_type_AndroidOsHandler = new Handler();
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new fat(this), 3000L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new fcz(this), 3000L);
         this.app.a(this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver);
         this.app.a().e(this.g);
         return;
@@ -195,7 +195,7 @@ public class BindGroupActivity
     if (QLog.isColorLevel()) {
       QLog.d("BindGroupActivity", 2, "-->onImageLoaded() url = " + paramString);
     }
-    runOnUiThread(new far(this, paramString, paramBitmap));
+    runOnUiThread(new fcx(this, paramString, paramBitmap));
   }
   
   public void a(JSONObject paramJSONObject)
@@ -280,10 +280,10 @@ public class BindGroupActivity
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131362444);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131362487);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131362794, this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131362445, this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131362445);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131362488);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131362801, this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131362446, this);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
@@ -331,7 +331,7 @@ public class BindGroupActivity
       {
       default: 
         return;
-      case 2131296897: 
+      case 2131296898: 
         super.finish();
         return;
       }
@@ -344,8 +344,8 @@ public class BindGroupActivity
   {
     super.onCreate(paramBundle);
     super.requestWindowFeature(1);
-    super.setTheme(2131624275);
-    super.setContentView(2130903344);
+    super.setTheme(2131624276);
+    super.setContentView(2130903347);
     this.jdField_a_of_type_AndroidContentResResources = super.getResources();
     this.jdField_a_of_type_AndroidViewLayoutInflater = super.getLayoutInflater();
     this.jdField_a_of_type_AndroidOsBundle = super.getIntent().getBundleExtra("key_params");
@@ -361,19 +361,19 @@ public class BindGroupActivity
     this.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("app_name");
     this.jdField_a_of_type_AndroidOsBundle.putString("vkey", super.getIntent().getStringExtra("vkey"));
     this.jdField_a_of_type_AndroidOsBundle.putString("uin", super.getIntent().getStringExtra("uin"));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296897));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296901));
-    this.c = ((TextView)super.findViewById(2131296891));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131297769);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)super.findViewById(2131297772));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296898));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296902));
+    this.c = ((TextView)super.findViewById(2131296892));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131297773);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)super.findViewById(2131297776));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnItemClickListener(this);
     if (this.jdField_a_of_type_ComTencentOpenAgentBindGroupActivity$GroupListAdapter == null) {
       this.jdField_a_of_type_ComTencentOpenAgentBindGroupActivity$GroupListAdapter = new BindGroupActivity.GroupListAdapter(this);
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_ComTencentOpenAgentBindGroupActivity$GroupListAdapter);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131297773);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131297777);
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297776));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297780));
     this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }
   

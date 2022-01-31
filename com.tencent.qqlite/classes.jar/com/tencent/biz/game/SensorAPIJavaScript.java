@@ -663,7 +663,7 @@ public class SensorAPIJavaScript
   
   public final String getClientInfo()
   {
-    return "{\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "607" + "\"}";
+    return "{\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "660" + "\"}";
   }
   
   public boolean getCurrentSong(String paramString)
@@ -697,7 +697,7 @@ public class SensorAPIJavaScript
   public final String getDeviceInfo()
   {
     String str = Build.MODEL;
-    return "{\"model\":\"" + str + "\",\"systemName\":\"" + systemVersion() + "\",\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "607" + "\",\"isMobileQQ\":\"true\",\"identifier\":" + Util.b(MobileInfoUtil.c()) + "}";
+    return "{\"model\":\"" + str + "\",\"systemName\":\"" + systemVersion() + "\",\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "660" + "\",\"isMobileQQ\":\"true\",\"identifier\":" + Util.b(MobileInfoUtil.c()) + "}";
   }
   
   public JSONObject getNetworkInfo()
@@ -838,7 +838,7 @@ public class SensorAPIJavaScript
   {
     Message localMessage = new Message();
     localMessage.what = 0;
-    localMessage.obj = ("javascript: " + paramString + "(" + "{\"uin\":\"" + this.jdField_c_of_type_JavaLangString + "\",\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "607" + "\",\"isMobileQQ\":\"true\"}" + ")");
+    localMessage.obj = ("javascript: " + paramString + "(" + "{\"uin\":\"" + this.jdField_c_of_type_JavaLangString + "\",\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "660" + "\",\"isMobileQQ\":\"true\"}" + ")");
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   

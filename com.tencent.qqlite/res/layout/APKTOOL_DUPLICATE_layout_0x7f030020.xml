@@ -3,14 +3,14 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.qqlite">
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090151" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c0099" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c0099" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
-            <TextView android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a04d7" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00de" />
-            <com.tencent.mobileqq.widget.ClearableEditText android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a5" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090152" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201eb" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e1" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090154" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c009b" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c009b" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <TextView android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a04e1" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00df" />
+            <com.tencent.mobileqq.widget.ClearableEditText android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a9" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090155" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201fe" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e2" />
         </LinearLayout>
-        <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201e8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="10.0dip" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090153" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c0099" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c0099" android:focusable="true" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="10.0dip">
-            <TextView android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a071c" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00de" />
-            <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a5" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090154" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e1" />
+        <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201fb" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="10.0dip" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090156" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c009b" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c009b" android:focusable="true" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="10.0dip">
+            <TextView android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0727" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00df" />
+            <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a9" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090157" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e2" />
         </LinearLayout>
     </LinearLayout>
 </com.tencent.mobileqq.widget.BounceScrollView>

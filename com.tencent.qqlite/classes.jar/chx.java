@@ -1,26 +1,20 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 
 public class chx
-  extends ContactBindObserver
+  implements DialogInterface.OnDismissListener
 {
-  public chx(RebindActivity paramRebindActivity) {}
+  public chx(ContactListView paramContactListView, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.d();
-    if (paramBoolean)
-    {
-      paramBundle = new Intent(this.a, BindVerifyActivity.class);
-      paramBundle.putExtra("k_number", this.a.d);
-      paramBundle.putExtra("kBindType", RebindActivity.a(this.a));
-      this.a.startActivityForResult(paramBundle, 1);
-      return;
-    }
-    this.a.b(2131363383);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.a.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    ContactListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView, null);
   }
 }
 

@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
-import eom;
+import eqc;
 
 public class RollangleImageView
   extends ImageView
@@ -51,8 +51,8 @@ public class RollangleImageView
     if ((jdField_a_of_type_AndroidGraphicsBitmap == null) || (jdField_b_of_type_AndroidGraphicsBitmap == null))
     {
       localObject = BaseApplication.getContext().getResources();
-      jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource((Resources)localObject, 2130838299);
-      jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource((Resources)localObject, 2130838298);
+      jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource((Resources)localObject, 2130838318);
+      jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource((Resources)localObject, 2130838317);
     }
     Object localObject = ImageUtil.a(new BitmapFactory.Options(), paramString, 128);
     try
@@ -137,7 +137,7 @@ public class RollangleImageView
       this.jdField_a_of_type_AndroidOsAsyncTask.cancel(true);
       this.jdField_a_of_type_AndroidOsAsyncTask = null;
     }
-    this.jdField_a_of_type_AndroidOsAsyncTask = new eom(this).execute(new Boolean[] { Boolean.valueOf(paramBoolean) });
+    this.jdField_a_of_type_AndroidOsAsyncTask = new eqc(this).execute(new Boolean[] { Boolean.valueOf(paramBoolean) });
   }
   
   public void setParams(String paramString1, String paramString2)

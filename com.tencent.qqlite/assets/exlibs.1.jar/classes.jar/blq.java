@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.TroopAssistSetGuideActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.ExpandableListView.OnGroupClickListener;
 
 public class blq
-  implements Runnable
+  implements ExpandableListView.OnGroupClickListener
 {
-  public blq(TroopAssistSetGuideActivity paramTroopAssistSetGuideActivity) {}
+  public blq(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void run()
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
   {
-    this.a.c();
+    return true;
   }
 }
 

@@ -1,4 +1,5 @@
-import android.provider.Settings.System;
+import android.content.Context;
+import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
@@ -13,13 +14,12 @@ public class bke
   
   public void onClick(View paramView)
   {
-    this.a.a(SoundAndVibrateActivity.SoundStyle.system);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.a(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
+    this.a.a(SoundAndVibrateActivity.SoundStyle.classic);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.a(), "sound_type", "qqsetting_notify_soundtype_key", 2131165184);
     if (this.a.a().booleanValue())
     {
-      paramView = Settings.System.DEFAULT_NOTIFICATION_URI;
       this.a.d();
-      this.a.a(paramView);
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131165184));
     }
   }
 }

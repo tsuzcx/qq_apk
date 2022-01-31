@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="APKTOOL_DUPLICATE_style_0x7f0e0147" parent="@android:style/TextAppearance.StatusBar.EventContent" />
-    <style name="APKTOOL_DUPLICATE_style_0x7f0e0148" parent="@android:style/TextAppearance.StatusBar.EventContent.Title" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0148" parent="@android:style/TextAppearance.StatusBar.EventContent" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0149" parent="@android:style/TextAppearance.StatusBar.EventContent.Title" />
 </resources>

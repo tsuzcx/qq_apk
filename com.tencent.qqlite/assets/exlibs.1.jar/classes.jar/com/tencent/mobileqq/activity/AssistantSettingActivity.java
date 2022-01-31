@@ -54,14 +54,14 @@ public class AssistantSettingActivity
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131296589));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131296587));
-    this.c = ((FormSwitchItem)findViewById(2131296591));
-    this.f = ((FormSwitchItem)findViewById(2131296592));
-    this.d = ((FormSwitchItem)findViewById(2131296588));
-    this.e = ((FormSwitchItem)findViewById(2131296590));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131296585);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131296586);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131296592));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131296590));
+    this.c = ((FormSwitchItem)findViewById(2131296594));
+    this.f = ((FormSwitchItem)findViewById(2131296595));
+    this.d = ((FormSwitchItem)findViewById(2131296591));
+    this.e = ((FormSwitchItem)findViewById(2131296593));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131296588);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131296589);
     if (PredownloadTest.a) {
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
     }
@@ -70,14 +70,14 @@ public class AssistantSettingActivity
     }
     for (;;)
     {
-      boolean bool = SettingCloneUtil.readValue(this, null, getString(2131363054), "qqsetting_screenshot_key", false);
+      boolean bool = SettingCloneUtil.readValue(this, null, getString(2131363064), "qqsetting_screenshot_key", false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new xy(this));
-      LocalMultiProcConfig.a(getString(2131363284), false);
-      bool = SettingCloneUtil.readValue(this, null, getString(2131363052), "qqsetting_auto_receive_pic_key", true);
+      LocalMultiProcConfig.a(getString(2131363294), false);
+      bool = SettingCloneUtil.readValue(this, null, getString(2131363062), "qqsetting_auto_receive_pic_key", true);
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new xz(this));
-      bool = SettingCloneUtil.readValue(this, null, getString(2131363071), "qqsetting_enter_sendmsg_key", false);
+      bool = SettingCloneUtil.readValue(this, null, getString(2131363081), "qqsetting_enter_sendmsg_key", false);
       this.c.setChecked(bool);
       this.c.setOnCheckedChangeListener(new ya(this));
       bool = SettingCloneUtil.readValue(this, null, null, "qqsetting_clear_memory_key", true);
@@ -86,7 +86,7 @@ public class AssistantSettingActivity
       bool = ConfigHandler.a(this.app, false);
       this.d.setChecked(bool);
       this.d.setOnCheckedChangeListener(new yc(this));
-      bool = SettingCloneUtil.readValue(this, null, getString(2131363991), "qqsetting_notify_icon_key", false);
+      bool = SettingCloneUtil.readValue(this, null, getString(2131364002), "qqsetting_notify_icon_key", false);
       this.e.setChecked(bool);
       this.e.setOnCheckedChangeListener(new yd(this));
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(new ye(this));
@@ -105,14 +105,14 @@ public class AssistantSettingActivity
   
   protected String b_()
   {
-    return getString(2131363053);
+    return getString(2131363063);
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     setContentView(2130903071);
-    setTitle(2131363053);
+    setTitle(2131363063);
     this.jdField_a_of_type_JavaLangString = this.app.a();
     setVolumeControlStream(3);
     c();
@@ -141,7 +141,7 @@ public class AssistantSettingActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131363252));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131363262));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);

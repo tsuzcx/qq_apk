@@ -1,12 +1,19 @@
-import com.tencent.mobileqq.troop.activity.NearbyTroopsView;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class eiq
+  extends TimerTask
 {
-  public int a;
+  public eiq(OldHttpEngine.OldHttpCommunicatorListner paramOldHttpCommunicatorListner) {}
   
-  public eiq(NearbyTroopsView paramNearbyTroopsView, int paramInt, Object paramObject)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.c(this.a.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
   }
 }
 

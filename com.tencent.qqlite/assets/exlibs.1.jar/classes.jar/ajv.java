@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import java.util.Comparator;
 
 public class ajv
-  implements View.OnClickListener
+  implements Comparator
 {
-  public ajv(DoodleActivity paramDoodleActivity) {}
+  private ajv(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onClick(View paramView)
+  public int a(ajt paramajt1, ajt paramajt2)
   {
-    DialogUtil.a(this.a, this.a.getString(2131363453), 2131362794, 2131363454, new ajw(this), new ajx(this)).show();
+    return paramajt1.c.compareToIgnoreCase(paramajt2.c);
   }
 }
 

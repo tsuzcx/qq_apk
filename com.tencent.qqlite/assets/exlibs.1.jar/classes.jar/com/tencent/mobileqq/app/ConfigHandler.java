@@ -50,13 +50,13 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cqy;
-import cqz;
-import cra;
-import crb;
-import crc;
-import crd;
-import cre;
+import crz;
+import csa;
+import csb;
+import csc;
+import csd;
+import cse;
+import csf;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
@@ -495,9 +495,9 @@ public class ConfigHandler
       }
       paramGetResourceRespInfo = paramGetResourceRespInfo.strResURL_big;
     } while (TextUtils.isEmpty(paramGetResourceRespInfo));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cqy(this, paramGetResourceRespInfo, l2));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new crz(this, paramGetResourceRespInfo, l2));
     return;
-    ThreadManager.a().post(new cqz(this));
+    ThreadManager.a().post(new csa(this));
   }
   
   private void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
@@ -581,7 +581,7 @@ public class ConfigHandler
     {
       String str = paramGetResourceRespInfo.strResURL_big;
       if ((str != null) && (str.length() > 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cra(this, str, paramGetResourceRespInfo));
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new csb(this, str, paramGetResourceRespInfo));
       }
       return;
     }
@@ -623,7 +623,7 @@ public class ConfigHandler
       return;
       str = paramGetResourceRespInfo.strResURL_big;
     } while ((str == null) || (str.length() <= 0));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new crb(this, str, paramGetResourceRespInfo));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new csc(this, str, paramGetResourceRespInfo));
   }
   
   private void d(GetResourceRespInfo paramGetResourceRespInfo)
@@ -659,7 +659,7 @@ public class ConfigHandler
       a(7, false, Integer.valueOf(-1));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new crc(this, str, localStatusManager, paramGetResourceRespInfo));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new csd(this, str, localStatusManager, paramGetResourceRespInfo));
   }
   
   protected Class a()
@@ -930,7 +930,7 @@ public class ConfigHandler
   
   public void a(String paramString, File paramFile)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new crd(this, paramString, paramFile));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cse(this, paramString, paramFile));
   }
   
   public void a(String paramString1, String paramString2)
@@ -944,7 +944,7 @@ public class ConfigHandler
     }
     finally {}
     a(paramString1);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cre(this, paramString2, paramString1));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new csf(this, paramString2, paramString1));
   }
   
   public void a(ArrayList paramArrayList, GetResourceReqInfo... paramVarArgs)

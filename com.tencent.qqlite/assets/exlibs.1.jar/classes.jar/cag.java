@@ -1,22 +1,46 @@
-import android.os.Handler;
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.biz.anonymous.QQAnonymousDialog;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.app.FriendsManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
-class cag
-  implements Runnable
+public class cag
+  extends DiscussionObserver
 {
-  cag(caf paramcaf) {}
+  public cag(DiscussChatPie paramDiscussChatPie) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.dismiss();
+    String str = (String)paramArrayOfObject[0];
+    boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
+    if ((this.a.a.jdField_a_of_type_JavaLangString.equals(str)) && (paramBoolean))
+    {
+      if (bool) {
+        this.a.d(false);
+      }
+      if (this.a.a.jdField_a_of_type_Int == 3000)
+      {
+        paramArrayOfObject = ((FriendsManagerImp)DiscussChatPie.a(this.a).getManager(8)).a(str);
+        if ((paramArrayOfObject != null) && (paramArrayOfObject.discussionName != null))
+        {
+          this.a.a.d = paramArrayOfObject.discussionName;
+          this.a.a(this.a.a.d, paramArrayOfObject.uin, DiscussChatPie.a(this.a));
+        }
+      }
     }
-    this.a.a.h(true);
-    this.a.a.ad();
-    if (!AnonymousChatHelper.a(TroopChatPie.b(this.a.a), TroopChatPie.c(this.a.a))) {
-      TroopChatPie.d(this.a.a).postDelayed(new cah(this), 200L);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((this.a.a.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.a.jdField_a_of_type_Int == 3000))
+    {
+      paramString = ((FriendsManagerImp)DiscussChatPie.b(this.a).getManager(8)).a(paramString);
+      if ((paramString != null) && (paramString.discussionName != null))
+      {
+        this.a.a.d = paramString.discussionName;
+        this.a.a(this.a.a.d, paramString.uin, DiscussChatPie.b(this.a));
+      }
     }
   }
 }

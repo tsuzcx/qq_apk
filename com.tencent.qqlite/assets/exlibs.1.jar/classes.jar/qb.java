@@ -17,10 +17,10 @@ class qb
       Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
       localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
       this.jdField_a_of_type_Qa.a.sendBroadcast(localIntent);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_Qa.a.getString(2131362427, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_Qa.a.getTitleBarHeight());
+      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_Qa.a.getString(2131362428, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_Qa.a.getTitleBarHeight());
       return;
     }
-    QRUtils.a(1, 2131362428);
+    QRUtils.a(1, 2131362429);
   }
 }
 

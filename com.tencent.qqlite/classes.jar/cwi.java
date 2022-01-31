@@ -1,16 +1,14 @@
-import android.graphics.Rect;
+import com.tencent.lbsapi.QLBSService;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class cwi
+public class cwi
   implements Runnable
 {
-  cwi(cwh paramcwh) {}
+  public cwi(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if (!this.a.a.a.jdField_a_of_type_Boolean) {
-      this.a.a.a.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
-    }
-    this.a.a.a.invalidate();
+    this.a.a.startLocation();
   }
 }
 

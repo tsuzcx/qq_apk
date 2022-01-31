@@ -1,22 +1,17 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.os.SystemClock;
-import android.widget.Chronometer;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.activity.VideoRecordActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity;
 
 public class elz
-  implements MediaPlayer.OnPreparedListener
+  implements DialogInterface.OnDismissListener
 {
-  public elz(VideoRecordActivity paramVideoRecordActivity) {}
+  public elz(TroopCreateBaseActivity paramTroopCreateBaseActivity) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    VideoRecordActivity.a(this.a).setBase(SystemClock.elapsedRealtime());
-    VideoRecordActivity.a(this.a).start();
-    VideoRecordActivity.a(this.a).start();
-    VideoRecordActivity.a(this.a, 2);
-    VideoRecordActivity.a(this.a).setVisibility(4);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
   }
 }
 

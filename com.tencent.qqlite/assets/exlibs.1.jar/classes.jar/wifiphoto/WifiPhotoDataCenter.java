@@ -7,7 +7,7 @@ import android.net.Uri;
 import android.provider.MediaStore.Images.Media;
 import com.dataline.util.file.FileUtil;
 import com.tencent.open.base.MD5Utils;
-import fmb;
+import foh;
 import java.io.File;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -27,7 +27,7 @@ public class WifiPhotoDataCenter
   public long a;
   private Context jdField_a_of_type_AndroidContentContext;
   public final String a;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new fmb(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new foh(this);
   public Map a;
   public WifiPhotoMsgStrategy a;
   public WifiPhotoStatusMgr a;

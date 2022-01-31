@@ -1,80 +1,131 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MultiMsgProxy;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.pic.DownCallBack;
-import com.tencent.mobileqq.pic.DownCallBack.DownResult;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageInfo;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.widget.GestureSelectGridView;
+import com.tencent.widget.GestureSelectGridView.OnSelectListener;
 
 public class bzo
-  implements DownCallBack
+  implements GestureSelectGridView.OnSelectListener
 {
-  WeakReference a;
+  int jdField_a_of_type_Int = -2147483648;
+  boolean jdField_a_of_type_Boolean = false;
+  int b = 2147483647;
   
-  public bzo(MultiForwardChatPie paramMultiForwardChatPie)
+  public bzo(AIOImageListScene paramAIOImageListScene) {}
+  
+  public void a()
   {
-    this.a = new WeakReference(paramMultiForwardChatPie);
+    if (!AIOImageListScene.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOImageListScene", 2, "onSelectEnd");
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -2147483648;
+    this.b = 2147483647;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(DownCallBack.DownResult paramDownResult)
+  public void a(int paramInt)
   {
-    if (this.a == null) {}
-    MultiForwardChatPie localMultiForwardChatPie;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localMultiForwardChatPie = (MultiForwardChatPie)this.a.get();
-          if ((paramDownResult.jdField_a_of_type_Int != 0) || (paramDownResult.jdField_a_of_type_ArrayOfByte == null)) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MultiMsg", 2, "MultiForwardActivity.onDownload success");
-          }
-        } while (localMultiForwardChatPie == null);
-        localObject = new HashMap();
-        MessageRecord localMessageRecord = MultiForwardChatPie.a(localMultiForwardChatPie).a().a(MultiForwardChatPie.a(localMultiForwardChatPie).jdField_a_of_type_JavaLangString, MultiForwardChatPie.b(localMultiForwardChatPie).jdField_a_of_type_Int, localMultiForwardChatPie.e);
-        paramDownResult = MultiForwardChatPie.b(localMultiForwardChatPie).a().a().a(paramDownResult.jdField_a_of_type_ArrayOfByte, (HashMap)localObject, localMessageRecord);
-      } while ((paramDownResult == null) || (paramDownResult.size() <= 0));
-      MultiMsgManager.a().a((HashMap)localObject, localMultiForwardChatPie.e, MultiForwardChatPie.c(localMultiForwardChatPie));
-      Object localObject = new ArrayList();
-      paramDownResult = paramDownResult.iterator();
-      while (paramDownResult.hasNext()) {
-        ((List)localObject).add((ChatMessage)paramDownResult.next());
-      }
-      localMultiForwardChatPie.b = ((List)localObject);
-      paramDownResult = ChatActivityUtils.a(localMultiForwardChatPie.b, MultiForwardChatPie.c(localMultiForwardChatPie), MultiForwardChatPie.d(localMultiForwardChatPie));
-      paramDownResult = ChatActivityUtils.a(MultiForwardChatPie.e(localMultiForwardChatPie), BaseApplicationImpl.getContext(), MultiForwardChatPie.d(localMultiForwardChatPie), paramDownResult);
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg", 2, "MultiForwardActivity.onDownload, requestReceiveMultiMsg uses " + (System.currentTimeMillis() - MultiForwardChatPie.a(localMultiForwardChatPie)));
-      }
-      MultiMsgManager.a().a(MultiForwardChatPie.f(localMultiForwardChatPie), localMultiForwardChatPie.b, true);
-      MultiForwardChatPie.a(localMultiForwardChatPie).runOnUiThread(new bzp(this, localMultiForwardChatPie, paramDownResult));
+    boolean bool2 = true;
+    if (!AIOImageListScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene)) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg", 2, "MultiForwardActivity.onDownload failed");
+    }
+    AIOImageInfo localAIOImageInfo = AIOImageListScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).a(paramInt);
+    label37:
+    AIOImageListScene localAIOImageListScene;
+    if (localAIOImageInfo.b() == 1)
+    {
+      bool1 = true;
+      this.jdField_a_of_type_Boolean = bool1;
+      localAIOImageListScene = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene;
+      if (this.jdField_a_of_type_Boolean) {
+        break label122;
       }
-    } while (localMultiForwardChatPie == null);
-    MultiMsgManager.a().a(MultiForwardChatPie.g(localMultiForwardChatPie), null, false);
-    MultiForwardChatPie.b(localMultiForwardChatPie).runOnUiThread(new bzq(this, localMultiForwardChatPie));
+    }
+    label122:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      if (AIOImageListScene.a(localAIOImageListScene, localAIOImageInfo, bool1))
+      {
+        AIOImageListScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene);
+        AIOImageListScene.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).n();
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("AIOImageListScene", 2, "onSelectBegin beginIndex:" + paramInt);
+      return;
+      bool1 = false;
+      break label37;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (!AIOImageListScene.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOImageListScene", 2, "onSelectChanged beginIndex:" + paramInt1 + " selectIndex:" + paramInt2);
+    }
+    int j;
+    int i;
+    label81:
+    AIOImageInfo localAIOImageInfo;
+    AIOImageListScene localAIOImageListScene;
+    if (paramInt2 < paramInt1)
+    {
+      j = paramInt1;
+      i = paramInt2;
+      if (this.b > paramInt2)
+      {
+        this.b = paramInt2;
+        i = paramInt2;
+        j = paramInt1;
+      }
+      paramInt1 = i;
+      if (paramInt1 > j) {
+        break label160;
+      }
+      localAIOImageInfo = AIOImageListScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).a(paramInt1);
+      localAIOImageListScene = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene;
+      if (this.jdField_a_of_type_Boolean) {
+        break label154;
+      }
+    }
+    label154:
+    for (boolean bool = true;; bool = false)
+    {
+      AIOImageListScene.a(localAIOImageListScene, localAIOImageInfo, bool);
+      paramInt1 += 1;
+      break label81;
+      if (this.jdField_a_of_type_Int < paramInt2) {
+        this.jdField_a_of_type_Int = paramInt2;
+      }
+      j = paramInt2;
+      i = paramInt1;
+      break;
+    }
+    label160:
+    paramInt1 = j + 1;
+    while (paramInt1 <= this.jdField_a_of_type_Int)
+    {
+      localAIOImageInfo = AIOImageListScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).a(paramInt1);
+      AIOImageListScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene, localAIOImageInfo, this.jdField_a_of_type_Boolean);
+      paramInt1 += 1;
+    }
+    paramInt1 = this.b;
+    while (paramInt1 < i)
+    {
+      localAIOImageInfo = AIOImageListScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).a(paramInt1);
+      AIOImageListScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene, localAIOImageInfo, this.jdField_a_of_type_Boolean);
+      paramInt1 += 1;
+    }
+    AIOImageListScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene);
+    AIOImageListScene.h(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).n();
   }
 }
 

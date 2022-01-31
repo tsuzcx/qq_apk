@@ -1,6 +1,5 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.SplashActivity;
 
 public class bks
@@ -10,7 +9,7 @@ public class bks
   
   public void onClick(View paramView)
   {
-    ((Conversation)SplashActivity.a(this.a, Conversation.class)).a(SplashActivity.a(this.a));
+    this.a.f();
   }
 }
 

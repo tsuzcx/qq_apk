@@ -1,30 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnGroupClickListener;
-import com.tencent.widget.PinnedHeaderExpandableListView;
-import com.tencent.widget.PinnedHeaderExpandableListView.ExpandableListAdapter;
+import android.os.Bundle;
+import com.tencent.qqconnect.wtlogin.LoginHelper;
+import com.tencent.qqconnect.wtlogin.LoginHelper.Callback;
+import mqq.observer.SSOAccountObserver;
 
 public class fiu
-  implements View.OnTouchListener
+  extends SSOAccountObserver
 {
-  public fiu(PinnedHeaderExpandableListView paramPinnedHeaderExpandableListView) {}
+  public fiu(LoginHelper paramLoginHelper) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (paramMotionEvent.getAction() == 1)
+    this.a.a.a();
+    this.a.a = null;
+  }
+  
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    if (paramInt == 4096) {}
+    for (paramArrayOfByte = new String(paramArrayOfByte);; paramArrayOfByte = null)
     {
-      long l = this.a.b(this.a.q());
-      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
-      {
-        int i = ExpandableListView.c(l);
-        if ((PinnedHeaderExpandableListView.a(this.a) == null) || (!PinnedHeaderExpandableListView.a(this.a).a(this.a, paramView, i, PinnedHeaderExpandableListView.a(this.a).getGroupId(i)))) {
-          this.a.d(i);
-        }
-      }
+      this.a.a.a(paramString, paramArrayOfByte);
+      this.a.a = null;
+      return;
     }
-    return true;
   }
 }
 

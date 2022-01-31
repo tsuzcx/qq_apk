@@ -1,21 +1,77 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class cwd
-  implements View.OnClickListener
+  extends Handler
 {
-  public cwd(ScreenShot paramScreenShot) {}
-  
-  public void onClick(View paramView)
+  public cwd(QQAppInterface paramQQAppInterface, Looper paramLooper)
   {
-    ScreenShot.a(this.a);
-    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
-      KapalaiAdapterUtil.a().b(this.a.a);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ArrayList localArrayList;
+    int i;
+    Intent localIntent;
+    if (paramMessage.what == 990)
+    {
+      paramMessage = QQAppInterface.a(this.a);
+      QQAppInterface.a(this.a, null);
+      QQAppInterface.a(this.a).removeMessages(990);
+      localArrayList = new ArrayList();
+      if ((paramMessage != null) && (paramMessage.size() > 0))
+      {
+        i = 0;
+        while (i < paramMessage.size())
+        {
+          localArrayList.add(this.a.a(1, (String)paramMessage.get(i), 0));
+          i += 1;
+        }
+        localIntent = new Intent("com.tencent.qqhead.getheadresp");
+        localIntent.putStringArrayListExtra("uinList", paramMessage);
+        localIntent.putStringArrayListExtra("headPathList", localArrayList);
+        this.a.a().sendBroadcast(localIntent, "com.tencent.qqhead.permission.getheadresp");
+      }
+      if (QLog.isColorLevel()) {
+        QQUtils.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, getQQHead resp uinList: ", paramMessage);
+      }
     }
+    do
+    {
+      do
+      {
+        return;
+      } while (paramMessage.what != 991);
+      paramMessage = QQAppInterface.b(this.a);
+      QQAppInterface.b(this.a, null);
+      QQAppInterface.a(this.a).removeMessages(991);
+      localArrayList = new ArrayList();
+      if ((paramMessage != null) && (paramMessage.size() > 0))
+      {
+        i = 0;
+        while (i < paramMessage.size())
+        {
+          localArrayList.add(this.a.a(4, (String)paramMessage.get(i), 0));
+          i += 1;
+        }
+        localIntent = new Intent("com.tencent.qqhead.getheadresp");
+        localIntent.setPackage(QQAppInterface.d(this.a).getPackageName());
+        localIntent.putStringArrayListExtra("uinList", paramMessage);
+        localIntent.putStringArrayListExtra("headPathList", localArrayList);
+        localIntent.putExtra("faceType", 4);
+        this.a.a().sendBroadcast(localIntent, "com.tencent.qqhead.permission.getheadresp");
+      }
+    } while (!QLog.isColorLevel());
+    QQUtils.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, getQQHead resp uinList: ", paramMessage);
   }
 }
 

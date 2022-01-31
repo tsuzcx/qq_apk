@@ -1,23 +1,32 @@
-import com.tencent.biz.widgets.ElasticHorScrView;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.filemanager.app.UniformDownload;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.DownloadListener;
 
 public class bcg
-  implements Runnable
+  implements DownloadListener
 {
-  public bcg(QQBrowserActivity paramQQBrowserActivity, int paramInt1, int paramInt2) {}
+  public bcg(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void run()
+  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.getWidth() < this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.setMove(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQBrowser", 2, "start UniformDownloadActivity");
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.getWidth() < this.b)
+    if (this.a.a != null) {}
+    for (String str = this.a.a.getUrl();; str = null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.setMove(true);
+      Bundle localBundle = new Bundle();
+      localBundle.putLong("_filesize", paramLong);
+      localBundle.putString("param_user_agent", paramString2);
+      localBundle.putString("param_content_des", paramString3);
+      localBundle.putString("param_mime_type", paramString4);
+      localBundle.putString("param_refer_url", str);
+      UniformDownload.a(this.a, paramString1, localBundle);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.setMove(false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.setMove(false);
   }
 }
 

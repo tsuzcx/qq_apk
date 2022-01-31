@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.mobileqq.utils.LogTag;
 
 public class cjk
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cjk(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public cjk(AlbumListAdapter paramAlbumListAdapter) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.onBackPressed();
+    LogTag.a();
+    QQAlbumInfo localQQAlbumInfo = this.a.a(AlbumListAdapter.a(this.a), 200, 100, AlbumListAdapter.a(this.a));
+    AlbumListAdapter.b(this.a, localQQAlbumInfo);
+    LogTag.a("PEAK", "queryRecentBucket");
   }
 }
 

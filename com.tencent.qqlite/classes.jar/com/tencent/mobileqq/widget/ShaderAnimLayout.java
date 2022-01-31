@@ -11,8 +11,8 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.util.ReflectionUtil;
-import ezj;
-import ezk;
+import fbp;
+import fbq;
 
 public class ShaderAnimLayout
   extends RelativeLayout
@@ -20,8 +20,8 @@ public class ShaderAnimLayout
   public static final long a = 200L;
   public float a;
   private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new ezk(this);
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation = new ezj(this);
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new fbq(this);
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation = new fbp(this);
   public boolean a;
   private boolean b = false;
   

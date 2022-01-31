@@ -1,18 +1,44 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.mobileqq.redtouch.VipBannerInfo;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.qphone.base.util.QLog;
 
 public class agq
-  extends GameCenterObserver
+  extends CardObserver
 {
   public agq(Conversation paramConversation) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt);
-    if ((paramBoolean1) && (paramInt != 2) && (Conversation.d(this.a))) {
-      VipBannerInfo.a(this.a);
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramBoolean) && (paramObject != null) && (!Utils.a(paramObject.uin, this.a.a.a())))
+      {
+        this.a.a(8, paramObject.uin, -2147483648);
+        this.a.m();
+      }
+      return;
     }
+  }
+  
+  protected void onGreetingRecv(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null) && (this.a.a.a().equals(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onGreetingRecv");
+      }
+      this.a.a(8, AppConstants.Z, 1001);
+    }
+  }
+  
+  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (Conversation.c(this.a)) && (this.a.a != null) && (Utils.a(paramString, this.a.a.a()))) {}
   }
 }
 

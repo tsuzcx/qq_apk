@@ -14,7 +14,7 @@ public class xq
   public void onClick(View paramView)
   {
     if (!NetworkUtil.e(this.a)) {
-      QQToast.a(this.a, this.a.getString(2131362916), 0).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a, this.a.getString(2131362923), 0).b(this.a.getTitleBarHeight());
     }
     do
     {
@@ -34,7 +34,7 @@ public class xq
     } while (paramView != this.a.b);
     if (AddRequestActivity.a(this.a, 1))
     {
-      AddRequestActivity.a(this.a).b(2131363381);
+      AddRequestActivity.a(this.a).b(2131363392);
       AddRequestActivity.a(this.a).show();
     }
     ReportController.b(this.a.app, "CliOper", "", "", "frd_recommend", "Frd_accept", 0, 0, "0", "", "", "");

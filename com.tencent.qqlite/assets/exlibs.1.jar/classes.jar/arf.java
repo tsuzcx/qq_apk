@@ -1,46 +1,17 @@
-import android.os.Bundle;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.IndividuationSetActivity;
-import com.tencent.mobileqq.theme.NightModeLogic.NightModeCallback;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
+import com.tencent.mobileqq.app.ConfigObserver;
+import protocol.KQQConfig.GetResourceRespInfo;
 
 public class arf
-  extends NightModeLogic.NightModeCallback
+  extends ConfigObserver
 {
   public arf(IndividuationSetActivity paramIndividuationSetActivity) {}
   
-  public void a(Bundle paramBundle)
+  protected void a(boolean paramBoolean, GetResourceRespInfo paramGetResourceRespInfo)
   {
-    this.a.b();
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    int i = paramBundle.getInt("start_status");
-    if (i == 1)
-    {
-      IndividuationSetActivity.a(this.a).setClickable(false);
-      this.a.a.setText("");
+    if (paramBoolean) {
+      this.a.a(1);
     }
-    do
-    {
-      return;
-      if (i == 2)
-      {
-        this.a.b();
-        return;
-      }
-    } while (i != 3);
-    IndividuationSetActivity.a(this.a).setClickable(false);
-    i = paramBundle.getInt("percent");
-    paramBundle = this.a.getString(2131364515);
-    paramBundle = paramBundle + "  " + String.valueOf(i) + "%";
-    if (QLog.isDevelopLevel()) {
-      QLog.d("spooner", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
-    }
-    this.a.a.setText(paramBundle);
-    this.a.a.setContentDescription(paramBundle);
   }
 }
 

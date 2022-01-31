@@ -13,18 +13,18 @@ import com.tencent.open.business.base.OpenConfig;
 import com.tencent.open.business.base.StaticAnalyz;
 import com.tencent.tmassistantsdk.downloadclient.ITMAssistantExchangeURLListenner;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKURLTool;
-import fdu;
-import fdv;
-import fdw;
-import fdx;
-import fdy;
-import fdz;
-import fea;
-import feb;
-import fec;
-import fed;
-import fee;
-import fef;
+import fga;
+import fgb;
+import fgc;
+import fgd;
+import fge;
+import fgf;
+import fgg;
+import fgh;
+import fgi;
+import fgj;
+import fgk;
+import fgl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -61,7 +61,7 @@ public class DownloadApi
     jdField_a_of_type_JavaLangString = DownloadApi.class.getName();
     jdField_a_of_type_JavaLangObject = new Object();
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_a_of_type_ComTencentTmassistantsdkDownloadclientITMAssistantExchangeURLListenner = new fdx();
+    jdField_a_of_type_ComTencentTmassistantsdkDownloadclientITMAssistantExchangeURLListenner = new fgd();
   }
   
   public static int a()
@@ -157,7 +157,7 @@ public class DownloadApi
   
   public static void a()
   {
-    ThreadManager.b().post(new fec());
+    ThreadManager.b().post(new fgi());
   }
   
   public static void a(Activity paramActivity, Bundle paramBundle)
@@ -165,7 +165,7 @@ public class DownloadApi
     if ((paramBundle == null) || (paramActivity == null)) {
       return;
     }
-    ThreadManager.b(new fdy(paramActivity, paramBundle));
+    ThreadManager.b(new fge(paramActivity, paramBundle));
   }
   
   public static void a(Activity paramActivity, Bundle paramBundle, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2)
@@ -173,7 +173,7 @@ public class DownloadApi
     if (paramInt1 == 1) {
       StaticAnalyz.a("100", "ANDROIDQQ.SELFUPDATE.FOLLOW.FOR.DEBUG", "100686848");
     }
-    ThreadManager.b().post(new fdu(paramBundle, paramInt1, paramInt2, paramActivity, paramApkUpdateDetail));
+    ThreadManager.b().post(new fga(paramBundle, paramInt1, paramInt2, paramActivity, paramApkUpdateDetail));
   }
   
   public static void a(Bundle paramBundle)
@@ -181,22 +181,22 @@ public class DownloadApi
     if (paramBundle == null) {
       return;
     }
-    ThreadManager.b(new fdz(paramBundle));
+    ThreadManager.b(new fgf(paramBundle));
   }
   
   public static void a(DownloadListener paramDownloadListener)
   {
-    ThreadManager.b().post(new fee(paramDownloadListener));
+    ThreadManager.b().post(new fgk(paramDownloadListener));
   }
   
   public static void a(String paramString)
   {
-    ThreadManager.b().post(new fed(paramString));
+    ThreadManager.b().post(new fgj(paramString));
   }
   
   public static void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    ThreadManager.b().post(new feb(paramString1, paramString2, paramBoolean));
+    ThreadManager.b().post(new fgh(paramString1, paramString2, paramBoolean));
   }
   
   public static void a(List paramList, DownloadQueryListener paramDownloadQueryListener)
@@ -209,7 +209,7 @@ public class DownloadApi
     if (paramDownloadQueryListener == null) {
       LogUtility.a(jdField_a_of_type_JavaLangString, "getQueryDownloadAction listener == null");
     }
-    ThreadManager.b().post(new fea(paramList, paramDownloadQueryListener));
+    ThreadManager.b().post(new fgg(paramList, paramDownloadQueryListener));
   }
   
   public static boolean a(Bundle paramBundle)
@@ -317,16 +317,16 @@ public class DownloadApi
       if (paramInt2 == 1)
       {
         paramBundle.putInt("source", paramInt1);
-        MyAppApi.a().a(paramActivity, paramBundle, new fdv(paramBundle, paramInt1, paramApkUpdateDetail));
+        MyAppApi.a().a(paramActivity, paramBundle, new fgb(paramBundle, paramInt1, paramApkUpdateDetail));
         return;
       }
     } while ((paramInt2 != 2) && (paramInt2 != 0));
-    MyAppApi.a().b(paramActivity, paramBundle, new fdw(paramBundle, paramInt1, paramApkUpdateDetail));
+    MyAppApi.a().b(paramActivity, paramBundle, new fgc(paramBundle, paramInt1, paramApkUpdateDetail));
   }
   
   public static void b(DownloadListener paramDownloadListener)
   {
-    ThreadManager.b().post(new fef(paramDownloadListener));
+    ThreadManager.b().post(new fgl(paramDownloadListener));
   }
   
   public static boolean b(String paramString)

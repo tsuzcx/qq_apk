@@ -1,8 +1,7 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.app.NearFieldDiscussHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import tencent.im.nearfield_discuss.nearfield_discuss.LBSInfo;
 
 class cmi
   implements Runnable
@@ -11,9 +10,8 @@ class cmi
   
   public void run()
   {
-    Object localObject = ((SelectMemberInnerFrame)this.a.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).a();
-    localObject = this.a.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000, localObject);
-    this.a.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+    nearfield_discuss.LBSInfo localLBSInfo = CreateFaceToFaceDiscussionActivity.a(this.a.a);
+    ((NearFieldDiscussHandler)this.a.a.app.a(32)).a(this.a.a.a.toString(), this.a.a.b, localLBSInfo, false);
   }
 }
 

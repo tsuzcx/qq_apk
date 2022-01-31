@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aia;
-import aib;
-import aic;
-import aid;
+import aif;
+import aig;
+import aih;
+import aii;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,11 +32,11 @@ public class DevlockPushActivity
   private static final String jdField_a_of_type_JavaLangString = "Q.devlock.DevlockPushActivity";
   private static final String b = "UserBehavior";
   private static final String c = "Push";
-  private Handler jdField_a_of_type_AndroidOsHandler = new aia(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new aif(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aib(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aig(this);
   private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
   private boolean jdField_a_of_type_Boolean = false;
   private String d;
@@ -127,17 +127,17 @@ public class DevlockPushActivity
     this.jdField_h_of_type_AndroidWidgetTextView.setVisibility(4);
     if (this.jdField_a_of_type_Boolean)
     {
-      setRightButton(2131362794, this);
-      this.jdField_j_of_type_AndroidWidgetTextView.setContentDescription(getString(2131362794));
+      setRightButton(2131362801, this);
+      this.jdField_j_of_type_AndroidWidgetTextView.setContentDescription(getString(2131362801));
     }
-    TextView localTextView = (TextView)findViewById(2131298179);
+    TextView localTextView = (TextView)findViewById(2131298201);
     if (TextUtils.isEmpty(this.g)) {
       localTextView.setVisibility(8);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131364228));
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131364192));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131364239));
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131364203));
       ReportController.b(null, "P_CliOper", "Safe_DeviceLock", this.app.a(), "UserBehavior", "Push", 0, 1, "", "", "", "");
       return;
       localTextView.setText(this.g);
@@ -146,12 +146,12 @@ public class DevlockPushActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new aic(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new aih(this));
   }
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new aid(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new aii(this));
   }
   
   public void a()
@@ -166,7 +166,7 @@ public class DevlockPushActivity
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.DevlockPushActivity", 2, "startGetDevLockStatus.CheckDevLockStatus fail ret=" + n);
       }
-      str = getString(2131364212);
+      str = getString(2131364223);
       QQToast.a(getApplicationContext(), str, 0).b(getTitleBarHeight());
       return;
     }
@@ -280,7 +280,7 @@ public class DevlockPushActivity
           }
           for (;;)
           {
-            QQToast.a(getApplicationContext(), 2, getString(2131364194), 0).b(getTitleBarHeight());
+            QQToast.a(getApplicationContext(), 2, getString(2131364205), 0).b(getTitleBarHeight());
             paramIntent = new Intent();
             paramIntent.putExtra("auth_dev_open", true);
             paramIntent.putExtra("allow_set", true);
@@ -332,7 +332,7 @@ public class DevlockPushActivity
       {
         if (!NetworkUtil.e(this))
         {
-          QQToast.a(this, getString(2131362790), 0).b(getTitleBarHeight());
+          QQToast.a(this, getString(2131362797), 0).b(getTitleBarHeight());
           return;
         }
         a();
@@ -362,17 +362,17 @@ public class DevlockPushActivity
   protected void onCreate(Bundle paramBundle)
   {
     int n = 0;
-    setTheme(2131624267);
+    setTheme(2131624268);
     super.onCreate(paramBundle);
-    setContentView(2130903478);
-    setTitle(2131364189);
+    setContentView(2130903486);
+    setTitle(2131364200);
     if (this.app == null)
     {
       finish();
       return;
     }
     this.app.setDevLockIntent(null);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298180));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298202));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     Object localObject = getIntent();
     if (localObject == null)
@@ -420,25 +420,25 @@ public class DevlockPushActivity
       }
     }
     if (TextUtils.isEmpty(this.g)) {
-      this.g = getString(2131364239);
+      this.g = getString(2131364250);
     }
     if (TextUtils.isEmpty(this.jdField_h_of_type_JavaLangString)) {
-      this.jdField_h_of_type_JavaLangString = getString(2131364228);
+      this.jdField_h_of_type_JavaLangString = getString(2131364239);
     }
     if (TextUtils.isEmpty(this.jdField_j_of_type_JavaLangString)) {
-      this.jdField_j_of_type_JavaLangString = getString(2131364230);
+      this.jdField_j_of_type_JavaLangString = getString(2131364241);
     }
     if (TextUtils.isEmpty(this.k)) {
-      this.k = getString(2131364231);
+      this.k = getString(2131364242);
     }
     if (TextUtils.isEmpty(this.l)) {
-      this.l = getString(2131364232);
+      this.l = getString(2131364243);
     }
     if (TextUtils.isEmpty(this.m)) {
-      this.m = getString(2131364233);
+      this.m = getString(2131364244);
     }
     if (TextUtils.isEmpty(this.i)) {
-      this.i = getString(2131364229);
+      this.i = getString(2131364240);
     }
     c();
   }

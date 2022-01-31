@@ -1,14 +1,30 @@
-import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class bgq
+public class bgq
   implements Runnable
 {
-  bgq(bgp parambgp) {}
+  public bgq(RecentLoginDevActivity paramRecentLoginDevActivity) {}
   
   public void run()
   {
-    RegisterActivity.d(this.a.a);
-    RegisterActivity.a(this.a.a, "请重新发送短信");
+    try
+    {
+      if ((RecentLoginDevActivity.a(this.a) != null) && (RecentLoginDevActivity.a(this.a).isShowing()))
+      {
+        RecentLoginDevActivity.a(this.a).dismiss();
+        RecentLoginDevActivity.a(this.a).cancel();
+      }
+      RecentLoginDevActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

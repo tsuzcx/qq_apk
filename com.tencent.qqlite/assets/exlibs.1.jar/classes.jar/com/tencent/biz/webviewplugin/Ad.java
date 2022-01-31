@@ -122,13 +122,13 @@ public class Ad
   {
     this.g = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getIntent().getBooleanExtra("fromAio", false);
     this.jdField_f_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getIntent().getBooleanExtra("fromPublicAccount", false);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131296645);
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = ((CustomWebView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131296646));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131296647));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131296648);
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = ((CustomWebView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131296649));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131296650));
     if ((!this.g) || (this.jdField_f_of_type_Boolean)) {
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131296644));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131296647));
     if (this.jdField_d_of_type_Int >= 11) {
       this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setLayerType(1, null);
     }
@@ -139,7 +139,7 @@ public class Ad
     if (str == null) {
       localObject = "";
     }
-    localWebSettings.setUserAgentString((String)localObject + " " + QZoneHelper.a() + " " + "QQ/" + "3.4.0" + "." + "607");
+    localWebSettings.setUserAgentString((String)localObject + " " + QZoneHelper.a() + " " + "QQ/" + "3.5.0" + "." + "660");
     localWebSettings.setSaveFormData(false);
     localWebSettings.setSavePassword(false);
     localWebSettings.setBuiltInZoomControls(true);

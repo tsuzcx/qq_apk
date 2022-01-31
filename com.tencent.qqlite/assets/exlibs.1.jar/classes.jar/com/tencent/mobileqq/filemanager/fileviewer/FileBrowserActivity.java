@@ -43,11 +43,11 @@ import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import dss;
-import dst;
-import dsu;
-import dsv;
-import dsw;
+import dtu;
+import dtv;
+import dtw;
+import dtx;
+import dty;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +63,7 @@ public final class FileBrowserActivity
   private BaseActionBar.IActionBarClickEvent jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent = null;
   private FileViewBase jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewBase;
   private ForwardData jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerForwardData = null;
-  IFileViewListener jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener = new dsv(this);
+  IFileViewListener jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener = new dtx(this);
   private List jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 0;
@@ -284,7 +284,7 @@ public final class FileBrowserActivity
     a(a());
     for (;;)
     {
-      setContentViewNoTitle(2130903436);
+      setContentViewNoTitle(2130903441);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewBase.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener);
       paramIntent = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewBase.a(a());
       a().addView(paramIntent);
@@ -379,16 +379,16 @@ public final class FileBrowserActivity
   
   private void e()
   {
-    Object localObject = (TextView)findViewById(2131296897);
+    Object localObject = (TextView)findViewById(2131296898);
     ((TextView)localObject).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewBase.a());
-    ((TextView)localObject).setOnClickListener(new dst(this));
-    ((TextView)findViewById(2131296891)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewBase.a());
+    ((TextView)localObject).setOnClickListener(new dtv(this));
+    ((TextView)findViewById(2131296892)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewBase.a());
     if (this.jdField_b_of_type_Boolean)
     {
       d();
-      localObject = (ImageView)findViewById(2131296902);
-      ((ImageView)localObject).setOnClickListener(new dsu(this));
-      ((ImageView)localObject).setImageResource(2130838598);
+      localObject = (ImageView)findViewById(2131296903);
+      ((ImageView)localObject).setOnClickListener(new dtw(this));
+      ((ImageView)localObject).setImageResource(2130838623);
       ((ImageView)localObject).setContentDescription(getString(2131362009));
       ((ImageView)localObject).setVisibility(0);
     }
@@ -403,9 +403,9 @@ public final class FileBrowserActivity
   
   private void f()
   {
-    TextView localTextView = (TextView)findViewById(2131296897);
+    TextView localTextView = (TextView)findViewById(2131296898);
     localTextView.setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewBase.a());
-    ((TextView)findViewById(2131296891)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewBase.a());
+    ((TextView)findViewById(2131296892)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewBase.a());
     if (a().h())
     {
       FileManagerUtil.a(this, localTextView);
@@ -477,7 +477,7 @@ public final class FileBrowserActivity
   private void i()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent = new dsw(this);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent = new dty(this);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarActionBarManager != null) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarActionBarManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent);
@@ -524,7 +524,7 @@ public final class FileBrowserActivity
     }
     this.jdField_b_of_type_Int = ((FileViewMusicService)localObject).a();
     a(a());
-    setContentViewNoTitle(2130903436);
+    setContentViewNoTitle(2130903441);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewBase.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener);
     localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewBase.a(a());
     a().addView((View)localObject);
@@ -539,7 +539,7 @@ public final class FileBrowserActivity
   
   public RelativeLayout a()
   {
-    return (RelativeLayout)findViewById(2131298061);
+    return (RelativeLayout)findViewById(2131298066);
   }
   
   public QQAppInterface a()
@@ -567,7 +567,7 @@ public final class FileBrowserActivity
   
   public RelativeLayout b()
   {
-    return (RelativeLayout)findViewById(2131298063);
+    return (RelativeLayout)findViewById(2131298068);
   }
   
   public boolean b()
@@ -591,7 +591,7 @@ public final class FileBrowserActivity
       return;
     }
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296903));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296904));
     }
     if (a().a().d())
     {
@@ -684,7 +684,7 @@ public final class FileBrowserActivity
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarActionBarManager = new ActionBarManager(this);
     i();
     FileManagerReporter.a("0X8004C01");
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(null, new dss(this, getResources().getDisplayMetrics().widthPixels / 6));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(null, new dtu(this, getResources().getDisplayMetrics().widthPixels / 6));
     this.jdField_a_of_type_AndroidViewGestureDetector.setIsLongpressEnabled(false);
     return true;
   }

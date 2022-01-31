@@ -1,27 +1,14 @@
 import com.tencent.mobileqq.activity.RegisterActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class bgv
+class bgv
   implements Runnable
 {
-  public bgv(RegisterActivity paramRegisterActivity) {}
+  bgv(bgu parambgu) {}
   
   public void run()
   {
-    try
-    {
-      if (RegisterActivity.a(this.a) != null)
-      {
-        RegisterActivity.a(this.a).dismiss();
-        RegisterActivity.a(this.a).cancel();
-        RegisterActivity.a(this.a, null);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    RegisterActivity.d(this.a.a);
+    RegisterActivity.a(this.a.a, "请重新发送短信");
   }
 }
 

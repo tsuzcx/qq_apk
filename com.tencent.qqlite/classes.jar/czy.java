@@ -1,22 +1,12 @@
-import android.content.ContentValues;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class czy
-  implements Runnable
+public final class czy
+  implements Comparator
 {
-  public czy(DataLineMsgProxy paramDataLineMsgProxy, long paramLong) {}
-  
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_Long);
-    if (localDataLineMsgRecord != null)
-    {
-      localDataLineMsgRecord.issuc = false;
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("issuc", Boolean.valueOf(false));
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(DataLineMsgRecord.tableName(), localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
-    }
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 

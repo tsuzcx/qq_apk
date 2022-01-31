@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
 
-class dgp
+public class dgp
   implements Runnable
 {
-  dgp(dgn paramdgn) {}
+  public dgp(HorizonEmoticonTabs paramHorizonEmoticonTabs) {}
   
   public void run()
   {
-    this.a.a.e();
+    this.a.a();
   }
 }
 

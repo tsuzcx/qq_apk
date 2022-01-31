@@ -1,11 +1,23 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewerGalleryAdapter;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
 
-public class dut
+class dut
+  implements Runnable
 {
-  public URLImageView a;
+  dut(dus paramdus) {}
   
-  private dut(FileViewerGalleryAdapter paramFileViewerGalleryAdapter) {}
+  public void run()
+  {
+    if ((LocalVideoFileView.a(this.a.a.a) == null) || (!LocalVideoFileView.a(this.a.a.a).b(LocalVideoFileView.a(this.a.a.a)))) {
+      return;
+    }
+    int i = LocalVideoFileView.a(this.a.a.a).b();
+    String str = LocalVideoFileView.a(this.a.a.a, i);
+    LocalVideoFileView.a(this.a.a.a).setProgress(i);
+    LocalVideoFileView.a(this.a.a.a).setText(str);
+  }
 }
 
 

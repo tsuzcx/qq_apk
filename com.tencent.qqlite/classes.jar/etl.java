@@ -1,13 +1,18 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnBufferingUpdateListener;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
 
 public class etl
-  implements FileFilter
+  implements MediaPlayer.OnBufferingUpdateListener
 {
-  public boolean accept(File paramFile)
+  public etl(VideoViewX paramVideoViewX) {}
+  
+  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    VideoViewX.e(this.a, paramInt);
+    if (VideoViewX.a(this.a) != null) {
+      VideoViewX.a(this.a).onBufferingUpdate(VideoViewX.a(this.a), paramInt);
+    }
   }
 }
 

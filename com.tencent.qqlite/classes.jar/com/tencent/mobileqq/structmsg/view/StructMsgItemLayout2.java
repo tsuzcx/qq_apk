@@ -57,7 +57,7 @@ public class StructMsgItemLayout2
       localTextViewWrapLayout.setPadding(m, j, n, k);
       localTextViewWrapLayout.setLayoutParams(localLayoutParams);
       if (!TextUtils.isEmpty(this.c)) {
-        localTextViewWrapLayout.setBackgroundResource(2130837924);
+        localTextViewWrapLayout.setBackgroundResource(2130837942);
       }
       b(localTextViewWrapLayout);
       return localTextViewWrapLayout;

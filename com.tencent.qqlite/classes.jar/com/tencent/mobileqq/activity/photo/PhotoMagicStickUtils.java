@@ -70,13 +70,13 @@ public class PhotoMagicStickUtils
         QLog.d("_photo", 2, "addExtraBtn showSendRaw:" + bool);
       }
       paramArrayList = PhotoUtils.b(paramArrayList);
-      paramActionSheet.a(paramContext.getString(2131363943) + "(" + paramArrayList + ")", 5, false);
+      paramActionSheet.a(paramContext.getString(2131363954) + "(" + paramArrayList + ")", 5, false);
       if (!bool) {
         break label340;
       }
       paramArrayList = PhotoUtils.a(paramContext, i);
-      paramActionSheet.a(paramContext.getString(2131363944) + "(" + paramArrayList + ")", 5, false);
-      paramActionSheet.a(2131363953);
+      paramActionSheet.a(paramContext.getString(2131363955) + "(" + paramArrayList + ")", 5, false);
+      paramActionSheet.a(2131363964);
       return;
       k = 0;
       break;
@@ -88,10 +88,10 @@ public class PhotoMagicStickUtils
     label340:
     if (paramInt != 0)
     {
-      paramActionSheet.a(2131363954);
+      paramActionSheet.a(2131363965);
       return;
     }
-    paramActionSheet.a(2131363953);
+    paramActionSheet.a(2131363964);
   }
 }
 

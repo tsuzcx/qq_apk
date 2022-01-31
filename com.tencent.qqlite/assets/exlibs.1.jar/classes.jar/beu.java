@@ -1,23 +1,20 @@
-import android.app.Dialog;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqfav.QfavHelper;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class beu
+public class beu
   implements View.OnClickListener
 {
-  beu(bes parambes) {}
+  public beu(QQSetting paramQQSetting) {}
   
   public void onClick(View paramView)
   {
-    QfavHelper.b(this.a.a.a(), this.a.a.a.getAccount(), null, -1);
-    if ((QQSetting.a(this.a.a) != null) && (QQSetting.a(this.a.a).isShowing()))
-    {
-      QQSetting.a(this.a.a).dismiss();
-      QQSetting.a(this.a.a, null);
-    }
+    paramView = new Intent(this.a.a(), AccountManageActivity.class);
+    this.a.a(paramView);
+    ReportController.b(this.a.a, "CliOper", "", "", "Setting_tab", "Clk_manage_acc", 0, 0, "", "", "", "");
   }
 }
 

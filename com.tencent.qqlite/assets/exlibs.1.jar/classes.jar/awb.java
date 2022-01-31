@@ -1,16 +1,19 @@
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import java.util.ArrayList;
 
 public class awb
   implements Runnable
 {
-  public awb(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
+  public awb(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.f = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.f);
+    this.a.c();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.a.app.a());
+    this.a.a.a(this.a.b, this.a.c, localArrayList);
   }
 }
 

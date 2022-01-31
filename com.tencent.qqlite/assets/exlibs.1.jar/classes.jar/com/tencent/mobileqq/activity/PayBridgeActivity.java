@@ -65,23 +65,23 @@ public class PayBridgeActivity
   
   private Dialog a(String paramString1, String paramString2, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    Dialog localDialog = new Dialog(this, 2131624119);
+    Dialog localDialog = new Dialog(this, 2131624120);
     localDialog.setContentView(2130903135);
-    TextView localTextView = (TextView)localDialog.findViewById(2131296911);
+    TextView localTextView = (TextView)localDialog.findViewById(2131296912);
     if (localTextView != null) {
       localTextView.setText(paramString1);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131296470);
+    paramString1 = (TextView)localDialog.findViewById(2131296473);
     if (paramString1 != null) {
       paramString1.setText(paramString2);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131296914);
+    paramString1 = (TextView)localDialog.findViewById(2131296915);
     if (paramString1 != null) {
       paramString1.setText(17039360);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131296915);
+    paramString1 = (TextView)localDialog.findViewById(2131296916);
     if (paramString1 != null) {
-      paramString1.setText(2131362777);
+      paramString1.setText(2131362784);
     }
     localDialog.setOnDismissListener(paramOnDismissListener);
     return localDialog;
@@ -351,7 +351,7 @@ public class PayBridgeActivity
   
   private void c()
   {
-    QQToast.a(BaseApplication.getContext(), 2131364486, 0).a();
+    QQToast.a(BaseApplication.getContext(), 2131364497, 0).a();
     finish();
   }
   
@@ -377,7 +377,7 @@ public class PayBridgeActivity
   
   private static void d()
   {
-    QQToast.a(BaseApplication.getContext(), 2131364486, 0).a();
+    QQToast.a(BaseApplication.getContext(), 2131364497, 0).a();
   }
   
   private String e()

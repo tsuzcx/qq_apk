@@ -1,21 +1,18 @@
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
-class aol
-  implements Runnable
+public class aol
+  implements IIconListener
 {
-  aol(aok paramaok) {}
+  public aol(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    Card localCard = ((FriendsManager)this.a.a.app.getManager(43)).a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = localCard;
-    if (localCard != null) {
-      this.a.a.runOnUiThread(new aom(this));
+    if ((this.a.a.a != null) && (this.a.a.a.b == paramInt1) && (paramInt2 == 200) && (paramBitmap != null)) {
+      this.a.a.a(this.a.a.a);
     }
   }
 }

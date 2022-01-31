@@ -12,18 +12,6 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class cmd0x383$ApplyDownloadRspBody
   extends MessageMicro
 {
-  public static final int BOOL_SAFE_CHECK_FLAG_FIELD_NUMBER = 11;
-  public static final int BYTES_COOKIE_VAL_FIELD_NUMBER = 7;
-  public static final int BYTES_DOWNLOAD_URL_FIELD_NUMBER = 3;
-  public static final int BYTES_MD5_FIELD_NUMBER = 6;
-  public static final int BYTES_SHA3_FIELD_NUMBER = 5;
-  public static final int BYTES_SHA_FIELD_NUMBER = 4;
-  public static final int STR_DOWNLOAD_DNS_FIELD_NUMBER = 2;
-  public static final int STR_DOWNLOAD_IP_FIELD_NUMBER = 1;
-  public static final int STR_MSG_FIELD_NUMBER = 14;
-  public static final int STR_SAVE_FILE_NAME_FIELD_NUMBER = 8;
-  public static final int UINT32_PREVIEW_PORT_FIELD_NUMBER = 13;
-  public static final int UINT32_SAFE_CHECK_RES_FIELD_NUMBER = 12;
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_safe_check_flag = PBField.initBool(false);
   public final PBBytesField bytes_cookie_val = PBField.initBytes(ByteStringMicro.EMPTY);

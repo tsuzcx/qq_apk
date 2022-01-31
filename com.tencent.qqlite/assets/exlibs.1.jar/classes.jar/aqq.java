@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aqq
-  implements DialogInterface.OnDismissListener
+  extends FriendListObserver
 {
-  public aqq(GroupManagerActivity paramGroupManagerActivity) {}
+  public aqq(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    GroupManagerActivity.b(this.a, null);
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.a()))) {}
+    while (this.a.a == null) {
+      return;
+    }
+    paramString = GesturePWDUnlockActivity.a(this.a, this.a.app.a(), true);
+    this.a.a.setImageBitmap(paramString);
   }
 }
 

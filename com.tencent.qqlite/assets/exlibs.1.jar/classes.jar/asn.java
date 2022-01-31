@@ -1,47 +1,21 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.ImageView;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter.CornerListItemHolder;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
 
-class asn
-  implements Runnable
+public class asn
+  extends FriendListObserver
 {
-  asn(asm paramasm, String paramString, Bitmap paramBitmap, boolean paramBoolean) {}
+  public asn(Leba paramLeba) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_Asm.a.a == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        int j = this.jdField_a_of_type_Asm.a.a.getChildCount();
-        int i = 0;
-        if (i < j)
-        {
-          localObject = this.jdField_a_of_type_Asm.a.a.getChildAt(i);
-          LebaListViewAdapter.CornerListItemHolder localCornerListItemHolder = (LebaListViewAdapter.CornerListItemHolder)((View)localObject).getTag();
-          if ((localCornerListItemHolder == null) || (localCornerListItemHolder.a == null) || (localCornerListItemHolder.a.a == null) || (!this.jdField_a_of_type_JavaLangString.equals(localCornerListItemHolder.a.a.strPkgName))) {}
-          for (;;)
-          {
-            i += 1;
-            break;
-            localObject = (ImageView)((View)localObject).findViewById(2131297000);
-            if (localObject != null) {
-              ((ImageView)localObject).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-            }
-          }
-        }
-      } while (this.jdField_a_of_type_Boolean);
-      localObject = this.jdField_a_of_type_Asm.a.a.findViewWithTag(this.jdField_a_of_type_JavaLangString);
-    } while ((localObject == null) || (!(localObject instanceof ImageView)));
-    ((ImageView)localObject).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    while ((QZoneManagerImp)this.a.a.getManager(9) == null) {
+      return;
+    }
+    Leba.b(this.a);
   }
 }
 

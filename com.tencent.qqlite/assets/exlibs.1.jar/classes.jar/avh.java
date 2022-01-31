@@ -1,77 +1,89 @@
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import cannon.Visitor;
 import com.tencent.mobileqq.activity.MayKnowManActivity;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.FaceInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class avh
-  extends FacePreloadBaseAdapter
+class avh
+  implements Runnable
 {
-  public avh(MayKnowManActivity paramMayKnowManActivity, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView)
-  {
-    super(paramContext, paramQQAppInterface, paramXListView, 1, true);
-  }
+  avh(avg paramavg, boolean paramBoolean, List paramList, int paramInt) {}
   
-  protected Object a(int paramInt)
+  public void run()
   {
-    FacePreloadBaseAdapter.FaceInfo localFaceInfo = new FacePreloadBaseAdapter.FaceInfo(this);
-    localFaceInfo.jdField_a_of_type_JavaLangString = String.valueOf(((Visitor)getItem(paramInt)).uin);
-    return localFaceInfo;
-  }
-  
-  public int getCount()
-  {
-    return this.a.a.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return (Visitor)this.a.a.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return ((Visitor)this.a.a.get(paramInt)).uin;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.a.getLayoutInflater().inflate(2130903233, null);
-    }
-    paramView = (avg)paramViewGroup.getTag();
-    if (paramView == null)
+    Object localObject1;
+    Object localObject2;
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramView = new avg(this.a, null);
-      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131297298));
-      paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131297300));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131297299));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131297301));
-      paramViewGroup.setTag(paramView);
+      localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (Visitor)((Iterator)localObject1).next();
+        if (this.jdField_a_of_type_Avg.a.jdField_a_of_type_JavaUtilList.size() > 30000) {
+          this.jdField_a_of_type_Avg.a.jdField_a_of_type_JavaUtilList.remove(0);
+        }
+        this.jdField_a_of_type_Avg.a.jdField_a_of_type_JavaUtilList.add(localObject2);
+      }
+      if (this.jdField_a_of_type_Avg.a.jdField_a_of_type_JavaUtilList.isEmpty())
+      {
+        this.jdField_a_of_type_Avg.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+        this.jdField_a_of_type_Avg.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.jdField_a_of_type_Avg.a.setTitle(2131363224);
+        localObject1 = (List)((ArrayList)this.jdField_a_of_type_Avg.a.jdField_a_of_type_JavaUtilList).clone();
+        this.jdField_a_of_type_Avg.a.app.a(new avi(this, (List)localObject1));
+      }
     }
     for (;;)
     {
-      Visitor localVisitor = (Visitor)this.a.a.get(paramInt);
-      paramView.jdField_a_of_type_JavaLangString = String.valueOf(localVisitor.uin);
-      if ((localVisitor.name == null) || (localVisitor.name.length() == 0)) {
-        localVisitor.name = String.valueOf(localVisitor.uin);
+      this.jdField_a_of_type_Avg.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131363206);
+      this.jdField_a_of_type_Avg.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+      this.jdField_a_of_type_Avg.a.d();
+      localObject1 = (ProgressBar)this.jdField_a_of_type_Avg.a.jdField_a_of_type_AndroidViewView.findViewById(2131296561);
+      localObject2 = (ImageView)this.jdField_a_of_type_Avg.a.jdField_a_of_type_AndroidViewView.findViewById(2131297310);
+      ((ProgressBar)localObject1).setVisibility(8);
+      ((ImageView)localObject2).setVisibility(0);
+      return;
+      this.jdField_a_of_type_Avg.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+      this.jdField_a_of_type_Avg.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_Avg.a.setTitle(this.jdField_a_of_type_Avg.a.getString(2131363224) + "(" + this.jdField_a_of_type_Int + ")");
+      if (this.jdField_a_of_type_Avg.a.jdField_a_of_type_Avm == null)
+      {
+        this.jdField_a_of_type_Avg.a.jdField_a_of_type_Avm = new avm(this.jdField_a_of_type_Avg.a, this.jdField_a_of_type_Avg.a, this.jdField_a_of_type_Avg.a.app, this.jdField_a_of_type_Avg.a.jdField_a_of_type_ComTencentWidgetXListView);
+        this.jdField_a_of_type_Avg.a.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Avg.a.jdField_a_of_type_Avm);
       }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localVisitor.name);
-      String str = String.format(this.a.getString(2131363434), new Object[] { Integer.valueOf(localVisitor.weight) });
-      paramView.jdField_b_of_type_AndroidWidgetTextView.setText(str);
-      paramView.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(a(1, String.valueOf(localVisitor.uin)));
-      paramView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new avi(this, localVisitor));
-      return paramViewGroup;
+      while (this.jdField_a_of_type_Avg.a.c * 10 >= this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_Avg.a.jdField_a_of_type_AndroidViewView.findViewById(2131296561).setVisibility(8);
+        this.jdField_a_of_type_Avg.a.jdField_a_of_type_AndroidViewView.findViewById(2131297310).setVisibility(8);
+        localObject1 = (TextView)this.jdField_a_of_type_Avg.a.jdField_a_of_type_AndroidViewView.findViewById(2131297311);
+        ((TextView)localObject1).setVisibility(0);
+        ((TextView)localObject1).setText(2131363790);
+        this.jdField_a_of_type_Avg.a.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Avg.a.d();
+        return;
+        this.jdField_a_of_type_Avg.a.jdField_a_of_type_Avm.notifyDataSetChanged();
+      }
+      this.jdField_a_of_type_Avg.a.jdField_a_of_type_ComTencentWidgetXListView.b(this.jdField_a_of_type_Avg.a.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Avg.a.jdField_a_of_type_ComTencentWidgetXListView.b(this.jdField_a_of_type_Avg.a.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Avg.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      break;
+      if (this.jdField_a_of_type_Avg.a.jdField_a_of_type_AndroidAppDialog != null)
+      {
+        this.jdField_a_of_type_Avg.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+        this.jdField_a_of_type_Avg.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.jdField_a_of_type_Avg.a.b.setText(2131363789);
+        this.jdField_a_of_type_Avg.a.d();
+        return;
+      }
+      QQToast.a(this.jdField_a_of_type_Avg.a, this.jdField_a_of_type_Avg.a.getString(2131363787), 0).b(this.jdField_a_of_type_Avg.a.d);
     }
   }
 }

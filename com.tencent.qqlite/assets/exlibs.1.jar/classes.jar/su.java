@@ -15,7 +15,7 @@ public class su
   {
     if (paramMessage.what == 9)
     {
-      paramMessage = Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131362382), 1);
+      paramMessage = Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131362383), 1);
       paramMessage.setGravity(17, 0, 0);
       paramMessage.show();
     }

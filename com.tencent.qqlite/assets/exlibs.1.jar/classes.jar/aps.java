@@ -1,64 +1,56 @@
-import com.tencent.mobileqq.activity.FriendProfileImageModel.InfoUpdateListener;
-import com.tencent.mobileqq.activity.FriendProfileImagePortraits;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.service.lbs.LbsPortraitUtil;
-import com.tencent.mobileqq.utils.HexUtil;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class aps
-  extends CardObserver
+  extends Handler
 {
-  public aps(FriendProfileImagePortraits paramFriendProfileImagePortraits) {}
+  public aps(FriendProfileImageAvatar paramFriendProfileImageAvatar) {}
   
-  protected void onAddPortrait(boolean paramBoolean, String paramString, int paramInt, Card paramCard)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener.a();
-    }
-  }
-  
-  protected void onDeletePortrait(boolean paramBoolean, Card paramCard, int paramInt, byte[] paramArrayOfByte)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.PhotoWall", 2, "onDeletePortrait() isSuccess: " + paramBoolean);
-    }
-    if (!paramCard.uin.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a())) {}
-    do
+    switch (paramMessage.what)
     {
+    default: 
+    case 1: 
+    case 2: 
+    case 3: 
       do
       {
-        do
-        {
-          return;
-          switch (paramInt)
-          {
-          default: 
-            return;
-          case 0: 
-            paramCard = HexUtil.a(paramArrayOfByte);
-            this.a.a(paramCard);
-          }
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener == null);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener.b();
         return;
-        LbsPortraitUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()), this.a.b, 0);
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener == null);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener.c();
-      return;
-      LbsPortraitUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()), this.a.b, 0);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener.b();
-  }
-  
-  protected void onGotPagedAlbumKeys(boolean paramBoolean, String paramString, ArrayList paramArrayList, long paramLong, byte[] paramArrayOfByte)
-  {
-    if ((!paramBoolean) || (this.a.b == null) || (!this.a.b.equals(paramString))) {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.profilecard.Avatar", 2, "refresh progress : " + paramMessage.arg1);
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.i = paramMessage.arg1;
+        this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.profilecard.Avatar", 2, "start progress : " + paramMessage.arg1);
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.i = 0;
+        this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.profilecard.Avatar", 2, "end result : " + paramMessage.arg1);
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.i = 100;
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.a = false;
+        this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+        if (paramMessage.arg1 == 1)
+        {
+          this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+          return;
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.h = 5;
+        this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+      } while (this.a.f >= 3);
+      paramMessage = this.a;
+      paramMessage.f += 1;
+      this.a.jdField_a_of_type_JavaLangString = null;
       return;
     }
-    this.a.a(this.a.a());
+    this.a.a(this.a.b);
   }
 }
 

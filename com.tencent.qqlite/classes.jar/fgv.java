@@ -1,20 +1,27 @@
-import android.view.View;
-import com.tencent.widget.AbsListView;
+import android.app.Activity;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadManager;
 
 public class fgv
   implements Runnable
 {
-  public fgv(AbsListView paramAbsListView, View paramView, fhg paramfhg) {}
+  public fgv(DownloadManager paramDownloadManager, Bundle paramBundle, Activity paramActivity, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.ab = -1;
-    this.jdField_a_of_type_AndroidViewView.setPressed(false);
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.setPressed(false);
-    if (!this.jdField_a_of_type_ComTencentWidgetAbsListView.q) {
-      this.jdField_a_of_type_Fhg.run();
+    Object localObject = new fgw(this);
+    fgx localfgx = new fgx(this);
+    LogUtility.b(DownloadManager.a, "dialog create and show");
+    localObject = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131362108)).setPositiveButton(2131362106, localfgx).setNegativeButton(2131362107, (DialogInterface.OnClickListener)localObject).create();
+    ((Dialog)localObject).setCanceledOnTouchOutside(false);
+    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+      ((Dialog)localObject).show();
     }
-    AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, null);
   }
 }
 

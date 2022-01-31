@@ -2,13 +2,13 @@ package com.tencent.widget;
 
 import android.database.DataSetObserver;
 import android.widget.BaseAdapter;
-import fjd;
+import flj;
 
 public abstract class XBaseAdapter
   extends BaseAdapter
   implements XListAdapter
 {
-  private final fjd a = new fjd(this);
+  private final flj a = new flj(this);
   
   public void a(int paramInt1, int paramInt2)
   {

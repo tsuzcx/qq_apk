@@ -213,49 +213,52 @@ public class LebaIconDownloader$DownloadListenerAdapter
     //   346: return
     //   347: astore_1
     //   348: goto -30 -> 318
-    //   351: astore 6
+    //   351: astore 5
     //   353: aconst_null
     //   354: astore_3
     //   355: aload 4
-    //   357: astore 5
-    //   359: aload 6
+    //   357: astore 6
+    //   359: aload 5
     //   361: astore 4
-    //   363: goto -78 -> 285
-    //   366: astore 6
-    //   368: aload 4
-    //   370: astore 5
-    //   372: aload 6
-    //   374: astore 4
-    //   376: goto -91 -> 285
-    //   379: astore 6
-    //   381: aload 4
-    //   383: astore 5
-    //   385: aload 6
-    //   387: astore 4
-    //   389: goto -104 -> 285
-    //   392: astore 5
-    //   394: aconst_null
-    //   395: astore_3
-    //   396: goto -168 -> 228
-    //   399: astore 5
-    //   401: goto -173 -> 228
+    //   363: aload 6
+    //   365: astore 5
+    //   367: goto -82 -> 285
+    //   370: astore 6
+    //   372: aload 4
+    //   374: astore 5
+    //   376: aload 6
+    //   378: astore 4
+    //   380: goto -95 -> 285
+    //   383: astore 6
+    //   385: aload 4
+    //   387: astore 5
+    //   389: aload 6
+    //   391: astore 4
+    //   393: goto -108 -> 285
+    //   396: astore 5
+    //   398: aconst_null
+    //   399: astore_3
+    //   400: goto -172 -> 228
+    //   403: astore 5
+    //   405: goto -177 -> 228
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	404	0	this	DownloadListenerAdapter
-    //   0	404	1	paramString	String
-    //   0	404	2	paramInt	int
-    //   53	343	3	localObject1	Object
+    //   0	408	0	this	DownloadListenerAdapter
+    //   0	408	1	paramString	String
+    //   0	408	2	paramInt	int
+    //   53	347	3	localObject1	Object
     //   168	106	4	localFileInputStream	java.io.FileInputStream
     //   281	75	4	localObject2	Object
-    //   361	27	4	localObject3	Object
+    //   361	31	4	localObject3	Object
     //   1	1	5	localObject4	Object
     //   221	93	5	localException1	java.lang.Exception
-    //   357	27	5	localObject5	Object
-    //   392	1	5	localException2	java.lang.Exception
-    //   399	1	5	localException3	java.lang.Exception
-    //   351	9	6	localObject6	Object
-    //   366	7	6	localObject7	Object
-    //   379	7	6	localObject8	Object
+    //   351	9	5	localObject5	Object
+    //   365	23	5	localObject6	Object
+    //   396	1	5	localException2	java.lang.Exception
+    //   403	1	5	localException3	java.lang.Exception
+    //   357	7	6	localObject7	Object
+    //   370	7	6	localObject8	Object
+    //   383	7	6	localObject9	Object
     // Exception table:
     //   from	to	target	type
     //   213	218	219	java/lang/Exception
@@ -271,10 +274,10 @@ public class LebaIconDownloader$DownloadListenerAdapter
     //   151	159	345	java/lang/Exception
     //   313	318	347	java/lang/Exception
     //   170	180	351	finally
-    //   180	185	366	finally
-    //   228	245	379	finally
-    //   170	180	392	java/lang/Exception
-    //   180	185	399	java/lang/Exception
+    //   180	185	370	finally
+    //   228	245	383	finally
+    //   170	180	396	java/lang/Exception
+    //   180	185	403	java/lang/Exception
   }
 }
 

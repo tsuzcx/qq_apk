@@ -10,7 +10,7 @@ import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
 import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import drh;
+import dsj;
 
 public class DiscFileOperator
   extends FileTransferObserver
@@ -116,7 +116,7 @@ public class DiscFileOperator
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-    ThreadManager.a().post(new drh(this));
+    ThreadManager.a().post(new dsj(this));
   }
   
   public void a(long paramLong1, long paramLong2)

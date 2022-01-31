@@ -1,13 +1,21 @@
-public abstract interface egx
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.qphone.base.util.BaseApplication;
+
+public class egx
+  implements Runnable
 {
-  public static final int a = 0;
-  public static final int b = 1;
-  public static final int c = 2;
-  public static final int d = 3;
-  public static final int e = 4;
-  public static final int f = 5;
-  public static final int g = 10;
-  public static final int h = 7;
+  public egx(FriendSystemMsgController paramFriendSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  
+  public void run()
+  {
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean("friend_system_msg_nomore_msg", this.jdField_a_of_type_Boolean).commit();
+    }
+  }
 }
 
 

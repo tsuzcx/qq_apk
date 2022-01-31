@@ -1,32 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import java.util.LinkedHashMap;
 
 public class cnl
-  extends Handler
+  implements View.OnClickListener
 {
-  public cnl(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public cnl(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      Object[] arrayOfObject = (Object[])paramMessage.obj;
-      if (arrayOfObject.length == 3)
-      {
-        this.a.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)arrayOfObject[0]);
-        this.a.jdField_a_of_type_ArrayOfInt = ((int[])arrayOfObject[1]);
-        this.a.jdField_a_of_type_ArrayOfJavaLangString = ((String[])arrayOfObject[2]);
-      }
-      this.a.jdField_a_of_type_Cnq.notifyDataSetChanged();
-    } while ((paramMessage.what != 2) && ((paramMessage.what != 1) || (this.a.jdField_a_of_type_Boolean)));
-    this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.i();
+    this.a.g();
   }
 }
 

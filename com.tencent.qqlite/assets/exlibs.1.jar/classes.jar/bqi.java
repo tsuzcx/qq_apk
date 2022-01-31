@@ -1,17 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class bqi
+public class bqi
   implements DialogInterface.OnClickListener
 {
-  bqi(bqg parambqg, QQCustomDialog paramQQCustomDialog) {}
+  public bqi(TroopTransferActivity paramTroopTransferActivity, QQCustomDialog paramQQCustomDialog) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.a(this.jdField_a_of_type_Bqg.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Bqg.a.b, "", "", "");
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }

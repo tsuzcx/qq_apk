@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f09018b" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/title" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0817" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e8" />
-    <com.tencent.mobileqq.widget.StatableSpanTextView android:ellipsize="end" android:id="@id/info" android:maxLines="2" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e9" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0905d0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ea" />
-</LinearLayout>
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906e7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="62.0dip" android:layout_marginRight="62.0dip" android:maxHeight="4.0dip" android:max="10000" android:progress="30" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020028" android:minHeight="4.0dip" android:layout_centerInParent="true" style="?android:attr/progressBarStyleHorizontal" />
+    <TextView android:textSize="15.0sp" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090838" android:paddingTop="10.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0906e7" android:layout_centerHorizontal="true" />
+</RelativeLayout>

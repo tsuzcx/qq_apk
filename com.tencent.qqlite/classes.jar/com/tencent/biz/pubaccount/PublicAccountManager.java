@@ -167,7 +167,7 @@ public class PublicAccountManager
       localIntent.putExtra("url", paramButtonInfo.toString());
       localIntent.putExtra("uin", paramQQAppInterface.a());
       localIntent.putExtra("puin", paramString);
-      localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131363113));
+      localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131363123));
       if (paramString.equalsIgnoreCase("2632129500")) {
         localIntent.putExtra("hide_operation_bar", true);
       }
@@ -194,7 +194,7 @@ public class PublicAccountManager
     localIntent.putExtra("click_from", paramString3);
     localIntent.putExtra("uin", paramQQAppInterface.a());
     localIntent.putExtra("puin", paramString2);
-    localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131363113));
+    localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131363123));
     paramContext.startActivity(localIntent);
   }
   

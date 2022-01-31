@@ -2,7 +2,7 @@ package com.tencent.mobileqq.troop.data;
 
 public abstract interface TroopCreateLogic$TroopCreateCallback
 {
-  public abstract void a(int paramInt, String paramString);
+  public abstract void a(int paramInt, String paramString1, String paramString2);
 }
 
 

@@ -12,16 +12,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
-import blr;
-import bls;
-import blt;
-import blu;
+import blw;
+import blx;
 import bly;
 import blz;
-import bma;
-import bmb;
-import bmc;
 import bmd;
+import bme;
+import bmf;
+import bmg;
+import bmh;
+import bmi;
 import com.tencent.mobileqq.activity.recent.OnRecentUserOpsListener;
 import com.tencent.mobileqq.activity.recent.RecentAdapter;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
@@ -87,10 +87,10 @@ public class TroopAssistantActivity
   private View jdField_a_of_type_AndroidViewView;
   private RecentAdapter jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter;
   private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new blu(this);
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new blt(this);
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new bly(this);
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new blr(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new blz(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bly(this);
+  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new bmd(this);
+  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new blw(this);
   public QQProgressNotifier a;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet = null;
   public XListView a;
@@ -101,7 +101,7 @@ public class TroopAssistantActivity
   
   public TroopAssistantActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bma(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bmf(this);
   }
   
   private void a(String paramString, int paramInt)
@@ -141,21 +141,21 @@ public class TroopAssistantActivity
   private void a(String paramString1, String paramString2)
   {
     Resources localResources = getResources();
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
-    localActionSheet.a(localResources.getString(2131363857, new Object[] { paramString2 }));
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624120);
+    localActionSheet.a(localResources.getString(2131363868, new Object[] { paramString2 }));
     int i = DBUtils.a().a(paramString1, this.app);
-    localActionSheet.b(localResources.getString(2131363858, new Object[] { StringUtil.a(BaseApplication.getContext(), i) }));
-    localActionSheet.a(localResources.getString(2131362532), false);
-    localActionSheet.a(localResources.getString(2131362533), false);
+    localActionSheet.b(localResources.getString(2131363869, new Object[] { StringUtil.a(BaseApplication.getContext(), i) }));
     localActionSheet.a(localResources.getString(2131362534), false);
+    localActionSheet.a(localResources.getString(2131362535), false);
+    localActionSheet.a(localResources.getString(2131362536), false);
     i = this.app.b(String.valueOf(paramString1));
     switch (i)
     {
     }
     for (;;)
     {
-      localActionSheet.d(2131362794);
-      localActionSheet.a(new bmd(this, i, paramString1, localActionSheet));
+      localActionSheet.d(2131362801);
+      localActionSheet.a(new bmi(this, i, paramString1, localActionSheet));
       localActionSheet.show();
       return;
       localActionSheet.e(0);
@@ -175,7 +175,7 @@ public class TroopAssistantActivity
       View localView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i);
       if (localView != null)
       {
-        localView = localView.findViewById(2131298666);
+        localView = localView.findViewById(2131298692);
         if ((localView != null) && (localView.getVisibility() == 0))
         {
           this.jdField_b_of_type_Boolean = false;
@@ -190,7 +190,7 @@ public class TroopAssistantActivity
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131298754));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131298780));
     View localView = getLayoutInflater().inflate(2130903113, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.b(localView);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter = new RecentAdapter(this, this.app, this.jdField_a_of_type_ComTencentWidgetXListView, this, 1);
@@ -206,12 +206,12 @@ public class TroopAssistantActivity
   
   private void h()
   {
-    setTitle(2131363859);
+    setTitle(2131363870);
     ImageView localImageView = this.p;
     localImageView.setVisibility(0);
-    localImageView.setImageResource(2130838038);
-    localImageView.setContentDescription(getString(2131364151));
-    localImageView.setOnClickListener(new blz(this));
+    localImageView.setImageResource(2130838057);
+    localImageView.setContentDescription(getString(2131364162));
+    localImageView.setOnClickListener(new bme(this));
   }
   
   private void i()
@@ -223,18 +223,18 @@ public class TroopAssistantActivity
       if (!this.c) {
         break label118;
       }
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getString(2131364148), 1);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getString(2131364159), 1);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getString(2131364149), 1);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getString(2131364150), 3);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d(getString(2131362794));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new bmc(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getString(2131364160), 1);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getString(2131364161), 3);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d(getString(2131362801));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new bmh(this));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
       return;
       label118:
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getString(2131364147), 1);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getString(2131364158), 1);
     }
   }
   
@@ -428,7 +428,7 @@ public class TroopAssistantActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2130903665);
+    setContentView(2130903674);
     getWindow().setBackgroundDrawable(null);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = DragFrameLayout.a(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this, false);
@@ -524,7 +524,7 @@ public class TroopAssistantActivity
           i = 0;
           QLog.i("TroopAssistantActivity", 2, i);
         }
-        runOnUiThread(new bls(this, paramMessage));
+        runOnUiThread(new blx(this, paramMessage));
         return true;
       }
       catch (Exception paramMessage) {}
@@ -544,7 +544,7 @@ public class TroopAssistantActivity
     {
       paramObservable = (MessageRecord)paramObject;
       if (!paramObservable.isSendFromLocal()) {
-        runOnUiThread(new bmb(this));
+        runOnUiThread(new bmg(this));
       }
       if ((!paramObservable.isSendFromLocal()) || (paramObservable.msgtype != -2002)) {}
     }

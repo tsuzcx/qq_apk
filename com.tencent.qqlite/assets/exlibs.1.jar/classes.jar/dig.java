@@ -1,34 +1,40 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileWeiYunImageExpandableListAdapter.ImageHolder;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileBaseExpandableListAdapter.CloudItemHolder;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
 
 public class dig
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public dig(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public dig(LocalFileBrowserActivity paramLocalFileBrowserActivity, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, int paramInt)
   {
-    Object localObject = paramView.getTag();
-    WeiYunFileInfo localWeiYunFileInfo = null;
-    int i = 0;
-    if ((localObject instanceof QfileCloudFileBaseExpandableListAdapter.CloudItemHolder))
+    switch (paramInt)
     {
-      paramView = (QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)paramView.getTag();
-      i = paramView.c;
-      localWeiYunFileInfo = (WeiYunFileInfo)paramView.a;
     }
     for (;;)
     {
-      this.a.a(localWeiYunFileInfo, i);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      if ((localObject instanceof QfileWeiYunImageExpandableListAdapter.ImageHolder))
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b != -1)
       {
-        localWeiYunFileInfo = (WeiYunFileInfo)((QfileWeiYunImageExpandableListAdapter.ImageHolder)paramView.getTag()).a;
-        i = -1;
+        paramView = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
+        if ((!FileUtil.a(paramView.d())) || (FileUtil.c(paramView.d())))
+        {
+          FileManagerUtil.d(paramView.d());
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
+          LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
+        }
+        else
+        {
+          FMToastUtil.a(2131361978);
+        }
       }
     }
   }

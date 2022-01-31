@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import biv;
+import bja;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +12,7 @@ import tencent.im.kqq.searchgroup.SearchGroup.GroupInfo;
 public class SearchTroopListActivity$StrangeTroopWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new biv();
+  public static final Parcelable.Creator CREATOR = new bja();
   private SearchGroup.GroupInfo a;
   
   public SearchTroopListActivity$StrangeTroopWrapper() {}

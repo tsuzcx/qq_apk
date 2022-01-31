@@ -1,27 +1,46 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
 public class dmd
-  implements ActionSheet.OnButtonClickListener
+  extends IClickListener_Ver51
 {
-  public dmd(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView, ActionSheet paramActionSheet) {}
+  public dmd(QfileLocalFileOtherTabView paramQfileLocalFileOtherTabView) {}
   
-  public void a(View paramView, int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (QfileBaseRecentFileTabView.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.a)) {}
-      QfileBaseRecentFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView);
-    }
+    this.a.a.a().c();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().l();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().m();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().n();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().o();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

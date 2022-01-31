@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.activity.MayKnowManActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
+import com.tencent.mobileqq.util.Utils;
 
-class avd
+public class avd
   implements Runnable
 {
-  avd(avc paramavc, List paramList) {}
+  public avd(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2, String paramString1, String paramString2) {}
   
   public void run()
   {
-    MayKnowManActivity.a(this.jdField_a_of_type_Avc.a.a, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Avc.a.a.app.a());
+    String str = Utils.b(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((str != null) && (str.length() > 0) && (LoginVerifyCodeActivity2.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity2) != null))
+    {
+      LoginVerifyCodeActivity2.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity2).setText(str);
+      LoginVerifyCodeActivity2.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity2).setEnabled(true);
+    }
   }
 }
 

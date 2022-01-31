@@ -22,9 +22,9 @@ import com.tencent.mobileqq.filemanager.util.ImplDataReportHandle_Ver51;
 import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 import com.tencent.qphone.base.util.QLog;
-import dfw;
-import dfx;
-import dfy;
+import dgy;
+import dgz;
+import dha;
 import java.util.ArrayList;
 
 public abstract class BaseFileAssistantActivity
@@ -34,7 +34,7 @@ public abstract class BaseFileAssistantActivity
   public int a;
   public RelativeLayout a;
   public TextView a;
-  FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dfy(this);
+  FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dha(this);
   private IClickListener_Ver51 jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51;
   private IReport_Ver51 jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIReport_Ver51;
   public QfileEditBottomBar a;
@@ -84,10 +84,10 @@ public abstract class BaseFileAssistantActivity
   private void o()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar = ((SendBottomBar)findViewById(2131298025));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar = ((SendBottomBar)findViewById(2131298030));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar = ((QfileEditBottomBar)findViewById(2131297969));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar = ((QfileEditBottomBar)findViewById(2131297974));
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setVisibility(8);
@@ -108,7 +108,7 @@ public abstract class BaseFileAssistantActivity
   private void p()
   {
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298035));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298040));
     }
     if ((g()) || (i())) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
@@ -133,9 +133,9 @@ public abstract class BaseFileAssistantActivity
   
   public void a(int paramInt)
   {
-    super.setContentViewNoTitle(2130903427);
-    ((RelativeLayout)findViewById(2131298033)).addView(((LayoutInflater)getSystemService("layout_inflater")).inflate(paramInt, null));
-    this.j = ((TextView)findViewById(2131297999));
+    super.setContentViewNoTitle(2130903432);
+    ((RelativeLayout)findViewById(2131298038)).addView(((LayoutInflater)getSystemService("layout_inflater")).inflate(paramInt, null));
+    this.j = ((TextView)findViewById(2131298004));
     h();
     l();
   }
@@ -340,7 +340,7 @@ public abstract class BaseFileAssistantActivity
   public void g()
   {
     this.jdField_c_of_type_Boolean = false;
-    new Handler().postDelayed(new dfw(this), 1500L);
+    new Handler().postDelayed(new dgy(this), 1500L);
   }
   
   public boolean g()
@@ -352,7 +352,7 @@ public abstract class BaseFileAssistantActivity
   {
     if (this.jdField_a_of_type_AndroidWidgetTextView == null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298034));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298039));
       i();
     }
     n();
@@ -400,7 +400,7 @@ public abstract class BaseFileAssistantActivity
     }
     for (;;)
     {
-      this.j.setOnClickListener(new dfx(this));
+      this.j.setOnClickListener(new dgz(this));
       return;
       this.j.setVisibility(0);
       this.j.setText(2131361939);
@@ -435,8 +435,8 @@ public abstract class BaseFileAssistantActivity
   
   public void setContentView(int paramInt)
   {
-    super.setContentView(2130903427);
-    ((RelativeLayout)findViewById(2131298033)).addView(((LayoutInflater)getSystemService("layout_inflater")).inflate(paramInt, null));
+    super.setContentView(2130903432);
+    ((RelativeLayout)findViewById(2131298038)).addView(((LayoutInflater)getSystemService("layout_inflater")).inflate(paramInt, null));
     h();
     l();
   }

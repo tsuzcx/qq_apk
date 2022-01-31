@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200b9" />
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207d3" />
+</layer-list>

@@ -1,30 +1,15 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.widget.XPanelContainer;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
 
 public class bzy
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public bzy(TroopChatPie paramTroopChatPie) {}
+  public bzy(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    TroopChatPie.a(this.a).setBackgroundResource(2130838388);
-    TroopChatPie.a(this.a).setBackgroundResource(2130838388);
-    this.a.e.setVisibility(8);
-    this.a.f.setVisibility(8);
-    this.a.c.setVisibility(0);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.e.setVisibility(0);
-    this.a.f.setVisibility(0);
+    paramView.setVisibility(8);
   }
 }
 

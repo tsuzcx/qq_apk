@@ -1,15 +1,21 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
-import java.util.TimerTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarOnlineFile.BaseActionBarOnlineFile;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
 
 public class dtc
-  extends TimerTask
+  implements View.OnClickListener
 {
-  public dtc(LocalMusicFileView paramLocalMusicFileView) {}
+  public dtc(BaseActionBarOnlineFile paramBaseActionBarOnlineFile) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LocalMusicFileView.a(this.a).runOnUiThread(new dtd(this));
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.a.h();
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.d();
   }
 }
 

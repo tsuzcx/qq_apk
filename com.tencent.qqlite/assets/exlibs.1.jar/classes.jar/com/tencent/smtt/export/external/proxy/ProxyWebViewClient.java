@@ -8,11 +8,13 @@ import com.tencent.smtt.export.external.interfaces.IX5WebViewBase;
 import com.tencent.smtt.export.external.interfaces.IX5WebViewClient;
 import com.tencent.smtt.export.external.interfaces.SslError;
 import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 
 public abstract class ProxyWebViewClient
   implements IX5WebViewClient
 {
+  private boolean mCompatibleOnPageStartedOrFinishedMethod = false;
   protected IX5WebViewClient mWebViewClient;
   
   public void doUpdateVisitedHistory(IX5WebViewBase paramIX5WebViewBase, String paramString, boolean paramBoolean)
@@ -29,6 +31,8 @@ public abstract class ProxyWebViewClient
     }
   }
   
+  public void onDetectedBlankScreen(IX5WebViewBase paramIX5WebViewBase, String paramString, int paramInt) {}
+  
   public void onFormResubmission(IX5WebViewBase paramIX5WebViewBase, Message paramMessage1, Message paramMessage2)
   {
     if (this.mWebViewClient != null) {
@@ -43,17 +47,21 @@ public abstract class ProxyWebViewClient
     }
   }
   
-  public void onPageFinished(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2, String paramString)
+  public void onPageFinished(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void onPageFinished(IX5WebViewBase paramIX5WebViewBase, String paramString)
   {
     if (this.mWebViewClient != null) {
-      this.mWebViewClient.onPageFinished(paramIX5WebViewBase, paramInt1, paramInt2, paramString);
+      this.mWebViewClient.onPageFinished(paramIX5WebViewBase, paramString);
     }
   }
   
-  public void onPageStarted(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onPageStarted(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap) {}
+  
+  public void onPageStarted(IX5WebViewBase paramIX5WebViewBase, String paramString, Bitmap paramBitmap)
   {
     if (this.mWebViewClient != null) {
-      this.mWebViewClient.onPageStarted(paramIX5WebViewBase, paramInt1, paramInt2, paramString, paramBitmap);
+      this.mWebViewClient.onPageStarted(paramIX5WebViewBase, paramString, paramBitmap);
     }
   }
   
@@ -109,6 +117,14 @@ public abstract class ProxyWebViewClient
   public void setWebViewClient(IX5WebViewClient paramIX5WebViewClient)
   {
     this.mWebViewClient = paramIX5WebViewClient;
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(IX5WebViewBase paramIX5WebViewBase, WebResourceRequest paramWebResourceRequest)
+  {
+    if (this.mWebViewClient != null) {
+      return this.mWebViewClient.shouldInterceptRequest(paramIX5WebViewBase, paramWebResourceRequest);
+    }
+    return null;
   }
   
   public WebResourceResponse shouldInterceptRequest(IX5WebViewBase paramIX5WebViewBase, String paramString)

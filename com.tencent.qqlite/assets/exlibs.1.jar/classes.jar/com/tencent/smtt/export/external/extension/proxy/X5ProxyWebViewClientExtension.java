@@ -8,7 +8,12 @@ public abstract class X5ProxyWebViewClientExtension
 {
   public X5ProxyWebViewClientExtension(WebViewWizardBase paramWebViewWizardBase)
   {
-    this.mWebViewClientExt = ((IX5WebViewClientExtension)paramWebViewWizardBase.newInstance(paramWebViewWizardBase.isDynamicMode(), "com.tencent.smtt.webkit.WebViewClientExtension"));
+    this.mWebViewClientExt = ((IX5WebViewClientExtension)paramWebViewWizardBase.newInstance("com.tencent.smtt.webkit.WebViewClientExtension"));
+  }
+  
+  public X5ProxyWebViewClientExtension(IX5WebViewClientExtension paramIX5WebViewClientExtension)
+  {
+    this.mWebViewClientExt = paramIX5WebViewClientExtension;
   }
 }
 

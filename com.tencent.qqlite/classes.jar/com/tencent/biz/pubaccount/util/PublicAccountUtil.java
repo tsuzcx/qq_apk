@@ -165,13 +165,13 @@ public class PublicAccountUtil
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt, long paramLong, boolean paramBoolean)
   {
-    ActionSheet localActionSheet = ActionSheet.a(paramContext, 2131624119);
-    localActionSheet.a(paramContext.getResources().getString(2131362491));
-    localActionSheet.a(2131363250, 3);
+    ActionSheet localActionSheet = ActionSheet.a(paramContext, 2131624120);
+    localActionSheet.a(paramContext.getResources().getString(2131362492));
+    localActionSheet.a(2131363260, 3);
     if (paramString.equals("2010741172")) {
-      localActionSheet.c(2131362454);
+      localActionSheet.c(2131362455);
     }
-    localActionSheet.d(2131362794);
+    localActionSheet.d(2131362801);
     localActionSheet.a(new om(paramQQAppInterface, paramString, paramInt, paramLong, paramBoolean, paramContext, localActionSheet));
     localActionSheet.show();
   }
@@ -333,7 +333,7 @@ public class PublicAccountUtil
             if (i != 0) {
               break;
             }
-            QQToast.a(paramContext.getApplicationContext(), paramContext.getResources().getString(2131362455), 0).a();
+            QQToast.a(paramContext.getApplicationContext(), paramContext.getResources().getString(2131362456), 0).a();
             return;
             i += 1;
             break label39;

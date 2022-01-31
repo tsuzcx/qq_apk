@@ -1,31 +1,31 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.struct.PushBanner;
-import com.tencent.mobileqq.widget.WorkSpaceView;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.widget.CharJumpAnimView;
 
 public class ezv
-  extends Handler
+  implements Runnable
 {
-  public ezv(WorkSpaceView paramWorkSpaceView) {}
+  public ezv(CharJumpAnimView paramCharJumpAnimView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    if (CharJumpAnimView.a(this.a) == 0L)
     {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      int i = ((PushBanner)this.a.getChildAt(this.a.a).getTag()).a;
-      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0)) {
-        this.a.a(this.a.a() + 1);
+      if (CharJumpAnimView.a(this.a) != null) {
+        CharJumpAnimView.a(this.a).onAnimationStart(null);
       }
-      WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
-      continue;
-      WorkSpaceView.a(this.a).removeMessages(0);
+      CharJumpAnimView.a(this.a, System.currentTimeMillis());
     }
+    this.a.a(CharJumpAnimView.a(this.a), 3500L);
+    this.a.invalidate();
+    if (this.a.a())
+    {
+      this.a.postDelayed(this, 20L);
+      return;
+    }
+    if (CharJumpAnimView.a(this.a) != null) {
+      CharJumpAnimView.a(this.a).onAnimationEnd(null);
+    }
+    CharJumpAnimView.a(this.a, null);
   }
 }
 

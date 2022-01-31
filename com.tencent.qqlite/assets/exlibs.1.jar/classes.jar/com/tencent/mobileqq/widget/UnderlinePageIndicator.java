@@ -17,8 +17,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import com.tencent.qqlite.R.styleable;
-import ezs;
-import ezt;
+import fby;
+import fbz;
 
 public class UnderlinePageIndicator
   extends View
@@ -55,7 +55,7 @@ public class UnderlinePageIndicator
   public UnderlinePageIndicator(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangRunnable = new ezs(this);
+    this.jdField_a_of_type_JavaLangRunnable = new fby(this);
     if (isInEditMode()) {
       return;
     }
@@ -63,7 +63,7 @@ public class UnderlinePageIndicator
     boolean bool = ((Resources)localObject).getBoolean(2131689472);
     int j = ((Resources)localObject).getInteger(2131558404);
     int k = ((Resources)localObject).getInteger(2131558405);
-    int m = ((Resources)localObject).getColor(2131427432);
+    int m = ((Resources)localObject).getColor(2131427435);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.y, paramInt, 0);
     setFades(paramAttributeSet.getBoolean(2, bool));
     setSelectedColor(paramAttributeSet.getColor(1, m));
@@ -334,7 +334,7 @@ public class UnderlinePageIndicator
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(this);
     invalidate();
-    post(new ezt(this));
+    post(new fbz(this));
   }
   
   public void setViewPager(ViewPager paramViewPager, int paramInt)

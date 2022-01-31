@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import aju;
-import ajv;
-import ajy;
 import ajz;
 import aka;
-import akb;
-import akc;
 import akd;
 import ake;
 import akf;
 import akg;
 import akh;
+import aki;
+import akj;
 import akk;
 import akl;
 import akm;
-import akn;
+import akp;
+import akq;
+import akr;
+import aks;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
@@ -54,7 +54,7 @@ public class DoodleActivity
   private float jdField_a_of_type_Float;
   public Uri a;
   public Handler a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ajz(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ake(this);
   public ImageView a;
   public LinearLayout a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -63,14 +63,14 @@ public class DoodleActivity
   public boolean a;
   public int[] a;
   public ImageView[] a;
-  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new aka(this);
+  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new akf(this);
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   public LinearLayout b;
   private String jdField_b_of_type_JavaLangString;
   protected boolean b;
   public int[] b;
   public ImageView[] b;
-  View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new akb(this);
+  View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new akg(this);
   private ImageView jdField_c_of_type_AndroidWidgetImageView;
   public LinearLayout c;
   private String jdField_c_of_type_JavaLangString;
@@ -96,7 +96,7 @@ public class DoodleActivity
     this.jdField_b_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { null, null, null, null, null, null };
     this.jdField_c_of_type_ArrayOfInt = new int[] { 15, 13, 11, 9, 7, 5 };
     this.jdField_d_of_type_ArrayOfInt = new int[] { -16777216, -2474221, -417499, -1191381, -9719783, -14582051 };
-    this.jdField_a_of_type_AndroidOsHandler = new akc(this);
+    this.jdField_a_of_type_AndroidOsHandler = new akh(this);
   }
   
   private long a(String paramString)
@@ -137,12 +137,12 @@ public class DoodleActivity
     {
       if (!FileUtils.e(paramIntent))
       {
-        Toast.makeText(this, getString(2131363411), 0).show();
+        Toast.makeText(this, getString(2131363422), 0).show();
         return;
       }
       if (!new File(paramIntent).exists())
       {
-        Toast.makeText(this, getString(2131363412), 0).show();
+        Toast.makeText(this, getString(2131363423), 0).show();
         return;
       }
     }
@@ -156,7 +156,7 @@ public class DoodleActivity
       this.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setPhotoFile(paramString);
       return;
     }
-    Toast.makeText(this, getString(2131363432), 0).show();
+    Toast.makeText(this, getString(2131363443), 0).show();
   }
   
   private void d()
@@ -170,8 +170,8 @@ public class DoodleActivity
       localActionSheet.c(arrayOfString[j]);
       j += 1;
     }
-    localActionSheet.d(2131362794);
-    localActionSheet.a(new akd(this, localActionSheet));
+    localActionSheet.d(2131362801);
+    localActionSheet.a(new aki(this, localActionSheet));
     localActionSheet.show();
   }
   
@@ -179,35 +179,35 @@ public class DoodleActivity
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_d_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
-    this.jdField_e_of_type_AndroidWidgetLinearLayout.setOnClickListener(new akf(this));
+    this.jdField_e_of_type_AndroidWidgetLinearLayout.setOnClickListener(new akk(this));
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.setHandler(this.jdField_a_of_type_AndroidOsHandler);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new akg(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new akl(this));
     this.jdField_f_of_type_AndroidWidgetImageView.setVisibility(8);
     this.g.setVisibility(8);
-    this.h.setOnClickListener(new akh(this));
-    this.i.setOnClickListener(new akk(this));
+    this.h.setOnClickListener(new akm(this));
+    this.i.setOnClickListener(new akp(this));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
   
   public void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_d_of_type_AndroidWidgetLinearLayout.setOnClickListener(new akl(this));
+    this.jdField_d_of_type_AndroidWidgetLinearLayout.setOnClickListener(new akq(this));
     this.jdField_e_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new akm(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new akr(this));
     this.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
     this.g.setVisibility(0);
-    this.jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(new akn(this));
-    this.h.setOnClickListener(new ajv(this));
-    this.i.setOnClickListener(new ajy(this));
+    this.jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(new aks(this));
+    this.h.setOnClickListener(new aka(this));
+    this.i.setOnClickListener(new akd(this));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
   
@@ -530,7 +530,7 @@ public class DoodleActivity
     this.g = ((ImageView)findViewById(2131297044));
     this.h = ((ImageView)findViewById(2131297021));
     this.i = ((ImageView)findViewById(2131297043));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296941));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296942));
     this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297032));
     this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297023));
     this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131297031));
@@ -553,11 +553,11 @@ public class DoodleActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.setPaintColor(this.jdField_d_of_type_ArrayOfInt[0]);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setPaintColor(this.jdField_d_of_type_ArrayOfInt[0]);
-    this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[0].setBackgroundResource(2130839136);
+    this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[0].setBackgroundResource(2130839170);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setPaintThickness(this.jdField_c_of_type_ArrayOfInt[2]);
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2].setBackgroundResource(2130839138);
-    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new aju(this));
-    this.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(new ake(this));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2].setBackgroundResource(2130839172);
+    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new ajz(this));
+    this.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(new akj(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setPhotoFile(this.jdField_d_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.invalidate();
     if (paramBundle != null)

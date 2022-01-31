@@ -1,62 +1,37 @@
-import android.app.Activity;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.SurfaceView;
-import android.view.WindowManager;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarWeiYunFile.BaseActionBarWeiyunFile;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.QLog;
 
 public class dtm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dtm(LocalVideoFileView paramLocalVideoFileView) {}
+  public dtm(BaseActionBarWeiyunFile paramBaseActionBarWeiyunFile) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (LocalVideoFileView.a(this.a) == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocalVideoFileView", 2, "initVarView delay run, but musicService is null");
-      }
-      return;
+    if ((FileManagerUtil.a()) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize > 5242880L)) {
+      FMDialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), 2131362018, 2131362017, new dtn(this));
     }
-    int j = LocalVideoFileView.a(this.a).a(LocalVideoFileView.a(this.a));
-    Object localObject = "/" + LocalVideoFileView.a(this.a, j);
-    LocalVideoFileView.b(this.a).setText((CharSequence)localObject);
-    if (LocalVideoFileView.a(this.a).b(LocalVideoFileView.a(this.a))) {}
-    for (int i = LocalVideoFileView.a(this.a).b();; i = LocalVideoFileView.a(this.a))
+    while (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g())
     {
-      if (LocalVideoFileView.a(this.a).getBackground() == null)
-      {
-        localObject = new DisplayMetrics();
-        LocalVideoFileView.c(this.a).getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-        int k = ((DisplayMetrics)localObject).widthPixels;
-        int m = ((DisplayMetrics)localObject).heightPixels;
-        boolean bool2 = true;
-        boolean bool1 = bool2;
-        if (!LocalVideoFileView.a(this.a).a())
-        {
-          bool1 = bool2;
-          if (LocalVideoFileView.a(this.a).b(LocalVideoFileView.a(this.a)))
-          {
-            bool1 = bool2;
-            if (LocalVideoFileView.a(this.a) != 0) {
-              bool1 = false;
-            }
-          }
-        }
-        FileManagerUtil.a(LocalVideoFileView.a(this.a), bool1, k, m, LocalVideoFileView.a(this.a) * 1000, new dtn(this));
-      }
-      localObject = LocalVideoFileView.a(this.a, i);
-      LocalVideoFileView.a(this.a).setText((CharSequence)localObject);
-      LocalVideoFileView.a(this.a).setMax(j);
-      LocalVideoFileView.a(this.a).setProgress(i);
+      FileManagerReporter.a("0X8004BB6");
       return;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getId() == -1L) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      }
+      this.a.h();
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.d();
     }
+    FileManagerReporter.a("0X8004BCC");
   }
 }
 

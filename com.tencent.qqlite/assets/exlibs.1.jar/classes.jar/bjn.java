@@ -1,15 +1,48 @@
-import android.view.View;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
 import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
+import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopObserver;
+import java.util.ArrayList;
 
 public class bjn
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends TroopObserver
 {
-  public View a;
-  public TextView a;
-  public TroopMemberListSlideItem a;
-  public View b;
+  public bjn(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    StringBuilder localStringBuilder;
+    if ((paramBoolean) && (paramString.equals(SetTroopAdminsActivity.a(this.a))) && (paramInt > 0))
+    {
+      SetTroopAdminsActivity.a(this.a, paramInt);
+      paramString = SetTroopAdminsActivity.c(this.a);
+      localStringBuilder = new StringBuilder(this.a.getString(2131362851)).append("(");
+      if (SetTroopAdminsActivity.a(this.a).size() <= 0) {
+        break label116;
+      }
+    }
+    label116:
+    for (int i = SetTroopAdminsActivity.a(this.a).size();; i = 0)
+    {
+      paramString.setText(i + "/" + paramInt + ")");
+      return;
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.getSharedPreferences("last_update_time" + this.a.app.a(), 0).edit().putLong("key_last_update_time" + SetTroopAdminsActivity.a(this.a), System.currentTimeMillis()).commit();
+      this.a.a.removeMessages(2);
+      ArrayList localArrayList = this.a.a();
+      this.a.a.sendMessage(this.a.a.obtainMessage(1, localArrayList));
+    }
+    this.a.a.sendMessage(this.a.a.obtainMessage(3));
+  }
 }
 
 

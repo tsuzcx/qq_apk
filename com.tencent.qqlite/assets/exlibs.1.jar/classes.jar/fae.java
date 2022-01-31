@@ -1,119 +1,52 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.content.Context;
+import android.graphics.PointF;
 import android.os.SystemClock;
-import android.widget.Button;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityActivity.AccountInfo;
-import com.tencent.open.agent.util.AuthorityUtil;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.cgireport.ReportManager;
-import com.tencent.open.business.viareport.OpenSdkStatic;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
+import com.tencent.widget.MenuPopupDialog;
 
 public class fae
-  implements BusinessObserver
+  implements View.OnLongClickListener, View.OnTouchListener
 {
-  public fae(AuthorityActivity paramAuthorityActivity) {}
+  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private fae(ContextMenuTextView paramContextMenuTextView) {}
+  
+  protected void a(View paramView)
   {
-    String str = paramBundle.getString("ssoAccount");
-    if (!this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a.equals(str)) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    paramInt = paramBundle.getInt("code");
-    if (!this.a.i) {}
-    for (str = "g_a_a_l_emp";; str = "g_a_a_l")
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-1);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-7829368);
+    if ((ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView) != null) && (ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).isShowing()))
     {
-      SdkAuthorize.GetAuthApiListResponse localGetAuthApiListResponse;
-      if (paramBoolean)
-      {
-        this.a.B = 0;
-        localGetAuthApiListResponse = new SdkAuthorize.GetAuthApiListResponse();
-      }
-      for (;;)
-      {
-        try
-        {
-          localObject = paramBundle.getByteArray("data");
-          paramBundle = (Bundle)localObject;
-          if (!this.a.i) {
-            paramBundle = this.a.b((byte[])localObject);
-          }
-          if (paramBundle != null)
-          {
-            l1 = paramBundle.length;
-            paramBundle = (SdkAuthorize.GetAuthApiListResponse)localGetAuthApiListResponse.mergeFrom(paramBundle);
-            if (paramBundle != null)
-            {
-              localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-              ((Message)localObject).what = 0;
-              ((Message)localObject).obj = paramBundle;
-              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-              i = paramBundle.toByteArray().length;
-              l2 = i;
-            }
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          long l1;
-          int i;
-          long l2;
-          Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-          ((Message)localObject).what = 6;
-          ((Message)localObject).arg1 = 3001;
-          ((Message)localObject).obj = this.a.getResources().getString(2131363828);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-          localObject = (String)((Message)localObject).obj;
-          QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + AuthorityUtil.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a) + " | ret : success" + " | code : " + paramInt, paramBundle);
-          continue;
-        }
-        try
-        {
-          i = paramBundle.ret.get();
-          ReportManager.a().a("agent_query_authority", this.a.g, l1, l2, 0, Long.parseLong(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a), "1000069", "ret: " + i);
-          OpenSdkStatic.a().a(0, "LOGIN_GETAUTHLIST_AGENT", this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a, AuthorityActivity.A, null, Long.valueOf(SystemClock.elapsedRealtime()), i, 1, null);
-          QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + AuthorityUtil.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a) + " | ret : success" + " | code : " + paramInt);
-          this.a.h = SystemClock.elapsedRealtime();
-          LogUtility.c("Authority_TimeCost", "<TimeStamp> query authority cost : " + (this.a.h - this.a.g));
-          return;
-        }
-        catch (Exception paramBundle)
-        {
-          LogUtility.c("AuthorityActivity", "-->report exception cmd: agent_query_authority", paramBundle);
-          continue;
-        }
-        QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + AuthorityUtil.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a) + " | ret : failed" + " | code : " + paramInt);
-        this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = null;
-        if ((paramInt == 1002) && (this.a.B < 2))
-        {
-          this.a.k();
-          paramBundle = this.a;
-          paramBundle.B += 1;
-          return;
-        }
-        paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-        paramBundle.what = 6;
-        paramBundle.arg1 = 3001;
-        paramBundle.obj = this.a.getResources().getString(2131363828);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
-        paramBundle = this.a.getResources().getString(2131363828);
-        try
-        {
-          ReportManager.a().a("agent_query_authority", this.a.g, 0L, 0L, paramInt, Long.parseLong(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a), "1000069", paramBundle);
-          OpenSdkStatic.a().a(1, "LOGIN_GETAUTHLIST_AGENT", this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a, AuthorityActivity.A, null, Long.valueOf(SystemClock.elapsedRealtime()), paramInt, 1, paramBundle);
-        }
-        catch (Exception paramBundle) {}
-      }
+      a(paramView);
+      return false;
     }
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131298963, ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).getString(2131363575));
+    ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView, MenuPopupDialog.a(paramView, ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).getString(2131363287), localQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.a, new fad(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView)));
+    a(paramView);
+    return true;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
+    }
+    return false;
   }
 }
 

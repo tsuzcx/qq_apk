@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.model.PhoneContactManager;
 
-public class cho
-  implements DialogInterface.OnKeyListener
+class cho
+  implements Runnable
 {
-  public cho(DialogBaseActivity paramDialogBaseActivity) {}
+  cho(chn paramchn) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    return paramInt == 4;
+    this.a.a.a.a.f();
   }
 }
 

@@ -1,3 +1,4 @@
+import android.content.res.Resources;
 import android.view.Window;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -7,14 +8,19 @@ import com.tencent.mobileqq.widget.QQToast;
 public class zv
   implements Runnable
 {
-  public zv(BaseChatPie paramBaseChatPie) {}
+  public zv(BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
   
   public void run()
   {
-    this.a.c(true);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().clearFlags(128);
-    this.a.i(0);
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2131363139, 1).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c(true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().clearFlags(128);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.h(0);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.K();
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2131363149, 1).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDimensionPixelSize(2131492887));
   }
 }
 

@@ -1,13 +1,23 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class axl
-  implements Runnable
+public class axl
+  implements View.OnClickListener
 {
-  axl(axk paramaxk) {}
+  public axl(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    NearbyPeopleProfileActivity.f(this.a.a);
+    if ((NearbyPeopleProfileActivity.a(this.a) != null) && (!this.a.isFinishing()))
+    {
+      NearbyPeopleProfileActivity.a(this.a).dismiss();
+      NearbyPeopleProfileActivity.a(this.a, null);
+    }
+    NearbyPeopleProfileActivity.d(this.a);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004824", "0X8004824", 0, 0, "", "", "", "");
   }
 }
 

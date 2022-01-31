@@ -1,24 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ayf
-  implements ActionSheet.OnButtonClickListener
+class ayf
+  implements DialogInterface.OnClickListener
 {
-  public ayf(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, ays paramays, ActionSheet paramActionSheet) {}
+  ayf(ayb paramayb, QQCustomDialog paramQQCustomDialog) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a();
-      return;
-      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity, this.jdField_a_of_type_Ays);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

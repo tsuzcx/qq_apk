@@ -1,14 +1,51 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class bar
-  implements Runnable
+  extends LBSObserver
 {
-  public bar(PortraitImageview paramPortraitImageview, Bitmap paramBitmap) {}
+  public bar(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
+    }
+    if (paramBoolean1)
+    {
+      if (paramInt != 1) {
+        break label67;
+      }
+      this.a.a(paramBoolean2);
+    }
+    label67:
+    while (paramInt != 64) {
+      return;
+    }
+    this.a.b(paramBoolean2);
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
+    }
+    if (!paramBoolean1) {
+      this.a.a(2131364034, 1);
+    }
+    this.a.b(paramBoolean2);
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateSetPeopleVisible| isSuc = " + paramBoolean1 + ", isVisible = " + paramBoolean2);
+    }
+    if (!paramBoolean1) {
+      this.a.a(2131364034, 1);
+    }
+    this.a.a(paramBoolean2);
   }
 }
 

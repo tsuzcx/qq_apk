@@ -1,13 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
-public class bga
-  implements DialogInterface.OnClickListener
+class bga
+  implements Runnable
 {
-  public bga(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  bga(bfz parambfz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    this.a.a.app.a().k();
+    this.a.a.app.a().g();
+    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
+    Handler localHandler = this.a.a.app.a(Conversation.class);
+    if (localHandler != null) {
+      localHandler.sendEmptyMessage(1009);
+    }
+  }
 }
 
 

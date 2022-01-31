@@ -1,46 +1,56 @@
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import cooperation.qqfav.QfavHelper;
+import cooperation.qqfav.QfavReport;
 
 public class amv
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  public amv(ForwardOperations paramForwardOperations) {}
+  public amv(ForwardOperations paramForwardOperations, int paramInt1, String paramString1, int paramInt2, String paramString2) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!paramBoolean) {}
-    for (;;)
+    switch (paramInt)
     {
+    default: 
       return;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-          localGetAppinfoResponse.mergeFrom(paramBundle);
-          if ((localGetAppinfoResponse.has()) && (localGetAppinfoResponse.ret.get() == 0))
-          {
-            try
-            {
-              this.a.a = localGetAppinfoResponse;
-              if (QLog.isColorLevel()) {
-                QLog.d("ForwardOperations", 2, "get appinfo time = " + (System.currentTimeMillis() - this.a.b));
-              }
-              return;
-            }
-            finally {}
-            if (!QLog.isColorLevel()) {}
-          }
-        }
+    case -2: 
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.d) {
+        ForwardOperations.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_Long);
       }
-      catch (Exception paramBundle) {}
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity.setResult(1);
+        this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity.finish();
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i("sdk_share", 2, "back call");
+        return;
+        ForwardOperations.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity, false, "shareToQQ", this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_Long);
+      }
     }
-    QLog.d("ForwardOperations", 2, paramBundle.getMessage());
+    if (QLog.isColorLevel()) {
+      QLog.i("sdk_share", 2, "send call");
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.b();
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      QfavHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), new Intent().putExtra("is_share_flag", true), -1);
+      QfavReport.c(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(0, "", "");
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
   }
 }
 

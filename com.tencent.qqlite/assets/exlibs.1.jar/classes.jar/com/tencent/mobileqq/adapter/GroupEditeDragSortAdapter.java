@@ -24,11 +24,11 @@ public class GroupEditeDragSortAdapter
   {
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = View.inflate(this.a, 2130903487, null);
+      paramViewGroup = View.inflate(this.a, 2130903495, null);
     }
     paramViewGroup.setVisibility(0);
-    paramViewGroup.findViewById(2131296441).setVisibility(8);
-    paramView = (TextView)paramViewGroup.findViewById(2131298194);
+    paramViewGroup.findViewById(2131296444).setVisibility(8);
+    paramView = (TextView)paramViewGroup.findViewById(2131298216);
     Groups localGroups = (Groups)this.mData.get(paramInt);
     paramView.setText(localGroups.group_name);
     paramView.setTag(localGroups);

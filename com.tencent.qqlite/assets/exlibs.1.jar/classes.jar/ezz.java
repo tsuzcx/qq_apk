@@ -1,30 +1,14 @@
-import android.content.res.Resources;
-import android.graphics.Xfermode;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.DrawableContainer;
-import com.tencent.mobileqq.widget.DrawableContainer.ContainerState;
-import com.tencent.mobileqq.widget.XfermodeDrawable;
+import com.tencent.mobileqq.widget.ContainerView;
+import com.tencent.widget.ScrollView;
 
 public class ezz
-  extends DrawableContainer.ContainerState
+  implements Runnable
 {
-  public Xfermode a;
+  public ezz(ContainerView paramContainerView, int paramInt) {}
   
-  public ezz(Drawable paramDrawable, DrawableContainer paramDrawableContainer, Xfermode paramXfermode)
+  public void run()
   {
-    super(paramDrawable, paramDrawableContainer);
-    this.a = paramXfermode;
-  }
-  
-  ezz(ezz paramezz, DrawableContainer paramDrawableContainer, Resources paramResources)
-  {
-    super(paramezz, paramDrawableContainer, paramResources);
-    this.a = paramezz.a;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new XfermodeDrawable(this, null, null);
+    ContainerView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView).b(0, this.jdField_a_of_type_Int);
   }
 }
 

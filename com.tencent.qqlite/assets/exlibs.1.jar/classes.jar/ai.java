@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 import com.dataline.activities.LiteActivity;
 
 public class ai
-  implements DialogInterface.OnDismissListener
+  implements View.OnLongClickListener
 {
   public ai(LiteActivity paramLiteActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onLongClick(View paramView)
   {
-    this.a.a = null;
+    return this.a.a(paramView);
   }
 }
 

@@ -1,19 +1,28 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class avx
-  implements Runnable
+  extends FriendListObserver
 {
-  public avx(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  public avx(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public void run()
+  protected void a(String paramString, byte paramByte1, byte paramByte2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.a.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.b.setText(this.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.c.setText(this.c);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.d.setText(this.d);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.e.setText(this.e);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.f.setText(this.f);
+    if (this.a.isFinishing()) {
+      return;
+    }
+    MoveToGroupActivity.a(this.a);
+    if (paramString == null) {
+      QQToast.a(this.a, this.a.getString(2131363433), 0).b(this.a.getTitleBarHeight());
+    }
+    for (;;)
+    {
+      MoveToGroupActivity.b(this.a);
+      this.a.removeObserver(MoveToGroupActivity.a(this.a));
+      return;
+      QQToast.a(this.a, 2, this.a.getString(2131363431), 0).b(this.a.getTitleBarHeight());
+    }
   }
 }
 

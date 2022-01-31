@@ -1,21 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.PATextItemBuilder;
 
 public class bxg
-  implements AnimationTextView.OnDoubleClick
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public bxg(TextItemBuilder paramTextItemBuilder) {}
+  public int a;
+  public Object a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(View paramView)
-  {
-    if (TextItemBuilder.b(this.a)) {
-      return;
-    }
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (ChatActivity)this.a.jdField_a_of_type_AndroidContentContext);
-  }
+  public bxg(PATextItemBuilder paramPATextItemBuilder) {}
 }
 
 

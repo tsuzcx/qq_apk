@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import bpk;
+import bps;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,14 +22,14 @@ public class TroopPrivilegeActivity$PrivilegeAdapter
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      bpk localbpk = (bpk)localIterator.next();
-      if ((localbpk != null) && (localbpk.jdField_a_of_type_JavaLangString != null) && (localbpk.jdField_a_of_type_JavaLangString.equals(paramString)))
+      bps localbps = (bps)localIterator.next();
+      if ((localbps != null) && (localbps.jdField_a_of_type_JavaLangString != null) && (localbps.jdField_a_of_type_JavaLangString.equals(paramString)))
       {
-        localbpk.jdField_a_of_type_Int = paramInt;
+        localbps.jdField_a_of_type_Int = paramInt;
         return;
       }
     }
-    this.jdField_a_of_type_JavaUtilList.add(new bpk(this, paramString, paramInt));
+    this.jdField_a_of_type_JavaUtilList.add(new bps(this, paramString, paramInt));
   }
   
   public int getCount()
@@ -63,21 +63,21 @@ public class TroopPrivilegeActivity$PrivilegeAdapter
     }
     else
     {
-      localView = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity.getSystemService("layout_inflater")).inflate(2130903332, paramViewGroup, false);
+      localView = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity.getSystemService("layout_inflater")).inflate(2130903335, paramViewGroup, false);
       localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity);
     }
-    paramView = (TextView)localView.findViewById(2131296455);
-    paramViewGroup = (TextView)localView.findViewById(2131297743);
-    bpk localbpk = (bpk)getItem(paramInt);
-    paramView.setText(localbpk.jdField_a_of_type_JavaLangString);
-    paramViewGroup.setText(this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity.a(localbpk.jdField_a_of_type_Int));
-    localView.setTag(localbpk);
+    paramView = (TextView)localView.findViewById(2131296458);
+    paramViewGroup = (TextView)localView.findViewById(2131297747);
+    bps localbps = (bps)getItem(paramInt);
+    paramView.setText(localbps.jdField_a_of_type_JavaLangString);
+    paramViewGroup.setText(this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity.a(localbps.jdField_a_of_type_Int));
+    localView.setTag(localbps);
     if ((paramInt > 1) || (paramInt == getCount() - 1))
     {
-      localView.setBackgroundResource(2130837926);
+      localView.setBackgroundResource(2130837944);
       return localView;
     }
-    localView.setBackgroundResource(2130837927);
+    localView.setBackgroundResource(2130837945);
     return localView;
   }
 }

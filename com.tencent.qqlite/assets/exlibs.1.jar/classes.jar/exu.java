@@ -1,56 +1,58 @@
-import android.app.Activity;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.mobileqq.widget.ContainerView.SelectableTextView;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.os.Build;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.utils.QQLSSensor;
+import com.tencent.mobileqq.utils.QQLSSensor.ProximitySensorChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class exu
-  implements ActionMode.Callback
+  implements SensorEventListener
 {
-  exu(ContainerView.SelectableTextView paramSelectableTextView, ContainerView paramContainerView) {}
+  public exu(QQLSSensor paramQQLSSensor) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMenuItem.getItemId() == 2131298931)
-    {
-      paramActionMode = this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getContext();
-      bool1 = bool2;
-      if (paramActionMode != null)
-      {
-        bool1 = bool2;
-        if ((paramActionMode instanceof TextPreviewActivity))
-        {
-          paramMenuItem = (TextPreviewActivity)paramActionMode;
-          CharSequence localCharSequence = this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getText().subSequence(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getSelectionStart(), this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getSelectionEnd());
-          if (localCharSequence != null) {
-            TextPreviewActivity.a(localCharSequence.toString(), (Activity)paramActionMode, paramMenuItem.app, paramMenuItem.g, paramMenuItem.jdField_a_of_type_Int, TextPreviewActivity.jdField_a_of_type_Long, false);
-          }
-          ReportController.b(paramMenuItem.app, "CliOper", "", "", "0X8004065", "0X8004065", 0, 0, "", "", "", "");
-          bool1 = true;
-        }
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QQLSActivity", 4, "QQLSSensor onSensorChanged" + paramSensorEvent.values[0]);
     }
-    return bool1;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramActionMode.getMenuInflater().inflate(2131755008, paramMenu);
-    return true;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return true;
+    if (QQLSSensor.a(this.a) == null) {
+      return;
+    }
+    if (AIOUtils.b())
+    {
+      this.a.a = false;
+      return;
+    }
+    if (paramSensorEvent.values[0] < QQLSSensor.a(this.a)) {
+      QQLSSensor.a(this.a, true);
+    }
+    for (;;)
+    {
+      paramSensorEvent = Build.MODEL;
+      if (!AIOUtils.a()) {
+        break;
+      }
+      if (QQLSSensor.a(this.a).hasMessages(1)) {
+        QQLSSensor.a(this.a).removeMessages(1);
+      }
+      QQLSSensor.a(this.a).sendMessageDelayed(QQLSSensor.a(this.a).obtainMessage(1), 150L);
+      return;
+      QQLSSensor.a(this.a, false);
+    }
+    if ((paramSensorEvent.equalsIgnoreCase("mi 3c")) || (paramSensorEvent.equalsIgnoreCase("K-Touch W619")) || (paramSensorEvent.equalsIgnoreCase("mi 3w")))
+    {
+      if (QQLSSensor.a(this.a).hasMessages(1)) {
+        QQLSSensor.a(this.a).removeMessages(1);
+      }
+      QQLSSensor.a(this.a).sendMessageDelayed(QQLSSensor.a(this.a).obtainMessage(1), 250L);
+      return;
+    }
+    QQLSSensor.a(this.a).a(QQLSSensor.a(this.a));
   }
 }
 

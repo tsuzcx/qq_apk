@@ -290,7 +290,7 @@ public class TroopManager
       {
         do
         {
-          return 2130839436;
+          return 2130839501;
           TroopMemberInfo localTroopMemberInfo = a(paramString1, paramString2);
           if ((localTroopMemberInfo == null) || (localTroopMemberInfo.level <= 0)) {
             break;
@@ -298,16 +298,16 @@ public class TroopManager
           paramString1 = a(paramString1);
         } while (paramString1 == null);
         if (paramString1.isTroopOwner(paramString2)) {
-          return 2130839438;
+          return 2130839503;
         }
         if (paramString1.isTroopAdmin(paramString2)) {
-          return 2130839437;
+          return 2130839502;
         }
       } while (!paramBoolean);
-      return 2130838404;
+      return 2130838423;
     } while (!QLog.isColorLevel());
     QLog.d("Q.contacttab.troop", 2, "getTroopMemberLevel returns null");
-    return 2130839436;
+    return 2130839501;
   }
   
   public long a(String paramString1, String paramString2)
@@ -829,7 +829,7 @@ public class TroopManager
     if (TextUtils.isEmpty(paramString2)) {
       if ((1L & paramLong2) == 1L) {
         if ((1L & paramLong3) == 1L) {
-          paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362368);
+          paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362369);
         }
       }
     }
@@ -841,13 +841,13 @@ public class TroopManager
       localMessageForGrayTips.isread = true;
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageForGrayTips, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
       return;
-      paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362367);
+      paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362368);
       continue;
       if ((0x2 & paramLong2) == 2L) {
         if ((0x2 & paramLong3) == 2L) {
-          paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362366);
+          paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362367);
         } else {
-          paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362365);
+          paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362366);
         }
       }
     }

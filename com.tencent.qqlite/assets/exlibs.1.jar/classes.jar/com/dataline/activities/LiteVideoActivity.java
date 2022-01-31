@@ -11,11 +11,11 @@ import android.view.WindowManager;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.TextView;
+import bl;
+import bm;
+import bn;
 import bo;
 import bp;
-import bq;
-import br;
-import bs;
 import com.dataline.util.file.FileUtil;
 import com.dataline.util.file.ImageInfo;
 import com.dataline.util.file.SendInfo;
@@ -34,13 +34,13 @@ public class LiteVideoActivity
   extends IphoneTitleBarActivity
 {
   public static String a;
-  private static Comparator jdField_a_of_type_JavaUtilComparator = new bs();
+  private static Comparator jdField_a_of_type_JavaUtilComparator = new bp();
   public static final String b = "NEED_WARNING_WHEN_OVER_5M_IN_G234";
   private static int jdField_c_of_type_Int = 0;
   private static final int e = 4;
   int jdField_a_of_type_Int;
   private DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = null;
-  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new br(this);
+  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new bo(this);
   private GridView jdField_a_of_type_AndroidWidgetGridView = null;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private LiteVideoActivity.ImageAdapter jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity$ImageAdapter = null;
@@ -130,13 +130,13 @@ public class LiteVideoActivity
   {
     setTitle(2131361838);
     if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296891));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296892));
     }
     this.jdField_b_of_type_AndroidWidgetTextView = this.jdField_h_of_type_AndroidWidgetTextView;
     if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new bo(this));
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new bl(this));
     }
-    a(2131361843, new bp(this));
+    a(2131361843, new bm(this));
     if (b() == 0)
     {
       c(false);
@@ -158,7 +158,7 @@ public class LiteVideoActivity
   
   private void f()
   {
-    FMDialogUtil.a(getActivity(), 2131362018, 2131362016, new bq(this));
+    FMDialogUtil.a(getActivity(), 2131362018, 2131362016, new bn(this));
   }
   
   private boolean f()
@@ -176,7 +176,7 @@ public class LiteVideoActivity
     QQToast localQQToast = new QQToast(this);
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-    localQQToast.a(2130837962);
+    localQQToast.a(2130837981);
     localQQToast.c(2000);
     localQQToast.b(2131361844);
     localQQToast.b(localDisplayMetrics.heightPixels / 2);
@@ -185,7 +185,7 @@ public class LiteVideoActivity
   private void h()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130837962);
+    localQQToast.a(2130837981);
     localQQToast.c(2000);
     localQQToast.b(2131361846);
     localQQToast.b(this.jdField_a_of_type_AndroidUtilDisplayMetrics.heightPixels / 2);

@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.UpgradeTipsDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
 
 public class dbg
-  implements View.OnClickListener
+  implements Runnable
 {
-  public dbg(LocationSelectActivity paramLocationSelectActivity) {}
+  public dbg(UpgradeController paramUpgradeController, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a();
+    new UpgradeTipsDialog(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, UpgradeController.a(this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeController), null);
   }
 }
 

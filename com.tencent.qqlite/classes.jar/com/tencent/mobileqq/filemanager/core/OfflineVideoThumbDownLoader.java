@@ -7,7 +7,7 @@ import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.qphone.base.util.QLog;
-import dnz;
+import dpb;
 
 public class OfflineVideoThumbDownLoader
   extends BaseThumbDownloader
@@ -18,7 +18,7 @@ public class OfflineVideoThumbDownLoader
   public OfflineVideoThumbDownLoader(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dnz(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dpb(this);
     paramQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
   }
   

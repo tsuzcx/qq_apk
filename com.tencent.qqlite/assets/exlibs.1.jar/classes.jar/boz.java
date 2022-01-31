@@ -1,52 +1,51 @@
-import android.os.Handler;
-import android.os.Message;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.SearchResultAdapter;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class boz
-  implements Runnable
+  implements View.OnClickListener
 {
   public boz(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    for (;;)
+    Object localObject = paramView.getTag();
+    if ((localObject == null) || (!(localObject instanceof Integer))) {}
+    int i;
+    do
     {
-      Object localObject3;
-      try
-      {
-        localObject3 = this.a.app.a().createEntityManager();
-        if (localObject3 == null) {
-          break label168;
-        }
-        Object localObject1 = ((EntityManager)localObject3).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.a.i }, null, null, null, null);
-        ((EntityManager)localObject3).a();
-        if (localObject1 == null) {
-          break label165;
-        }
-        localObject3 = new ArrayList(((List)localObject1).size());
-        localObject1 = ((List)localObject1).iterator();
-        if (((Iterator)localObject1).hasNext())
-        {
-          ((ArrayList)localObject3).add(((TroopMemberInfo)((Iterator)localObject1).next()).memberuin);
-          continue;
-        }
-        localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-      }
-      finally {}
-      localMessage.what = 8;
-      localMessage.obj = new Object[] { Boolean.valueOf(this.a.jdField_a_of_type_Boolean), localObject3 };
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      label165:
       return;
-      label168:
-      Message localMessage = null;
+      i = ((Integer)localObject).intValue();
+    } while (i < 0);
+    paramView = paramView.findViewById(2131298911);
+    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof Boolean))) {}
+    for (boolean bool = ((Boolean)paramView.getTag()).booleanValue();; bool = false)
+    {
+      if (bool)
+      {
+        paramView = (TroopMemberListActivity.ATroopMember)this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$SearchResultAdapter.getItem(i);
+        this.a.a(paramView);
+        if ((this.a.b != null) && (this.a.b.isShowing())) {
+          this.a.b.dismiss();
+        }
+        if (this.a.t != 10) {
+          break;
+        }
+        ReportController.b(this.a.app, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
+        return;
+      }
+      paramView = (TroopMemberListActivity.ATroopMember)this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.getItem(i);
+      this.a.a(paramView);
+      if (this.a.t != 10) {
+        break;
+      }
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
+      return;
     }
   }
 }

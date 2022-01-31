@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 
 public class bts
   implements Runnable
 {
-  public bts(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public bts(CommonRecordSoundPanel paramCommonRecordSoundPanel, String paramString) {}
   
   public void run()
   {
-    this.a.i();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.c(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.d();
   }
 }
 

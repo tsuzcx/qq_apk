@@ -1,28 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
 import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.DropdownView;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
 
-class atx
+public class atx
   implements View.OnClickListener
 {
-  atx(atv paramatv, int paramInt) {}
+  public atx(LoginActivity paramLoginActivity) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Atv.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Atv.a.b);
-    paramView = (SimpleAccount)this.jdField_a_of_type_Atv.a.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
-    LoginActivity.a(this.jdField_a_of_type_Atv.a, paramView);
-    this.jdField_a_of_type_Atv.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Atv.a.b);
-    this.jdField_a_of_type_Atv.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.clearFocus();
-    this.jdField_a_of_type_Atv.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.clearFocus();
-    this.jdField_a_of_type_Atv.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setClearButtonVisible(false);
-    this.jdField_a_of_type_Atv.a.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView.a().setVisibility(8);
+    this.a.a();
   }
 }
 

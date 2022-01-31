@@ -12,21 +12,6 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class cmd0x383$ApplyGetFileListRspBody$FileInfo
   extends MessageMicro
 {
-  public static final int BYTES_MD5_FIELD_NUMBER = 13;
-  public static final int BYTES_SHA3_FIELD_NUMBER = 12;
-  public static final int BYTES_SHA_FIELD_NUMBER = 11;
-  public static final int STR_FILE_NAME_FIELD_NUMBER = 2;
-  public static final int STR_FILE_PATH_FIELD_NUMBER = 1;
-  public static final int STR_LOCAL_PATH_FIELD_NUMBER = 14;
-  public static final int STR_UPLOADER_NAME_FIELD_NUMBER = 25;
-  public static final int UINT32_BUS_ID_FIELD_NUMBER = 4;
-  public static final int UINT32_DEAD_TIME_FIELD_NUMBER = 8;
-  public static final int UINT32_DOWNLOAD_TIMES_FIELD_NUMBER = 10;
-  public static final int UINT32_MODIFY_TIME_FIELD_NUMBER = 9;
-  public static final int UINT32_UPLOAD_TIME_FIELD_NUMBER = 7;
-  public static final int UINT32_UPLOAD_UIN_FIELD_NUMBER = 5;
-  public static final int UINT64_FILE_SIZE_FIELD_NUMBER = 3;
-  public static final int UINT64_UPLOADED_SIZE_FIELD_NUMBER = 6;
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_sha = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,8 +1,16 @@
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class cjs
+  implements DialogInterface.OnDismissListener
 {
-  URLImageView a;
+  public cjs(CameraPreviewActivity paramCameraPreviewActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a = null;
+  }
 }
 
 

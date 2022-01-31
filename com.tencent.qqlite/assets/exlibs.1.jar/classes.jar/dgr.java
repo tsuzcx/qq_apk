@@ -1,19 +1,16 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emoticonview.RecommendEmoticonViewBinder;
+import com.tencent.mobileqq.vas.ClubContentJsonTask.PromotionEmoticonPkg;
 
-class dgr
-  implements Runnable
+public class dgr
+  implements View.OnClickListener
 {
-  dgr(dgn paramdgn) {}
+  public dgr(RecommendEmoticonViewBinder paramRecommendEmoticonViewBinder, ClubContentJsonTask.PromotionEmoticonPkg paramPromotionEmoticonPkg) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a.a.getVisibility() == 0)
-    {
-      this.a.a.f();
-      return;
-    }
-    this.a.a.g();
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRecommendEmoticonViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$PromotionEmoticonPkg);
   }
 }
 

@@ -1,16 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
 import com.tencent.mobileqq.activity.QQSetting;
 
-public class bek
-  extends Handler
+class bek
+  implements Runnable
 {
-  public bek(QQSetting paramQQSetting) {}
+  bek(bei parambei) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    ((View)paramMessage.obj).setVisibility(8);
+    this.a.a.b();
   }
 }
 

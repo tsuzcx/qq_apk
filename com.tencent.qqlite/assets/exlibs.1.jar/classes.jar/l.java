@@ -10,8 +10,8 @@ public class l
   
   public void onClick(View paramView)
   {
-    paramView = (ItemHolder)((ItemHolder)paramView.getTag()).clone();
-    LiteActivity.a(this.a, paramView);
+    paramView = (ItemHolder)paramView.getTag();
+    LiteActivity.b(this.a, paramView);
   }
 }
 

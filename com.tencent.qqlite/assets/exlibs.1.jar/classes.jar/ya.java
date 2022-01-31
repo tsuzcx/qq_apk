@@ -18,7 +18,7 @@ public class ya
     for (int i = 1;; i = 0)
     {
       ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131363071), "qqsetting_enter_sendmsg_key", paramBoolean);
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131363081), "qqsetting_enter_sendmsg_key", paramBoolean);
       return;
     }
   }

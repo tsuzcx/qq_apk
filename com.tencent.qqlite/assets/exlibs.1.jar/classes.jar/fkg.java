@@ -1,21 +1,14 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.OnPluginReadyListener;
-import cooperation.plugin.IPluginManager.PluginParams;
+import android.database.Cursor;
 
-public final class fkg
-  implements IPluginManager.OnPluginReadyListener
+public abstract interface fkg
 {
-  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      IPluginManager.d(paramContext, paramPluginParams);
-    }
-  }
+  public abstract Cursor a();
+  
+  public abstract Cursor a(CharSequence paramCharSequence);
+  
+  public abstract CharSequence a(Cursor paramCursor);
+  
+  public abstract void a(Cursor paramCursor);
 }
 
 

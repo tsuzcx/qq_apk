@@ -1,15 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bla
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
   public bla(SplashActivity paramSplashActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.c();
+    if (!this.a.isResume()) {}
+    do
+    {
+      return;
+      localIntent = this.a.app.a();
+      this.a.app.a(null);
+    } while (localIntent == null);
+    String str = localIntent.getStringExtra("wording");
+    int i = localIntent.getIntExtra("timetowait", 360000);
+    Intent localIntent = new Intent("com.tencent.mobileqq.action.SECURITY_DETECT_PUSH_BANNER");
+    localIntent.putExtra("wording", str);
+    localIntent.putExtra("timetowait", i);
+    SplashActivity.a(this.a, localIntent);
   }
 }
 

@@ -1,23 +1,23 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.widget.FileWebView;
+import com.tencent.qphone.base.util.QLog;
 
-public class dhq
-  implements URLDrawable.URLDrawableListener
+class dhq
+  implements Runnable
 {
-  public dhq(UniformDownloadActivity paramUniformDownloadActivity, ImageView paramImageView) {}
+  dhq(dhp paramdhp) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    try
+    {
+      this.a.a.a.loadUrl("javascript:add_more_page()");
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("<FileAssistant>FilePreviewActivity", 1, localException.toString());
+    }
   }
 }
 

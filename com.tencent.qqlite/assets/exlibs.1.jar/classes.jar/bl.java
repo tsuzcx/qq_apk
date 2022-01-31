@@ -1,13 +1,15 @@
-import com.dataline.activities.LiteMutiPicViewerActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.LiteVideoActivity;
 
-class bl
-  implements Runnable
+public class bl
+  implements View.OnClickListener
 {
-  bl(bg parambg) {}
+  public bl(LiteVideoActivity paramLiteVideoActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LiteMutiPicViewerActivity.b(this.a.a);
+    LiteVideoActivity.a(this.a);
   }
 }
 

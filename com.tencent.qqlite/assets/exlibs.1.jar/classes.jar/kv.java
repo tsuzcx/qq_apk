@@ -28,18 +28,18 @@ public class kv
       ((RelativeLayout.LayoutParams)localObject1).addRule(15);
       ((RelativeLayout.LayoutParams)localObject1).rightMargin = AIOUtils.a(15.0F, this.a.getResources());
       ImageView localImageView = new ImageView(this.a);
-      localImageView.setBackgroundResource(2130837636);
+      localImageView.setBackgroundResource(2130837661);
       this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(localImageView, (ViewGroup.LayoutParams)localObject1);
       if (this.a.a.isCertified())
       {
         Object localObject2 = new RelativeLayout.LayoutParams(AIOUtils.a(20.0F, this.a.getResources()), AIOUtils.a(20.0F, this.a.getResources()));
         ((RelativeLayout.LayoutParams)localObject2).leftMargin = AIOUtils.a(10.0F, this.a.getResources());
         ((RelativeLayout.LayoutParams)localObject2).addRule(15);
-        ((RelativeLayout.LayoutParams)localObject2).addRule(1, 2131296621);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(1, 2131296624);
         localObject1 = new ImageView(this.a);
-        ((ImageView)localObject1).setBackgroundResource(2130838338);
+        ((ImageView)localObject1).setBackgroundResource(2130838357);
         this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-        localObject2 = (ImageView)this.a.findViewById(2131296617);
+        localObject2 = (ImageView)this.a.findViewById(2131296620);
         DisplayMetrics localDisplayMetrics = new DisplayMetrics();
         this.a.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
         int i = localDisplayMetrics.widthPixels - ((ImageView)localObject2).getWidth() - AIOUtils.a(60.0F, this.a.getResources()) - ((ImageView)localObject1).getWidth() - localImageView.getWidth();

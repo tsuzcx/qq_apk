@@ -14,10 +14,10 @@ public class UpdateIcon
   protected int a()
   {
     SharedPreferences localSharedPreferences = this.a.a.a().getSharedPreferences("special_care_file", 0);
-    if (localSharedPreferences.getBoolean("updateShortcutIcon3.4.0.607", true))
+    if (localSharedPreferences.getBoolean("updateShortcutIcon3.5.0.660", true))
     {
       QQUtils.a(this.a.a, "sid");
-      localSharedPreferences.edit().putBoolean("updateShortcutIcon3.4.0.607", false).commit();
+      localSharedPreferences.edit().putBoolean("updateShortcutIcon3.5.0.660", false).commit();
     }
     return 7;
   }

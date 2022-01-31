@@ -1,20 +1,15 @@
+import android.app.Dialog;
 import com.tencent.mobileqq.activity.ChatHistory;
 
-public class adg
-  implements Runnable
+class adg
+  extends Thread
 {
-  public adg(ChatHistory paramChatHistory, boolean paramBoolean) {}
+  adg(adf paramadf) {}
   
   public void run()
   {
-    ChatHistory localChatHistory1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory;
-    ChatHistory localChatHistory2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory;
-    if (this.jdField_a_of_type_Boolean == true) {}
-    for (int i = 2131363120;; i = 2131363121)
-    {
-      localChatHistory1.b(localChatHistory2.getString(i));
-      return;
-    }
+    ChatHistory.a(this.a.a, this.a.a.b, this.a.a.a);
+    this.a.a.c.dismiss();
   }
 }
 

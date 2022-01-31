@@ -1,20 +1,19 @@
-import android.content.Context;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
-import java.lang.ref.SoftReference;
-import java.util.TimerTask;
+import java.util.Comparator;
 
-public class euy
-  extends TimerTask
+public final class euy
+  implements Comparator
 {
-  public euy(QQCustomDialogWtihInput paramQQCustomDialogWtihInput) {}
-  
-  public void run()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    Context localContext = (Context)QQCustomDialogWtihInput.a(this.a).get();
-    if (localContext != null) {
-      ((InputMethodManager)localContext.getSystemService("input_method")).toggleSoftInput(0, 2);
+    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
+    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
+    if (l1 == l2) {
+      return 0;
     }
+    if (l1 < l2) {
+      return 2;
+    }
+    return -1;
   }
 }
 

@@ -1,16 +1,9 @@
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.SQLiteDatabase;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class cvv
-  implements Runnable
 {
-  cvv(SQLiteDatabase paramSQLiteDatabase) {}
-  
-  public void run()
-  {
-    Toast.makeText(BaseApplicationImpl.getContext(), "transaction exception!", 1).show();
-  }
+  public int a;
+  public PublicAccountInfo a;
 }
 
 

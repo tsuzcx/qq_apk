@@ -1,26 +1,21 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 
-public class ago
-  extends FMObserver
+class ago
+  implements Runnable
 {
-  public ago(Conversation paramConversation) {}
+  ago(agm paramagm, boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("silasBug", 4, "OnFileTransferProgress");
+    Conversation.a(this.jdField_a_of_type_Agm.a, 800L);
+    PullRefreshHeader localPullRefreshHeader = Conversation.a(this.jdField_a_of_type_Agm.a);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 0;; i = 2)
+    {
+      localPullRefreshHeader.a(i);
+      return;
     }
-    this.a.a(8, paramString, -2147483648);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("silasBug", 4, "OnFileTransferEnd");
-    }
-    this.a.a(8, paramString1, -2147483648);
   }
 }
 

@@ -1,43 +1,36 @@
 import android.text.TextUtils;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.business.base.AppUtil;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.AppNotificationManager;
-import com.tencent.open.downloadnew.common.AppNotificationManager.NoticeIdentity;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.open.appcommon.Common;
+import com.tencent.open.base.FileUtils;
+import com.tencent.open.base.LogUtility;
+import java.io.File;
 
-public class feu
+public final class feu
   implements Runnable
 {
-  public feu(DownloadManager paramDownloadManager) {}
-  
   public void run()
   {
-    Object localObject1 = AppUtil.b(CommonDataAdapter.a().a());
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).contains(":")))
+    File localFile1 = new File(Common.a());
+    if (localFile1.exists())
     {
-      localObject1 = AppNotificationManager.a().a();
-      if (localObject1 != null)
+      File[] arrayOfFile = localFile1.listFiles();
+      int j = arrayOfFile.length;
+      int i = 0;
+      if (i < j)
       {
-        Iterator localIterator = ((ConcurrentHashMap)localObject1).keySet().iterator();
-        while (localIterator.hasNext())
+        File localFile2 = arrayOfFile[i];
+        if ((localFile2.getName().startsWith("system_old_")) || ((localFile2.isDirectory()) && (!localFile2.getName().equals("tmp")) && (!TextUtils.isEmpty(Common.o())) && (!localFile2.getName().equals(Common.o()))))
         {
-          AppNotificationManager.NoticeIdentity localNoticeIdentity = (AppNotificationManager.NoticeIdentity)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
-          if (localNoticeIdentity != null)
-          {
-            Object localObject2 = this.a.a(localNoticeIdentity.b);
-            if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).c)))
-            {
-              localObject2 = this.a.a(((DownloadInfo)localObject2).c);
-              if ((localObject2 != null) && (4 != DownloadManager.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
-                AppNotificationManager.a().a(localNoticeIdentity.a);
-              }
-            }
+          if (!FileUtils.a(new File(localFile1 + File.separator + localFile2.getName()))) {
+            break label179;
           }
+          LogUtility.b("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> successful");
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          label179:
+          LogUtility.c("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> failed");
         }
       }
     }

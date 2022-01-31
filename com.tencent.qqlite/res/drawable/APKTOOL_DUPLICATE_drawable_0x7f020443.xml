@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background">
-        <nine-patch android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020445" />
-    </item>
-    <item android:id="@android:id/secondaryProgress">
-        <clip>
-            <nine-patch android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020444" />
-        </clip>
-    </item>
-    <item android:id="@android:id/progress">
-        <clip>
-            <nine-patch android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020444" />
-        </clip>
-    </item>
-</layer-list>
+    <item android:state_enabled="false" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02041c" />
+    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02041d" />
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02041b" />
+</selector>

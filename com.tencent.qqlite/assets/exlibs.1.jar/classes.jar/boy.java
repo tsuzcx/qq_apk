@@ -1,36 +1,103 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.app.Dialog;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
+import com.tencent.mobileqq.widget.PinnedDividerListView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
-class boy
-  implements Runnable
+public class boy
+  extends Handler
 {
-  boy(box parambox, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3) {}
+  public boy(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_Box.a.b != null) && (this.jdField_a_of_type_Box.a.jdField_c_of_type_AndroidGraphicsDrawableDrawable != null))
+    if (this.a.isFinishing()) {}
+    label349:
+    do
     {
-      ((Animatable)this.jdField_a_of_type_Box.a.jdField_c_of_type_AndroidGraphicsDrawableDrawable).stop();
-      this.jdField_a_of_type_Box.a.jdField_c_of_type_AndroidGraphicsDrawableDrawable = null;
-      ((TextView)this.jdField_a_of_type_Box.a.b.findViewById(2131298895)).setCompoundDrawables(null, null, null, null);
-    }
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Box.a.h))) {}
-    while ((this.jdField_a_of_type_Box.a.b == null) || (this.jdField_a_of_type_Box.a.b.getVisibility() == 8)) {
       return;
-    }
-    this.jdField_a_of_type_Box.a.b.setEnabled(true);
-    ((TextView)this.jdField_a_of_type_Box.a.b.findViewById(2131296875)).setTextColor(this.jdField_a_of_type_Box.a.getResources().getColor(2131427466));
-    this.jdField_a_of_type_Box.a.jdField_c_of_type_Boolean = this.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Box.a.l = this.jdField_b_of_type_JavaLangString;
-    ((TextView)this.jdField_a_of_type_Box.a.b.findViewById(2131298895)).setText(this.c);
-    String str = "@全体成员";
-    if (this.c != null) {
-      str = "@全体成员" + "," + this.c;
-    }
-    this.jdField_a_of_type_Box.a.b.setContentDescription(str);
+      switch (paramMessage.what)
+      {
+      case 3: 
+      case 4: 
+      default: 
+        return;
+      case 1: 
+        paramMessage = (Object[])paramMessage.obj;
+        if ((paramMessage == null) || (paramMessage.length != 4)) {
+          break;
+        }
+      case 2: 
+        for (;;)
+        {
+          synchronized (this.a.jdField_a_of_type_JavaUtilList)
+          {
+            this.a.jdField_a_of_type_JavaUtilList.clear();
+            this.a.jdField_a_of_type_JavaUtilList.addAll((List)paramMessage[0]);
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)paramMessage[1]);
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.jdField_a_of_type_ArrayOfInt = ((int[])paramMessage[2]);
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.jdField_a_of_type_ArrayOfJavaLangString = ((String[])paramMessage[3]);
+            if (this.a.jdField_a_of_type_JavaUtilList.size() != 0)
+            {
+              this.a.j();
+              if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter == null) {
+                break label349;
+              }
+              this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.notifyDataSetChanged();
+              this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setVisibility(0);
+            }
+            if ((!this.a.d) || (this.a.t == 10)) {
+              this.a.m();
+            }
+            this.a.f();
+            return;
+            this.a.m();
+          }
+          if ((paramMessage != null) && (paramMessage.length == 1))
+          {
+            synchronized (this.a.jdField_a_of_type_JavaUtilList)
+            {
+              this.a.jdField_a_of_type_JavaUtilList.clear();
+              this.a.jdField_a_of_type_JavaUtilList.addAll((List)paramMessage[0]);
+            }
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter = new TroopMemberListActivity.ListAdapter(this.a);
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter);
+          }
+        }
+      case 5: 
+        this.a.m();
+        return;
+      case 6: 
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter != null) {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
+        }
+        if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+          this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+        }
+        QQToast.a(this.a, this.a.getString(2131362863), 0).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
+        return;
+      case 7: 
+        if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+          this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+        }
+        QQToast.a(this.a, this.a.getString(2131362865), 0).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
+        return;
+      case 8: 
+        paramMessage = (Object[])paramMessage.obj;
+        boolean bool = ((Boolean)paramMessage[0]).booleanValue();
+        paramMessage = (ArrayList)paramMessage[1];
+        ChatSettingForTroop.a(this.a, this.a.i, bool, paramMessage);
+        return;
+      }
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
   }
 }
 

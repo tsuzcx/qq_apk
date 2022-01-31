@@ -1,23 +1,24 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.widget.FileWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
 
-class dgo
+public class dgo
   implements Runnable
 {
-  dgo(dgn paramdgn) {}
+  public dgo(HorizonEmoticonTabs paramHorizonEmoticonTabs, int paramInt, Drawable paramDrawable) {}
   
   public void run()
   {
-    try
-    {
-      this.a.a.a.loadUrl("javascript:add_more_page()");
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs.a.getChildAt(this.jdField_a_of_type_Int);
+    if (localObject == null) {
       return;
     }
-    catch (Exception localException)
-    {
-      QLog.e("<FileAssistant>FilePreviewActivity", 1, localException.toString());
-    }
+    localObject = (ImageView)((View)localObject).findViewById(2131297086);
+    ((ImageView)localObject).setAdjustViewBounds(false);
+    ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    ((ImageView)localObject).invalidate();
   }
 }
 

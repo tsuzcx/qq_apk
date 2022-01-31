@@ -1,13 +1,15 @@
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.FriendsManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aaw
   implements Runnable
 {
-  public aaw(BaseChatPie paramBaseChatPie, int paramInt1, int paramInt2) {}
+  public aaw(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_Int, this.b, "");
+    ((FriendsManagerImp)this.a.a.getManager(8)).a();
   }
 }
 

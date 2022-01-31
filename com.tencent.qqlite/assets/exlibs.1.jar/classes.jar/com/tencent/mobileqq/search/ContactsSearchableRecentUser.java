@@ -40,7 +40,7 @@ public class ContactsSearchableRecentUser
   public ContactsSearchableRecentUser(Context paramContext, QQAppInterface paramQQAppInterface, RecentUser paramRecentUser, long paramLong1, long paramLong2, Map paramMap)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.y = paramLong2;
+    this.A = paramLong2;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaLangString = paramRecentUser.displayName;
     a(paramRecentUser, paramMap);
@@ -62,7 +62,7 @@ public class ContactsSearchableRecentUser
   
   private void a(RecentUser paramRecentUser, Map paramMap)
   {
-    this.w = paramRecentUser.lastmsgtime;
+    this.y = paramRecentUser.lastmsgtime;
     this.jdField_a_of_type_ComTencentMobileqqDataRecentUser = paramRecentUser;
     this.jdField_a_of_type_ComTencentMobileqqModelFriendManager = ((FriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8));
     if (this.jdField_a_of_type_ComTencentMobileqqModelFriendManager == null) {}
@@ -93,7 +93,7 @@ public class ContactsSearchableRecentUser
           paramMap = this.jdField_a_of_type_ComTencentMobileqqModelFriendManager.c(str);
           if (String.valueOf(AppConstants.Y).equals(str))
           {
-            this.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getString(2131363526);
+            this.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getString(2131363537);
             return;
           }
         case 6000: 
@@ -116,22 +116,22 @@ public class ContactsSearchableRecentUser
           return;
           if (String.valueOf(AppConstants.aa).equals(str))
           {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363524);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363535);
             return;
           }
           if (String.valueOf(AppConstants.Z).equals(str))
           {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131363241);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131363251);
             return;
           }
           if (String.valueOf(AppConstants.S).equals(str))
           {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363243);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363253);
             return;
           }
           if (AppConstants.W.equals(str))
           {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363532);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363543);
             return;
           }
           if (i == 1000)
@@ -171,12 +171,12 @@ public class ContactsSearchableRecentUser
       this.jdField_a_of_type_JavaUtilList = ((List)paramMap.get(str));
       return;
     } while (!String.valueOf(AppConstants.V).equals(str));
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362956);
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362963);
     return;
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363618);
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363629);
     return;
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362458);
-    this.w = 0L;
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362459);
+    this.y = 0L;
   }
   
   @SuppressLint({"DefaultLocale"})
@@ -219,8 +219,8 @@ public class ContactsSearchableRecentUser
             break label568;
           }
           l = 1125899906842624L + 4503599627370496L;
-          if (this.x < l) {
-            this.x = l;
+          if (this.z < l) {
+            this.z = l;
           }
         }
         str1 = ((DiscussionMemberInfo)localObject).memberName;
@@ -235,8 +235,8 @@ public class ContactsSearchableRecentUser
             break label714;
           }
           l = 1125899906842624L + 4503599627370496L;
-          if (this.x < l) {
-            this.x = l;
+          if (this.z < l) {
+            this.z = l;
           }
         }
         localObject = this.jdField_a_of_type_ComTencentMobileqqModelFriendManager.a(((DiscussionMemberInfo)localObject).memberUin);
@@ -255,8 +255,8 @@ public class ContactsSearchableRecentUser
             break label860;
           }
           l = 1125899906842624L + 4503599627370496L;
-          if (this.x < l) {
-            this.x = l;
+          if (this.z < l) {
+            this.z = l;
           }
         }
         if (!TextUtils.isEmpty(((Friends)localObject).name))
@@ -273,10 +273,10 @@ public class ContactsSearchableRecentUser
         }
         for (l = 1125899906842624L + 4503599627370496L;; l = 1125899906842624L + 9007199254740992L)
         {
-          if (this.x >= l) {
+          if (this.z >= l) {
             break label1016;
           }
-          this.x = l;
+          this.z = l;
           break;
           l = 1125899906842624L + 9007199254740992L;
           break label155;
@@ -301,10 +301,10 @@ public class ContactsSearchableRecentUser
           }
           for (l += 4503599627370496L;; l += 9007199254740992L)
           {
-            if (this.x >= l) {
+            if (this.z >= l) {
               break label712;
             }
-            this.x = l;
+            this.z = l;
             break;
             i = -1;
             break label600;
@@ -338,10 +338,10 @@ public class ContactsSearchableRecentUser
           }
           for (l += 4503599627370496L;; l += 9007199254740992L)
           {
-            if (this.x >= l) {
+            if (this.z >= l) {
               break label858;
             }
-            this.x = l;
+            this.z = l;
             break;
             i = -1;
             break label746;
@@ -375,10 +375,10 @@ public class ContactsSearchableRecentUser
           }
           for (l += 4503599627370496L;; l += 9007199254740992L)
           {
-            if (this.x >= l) {
+            if (this.z >= l) {
               break label1004;
             }
-            this.x = l;
+            this.z = l;
             break label444;
             break;
             i = -1;
@@ -414,10 +414,10 @@ public class ContactsSearchableRecentUser
       }
       for (l += 4503599627370496L;; l += 9007199254740992L)
       {
-        if (this.x >= l) {
+        if (this.z >= l) {
           break label1150;
         }
-        this.x = l;
+        this.z = l;
         break label26;
         break;
         i = -1;
@@ -434,14 +434,14 @@ public class ContactsSearchableRecentUser
   @SuppressLint({"DefaultLocale"})
   private void c(String paramString)
   {
-    if (this.x != -9223372036854775808L) {}
+    if (this.z != -9223372036854775808L) {}
     long l;
     do
     {
       return;
       l = ContactSearchableDiscussion.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqModelFriendManager, paramString);
     } while (l == -1L);
-    this.x = (l + 9007199254740992L + this.y);
+    this.z = (l + 9007199254740992L + this.A);
   }
   
   public int a()
@@ -479,13 +479,13 @@ public class ContactsSearchableRecentUser
     }
     for (;;)
     {
-      this.x = l;
+      this.z = l;
       if ((this.jdField_a_of_type_ComTencentMobileqqDataRecentUser != null) && (3000 == this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type)) {
         b(paramString);
       }
-      if (this.x != -9223372036854775808L)
+      if (this.z != -9223372036854775808L)
       {
-        this.x += this.y;
+        this.z += this.A;
         return;
         l = 1125899906842624L + 9007199254740992L;
         continue;

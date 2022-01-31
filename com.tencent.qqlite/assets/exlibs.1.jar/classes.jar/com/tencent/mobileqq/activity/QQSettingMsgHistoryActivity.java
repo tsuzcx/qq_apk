@@ -12,12 +12,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import bft;
-import bfu;
-import bfw;
 import bfy;
-import bga;
+import bfz;
 import bgb;
+import bgd;
+import bgf;
+import bgg;
 import com.dataline.util.file.FileUtil;
 import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -64,7 +64,7 @@ public class QQSettingMsgHistoryActivity
   private long jdField_a_of_type_Long = 0L;
   public Handler a;
   private View jdField_a_of_type_AndroidViewView;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bgb(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bgg(this);
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   public QQProgressDialog a;
@@ -80,7 +80,7 @@ public class QQSettingMsgHistoryActivity
   
   public QQSettingMsgHistoryActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bft(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bfy(this);
   }
   
   private void b(String paramString)
@@ -178,7 +178,7 @@ public class QQSettingMsgHistoryActivity
   
   protected String b_()
   {
-    return getString(2131363053);
+    return getString(2131363063);
   }
   
   public void c()
@@ -204,19 +204,19 @@ public class QQSettingMsgHistoryActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903537);
-    setTitle(2131364291);
+    setContentView(2130903546);
+    setTitle(2131364302);
     this.jdField_a_of_type_JavaLangString = this.app.a();
     setVolumeControlStream(3);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298436));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298461));
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
     if (this.app.f() == 1) {}
     for (boolean bool = true;; bool = false)
     {
       paramBundle.setChecked(bool);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131298437);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131298438);
-      this.c = findViewById(2131298439);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131298462);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131298463);
+      this.c = findViewById(2131298464);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
@@ -306,7 +306,7 @@ public class QQSettingMsgHistoryActivity
     int j = 1;
     if (!NetworkUtil.e(this.app.getApplication().getApplicationContext()))
     {
-      QQToast.a(getApplicationContext(), 2131363516, 1).a();
+      QQToast.a(getApplicationContext(), 2131363527, 1).a();
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
       paramCompoundButton = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
       paramBoolean = bool;
@@ -322,7 +322,7 @@ public class QQSettingMsgHistoryActivity
     {
       i = 1;
       ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Latest_chatlog_syn", 0, i, "", "", "", "");
-      a(getApplication().getResources().getString(2131364073));
+      a(getApplication().getResources().getString(2131364084));
       if (!paramBoolean) {
         break label156;
       }
@@ -346,30 +346,30 @@ public class QQSettingMsgHistoryActivity
       return;
     }
     this.jdField_a_of_type_Long = l1;
-    bga localbga = null;
+    bgf localbgf = null;
     int j;
     switch (paramView.getId())
     {
     default: 
       j = 0;
-      paramView = localbga;
+      paramView = localbgf;
     }
     for (;;)
     {
-      localbga = new bga(this);
-      DialogUtil.a(this, 230, getString(j), getString(i), paramView, localbga).show();
+      localbgf = new bgf(this);
+      DialogUtil.a(this, 230, getString(j), getString(i), paramView, localbgf).show();
       return;
-      i = 2131363746;
-      paramView = new bfu(this);
-      j = 2131363739;
+      i = 2131363757;
+      paramView = new bfz(this);
+      j = 2131363750;
       continue;
-      i = 2131363745;
-      paramView = new bfw(this);
-      j = 2131363741;
+      i = 2131363756;
+      paramView = new bgb(this);
+      j = 2131363752;
       continue;
-      i = 2131364292;
-      paramView = new bfy(this);
-      j = 2131363740;
+      i = 2131364303;
+      paramView = new bgd(this);
+      j = 2131363751;
     }
   }
   
@@ -382,7 +382,7 @@ public class QQSettingMsgHistoryActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131363252));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131363262));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);

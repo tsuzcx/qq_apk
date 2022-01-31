@@ -35,7 +35,7 @@ public class GroupPttUpHandler
     cmd0x388.TryUpPttReq localTryUpPttReq = new cmd0x388.TryUpPttReq();
     localTryUpPttReq.setHasFlag(true);
     localTryUpPttReq.uint64_src_uin.set(Long.valueOf(paramReqCommon.jdField_c_of_type_JavaLangString).longValue());
-    localTryUpPttReq.uint64_group_code.set(Long.valueOf(paramReqCommon.d).longValue());
+    localTryUpPttReq.uint64_group_code.set(Long.valueOf(paramReqCommon.jdField_d_of_type_JavaLangString).longValue());
     localTryUpPttReq.uint64_file_id.set(paramInt);
     localTryUpPttReq.uint64_file_size.set(paramReqCommon.b);
     localTryUpPttReq.bytes_file_md5.set(ByteStringMicro.copyFrom(paramReqCommon.jdField_a_of_type_ArrayOfByte));
@@ -43,12 +43,13 @@ public class GroupPttUpHandler
     localTryUpPttReq.uint32_src_term.set(5);
     localTryUpPttReq.uint32_platform_type.set(9);
     PBUInt32Field localPBUInt32Field = localTryUpPttReq.uint32_bu_type;
-    if (paramReqCommon.jdField_c_of_type_Int == 1) {}
+    if (paramReqCommon.jdField_d_of_type_Int == 1) {}
     for (paramInt = 3;; paramInt = 4)
     {
       localPBUInt32Field.set(paramInt);
       localTryUpPttReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(RichMediaUtil.a()));
       localTryUpPttReq.uint32_voice_length.set(paramReqCommon.jdField_a_of_type_Int);
+      localTryUpPttReq.uint32_codec.set(paramReqCommon.jdField_c_of_type_Int);
       localTryUpPttReq.bool_new_up_chan.set(true);
       paramReqBody.rpt_msg_tryup_ptt_req.add(localTryUpPttReq);
       return;

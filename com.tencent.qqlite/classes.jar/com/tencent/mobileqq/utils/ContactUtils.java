@@ -86,21 +86,21 @@ public class ContactUtils
     {
     case 2: 
     default: 
-      return 2130839394;
+      return 2130839459;
     case 1: 
-      return 2130839407;
+      return 2130839472;
     case 3: 
-      return 2130839395;
+      return 2130839460;
     case 4: 
-      return 2130839396;
+      return 2130839461;
     case 5: 
-      return 2130839405;
+      return 2130839470;
     case 6: 
-      return 2130839403;
+      return 2130839468;
     case 100: 
-      return 2130839398;
+      return 2130839463;
     }
-    return 2130839401;
+    return 2130839466;
   }
   
   public static int a(int paramInt1, int paramInt2)
@@ -267,7 +267,7 @@ public class ContactUtils
       case 5: 
       case 6: 
       default: 
-        return paramContext.getString(2131363995);
+        return paramContext.getString(2131364006);
         i1 = 0;
         continue;
         i1 = 1;
@@ -281,9 +281,9 @@ public class ContactUtils
         i1 = 7;
       }
     }
-    return paramContext.getString(2131363992);
-    return paramContext.getString(2131363993);
-    return paramContext.getString(2131363994);
+    return paramContext.getString(2131364003);
+    return paramContext.getString(2131364004);
+    return paramContext.getString(2131364005);
   }
   
   public static String a(Context paramContext, DiscussionInfo paramDiscussionInfo)
@@ -299,7 +299,7 @@ public class ContactUtils
     }
     else
     {
-      paramDiscussionInfo = paramContext.getResources().getString(2131363224);
+      paramDiscussionInfo = paramContext.getResources().getString(2131363234);
     }
     return paramDiscussionInfo;
   }
@@ -544,7 +544,7 @@ public class ContactUtils
     do
     {
       return paramQQAppInterface;
-      localObject1 = e(paramQQAppInterface, paramString2, paramString1);
+      localObject1 = f(paramQQAppInterface, paramString2, paramString1);
       if (!a((String)localObject1, paramString1)) {
         break;
       }
@@ -821,7 +821,7 @@ public class ContactUtils
   public static boolean a(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
   {
     if (b == null) {
-      b = paramQQAppInterface.a().getString(2131362953);
+      b = paramQQAppInterface.a().getString(2131362960);
     }
     return (((0x40 & paramLong) >>> 6 == 1L) && ((0x20000000 & paramLong) >>> 29 == 1L)) || (paramString == null) || (paramString.matches(b)) || (paramString.length() == 0);
   }
@@ -933,7 +933,7 @@ public class ContactUtils
     return (paramString != null) && (!"".equals(paramString));
   }
   
-  private static boolean a(String paramString1, String paramString2)
+  public static boolean a(String paramString1, String paramString2)
   {
     return (a(paramString1)) && (!paramString1.equals(paramString2)) && (paramString2 != null);
   }
@@ -1434,6 +1434,44 @@ public class ContactUtils
   
   public static String e(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
+    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(44);
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ContactUtils", 2, "getTroopMemberNameWithoutRemark uin is null");
+      }
+      return "";
+    }
+    paramString1 = localTroopManager.a(paramString1, paramString2);
+    paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(43)).a(paramString2);
+    if ((paramString1 != null) && (!TextUtils.isEmpty(paramString1.troopnick))) {
+      return paramString1.troopnick;
+    }
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.isFriend())) {
+      return paramQQAppInterface.name;
+    }
+    if ((paramString1 != null) && (!TextUtils.isEmpty(paramString1.friendnick))) {
+      return paramString1.friendnick;
+    }
+    return "";
+  }
+  
+  public static String f(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    TroopInfo localTroopInfo = ((FriendsManagerImp)paramQQAppInterface.getManager(8)).a(paramString);
+    paramQQAppInterface = paramString;
+    if (localTroopInfo != null)
+    {
+      paramQQAppInterface = paramString;
+      if (localTroopInfo.troopname != null) {
+        paramQQAppInterface = localTroopInfo.troopname;
+      }
+    }
+    return paramQQAppInterface;
+  }
+  
+  public static String f(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
     Object localObject = (FriendsManager)paramQQAppInterface.getManager(43);
     paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(44);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
@@ -1485,37 +1523,6 @@ public class ContactUtils
     }
   }
   
-  public static String f(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    TroopInfo localTroopInfo = ((FriendsManagerImp)paramQQAppInterface.getManager(8)).a(paramString);
-    paramQQAppInterface = paramString;
-    if (localTroopInfo != null)
-    {
-      paramQQAppInterface = paramString;
-      if (localTroopInfo.troopname != null) {
-        paramQQAppInterface = localTroopInfo.troopname;
-      }
-    }
-    return paramQQAppInterface;
-  }
-  
-  public static String f(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(44);
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ContactUtils", 2, "getTroopMemberNick uin is null");
-      }
-      return "";
-    }
-    paramQQAppInterface = paramQQAppInterface.a(paramString1, paramString2);
-    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.troopnick))) {
-      return paramQQAppInterface.troopnick;
-    }
-    return "";
-  }
-  
   public static String g(QQAppInterface paramQQAppInterface, String paramString)
   {
     Object localObject = null;
@@ -1549,6 +1556,23 @@ public class ContactUtils
         break;
       }
     }
+  }
+  
+  public static String g(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(44);
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ContactUtils", 2, "getTroopMemberNick uin is null");
+      }
+      return "";
+    }
+    paramQQAppInterface = paramQQAppInterface.a(paramString1, paramString2);
+    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.troopnick))) {
+      return paramQQAppInterface.troopnick;
+    }
+    return "";
   }
   
   public static String h(QQAppInterface paramQQAppInterface, String paramString)

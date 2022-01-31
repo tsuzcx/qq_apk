@@ -1,21 +1,10 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.TextView;
 
 public class cqb
-  implements Runnable
 {
-  public cqb(BaseActivity paramBaseActivity) {}
-  
-  public void run()
-  {
-    if (BaseActivity.a() == null)
-    {
-      cqe localcqe = new cqe(null);
-      SensorManager localSensorManager = (SensorManager)this.a.getSystemService("sensor");
-      localSensorManager.registerListener(localcqe, localSensorManager.getDefaultSensor(1), 0);
-      BaseActivity.a(localcqe);
-    }
-  }
+  public int a;
+  public TextView a;
+  public TextView b;
 }
 
 

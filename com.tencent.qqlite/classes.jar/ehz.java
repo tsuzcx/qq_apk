@@ -1,27 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.trick.TrickHelper;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.transfile.DataLineDownloader;
 
 public class ehz
-  extends Handler
 {
-  public ehz(TrickHelper paramTrickHelper) {}
+  public LocalMediaInfo a;
+  public boolean a;
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      this.a.a(false);
-      return;
-    } while (!GuardManager.a.b());
-    TrickHelper.a(this.a);
-    GuardManager.a.d();
-  }
+  public ehz(DataLineDownloader paramDataLineDownloader) {}
 }
 
 

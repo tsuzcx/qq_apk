@@ -1,46 +1,30 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileLocalImageExpandableListAdapter.ImageHolder;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileBaseExpandableListAdapter.LocalItemHolder;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
 public class dks
-  extends IClickListener_Ver51
+  implements View.OnClickListener
 {
-  public dks(QfileLocalFileDocTabView paramQfileLocalFileDocTabView) {}
+  public dks(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a.a().c();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().l();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().m();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().n();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
+    Object localObject = paramView.getTag();
+    FileInfo localFileInfo = null;
+    if ((localObject instanceof QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)) {
+      localFileInfo = (FileInfo)((QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)paramView.getTag()).a;
+    }
+    for (;;)
+    {
+      this.a.c(localFileInfo);
+      return;
+      if ((localObject instanceof QfileLocalImageExpandableListAdapter.ImageHolder)) {
+        localFileInfo = (FileInfo)((QfileLocalImageExpandableListAdapter.ImageHolder)paramView.getTag()).a;
+      }
+    }
   }
 }
 

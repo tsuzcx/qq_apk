@@ -1,37 +1,57 @@
-import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import java.util.ArrayList;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.data.Groups;
+import java.util.List;
 
 public class avy
-  extends TroopObserver
+  extends BaseAdapter
 {
-  public avy(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
+  private avy(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  protected void d(boolean paramBoolean, ArrayList paramArrayList)
+  public int getCount()
   {
-    if ((!paramBoolean) || (paramArrayList == null)) {
-      return;
+    if (this.a.jdField_a_of_type_JavaUtilList != null) {
+      return this.a.jdField_a_of_type_JavaUtilList.size();
     }
-    int i = 0;
-    label11:
-    TroopMemberCardInfo localTroopMemberCardInfo;
-    if (i < paramArrayList.size())
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.a.getLayoutInflater().inflate(2130903241, null);
+    }
+    int i = (byte)((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_id;
+    paramView = (ImageView)paramViewGroup.findViewById(2131297315);
+    if (i == this.a.jdField_a_of_type_Byte) {
+      paramView.setVisibility(0);
+    }
+    for (;;)
     {
-      localTroopMemberCardInfo = (TroopMemberCardInfo)paramArrayList.get(i);
-      if ((localTroopMemberCardInfo != null) && (localTroopMemberCardInfo.memberuin != null)) {
-        break label49;
-      }
+      paramView = (TextView)paramViewGroup.findViewById(2131297314);
+      paramView.setText(((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_name);
+      paramViewGroup.setContentDescription(paramView.getText().toString());
+      paramViewGroup.setTag(Integer.valueOf(paramInt));
+      paramViewGroup.setOnClickListener(this.a);
+      return paramViewGroup;
+      paramView.setVisibility(8);
     }
-    label49:
-    while (!localTroopMemberCardInfo.memberuin.equals(this.a.app.a()))
-    {
-      i += 1;
-      break label11;
-      break;
-    }
-    this.a.a(localTroopMemberCardInfo, false);
   }
 }
 

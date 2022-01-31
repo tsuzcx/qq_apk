@@ -10,7 +10,6 @@ public class bre
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     this.a.finish();
-    this.a.d();
   }
 }
 

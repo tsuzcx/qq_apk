@@ -1,17 +1,4 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-
-class arl
-  implements Runnable
-{
-  arl(ark paramark, Bitmap paramBitmap) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_Ark.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-  }
-}
+public class arl {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.qqlite\assets\exlibs.1.jar\classes.jar

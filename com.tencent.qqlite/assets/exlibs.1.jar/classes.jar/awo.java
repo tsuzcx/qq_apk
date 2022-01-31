@@ -1,28 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class awo
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public awo(NearbyActivity paramNearbyActivity, int paramInt) {}
+  public awo(NearbyActivity paramNearbyActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity) != null)
-    {
-      paramAnimation = new Message();
-      paramAnimation.what = 1;
-      paramAnimation.arg1 = (this.jdField_a_of_type_Int + 1);
-      NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity).sendMessageDelayed(paramAnimation, 200L);
+    if ((NearbyActivity.a(this.a) != null) && (NearbyActivity.a(this.a).isShowing())) {
+      NearbyActivity.a(this.a).dismiss();
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

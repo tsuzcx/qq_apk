@@ -17,7 +17,7 @@ import com.tencent.open.business.viareport.OpenSdkStatic;
 import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.open.downloadnew.DownloadManager;
 import com.tencent.open.downloadnew.MyAppApi;
-import fcn;
+import fet;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -586,7 +586,7 @@ public class AppClient
       localBundle.putString(DownloadConstants.e, str2);
       localBundle.putInt(DownloadConstants.d, 0);
       localBundle.putString(DownloadConstants.h, "ANDROIDQQ.SHARESOURCE");
-      ThreadManager.b().post(new fcn(paramActivity, localBundle));
+      ThreadManager.b().post(new fet(paramActivity, localBundle));
     }
   }
   

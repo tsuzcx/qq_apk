@@ -1,80 +1,61 @@
-import android.app.Activity;
-import android.os.Handler;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.troop.utils.AvatarTroopUtil;
-import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter.AvatarInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
-import mqq.util.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
+import com.tencent.mobileqq.troop.widget.TroopAioFeedsCenterView;
 
 public class epl
-  implements Observer
+  implements Animation.AnimationListener
 {
-  public epl(AvatarWallAdapter paramAvatarWallAdapter) {}
+  public epl(TroopFeedsCenterLogic paramTroopFeedsCenterLogic) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramObject == null) {}
-    label4:
+    this.a.f = false;
+    if (this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation == paramAnimation)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView.setVisibility(4);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView.clearAnimation();
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.d = false;
+      }
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        this.a.b(true);
+        this.a.jdField_b_of_type_Boolean = false;
+      }
+      if (this.a.jdField_b_of_type_AndroidWidgetImageView != null) {
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838394);
+      }
+    }
     do
     {
       do
       {
-        do
+        return;
+      } while (this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation != paramAnimation);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView.setVisibility(0);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView.clearAnimation();
+        if (this.a.c)
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                break label4;
-                break label4;
-                break label4;
-                break label4;
-                do
-                {
-                  return;
-                } while (!(paramObject instanceof TroopUploadingThread.UploadState));
-                i = this.a.b - this.a.j;
-              } while (i >= 8);
-              paramObservable = (TroopUploadingThread.UploadState)paramObject;
-              if (paramObservable.a == 0)
-              {
-                this.a.a(paramObservable.b, i);
-                return;
-              }
-              if ((paramObservable.c >= 0) && (paramObservable.c <= 1)) {
-                this.a.h = false;
-              }
-              this.a.jdField_a_of_type_AndroidOsHandler.post(new epm(this, paramObservable));
-            } while ((paramObservable.a != 1) || (paramObservable.c < 0));
-            paramObject = this.a.a(i);
-          } while ((paramObject == null) || (paramObject.jdField_a_of_type_JavaLangString == null));
-          paramObject = paramObject.jdField_a_of_type_JavaLangString;
-          String str = AbsDownloader.d(AvatarTroopUtil.b(AvatarTroopUtil.a(String.valueOf(paramObservable.b), this.a.g, 1)));
-          int i = this.a.b(paramObject, str);
-          if (QLog.isColorLevel()) {
-            QLog.d(AvatarWallAdapter.jdField_a_of_type_JavaLangString, 2, "origin photo,result:" + i);
-          }
-          paramObservable = AbsDownloader.d(AvatarTroopUtil.a(AvatarTroopUtil.a(String.valueOf(paramObservable.b), this.a.g, 1)));
-          i = this.a.a(paramObject, paramObservable);
-          if (QLog.isColorLevel()) {
-            QLog.d(AvatarWallAdapter.jdField_a_of_type_JavaLangString, 2, "thumb photo,result:" + i);
-          }
-        } while (this.a.h);
-        this.a.h = true;
-      } while (this.a.i);
-      paramObservable = null;
-      if (this.a.jdField_a_of_type_MqqUtilWeakReference != null) {
-        paramObservable = (Activity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+          this.a.c = false;
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView.a(true);
+        }
       }
-    } while (paramObservable == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAvatarManger.b(this.a.g);
+    } while (this.a.jdField_b_of_type_AndroidWidgetImageView == null);
+    this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838395);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.f = true;
   }
 }
 

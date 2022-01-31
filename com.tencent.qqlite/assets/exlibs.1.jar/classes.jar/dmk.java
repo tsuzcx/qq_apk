@@ -1,46 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import java.util.LinkedHashMap;
 
-public class dmk
-  extends IClickListener_Ver51
+class dmk
+  implements Runnable
 {
-  public dmk(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
+  dmk(dmj paramdmj, LinkedHashMap paramLinkedHashMap) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().u();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().H();
+    this.jdField_a_of_type_Dmj.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
+    this.jdField_a_of_type_Dmj.a.i();
+    this.jdField_a_of_type_Dmj.a.setSelect(0);
   }
 }
 

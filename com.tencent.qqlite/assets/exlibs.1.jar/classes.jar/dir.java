@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
-import com.tencent.widget.ExpandableListView.OnGroupCollapseListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class dir
-  implements ExpandableListView.OnGroupCollapseListener
+  implements View.OnClickListener
 {
-  public dir(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public dir(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt == this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
-    }
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

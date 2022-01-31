@@ -20,13 +20,13 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import cja;
-import cjb;
-import cjc;
-import cjd;
-import cje;
-import cjg;
-import cji;
+import ckb;
+import ckc;
+import ckd;
+import cke;
+import ckf;
+import ckh;
+import ckj;
 import com.tencent.mobileqq.activity.DoodleActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
@@ -76,10 +76,10 @@ public class PhotoListActivity
   View jdField_a_of_type_AndroidViewView;
   Button jdField_a_of_type_AndroidWidgetButton;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  public cjg a;
-  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new cjb(this);
+  public ckh a;
+  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new ckc(this);
   private CameraView jdField_a_of_type_ComTencentWidgetCameraView;
-  GestureSelectGridView.OnSelectListener jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener = new cja(this);
+  GestureSelectGridView.OnSelectListener jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener = new ckb(this);
   public GestureSelectGridView a;
   public ArrayList a;
   public boolean a;
@@ -135,7 +135,7 @@ public class PhotoListActivity
   
   public PhotoListActivity()
   {
-    this.jdField_a_of_type_Cjg = null;
+    this.jdField_a_of_type_Ckh = null;
     this.jdField_c_of_type_Int = 1;
     this.jdField_a_of_type_Boolean = true;
     this.p = false;
@@ -250,7 +250,7 @@ public class PhotoListActivity
   {
     if (new File(paramString).length() > 19922944L)
     {
-      QQToast.a(this, getResources().getString(2131363955), 0).b(this.jdField_d_of_type_Int);
+      QQToast.a(this, getResources().getString(2131363966), 0).b(this.jdField_d_of_type_Int);
       this.jdField_n_of_type_Int = 0;
       h();
     }
@@ -258,10 +258,10 @@ public class PhotoListActivity
   
   private void a(ArrayList paramArrayList, int paramInt1, int paramInt2)
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624120);
     PhotoMagicStickUtils.a(this, paramArrayList, localActionSheet, paramInt1);
-    localActionSheet.d(2131362794);
-    localActionSheet.a(new cjc(this, paramArrayList, localActionSheet));
+    localActionSheet.d(2131362801);
+    localActionSheet.a(new ckd(this, paramArrayList, localActionSheet));
     localActionSheet.e(paramInt2);
     localActionSheet.show();
   }
@@ -281,7 +281,7 @@ public class PhotoListActivity
     if (QLog.isColorLevel()) {
       QLog.d("_photo", 2, "onQualityBtnClick clikedBtn text:" + str);
     }
-    if ((str != null) && (str.contains(getString(2131363943)))) {
+    if ((str != null) && (str.contains(getString(2131363954)))) {
       this.jdField_n_of_type_Int = 0;
     }
     for (;;)
@@ -289,7 +289,7 @@ public class PhotoListActivity
       h();
       paramActionSheet.dismiss();
       return;
-      if ((str != null) && (str.contains(getString(2131363944))))
+      if ((str != null) && (str.contains(getString(2131363955))))
       {
         this.jdField_n_of_type_Int = 2;
         if (QLog.isColorLevel()) {
@@ -358,7 +358,7 @@ public class PhotoListActivity
     if (this.jdField_m_of_type_Boolean)
     {
       AlbumUtil.jdField_c_of_type_Long = System.currentTimeMillis();
-      AlbumUtil.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_j_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Cjg.getCount()));
+      AlbumUtil.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_j_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Ckh.getCount()));
       if (!TextUtils.isEmpty(paramString))
       {
         AlbumUtil.jdField_a_of_type_JavaLangString = paramString;
@@ -401,7 +401,7 @@ public class PhotoListActivity
       Object localObject = localIntent.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
       if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(DoodleActivity.class.getName())) && (new File(paramString).length() > 19922944L))
       {
-        QQToast.a(this, getString(2131363956), 0).b(this.jdField_d_of_type_Int);
+        QQToast.a(this, getString(2131363967), 0).b(this.jdField_d_of_type_Int);
         return;
       }
       localObject = AlbumUtil.jdField_c_of_type_JavaUtilHashMap;
@@ -438,12 +438,12 @@ public class PhotoListActivity
   @TargetApi(9)
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296897));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296898));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364516));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296901));
+    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364539));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296902));
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296891));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296892));
     Object localObject;
     if (this.jdField_i_of_type_JavaLangString != null)
     {
@@ -451,10 +451,10 @@ public class PhotoListActivity
       setTitle((CharSequence)localObject);
       this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297428));
       h();
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131298326));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131298348));
       this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131297429));
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131298325);
-      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)findViewById(2131298327));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131298347);
+      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)findViewById(2131298349));
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setScrollBarStyle(0);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setNumColumns(3);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setColumnWidth(this.jdField_a_of_type_Int);
@@ -464,8 +464,8 @@ public class PhotoListActivity
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnIndexChangedListener(this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setMaximumVelocity((int)(2500.0F * getResources().getDisplayMetrics().density));
-      this.jdField_a_of_type_Cjg = new cjg(this);
-      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setAdapter(this.jdField_a_of_type_Cjg);
+      this.jdField_a_of_type_Ckh = new ckh(this);
+      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setAdapter(this.jdField_a_of_type_Ckh);
       String str = this.jdField_k_of_type_JavaLangString;
       localObject = str;
       if (TextUtils.isEmpty(str))
@@ -473,7 +473,7 @@ public class PhotoListActivity
         if (!this.jdField_b_of_type_Boolean) {
           break label447;
         }
-        localObject = getString(2131363945);
+        localObject = getString(2131363956);
       }
       label335:
       this.jdField_c_of_type_AndroidWidgetButton.setText((CharSequence)localObject);
@@ -503,7 +503,7 @@ public class PhotoListActivity
       }
       localObject = "最近照片";
       break;
-      localObject = getString(2131363946);
+      localObject = getString(2131363957);
       break label335;
     }
   }
@@ -519,7 +519,7 @@ public class PhotoListActivity
       {
         this.jdField_a_of_type_AndroidAppDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624119);
+        this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624120);
         this.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppDialog.show();
         this.jdField_a_of_type_AndroidAppDialog.setContentView(2130903271);
@@ -578,10 +578,10 @@ public class PhotoListActivity
       return;
       if (this.jdField_b_of_type_Boolean)
       {
-        str1 = getString(2131363945);
+        str1 = getString(2131363956);
         break;
       }
-      str1 = getString(2131363946);
+      str1 = getString(2131363957);
       break;
     }
     label157:
@@ -596,10 +596,10 @@ public class PhotoListActivity
     default: 
       return;
     case 0: 
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363943);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363954);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131363944);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131363955);
   }
   
   private void i()
@@ -690,7 +690,7 @@ public class PhotoListActivity
       }
       for (;;)
       {
-        new cje(this, paramIntent, str, null, bool);
+        new ckf(this, paramIntent, str, null, bool);
         return;
         if (this.r) {
           break;
@@ -814,7 +814,7 @@ public class PhotoListActivity
       if (l1 > 5242880L) {}
       for (i1 = 1; (FileManagerUtil.a()) && (i1 != 0); i1 = 0)
       {
-        FMDialogUtil.a(this, 2131362018, 2131362016, new cjd(this));
+        FMDialogUtil.a(this, 2131362018, 2131362016, new cke(this));
         return;
       }
     }
@@ -836,7 +836,7 @@ public class PhotoListActivity
     getWindow().setBackgroundDrawable(null);
     try
     {
-      super.setContentView(2130903511);
+      super.setContentView(2130903519);
       getWindow().setFeatureInt(7, 2130903134);
       getWindow().setBackgroundDrawable(null);
       this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplication.getContext().getSharedPreferences("share", 0);
@@ -862,9 +862,9 @@ public class PhotoListActivity
   {
     AlbumThumbManager.a(this).a();
     super.onDestroy();
-    if (this.jdField_a_of_type_Cjg != null)
+    if (this.jdField_a_of_type_Ckh != null)
     {
-      int i2 = this.jdField_a_of_type_Cjg.getCount();
+      int i2 = this.jdField_a_of_type_Ckh.getCount();
       int i1 = i2;
       if (this.p)
       {
@@ -907,7 +907,7 @@ public class PhotoListActivity
     }
     if ((!this.r) && (this.jdField_a_of_type_AndroidOsAsyncTask == null))
     {
-      this.jdField_a_of_type_AndroidOsAsyncTask = new cji(this, null);
+      this.jdField_a_of_type_AndroidOsAsyncTask = new ckj(this, null);
       this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Object[0]);
     }
     if ((this.p) && (!this.jdField_q_of_type_Boolean)) {

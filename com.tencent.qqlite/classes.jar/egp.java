@@ -1,33 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
+import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
 
 public class egp
-  implements Runnable
+  implements View.OnClickListener
 {
-  public egp(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
+  public egp(StructMsgForHypertext paramStructMsgForHypertext) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    switch (this.a.aM)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.c("<BDH_LOG> sendFileNotBlockCallThread() BUT current status is INIT");
-      return;
-    case 2: 
-      this.a.c("<BDH_LOG> sendFileNotBlockCallThread() resume HTTP channel");
-      this.a.s();
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null)
-    {
-      this.a.c("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel");
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().resumeTransactionTask(this.a.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-      return;
-    }
-    this.a.c("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel, but trans == null");
+    new StructMsgClickHandler(paramView).a("web", this.a.mSourceUrl, null, null);
   }
 }
 

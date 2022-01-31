@@ -8,7 +8,7 @@ import android.view.View;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import dfb;
+import dgd;
 import java.util.List;
 
 public class RecentAndFavPanelViewBinder
@@ -64,8 +64,8 @@ public class RecentAndFavPanelViewBinder
   
   public Drawable a(Context paramContext)
   {
-    Drawable localDrawable = paramContext.getResources().getDrawable(2130838997);
-    paramContext = paramContext.getResources().getDrawable(2130838998);
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130839030);
+    paramContext = paramContext.getResources().getDrawable(2130839031);
     StateListDrawable localStateListDrawable = new StateListDrawable();
     localStateListDrawable.addState(new int[] { 16842913 }, paramContext);
     localStateListDrawable.addState(new int[0], localDrawable);
@@ -108,7 +108,7 @@ public class RecentAndFavPanelViewBinder
     {
       if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter = new dfb(this, 2009);
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter = new dgd(this, 2009);
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.b(false);
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.d(false);
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.c(false);

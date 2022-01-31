@@ -1,14 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
 
-class apz
-  implements Runnable
+public class apz
+  implements View.OnClickListener
 {
-  apz(apv paramapv) {}
+  public apz(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a.a();
+    this.a.finish();
   }
 }
 

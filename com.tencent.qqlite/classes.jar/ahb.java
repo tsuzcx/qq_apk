@@ -1,46 +1,46 @@
-import android.view.View;
-import android.widget.Adapter;
+import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.search.ContactsSearchableRecentUser;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class ahb
-  implements AdapterView.OnItemClickListener
+  extends TransProcessorHandler
 {
-  private long jdField_a_of_type_Long = 0L;
-  
   public ahb(Conversation paramConversation) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    paramLong = System.currentTimeMillis();
-    long l = Math.abs(paramLong - this.jdField_a_of_type_Long);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onItemClick() gap = " + l);
-    }
-    if (l < 250L) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, "onItemClick() 点击太快了吧， pos = " + paramInt);
-      }
-    }
-    for (;;)
+    int j = 0;
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((Conversation.a(this.a) == null) || (localFileMsg == null) || (TextUtils.isEmpty(localFileMsg.m))) {}
+    do
     {
-      return;
-      this.jdField_a_of_type_Long = paramLong;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, "onItemClick() pos = " + paramInt);
-      }
-      paramAdapterView = paramAdapterView.a();
-      if (paramAdapterView == null) {}
-      for (paramAdapterView = null; (paramAdapterView instanceof ContactsSearchableRecentUser); paramAdapterView = paramAdapterView.getItem(paramInt))
+      int k;
+      int i;
+      do
       {
-        paramAdapterView = (ContactsSearchableRecentUser)paramAdapterView;
-        this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(paramView, paramAdapterView, paramAdapterView.a(), false);
         return;
-      }
-    }
+        k = paramMessage.what;
+        if (localFileMsg.e != 1)
+        {
+          i = j;
+          if (localFileMsg.e != 2) {}
+        }
+        else if ((k != 1001) && (k != 1002) && (k != 1000) && (k != 1005))
+        {
+          i = j;
+          if (k != 1003) {}
+        }
+        else
+        {
+          i = 1;
+        }
+      } while ((i == 0) && (((k != 1003) && (k != 2003)) || ((localFileMsg.e != 2) && (!Conversation.a(this.a)))));
+      this.a.a(8, localFileMsg.m, -2147483648);
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.recent", 2, "refresh recent, from_transferListener2");
   }
 }
 

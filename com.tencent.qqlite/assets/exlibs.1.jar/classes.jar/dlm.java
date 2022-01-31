@@ -1,28 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileRecentImageExpandableListAdapter.ImageHolder;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentFileBaseExpandableListAdapter.RecentItemHolder;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 
 class dlm
-  implements View.OnClickListener
+  implements Runnable
 {
-  dlm(dll paramdll, View paramView) {}
+  dlm(dll paramdll) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((paramView instanceof QfileRecentImageExpandableListAdapter.ImageHolder)) {}
-    for (paramView = (FileManagerEntity)((QfileRecentImageExpandableListAdapter.ImageHolder)paramView).a;; paramView = (FileManagerEntity)((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)paramView).a)
+    if (this.a.a.b != null)
     {
-      if (QfileBaseRecentFileTabView.d(this.jdField_a_of_type_Dll.a).a().b(paramView.nSessionId)) {}
-      this.jdField_a_of_type_Dll.a.a(paramView);
-      QfileBaseRecentFileTabView.a(this.jdField_a_of_type_Dll.a);
-      return;
+      Iterator localIterator = this.a.a.b.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (((List)this.a.a.b.get(str)).size() == 0) {
+          localIterator.remove();
+        }
+      }
     }
+    this.a.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.a.a.b);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.c(0);
+    this.a.a.i();
+    this.a.a.setSelect(0);
+    this.a.a.b.clear();
+    this.a.a.a(true);
   }
 }
 

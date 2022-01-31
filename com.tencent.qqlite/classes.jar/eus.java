@@ -1,11 +1,25 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import QQService.CARDSETTYPE;
+import SummaryCardTaf.SSummaryCardSetReq;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class eus
+public final class eus
+  implements Runnable
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public eus(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2) {}
   
-  private eus(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns) {}
+  public void run()
+  {
+    Object localObject = new SSummaryCardSetReq(2, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()), 0L, "3.5.0", 109L, this.jdField_a_of_type_Long, this.b);
+    UniPacket localUniPacket = new UniPacket(true);
+    localUniPacket.setEncodeName("utf-8");
+    localUniPacket.setFuncName("set");
+    localUniPacket.setServantName("MCardSvc");
+    localUniPacket.put("req", localObject);
+    localObject = localUniPacket.encode();
+    ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), CARDSETTYPE.TYPE_SET_TEMPLATE.value(), (byte)0, null, null, null, null, (byte[])localObject);
+  }
 }
 
 

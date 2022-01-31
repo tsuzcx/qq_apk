@@ -1,24 +1,52 @@
-import android.app.Dialog;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateResult;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajf
-  implements Animation.AnimationListener
+  extends BizTroopObserver
 {
-  public ajf(DiscussionMemberActivity paramDiscussionMemberActivity, TranslateAnimation paramTranslateAnimation, Dialog paramDialog) {}
+  public ajf(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void c(boolean paramBoolean, Object paramObject)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation) {
-      this.jdField_a_of_type_AndroidAppDialog.show();
+    int i = -1;
+    this.a.f();
+    if ((!paramBoolean) && (paramObject != null)) {}
+    try
+    {
+      int j = ((TroopCreateLogic.TroopCreateResult)paramObject).b;
+      i = j;
     }
+    catch (Exception paramObject)
+    {
+      label29:
+      break label29;
+    }
+    i = TroopCreateLogic.TroopCreateResult.a(i);
+    if (i == 0) {}
+    do
+    {
+      do
+      {
+        return;
+        QQToast.a(this.a, i, 0).b(this.a.getTitleBarHeight());
+        return;
+        if (paramObject != null) {
+          break;
+        }
+        i = TroopCreateLogic.TroopCreateResult.a(-1);
+      } while (i == 0);
+      QQToast.a(this.a, i, 0).b(this.a.getTitleBarHeight());
+      return;
+      paramObject = (TroopInfo)paramObject;
+    } while (TextUtils.isEmpty(paramObject.troopuin));
+    DiscussionInfoCardActivity.c(this.a);
+    TroopCreateLogicActivity.a(this.a.app, this.a, paramObject.troopuin);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

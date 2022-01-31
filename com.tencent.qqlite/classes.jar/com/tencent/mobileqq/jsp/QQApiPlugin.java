@@ -32,10 +32,10 @@ import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.QLog;
-import dwt;
-import dwv;
-import dwx;
-import dwy;
+import dxw;
+import dxy;
+import dya;
+import dyb;
 import java.util.HashMap;
 import java.util.List;
 import mqq.app.MobileQQ;
@@ -73,7 +73,7 @@ public class QQApiPlugin
     paramJSONObject = this.mRuntime.a();
     int i1 = -1;
     if (!WXShareHelper.a().a()) {
-      i1 = 2131363697;
+      i1 = 2131363708;
     }
     while (i1 != -1)
     {
@@ -86,11 +86,11 @@ public class QQApiPlugin
       }
       return;
       if (!WXShareHelper.a().b()) {
-        i1 = 2131363698;
+        i1 = 2131363709;
       }
     }
     HashMap localHashMap = new HashMap(1);
-    paramString1 = new dwv(this, localHashMap, paramString6, paramString2, paramString3, paramString4, paramString1, paramString7);
+    paramString1 = new dxy(this, localHashMap, paramString6, paramString2, paramString3, paramString4, paramString1, paramString7);
     if (TextUtils.isEmpty(paramString5))
     {
       paramString1.run();
@@ -106,10 +106,10 @@ public class QQApiPlugin
     {
       if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363758);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363769);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
-      ThreadManager.a(new dwx(this, paramString5, localHashMap, paramString1));
+      ThreadManager.a(new dya(this, paramString5, localHashMap, paramString1));
       return;
     }
   }
@@ -165,11 +165,11 @@ public class QQApiPlugin
     {
       if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363758);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363769);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
       localIntent.putExtra("struct_share_key_source_name", Long.toString(l1));
-      Share.a(paramJSONObject, this.jdField_a_of_type_AndroidContentContext, paramJSONObject.getAccount(), l1, 3000L, new dwy(this, localIntent));
+      Share.a(paramJSONObject, this.jdField_a_of_type_AndroidContentContext, paramJSONObject.getAccount(), l1, 3000L, new dyb(this, localIntent));
       return;
       localIntent.setClass(this.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
       break;
@@ -241,7 +241,7 @@ public class QQApiPlugin
           }
           callJs(this.q, new String[] { "false" });
           return;
-          localIntent.putExtra("app_name", this.jdField_a_of_type_AndroidContentContext.getString(2131362467));
+          localIntent.putExtra("app_name", this.jdField_a_of_type_AndroidContentContext.getString(2131362468));
         }
         localIntent.putExtra("stuctmsg_bytes", paramJSONObject.getBytes());
         startActivityForResult(localIntent, (byte)1);
@@ -470,10 +470,10 @@ public class QQApiPlugin
         }
         if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())
         {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363758);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363769);
           this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
         }
-        ThreadManager.a(new dwt(this, localHashMap, str4, str5, str7, str1, paramString, str2, str3, str6));
+        ThreadManager.a(new dxw(this, localHashMap, str4, str5, str7, str1, paramString, str2, str3, str6));
         return;
       }
       catch (JSONException paramString) {}

@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
+import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
 
 public class enx
   implements Runnable
 {
-  public enx(TroopFeedsCenterLogic paramTroopFeedsCenterLogic) {}
+  public enx(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar) {}
   
   public void run()
   {
-    this.a.a(false);
+    TroopAioMsgNavigateBar.b(this.a);
   }
 }
 

@@ -1,15 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
 
-public class dke
+class dke
   implements View.OnClickListener
 {
-  public dke(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  dke(dkd paramdkd) {}
   
   public void onClick(View paramView)
   {
-    this.a.f();
+    this.a.a.h();
   }
 }
 

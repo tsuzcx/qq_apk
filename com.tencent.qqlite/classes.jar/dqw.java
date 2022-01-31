@@ -1,43 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import com.weiyun.sdk.IWyFileSystem.IWyCallback;
-import com.weiyun.sdk.IWyFileSystem.Thumbnail;
-import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
 public class dqw
-  implements IWyFileSystem.IWyCallback
 {
-  public dqw(WeiYunLogicCenter paramWeiYunLogicCenter) {}
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c = false;
   
-  public void a(IWyFileSystem.Thumbnail paramThumbnail)
+  public dqw(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getOfflinePicThumb onSucceed.");
-    }
-    this.a.a.a().a(true, 39, new Object[] { paramThumbnail });
-    FileManagerEntity localFileManagerEntity;
-    if ((paramThumbnail.context instanceof FileManagerEntity))
-    {
-      localFileManagerEntity = (FileManagerEntity)paramThumbnail.context;
-      if ((paramThumbnail.filePath != null) && (paramThumbnail.filePath.length() >= 1)) {}
-    }
-    else
-    {
-      return;
-    }
-    localFileManagerEntity.strThumbPath = paramThumbnail.filePath;
-    this.a.a.a().c(localFileManagerEntity);
-  }
-  
-  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getOfflinePicThumb onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

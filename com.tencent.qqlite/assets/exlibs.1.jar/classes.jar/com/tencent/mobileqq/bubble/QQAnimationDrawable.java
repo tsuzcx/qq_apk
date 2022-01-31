@@ -16,11 +16,11 @@ import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.util.DisplayMetrics;
 import com.tencent.qphone.base.util.QLog;
-import dak;
-import dal;
-import dam;
-import dan;
-import daq;
+import dbm;
+import dbn;
+import dbo;
+import dbp;
+import dbs;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ public class QQAnimationDrawable
   extends Drawable
   implements Animatable, Runnable
 {
-  private static volatile dan jdField_a_of_type_Dan = new dan(null);
+  private static volatile dbp jdField_a_of_type_Dbp = new dbp(null);
   private static final String jdField_a_of_type_JavaLangString = QQAnimationDrawable.class.getSimpleName();
   public static final Executor a;
   private static final int jdField_f_of_type_Int = 0;
@@ -46,8 +46,8 @@ public class QQAnimationDrawable
   private BitmapFactory.Options jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = new BitmapFactory.Options();
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
   private QQAnimationDrawable.QQAnimationListener jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable$QQAnimationListener;
-  public final dam a;
-  private daq jdField_a_of_type_Daq;
+  public final dbo a;
+  private dbs jdField_a_of_type_Dbs;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -74,7 +74,7 @@ public class QQAnimationDrawable
   
   static
   {
-    jdField_a_of_type_JavaUtilConcurrentExecutor = Executors.newSingleThreadExecutor(new dak());
+    jdField_a_of_type_JavaUtilConcurrentExecutor = Executors.newSingleThreadExecutor(new dbm());
   }
   
   public QQAnimationDrawable(Context paramContext)
@@ -90,7 +90,7 @@ public class QQAnimationDrawable
     this.jdField_b_of_type_Boolean = true;
     this.g = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Dam = new dam(this);
+    this.jdField_a_of_type_Dbo = new dbo(this);
     this.jdField_b_of_type_Int = paramContext.getResources().getDisplayMetrics().densityDpi;
     if (this.jdField_b_of_type_Int == 0) {}
     for (;;)
@@ -396,9 +396,9 @@ public class QQAnimationDrawable
       label158:
       for (long l = 0L;; l = SystemClock.uptimeMillis() + this.jdField_a_of_type_Long)
       {
-        this.jdField_a_of_type_Daq = new daq(this, m, l);
-        this.jdField_a_of_type_JavaUtilConcurrentFutureTask = new FutureTask(this.jdField_a_of_type_Daq);
-        jdField_a_of_type_Dan.execute(this.jdField_a_of_type_JavaUtilConcurrentFutureTask);
+        this.jdField_a_of_type_Dbs = new dbs(this, m, l);
+        this.jdField_a_of_type_JavaUtilConcurrentFutureTask = new FutureTask(this.jdField_a_of_type_Dbs);
+        jdField_a_of_type_Dbp.execute(this.jdField_a_of_type_JavaUtilConcurrentFutureTask);
         if (n != 0)
         {
           stop();
@@ -770,7 +770,7 @@ public class QQAnimationDrawable
   
   private void d()
   {
-    jdField_a_of_type_Dan.execute(new dal(this));
+    jdField_a_of_type_Dbp.execute(new dbn(this));
   }
   
   public int a()
@@ -894,8 +894,8 @@ public class QQAnimationDrawable
   
   public void b()
   {
-    if (jdField_a_of_type_Dan != null) {
-      jdField_a_of_type_Dan.b();
+    if (jdField_a_of_type_Dbp != null) {
+      jdField_a_of_type_Dbp.b();
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentFutureTask != null) {
       this.jdField_a_of_type_JavaUtilConcurrentFutureTask.cancel(true);

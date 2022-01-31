@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils;
 
-import ewa;
+import eyf;
 
 public class UIThreadPool
 {
-  private static ewa a;
+  private static eyf a;
   
   public static void a(Runnable paramRunnable)
   {
@@ -12,7 +12,7 @@ public class UIThreadPool
       return;
     }
     if (a == null) {
-      a = new ewa(3, 10L);
+      a = new eyf(3, 10L);
     }
     a.execute(paramRunnable);
   }

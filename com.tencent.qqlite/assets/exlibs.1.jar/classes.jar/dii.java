@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
 
-class dii
-  implements FMDialogUtil.FMDialogInterface
+public class dii
+  implements DialogInterface.OnCancelListener
 {
-  dii(dih paramdih, FileManagerEntity paramFileManagerEntity) {}
+  public dii(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    QfileBaseCloudFileTabView.e(this.jdField_a_of_type_Dih.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.a.a.a(null);
+    LocalFileBrowserActivity.a(this.a);
   }
-  
-  public void b() {}
 }
 
 

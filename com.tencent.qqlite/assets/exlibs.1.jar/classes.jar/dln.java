@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
-class dln
-  implements DialogInterface.OnDismissListener
+public class dln
+  implements Runnable
 {
-  dln(dll paramdll, View paramView) {}
+  public dln(QfileLocalFileAppTabView paramQfileLocalFileAppTabView, FileInfo paramFileInfo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    QfileLocalFileAppTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileAppTabView, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
   }
 }
 

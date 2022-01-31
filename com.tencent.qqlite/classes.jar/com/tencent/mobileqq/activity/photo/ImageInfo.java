@@ -4,14 +4,14 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ciu;
+import cjv;
 import com.tencent.mobileqq.data.MessageForPic;
 
 public class ImageInfo
   extends BaseImageInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ciu();
+  public static final Parcelable.Creator CREATOR = new cjv();
   public long a;
   public Uri a;
   public MessageForPic a;

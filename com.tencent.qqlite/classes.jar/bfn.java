@@ -1,19 +1,13 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQSettingMe;
 
-public class bfn
-  implements View.OnClickListener
+class bfn
+  implements Runnable
 {
-  public bfn(QQSettingMe paramQQSettingMe) {}
+  bfn(bfk parambfk) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).isShowing())) {
-      QQSettingMe.a(this.a).dismiss();
-    }
-    QQSettingMe.a(this.a, null);
+    this.a.a.q();
   }
 }
 

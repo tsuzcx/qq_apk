@@ -12,8 +12,8 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import aul;
-import aum;
+import auq;
+import aur;
 import com.tencent.mobileqq.activity.phone.CountryActivity;
 import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -29,12 +29,12 @@ public class LoginPhoneNumActivity2
   public static final int a = 1;
   private static final String jdField_a_of_type_JavaLangString = "LoginPhoneNumActivity";
   public static final int b = 2014;
-  Handler jdField_a_of_type_AndroidOsHandler = new aul(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new auq(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   private OpenSDKAppInterface jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aum(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aur(this);
   private int c;
   
   private String a(String paramString)
@@ -114,7 +114,7 @@ public class LoginPhoneNumActivity2
     this.jdField_c_of_type_JavaLangString = a(this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString());
     if (this.jdField_c_of_type_JavaLangString == null)
     {
-      a(2131363316, 1);
+      a(2131363326, 1);
       bool = false;
     }
     return bool;
@@ -122,12 +122,12 @@ public class LoginPhoneNumActivity2
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298220));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131363344) + "+" + this.d);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298242));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131363354) + "+" + this.d);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131297382));
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298221));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298243));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -139,13 +139,13 @@ public class LoginPhoneNumActivity2
       return;
       if (!NetworkUtil.e(BaseApplication.getContext()))
       {
-        a(2131362790, 0);
+        a(2131362797, 0);
         return;
       }
-      a(2131363299);
+      a(2131363309);
     } while (PhoneNumLoginImpl.a().a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, this.jdField_c_of_type_JavaLangString, this.d, this.jdField_a_of_type_MqqObserverWtloginObserver) == 0);
     g();
-    a(getString(2131363286), 1);
+    a(getString(2131363296), 1);
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -171,7 +171,7 @@ public class LoginPhoneNumActivity2
   
   public void d()
   {
-    a(2131363386, 1);
+    a(2131363397, 1);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -220,7 +220,7 @@ public class LoginPhoneNumActivity2
     {
     default: 
       return;
-    case 2131298220: 
+    case 2131298242: 
       startActivityForResult(new Intent(this, CountryActivity.class), 1);
       return;
     }
@@ -230,8 +230,8 @@ public class LoginPhoneNumActivity2
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130903495));
-    setTitle(2131362906);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130903503));
+    setTitle(2131362913);
     this.jdField_c_of_type_Int = getIntent().getIntExtra("key_req_src", -1);
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)getAppRuntime());
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(getClass(), this.jdField_a_of_type_AndroidOsHandler);

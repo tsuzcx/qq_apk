@@ -1,43 +1,34 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.View;
+import com.tencent.biz.webviewplugin.ReportPlugin;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class afn
-  implements URLDrawable.URLDrawableListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public afn(ChatSettingForTroop paramChatSettingForTroop, ImageView paramImageView) {}
+  public afn(ChatSettingForTroop paramChatSettingForTroop, ActionSheet paramActionSheet) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(View paramView, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      paramURLDrawable = ImageUtil.a(paramURLDrawable);
-      if (paramURLDrawable != null)
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app != null))
       {
-        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(paramURLDrawable, paramURLDrawable.getWidth(), paramURLDrawable.getHeight());
-        paramURLDrawable.recycle();
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+        ReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, 301, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.c, "", this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getAccount());
+        continue;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.al == 1) {
+          ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.b);
+        }
       }
-      return;
     }
-    catch (NullPointerException paramURLDrawable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.chatopttroop", 2, QLog.getStackTraceString(paramURLDrawable));
-      return;
-    }
-    catch (OutOfMemoryError paramURLDrawable) {}
   }
 }
 

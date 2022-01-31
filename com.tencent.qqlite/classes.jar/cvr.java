@@ -1,16 +1,32 @@
-import android.graphics.Rect;
-import android.widget.GridView;
-import com.tencent.mobileqq.app.QQServiceEntry;
-import com.tencent.mobileqq.app.QQServiceEntry.Tag;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class cvr
-  implements Runnable
+class cvr
+  implements Comparator
 {
-  public cvr(QQServiceEntry paramQQServiceEntry) {}
+  cvr(cvp paramcvp) {}
   
-  public void run()
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    this.a.a.a.requestRectangleOnScreen(new Rect(0, 0, 0, this.a.a.a.getHeight()), false);
+    int i = paramPhoneContact1.sortWeight - paramPhoneContact2.sortWeight;
+    if (i == 0)
+    {
+      Object localObject2 = paramPhoneContact1.pinyinFirst;
+      String str = paramPhoneContact2.pinyinFirst;
+      Object localObject1 = localObject2;
+      if (((String)localObject2).endsWith("#")) {
+        localObject1 = "Za";
+      }
+      localObject2 = str;
+      if (str.endsWith("#")) {
+        localObject2 = "Za";
+      }
+      ((String)localObject1).compareTo((String)localObject2);
+      if (i == 0) {
+        return paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+      }
+    }
+    return i;
   }
 }
 

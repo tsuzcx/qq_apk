@@ -674,14 +674,18 @@ public class MessageFactorySender
     Short localShort = Short.valueOf(paramToServiceMsg.extraData.getShort("PackSeq"));
     int i = paramToServiceMsg.extraData.getInt("msgseq");
     long l2 = paramToServiceMsg.extraData.getLong("random");
+    long l3 = paramToServiceMsg.extraData.getLong("VoiceType");
+    long l4 = paramToServiceMsg.extraData.getLong("VoiceLength");
     paramToServiceMsg = new StreamInfo();
     paramToServiceMsg.lFromUIN = a((String)localObject);
     paramToServiceMsg.lToUIN = a(str2);
-    paramToServiceMsg.iMsgId = StreamDataManager.c(str1);
+    paramToServiceMsg.iMsgId = StreamDataManager.b(str1);
     paramToServiceMsg.type = 1;
     paramToServiceMsg.iSendTime = 0;
     paramToServiceMsg.shPackNum = StreamDataManager.b(str1);
     paramToServiceMsg.shFlowLayer = StreamDataManager.a(str1);
+    paramToServiceMsg.pttTime = l4;
+    paramToServiceMsg.pttFormat = l3;
     localObject = new StreamData();
     ((StreamData)localObject).shPackSeq = localShort.shortValue();
     if (((StreamData)localObject).shPackSeq < paramToServiceMsg.shPackNum) {
@@ -724,7 +728,7 @@ public class MessageFactorySender
     paramToServiceMsg = new StreamInfo();
     paramToServiceMsg.lFromUIN = a(str3);
     paramToServiceMsg.lToUIN = a(str2);
-    paramToServiceMsg.iMsgId = StreamDataManager.c(str1);
+    paramToServiceMsg.iMsgId = StreamDataManager.b(str1);
     paramToServiceMsg.type = 1;
     paramToServiceMsg.iSendTime = 0;
     paramToServiceMsg.shPackNum = 0;

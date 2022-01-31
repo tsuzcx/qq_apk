@@ -1,72 +1,48 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.MyGridView;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiu
-  extends FriendListObserver
+  implements CompoundButton.OnCheckedChangeListener
 {
   public aiu(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i;
-    if ((paramBoolean) && (3000 == DiscussionInfoCardActivity.a(this.a))) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < DiscussionInfoCardActivity.a(this.a).getChildCount())
-      {
-        ImageView localImageView = (ImageView)DiscussionInfoCardActivity.a(this.a).getChildAt(i).findViewById(2131296453);
-        String str = (String)localImageView.getTag();
-        if ((str != null) && (str.equals(paramString))) {
-          localImageView.setBackgroundDrawable(this.a.app.b(paramString));
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
-  {
+    paramCompoundButton = (FriendsManagerImp)this.a.app.getManager(8);
+    Object localObject = paramCompoundButton.a(DiscussionInfoCardActivity.a(this.a), this.a.app.a());
+    int i = ((DiscussionMemberInfo)localObject).flag;
     if (paramBoolean)
     {
-      this.a.a();
-      DiscussionInfoCardActivity.a(this.a).setText(DiscussionInfoCardActivity.b(this.a));
-      localIterator = DiscussionInfoCardActivity.a(this.a).iterator();
-      while (localIterator.hasNext())
+      ((DiscussionMemberInfo)localObject).flag = ((byte)(((DiscussionMemberInfo)localObject).flag & 0xFFFFFFFE));
+      if (i != ((DiscussionMemberInfo)localObject).flag)
       {
-        localHashMap = (HashMap)localIterator.next();
-        str = (String)localHashMap.get("memberUin");
-        if ((str != null) && (str.compareTo(paramString1) == 0))
-        {
-          localHashMap.put("memberName", paramString2);
-          if (DiscussionInfoCardActivity.a(this.a) != null) {
-            DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-          }
+        byte b = (byte)(((DiscussionMemberInfo)localObject).flag & 0x1);
+        paramCompoundButton.a((DiscussionMemberInfo)localObject);
+        if (QLog.isDevelopLevel()) {
+          QLog.d(DiscussionInfoCardActivity.c(), 4, "DiscussionMemberInfo.flag changed save now:" + ((DiscussionMemberInfo)localObject).flag + " flag:" + b);
         }
+        DiscussionInfoCardActivity.a(this.a).a(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue(), b);
+      }
+      localObject = this.a.app;
+      if (!paramBoolean) {
+        break label215;
       }
     }
-    while ((this.a.a == null) || (!this.a.a.isShowing()) || (this.a.isFinishing()))
+    label215:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
     {
-      Iterator localIterator;
-      HashMap localHashMap;
-      String str;
+      ReportController.b((QQAppInterface)localObject, "CliOper", "", "", "0X80040EB", "0X80040EB", 0, 0, paramCompoundButton, "", "", "");
       return;
+      ((DiscussionMemberInfo)localObject).flag = ((byte)(((DiscussionMemberInfo)localObject).flag | 0x1));
+      break;
     }
-    this.a.a.dismiss();
   }
 }
 

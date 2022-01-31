@@ -14,7 +14,7 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.persistence.TableBuilder;
 import com.tencent.qphone.base.util.QLog;
-import dvj;
+import dwm;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -353,7 +353,7 @@ public class UniformDownloadBPTransProxy
         return;
       }
     }
-    new Handler(localLooper).post(new dvj(this, paramUniformDownloadBPTransEntity));
+    new Handler(localLooper).post(new dwm(this, paramUniformDownloadBPTransEntity));
   }
   
   public void a(UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity, boolean paramBoolean)

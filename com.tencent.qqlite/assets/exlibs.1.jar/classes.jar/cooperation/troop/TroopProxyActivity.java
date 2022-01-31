@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.PluginParams;
-import fma;
+import fog;
 import java.util.ArrayList;
 
 public class TroopProxyActivity
@@ -36,7 +36,7 @@ public class TroopProxyActivity
   {
     paramActivity = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131492887));
     paramActivity.a("正在加载...");
-    paramActivity.setOnDismissListener(new fma());
+    paramActivity.setOnDismissListener(new fog());
     return paramActivity;
   }
   
@@ -115,6 +115,11 @@ public class TroopProxyActivity
   public static void b(Activity paramActivity, Intent paramIntent, String paramString, int paramInt)
   {
     a(paramActivity, paramIntent, a(paramActivity), "com.tencent.mobileqq.troop.activity.OpenTroopMemberListActivity", paramString, paramInt);
+  }
+  
+  public static void c(Activity paramActivity, Intent paramIntent)
+  {
+    a(paramActivity, paramIntent, a(paramActivity), "com.tencent.mobileqq.troop.activity.TroopFileSearchByTypeActivity", null, 0);
   }
   
   public String getPluginID()

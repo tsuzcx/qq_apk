@@ -110,8 +110,8 @@ public class AppNotificationManager
     localRemoteViews.setTextViewText(2131297453, StringAddition.a(paramNoticeParam.jdField_b_of_type_JavaLangString, 18, true, true));
     if (paramNoticeParam.jdField_b_of_type_Int == 1)
     {
-      localNotification.icon = 2130838554;
-      localRemoteViews.setImageViewResource(2131297451, 2130838550);
+      localNotification.icon = 2130838579;
+      localRemoteViews.setImageViewResource(2131297451, 2130838575);
       localRemoteViews.setViewVisibility(2131297455, 8);
       localRemoteViews.setViewVisibility(2131297456, 0);
       if (Build.VERSION.SDK_INT > 10) {
@@ -126,14 +126,14 @@ public class AppNotificationManager
       continue;
       if ((paramNoticeParam.jdField_b_of_type_Int == 0) || (paramNoticeParam.jdField_b_of_type_Int == 2) || (paramNoticeParam.jdField_b_of_type_Int == 3))
       {
-        localNotification.icon = 2130838554;
+        localNotification.icon = 2130838579;
         if (paramNoticeParam.jdField_b_of_type_Int == 0)
         {
           localRemoteViews.setTextViewText(2131297455, CommonDataAdapter.a().a().getString(2131362116));
           localNotification.flags |= 0x10;
           localNotification.defaults |= 0x1;
           localNotification.defaults |= 0x4;
-          localRemoteViews.setImageViewResource(2131297451, 2130838550);
+          localRemoteViews.setImageViewResource(2131297451, 2130838575);
         }
         if (paramNoticeParam.jdField_b_of_type_Int == 2)
         {
@@ -167,7 +167,7 @@ public class AppNotificationManager
               break;
               label428:
               LogUtility.b(jdField_a_of_type_JavaLangString, ">>download icon fail,so we use default notification icon");
-              localRemoteViews.setImageViewResource(2131297451, 2130838550);
+              localRemoteViews.setImageViewResource(2131297451, 2130838575);
               continue;
             }
             localNotification.contentIntent = ((PendingIntent)localObject);
@@ -178,8 +178,8 @@ public class AppNotificationManager
       }
       else if (paramNoticeParam.jdField_b_of_type_Int == 4)
       {
-        localNotification.icon = 2130838554;
-        localRemoteViews.setImageViewResource(2131297451, 2130838550);
+        localNotification.icon = 2130838579;
+        localRemoteViews.setImageViewResource(2131297451, 2130838575);
         localRemoteViews.setTextViewText(2131297455, CommonDataAdapter.a().a().getString(2131362119));
         localRemoteViews.setViewVisibility(2131297455, 0);
         localRemoteViews.setViewVisibility(2131297456, 8);
@@ -189,8 +189,8 @@ public class AppNotificationManager
       }
       else
       {
-        localNotification.icon = 2130838182;
-        localRemoteViews.setImageViewResource(2131297451, 2130838183);
+        localNotification.icon = 2130838201;
+        localRemoteViews.setImageViewResource(2131297451, 2130838202);
         localRemoteViews.setTextViewText(2131297455, paramNoticeParam.c);
         localNotification.contentIntent = ((PendingIntent)localObject);
       }

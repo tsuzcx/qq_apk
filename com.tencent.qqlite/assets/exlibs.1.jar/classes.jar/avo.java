@@ -1,24 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
 import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.model.FriendManager;
 
 public class avo
-  extends Thread
+  implements View.OnClickListener
 {
   public avo(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = ((FriendManager)this.a.app.getManager(8)).a(this.a.jdField_a_of_type_JavaLangString);
-    if (localObject != null) {
-      this.a.c = ((Card)localObject).strReMark;
-    }
-    localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-    ((Message)localObject).what = 1;
-    ((Message)localObject).sendToTarget();
+    Toast.makeText(this.a, 2131362810, 0).show();
   }
 }
 

@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
-import com.tencent.mobileqq.model.EmoticonManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.debug.DebugActivity;
 
 public class dei
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public dei(BigEmoticonViewBinder paramBigEmoticonViewBinder) {}
+  private dei(DebugActivity paramDebugActivity) {}
   
-  public void run()
-  {
-    ((EmoticonManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, Boolean.valueOf(true));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

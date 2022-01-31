@@ -1,16 +1,46 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
-class dlu
-  implements Runnable
+public class dlu
+  extends IClickListener_Ver51
 {
-  dlu(dls paramdls, long paramLong) {}
+  public dlu(QfileLocalFileDocTabView paramQfileLocalFileDocTabView) {}
   
-  public void run()
+  public void a()
   {
-    QfileBaseRecentFileTabView.a(this.jdField_a_of_type_Dls.a);
-    QfileBaseRecentFileTabView.r(this.jdField_a_of_type_Dls.a).a().a(this.jdField_a_of_type_Long);
+    this.a.a.a().c();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().l();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().m();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().n();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().o();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

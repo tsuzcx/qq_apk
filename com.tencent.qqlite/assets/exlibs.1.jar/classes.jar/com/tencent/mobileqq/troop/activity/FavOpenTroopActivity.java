@@ -23,8 +23,8 @@ import com.tencent.mobileqq.widget.ShaderAnimLayout;
 import com.tencent.mobileqq.widget.SlideDetectListView;
 import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
 import com.tencent.widget.MenuPopupDialog;
-import eib;
-import eic;
+import ejh;
+import eji;
 import java.util.ArrayList;
 
 public class FavOpenTroopActivity
@@ -43,8 +43,8 @@ public class FavOpenTroopActivity
   
   public FavOpenTroopActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new eib(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new eic(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ejh(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new eji(this);
   }
   
   public CharSequence a(FavOpenTroopInfo paramFavOpenTroopInfo)
@@ -53,7 +53,7 @@ public class FavOpenTroopActivity
       return "";
     }
     paramFavOpenTroopInfo = new SpannableString("[icon]" + " " + paramFavOpenTroopInfo.troopLocation);
-    paramFavOpenTroopInfo.setSpan(new ImageSpan(this, 2130839440, 1), 0, "[icon]".length(), 17);
+    paramFavOpenTroopInfo.setSpan(new ImageSpan(this, 2130839505, 1), 0, "[icon]".length(), 17);
     return paramFavOpenTroopInfo;
   }
   
@@ -114,7 +114,7 @@ public class FavOpenTroopActivity
   {
     setTitle(getString(2131362173));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131297597));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setContentBackground(2130837635);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setContentBackground(2130837660);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setTranscriptMode(0);
     this.jdField_a_of_type_ComTencentMobileqqTroopActivityFavOpenTroopActivity$TroopAdapter = new FavOpenTroopActivity.TroopAdapter(this);

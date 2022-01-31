@@ -16,6 +16,8 @@ public final class StreamInfo
   public int msgSeq = 0;
   public long msgTime = 0L;
   public short oprType = 0;
+  public long pttFormat = 0L;
+  public long pttTime = 0L;
   public byte pttTransFlag = 0;
   public long random = 0L;
   public short shFlowLayer = 0;
@@ -39,6 +41,8 @@ public final class StreamInfo
     this.msgTime = paramLong3;
     this.msgSeq = paramInt4;
     this.random = paramLong4;
+    this.pttTime = this.pttTime;
+    this.pttFormat = this.pttFormat;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -56,6 +60,8 @@ public final class StreamInfo
     this.msgTime = paramJceInputStream.read(this.msgTime, 10, false);
     this.msgSeq = paramJceInputStream.read(this.msgSeq, 11, false);
     this.random = paramJceInputStream.read(this.random, 12, false);
+    this.pttTime = paramJceInputStream.read(this.pttTime, 13, false);
+    this.pttFormat = paramJceInputStream.read(this.pttFormat, 14, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -75,6 +81,8 @@ public final class StreamInfo
     paramJceOutputStream.write(this.msgTime, 10);
     paramJceOutputStream.write(this.msgSeq, 11);
     paramJceOutputStream.write(this.random, 12);
+    paramJceOutputStream.write(this.pttTime, 13);
+    paramJceOutputStream.write(this.pttFormat, 14);
   }
 }
 

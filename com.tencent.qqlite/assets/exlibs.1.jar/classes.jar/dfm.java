@@ -1,24 +1,18 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
+import com.tencent.mobileqq.emoticonview.ClassicEmoticonPanelView;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
 
 public class dfm
   implements Runnable
 {
-  public dfm(HorizonEmoticonTabs paramHorizonEmoticonTabs, int paramInt, Drawable paramDrawable) {}
+  public dfm(ClassicEmoticonPanelView paramClassicEmoticonPanelView) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs.a.getChildAt(this.jdField_a_of_type_Int);
-    if (localObject == null) {
-      return;
+    if (this.a.a != null)
+    {
+      this.a.a.a();
+      this.a.postDelayed(this, 100L);
     }
-    localObject = (ImageView)((View)localObject).findViewById(2131297086);
-    ((ImageView)localObject).setAdjustViewBounds(false);
-    ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    ((ImageView)localObject).invalidate();
   }
 }
 

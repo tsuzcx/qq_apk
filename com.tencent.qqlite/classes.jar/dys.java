@@ -1,20 +1,23 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.data.TroopAssistantData;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import java.util.Comparator;
 
-public final class dys
-  extends Handler
+public class dys
+  implements Comparator
 {
-  public dys(QQPlayerService paramQQPlayerService, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public dys(TroopAssistantManager paramTroopAssistantManager) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(TroopAssistantData paramTroopAssistantData1, TroopAssistantData paramTroopAssistantData2)
   {
-    QQPlayerService.a(this.a, (Intent)paramMessage.obj);
+    long l1 = Math.max(paramTroopAssistantData1.lastmsgtime, paramTroopAssistantData1.lastdrafttime);
+    long l2 = Math.max(paramTroopAssistantData2.lastmsgtime, paramTroopAssistantData2.lastdrafttime);
+    if (l1 < l2) {
+      return 1;
+    }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

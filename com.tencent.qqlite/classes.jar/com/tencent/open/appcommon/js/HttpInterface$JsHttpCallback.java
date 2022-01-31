@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
 import com.tencent.smtt.sdk.WebView;
-import fda;
+import ffg;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,12 +35,12 @@ public class HttpInterface$JsHttpCallback
     }
     LogUtility.c("HttpInterface", "onException >>> ");
     paramException = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
-    fda localfda = new fda();
-    localfda.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
-    paramException.obj = localfda;
+    ffg localffg = new ffg();
+    localffg.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    paramException.obj = localffg;
     paramException.arg1 = 0;
     if (TextUtils.isEmpty(this.b)) {}
-    for (localfda.jdField_a_of_type_JavaLangString = ("javascript:QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});void(0);");; localfda.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"" + "\"});void(0);"))
+    for (localffg.jdField_a_of_type_JavaLangString = ("javascript:QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});void(0);");; localffg.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"" + "\"});void(0);"))
     {
       this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(paramException);
       return;
@@ -57,9 +57,9 @@ public class HttpInterface$JsHttpCallback
       localJSONObject = new JSONObject();
     }
     Message localMessage = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
-    localfda = new fda();
-    localfda.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
-    localMessage.obj = localfda;
+    localffg = new ffg();
+    localffg.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    localMessage.obj = localffg;
     localMessage.arg1 = 0;
     for (;;)
     {
@@ -74,16 +74,16 @@ public class HttpInterface$JsHttpCallback
         if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
           continue;
         }
-        localfda.jdField_a_of_type_JavaLangString = ("javascript:QzoneApp.fire('httpSuccess'," + paramJSONObject + ");void(0);");
+        localffg.jdField_a_of_type_JavaLangString = ("javascript:QzoneApp.fire('httpSuccess'," + paramJSONObject + ");void(0);");
       }
       catch (JSONException paramJSONObject)
       {
         if (!TextUtils.isEmpty(this.b)) {
           continue;
         }
-        localfda.jdField_a_of_type_JavaLangString = ("javascript:QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});void(0);");
+        localffg.jdField_a_of_type_JavaLangString = ("javascript:QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});void(0);");
         continue;
-        localfda.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);");
+        localffg.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);");
         continue;
       }
       this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(localMessage);
@@ -93,7 +93,7 @@ public class HttpInterface$JsHttpCallback
       paramJSONObject.put("content", localJSONObject.toString());
       paramJSONObject = paramJSONObject.toString();
       continue;
-      localfda.jdField_a_of_type_JavaLangString = ("javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject + ");void(0);");
+      localffg.jdField_a_of_type_JavaLangString = ("javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject + ");void(0);");
     }
   }
 }

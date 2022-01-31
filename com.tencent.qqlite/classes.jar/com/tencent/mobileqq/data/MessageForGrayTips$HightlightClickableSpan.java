@@ -20,7 +20,7 @@ import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.qphone.base.util.QLog;
-import dcq;
+import dds;
 
 public class MessageForGrayTips$HightlightClickableSpan
   extends ClickableSpan
@@ -30,20 +30,20 @@ public class MessageForGrayTips$HightlightClickableSpan
   protected static final int URL_DATA_INDEX = 1;
   int color = -1;
   private Context context;
-  private dcq item;
+  private dds item;
   private QQAppInterface mApp;
   
-  public MessageForGrayTips$HightlightClickableSpan(MessageForGrayTips paramMessageForGrayTips, QQAppInterface paramQQAppInterface, int paramInt, Context paramContext, dcq paramdcq)
+  public MessageForGrayTips$HightlightClickableSpan(MessageForGrayTips paramMessageForGrayTips, QQAppInterface paramQQAppInterface, int paramInt, Context paramContext, dds paramdds)
   {
     this.mApp = paramQQAppInterface;
     this.context = paramContext;
     this.color = paramInt;
-    this.item = paramdcq;
+    this.item = paramdds;
   }
   
-  public MessageForGrayTips$HightlightClickableSpan(MessageForGrayTips paramMessageForGrayTips, QQAppInterface paramQQAppInterface, Context paramContext, dcq paramdcq)
+  public MessageForGrayTips$HightlightClickableSpan(MessageForGrayTips paramMessageForGrayTips, QQAppInterface paramQQAppInterface, Context paramContext, dds paramdds)
   {
-    this(paramMessageForGrayTips, paramQQAppInterface, -1, paramContext, paramdcq);
+    this(paramMessageForGrayTips, paramQQAppInterface, -1, paramContext, paramdds);
   }
   
   public boolean clickAppMsg(String paramString1, String paramString2)

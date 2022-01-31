@@ -1,39 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
 import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 import com.tencent.qphone.base.util.QLog;
 
-class dog
+public class dog
   implements Runnable
 {
-  dog(dof paramdof) {}
+  public dog(FileTransferHandler paramFileTransferHandler, long paramLong, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make  thread start. . .");
-    this.a.a(false);
-    for (;;)
-    {
-      if (!this.a.b()) {}
-      try
-      {
-        Thread.sleep(1000L);
-        boolean bool = this.a.b();
-        if (bool)
-        {
-          this.a.a(true);
-          QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make  thread exit. . .");
-          return;
-        }
-        Message localMessage = new Message();
-        localMessage.what = 1;
-        this.a.a.a.sendMessage(localMessage);
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
+    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "]  handle recv onlinefile resp. sucess =" + this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
   }
 }
 

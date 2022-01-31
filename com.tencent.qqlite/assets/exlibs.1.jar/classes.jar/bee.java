@@ -1,13 +1,15 @@
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.QQSetting;
 
 class bee
   implements Runnable
 {
-  bee(bed parambed, String paramString) {}
+  bee(bed parambed, Drawable paramDrawable) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bed.a.b(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bed.a.a.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

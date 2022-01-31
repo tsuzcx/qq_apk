@@ -1,14 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class ajo
+  implements View.OnClickListener
 {
-  public String a;
-  public short a;
-  public String b;
-  public String c;
-  public String d;
+  public ajo(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  private ajo(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public void onClick(View paramView)
+  {
+    this.a.a.setText("");
+  }
 }
 
 

@@ -42,13 +42,13 @@ public class PoiMapActivity$SearchResultAdapter
     if (paramView == null)
     {
       paramViewGroup = new PoiMapActivity.PoiItemViewHolder(this.a);
-      paramView = LayoutInflater.from(this.a).inflate(2130903348, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297794));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297795));
-      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131297796);
+      paramView = LayoutInflater.from(this.a).inflate(2130903351, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297798));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297799));
+      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131297800);
       paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      paramViewGroup.c = paramView.findViewById(2131297797);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131297793);
+      paramViewGroup.c = paramView.findViewById(2131297801);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131297797);
       paramView.setTag(paramViewGroup);
     }
     while (paramInt == this.a.a.size())

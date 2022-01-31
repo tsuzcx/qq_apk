@@ -87,14 +87,14 @@ public class AddFriendScannerActivity
   
   private void k()
   {
-    TextView localTextView = (TextView)findViewById(2131296897);
-    localTextView.setText(2131363022);
+    TextView localTextView = (TextView)findViewById(2131296898);
+    localTextView.setText(2131363032);
     localTextView.setOnClickListener(this);
-    ((TextView)findViewById(2131296891)).setText(2131363022);
+    ((TextView)findViewById(2131296892)).setText(2131363032);
     if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362403);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362404);
     }
     this.jdField_a_of_type_ComTencentBizWidgetsScannerView.setScanListener(this);
     this.jdField_a_of_type_ComTencentBizWidgetsScannerView.post(this.jdField_a_of_type_JavaLangRunnable);
@@ -264,8 +264,8 @@ public class AddFriendScannerActivity
     if (super.isResume())
     {
       QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
-      localQQCustomDialog.setMessage(2131362376);
-      localQQCustomDialog.setPositiveButton(2131362795, new ow(this));
+      localQQCustomDialog.setMessage(2131362377);
+      localQQCustomDialog.setPositiveButton(2131362802, new ow(this));
       localQQCustomDialog.show();
       return;
     }
@@ -295,14 +295,14 @@ public class AddFriendScannerActivity
       paramBundle = (WindowManager)getSystemService("window");
       this.jdField_c_of_type_Int = paramBundle.getDefaultDisplay().getHeight();
       this.jdField_d_of_type_Int = paramBundle.getDefaultDisplay().getWidth();
-      super.setContentView(2130903351);
+      super.setContentView(2130903354);
     }
     for (;;)
     {
       e();
       k();
       return true;
-      super.setContentView(2130903350);
+      super.setContentView(2130903353);
     }
   }
   
@@ -327,11 +327,11 @@ public class AddFriendScannerActivity
   
   protected void e()
   {
-    this.jdField_a_of_type_ComTencentBizWidgetsScannerView = ((ScannerView)findViewById(2131297800));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297803));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297801));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297802));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131297804);
+    this.jdField_a_of_type_ComTencentBizWidgetsScannerView = ((ScannerView)findViewById(2131297804));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297807));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297805));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297806));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131297808);
   }
   
   public void f()
@@ -344,7 +344,7 @@ public class AddFriendScannerActivity
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362402);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362403);
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_c_of_type_JavaLangRunnable, 4000L);
     this.jdField_e_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentBizWidgetsScannerView.c();
@@ -353,7 +353,7 @@ public class AddFriendScannerActivity
   public void g()
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362404);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362405);
   }
   
   public void h()
@@ -433,8 +433,8 @@ public class AddFriendScannerActivity
     if (super.isResume())
     {
       localObject = DialogUtil.a(this, 230);
-      ((QQCustomDialog)localObject).setMessage(2131362377);
-      ((QQCustomDialog)localObject).setPositiveButton(2131362795, new oz(this));
+      ((QQCustomDialog)localObject).setMessage(2131362378);
+      ((QQCustomDialog)localObject).setPositiveButton(2131362802, new oz(this));
       ((QQCustomDialog)localObject).show();
       return;
     }
@@ -446,7 +446,7 @@ public class AddFriendScannerActivity
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
     localQQCustomDialog.setMessage("类库损坏请重新启动QQ");
     pa localpa = new pa(this);
-    localQQCustomDialog.setPositiveButton(2131362795, localpa);
+    localQQCustomDialog.setPositiveButton(2131362802, localpa);
     localQQCustomDialog.setOnCancelListener(localpa);
     localQQCustomDialog.show();
   }

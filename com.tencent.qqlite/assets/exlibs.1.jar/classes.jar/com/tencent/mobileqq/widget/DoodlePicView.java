@@ -15,7 +15,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import eye;
+import fak;
 import java.util.ArrayList;
 
 public class DoodlePicView
@@ -349,7 +349,7 @@ public class DoodlePicView
   private void e()
   {
     if ((!this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_JavaLangString != null)) {
-      new Thread(new eye(this)).start();
+      new Thread(new fak(this)).start();
     }
   }
   

@@ -556,7 +556,7 @@ public class LockPatternView
     if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.b(this.jdField_a_of_type_JavaUtilArrayList);
     }
-    a(2131364021);
+    a(2131364032);
   }
   
   private void e()
@@ -564,7 +564,7 @@ public class LockPatternView
     if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.a();
     }
-    a(2131364019);
+    a(2131364030);
   }
   
   private void f()
@@ -572,7 +572,7 @@ public class LockPatternView
     if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.a(this.jdField_a_of_type_JavaUtilArrayList);
     }
-    a(2131364022);
+    a(2131364033);
   }
   
   private void g()
@@ -580,7 +580,7 @@ public class LockPatternView
     if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.b();
     }
-    a(2131364020);
+    a(2131364031);
   }
   
   private void h()

@@ -14,8 +14,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.AdapterView.OnItemSelectedListener;
 import com.tencent.widget.Gallery;
-import dtw;
-import dtx;
+import duy;
+import duz;
 import java.util.List;
 
 public abstract class PhotoFileViewBase
@@ -33,8 +33,8 @@ public abstract class PhotoFileViewBase
   public PhotoFileViewBase(Activity paramActivity, List paramList, int paramInt)
   {
     super(paramActivity);
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new dtw(this);
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new dtx(this);
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new duy(this);
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new duz(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerGalleryAdapter.a(paramList);
     this.jdField_a_of_type_Int = paramInt;
   }
@@ -58,7 +58,7 @@ public abstract class PhotoFileViewBase
   
   public View a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903440, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903445, paramViewGroup, false);
     e();
     return this.jdField_a_of_type_AndroidViewView;
   }

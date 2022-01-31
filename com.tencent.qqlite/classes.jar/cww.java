@@ -1,13 +1,16 @@
-import java.util.List;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.SQLiteDatabase;
 
 public class cww
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public String a;
-  public List a;
-  public boolean a;
-  public int b;
+  cww(SQLiteDatabase paramSQLiteDatabase) {}
+  
+  public void run()
+  {
+    Toast.makeText(BaseApplicationImpl.getContext(), "transaction exception!", 1).show();
+  }
 }
 
 

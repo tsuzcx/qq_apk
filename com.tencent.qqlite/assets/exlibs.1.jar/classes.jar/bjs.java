@@ -1,16 +1,15 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SnapScreenActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
 
 public class bjs
-  implements View.OnClickListener
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public bjs(SnapScreenActivity paramSnapScreenActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.a(true);
-  }
+  public View a;
+  public TextView a;
+  public TroopMemberListSlideItem a;
+  public View b;
 }
 
 

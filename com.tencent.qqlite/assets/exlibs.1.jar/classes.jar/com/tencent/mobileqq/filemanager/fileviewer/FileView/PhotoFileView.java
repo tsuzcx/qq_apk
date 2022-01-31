@@ -2,7 +2,7 @@ package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
 import android.app.Activity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import dtu;
+import duw;
 import java.util.List;
 
 public class PhotoFileView
@@ -14,7 +14,7 @@ public class PhotoFileView
   public PhotoFileView(Activity paramActivity, QQAppInterface paramQQAppInterface, List paramList, int paramInt)
   {
     super(paramActivity, paramList, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewPhotoFileViewBase$IControllProxyInterface = new dtu(this, paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewPhotoFileViewBase$IControllProxyInterface = new duw(this, paramQQAppInterface);
     a().a();
   }
   

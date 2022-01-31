@@ -1,16 +1,33 @@
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.mobileqq.activity.messagesearch.SearchHistoryAdapter;
 
-class cgq
-  implements Runnable
+public class cgq
+  implements TextWatcher
 {
-  cgq(cgp paramcgp) {}
+  public cgq(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.f();
-    this.a.a.jdField_a_of_type_Chc.sendEmptyMessage(3);
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (this.a.b) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter.a(paramEditable);
+    }
+    this.a.b = true;
+    if (paramEditable.length() == 0)
+    {
+      this.a.findViewById(2131297955).setVisibility(8);
+      return;
+    }
+    this.a.findViewById(2131297955).setVisibility(0);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

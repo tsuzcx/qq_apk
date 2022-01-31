@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData.ActionCountdownOver;
-import java.util.TimerTask;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.fpsreport.FPSCalculator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class dxl
-  extends TimerTask
+  extends AsyncTask
 {
-  public dxl(ActionGlobalData paramActionGlobalData) {}
+  public dxl(FPSCalculator paramFPSCalculator) {}
   
-  public void run()
+  protected Void a(Void... paramVarArgs)
   {
-    ActionGlobalData.a(this.a);
-    ActionGlobalData localActionGlobalData = this.a;
-    localActionGlobalData.a -= 0.1F;
-    if (ActionGlobalData.a(this.a) != null) {
-      ActionGlobalData.a(this.a).b();
+    paramVarArgs = FPSCalculator.a(this.a).iterator();
+    while (paramVarArgs.hasNext()) {
+      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
     }
-    if (ActionGlobalData.b(this.a) * 100 == this.a.c * 1000)
-    {
-      this.a.a = 0.0F;
-      if (ActionGlobalData.a(this.a) != null) {
-        ActionGlobalData.a(this.a).a();
-      }
-      cancel();
-    }
+    FPSCalculator.a(this.a).clear();
+    return null;
   }
 }
 

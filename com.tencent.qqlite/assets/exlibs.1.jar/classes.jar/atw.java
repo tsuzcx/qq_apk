@@ -1,29 +1,15 @@
-import android.widget.Filter;
-import android.widget.Filter.FilterResults;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.LoginActivity;
-import java.util.List;
 
-class atw
-  extends Filter
+public class atw
+  implements View.OnClickListener
 {
-  atw(atv paramatv) {}
+  public atw(LoginActivity paramLoginActivity) {}
   
-  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
+  public void onClick(View paramView)
   {
-    paramCharSequence = new Filter.FilterResults();
-    paramCharSequence.values = this.a.a.a;
-    paramCharSequence.count = this.a.a.a.size();
-    return paramCharSequence;
-  }
-  
-  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
-  {
-    if (paramFilterResults.count > 0)
-    {
-      this.a.notifyDataSetChanged();
-      return;
-    }
-    this.a.notifyDataSetInvalidated();
+    this.a.c();
   }
 }
 

@@ -728,7 +728,7 @@ public class EmosmUtils
   {
     boolean bool = NetworkUtil.e(paramActivity);
     if (!bool) {
-      Toast.makeText(paramActivity, 2131362790, 0).show();
+      Toast.makeText(paramActivity, 2131362797, 0).show();
     }
     return bool;
   }

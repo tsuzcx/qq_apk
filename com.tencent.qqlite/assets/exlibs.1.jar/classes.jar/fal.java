@@ -1,19 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.widget.DropdownView;
 
-class fal
-  implements DialogInterface.OnClickListener
+public class fal
+  implements View.OnClickListener
 {
-  fal(faj paramfaj, SdkAuthorize.GetAuthApiListResponse paramGetAuthApiListResponse, JSONObject paramJSONObject) {}
+  public fal(DropdownView paramDropdownView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_Faj.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$GetAuthApiListResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    this.a.jdField_a_of_type_Fao.clearFocus();
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Fao.getWindowToken(), 0);
+    if ((this.a.jdField_a_of_type_Fao.getAdapter() != null) && (this.a.jdField_a_of_type_Fao.getAdapter().getCount() > 0))
+    {
+      if ((((ImageView)paramView).getDrawable() == this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) && (!this.a.jdField_a_of_type_Boolean)) {
+        DropdownView.a(this.a).postDelayed(new fam(this, paramView), 250L);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_Fao.dismissDropDown();
   }
 }
 

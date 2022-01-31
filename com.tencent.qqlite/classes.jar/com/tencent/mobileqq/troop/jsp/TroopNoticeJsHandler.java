@@ -20,9 +20,9 @@ import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.qqconnect.wtlogin.LoginHelper;
 import com.tencent.smtt.sdk.WebView;
-import ens;
-import ent;
-import enu;
+import epi;
+import epj;
+import epk;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -111,7 +111,7 @@ public class TroopNoticeJsHandler
   
   protected void b(String paramString)
   {
-    new Thread(new ens(this, paramString)).start();
+    new Thread(new epi(this, paramString)).start();
   }
   
   public void c(String paramString)
@@ -195,7 +195,7 @@ public class TroopNoticeJsHandler
               ((Map)localObject5).put(str3, ((JSONObject)localObject1).get(str3).toString());
             }
           }
-          localActivity.runOnUiThread(new ent(this, localCustomWebView, str1, HttpUtil.a(str2, ((StringBuffer)localObject2).toString(), (String)localObject3, paramString, (Map)localObject4, (Map)localObject5)));
+          localActivity.runOnUiThread(new epj(this, localCustomWebView, str1, HttpUtil.a(str2, ((StringBuffer)localObject2).toString(), (String)localObject3, paramString, (Map)localObject4, (Map)localObject5)));
           return;
         }
       }
@@ -205,7 +205,7 @@ public class TroopNoticeJsHandler
   
   protected void d(String paramString)
   {
-    new Thread(new enu(this, paramString)).start();
+    new Thread(new epk(this, paramString)).start();
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)

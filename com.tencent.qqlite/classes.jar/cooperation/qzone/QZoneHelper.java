@@ -91,8 +91,8 @@ public class QZoneHelper
   private static Intent a(Context paramContext, Long paramLong, int paramInt)
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("key_left_tab_title", paramContext.getString(2131364494));
-    localIntent.putExtra("key_rihgt_tab_title", paramContext.getString(2131364493));
+    localIntent.putExtra("key_left_tab_title", paramContext.getString(2131364505));
+    localIntent.putExtra("key_rihgt_tab_title", paramContext.getString(2131364504));
     localIntent.putExtra("key_album_owner_uin", paramLong);
     localIntent.putExtra("key_selected_tab", paramInt);
     a(localIntent);
@@ -208,7 +208,7 @@ public class QZoneHelper
   
   private static void a()
   {
-    QQToast.a(BaseApplication.getContext(), 2131364490, 0).a();
+    QQToast.a(BaseApplication.getContext(), 2131364501, 0).a();
   }
   
   public static void a(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, int paramInt)

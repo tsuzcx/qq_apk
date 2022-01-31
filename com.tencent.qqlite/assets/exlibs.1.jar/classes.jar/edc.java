@@ -1,27 +1,31 @@
-import com.tencent.mobileqq.search.ISearchable;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public final class edc
-  implements Comparator
+public class edc
+  implements ActionSheet.OnButtonClickListener
 {
-  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
+  public edc(EditActivity paramEditActivity) {}
+  
+  public void a(View paramView, int paramInt)
   {
-    long l1 = paramISearchable1.d();
-    long l2 = paramISearchable2.d();
-    if (l1 < l2) {}
-    do
+    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    switch (paramInt)
     {
-      return 1;
-      if (l1 > l2) {
-        return -1;
-      }
-      l1 = paramISearchable1.c();
-      l2 = paramISearchable2.c();
-    } while (l1 < l2);
-    if (l1 > l2) {
-      return -1;
+    default: 
+    case 0: 
+      do
+      {
+        return;
+        this.a.c = 0;
+      } while (System.currentTimeMillis() - this.a.jdField_a_of_type_Long <= 1300L);
+      this.a.d();
+      return;
     }
-    return 0;
+    this.a.c = 1;
+    EditActivity.a(this.a).e = null;
+    EditActivity.c(this.a, true);
   }
 }
 

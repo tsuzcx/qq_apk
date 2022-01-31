@@ -12,8 +12,8 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import ddn;
-import ddo;
+import dep;
+import deq;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -40,7 +40,7 @@ public class EmojiJsHandler
   public IphoneTitleBarActivity a;
   QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   public QQProgressDialog a;
-  public ddn a;
+  public dep a;
   public QQProgressDialog b;
   
   public EmojiJsHandler(Context paramContext)
@@ -74,17 +74,17 @@ public class EmojiJsHandler
   
   public void a()
   {
-    if (this.jdField_a_of_type_Ddn == null)
+    if (this.jdField_a_of_type_Dep == null)
     {
-      this.jdField_a_of_type_Ddn = new ddn(this);
-      this.jdField_a_of_type_Ddn.addFilter(new Class[] { HttpContinueDownloadFileProcessor.class });
-      this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.app.a().a(this.jdField_a_of_type_Ddn);
+      this.jdField_a_of_type_Dep = new dep(this);
+      this.jdField_a_of_type_Dep.addFilter(new Class[] { HttpContinueDownloadFileProcessor.class });
+      this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.app.a().a(this.jdField_a_of_type_Dep);
     }
   }
   
   public void a(IndividuationSetActivity.EmojiJsBridgeListener paramEmojiJsBridgeListener)
   {
-    new ddo(this, paramEmojiJsBridgeListener).execute(new Object[0]);
+    new deq(this, paramEmojiJsBridgeListener).execute(new Object[0]);
   }
   
   /* Error */
@@ -310,13 +310,13 @@ public class EmojiJsHandler
     //   447: ldc_w 264
     //   450: invokestatic 88	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   453: aload_0
-    //   454: new 266	ddj
+    //   454: new 266	del
     //   457: dup
     //   458: aload_0
     //   459: aload 7
     //   461: ldc_w 267
     //   464: aload_2
-    //   465: invokespecial 270	ddj:<init>	(Lcom/tencent/mobileqq/emoji/EmojiJsHandler;Landroid/content/Context;ILcom/tencent/mobileqq/activity/IndividuationSetActivity$EmojiJsBridgeListener;)V
+    //   465: invokespecial 270	del:<init>	(Lcom/tencent/mobileqq/emoji/EmojiJsHandler;Landroid/content/Context;ILcom/tencent/mobileqq/activity/IndividuationSetActivity$EmojiJsBridgeListener;)V
     //   468: putfield 272	com/tencent/mobileqq/emoji/EmojiJsHandler:jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   471: aload_0
     //   472: getfield 272	com/tencent/mobileqq/emoji/EmojiJsHandler:jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
@@ -339,24 +339,24 @@ public class EmojiJsHandler
     //   511: aload_0
     //   512: getfield 272	com/tencent/mobileqq/emoji/EmojiJsHandler:jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   515: ldc_w 295
-    //   518: new 297	ddk
+    //   518: new 297	dem
     //   521: dup
     //   522: aload_0
     //   523: aload_2
-    //   524: invokespecial 298	ddk:<init>	(Lcom/tencent/mobileqq/emoji/EmojiJsHandler;Lcom/tencent/mobileqq/activity/IndividuationSetActivity$EmojiJsBridgeListener;)V
+    //   524: invokespecial 298	dem:<init>	(Lcom/tencent/mobileqq/emoji/EmojiJsHandler;Lcom/tencent/mobileqq/activity/IndividuationSetActivity$EmojiJsBridgeListener;)V
     //   527: invokevirtual 302	com/tencent/mobileqq/utils/QQCustomDialog:setNegativeButton	(ILandroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   530: pop
     //   531: aload_0
     //   532: getfield 272	com/tencent/mobileqq/emoji/EmojiJsHandler:jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   535: ldc_w 303
-    //   538: new 305	ddl
+    //   538: new 305	den
     //   541: dup
     //   542: aload_0
     //   543: aload 7
     //   545: aload_2
     //   546: aload 6
     //   548: iload_3
-    //   549: invokespecial 308	ddl:<init>	(Lcom/tencent/mobileqq/emoji/EmojiJsHandler;Lcom/tencent/mobileqq/app/BaseActivity;Lcom/tencent/mobileqq/activity/IndividuationSetActivity$EmojiJsBridgeListener;Ljava/lang/String;I)V
+    //   549: invokespecial 308	den:<init>	(Lcom/tencent/mobileqq/emoji/EmojiJsHandler;Lcom/tencent/mobileqq/app/BaseActivity;Lcom/tencent/mobileqq/activity/IndividuationSetActivity$EmojiJsBridgeListener;Ljava/lang/String;I)V
     //   552: invokevirtual 311	com/tencent/mobileqq/utils/QQCustomDialog:setPositiveButton	(ILandroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   555: pop
     //   556: aload_0
@@ -528,8 +528,8 @@ public class EmojiJsHandler
   
   public void b()
   {
-    if (this.jdField_a_of_type_Ddn != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.app.a().b(this.jdField_a_of_type_Ddn);
+    if (this.jdField_a_of_type_Dep != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.app.a().b(this.jdField_a_of_type_Dep);
     }
   }
   

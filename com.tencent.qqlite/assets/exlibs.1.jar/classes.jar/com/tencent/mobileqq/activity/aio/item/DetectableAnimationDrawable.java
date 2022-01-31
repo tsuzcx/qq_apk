@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
-import bum;
+import bvl;
 
 public abstract class DetectableAnimationDrawable
   extends AnimationDrawable
@@ -37,7 +37,7 @@ public abstract class DetectableAnimationDrawable
   {
     super.start();
     this.a = new Handler();
-    this.a.postDelayed(new bum(this), a());
+    this.a.postDelayed(new bvl(this), a());
   }
 }
 

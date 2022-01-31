@@ -1,27 +1,17 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import java.lang.ref.WeakReference;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class ald
-  implements View.OnClickListener
+class ald
+  implements Runnable
 {
-  public ald(EmosmActivity paramEmosmActivity) {}
+  ald(alc paramalc) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    while (!EmosmUtils.showNetEnable(this.a)) {
-      return;
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    EmojiHomeUiPlugin.openEmojiHomePage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 2, this.a.app.getSid());
-    ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "ForwardEmojiHome", 0, 0, "", "", "", "");
+    this.a.a.a.setText(this.a.a.b);
+    this.a.a.a.setTextColor(Color.rgb(119, 119, 119));
+    EditInfoActivity.b(this.a.a, true);
   }
 }
 

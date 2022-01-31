@@ -20,7 +20,7 @@ import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
 import com.tencent.mtt.spcialcall.sdk.MttApi;
 import com.tencent.mtt.spcialcall.sdk.MttLoader;
 import com.tencent.smtt.sdk.WebView;
-import exe;
+import ezk;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -185,7 +185,7 @@ public class WebViewJumpPlugin
           }
           bool1 = bool2;
         } while (!paramString1.startsWith("http:"));
-        new Handler().postDelayed(new exe(this), 2000L);
+        new Handler().postDelayed(new ezk(this), 2000L);
         return true;
         if (paramString1.startsWith("http://clientui.3g.qq.com/mqqapi/"))
         {

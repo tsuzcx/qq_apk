@@ -5,12 +5,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import common.config.service.QzoneLbsConfig;
-import flm;
+import fns;
 
 public class GpsInfo4LocalImage
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new flm();
+  public static final Parcelable.Creator CREATOR = new fns();
   public float a;
   public int a;
   public float b;

@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QQUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public final class evv
   implements Runnable
 {
-  public evv(QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
-  
   public void run()
   {
-    String str = null;
-    if (QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), new String[] { this.jdField_a_of_type_JavaLangString })) {
-      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363659);
-    }
-    if (str != null) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2, str, 0).b(this.jdField_a_of_type_Int);
-    }
+    FileUtils.a(BaseApplicationImpl.a, true);
   }
 }
 

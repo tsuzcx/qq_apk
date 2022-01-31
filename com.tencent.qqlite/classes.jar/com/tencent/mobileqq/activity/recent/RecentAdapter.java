@@ -12,8 +12,8 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import ckq;
-import ckr;
+import clr;
+import cls;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.IDragViewProvider;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.OnDragModeChangedListener;
@@ -51,7 +51,7 @@ public class RecentAdapter
   public static final int b = 99;
   private long jdField_a_of_type_Long = 0L;
   protected Context a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ckr(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cls(this);
   private OnRecentUserOpsListener jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener = null;
   protected RecentBaseData a;
   protected RecentFaceDecoder a;
@@ -136,7 +136,7 @@ public class RecentAdapter
       View localView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i);
       if (localView != null)
       {
-        localView = localView.findViewById(2131298666);
+        localView = localView.findViewById(2131298692);
         if ((localView != null) && ((localView instanceof DragTextView)))
         {
           DragTextView localDragTextView = (DragTextView)localView;
@@ -850,7 +850,7 @@ public class RecentAdapter
             ((QQCustomMenu)localObject2).a(j, (String)localList.get(i));
             i += 1;
           }
-          this.jdField_a_of_type_ComTencentWidgetMenuPopupDialog = MenuPopupDialog.a(paramView, ((RecentBaseData)localObject1).a, (QQCustomMenu)localObject2, this.jdField_a_of_type_AndroidViewView$OnClickListener, new ckq(this, paramView));
+          this.jdField_a_of_type_ComTencentWidgetMenuPopupDialog = MenuPopupDialog.a(paramView, ((RecentBaseData)localObject1).a, (QQCustomMenu)localObject2, this.jdField_a_of_type_AndroidViewView$OnClickListener, new clr(this, paramView));
           return true;
         }
         if (QLog.isDevelopLevel()) {

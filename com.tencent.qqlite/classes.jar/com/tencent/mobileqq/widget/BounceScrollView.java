@@ -6,12 +6,12 @@ import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import com.tencent.widget.ScrollView;
-import exo;
+import ezu;
 
 public class BounceScrollView
   extends ScrollView
 {
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new exo(this));
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new ezu(this));
   private BounceScrollView.MotionEventInterceptor jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$MotionEventInterceptor;
   protected BounceScrollView.OnScrollChangedListener a;
   private boolean b = false;

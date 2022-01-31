@@ -1613,7 +1613,7 @@ class MessengerService$IncomingHandler
     //   3584: invokevirtual 123	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   3587: ifeq +56 -> 3643
     //   3590: invokestatic 698	com/tencent/mobileqq/utils/pathtracker/VipPathTracker:a	()Lcom/tencent/mobileqq/utils/pathtracker/VipPathTracker;
-    //   3593: invokevirtual 722	com/tencent/mobileqq/utils/pathtracker/VipPathTracker:a	()Lewt;
+    //   3593: invokevirtual 722	com/tencent/mobileqq/utils/pathtracker/VipPathTracker:a	()Leyy;
     //   3596: ifnull +41 -> 3637
     //   3599: iconst_1
     //   3600: istore 5

@@ -1,14 +1,28 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.DiscussionManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.data.RecentUser;
 
-public class cak
-  implements Runnable
+class cak
+  implements DialogInterface.OnClickListener
 {
-  public cak(TroopChatPie paramTroopChatPie) {}
+  cak(cai paramcai, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    new cal(this).execute(new Void[0]);
+    ((DiscussionManager)DiscussChatPie.h(this.jdField_a_of_type_Cai.a).getManager(45)).a(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = DiscussChatPie.i(this.jdField_a_of_type_Cai.a).a().a();
+    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
+    if (localRecentUser != null) {
+      paramDialogInterface.b(localRecentUser);
+    }
+    ((DiscussionHandler)DiscussChatPie.j(this.jdField_a_of_type_Cai.a).a(6)).c();
+    this.jdField_a_of_type_Cai.a.t();
   }
 }
 

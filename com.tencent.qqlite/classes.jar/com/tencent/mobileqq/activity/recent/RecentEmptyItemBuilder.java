@@ -36,7 +36,7 @@ public class RecentEmptyItemBuilder
       paramView.height = i;
       paramDrawable.setLayoutParams(paramView);
       paramDrawable.setTag(Boolean.valueOf(true));
-      paramView = (TextView)paramDrawable.findViewById(2131296883);
+      paramView = (TextView)paramDrawable.findViewById(2131296884);
       if (!(paramObject instanceof Integer)) {
         break label278;
       }
@@ -44,10 +44,10 @@ public class RecentEmptyItemBuilder
       if (i != 1) {
         break label216;
       }
-      paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130838138, 0, 0);
+      paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130838157, 0, 0);
       paramView.setVisibility(0);
-      paramView.setText(2131364052);
-      paramView.setTextColor(paramContext.getResources().getColorStateList(2131427495));
+      paramView.setText(2131364063);
+      paramView.setTextColor(paramContext.getResources().getColorStateList(2131427499));
     }
     label278:
     for (;;)
@@ -59,10 +59,10 @@ public class RecentEmptyItemBuilder
       label216:
       if (i == 0)
       {
-        paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130838138, 0, 0);
+        paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130838157, 0, 0);
         paramView.setVisibility(0);
-        paramView.setText(2131363479);
-        paramView.setTextColor(paramContext.getResources().getColorStateList(2131427495));
+        paramView.setText(2131363490);
+        paramView.setTextColor(paramContext.getResources().getColorStateList(2131427499));
       }
       else
       {

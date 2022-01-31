@@ -19,18 +19,18 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import ccs;
-import cct;
-import ccu;
-import ccv;
-import ccw;
-import ccx;
-import ccy;
-import ccz;
-import cda;
-import cdb;
-import cdc;
-import cdd;
+import cdt;
+import cdu;
+import cdv;
+import cdw;
+import cdx;
+import cdy;
+import cdz;
+import cea;
+import ceb;
+import cec;
+import ced;
+import cee;
 import com.tencent.mobileqq.activity.AddRequestActivity;
 import com.tencent.mobileqq.activity.AutoRemarkActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -99,21 +99,21 @@ public class SystemMsgListView
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   @SuppressLint({"HandlerLeak"})
   public Handler a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ccy(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new cct(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cdz(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new cdu(this);
   private SystemMsgListAdapter jdField_a_of_type_ComTencentMobileqqAdapterSystemMsgListAdapter;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cdb(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new cdd(this);
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new cdc(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cec(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new cee(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ced(this);
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   public QQProgressDialog a;
-  private SlideDetectListView.OnScrollToTopListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnScrollToTopListener = new ccu(this);
+  private SlideDetectListView.OnScrollToTopListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnScrollToTopListener = new cdv(this);
   private SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   public final long b;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new ccz(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new cea(this);
   private boolean jdField_b_of_type_Boolean = true;
-  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new cda(this);
+  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new ceb(this);
   public View c;
   private boolean jdField_c_of_type_Boolean = false;
   public View d;
@@ -132,7 +132,7 @@ public class SystemMsgListView
     this.jdField_a_of_type_Long = 1000L;
     this.jdField_b_of_type_Long = 500L;
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new ccs(this);
+    this.jdField_a_of_type_AndroidOsHandler = new cdt(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -282,7 +282,7 @@ public class SystemMsgListView
   private static void c(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(new ccv(paramQQAppInterface));
+      paramQQAppInterface.a(new cdw(paramQQAppInterface));
     }
     if (QLog.isColorLevel()) {
       QLog.i("Q.newfriendSystemMsgListView", 2, "sendReadConfirm is end!");
@@ -312,10 +312,10 @@ public class SystemMsgListView
   
   private void o()
   {
-    a(2130903546);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131298502));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131298503);
-    this.jdField_d_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903547, null);
+    a(2130903555);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131298527));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131298528);
+    this.jdField_d_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903556, null);
     this.jdField_d_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     q();
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
@@ -346,7 +346,7 @@ public class SystemMsgListView
   private void q()
   {
     if (this.jdField_e_of_type_AndroidViewView == null) {
-      this.jdField_e_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903544, null);
+      this.jdField_e_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903553, null);
     }
     if (this.jdField_e_of_type_AndroidViewView.getParent() == null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b(this.jdField_e_of_type_AndroidViewView);
@@ -364,7 +364,7 @@ public class SystemMsgListView
         return;
         if (!NetworkUtil.e(BaseApplication.getContext()))
         {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362790), 0).b(a());
+          QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362797), 0).b(a());
           return;
         }
       } while ((this.jdField_a_of_type_JavaUtilList.size() < 10) || (FriendSystemMsgController.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)));
@@ -532,7 +532,7 @@ public class SystemMsgListView
       paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(paramViewHolder);
       paramViewHolder.e.setVisibility(8);
       paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(true);
-      paramViewHolder.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362891) + " " + paramViewHolder.jdField_d_of_type_JavaLangString);
+      paramViewHolder.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362898) + " " + paramViewHolder.jdField_d_of_type_JavaLangString);
       if (TextUtils.isEmpty(paramViewHolder.jdField_d_of_type_JavaLangString)) {
         break label511;
       }
@@ -774,7 +774,7 @@ public class SystemMsgListView
     {
       this.jdField_a_of_type_ComTencentMobileqqAdapterSystemMsgListAdapter.jdField_a_of_type_Int = FriendSystemMsgController.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       this.jdField_a_of_type_ComTencentMobileqqAdapterSystemMsgListAdapter.notifyDataSetChanged();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new ccw(this));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cdx(this));
       FriendSystemMsgController.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
       FriendSystemMsgController.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
@@ -862,7 +862,7 @@ public class SystemMsgListView
   public void l()
   {
     Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("title", this.jdField_a_of_type_AndroidContentContext.getString(2131364287));
+    localIntent.putExtra("title", this.jdField_a_of_type_AndroidContentContext.getString(2131364298));
     a(localIntent.putExtra("url", "http://ti.qq.com/friendship_auth/index.html?_wv=3&_bid=173#p1"));
   }
   
@@ -873,7 +873,7 @@ public class SystemMsgListView
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new ccx(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new cdy(this));
   }
 }
 

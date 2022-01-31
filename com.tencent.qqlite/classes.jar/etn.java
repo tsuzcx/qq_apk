@@ -1,44 +1,76 @@
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 
-public final class etn
-  implements View.OnClickListener
+public class etn
+  implements AdapterView.OnItemClickListener
 {
-  public etn(DialogInterface.OnClickListener paramOnClickListener1, Dialog paramDialog, DialogInterface.OnClickListener paramOnClickListener2) {}
+  public etn(TroopShareUtility paramTroopShareUtility) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramView.getId() == 2131298156) {}
+    TroopShareUtility.a(this.a).dismiss();
+    int i;
+    if ((paramLong == 1L) || (paramLong == 2L)) {
+      if (!WXShareHelper.a().a()) {
+        i = 2131363708;
+      }
+    }
     for (;;)
     {
-      try
+      if (i != -1)
       {
-        if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-          this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_AndroidAppDialog, 0);
+        QQToast.a(TroopShareUtility.a(this.a), TroopShareUtility.a(this.a).getString(i), 0).b(TroopShareUtility.a(this.a).getTitleBarHeight());
+        TroopShareUtility.a(this.a, -1);
+        TroopShareUtility.b(this.a, -1);
+        if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
+          ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
         }
-        if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
-          this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
+      do
+      {
+        return;
+        if (WXShareHelper.a().b()) {
+          break label333;
         }
+        i = 2131363709;
+        break;
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopShareUtility", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
+        }
+        TroopShareUtility.a(this.a, (int)paramLong);
+        if ((TroopShareUtility.a(this.a) != 4) || (!TroopShareUtility.a(this.a).a)) {
+          break label253;
+        }
+        this.a.g();
+      } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
+      ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+      return;
+      label253:
+      if (TroopShareUtility.a(this.a).e())
+      {
+        if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
+          this.a.a = true;
+        }
+        this.a.d();
         return;
       }
-      catch (Exception paramView) {}
-      if (paramView.getId() == 2131298157)
-      {
-        if (this.b != null) {
-          this.b.onClick(this.jdField_a_of_type_AndroidAppDialog, 1);
-        }
-        try
-        {
-          if (this.jdField_a_of_type_AndroidAppDialog.isShowing())
-          {
-            this.jdField_a_of_type_AndroidAppDialog.dismiss();
-            return;
-          }
-        }
-        catch (Exception paramView) {}
+      if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
+        this.a.a = false;
       }
+      TroopShareUtility.b(this.a, 0);
+      TroopShareUtility.a(this.a);
+      return;
+      label333:
+      i = -1;
     }
   }
 }

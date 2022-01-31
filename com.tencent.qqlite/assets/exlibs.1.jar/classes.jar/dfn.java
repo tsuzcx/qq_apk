@@ -1,13 +1,34 @@
-import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
+import android.view.ViewParent;
+import com.tencent.mobileqq.emoticonview.ClassicEmoticonPanelView;
 
 public class dfn
   implements Runnable
 {
-  public dfn(HorizonEmoticonTabs paramHorizonEmoticonTabs) {}
+  private int jdField_a_of_type_Int;
+  
+  public dfn(ClassicEmoticonPanelView paramClassicEmoticonPanelView) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = ClassicEmoticonPanelView.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView);
+  }
   
   public void run()
   {
-    this.a.a();
+    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.getParent() != null) && (this.jdField_a_of_type_Int == ClassicEmoticonPanelView.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView)) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.b != -1) && (ClassicEmoticonPanelView.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView) != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.getParent().requestDisallowInterceptTouchEvent(true);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.sendAccessibilityEvent(2);
+      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.b == 20)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.jdField_a_of_type_JavaLangRunnable.run();
+        return;
+      }
+      ClassicEmoticonPanelView.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.b);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.b = -1;
   }
 }
 

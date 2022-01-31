@@ -49,10 +49,10 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.GridView;
-import epl;
-import epn;
-import epo;
-import epp;
+import erb;
+import erd;
+import ere;
+import erf;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -136,7 +136,7 @@ public class AvatarWallAdapter
     this.jdField_g_of_type_Boolean = false;
     this.jdField_h_of_type_Boolean = true;
     this.jdField_i_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilObserver = new epl(this);
+    this.jdField_a_of_type_JavaUtilObserver = new erb(this);
     this.jdField_b_of_type_AndroidOsHandler = paramHandler;
     this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
@@ -209,7 +209,7 @@ public class AvatarWallAdapter
   public int a()
   {
     if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)) {
-      return ((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getResources().getDimensionPixelSize(2131493042);
+      return ((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getResources().getDimensionPixelSize(2131493044);
     }
     return 0;
   }
@@ -270,36 +270,36 @@ public class AvatarWallAdapter
     }
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_set", "", this.jdField_h_of_type_JavaLangString, "upload_head_cancel", 0, 0, this.jdField_g_of_type_JavaLangString, String.valueOf(paramInt), "", "");
     if (paramInt == 1) {
-      return localActivity.getString(2131362506);
-    }
-    if (paramInt == 2) {
-      return localActivity.getString(2131362507);
-    }
-    if (paramInt == 3) {
       return localActivity.getString(2131362508);
     }
-    if (paramInt == 5) {
+    if (paramInt == 2) {
       return localActivity.getString(2131362509);
     }
+    if (paramInt == 3) {
+      return localActivity.getString(2131362510);
+    }
+    if (paramInt == 5) {
+      return localActivity.getString(2131362511);
+    }
     if (paramInt == 100) {
-      return localActivity.getString(2131362521);
-    }
-    if (paramInt == 101) {
-      return localActivity.getString(2131362522);
-    }
-    if (paramInt == 102) {
-      return localActivity.getString(2131362516);
-    }
-    if (paramInt == 103) {
       return localActivity.getString(2131362523);
     }
-    return localActivity.getString(2131362505);
+    if (paramInt == 101) {
+      return localActivity.getString(2131362524);
+    }
+    if (paramInt == 102) {
+      return localActivity.getString(2131362518);
+    }
+    if (paramInt == 103) {
+      return localActivity.getString(2131362525);
+    }
+    return localActivity.getString(2131362507);
   }
   
   protected String a(int paramInt, boolean paramBoolean)
   {
     if (paramBoolean) {
-      paramInt = 2131362510;
+      paramInt = 2131362512;
     }
     for (;;)
     {
@@ -316,18 +316,18 @@ public class AvatarWallAdapter
           return localActivity.getString(paramInt);
           if (paramInt == 1)
           {
-            paramInt = 2131362511;
+            paramInt = 2131362513;
             break;
           }
           if (paramInt < 4)
           {
-            paramInt = 2131362512;
+            paramInt = 2131362514;
             break;
           }
           if (paramInt < 4) {
             break label86;
           }
-          paramInt = 2131362513;
+          paramInt = 2131362515;
           break;
           return null;
         }
@@ -369,10 +369,10 @@ public class AvatarWallAdapter
     while (paramInt1 > 0)
     {
       localObject = this.jdField_a_of_type_AndroidOsHandler;
-      epn localepn = new epn(this, paramInt2);
+      erd localerd = new erd(this, paramInt2);
       int i1 = m;
       m = i1 + 1;
-      ((Handler)localObject).postDelayed(localepn, i1 * 10);
+      ((Handler)localObject).postDelayed(localerd, i1 * 10);
       paramInt1 -= 1;
     }
   }
@@ -530,7 +530,7 @@ public class AvatarWallAdapter
           this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this.jdField_g_of_type_JavaLangString, 4, true);
         }
       }
-      paramContext.setImageResource(2130838290);
+      paramContext.setImageResource(2130838309);
       return;
     }
     paramContext.setImageDrawable(URLDrawable.getDrawable(paramString));
@@ -538,7 +538,7 @@ public class AvatarWallAdapter
   
   public void a(GridView paramGridView)
   {
-    paramGridView.setOnItemClickListener(new epo(this));
+    paramGridView.setOnItemClickListener(new ere(this));
   }
   
   protected void a(String paramString)
@@ -798,7 +798,7 @@ public class AvatarWallAdapter
           localObject = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
         }
         if ((localObject != null) && (paramInt2 == 1)) {
-          QQToast.a((Context)localObject, ((Activity)localObject).getString(2131362524), 1).b(b());
+          QQToast.a((Context)localObject, ((Activity)localObject).getString(2131362526), 1).b(b());
         }
         this.jdField_a_of_type_JavaUtilList = paramList;
         a(this.jdField_a_of_type_JavaUtilList, i2);
@@ -821,7 +821,7 @@ public class AvatarWallAdapter
     if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
       this.jdField_a_of_type_ArrayOfJavaLangString = paramActivity.getResources().getStringArray(2131230726);
     }
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(paramActivity, null, 2131624119);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(paramActivity, null, 2131624120);
     int i1 = 0;
     if (i1 < paramArrayOfInt.length)
     {
@@ -837,7 +837,7 @@ public class AvatarWallAdapter
         }
       }
     }
-    localActionSheet.a(new epp(this, paramActivity, localActionSheet));
+    localActionSheet.a(new erf(this, paramActivity, localActionSheet));
     localActionSheet.show();
   }
   
@@ -1002,7 +1002,7 @@ public class AvatarWallAdapter
       for (localObject1 = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();; localObject1 = null)
       {
         if (localObject1 != null) {
-          localObject1 = ((Activity)localObject1).getString(2131362580);
+          localObject1 = ((Activity)localObject1).getString(2131362582);
         }
         for (;;)
         {

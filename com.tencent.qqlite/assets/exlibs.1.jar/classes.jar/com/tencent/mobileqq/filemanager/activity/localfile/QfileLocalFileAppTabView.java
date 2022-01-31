@@ -11,9 +11,9 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
 import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 import com.tencent.qphone.base.util.QLog;
-import dki;
-import dkj;
-import dkl;
+import dlk;
+import dll;
+import dln;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -72,7 +72,7 @@ public class QfileLocalFileAppTabView
     this.b.put("已安装", new ArrayList());
     this.b.put("未安装", new ArrayList());
     this.jdField_a_of_type_AndroidOsHandler = ThreadManager.b();
-    this.jdField_a_of_type_AndroidOsHandler.post(new dkj(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new dll(this));
   }
   
   protected void b(FileInfo paramFileInfo)
@@ -81,7 +81,7 @@ public class QfileLocalFileAppTabView
     Looper localLooper = Looper.getMainLooper();
     if (localLooper.getThread() != localThread)
     {
-      new Handler(localLooper).post(new dkl(this, paramFileInfo));
+      new Handler(localLooper).post(new dln(this, paramFileInfo));
       return;
     }
     d(paramFileInfo);
@@ -111,7 +111,7 @@ public class QfileLocalFileAppTabView
       return;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a().X();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new dki(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new dlk(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51);
   }
   

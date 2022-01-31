@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.app.ContactSorter;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.app.BaseActivity2;
 
-public final class crg
-  implements Comparator
+public class crg
+  extends Thread
 {
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public crg(BaseActivity2 paramBaseActivity2) {}
+  
+  public void run()
   {
-    paramEntity1 = (Friends)paramEntity1;
-    paramEntity2 = (Friends)paramEntity2;
-    return ContactSorter.a(paramEntity1.mComparePartInt, paramEntity1.mCompareSpell, paramEntity2.mComparePartInt, paramEntity2.mCompareSpell);
+    cri localcri = new cri(null);
+    SensorManager localSensorManager = (SensorManager)this.a.getSystemService("sensor");
+    localSensorManager.registerListener(localcri, localSensorManager.getDefaultSensor(1), 0);
+    BaseActivity2.a(localcri);
   }
 }
 

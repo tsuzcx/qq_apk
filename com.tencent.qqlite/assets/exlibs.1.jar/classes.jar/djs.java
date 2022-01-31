@@ -1,46 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class djs
-  extends FMObserver
+  implements Runnable
 {
-  public djs(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public djs(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView, int paramInt) {}
   
-  protected void a(ThumbnailInfo paramThumbnailInfo)
+  public void run()
   {
-    if (paramThumbnailInfo == null) {
-      return;
-    }
-    if ((paramThumbnailInfo.a instanceof FileManagerEntity))
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView != null)
     {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.a;
-      if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() > 0))
-      {
-        localFileManagerEntity.strThumbPath = paramThumbnailInfo.b;
-        QfileBaseLocalFileTabView.b(this.a).a().c(localFileManagerEntity);
+      if (QLog.isColorLevel()) {
+        QLog.i(QfileBaseCloudFileTabView.jdField_a_of_type_JavaLangString, 2, "setSelect[" + this.jdField_a_of_type_Int + "] success mFileListView");
       }
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.c(this.jdField_a_of_type_Int);
     }
-    this.a.i();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    QfileBaseLocalFileTabView.a(this.a, new djt(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    QfileBaseLocalFileTabView.b(this.a, new dju(this, paramLong2));
-  }
-  
-  protected void d()
-  {
-    super.d();
-    QfileBaseLocalFileTabView.c(this.a, new djv(this));
   }
 }
 

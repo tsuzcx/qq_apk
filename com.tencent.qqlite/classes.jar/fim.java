@@ -1,22 +1,21 @@
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qqconnect.wtlogin.Login;
+
 public class fim
+  implements TextView.OnEditorActionListener
 {
-  private int a;
-  private int b;
+  public fim(Login paramLogin) {}
   
-  public int a()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    return this.a;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    if (paramInt == 6)
+    {
+      this.a.d();
+      return true;
+    }
+    return false;
   }
 }
 

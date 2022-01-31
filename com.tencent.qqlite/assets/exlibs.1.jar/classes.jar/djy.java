@@ -1,14 +1,15 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
 public class djy
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnDismissListener
 {
-  public djy(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public djy(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void onGlobalLayout()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.d();
+    QfileBaseCloudFileTabView.a(this.a);
   }
 }
 

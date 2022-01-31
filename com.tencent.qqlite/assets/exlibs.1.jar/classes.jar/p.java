@@ -1,39 +1,74 @@
-import android.view.View;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
 import com.dataline.activities.LiteActivity;
-import com.dataline.util.DatalineSessionAdapter;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgSet;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.List;
+import com.tencent.mobileqq.app.DataLineHandler.EFILETYPE;
+import com.tencent.mobileqq.app.DataLineObserver;
 
 public class p
-  implements ActionSheet.OnButtonClickListener
+  extends DataLineObserver
 {
-  public p(LiteActivity paramLiteActivity, DataLineMsgSet paramDataLineMsgSet, List paramList, ActionSheet paramActionSheet) {}
+  public p(LiteActivity paramLiteActivity) {}
   
-  public void a(View paramView, int paramInt)
+  protected void a()
   {
-    switch (paramInt)
+    this.a.runOnUiThread(new r(this));
+  }
+  
+  @TargetApi(11)
+  protected void a(int paramInt, String paramString)
+  {
+    if (Build.VERSION.SDK_INT < 11)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+      this.a.runOnUiThread(new x(this, paramString));
       return;
-      if (LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity))
-      {
-        paramView = (DataLineHandler)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
-        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
-        if (paramView.a(this.jdField_a_of_type_JavaUtilList)) {
-          LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).notifyDataSetChanged();
-        } else {
-          FMToastUtil.a(2131361870);
-        }
-      }
     }
+    this.a.runOnUiThread(new y(this, paramString));
+  }
+  
+  protected void a(long paramLong)
+  {
+    this.a.runOnUiThread(new z(this));
+  }
+  
+  protected void a(long paramLong, float paramFloat)
+  {
+    super.a(paramLong, paramFloat);
+    this.a.runOnUiThread(new t(this, paramLong, paramFloat));
+  }
+  
+  protected void a(long paramLong1, String paramString, DataLineHandler.EFILETYPE paramEFILETYPE, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  {
+    super.a(paramLong1, paramString, paramEFILETYPE, paramBoolean1, paramBoolean2, paramLong2);
+    this.a.runOnUiThread(new u(this, paramLong1, paramBoolean2));
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong)
+  {
+    super.a(paramBoolean, paramLong);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.a(paramBoolean, paramLong, paramString);
+    this.a.runOnUiThread(new s(this, paramBoolean, paramLong, paramString));
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  {
+    super.a(paramBoolean, paramLong, paramString);
+    this.a.runOnUiThread(new w(this));
+  }
+  
+  protected void b(long paramLong1, String paramString, DataLineHandler.EFILETYPE paramEFILETYPE, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  {
+    super.b(paramLong1, paramString, paramEFILETYPE, paramBoolean1, paramBoolean2, paramLong2);
+    this.a.runOnUiThread(new v(this, paramLong1));
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.b(paramBoolean, paramLong, paramString);
+    this.a.runOnUiThread(new q(this, paramLong, paramString));
   }
 }
 

@@ -1,11 +1,14 @@
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
-public class cld
+class cld
   implements Runnable
 {
-  public cld(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  cld(clc paramclc) {}
   
-  public void run() {}
+  public void run()
+  {
+    BannerManager.a(this.a.a, true);
+  }
 }
 
 

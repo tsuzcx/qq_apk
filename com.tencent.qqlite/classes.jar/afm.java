@@ -1,59 +1,45 @@
-import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopAppInfo;
-import com.tencent.mobileqq.model.TroopInfoManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DBUtils;
-import mqq.manager.TicketManager;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.data.TroopFileObserver;
+import com.tencent.mobileqq.troop.utils.TroopFileManager;
+import java.util.Collection;
 
 public class afm
-  implements View.OnClickListener
+  implements TroopFileObserver
 {
   public afm(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (paramView == null) {}
-    Long localLong;
-    do
+    if (paramInt > 0)
     {
-      do
-      {
-        return;
-        localLong = (Long)paramView.getTag();
-        localObject1 = (TroopInfoManager)this.a.app.getManager(33);
-      } while (localObject1 == null);
-      localObject1 = ((TroopInfoManager)localObject1).a(localLong);
-    } while (localObject1 == null);
-    DBUtils.a(this.a.app.a(), ((TroopAppInfo)localObject1).appId + "", this.a.a.c, 0);
-    this.a.a(paramView, 0, false);
-    Object localObject1 = ((TroopAppInfo)localObject1).appUrl.replace("$LANG$", "2052").replace("$UIN$", this.a.app.a()).replace("$GCODE$", this.a.a.c);
-    Object localObject2 = (TicketManager)this.a.app.getManager(2);
-    if (localObject2 != null) {
-      localObject1 = ((String)localObject1).replace("$KEY$", ((TicketManager)localObject2).getStweb(this.a.app.a()));
+      View localView = this.a.jdField_a_of_type_ArrayOfAndroidViewView[1];
+      this.a.a(localView, paramInt);
     }
-    for (;;)
+  }
+  
+  public void a(TroopFileInfo paramTroopFileInfo) {}
+  
+  public void a(Collection paramCollection, boolean paramBoolean) {}
+  
+  public void b(TroopFileInfo paramTroopFileInfo) {}
+  
+  public void c(TroopFileInfo paramTroopFileInfo)
+  {
+    if ((paramTroopFileInfo != null) && (this.a.jdField_a_of_type_AndroidOsHandler != null))
     {
-      localObject1 = ((String)localObject1).replace("$CLIENTVER$", "5.1");
-      localObject2 = new Intent(this.a, QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      ((Intent)localObject2).putExtra("webStyle", "noBottomBar");
-      this.a.startActivity((Intent)localObject2);
-      if (this.a.a == null) {
-        break;
-      }
-      ReportController.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "Clk_data_appEntry", 0, 0, this.a.a.c, "", "", "" + localLong);
-      if (((TextView)paramView.findViewById(2131297867)).getVisibility() != 0) {
-        break;
-      }
-      ReportController.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "Clk_data_appEntry_new", 0, 0, this.a.a.c, "", "", "" + localLong);
-      return;
+      Message localMessage = Message.obtain();
+      localMessage.what = 7;
+      localMessage.obj = paramTroopFileInfo;
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    }
+    if (ChatSettingForTroop.a(this.a).a() > 0)
+    {
+      paramTroopFileInfo = this.a.jdField_a_of_type_ArrayOfAndroidViewView[1];
+      this.a.a(paramTroopFileInfo, ChatSettingForTroop.a(this.a).a());
     }
   }
 }

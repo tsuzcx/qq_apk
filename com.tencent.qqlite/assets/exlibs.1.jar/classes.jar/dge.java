@@ -1,29 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter.ItemHolder;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.emoticonview.EmotionPreviewLayout;
 
 public class dge
-  implements View.OnClickListener
+  extends Handler
 {
-  public dge(FMLocalFileActivity paramFMLocalFileActivity) {}
+  public dge(EmotionPreviewLayout paramEmotionPreviewLayout) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (!this.a.c()) {
-      if (QLog.isColorLevel()) {
-        QLog.i(FMLocalFileActivity.c, 2, "click too fast , wait a minute.");
-      }
-    }
-    do
+    switch (paramMessage.what)
     {
+    default: 
       return;
-      this.a.g();
-      paramView = (FileCategoryAdapter.ItemHolder)paramView.getTag();
-    } while (paramView.a == 0);
-    int i = paramView.a;
-    FMLocalFileActivity.a(this.a, i);
+    case 10000: 
+      this.a.setVisibility(8);
+      return;
+    case 10001: 
+      this.a.a(true);
+      return;
+    }
+    this.a.b();
   }
 }
 

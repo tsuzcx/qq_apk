@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import bsj;
+import bsr;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -95,7 +95,7 @@ public class AIOTimeReporter
     if (new Random().nextInt(100) != 1) {
       return;
     }
-    ThreadManager.a(new bsj(this));
+    ThreadManager.a(new bsr(this));
   }
   
   public void a(int paramInt)

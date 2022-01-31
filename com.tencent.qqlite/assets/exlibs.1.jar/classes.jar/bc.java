@@ -1,16 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.dataline.activities.LiteAdvanceActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.dataline.activities.LiteMutiPicViewerActivity;
 
 public class bc
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public bc(LiteAdvanceActivity paramLiteAdvanceActivity) {}
+  public bc(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LiteAdvanceActivity.b(this.a, paramBoolean);
-    LiteAdvanceActivity.b(this.a, LiteAdvanceActivity.b(this.a));
+    paramDialogInterface.dismiss();
   }
 }
 

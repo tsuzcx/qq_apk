@@ -95,7 +95,7 @@ public abstract class BaseFacePreloadExpandableListAdapter
     }
     if (AppConstants.T.equals(paramViewHolder.a))
     {
-      paramViewHolder.b.setBackgroundResource(2130838504);
+      paramViewHolder.b.setBackgroundResource(2130838529);
       return;
     }
     if (paramBitmap == null) {

@@ -11,15 +11,15 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import avv;
-import avw;
-import avx;
-import avy;
-import avz;
 import awa;
 import awb;
 import awc;
 import awd;
+import awe;
+import awf;
+import awg;
+import awh;
+import awi;
 import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -41,12 +41,12 @@ public class MySelfTroopMemberCard
   public static final String a = "show_level";
   public byte a;
   private Dialog jdField_a_of_type_AndroidAppDialog = null;
-  private Handler jdField_a_of_type_AndroidOsHandler = new avv(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new awa(this);
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
   public TextView a;
   public TroopHandler a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new avy(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new awd(this);
   private TroopMemberCardInfo jdField_a_of_type_ComTencentMobileqqDataTroopMemberCardInfo = null;
   public ActionSheet a;
   boolean jdField_a_of_type_Boolean = false;
@@ -106,8 +106,8 @@ public class MySelfTroopMemberCard
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968635);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968637);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968639);
+    this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968641);
     this.jdField_c_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968605);
     this.jdField_d_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968606);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297330));
@@ -134,7 +134,7 @@ public class MySelfTroopMemberCard
     }
     for (;;)
     {
-      UIThreadPool.a(new avw(this));
+      UIThreadPool.a(new awb(this));
       return;
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     }
@@ -149,7 +149,7 @@ public class MySelfTroopMemberCard
       this.jdField_e_of_type_JavaLangString = paramString4;
       this.jdField_f_of_type_JavaLangString = paramString5;
       this.jdField_g_of_type_JavaLangString = paramString6;
-      this.jdField_a_of_type_AndroidOsHandler.post(new avx(this, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6));
+      this.jdField_a_of_type_AndroidOsHandler.post(new awc(this, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6));
       return;
       this.jdField_d_of_type_JavaLangString = paramString1;
     }
@@ -157,33 +157,33 @@ public class MySelfTroopMemberCard
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null, 2131624119));
-    String str = getString(2131363026);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null, 2131624120));
+    String str = getString(2131363036);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a(str);
     switch (this.jdField_a_of_type_Byte)
     {
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362794);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new awd(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362801);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new awi(this));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
       return;
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363199), 1, true);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363200), 1, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363104), 1, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363209), 1, true);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363210), 1, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363114), 1, false);
       continue;
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363199), 1, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363200), 1, true);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363104), 1, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363209), 1, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363210), 1, true);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363114), 1, false);
       continue;
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363199), 1, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363200), 1, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363104), 1, true);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363209), 1, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363210), 1, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363114), 1, true);
       continue;
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363199), 1, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363200), 1, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363104), 1, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363209), 1, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363210), 1, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131363114), 1, false);
     }
   }
   
@@ -353,16 +353,16 @@ public class MySelfTroopMemberCard
     default: 
       return;
     case 2131297327: 
-      this.jdField_a_of_type_AndroidOsHandler.post(new avz(this, paramIntent));
+      this.jdField_a_of_type_AndroidOsHandler.post(new awe(this, paramIntent));
       return;
     case 2131297338: 
-      this.jdField_a_of_type_AndroidOsHandler.post(new awa(this, paramIntent));
+      this.jdField_a_of_type_AndroidOsHandler.post(new awf(this, paramIntent));
       return;
     case 2131297342: 
-      this.jdField_a_of_type_AndroidOsHandler.post(new awb(this, paramIntent));
+      this.jdField_a_of_type_AndroidOsHandler.post(new awg(this, paramIntent));
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new awc(this, paramIntent));
+    this.jdField_a_of_type_AndroidOsHandler.post(new awh(this, paramIntent));
   }
   
   public void onClick(View paramView)
@@ -374,7 +374,7 @@ public class MySelfTroopMemberCard
     case 2131297327: 
       paramView = new Intent(this, EditInfoActivity.class);
       paramView.putExtra("type", 0);
-      paramView.putExtra("title", getResources().getString(2131363098));
+      paramView.putExtra("title", getResources().getString(2131363108));
       paramView.putExtra("default", this.jdField_a_of_type_AndroidWidgetTextView.getText());
       paramView.putExtra("subtype", 2131297327);
       paramView.putExtra("num", 21);
@@ -386,7 +386,7 @@ public class MySelfTroopMemberCard
     case 2131297338: 
       paramView = new Intent(this, EditInfoActivity.class);
       paramView.putExtra("type", 0);
-      paramView.putExtra("title", getResources().getString(2131363101));
+      paramView.putExtra("title", getResources().getString(2131363111));
       paramView.putExtra("default", this.jdField_d_of_type_AndroidWidgetTextView.getText());
       paramView.putExtra("subtype", 2131297338);
       paramView.putExtra("num", 20);
@@ -395,7 +395,7 @@ public class MySelfTroopMemberCard
     case 2131297342: 
       paramView = new Intent(this, EditInfoActivity.class);
       paramView.putExtra("type", 0);
-      paramView.putExtra("title", getResources().getString(2131363102));
+      paramView.putExtra("title", getResources().getString(2131363112));
       paramView.putExtra("default", this.jdField_e_of_type_AndroidWidgetTextView.getText());
       paramView.putExtra("subtype", 2131297342);
       paramView.putExtra("num", 30);
@@ -404,7 +404,7 @@ public class MySelfTroopMemberCard
     }
     paramView = new Intent(this, EditInfoActivity.class);
     paramView.putExtra("type", 1);
-    paramView.putExtra("title", getResources().getString(2131363103));
+    paramView.putExtra("title", getResources().getString(2131363113));
     paramView.putExtra("default", this.jdField_f_of_type_AndroidWidgetTextView.getText());
     paramView.putExtra("subtype", 2131297346);
     paramView.putExtra("num", 84);
@@ -415,7 +415,7 @@ public class MySelfTroopMemberCard
   {
     super.onCreate(paramBundle);
     paramBundle = setContentViewB(2130903244);
-    setTitle(getString(2131363096));
+    setTitle(getString(2131363106));
     this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler = ((TroopHandler)this.app.a(17));
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("troopuin");

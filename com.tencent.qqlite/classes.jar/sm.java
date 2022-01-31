@@ -28,7 +28,7 @@ class sm
     label241:
     for (String str1 = this.jdField_a_of_type_Sl.jdField_a_of_type_JavaLangString;; str1 = this.jdField_a_of_type_JavaLangString)
     {
-      String str4 = String.format(this.jdField_a_of_type_Sl.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131362468), new Object[] { this.jdField_a_of_type_Sl.c });
+      String str4 = String.format(this.jdField_a_of_type_Sl.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131362469), new Object[] { this.jdField_a_of_type_Sl.c });
       ShareMsgHelper.a(this.jdField_a_of_type_Sl.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, 1001, 1, "struct_msg_from_h5", this.jdField_a_of_type_Sl.b, str1, this.jdField_a_of_type_Sl.c, this.jdField_a_of_type_Sl.d, str4, this.jdField_a_of_type_Sl.e, "web", null, null, null, "plugin", null, str2, str3, "http://url.cn/JS8oE7", this.jdField_a_of_type_Sl.f, null);
       return;
     }

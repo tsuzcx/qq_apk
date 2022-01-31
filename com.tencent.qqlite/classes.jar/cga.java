@@ -1,8 +1,12 @@
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class cga
+class cga
+  implements DialogInterface.OnClickListener
 {
-  public TextView a;
+  cga(cfz paramcfz) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -2,14 +2,14 @@ package com.tencent.mobileqq.startup.step;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver;
-import eek;
+import efp;
 
 public class SetPlugin
   extends Step
 {
   protected boolean a()
   {
-    PluginRecoverReceiver.register(BaseApplicationImpl.a, new eek());
+    PluginRecoverReceiver.register(BaseApplicationImpl.a, new efp());
     return true;
   }
 }

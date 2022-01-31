@@ -1,32 +1,20 @@
-import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiListener;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
-import com.tencent.mobileqq.troop.activity.NearbyTroopsView;
-import com.tencent.mobileqq.troop.activity.NearbyTroopsView.UIHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class eir
-  extends SOSOMapLBSApiListener
+  extends TimerTask
 {
-  public eir(NearbyTroopsView paramNearbyTroopsView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
+  public eir(OldHttpEngine.OldHttpCommunicatorListner paramOldHttpCommunicatorListner) {}
   
-  public void onLocationUpdate(SOSOMapLBSApiResult paramSOSOMapLBSApiResult)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyTroopsActivity", 2, "onLocationUpdate()");
-    }
-    if (paramSOSOMapLBSApiResult == null) {}
-    do
-    {
+    if (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       return;
-      SOSOMapLBSApi.getInstance().removeLocationUpdate();
-      this.a.d = ((int)(paramSOSOMapLBSApiResult.Latitude * 1000000.0D));
-      this.a.e = ((int)(paramSOSOMapLBSApiResult.Longitude * 1000000.0D));
-    } while (this.a.a == null);
-    this.a.a.sendEmptyMessage(5);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.a(9004, -1, "nonetwork");
+    this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.a.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
   }
 }
 

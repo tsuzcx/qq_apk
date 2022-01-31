@@ -19,9 +19,9 @@ public final class ActionTabViewBinder
     default: 
       return null;
     case 100: 
-      return paramContext.getResources().getDrawable(2130839004);
+      return paramContext.getResources().getDrawable(2130839037);
     }
-    return paramContext.getResources().getDrawable(2130839007);
+    return paramContext.getResources().getDrawable(2130839040);
   }
 }
 

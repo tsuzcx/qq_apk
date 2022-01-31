@@ -29,7 +29,7 @@ public class ContactsSearchablePhoneContact
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.y = paramLong2;
+    this.A = paramLong2;
     this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact = paramPhoneContact;
     this.jdField_a_of_type_JavaLangString = paramPhoneContact.name;
     if (this.jdField_a_of_type_JavaLangString != null) {
@@ -76,7 +76,7 @@ public class ContactsSearchablePhoneContact
   {
     int j = -1;
     paramString = paramString.toLowerCase();
-    this.x = -9223372036854775808L;
+    this.z = -9223372036854775808L;
     long l1;
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() != 0)) {
       if (this.jdField_a_of_type_JavaLangString.equals(paramString)) {
@@ -86,9 +86,9 @@ public class ContactsSearchablePhoneContact
     for (;;)
     {
       int i;
-      if (l1 > this.x)
+      if (l1 > this.z)
       {
-        this.x = (l1 + 0L + this.y);
+        this.z = (l1 + 0L + this.A);
         return;
         if (((this.c != null) && (this.c.equals(paramString))) || ((this.d != null) && (this.d.equals(paramString))))
         {
@@ -119,7 +119,7 @@ public class ContactsSearchablePhoneContact
         for (long l2 = 562949953421312L;; l2 = 281474976710656L)
         {
           l1 = l2;
-          if (l2 <= this.x) {
+          if (l2 <= this.z) {
             break;
           }
           if ((k >= 0) || (this.jdField_a_of_type_JavaLangString.equals(this.c))) {
@@ -140,8 +140,8 @@ public class ContactsSearchablePhoneContact
           if (!this.b.equals(paramString)) {
             break label357;
           }
-          if (1125899906842624L > this.x) {
-            this.x = (1125899906842624L + 9007199254740992L + 0L);
+          if (1125899906842624L > this.z) {
+            this.z = (1125899906842624L + 9007199254740992L + 0L);
           }
         }
         label404:
@@ -149,9 +149,9 @@ public class ContactsSearchablePhoneContact
         for (;;)
         {
           label332:
-          if (this.x != -9223372036854775808L)
+          if (this.z != -9223372036854775808L)
           {
-            this.x += this.y;
+            this.z += this.A;
             return;
             label357:
             i = this.b.indexOf(paramString);
@@ -164,10 +164,10 @@ public class ContactsSearchablePhoneContact
           }
           for (l1 = 562949953421312L;; l1 = 281474976710656L)
           {
-            if (l1 <= this.x) {
+            if (l1 <= this.z) {
               break label410;
             }
-            this.x = (l1 + 9007199254740992L + 0L);
+            this.z = (l1 + 9007199254740992L + 0L);
             break label332;
             break;
           }
@@ -188,7 +188,7 @@ public class ContactsSearchablePhoneContact
   
   public String b()
   {
-    return this.jdField_a_of_type_AndroidContentContext.getString(2131364169);
+    return this.jdField_a_of_type_AndroidContentContext.getString(2131364180);
   }
   
   public String c()

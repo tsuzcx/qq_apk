@@ -1,15 +1,17 @@
 package com.tencent.mobileqq.streamtransfile;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.service.message.MessageUtils;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.utils.RecordParams;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class StreamDataManager
@@ -22,15 +24,11 @@ public class StreamDataManager
     if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
     {
       paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null)
-      {
-        paramString = paramString.a();
-        if ((paramString != null) && (paramString.size() > 0)) {
-          return ((StreamDataInfo)paramString.get(0)).a();
-        }
+      if (paramString != null) {
+        return paramString.a().size();
       }
     }
-    return -1;
+    return 0;
   }
   
   public static int a(String paramString, short paramShort)
@@ -94,6 +92,30 @@ public class StreamDataManager
     return null;
   }
   
+  public static Map.Entry a(long paramLong1, long paramLong2)
+  {
+    Object localObject = StreamMemoryPool.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("StreamDataManager", 2, "getStreamFileInfoEntryByMsg  try get random is:" + paramLong1 + ",msgSeq is:" + paramLong2);
+    }
+    if ((localObject != null) && (((HashMap)localObject).size() > 0))
+    {
+      localObject = ((HashMap)localObject).entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+        StreamFileInfo localStreamFileInfo = (StreamFileInfo)localEntry.getValue();
+        if (QLog.isColorLevel()) {
+          QLog.d("StreamDataManager", 2, "getStreamFileInfoEntryByMsg  random is:" + MessageUtils.a((int)localStreamFileInfo.b) + ",msgSeq is:" + localStreamFileInfo.jdField_a_of_type_Long);
+        }
+        if ((MessageUtils.a((int)localStreamFileInfo.b) == paramLong1) && (paramLong2 == localStreamFileInfo.jdField_a_of_type_Long)) {
+          return localEntry;
+        }
+      }
+    }
+    return null;
+  }
+  
   public static short a(String paramString)
   {
     HashMap localHashMap = StreamMemoryPool.a();
@@ -113,8 +135,13 @@ public class StreamDataManager
     if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
     {
       paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a();
+      if (paramString != null)
+      {
+        int i = paramString.a().size();
+        paramString.a((short)i);
+        if (i >= 1) {
+          ((StreamDataInfo)paramString.a().get(paramString.a().size() - 1)).a(true);
+        }
       }
     }
   }
@@ -126,32 +153,33 @@ public class StreamDataManager
     {
       paramString = (StreamFileInfo)localHashMap.get(paramString);
       if (paramString != null) {
-        paramString.a(paramLong);
+        paramString.jdField_a_of_type_Long = paramLong;
       }
     }
   }
   
-  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, long paramLong)
+  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, long paramLong, int paramInt1, int paramInt2)
   {
-    a(paramString1, paramQQAppInterface, paramString2, paramLong, false);
+    a(paramString1, paramQQAppInterface, paramString2, paramLong, false, paramInt1, paramInt2);
   }
   
-  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, long paramLong, boolean paramBoolean)
+  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, long paramLong, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     Object localObject = StreamMemoryPool.a();
+    paramInt1 = RecordParams.a(paramInt1);
     short s;
     if ((localObject != null) && (((HashMap)localObject).containsKey(paramString1)))
     {
       localObject = (StreamFileInfo)((HashMap)localObject).get(paramString1);
-      ((StreamFileInfo)localObject).a = paramBoolean;
+      ((StreamFileInfo)localObject).jdField_a_of_type_Boolean = paramBoolean;
       if (localObject != null)
       {
         if (((StreamFileInfo)localObject).a() != 0) {
-          break label202;
+          break label214;
         }
         localObject = ((StreamFileInfo)localObject).a();
         if ((localObject == null) || (((List)localObject).size() <= 0)) {
-          break label202;
+          break label214;
         }
         localObject = ((List)localObject).iterator();
         s = -1;
@@ -167,7 +195,7 @@ public class StreamDataManager
           {
             break;
             if ((localStreamDataInfo.b()) || (!localStreamDataInfo.a())) {
-              break label199;
+              break label211;
             }
             s = localStreamDataInfo.a();
             localStreamDataInfo.b(true);
@@ -178,12 +206,12 @@ public class StreamDataManager
     for (;;)
     {
       if ((s != -1) && (paramLong != 0L)) {
-        paramQQAppInterface.a().a(paramString2, paramString1, paramLong, s);
+        paramQQAppInterface.a().a(paramString2, paramString1, paramLong, s, paramInt1, paramInt2);
       }
       return;
-      label199:
+      label211:
       break;
-      label202:
+      label214:
       s = -1;
     }
   }
@@ -200,165 +228,16 @@ public class StreamDataManager
     }
   }
   
-  /* Error */
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, long paramLong)
+  public static void a(String paramString, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_2
-    //   1: ifnull +240 -> 241
-    //   4: new 160	java/io/File
-    //   7: dup
-    //   8: aload_2
-    //   9: invokespecial 162	java/io/File:<init>	(Ljava/lang/String;)V
-    //   12: astore 8
-    //   14: aload 8
-    //   16: invokevirtual 165	java/io/File:exists	()Z
-    //   19: ifeq +222 -> 241
-    //   22: invokestatic 19	com/tencent/mobileqq/streamtransfile/StreamMemoryPool:a	()Ljava/util/HashMap;
-    //   25: astore 7
-    //   27: aload 7
-    //   29: ifnull +212 -> 241
-    //   32: aload_2
-    //   33: invokestatic 168	com/tencent/mobileqq/streamtransfile/StreamDataManager:a	(Ljava/lang/String;)Z
-    //   36: pop
-    //   37: aload 7
-    //   39: aload_2
-    //   40: invokevirtual 25	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   43: ifne +198 -> 241
-    //   46: new 31	com/tencent/mobileqq/streamtransfile/StreamFileInfo
-    //   49: dup
-    //   50: aload_2
-    //   51: iconst_0
-    //   52: iconst_1
-    //   53: invokespecial 171	com/tencent/mobileqq/streamtransfile/StreamFileInfo:<init>	(Ljava/lang/String;IZ)V
-    //   56: astore 9
-    //   58: aload 9
-    //   60: lload_3
-    //   61: l2i
-    //   62: invokevirtual 174	com/tencent/mobileqq/streamtransfile/StreamFileInfo:b	(I)V
-    //   65: aload 7
-    //   67: monitorenter
-    //   68: aload 7
-    //   70: aload_2
-    //   71: aload 9
-    //   73: invokevirtual 178	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   76: pop
-    //   77: aload 7
-    //   79: monitorexit
-    //   80: new 180	java/io/FileInputStream
-    //   83: dup
-    //   84: aload 8
-    //   86: invokespecial 183	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   89: astore 7
-    //   91: sipush 800
-    //   94: newarray byte
-    //   96: astore 8
-    //   98: iconst_0
-    //   99: istore 5
-    //   101: aload 7
-    //   103: aload 8
-    //   105: invokevirtual 189	java/io/InputStream:read	([B)I
-    //   108: istore 6
-    //   110: iload 6
-    //   112: ifle +53 -> 165
-    //   115: iload 5
-    //   117: iload 6
-    //   119: iadd
-    //   120: istore 6
-    //   122: iload 6
-    //   124: istore 5
-    //   126: iload 6
-    //   128: sipush 800
-    //   131: if_icmplt -30 -> 101
-    //   134: aload_2
-    //   135: aload 8
-    //   137: aload 8
-    //   139: arraylength
-    //   140: iconst_0
-    //   141: iconst_1
-    //   142: invokestatic 192	com/tencent/mobileqq/streamtransfile/StreamDataManager:a	(Ljava/lang/String;[BISZ)Z
-    //   145: pop
-    //   146: aload_2
-    //   147: aload_0
-    //   148: aload_1
-    //   149: lload_3
-    //   150: invokestatic 194	com/tencent/mobileqq/streamtransfile/StreamDataManager:a	(Ljava/lang/String;Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;J)V
-    //   153: iconst_0
-    //   154: istore 5
-    //   156: goto -55 -> 101
-    //   159: astore_0
-    //   160: aload 7
-    //   162: monitorexit
-    //   163: aload_0
-    //   164: athrow
-    //   165: iload 5
-    //   167: ifle +32 -> 199
-    //   170: iload 5
-    //   172: newarray byte
-    //   174: astore 9
-    //   176: aload 8
-    //   178: iconst_0
-    //   179: aload 9
-    //   181: iconst_0
-    //   182: iload 5
-    //   184: invokestatic 200	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   187: aload_2
-    //   188: aload 9
-    //   190: aload 9
-    //   192: arraylength
-    //   193: iconst_0
-    //   194: iconst_1
-    //   195: invokestatic 192	com/tencent/mobileqq/streamtransfile/StreamDataManager:a	(Ljava/lang/String;[BISZ)Z
-    //   198: pop
-    //   199: aload_2
-    //   200: invokestatic 202	com/tencent/mobileqq/streamtransfile/StreamDataManager:b	(Ljava/lang/String;)V
-    //   203: aload_2
-    //   204: aload_0
-    //   205: aload_1
-    //   206: lload_3
-    //   207: invokestatic 194	com/tencent/mobileqq/streamtransfile/StreamDataManager:a	(Ljava/lang/String;Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;J)V
-    //   210: aload 7
-    //   212: ifnull +8 -> 220
-    //   215: aload 7
-    //   217: invokevirtual 205	java/io/InputStream:close	()V
-    //   220: iconst_1
-    //   221: ireturn
-    //   222: astore_0
-    //   223: aload_0
-    //   224: invokevirtual 208	java/lang/Exception:printStackTrace	()V
-    //   227: aload_2
-    //   228: invokestatic 168	com/tencent/mobileqq/streamtransfile/StreamDataManager:a	(Ljava/lang/String;)Z
-    //   231: pop
-    //   232: iconst_0
-    //   233: ireturn
-    //   234: astore_0
-    //   235: aload_0
-    //   236: invokevirtual 209	java/io/IOException:printStackTrace	()V
-    //   239: iconst_1
-    //   240: ireturn
-    //   241: iconst_0
-    //   242: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	243	0	paramQQAppInterface	QQAppInterface
-    //   0	243	1	paramString1	String
-    //   0	243	2	paramString2	String
-    //   0	243	3	paramLong	long
-    //   99	84	5	i	int
-    //   108	24	6	j	int
-    //   25	191	7	localObject1	Object
-    //   12	165	8	localObject2	Object
-    //   56	135	9	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   68	80	159	finally
-    //   160	163	159	finally
-    //   80	98	222	java/lang/Exception
-    //   101	110	222	java/lang/Exception
-    //   134	153	222	java/lang/Exception
-    //   170	199	222	java/lang/Exception
-    //   199	210	222	java/lang/Exception
-    //   215	220	234	java/io/IOException
+    HashMap localHashMap = StreamMemoryPool.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.a(paramBoolean);
+      }
+    }
   }
   
   public static boolean a(String paramString)
@@ -380,7 +259,7 @@ public class StreamDataManager
     HashMap localHashMap = StreamMemoryPool.a();
     if ((localHashMap != null) && (!localHashMap.containsKey(paramString)))
     {
-      StreamFileInfo localStreamFileInfo = new StreamFileInfo(paramString, paramInt1, false);
+      StreamFileInfo localStreamFileInfo = new StreamFileInfo(paramString, paramInt1);
       localStreamFileInfo.b(paramInt2);
       try
       {
@@ -412,7 +291,7 @@ public class StreamDataManager
       if (!paramBoolean) {}
       try
       {
-        ((StreamFileInfo)localObject1).a().write(paramArrayOfByte);
+        ((StreamFileInfo)localObject1).a(paramArrayOfByte);
         if (((StreamFileInfo)localObject1).a() == 0)
         {
           paramString = ((StreamFileInfo)localObject1).a();
@@ -553,10 +432,10 @@ public class StreamDataManager
     {
       paramString = (StreamFileInfo)localHashMap.get(paramString);
       if (paramString != null) {
-        return paramString.a().size();
+        return paramString.b();
       }
     }
-    return 0;
+    return -1;
   }
   
   public static short b(String paramString)
@@ -578,13 +457,20 @@ public class StreamDataManager
     if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
     {
       paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null)
-      {
-        int i = paramString.a().size();
-        paramString.a((short)i);
-        if (i >= 1) {
-          ((StreamDataInfo)paramString.a().get(paramString.a().size() - 1)).a(true);
-        }
+      if (paramString != null) {
+        paramString.a();
+      }
+    }
+  }
+  
+  public static void b(String paramString, long paramLong)
+  {
+    HashMap localHashMap = StreamMemoryPool.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.b = paramLong;
       }
     }
   }
@@ -596,62 +482,13 @@ public class StreamDataManager
     {
       paramString = (StreamFileInfo)localHashMap.get(paramString);
       if (paramString != null) {
-        return paramString.a;
+        return paramString.jdField_a_of_type_Boolean;
       }
     }
     return false;
   }
   
   public static int c(String paramString)
-  {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.b();
-      }
-    }
-    return -1;
-  }
-  
-  public static short c(String paramString)
-  {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.b();
-      }
-    }
-    return 0;
-  }
-  
-  public static void c(String paramString)
-  {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.b();
-      }
-    }
-  }
-  
-  public static boolean c(String paramString)
-  {
-    List localList = StreamMemoryPool.a();
-    if ((localList != null) && (!localList.contains(paramString)))
-    {
-      localList.add(paramString);
-      return true;
-    }
-    return false;
-  }
-  
-  public static int d(String paramString)
   {
     HashMap localHashMap = StreamMemoryPool.a();
     int i;
@@ -671,18 +508,43 @@ public class StreamDataManager
     return i;
   }
   
-  public static boolean d(String paramString)
+  public static short c(String paramString)
+  {
+    HashMap localHashMap = StreamMemoryPool.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.b();
+      }
+    }
+    return 0;
+  }
+  
+  public static void c(String paramString, long paramLong)
+  {
+    HashMap localHashMap = StreamMemoryPool.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.a(paramLong);
+      }
+    }
+  }
+  
+  public static boolean c(String paramString)
   {
     List localList = StreamMemoryPool.a();
-    if ((localList != null) && (localList.contains(paramString)))
+    if ((localList != null) && (!localList.contains(paramString)))
     {
-      localList.remove(paramString);
+      localList.add(paramString);
       return true;
     }
     return false;
   }
   
-  public static int e(String paramString)
+  public static int d(String paramString)
   {
     HashMap localHashMap = StreamMemoryPool.a();
     if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
@@ -693,6 +555,17 @@ public class StreamDataManager
       }
     }
     return -1;
+  }
+  
+  public static boolean d(String paramString)
+  {
+    List localList = StreamMemoryPool.a();
+    if ((localList != null) && (localList.contains(paramString)))
+    {
+      localList.remove(paramString);
+      return true;
+    }
+    return false;
   }
   
   public static boolean e(String paramString)

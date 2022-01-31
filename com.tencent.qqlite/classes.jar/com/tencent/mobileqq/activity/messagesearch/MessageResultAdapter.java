@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import cfn;
-import cfo;
+import cgo;
+import cgp;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.biz.anonymous.AnonymousChatHelper.AnonymousExtInfo;
 import com.tencent.image.URLDrawable;
@@ -138,7 +138,7 @@ public class MessageResultAdapter
     }
     this.jdField_b_of_type_JavaLangString = paramString;
     MessageItem.a(paramString);
-    new Thread(new cfn(this, paramString, paramLOAD_TYPE)).start();
+    new Thread(new cgo(this, paramString, paramLOAD_TYPE)).start();
   }
   
   public void a(List paramList, int paramInt)
@@ -176,10 +176,10 @@ public class MessageResultAdapter
     if (paramView == null)
     {
       localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130903237, null);
-      paramViewGroup = new cfo(null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131296847));
-      paramViewGroup.b = ((TextView)localView.findViewById(2131296850));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131296453));
+      paramViewGroup = new cgp(null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131296848));
+      paramViewGroup.b = ((TextView)localView.findViewById(2131296851));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131296456));
       paramViewGroup.c = ((TextView)localView.findViewById(2131297251));
       localView.setTag(paramViewGroup);
       localMessageRecord = localMessageItem.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
@@ -203,14 +203,14 @@ public class MessageResultAdapter
         break label316;
       }
       paramView = AnonymousChatHelper.a(localMessageRecord);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362566) + paramView.jdField_b_of_type_JavaLangString);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362568) + paramView.jdField_b_of_type_JavaLangString);
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(URLDrawable.getDrawable(AnonymousChatHelper.a(paramView.jdField_b_of_type_Int)));
     }
     for (;;)
     {
       paramViewGroup.c.setText(localMessageItem.a(localMessageRecord.time));
       return localView;
-      paramViewGroup = (cfo)paramView.getTag();
+      paramViewGroup = (cgp)paramView.getTag();
       localView = paramView;
       break;
       label305:

@@ -1,30 +1,24 @@
-import com.tencent.mobileqq.activity.Contacts;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.app.MessageObserver;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class age
-  extends MessageObserver
+  extends ContactBindObserver
 {
-  private age(Contacts paramContacts) {}
+  public age(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  protected void a()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.a(1400L, true);
-    }
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    Contacts localContacts = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
+    if (paramBoolean1)
     {
-      localContacts.c = bool;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter.b();
+      int i = ContactSyncJumpActivity.a(this.a).b();
+      if ((i == 1) || (i == 2))
+      {
+        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
+        this.a.finish();
       }
-      return;
     }
   }
 }

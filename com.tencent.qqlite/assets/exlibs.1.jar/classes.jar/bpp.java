@@ -1,49 +1,49 @@
-import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class bpp
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public bpp(TroopRequestActivity paramTroopRequestActivity) {}
+  public static final String a = "right";
+  public static final int b = 0;
+  public static final String b = "left";
+  public static final int c = 1;
+  public static final int d = 2;
+  public static final int e = 3;
+  public static final int f = 4;
+  public static final int g = 5;
+  public static final int h = 6;
+  int jdField_a_of_type_Int = -1;
+  View jdField_a_of_type_AndroidViewView;
   
-  public void onClick(View paramView)
+  public bpp(TroopMemberListActivity paramTroopMemberListActivity, View paramView, int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if ((l - TroopRequestActivity.d > 0L) && (l - TroopRequestActivity.d < 800L)) {
-      return;
-    }
-    TroopRequestActivity.d = l;
-    Bundle localBundle = TroopInfoActivity.a(this.a.p, 4);
-    int i = TroopRequestActivity.a(this.a).msg.group_msg_type.get();
-    QQAppInterface localQQAppInterface;
-    String str;
-    if ((i == 2) || (i == 10) || (i == 12))
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.postDelayed(new bpq(this), 0L);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
     {
-      i = 1;
-      localQQAppInterface = this.a.app;
-      str = TroopRequestActivity.a(this.a).msg.group_code.get() + "";
-      if (i == 0) {
-        break label172;
-      }
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
-    label172:
-    for (paramView = "0";; paramView = "1")
+    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
     {
-      ReportController.b(localQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, str, paramView, "", "");
-      ChatSettingForTroop.a(this.a, localBundle, 2);
-      return;
-      i = 0;
-      break;
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
   }
 }

@@ -1,14 +1,15 @@
 import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
+import java.util.TimerTask;
 
-class due
-  implements Runnable
+public class due
+  extends TimerTask
 {
-  due(dud paramdud, int paramInt, String paramString) {}
+  public due(LocalMusicFileView paramLocalMusicFileView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Dud.a.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, PreviewingOfflineFileViewBase.a(this.jdField_a_of_type_Dud.a).getString(2131363570));
+    LocalMusicFileView.a(this.a).runOnUiThread(new duf(this));
   }
 }
 

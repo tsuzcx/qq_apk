@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app.asyncdb;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.Entity;
-import cwx;
+import cxz;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -23,7 +23,7 @@ public abstract class BaseCache
   
   public BaseCache(QQAppInterface paramQQAppInterface, DBDelayManager paramDBDelayManager, Class paramClass)
   {
-    this.jdField_a_of_type_JavaUtilComparator = new cwx(this);
+    this.jdField_a_of_type_JavaUtilComparator = new cxz(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbDBDelayManager = paramDBDelayManager;
     this.jdField_a_of_type_JavaLangClass = paramClass;

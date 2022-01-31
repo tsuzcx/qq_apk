@@ -1,17 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
+import com.tencent.qphone.base.util.QLog;
+import java.util.TimerTask;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class efg
-  implements View.OnTouchListener
+  extends TimerTask
 {
-  public efg(StructMsgForGeneralShare paramStructMsgForGeneralShare, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
+  public efg(QZoneNotifyServlet paramQZoneNotifyServlet) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.lebatab.QZoneNotifyServlet", 2, "QZONE GET UNREAD.QZoneFeedTimeTask run.");
+    }
+    AppRuntime localAppRuntime = this.a.getAppRuntime();
+    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), QZoneNotifyServlet.class);
+    localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
+    localNewIntent.putExtra("bNotWorkInBackGround", true);
+    localAppRuntime.startServlet(localNewIntent);
   }
 }
 

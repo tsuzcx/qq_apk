@@ -1,44 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bgb
-  extends FriendListObserver
+  implements DialogInterface.OnClickListener
 {
   public bgb(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
   
-  protected void b(boolean paramBoolean, Map paramMap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
+    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clean_chat_log", 0, 0, "", "", "", "");
+    if (!this.a.isFinishing()) {
+      this.a.showDialog(1);
     }
-    this.a.h();
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.getApplicationContext(), 2, 2131363535, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if (QQSettingMsgHistoryActivity.a(this.a) != null)
-    {
-      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramMap = QQSettingMsgHistoryActivity.a(this.a);
-      if (this.a.app.f() != 1) {
-        break label159;
-      }
-    }
-    label159:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramMap.setChecked(paramBoolean);
-      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      QQToast.a(this.a.getApplicationContext(), 2131363536, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
+    ThreadManager.b(new bgc(this));
   }
 }
 

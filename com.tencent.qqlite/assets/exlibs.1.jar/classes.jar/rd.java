@@ -12,8 +12,8 @@ public class rd
   
   public void onDismiss()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838352);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131427443));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838371);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131427446));
     this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = true;
     this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);

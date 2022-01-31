@@ -50,8 +50,8 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
-import dh;
-import di;
+import de;
+import df;
 import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -80,7 +80,7 @@ public class DatalineSessionAdapter
   private final long jdField_a_of_type_Long = 1024L;
   private Context jdField_a_of_type_AndroidContentContext;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dh(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new de(this);
   private LiteActivity jdField_a_of_type_ComDatalineActivitiesLiteActivity;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private DataLineMsgSetList jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList;
@@ -334,16 +334,16 @@ public class DatalineSessionAdapter
       }
       paramItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
       return true;
-      paramItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130838502);
+      paramItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130838527);
       break;
       label493:
-      paramItemHolder.a().jdField_b_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130838502);
+      paramItemHolder.a().jdField_b_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130838527);
       break label128;
       label509:
-      paramItemHolder.a().jdField_c_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130838502);
+      paramItemHolder.a().jdField_c_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130838527);
       break label173;
       label525:
-      paramItemHolder.a().jdField_d_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130838502);
+      paramItemHolder.a().jdField_d_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130838527);
       break label218;
       label541:
       paramItemHolder.a().jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -420,7 +420,7 @@ public class DatalineSessionAdapter
       }
       paramItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
       return;
-      paramItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130838502);
+      paramItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130838527);
       break;
       label334:
       paramItemHolder.a().jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -466,19 +466,19 @@ public class DatalineSessionAdapter
     if (localDataLineMsgRecord == null) {
       return false;
     }
-    di localdi;
+    df localdf;
     label148:
     label313:
     if (i1 == i2)
     {
       paramItemHolder.a().jdField_a_of_type_AndroidWidgetTextView.setText("" + i2);
       i1 = ((Integer)paramItemHolder.a().jdField_a_of_type_AndroidWidgetGridView.getTag()).intValue();
-      localdi = (di)paramItemHolder.a().jdField_a_of_type_AndroidWidgetGridView.getAdapter();
-      if (localdi != null) {
+      localdf = (df)paramItemHolder.a().jdField_a_of_type_AndroidWidgetGridView.getAdapter();
+      if (localdf != null) {
         break label401;
       }
-      localdi = new di(this, paramItemHolder, paramDataLineMsgSet, i1, null);
-      paramItemHolder.a().jdField_a_of_type_AndroidWidgetGridView.setAdapter(localdi);
+      localdf = new df(this, paramItemHolder, paramDataLineMsgSet, i1, null);
+      paramItemHolder.a().jdField_a_of_type_AndroidWidgetGridView.setAdapter(localdf);
       paramItemHolder.a().jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       paramDataLineMsgSet.printlog();
       if (((paramDataLineMsgSet.hasSendingOrRecving()) || (paramDataLineMsgSet.hasWaiting())) && (!paramDataLineMsgSet.isFileComing())) {
@@ -516,9 +516,9 @@ public class DatalineSessionAdapter
       paramItemHolder.a().jdField_a_of_type_AndroidWidgetTextView.setText(i1 + "/" + i2);
       break;
       label401:
-      localdi.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet = paramDataLineMsgSet;
-      localdi.jdField_a_of_type_ComDatalineUtilItemHolder = paramItemHolder;
-      localdi.a();
+      localdf.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet = paramDataLineMsgSet;
+      localdf.jdField_a_of_type_ComDatalineUtilItemHolder = paramItemHolder;
+      localdf.a();
       break label148;
       label421:
       if (!paramDataLineMsgSet.isFileComing()) {
@@ -797,18 +797,18 @@ public class DatalineSessionAdapter
       paramBubbleInfo = paramView.getResources();
       if (paramDataLineMsgRecord.isSendFromLocal())
       {
-        paramView = paramBubbleInfo.getColorStateList(2131427476);
+        paramView = paramBubbleInfo.getColorStateList(2131427479);
         paramItemHolder.a().jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramView);
         if (!paramDataLineMsgRecord.isSendFromLocal()) {
           break label95;
         }
       }
       label95:
-      for (paramView = paramBubbleInfo.getColorStateList(2131427475);; paramView = paramBubbleInfo.getColorStateList(2131427474))
+      for (paramView = paramBubbleInfo.getColorStateList(2131427478);; paramView = paramBubbleInfo.getColorStateList(2131427477))
       {
         paramItemHolder.a().jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramView);
         return;
-        paramView = paramBubbleInfo.getColorStateList(2131427473);
+        paramView = paramBubbleInfo.getColorStateList(2131427476);
         break;
       }
     }
@@ -817,7 +817,7 @@ public class DatalineSessionAdapter
     }
     while (paramBubbleInfo.d == 0)
     {
-      paramItemHolder.a().jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramView.getResources().getColorStateList(2131427474));
+      paramItemHolder.a().jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramView.getResources().getColorStateList(2131427477));
       return;
       paramItemHolder.a().jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.c);
     }
@@ -1058,7 +1058,7 @@ public class DatalineSessionAdapter
       for (;;)
       {
         ((ItemHolder)localObject).a((ImageView)paramView.findViewById(2131296964));
-        ((ItemHolder)localObject).a((TextView)paramView.findViewById(2131296713));
+        ((ItemHolder)localObject).a((TextView)paramView.findViewById(2131296714));
         break;
         paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903162, null);
         break label381;
@@ -1075,7 +1075,7 @@ public class DatalineSessionAdapter
         ((ItemHolder)localObject).a().jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
         ((ItemHolder)localObject).a().jdField_a_of_type_AndroidWidgetTextView.setSpannableFactory(QQText.a);
         if (localDataLineMsgSet.isSendFromLocal()) {}
-        for (paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131427476);; paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131427473))
+        for (paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131427479);; paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131427476))
         {
           ((ItemHolder)localObject).a().jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewGroup);
           ((ItemHolder)localObject).a((ProgressBar)paramView.findViewById(2131296987));
@@ -1146,7 +1146,7 @@ public class DatalineSessionAdapter
         ((ItemHolder)localObject).a().jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296948));
         ((ItemHolder)localObject).a().jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296949));
         ((ItemHolder)localObject).a().jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131296950));
-        ((ItemHolder)localObject).a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130839446);
+        ((ItemHolder)localObject).a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130839511);
         ((ItemHolder)localObject).a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);
         continue;
         paramViewGroup = (RelativeLayout)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903150, null);
@@ -1161,7 +1161,7 @@ public class DatalineSessionAdapter
         ((ItemHolder)localObject).a().e = ((TextView)paramView.findViewById(2131296984));
         ((ItemHolder)localObject).a().jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131296983));
         ((ItemHolder)localObject).a().jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131296982));
-        ((ItemHolder)localObject).a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838501);
+        ((ItemHolder)localObject).a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838526);
         ((ItemHolder)localObject).a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);
         continue;
         paramViewGroup = (RelativeLayout)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903157, null);
@@ -1179,10 +1179,10 @@ public class DatalineSessionAdapter
         ((ItemHolder)localObject).a().e = ((TextView)paramView.findViewById(2131296984));
         ((ItemHolder)localObject).a().jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131296983));
         ((ItemHolder)localObject).a().jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131296982));
-        ((ItemHolder)localObject).a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838502);
-        ((ItemHolder)localObject).a().jdField_b_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838502);
-        ((ItemHolder)localObject).a().jdField_c_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838502);
-        ((ItemHolder)localObject).a().jdField_d_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838502);
+        ((ItemHolder)localObject).a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838527);
+        ((ItemHolder)localObject).a().jdField_b_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838527);
+        ((ItemHolder)localObject).a().jdField_c_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838527);
+        ((ItemHolder)localObject).a().jdField_d_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838527);
         ((ItemHolder)localObject).a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);
         ((ItemHolder)localObject).a().jdField_b_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);
         ((ItemHolder)localObject).a().jdField_c_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);

@@ -12,9 +12,9 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bwq;
-import bwr;
-import bws;
+import bxo;
+import bxp;
+import bxq;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.ChatBackground;
@@ -131,18 +131,18 @@ public class RichStatItemBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramOnLongClickAndTouchListener = (MessageForRichState)paramMessageRecord;
-    paramLinearLayout = (bws)paramViewHolder;
+    paramLinearLayout = (bxq)paramViewHolder;
     paramMessageRecord = paramView;
     if (paramView == null)
     {
       paramMessageRecord = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903093, null);
-      paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramMessageRecord.findViewById(2131296734));
-      paramLinearLayout.c = ((TextView)paramMessageRecord.findViewById(2131296741));
-      paramLinearLayout.d = ((TextView)paramMessageRecord.findViewById(2131296740));
-      paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramMessageRecord.findViewById(2131296739));
-      paramLinearLayout.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)paramMessageRecord.findViewById(2131296736));
-      paramLinearLayout.e = ((TextView)paramMessageRecord.findViewById(2131296738));
-      paramLinearLayout.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramMessageRecord.findViewById(2131296735));
+      paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramMessageRecord.findViewById(2131296735));
+      paramLinearLayout.c = ((TextView)paramMessageRecord.findViewById(2131296742));
+      paramLinearLayout.d = ((TextView)paramMessageRecord.findViewById(2131296741));
+      paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramMessageRecord.findViewById(2131296740));
+      paramLinearLayout.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)paramMessageRecord.findViewById(2131296737));
+      paramLinearLayout.e = ((TextView)paramMessageRecord.findViewById(2131296739));
+      paramLinearLayout.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramMessageRecord.findViewById(2131296736));
       paramLinearLayout.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
     }
     paramMessageRecord.setContentDescription(null);
@@ -207,7 +207,7 @@ public class RichStatItemBuilder
         break label842;
       }
       paramLinearLayout.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setScaleType(ImageView.ScaleType.MATRIX);
-      paramLinearLayout.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setDisplayRuleDef(new bwq(this));
+      paramLinearLayout.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setDisplayRuleDef(new bxo(this));
       paramLinearLayout.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageBitmap((Bitmap)paramViewHolder[0]);
     }
     label784:
@@ -251,7 +251,7 @@ public class RichStatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new bws(this);
+    return new bxq(this);
   }
   
   public void a()
@@ -278,20 +278,20 @@ public class RichStatItemBuilder
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
   
-  void a(bws parambws, Bitmap paramBitmap, int paramInt)
+  void a(bxq parambxq, Bitmap paramBitmap, int paramInt)
   {
     if (paramBitmap == null) {
       return;
     }
     if (paramInt == 1)
     {
-      parambws.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setScaleType(ImageView.ScaleType.MATRIX);
-      parambws.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setDisplayRuleDef(new bwr(this));
-      parambws.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageBitmap(paramBitmap);
+      parambxq.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setScaleType(ImageView.ScaleType.MATRIX);
+      parambxq.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setDisplayRuleDef(new bxp(this));
+      parambxq.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageBitmap(paramBitmap);
       return;
     }
-    parambws.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setScaleType(ImageView.ScaleType.FIT_START);
-    parambws.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageBitmap(paramBitmap);
+    parambxq.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setScaleType(ImageView.ScaleType.FIT_START);
+    parambxq.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageBitmap(paramBitmap);
   }
   
   public QQCustomMenuItem[] a(View paramView)

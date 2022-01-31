@@ -23,7 +23,7 @@ public abstract class ContactBaseView
   
   public int a()
   {
-    return getResources().getDimensionPixelSize(2131493092);
+    return getResources().getDimensionPixelSize(2131493094);
   }
   
   protected void a() {}

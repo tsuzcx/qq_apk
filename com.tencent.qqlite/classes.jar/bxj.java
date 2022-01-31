@@ -1,26 +1,27 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TextSignatureItemBuilder;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.item.PttItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPtt;
+import cooperation.qqfav.QfavBuilder;
+import cooperation.qqfav.QfavReport;
+import cooperation.qqfav.widget.QfavMicroPhoneDialog.Listener;
 
 public class bxj
-  extends AbstractChatItemBuilder.ViewHolder
+  implements QfavMicroPhoneDialog.Listener
 {
-  public int a;
-  public long a;
-  public ViewGroup a;
-  public ImageView a;
-  AnyScaleTypeImageView jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView;
-  public String a;
-  public TextView b;
-  public String b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public bxj(PttItemBuilder paramPttItemBuilder, MessageForPtt paramMessageForPtt) {}
   
-  public bxj(TextSignatureItemBuilder paramTextSignatureItemBuilder) {}
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    QfavBuilder.a(paramString1, paramInt, paramString2).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt).a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.length() > 0)) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_AddFav", 4, 0, 6, paramInt, "", "");
+      return;
+    }
+  }
 }
 
 

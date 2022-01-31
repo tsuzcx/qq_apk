@@ -1,41 +1,42 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class cmh
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public cmh(SelectMemberActivity paramSelectMemberActivity, TranslateAnimation paramTranslateAnimation, AlphaAnimation paramAlphaAnimation, long paramLong) {}
+  public cmh(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    if (paramMessage.what == 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.f();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
-      SelectMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity).setVisibility(8);
-      new Thread(new cmi(this)).start();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.PerfTrace", 2, "selectmember search up anim time: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-      }
+      this.a.app.a(new cmi(this));
+      paramMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, this.a.jdField_a_of_type_Long);
     }
+    while ((1 != paramMessage.what) || (this.a.jdField_b_of_type_Boolean)) {
+      return;
+    }
+    this.a.jdField_a_of_type_JavaLangStringBuffer.delete(0, this.a.jdField_a_of_type_JavaLangStringBuffer.length());
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838721);
+    this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838721);
+    this.a.c.setImageResource(2130838721);
+    this.a.d.setImageResource(2130838721);
+    this.a.e.setEnabled(true);
+    this.a.f.setEnabled(true);
+    this.a.g.setEnabled(true);
+    this.a.h.setEnabled(true);
+    this.a.i.setEnabled(true);
+    this.a.j.setEnabled(true);
+    this.a.k.setEnabled(true);
+    this.a.l.setEnabled(true);
+    this.a.m.setEnabled(true);
+    this.a.n.setEnabled(true);
+    this.a.o.setEnabled(true);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

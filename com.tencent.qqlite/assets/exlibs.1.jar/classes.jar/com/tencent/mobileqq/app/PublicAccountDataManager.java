@@ -52,15 +52,15 @@ public class PublicAccountDataManager
         if (!localIterator.hasNext()) {
           break;
         }
-        PublicAccountInfo localPublicAccountInfo1 = (PublicAccountInfo)localIterator.next();
-        PublicAccountInfo localPublicAccountInfo2 = (PublicAccountInfo)localPublicAccountInfo1;
-        if ((localPublicAccountInfo2.mCompareSpell == null) || (localPublicAccountInfo2.mCompareSpell.length() == 0)) {
-          ContactSorter.a(localPublicAccountInfo2);
+        Entity localEntity = (Entity)localIterator.next();
+        PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)localEntity;
+        if ((localPublicAccountInfo.mCompareSpell == null) || (localPublicAccountInfo.mCompareSpell.length() == 0)) {
+          ContactSorter.a(localPublicAccountInfo);
         }
-        if (localPublicAccountInfo2.hasIvrAbility()) {
-          localArrayList2.add(localPublicAccountInfo1);
+        if (localPublicAccountInfo.hasIvrAbility()) {
+          localArrayList2.add(localEntity);
         } else {
-          localArrayList3.add(localPublicAccountInfo1);
+          localArrayList3.add(localEntity);
         }
       }
       finally {}
@@ -142,96 +142,96 @@ public class PublicAccountDataManager
     //   23: aload_0
     //   24: new 58	java/util/concurrent/ConcurrentHashMap
     //   27: dup
-    //   28: invokespecial 165	java/util/concurrent/ConcurrentHashMap:<init>	()V
+    //   28: invokespecial 167	java/util/concurrent/ConcurrentHashMap:<init>	()V
     //   31: putfield 56	com/tencent/mobileqq/app/PublicAccountDataManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   34: aconst_null
     //   35: astore 4
     //   37: aload_0
     //   38: getfield 36	com/tencent/mobileqq/app/PublicAccountDataManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   41: invokevirtual 168	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   41: invokevirtual 170	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   44: astore 5
     //   46: aload 5
     //   48: astore 4
     //   50: aload 4
-    //   52: invokevirtual 171	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
+    //   52: invokevirtual 173	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
     //   55: aload_1
     //   56: ifnull +77 -> 133
     //   59: aload_1
-    //   60: invokeinterface 174 1 0
+    //   60: invokeinterface 176 1 0
     //   65: ifle +68 -> 133
     //   68: aload_1
-    //   69: invokeinterface 175 1 0
+    //   69: invokeinterface 177 1 0
     //   74: astore_1
     //   75: aload_1
     //   76: invokeinterface 80 1 0
     //   81: ifeq +52 -> 133
     //   84: aload_1
     //   85: invokeinterface 84 1 0
-    //   90: checkcast 86	com/tencent/mobileqq/data/PublicAccountInfo
+    //   90: checkcast 88	com/tencent/mobileqq/data/PublicAccountInfo
     //   93: astore 5
     //   95: aload_0
     //   96: aload 5
-    //   98: invokevirtual 178	com/tencent/mobileqq/app/PublicAccountDataManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   98: invokevirtual 180	com/tencent/mobileqq/app/PublicAccountDataManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   101: pop
     //   102: aload_0
     //   103: getfield 56	com/tencent/mobileqq/app/PublicAccountDataManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   106: aload 5
-    //   108: invokevirtual 143	com/tencent/mobileqq/data/PublicAccountInfo:getUin	()Ljava/lang/String;
+    //   108: invokevirtual 145	com/tencent/mobileqq/data/PublicAccountInfo:getUin	()Ljava/lang/String;
     //   111: aload 5
-    //   113: invokevirtual 147	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   113: invokevirtual 149	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   116: pop
     //   117: goto -42 -> 75
     //   120: astore_1
     //   121: aload 4
-    //   123: invokevirtual 179	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   123: invokevirtual 181	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   126: aload_0
     //   127: invokespecial 41	com/tencent/mobileqq/app/PublicAccountDataManager:b	()V
     //   130: aload 6
     //   132: areturn
     //   133: aload_0
     //   134: getfield 56	com/tencent/mobileqq/app/PublicAccountDataManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   137: invokevirtual 153	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
-    //   140: invokeinterface 156 1 0
+    //   137: invokevirtual 155	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
+    //   140: invokeinterface 158 1 0
     //   145: astore_1
     //   146: aload_1
     //   147: invokeinterface 80 1 0
     //   152: ifeq +78 -> 230
     //   155: aload_1
     //   156: invokeinterface 84 1 0
-    //   161: checkcast 158	java/util/Map$Entry
-    //   164: invokeinterface 161 1 0
-    //   169: checkcast 86	com/tencent/mobileqq/data/PublicAccountInfo
+    //   161: checkcast 160	java/util/Map$Entry
+    //   164: invokeinterface 163 1 0
+    //   169: checkcast 88	com/tencent/mobileqq/data/PublicAccountInfo
     //   172: astore 5
     //   174: aload 5
-    //   176: getfield 183	com/tencent/mobileqq/data/PublicAccountInfo:extendType	I
+    //   176: getfield 185	com/tencent/mobileqq/data/PublicAccountInfo:extendType	I
     //   179: iconst_2
     //   180: if_icmpne -34 -> 146
     //   183: aload 5
-    //   185: getfield 187	com/tencent/mobileqq/data/PublicAccountInfo:dateTime	J
+    //   185: getfield 189	com/tencent/mobileqq/data/PublicAccountInfo:dateTime	J
     //   188: lload_2
     //   189: lcmp
     //   190: ifge -44 -> 146
     //   193: aload_1
-    //   194: invokeinterface 190 1 0
+    //   194: invokeinterface 192 1 0
     //   199: aload_0
     //   200: getfield 36	com/tencent/mobileqq/app/PublicAccountDataManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   203: aload 5
-    //   205: invokevirtual 192	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   205: invokevirtual 194	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   208: pop
     //   209: aload 6
     //   211: aload 5
-    //   213: invokeinterface 193 2 0
+    //   213: invokeinterface 195 2 0
     //   218: pop
     //   219: goto -73 -> 146
     //   222: astore_1
     //   223: aload 4
-    //   225: invokevirtual 179	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   225: invokevirtual 181	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   228: aload_1
     //   229: athrow
     //   230: aload 4
-    //   232: invokevirtual 196	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
+    //   232: invokevirtual 198	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
     //   235: aload 4
-    //   237: invokevirtual 179	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   237: invokevirtual 181	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   240: goto -114 -> 126
     //   243: astore_1
     //   244: aconst_null
@@ -275,13 +275,13 @@ public class PublicAccountDataManager
     //   7: aload_1
     //   8: ifnull +140 -> 148
     //   11: aload_1
-    //   12: invokeinterface 174 1 0
+    //   12: invokeinterface 176 1 0
     //   17: istore 6
     //   19: aload_0
     //   20: new 58	java/util/concurrent/ConcurrentHashMap
     //   23: dup
     //   24: iload 6
-    //   26: invokespecial 198	java/util/concurrent/ConcurrentHashMap:<init>	(I)V
+    //   26: invokespecial 200	java/util/concurrent/ConcurrentHashMap:<init>	(I)V
     //   29: putfield 56	com/tencent/mobileqq/app/PublicAccountDataManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   32: new 20	java/util/ArrayList
     //   35: dup
@@ -291,45 +291,45 @@ public class PublicAccountDataManager
     //   42: astore 7
     //   44: aload_0
     //   45: getfield 36	com/tencent/mobileqq/app/PublicAccountDataManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   48: invokevirtual 168	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   48: invokevirtual 170	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   51: astore 8
     //   53: aload 8
     //   55: astore 7
     //   57: aload 7
-    //   59: invokevirtual 171	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
+    //   59: invokevirtual 173	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
     //   62: aload_1
     //   63: ifnull +133 -> 196
     //   66: aload_1
-    //   67: invokeinterface 174 1 0
+    //   67: invokeinterface 176 1 0
     //   72: ifle +124 -> 196
     //   75: aload_1
-    //   76: invokeinterface 175 1 0
+    //   76: invokeinterface 177 1 0
     //   81: astore_1
     //   82: aload_1
     //   83: invokeinterface 80 1 0
     //   88: ifeq +108 -> 196
     //   91: aload_1
     //   92: invokeinterface 84 1 0
-    //   97: checkcast 86	com/tencent/mobileqq/data/PublicAccountInfo
+    //   97: checkcast 88	com/tencent/mobileqq/data/PublicAccountInfo
     //   100: astore 8
     //   102: aload_0
     //   103: aload 8
-    //   105: invokevirtual 178	com/tencent/mobileqq/app/PublicAccountDataManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   105: invokevirtual 180	com/tencent/mobileqq/app/PublicAccountDataManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   108: pop
     //   109: aload 8
-    //   111: invokevirtual 201	com/tencent/mobileqq/data/PublicAccountInfo:isNeedShow	()Z
+    //   111: invokevirtual 203	com/tencent/mobileqq/data/PublicAccountInfo:isNeedShow	()Z
     //   114: ifeq +40 -> 154
     //   117: aload_0
     //   118: getfield 56	com/tencent/mobileqq/app/PublicAccountDataManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   121: aload 8
-    //   123: invokevirtual 143	com/tencent/mobileqq/data/PublicAccountInfo:getUin	()Ljava/lang/String;
+    //   123: invokevirtual 145	com/tencent/mobileqq/data/PublicAccountInfo:getUin	()Ljava/lang/String;
     //   126: aload 8
-    //   128: invokevirtual 147	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   128: invokevirtual 149	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   131: pop
     //   132: goto -50 -> 82
     //   135: astore_1
     //   136: aload 7
-    //   138: invokevirtual 179	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   138: invokevirtual 181	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   141: aload_0
     //   142: invokespecial 41	com/tencent/mobileqq/app/PublicAccountDataManager:b	()V
     //   145: aload 9
@@ -340,20 +340,20 @@ public class PublicAccountDataManager
     //   154: aload_0
     //   155: getfield 56	com/tencent/mobileqq/app/PublicAccountDataManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   158: aload 8
-    //   160: invokevirtual 143	com/tencent/mobileqq/data/PublicAccountInfo:getUin	()Ljava/lang/String;
-    //   163: invokevirtual 203	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   160: invokevirtual 145	com/tencent/mobileqq/data/PublicAccountInfo:getUin	()Ljava/lang/String;
+    //   163: invokevirtual 205	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   166: pop
     //   167: aload 8
-    //   169: invokevirtual 206	com/tencent/mobileqq/data/PublicAccountInfo:isVisible	()Z
+    //   169: invokevirtual 208	com/tencent/mobileqq/data/PublicAccountInfo:isVisible	()Z
     //   172: ifne -90 -> 82
     //   175: aload 9
     //   177: aload 8
-    //   179: invokeinterface 193 2 0
+    //   179: invokeinterface 195 2 0
     //   184: pop
     //   185: goto -103 -> 82
     //   188: astore_1
     //   189: aload 7
-    //   191: invokevirtual 179	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   191: invokevirtual 181	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   194: aload_1
     //   195: athrow
     //   196: iload 4
@@ -362,42 +362,42 @@ public class PublicAccountDataManager
     //   203: ifeq +91 -> 294
     //   206: aload_0
     //   207: getfield 56	com/tencent/mobileqq/app/PublicAccountDataManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   210: invokevirtual 153	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
-    //   213: invokeinterface 156 1 0
+    //   210: invokevirtual 155	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
+    //   213: invokeinterface 158 1 0
     //   218: astore_1
     //   219: aload_1
     //   220: invokeinterface 80 1 0
     //   225: ifeq +69 -> 294
     //   228: aload_1
     //   229: invokeinterface 84 1 0
-    //   234: checkcast 158	java/util/Map$Entry
-    //   237: invokeinterface 161 1 0
-    //   242: checkcast 86	com/tencent/mobileqq/data/PublicAccountInfo
+    //   234: checkcast 160	java/util/Map$Entry
+    //   237: invokeinterface 163 1 0
+    //   242: checkcast 88	com/tencent/mobileqq/data/PublicAccountInfo
     //   245: astore 8
     //   247: aload 8
-    //   249: getfield 183	com/tencent/mobileqq/data/PublicAccountInfo:extendType	I
+    //   249: getfield 185	com/tencent/mobileqq/data/PublicAccountInfo:extendType	I
     //   252: ifne -33 -> 219
     //   255: aload 8
-    //   257: getfield 187	com/tencent/mobileqq/data/PublicAccountInfo:dateTime	J
+    //   257: getfield 189	com/tencent/mobileqq/data/PublicAccountInfo:dateTime	J
     //   260: lload_2
     //   261: lcmp
     //   262: ifge -43 -> 219
     //   265: aload_1
-    //   266: invokeinterface 190 1 0
+    //   266: invokeinterface 192 1 0
     //   271: aload_0
     //   272: getfield 36	com/tencent/mobileqq/app/PublicAccountDataManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   275: aload 8
-    //   277: invokevirtual 192	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   277: invokevirtual 194	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   280: pop
     //   281: aload 9
     //   283: aload 8
-    //   285: invokeinterface 193 2 0
+    //   285: invokeinterface 195 2 0
     //   290: pop
     //   291: goto -72 -> 219
     //   294: aload 7
-    //   296: invokevirtual 196	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
+    //   296: invokevirtual 198	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
     //   299: aload 7
-    //   301: invokevirtual 179	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   301: invokevirtual 181	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   304: goto -163 -> 141
     //   307: astore_1
     //   308: aconst_null

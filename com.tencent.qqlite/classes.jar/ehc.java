@@ -1,44 +1,19 @@
-import android.os.Message;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.ForwardImageProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.systemmsg.SystemMsgController;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ehc
-  extends TransProcessorHandler
+  implements Runnable
 {
-  public ehc(ForwardImageProcessor paramForwardImageProcessor) {}
+  public ehc(SystemMsgController paramSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    int i = paramMessage.what;
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((i == 2002) || ((ForwardImageProcessor.a(this.a).equals(localFileMsg.m)) && (localFileMsg.e == 1) && (i != 2002)))
-    {
-      if ((localFileMsg.o == null) || (!localFileMsg.o.equals(ForwardImageProcessor.b(this.a)))) {
-        return;
-      }
-      switch (i)
-      {
-      }
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      ForwardImageProcessor.a(this.a);
-      continue;
-      if (FileUtils.b(ForwardImageProcessor.c(this.a)))
-      {
-        ForwardImageProcessor.a(this.a).a().b(this);
-        ForwardImageProcessor.b(this.a);
-      }
-      else
-      {
-        ForwardImageProcessor.a(this.a);
-      }
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putInt("unread_system_msg", this.jdField_a_of_type_Int).commit();
     }
   }
 }

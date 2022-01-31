@@ -1,67 +1,45 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.TroopFeedItem;
-import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory;
-import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory.ViewProvider;
-import com.tencent.mobileqq.utils.StringUtil;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileUploadingManager;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
 
 public class eqt
-  extends TroopFeedViewFactory.ViewProvider
+  extends BizTroopObserver
 {
-  public eqt(TroopFeedViewFactory paramTroopFeedViewFactory)
-  {
-    super(paramTroopFeedViewFactory);
-  }
+  public eqt(TroopFileUploadingManager paramTroopFileUploadingManager) {}
   
-  protected View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
+  protected void a(Object paramObject)
   {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = LayoutInflater.from(this.a.jdField_a_of_type_AndroidContentContext).inflate(2130903366, null);
-    }
-    paramView = (equ)localView.getTag();
-    Object localObject = paramView;
-    if (paramView == null)
-    {
-      localObject = new equ(this);
-      ((equ)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131297046));
-      ((equ)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131296932));
-      ((equ)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131297842));
-      ((equ)localObject).b = ((TextView)localView.findViewById(2131297841));
-      ((equ)localObject).c = ((TextView)localView.findViewById(2131297844));
-      localView.setOnClickListener(this.a);
-      localView.setTag(localObject);
-    }
-    ((equ)localObject).jdField_a_of_type_Int = paramInt;
-    ((equ)localObject).jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem = paramTroopFeedItem;
-    paramView = "[" + paramTroopFeedItem.tag + "] " + paramTroopFeedItem.title;
-    ((equ)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-    ((equ)localObject).b.setText(paramTroopFeedItem.content);
-    ((equ)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    paramView = "点击打开 " + paramTroopFeedItem.tag + " " + paramTroopFeedItem.title + " " + paramTroopFeedItem.content;
-    if (!StringUtil.b(paramTroopFeedItem.ex_1))
-    {
-      ((equ)localObject).c.setText(paramTroopFeedItem.ex_1);
-      paramView = paramView + " " + paramTroopFeedItem.ex_1;
-    }
+    paramObject = (TroopFileStatusInfo)paramObject;
+    if ((paramObject.jdField_a_of_type_Boolean) && (paramObject.b == 1)) {}
     for (;;)
     {
-      ((equ)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838383);
-      paramTroopFeedItem = paramView;
-      if (!paramBoolean) {
-        paramTroopFeedItem = paramView + " " + "两指向左横向滑动查看下一条通知";
-      }
-      localView.setContentDescription(paramTroopFeedItem);
-      if (this.a.b)
+      return;
+      if (paramObject.b == 12)
       {
-        localView.setOnLongClickListener(this.a.jdField_a_of_type_Eqq);
-        localView.setOnTouchListener(this.a.jdField_a_of_type_Eqq);
+        long l = paramObject.jdField_a_of_type_Long;
+        Iterator localIterator = this.a.a.a().a(String.valueOf(l), 1, false).iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = (ChatMessage)localIterator.next();
+          if ((((ChatMessage)localObject).msgtype == -2017) && ((((ChatMessage)localObject).extraflag == 32772) || (((ChatMessage)localObject).extraflag == 32768)) && (((ChatMessage)localObject).isSendFromLocal()))
+          {
+            localObject = (MessageForTroopFile)localObject;
+            if ((((MessageForTroopFile)localObject).uuid != null) && (((MessageForTroopFile)localObject).uuid.equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString()))) {
+              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+            } else if ((!TextUtils.isEmpty(((MessageForTroopFile)localObject).url)) && (!TextUtils.isEmpty(paramObject.d)) && (((MessageForTroopFile)localObject).url.equals(paramObject.d))) {
+              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+            }
+          }
+        }
       }
-      return localView;
-      ((equ)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
   }
 }

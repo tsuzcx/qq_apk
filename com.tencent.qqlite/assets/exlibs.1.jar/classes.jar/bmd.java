@@ -1,55 +1,30 @@
-import android.view.View;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 
 public class bmd
-  implements ActionSheet.OnButtonClickListener
+  extends TroopObserver
 {
-  public bmd(TroopAssistantActivity paramTroopAssistantActivity, int paramInt, String paramString, ActionSheet paramActionSheet) {}
+  public bmd(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void a(View paramView, int paramInt)
+  protected void a(int paramInt, byte paramByte, String paramString)
   {
-    if (!NetworkUtil.e(BaseApplication.getContext()))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
+    if (paramInt == 6) {
+      if (paramByte == 0) {
+        this.a.a.sendEmptyMessage(1);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a.a(2, 2131363516, 1500);
     }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      }
+    while ((paramInt != 2) || (paramByte != 0)) {
       return;
-      int i = -1;
-      switch (paramInt)
-      {
-      default: 
-        paramInt = i;
-      }
-      while (paramInt != this.jdField_a_of_type_Int)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app.a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
-        break;
-        paramInt = 1;
-        continue;
-        paramInt = 2;
-        continue;
-        paramInt = 3;
-      }
     }
-    catch (Exception paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("TroopAssistantActivity", 2, paramView.toString());
-    }
+    TroopAssistantManager.a().b(paramString, this.a.app);
+    this.a.d();
+  }
+  
+  protected void a(String paramString)
+  {
+    this.a.d();
   }
 }
 

@@ -47,7 +47,7 @@ public class CardView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    float f1 = getContext().getResources().getDimension(2131493109);
+    float f1 = getContext().getResources().getDimension(2131493113);
     f1 = this.b - f1 * 2.0F;
     float f2 = f1 / a();
     super.setMeasuredDimension((int)f1, (int)f2);

@@ -36,7 +36,7 @@ public class SearchableDiscussionMember
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo = paramDiscussionMemberInfo;
-    this.y = paramLong2;
+    this.A = paramLong2;
     ChnToSpell.a(paramContext);
     paramContext = (FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
     if (paramContext != null)
@@ -143,25 +143,25 @@ public class SearchableDiscussionMember
   public void a(String paramString)
   {
     paramString = paramString.toLowerCase();
-    this.x = -9223372036854775808L;
+    this.z = -9223372036854775808L;
     long l;
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0)) {
       if ((this.jdField_a_of_type_JavaLangString.equals(paramString)) || ((this.b != null) && (this.b.equals(paramString))) || ((this.c != null) && (this.c.equals(paramString)))) {
-        if (1125899906842624L > this.x)
+        if (1125899906842624L > this.z)
         {
           if ((!this.jdField_a_of_type_JavaLangString.equals(paramString)) && (!this.jdField_a_of_type_JavaLangString.equals(this.b)))
           {
             l = 1125899906842624L + 4503599627370496L;
-            this.x = (l + 0L);
+            this.z = (l + 0L);
             this.jdField_e_of_type_Int = 3;
           }
         }
         else
         {
-          if (this.x == -9223372036854775808L) {
+          if (this.z == -9223372036854775808L) {
             break label326;
           }
-          this.x += this.y;
+          this.z += this.A;
         }
       }
     }
@@ -191,7 +191,7 @@ public class SearchableDiscussionMember
           break label307;
         }
         l = 562949953421312L;
-        if (l <= this.x) {
+        if (l <= this.z) {
           break label313;
         }
         if ((k >= 0) || (this.jdField_a_of_type_JavaLangString.equals(this.b))) {
@@ -200,7 +200,7 @@ public class SearchableDiscussionMember
       }
       for (l += 4503599627370496L;; l += 9007199254740992L)
       {
-        this.x = (l + 0L);
+        this.z = (l + 0L);
         this.jdField_e_of_type_Int = 3;
         break;
         i = -1;
@@ -216,19 +216,19 @@ public class SearchableDiscussionMember
       {
         if ((this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark.equals(paramString)) || ((this.d != null) && (this.d.equals(paramString))) || ((this.jdField_e_of_type_JavaLangString != null) && (this.jdField_e_of_type_JavaLangString.equals(paramString))))
         {
-          if (1125899906842624L > this.x) {
+          if (1125899906842624L > this.z) {
             if ((this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark.equals(paramString)) || (this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark.equals(this.d))) {
               break label488;
             }
           }
           for (l = 1125899906842624L + 4503599627370496L;; l = 1125899906842624L + 9007199254740992L)
           {
-            this.x = (l + 0L);
+            this.z = (l + 0L);
             this.jdField_e_of_type_Int = 2;
-            if (this.x == -9223372036854775808L) {
+            if (this.z == -9223372036854775808L) {
               break;
             }
-            this.x += this.y;
+            this.z += this.A;
             return;
           }
         }
@@ -247,7 +247,7 @@ public class SearchableDiscussionMember
             break label642;
           }
           l = 562949953421312L;
-          if (l <= this.x) {
+          if (l <= this.z) {
             break label648;
           }
           if ((k >= 0) || (this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark.equals(this.d))) {
@@ -256,7 +256,7 @@ public class SearchableDiscussionMember
         }
         for (l += 4503599627370496L;; l += 9007199254740992L)
         {
-          this.x = (l + 0L);
+          this.z = (l + 0L);
           this.jdField_e_of_type_Int = 2;
           break;
           i = -1;
@@ -273,7 +273,7 @@ public class SearchableDiscussionMember
       {
         if ((this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName.equals(paramString)) || ((this.f != null) && (this.f.equals(paramString))) || ((this.g != null) && (this.g.equals(paramString))))
         {
-          if (1125899906842624L > this.x)
+          if (1125899906842624L > this.z)
           {
             if ((this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName.equals(paramString)) || (this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName.equals(this.f))) {
               break label846;
@@ -283,13 +283,13 @@ public class SearchableDiscussionMember
               break label858;
             }
           }
-          for (this.x = (l + 0L);; this.x = (l + 0L))
+          for (this.z = (l + 0L);; this.z = (l + 0L))
           {
             this.jdField_e_of_type_Int = 1;
-            if (this.x == -9223372036854775808L) {
+            if (this.z == -9223372036854775808L) {
               break label1064;
             }
-            this.x += this.y;
+            this.z += this.A;
             return;
             l = 1125899906842624L + 9007199254740992L;
             break;
@@ -310,7 +310,7 @@ public class SearchableDiscussionMember
             break label1034;
           }
           l = 562949953421312L;
-          if (l <= this.x) {
+          if (l <= this.z) {
             break label1040;
           }
           if ((k >= 0) || (this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName.equals(this.f))) {
@@ -321,7 +321,7 @@ public class SearchableDiscussionMember
             break label1053;
           }
         }
-        for (this.x = (l + 0L);; this.x = (l + 0L))
+        for (this.z = (l + 0L);; this.z = (l + 0L))
         {
           this.jdField_e_of_type_Int = 1;
           break;
@@ -346,13 +346,13 @@ public class SearchableDiscussionMember
     label326:
     label488:
     if (this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin.equals(paramString)) {
-      if (1125899906842624L > this.x)
+      if (1125899906842624L > this.z)
       {
         l = 1125899906842624L + 9007199254740992L;
         if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark)) || (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName))) {
           break label1182;
         }
-        this.x = (l + 0L);
+        this.z = (l + 0L);
         this.jdField_e_of_type_Int = 0;
       }
     }
@@ -364,11 +364,11 @@ public class SearchableDiscussionMember
     for (;;)
     {
       label858:
-      if (this.x != -9223372036854775808L)
+      if (this.z != -9223372036854775808L)
       {
-        this.x += this.y;
+        this.z += this.A;
         return;
-        this.x = (l + 0L);
+        this.z = (l + 0L);
         break;
         i = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin.indexOf(paramString);
         if (i >= 0)
@@ -377,7 +377,7 @@ public class SearchableDiscussionMember
             break label1288;
           }
           l = 562949953421312L;
-          if (l <= this.x) {
+          if (l <= this.z) {
             break label1294;
           }
           l += 9007199254740992L;
@@ -394,7 +394,7 @@ public class SearchableDiscussionMember
     label914:
     label945:
     label1218:
-    for (this.x = (l + 0L);; this.x = (l + 0L))
+    for (this.z = (l + 0L);; this.z = (l + 0L))
     {
       this.jdField_e_of_type_Int = 0;
       break label1157;

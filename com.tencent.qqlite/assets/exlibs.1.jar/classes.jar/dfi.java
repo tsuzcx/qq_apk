@@ -1,42 +1,41 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
 
-class dfi
-  implements URLDrawable.URLDrawableListener
+public class dfi
+  implements Runnable
 {
-  dfi(dfh paramdfh) {}
+  public dfi(BigEmoticonViewBinder paramBigEmoticonViewBinder, View paramView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadCanceled");
+    int i = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.a(0);
+    Button localButton;
+    View localView;
+    if (i == 2005)
+    {
+      localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297056);
+      localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131297058);
+      if (localView != null) {
+        localView.setVisibility(8);
+      }
+      if (localButton != null) {
+        localButton.setVisibility(0);
+      }
     }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadFialed");
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadProgressed");
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable Successed, is to call showFastImage");
-    }
-    this.a.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.a.jdField_a_of_type_AndroidOsHandler, 31));
+    do
+    {
+      do
+      {
+        return;
+      } while (i != 2004);
+      localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297081);
+      localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131297082);
+      if (localView != null) {
+        localView.setVisibility(8);
+      }
+    } while (localButton == null);
+    localButton.setVisibility(0);
   }
 }
 

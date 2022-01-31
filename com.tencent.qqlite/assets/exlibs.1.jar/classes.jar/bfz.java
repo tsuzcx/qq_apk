@@ -1,15 +1,21 @@
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class bfz
-  implements Runnable
+public class bfz
+  implements DialogInterface.OnClickListener
 {
-  bfz(bfy parambfy) {}
+  public bfz(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.e();
-    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
+    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_clean_msg", 0, 0, "", "", "", "");
+    if (!this.a.isFinishing()) {
+      this.a.showDialog(1);
+    }
+    ThreadManager.b(new bga(this));
   }
 }
 

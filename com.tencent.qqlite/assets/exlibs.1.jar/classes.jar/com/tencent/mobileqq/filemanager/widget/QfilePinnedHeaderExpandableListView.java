@@ -32,7 +32,7 @@ public class QfilePinnedHeaderExpandableListView
   private void a(Context paramContext)
   {
     setSelector(2131427345);
-    setGroupIndicator(paramContext.getResources().getDrawable(2130837934));
+    setGroupIndicator(paramContext.getResources().getDrawable(2130837952));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)

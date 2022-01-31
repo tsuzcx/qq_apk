@@ -1,13 +1,12 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.MyEnterTroopChatItemBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bvy
-  extends AbstractChatItemBuilder.ViewHolder
+class bvy
+  implements DialogInterface.OnClickListener
 {
-  public TextView b;
+  bvy(bvx parambvx) {}
   
-  public bvy(MyEnterTroopChatItemBuilder paramMyEnterTroopChatItemBuilder) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

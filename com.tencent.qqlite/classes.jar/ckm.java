@@ -1,16 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import java.util.ArrayList;
 
 public class ckm
   implements View.OnClickListener
 {
-  public ckm(BannerManager paramBannerManager) {}
+  public ckm(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.a(7, 0);
-    this.a.a(null);
+    if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      PhotoPreviewActivity.a(this.a, PhotoPreviewActivity.a(this.a), this.a.jdField_a_of_type_Int, PhotoPreviewActivity.a(this.a));
+    }
   }
 }
 

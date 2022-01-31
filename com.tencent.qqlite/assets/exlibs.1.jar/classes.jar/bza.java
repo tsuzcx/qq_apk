@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.widget.ActionSheet;
+import java.io.File;
 
 public class bza
-  implements View.OnClickListener
+  implements Runnable
 {
-  public bza(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public bza(AIOGalleryScene paramAIOGalleryScene, File paramFile, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    BusinessCmrTmpChatPie.a(this.a).setVisibility(8);
-    BusinessCmrTmpChatPie.a(this.a).setVisibility(0);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.d != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.d.equals(this.jdField_a_of_type_JavaIoFile.getPath())) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a(this.jdField_a_of_type_JavaIoFile).booleanValue())) {
+      new Handler(Looper.getMainLooper()).post(new bzb(this));
+    }
   }
 }
 

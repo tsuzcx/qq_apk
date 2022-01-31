@@ -16,18 +16,18 @@ import com.tencent.mobileqq.statistics.StatisticAssist;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dpz;
-import dqa;
-import dqb;
-import dqc;
-import dqd;
-import dqe;
-import dqf;
-import dqg;
-import dqh;
-import dqi;
-import dqj;
-import dqk;
+import drb;
+import drc;
+import drd;
+import dre;
+import drf;
+import drg;
+import drh;
+import dri;
+import drj;
+import drk;
+import drl;
+import drm;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -142,14 +142,14 @@ public class UniformDownloadMgr
       localBundle.putString("_PARAM_FILENAME", paramString2);
       localBundle.putLong("_PARAM_FILESIZE", paramLong);
       localUniformDownloader.a(localBundle);
-      localUniformDownloader.a(new dpz(this), true);
+      localUniformDownloader.a(new drb(this), true);
       localBundle = new Bundle();
       localBundle.putString("_notify_param_Filename", paramString2);
       localBundle.putString("_notify_param_ContentTitle", paramString2);
       localBundle.putString("_notify_param_Url", paramString1);
       localBundle.putLong("_notify_param_Filesize", paramLong);
       paramInt = UniformDownloadNfn.a().a(localUniformDownloader, localBundle, l, paramInt);
-      a(paramString1, new dqj(this, null, localUniformDownloader.g(), localUniformDownloader, l, paramInt));
+      a(paramString1, new drl(this, null, localUniformDownloader.g(), localUniformDownloader, l, paramInt));
       if (!paramBoolean) {
         break label372;
       }
@@ -219,16 +219,16 @@ public class UniformDownloadMgr
     finally {}
   }
   
-  private dqj a(String paramString)
+  private drl a(String paramString)
   {
     synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
-      paramString = (dqj)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      paramString = (drl)this.jdField_a_of_type_JavaUtilMap.get(paramString);
       return paramString;
     }
   }
   
-  private dqk a(String paramString)
+  private drm a(String paramString)
   {
     if (paramString == null)
     {
@@ -241,7 +241,7 @@ public class UniformDownloadMgr
       QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] rBobjectOfString err,l=" + arrayOfString.length + " str=" + paramString);
       return null;
     }
-    paramString = new dqk(this);
+    paramString = new drm(this);
     paramString.jdField_a_of_type_Int = Integer.parseInt(arrayOfString[0]);
     paramString.jdField_a_of_type_JavaLangString = arrayOfString[1];
     paramString.jdField_a_of_type_Long = Long.parseLong(arrayOfString[2]);
@@ -259,19 +259,19 @@ public class UniformDownloadMgr
     return String.valueOf(paramSucDownloadInfo.jdField_a_of_type_JavaLangString) + "^" + String.valueOf(paramSucDownloadInfo.jdField_a_of_type_Int);
   }
   
-  private String a(dqk paramdqk)
+  private String a(drm paramdrm)
   {
-    if (paramdqk == null)
+    if (paramdrm == null)
     {
       QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] stringOfRbObject err, obj=null");
       return null;
     }
-    return String.valueOf(paramdqk.jdField_a_of_type_Int) + "^" + paramdqk.jdField_a_of_type_JavaLangString + "^" + String.valueOf(paramdqk.jdField_a_of_type_Long) + "^" + String.valueOf(paramdqk.jdField_a_of_type_Boolean);
+    return String.valueOf(paramdrm.jdField_a_of_type_Int) + "^" + paramdrm.jdField_a_of_type_JavaLangString + "^" + String.valueOf(paramdrm.jdField_a_of_type_Long) + "^" + String.valueOf(paramdrm.jdField_a_of_type_Boolean);
   }
   
-  private boolean a(String paramString, dqj paramdqj)
+  private boolean a(String paramString, drl paramdrl)
   {
-    if ((paramString == null) || (paramdqj == null))
+    if ((paramString == null) || (paramdrl == null))
     {
       QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] addDownloadInst.. param null");
       return false;
@@ -282,7 +282,7 @@ public class UniformDownloadMgr
         return false;
       }
     }
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramdqj);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramdrl);
     QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] addDownloadInst.. total[" + this.jdField_a_of_type_JavaUtilMap.size() + "] add it. url[" + paramString + "]");
     return true;
   }
@@ -303,14 +303,14 @@ public class UniformDownloadMgr
         j = 0;
         if (localIterator.hasNext())
         {
-          dqj localdqj = (dqj)localIterator.next();
+          drl localdrl = (drl)localIterator.next();
           int n = i;
           k = j;
-          if (localdqj.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null)
+          if (localdrl.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null)
           {
             n = i;
             k = j;
-            if (localdqj.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b())
+            if (localdrl.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b())
             {
               j += 1;
               n = i;
@@ -319,7 +319,7 @@ public class UniformDownloadMgr
               {
                 n = i;
                 k = j;
-                if (paramString.equalsIgnoreCase(localdqj.jdField_a_of_type_JavaLangString))
+                if (paramString.equalsIgnoreCase(localdrl.jdField_a_of_type_JavaLangString))
                 {
                   QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] inPTryStartNextDownload.. download is runing. traceUrl:" + paramString);
                   n = 1;
@@ -328,7 +328,7 @@ public class UniformDownloadMgr
               }
             }
           }
-          ((List)localObject2).add(localdqj);
+          ((List)localObject2).add(localdrl);
           i = n;
           j = k;
         }
@@ -339,26 +339,26 @@ public class UniformDownloadMgr
         k = i;
         if (((Iterator)???).hasNext())
         {
-          localObject2 = (dqj)((Iterator)???).next();
+          localObject2 = (drl)((Iterator)???).next();
           k = j;
-          if (((dqj)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader == null) {
+          if (((drl)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader == null) {
             break label496;
           }
           k = j;
-          if (!((dqj)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.a()) {
+          if (!((drl)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.a()) {
             break label496;
           }
           if (j < m)
           {
-            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>> Happy. start a download task, url:[" + ((dqj)localObject2).jdField_a_of_type_JavaLangString + "]");
+            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>> Happy. start a download task, url:[" + ((drl)localObject2).jdField_a_of_type_JavaLangString + "]");
             j += 1;
-            ((dqj)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.a();
+            ((drl)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.a();
             k = j;
             if (paramString == null) {
               break label496;
             }
             k = j;
-            if (!paramString.equalsIgnoreCase(((dqj)localObject2).jdField_a_of_type_JavaLangString)) {
+            if (!paramString.equalsIgnoreCase(((drl)localObject2).jdField_a_of_type_JavaLangString)) {
               break label496;
             }
             QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] inPTryStartNextDownload.. download is started. traceUrl:" + paramString);
@@ -412,20 +412,20 @@ public class UniformDownloadMgr
   
   private int c(String paramString)
   {
-    dqj localdqj = a(paramString);
-    if (localdqj != null)
+    drl localdrl = a(paramString);
+    if (localdrl != null)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
-        if (localdqj.jdField_a_of_type_Int != 1) {
+        if (localdrl.jdField_a_of_type_Int != 1) {
           break label71;
         }
         StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "Stop_download_2-2_3-0");
       }
       for (;;)
       {
-        if (localdqj.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) {
-          localdqj.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b();
+        if (localdrl.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) {
+          localdrl.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b();
         }
         b(null);
         return 0;
@@ -456,11 +456,11 @@ public class UniformDownloadMgr
   
   private int d(String paramString)
   {
-    dqj localdqj = a(paramString);
-    if (localdqj != null)
+    drl localdrl = a(paramString);
+    if (localdrl != null)
     {
-      if (localdqj.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) {
-        localdqj.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.c();
+      if (localdrl.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) {
+        localdrl.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.c();
       }
       b(null);
       return 0;
@@ -476,11 +476,11 @@ public class UniformDownloadMgr
   
   private int e(String paramString)
   {
-    dqj localdqj = a(paramString);
-    if (localdqj != null)
+    drl localdrl = a(paramString);
+    if (localdrl != null)
     {
-      if (localdqj.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) {
-        localdqj.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.d();
+      if (localdrl.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) {
+        localdrl.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.d();
       }
       return 0;
     }
@@ -542,20 +542,20 @@ public class UniformDownloadMgr
   private void h()
   {
     e();
-    this.jdField_a_of_type_AndroidOsHandler.post(new dqb(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new drd(this));
   }
   
   private void i()
   {
     QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] pauseSlienceRuningGenDownloadOfOldApp ...");
     e();
-    this.jdField_a_of_type_AndroidOsHandler.post(new dqi(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new drk(this));
   }
   
   private void j()
   {
     e();
-    this.jdField_a_of_type_AndroidOsHandler.post(new dqa(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new drc(this));
   }
   
   private void k()
@@ -679,7 +679,7 @@ public class UniformDownloadMgr
             if (localObject2 == null) {
               break label224;
             }
-            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] getDownloadingRbResmeInfo, url:[" + str + "]" + "] nId:[" + ((dqk)localObject2).jdField_a_of_type_Int + "] w:[" + ((dqk)localObject2).jdField_a_of_type_Boolean + "]");
+            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] getDownloadingRbResmeInfo, url:[" + str + "]" + "] nId:[" + ((drm)localObject2).jdField_a_of_type_Int + "] w:[" + ((drm)localObject2).jdField_a_of_type_Boolean + "]");
             localHashMap.put(str, localObject2);
             continue;
           }
@@ -791,7 +791,7 @@ public class UniformDownloadMgr
   public void a(String paramString, Bundle paramBundle)
   {
     e();
-    this.jdField_a_of_type_AndroidOsHandler.post(new dqc(this, paramString, paramBundle));
+    this.jdField_a_of_type_AndroidOsHandler.post(new dre(this, paramString, paramBundle));
   }
   
   public void a(String paramString1, String paramString2, long paramLong, int paramInt, boolean paramBoolean)
@@ -800,12 +800,12 @@ public class UniformDownloadMgr
     {
       QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] saveDownloadingRbResmeInfo, url:[" + paramString1 + "]" + " nId:[" + paramInt + "] w:[" + paramBoolean + "]");
       SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("downloading_rb_resume_info", 0).edit();
-      dqk localdqk = new dqk(this);
-      localdqk.jdField_a_of_type_Int = paramInt;
-      localdqk.jdField_a_of_type_JavaLangString = paramString2;
-      localdqk.jdField_a_of_type_Long = paramLong;
-      localdqk.jdField_a_of_type_Boolean = paramBoolean;
-      localEditor.putString(paramString1, a(localdqk));
+      drm localdrm = new drm(this);
+      localdrm.jdField_a_of_type_Int = paramInt;
+      localdrm.jdField_a_of_type_JavaLangString = paramString2;
+      localdrm.jdField_a_of_type_Long = paramLong;
+      localdrm.jdField_a_of_type_Boolean = paramBoolean;
+      localEditor.putString(paramString1, a(localdrm));
       localEditor.commit();
       return;
     }
@@ -829,14 +829,14 @@ public class UniformDownloadMgr
       Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
       if (localIterator.hasNext())
       {
-        dqj localdqj = (dqj)localIterator.next();
-        if ((localdqj.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) && (localdqj.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b())) {
-          QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onQQProcessExit. stop download:url:" + localdqj.jdField_a_of_type_JavaLangString);
+        drl localdrl = (drl)localIterator.next();
+        if ((localdrl.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) && (localdrl.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b())) {
+          QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onQQProcessExit. stop download:url:" + localdrl.jdField_a_of_type_JavaLangString);
         }
         Bundle localBundle = new Bundle();
-        localBundle.putString("_notify_param_Url", localdqj.jdField_a_of_type_JavaLangString);
-        UniformDownloadNfn.a().c(localdqj.b, localBundle);
-        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onQQProcessExit. cancel notification:" + localdqj.b);
+        localBundle.putString("_notify_param_Url", localdrl.jdField_a_of_type_JavaLangString);
+        UniformDownloadNfn.a().c(localdrl.b, localBundle);
+        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onQQProcessExit. cancel notification:" + localdrl.b);
       }
     }
     d();
@@ -862,7 +862,7 @@ public class UniformDownloadMgr
   public void b(String paramString, Bundle paramBundle)
   {
     e();
-    this.jdField_a_of_type_AndroidOsHandler.post(new dqd(this, paramString, paramBundle));
+    this.jdField_a_of_type_AndroidOsHandler.post(new drf(this, paramString, paramBundle));
   }
   
   public void c()
@@ -884,7 +884,7 @@ public class UniformDownloadMgr
   public void c(String paramString, Bundle paramBundle)
   {
     e();
-    this.jdField_a_of_type_AndroidOsHandler.post(new dqe(this, paramString, paramBundle));
+    this.jdField_a_of_type_AndroidOsHandler.post(new drg(this, paramString, paramBundle));
   }
   
   public void d()
@@ -900,19 +900,19 @@ public class UniformDownloadMgr
   public void d(String paramString, Bundle paramBundle)
   {
     e();
-    this.jdField_a_of_type_AndroidOsHandler.post(new dqf(this, paramString, paramBundle));
+    this.jdField_a_of_type_AndroidOsHandler.post(new drh(this, paramString, paramBundle));
   }
   
   public void e(String paramString, Bundle paramBundle)
   {
     e();
-    this.jdField_a_of_type_AndroidOsHandler.post(new dqg(this, paramString, paramBundle));
+    this.jdField_a_of_type_AndroidOsHandler.post(new dri(this, paramString, paramBundle));
   }
   
   public void f(String paramString, Bundle paramBundle)
   {
     e();
-    this.jdField_a_of_type_AndroidOsHandler.post(new dqh(this, paramString, paramBundle));
+    this.jdField_a_of_type_AndroidOsHandler.post(new drj(this, paramString, paramBundle));
   }
 }
 

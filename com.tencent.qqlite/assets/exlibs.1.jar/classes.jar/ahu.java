@@ -1,20 +1,39 @@
-import android.os.Handler;
-import android.os.Message;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ahu
-  extends Handler
+  implements View.OnFocusChangeListener
 {
   public ahu(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((paramMessage.what == 1000) && ((this.a.s == 1) || (this.a.s == 2)))
+    if (!paramBoolean)
     {
-      this.a.a();
-      QQToast.a(this.a, 2131364394, 0).b(this.a.getTitleBarHeight());
+      if (paramView != DetailProfileActivity.a(this.a)) {
+        break label68;
+      }
+      paramView = DetailProfileActivity.a(this.a).getText().toString();
+      if ((TextUtils.isEmpty(paramView)) || (!TextUtils.isEmpty(paramView.trim()))) {}
     }
+    label68:
+    do
+    {
+      QQToast.a(this.a, "昵称不可以为空", 0).b(this.a.getTitleBarHeight());
+      do
+      {
+        return;
+      } while (paramView != DetailProfileActivity.d(this.a));
+      paramView = DetailProfileActivity.d(this.a).getText().toString();
+    } while ((TextUtils.isEmpty(paramView)) || (SearchBaseActivity.a.matcher(paramView).matches()));
+    QQToast.a(this.a, "邮箱格式不正确", 0).b(this.a.getTitleBarHeight());
   }
 }
 

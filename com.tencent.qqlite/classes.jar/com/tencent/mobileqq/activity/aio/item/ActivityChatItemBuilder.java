@@ -11,8 +11,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import buk;
-import bul;
+import bvj;
+import bvk;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
@@ -38,7 +38,7 @@ public class ActivityChatItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramLinearLayout = (bul)paramViewHolder;
+    paramLinearLayout = (bvk)paramViewHolder;
     paramViewHolder = paramView;
     if (paramView == null)
     {
@@ -62,7 +62,7 @@ public class ActivityChatItemBuilder
     }
     try
     {
-      paramMessageRecord = URLDrawable.getDrawable(paramView.bigPic, paramViewHolder.getResources().getDrawable(2130838292), paramViewHolder.getResources().getDrawable(2130838291));
+      paramMessageRecord = URLDrawable.getDrawable(paramView.bigPic, paramViewHolder.getResources().getDrawable(2130838311), paramViewHolder.getResources().getDrawable(2130838310));
       paramLinearLayout.a.setBackgroundDrawable(paramMessageRecord);
       this.b = paramView.url;
       if (TextUtils.isEmpty(paramView.title))
@@ -81,7 +81,7 @@ public class ActivityChatItemBuilder
     {
       for (;;)
       {
-        paramLinearLayout.a.setBackgroundResource(2130838291);
+        paramLinearLayout.a.setBackgroundResource(2130838310);
         continue;
         paramMessageRecord = paramView.title;
         continue;
@@ -93,14 +93,14 @@ public class ActivityChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new bul(this);
+    return new bvk(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
   
   protected void a(String paramString, TextView paramTextView)
   {
-    paramTextView.getViewTreeObserver().addOnPreDrawListener(new buk(this, paramTextView, paramString));
+    paramTextView.getViewTreeObserver().addOnPreDrawListener(new bvj(this, paramTextView, paramString));
   }
   
   public QQCustomMenuItem[] a(View paramView)

@@ -1,13 +1,15 @@
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.LoginActivity;
 
 public class atc
   implements Runnable
 {
-  public atc(LoginActivity paramLoginActivity) {}
+  public atc(LoginActivity paramLoginActivity, String paramString) {}
   
   public void run()
   {
-    LoginActivity.a(this.a, true);
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.a(this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.runOnUiThread(new atd(this, localBitmap));
   }
 }
 

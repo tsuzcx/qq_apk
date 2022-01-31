@@ -1260,7 +1260,7 @@ public abstract class AbstractImageDownloader
     //   1374: imul
     //   1375: istore 8
     //   1377: iload 8
-    //   1379: getstatic 745	com/tencent/common/app/BaseApplicationImpl:jdField_b_of_type_Int	I
+    //   1379: getstatic 745	com/tencent/common/app/BaseApplicationImpl:jdField_a_of_type_Int	I
     //   1382: if_icmple +209 -> 1591
     //   1385: iconst_1
     //   1386: istore 11

@@ -16,7 +16,7 @@ class vv
     ViewGroup.LayoutParams localLayoutParams;
     if ((paramFloat1 > 0.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2)) && (Math.abs(paramFloat1) > 20.0F) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c) && (this.a.jdField_a_of_type_AndroidViewView != null))
     {
-      paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131296441);
+      paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131296444);
       if (paramMotionEvent1 != null)
       {
         if (paramMotionEvent1.getVisibility() == 0) {
@@ -41,7 +41,7 @@ class vv
           QLog.i("AccountManage", 2, "show current selectedAccountView");
         }
         ((ShaderAnimLayout)paramMotionEvent1).a();
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131296452);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131296455);
         paramMotionEvent1 = AccountManageActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView);
         this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView, 2130968580, 2);
         paramMotionEvent2 = paramMotionEvent1.getLayoutParams();

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import abr;
-import abt;
-import abu;
-import abv;
 import abw;
+import aby;
+import abz;
+import aca;
+import acb;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
@@ -128,8 +128,8 @@ public class ChatActivityUtils
       return null;
     }
     paramContext = LayoutInflater.from(paramContext).inflate(2130903082, null);
-    View localView = paramContext.findViewById(2131296683);
-    ((TextView)paramContext.findViewById(2131296685)).setOnClickListener(paramOnClickListener);
+    View localView = paramContext.findViewById(2131296684);
+    ((TextView)paramContext.findViewById(2131296686)).setOnClickListener(paramOnClickListener);
     localView.setOnClickListener(paramOnClickListener);
     localView.setFocusable(true);
     return paramContext;
@@ -141,9 +141,9 @@ public class ChatActivityUtils
       return null;
     }
     paramContext = LayoutInflater.from(paramContext).inflate(2130903106, null);
-    UpScrollHideView localUpScrollHideView = (UpScrollHideView)paramContext.findViewById(2131296683);
-    TextView localTextView = (TextView)localUpScrollHideView.findViewById(2131296685);
-    Button localButton = (Button)localUpScrollHideView.findViewById(2131296789);
+    UpScrollHideView localUpScrollHideView = (UpScrollHideView)paramContext.findViewById(2131296684);
+    TextView localTextView = (TextView)localUpScrollHideView.findViewById(2131296686);
+    Button localButton = (Button)localUpScrollHideView.findViewById(2131296790);
     if (paramString1 != null) {
       localTextView.setText(paramString1);
     }
@@ -217,7 +217,7 @@ public class ChatActivityUtils
       if (1000 == i)
       {
         paramQQAppInterface = ContactUtils.k(paramQQAppInterface, (String)localObject1);
-        localObject1 = String.format(paramContext.getString(2131363910), new Object[] { paramSessionInfo.d, paramQQAppInterface });
+        localObject1 = String.format(paramContext.getString(2131363921), new Object[] { paramSessionInfo.d, paramQQAppInterface });
       }
     }
     else
@@ -234,43 +234,43 @@ public class ChatActivityUtils
     }
     label401:
     label503:
-    for (paramQQAppInterface = String.format(paramContext.getString(2131363910), new Object[] { paramSessionInfo.d, paramQQAppInterface });; paramQQAppInterface = null)
+    for (paramQQAppInterface = String.format(paramContext.getString(2131363921), new Object[] { paramSessionInfo.d, paramQQAppInterface });; paramQQAppInterface = null)
     {
       return paramQQAppInterface;
       if (1004 == i)
       {
         paramQQAppInterface = ContactUtils.b(paramQQAppInterface, (String)localObject1, 3000);
-        return String.format(paramContext.getString(2131363911), new Object[] { paramSessionInfo.d, paramQQAppInterface });
+        return String.format(paramContext.getString(2131363922), new Object[] { paramSessionInfo.d, paramQQAppInterface });
       }
       if (1001 == i) {
-        return String.format(paramContext.getString(2131363912), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131363923), new Object[] { paramSessionInfo.d });
       }
       if (1006 == i) {
-        return String.format(paramContext.getString(2131363913), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131363924), new Object[] { paramSessionInfo.d });
       }
       if (1009 == i) {
-        return String.format(paramContext.getString(2131363915), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131363926), new Object[] { paramSessionInfo.d });
       }
       if (1005 == i) {
-        return String.format(paramContext.getString(2131363916), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131363927), new Object[] { paramSessionInfo.d });
       }
       if (1022 == i) {
-        return String.format(paramContext.getString(2131363917), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131363928), new Object[] { paramSessionInfo.d });
       }
       if (1023 == i) {
-        return String.format(paramContext.getString(2131363918), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131363929), new Object[] { paramSessionInfo.d });
       }
       localObject1 = localObject2;
       if (1025 != i) {
         break;
       }
-      return String.format(paramContext.getString(2131363920), new Object[] { paramSessionInfo.d });
+      return String.format(paramContext.getString(2131363931), new Object[] { paramSessionInfo.d });
       localObject1 = localObject2;
       if (1006 != i) {
         break;
       }
-      paramSessionInfo = String.format(paramContext.getString(2131363914), new Object[] { paramSessionInfo.d });
-      paramQQAppInterface = paramContext.getString(2131363919);
+      paramSessionInfo = String.format(paramContext.getString(2131363925), new Object[] { paramSessionInfo.d });
+      paramQQAppInterface = paramContext.getString(2131363930);
       if (jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$AddFriendSpan == null) {
         jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$AddFriendSpan = new ChatActivityUtils.AddFriendSpan(paramQQAppInterface, paramContext.getResources().getColor(2131427391));
       }
@@ -307,17 +307,17 @@ public class ChatActivityUtils
   
   public static String a(Context paramContext)
   {
-    String str = paramContext.getString(2131363065);
+    String str = paramContext.getString(2131363075);
     switch (paramContext.getSharedPreferences("setting_text_size", 0).getInt("chat_text_size_type", 0))
     {
     default: 
       return str;
     case 1: 
-      return paramContext.getString(2131363066);
+      return paramContext.getString(2131363076);
     case 2: 
-      return paramContext.getString(2131363067);
+      return paramContext.getString(2131363077);
     }
-    return paramContext.getString(2131363068);
+    return paramContext.getString(2131363078);
   }
   
   public static String a(Context paramContext, MessageRecord paramMessageRecord)
@@ -337,7 +337,7 @@ public class ChatActivityUtils
         do
         {
           return localObject1;
-          return paramContext.getString(2131363921);
+          return paramContext.getString(2131363932);
           localAppRuntime = BaseApplicationImpl.a.a();
           localObject1 = localObject2;
         } while (localAppRuntime == null);
@@ -348,16 +348,16 @@ public class ChatActivityUtils
         break;
       }
     }
-    for (paramContext = paramContext.getString(2131363921);; paramContext = null)
+    for (paramContext = paramContext.getString(2131363932);; paramContext = null)
     {
       return paramContext;
-      return paramContext.getString(2131363922);
-      return paramContext.getString(2131363923);
-      return paramContext.getString(2131363924);
-      return paramContext.getString(2131363925);
-      return paramContext.getString(2131363926);
-      return paramContext.getString(2131363927);
-      return paramContext.getString(2131363928);
+      return paramContext.getString(2131363933);
+      return paramContext.getString(2131363934);
+      return paramContext.getString(2131363935);
+      return paramContext.getString(2131363936);
+      return paramContext.getString(2131363937);
+      return paramContext.getString(2131363938);
+      return paramContext.getString(2131363939);
       localAppRuntime = ((BaseActivity)paramContext).getAppRuntime();
       localObject1 = localObject2;
       if (!(localAppRuntime instanceof QQAppInterface)) {
@@ -368,7 +368,7 @@ public class ChatActivityUtils
       if (TextUtils.isEmpty(paramMessageRecord)) {
         break;
       }
-      return String.format(paramContext.getString(2131363929), new Object[] { paramMessageRecord });
+      return String.format(paramContext.getString(2131363940), new Object[] { paramMessageRecord });
     }
   }
   
@@ -401,7 +401,7 @@ public class ChatActivityUtils
         if (jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
         {
           jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131492887));
-          jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363381);
+          jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363392);
         }
         jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
         return;
@@ -428,7 +428,7 @@ public class ChatActivityUtils
       {
         ChatActivity localChatActivity = (ChatActivity)paramActivity;
         if (!LBSHandler.a(localChatActivity.a(), paramSessionInfo.jdField_a_of_type_JavaLangString)) {
-          localChatActivity.a().g(localChatActivity.getString(2131364436));
+          localChatActivity.a().c(localChatActivity.getString(2131364447));
         }
       }
       break;
@@ -474,17 +474,17 @@ public class ChatActivityUtils
     }
     if (paramBoolean2)
     {
-      b(paramActivity, 2131363416, 1);
+      b(paramActivity, 2131363427, 1);
       return;
     }
-    b(paramActivity, 2131363415, 1);
+    b(paramActivity, 2131363426, 1);
   }
   
   public static void a(Context paramContext)
   {
-    SpannableString localSpannableString = new SpannableString(paramContext.getString(2131362990));
+    SpannableString localSpannableString = new SpannableString(paramContext.getString(2131363000));
     localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(paramContext.getResources().getColor(2131427392), paramContext.getResources().getColor(2131427393)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
-    DialogUtil.a(paramContext, paramContext.getString(2131362989), localSpannableString, 0, 2131363112, null, null, new abv(paramContext)).show();
+    DialogUtil.a(paramContext, paramContext.getString(2131362999), localSpannableString, 0, 2131363122, null, null, new aca(paramContext)).show();
   }
   
   public static void a(Context paramContext, int paramInt)
@@ -627,17 +627,17 @@ public class ChatActivityUtils
   
   public static void a(Context paramContext, String paramString, long paramLong)
   {
-    Dialog localDialog = new Dialog(paramContext, 2131624167);
+    Dialog localDialog = new Dialog(paramContext, 2131624168);
     Handler localHandler = new Handler();
     View localView = LayoutInflater.from(paramContext).inflate(2130903069, null);
-    abr localabr = new abr(localDialog);
-    localView.setOnClickListener(new abt(localHandler, localabr));
-    TextView localTextView = (TextView)localView.findViewById(2131296580);
+    abw localabw = new abw(localDialog);
+    localView.setOnClickListener(new aby(localHandler, localabw));
+    TextView localTextView = (TextView)localView.findViewById(2131296583);
     ((LinearLayout.LayoutParams)localTextView.getLayoutParams()).topMargin = paramContext.getResources().getDimensionPixelSize(2131492887);
     localTextView.setText(paramString);
     paramContext = new AlphaAnimation(0.1F, 0.9F);
     paramContext.setDuration(500L);
-    paramContext.setAnimationListener(new abu(localHandler, localabr, paramLong));
+    paramContext.setAnimationListener(new abz(localHandler, localabw, paramLong));
     localTextView.startAnimation(paramContext);
     localDialog.setContentView(localView, new ViewGroup.LayoutParams(-1, -1));
     try
@@ -780,13 +780,13 @@ public class ChatActivityUtils
       }
       if (paramBoolean)
       {
-        b(paramActivity, 2131363416, 1);
+        b(paramActivity, 2131363427, 1);
         return;
       }
-      b(paramActivity, 2131363415, 1);
+      b(paramActivity, 2131363426, 1);
       return;
     }
-    b(paramActivity, 2131362790, 1);
+    b(paramActivity, 2131362797, 1);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo)
@@ -822,17 +822,17 @@ public class ChatActivityUtils
       {
         if (!FileUtils.e(paramIntent))
         {
-          QQToast.a(paramActivity, paramActivity.getString(2131363411), 0).b(paramActivity.getResources().getDimensionPixelSize(2131492887));
+          QQToast.a(paramActivity, paramActivity.getString(2131363422), 0).b(paramActivity.getResources().getDimensionPixelSize(2131492887));
           return;
         }
         paramQQAppInterface = paramIntent;
         if (!new File(paramIntent).exists()) {
-          QQToast.a(paramActivity, paramActivity.getString(2131363412), 0).b(paramActivity.getResources().getDimensionPixelSize(2131492887));
+          QQToast.a(paramActivity, paramActivity.getString(2131363423), 0).b(paramActivity.getResources().getDimensionPixelSize(2131492887));
         }
       }
       else
       {
-        QQToast.a(paramActivity, paramActivity.getString(2131363412), 0).b(paramActivity.getResources().getDimensionPixelSize(2131492887));
+        QQToast.a(paramActivity, paramActivity.getString(2131363423), 0).b(paramActivity.getResources().getDimensionPixelSize(2131492887));
         return;
       }
     }
@@ -888,7 +888,7 @@ public class ChatActivityUtils
             if (paramInt != 2001) {
               continue;
             }
-            QQToast.a(paramActivity, 2131362965, 0).b(paramActivity.getResources().getDimensionPixelSize(2131492887));
+            QQToast.a(paramActivity, 2131362972, 0).b(paramActivity.getResources().getDimensionPixelSize(2131492887));
             paramQQAppInterface.printStackTrace();
             return;
           }
@@ -953,10 +953,10 @@ public class ChatActivityUtils
         }
         if (localChatMessage.isSend())
         {
-          paramView = paramChatActivity.getString(2131364066);
+          paramView = paramChatActivity.getString(2131364077);
           break;
         }
-        paramView = paramChatActivity.getString(2131364065);
+        paramView = paramChatActivity.getString(2131364076);
         break;
         Intent localIntent = new Intent(paramChatActivity, TextPreviewActivity.class);
         localIntent.putExtra("peeruin", localChatMessage.frienduin);
@@ -1463,7 +1463,7 @@ public class ChatActivityUtils
   
   public static void b(Context paramContext)
   {
-    DialogUtil.a(paramContext, 230, paramContext.getString(2131362991), paramContext.getString(2131362992), new abw(), null).show();
+    DialogUtil.a(paramContext, 230, paramContext.getString(2131363001), paramContext.getString(2131363002), new acb(), null).show();
   }
   
   public static void b(Context paramContext, int paramInt1, int paramInt2)

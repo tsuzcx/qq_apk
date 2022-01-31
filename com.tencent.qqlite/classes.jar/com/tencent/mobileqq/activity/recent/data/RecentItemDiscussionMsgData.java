@@ -1,9 +1,12 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.TimeManager;
+import com.tencent.mobileqq.activity.recent.msg.TroopAtAllMsg;
+import com.tencent.mobileqq.activity.recent.msg.TroopAtMeMsg;
 import com.tencent.mobileqq.app.DiscussionHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.ConversationFacade;
@@ -21,6 +24,55 @@ public class RecentItemDiscussionMsgData
   public RecentItemDiscussionMsgData(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
+  }
+  
+  private void a(Context paramContext)
+  {
+    int j = 0;
+    if (a().msg == null)
+    {
+      this.jdField_c_of_type_JavaLangCharSequence = "";
+      this.jdField_c_of_type_JavaLangString = "";
+    }
+    for (;;)
+    {
+      return;
+      Object localObject;
+      int i;
+      if ((a().msg instanceof TroopAtMeMsg))
+      {
+        localObject = (TroopAtMeMsg)a().msg;
+        if (localObject != null)
+        {
+          this.jdField_c_of_type_JavaLangCharSequence = ((TroopAtMeMsg)localObject).jdField_a_of_type_JavaLangString;
+          i = 2131427515;
+        }
+      }
+      while ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangCharSequence)) && (i > 0))
+      {
+        this.y = paramContext.getResources().getColor(i);
+        return;
+        this.jdField_c_of_type_JavaLangCharSequence = "";
+        i = 0;
+        continue;
+        i = j;
+        if ((a().msg instanceof TroopAtAllMsg))
+        {
+          localObject = (TroopAtAllMsg)a().msg;
+          if (localObject != null)
+          {
+            this.jdField_c_of_type_JavaLangCharSequence = ((TroopAtAllMsg)localObject).jdField_a_of_type_JavaLangString;
+            this.jdField_c_of_type_JavaLangString = String.format("与%s群的会话，有全体消息", new Object[] { this.jdField_a_of_type_JavaLangString });
+            i = 2131427515;
+          }
+          else
+          {
+            this.jdField_c_of_type_JavaLangCharSequence = "";
+            i = j;
+          }
+        }
+      }
+    }
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -85,24 +137,28 @@ public class RecentItemDiscussionMsgData
             a(paramQQAppInterface);
             a(paramQQAppInterface, localMsgSummary);
             a(paramQQAppInterface, paramContext, localMsgSummary);
+            if (localMsgSummary.a) {
+              break label656;
+            }
+            a(paramContext);
             if (this.jdField_a_of_type_JavaLangString == null) {
-              break label643;
+              break label689;
             }
             paramQQAppInterface = this.jdField_a_of_type_JavaLangString + "讨论组";
             if (this.v <= 0) {
-              break label662;
+              break label708;
             }
             int i = this.v;
             if (localMsgSummary.b == null) {
-              break label649;
+              break label695;
             }
             paramContext = localMsgSummary.b;
             if (this.b == null) {
-              break label655;
+              break label701;
             }
             localObject1 = this.b;
             paramQQAppInterface = String.format("%s,%d,%s,%s", new Object[] { paramQQAppInterface, Integer.valueOf(i), paramContext, localObject1 });
-            this.c = paramQQAppInterface;
+            this.jdField_c_of_type_JavaLangString = paramQQAppInterface;
             return;
             this.jdField_a_of_type_Long = ((QQMessageFacade.Message)localObject1).time;
             continue;
@@ -130,35 +186,41 @@ public class RecentItemDiscussionMsgData
               {
                 ((QQMessageFacade.Message)localObject1).nickName = ((QQMessageFacade.Message)localObject1).senderuin;
                 continue;
-                label643:
-                paramQQAppInterface = "讨论组";
-                continue;
-                label649:
-                paramContext = "";
-                continue;
-                label655:
-                localObject1 = "";
+                label656:
+                if ((a().msg instanceof TroopAtMeMsg))
+                {
+                  this.jdField_c_of_type_JavaLangCharSequence = ((TroopAtMeMsg)a().msg).jdField_a_of_type_JavaLangString;
+                  continue;
+                  label689:
+                  paramQQAppInterface = "讨论组";
+                  continue;
+                  label695:
+                  paramContext = "";
+                  continue;
+                  label701:
+                  localObject1 = "";
+                }
               }
             }
           }
         }
       }
-      label662:
+      label708:
       if (localNumberFormatException.b != null)
       {
         paramContext = localNumberFormatException.b;
-        label676:
+        label722:
         if (this.b == null) {
-          break label721;
+          break label768;
         }
       }
-      label721:
+      label768:
       for (localObject1 = this.b;; localObject1 = "")
       {
         paramQQAppInterface = String.format("%s,%s,%s", new Object[] { paramQQAppInterface, paramContext, localObject1 });
         break;
         paramContext = "";
-        break label676;
+        break label722;
       }
     }
   }

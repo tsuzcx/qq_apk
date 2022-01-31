@@ -1,22 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
 
 public class ben
-  implements View.OnClickListener
+  implements IIconListener
 {
   public ben(QQSetting paramQQSetting) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    paramView = new Intent(this.a.a(), NearbyTroopsActivity.class);
-    paramView.putExtra("from", 4);
-    paramView.putExtra("mode", 0);
-    this.a.a(paramView);
-    ReportController.b(this.a.a, "CliOper", "", "", "Open_group", "Around_grp", 0, 0, "", "", "", "");
+    if ((QQSetting.d(this.a)) && (paramBitmap != null) && (QQSetting.a(this.a).a().b == paramInt1) && (paramInt2 == 201)) {
+      this.a.n();
+    }
   }
 }
 

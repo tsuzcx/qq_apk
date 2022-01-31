@@ -10,10 +10,6 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class cmd0x383$ApplyGetFileListRspBody$FolderInfo
   extends MessageMicro
 {
-  public static final int STR_FOLDER_NAME_FIELD_NUMBER = 2;
-  public static final int STR_FOLDER_PATH_FIELD_NUMBER = 1;
-  public static final int UINT32_CREATE_TIME_FIELD_NUMBER = 3;
-  public static final int UINT64_CREATE_UIN_FIELD_NUMBER = 4;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "str_folder_path", "str_folder_name", "uint32_create_time", "uint64_create_uin" }, new Object[] { "", "", Integer.valueOf(0), Long.valueOf(0L) }, FolderInfo.class);
   public final PBStringField str_folder_name = PBField.initString("");
   public final PBStringField str_folder_path = PBField.initString("");

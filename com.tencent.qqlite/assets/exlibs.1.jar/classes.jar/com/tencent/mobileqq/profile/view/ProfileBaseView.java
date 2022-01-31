@@ -41,14 +41,14 @@ public class ProfileBaseView
     do
     {
       return;
-      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.findViewById(2131298644).getLayoutParams();
+      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.findViewById(2131298670).getLayoutParams();
       int i = getResources().getDimensionPixelSize(2131492947);
       if ((localObject != null) && (((RelativeLayout.LayoutParams)localObject).topMargin != i)) {
         ((RelativeLayout.LayoutParams)localObject).setMargins(((RelativeLayout.LayoutParams)localObject).leftMargin, i, ((RelativeLayout.LayoutParams)localObject).rightMargin, ((RelativeLayout.LayoutParams)localObject).bottomMargin);
       }
-      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131298639);
+      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131298665);
     } while (localObject == null);
-    ((View)localObject).setBackgroundResource(2130838771);
+    ((View)localObject).setBackgroundResource(2130838855);
   }
   
   public void a(ProfileCardInfo paramProfileCardInfo) {}
@@ -65,8 +65,8 @@ public class ProfileBaseView
   public void b(ProfileCardInfo paramProfileCardInfo)
   {
     Object localObject = getContext();
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from((Context)localObject).inflate(2130903585, this, true);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298643));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from((Context)localObject).inflate(2130903594, this, true);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298669));
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     DataTag localDataTag = new DataTag(1, null);
     this.jdField_b_of_type_AndroidWidgetImageView.setTag(localDataTag);
@@ -78,12 +78,12 @@ public class ProfileBaseView
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_face", this.jdField_b_of_type_AndroidWidgetImageView);
       super.a(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
       a();
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298646));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298672));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setClickable(true);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_nick_name", this.jdField_b_of_type_AndroidWidgetTextView);
       super.c(paramProfileCardInfo);
-      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298648));
+      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298674));
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_sex_age_area", this.c);
       super.d(paramProfileCardInfo);
       if ((paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.allowClick)) {
@@ -93,9 +93,9 @@ public class ProfileBaseView
     for (;;)
     {
       super.f(paramProfileCardInfo);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298640));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298666));
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_like", this.jdField_a_of_type_AndroidWidgetTextView);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298641));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298667));
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_like_image", this.jdField_a_of_type_AndroidWidgetImageView);
       super.g(paramProfileCardInfo);
       super.b(paramProfileCardInfo);

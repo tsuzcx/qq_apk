@@ -1,23 +1,44 @@
-import android.graphics.Bitmap;
-import android.view.animation.AlphaAnimation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.DownloadInfo;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.utils.HttpDownloadUtil.HttpDownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class asy
-  implements Runnable
+public final class asy
+  extends Thread
 {
-  asy(asx paramasx, Bitmap paramBitmap) {}
+  public asy(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, HttpDownloadUtil.HttpDownloadListener paramHttpDownloadListener) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    boolean bool = false;
+    try
     {
-      this.jdField_a_of_type_Asx.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_Asx.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(500L);
-      this.jdField_a_of_type_Asx.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_Asx.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-      return;
+      Object localObject = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
+      localObject = new DownloadInfo(this.jdField_a_of_type_JavaLangString, (File)localObject, 0);
+      if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (DownloadInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqUtilsHttpDownloadUtil$HttpDownloadListener) == 0) {
+        bool = true;
+      }
+      if (bool)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("LebaIconDownloader", 2, "download ok");
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.i("LebaIconDownloader", 2, "download error,error code:" + bool);
+        return;
+      }
     }
-    this.jdField_a_of_type_Asx.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838120);
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("LebaIconDownloader", 2, localException.toString());
+      }
+    }
   }
 }
 

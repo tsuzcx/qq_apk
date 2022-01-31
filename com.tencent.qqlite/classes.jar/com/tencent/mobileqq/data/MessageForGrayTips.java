@@ -4,10 +4,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import dcq;
+import dds;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONException;
@@ -128,7 +129,10 @@ public class MessageForGrayTips
         QLog.d(TAG, 2, "getHightlightMsgText==> isNewHighlitItem:" + bool);
       }
       String str1 = this.msg;
-      i = str1.indexOf("                    ##**##");
+      i = -1;
+      if (!TextUtils.isEmpty(str1)) {
+        i = str1.indexOf("                    ##**##");
+      }
       if (i == -1) {
         return new SpannableStringBuilder(str1);
       }
@@ -143,7 +147,7 @@ public class MessageForGrayTips
         bool = false;
       }
       str2 = this.msg.substring(0, i);
-      localObject2 = this.msg.substring("                    ##**##".length() + i, this.msg.length());
+      localObject2 = this.msg.substring(i + "                    ##**##".length(), this.msg.length());
       i = ((String)localObject2).indexOf(',');
       localObject1 = ((String)localObject2).substring(0, i);
       localObject2 = ((String)localObject2).substring(i + 1, ((String)localObject2).length());
@@ -154,12 +158,12 @@ public class MessageForGrayTips
     int n;
     int j;
     int k;
-    label223:
+    label233:
     Object localObject5;
     Object localObject4;
-    label356:
+    label366:
     int i1;
-    label454:
+    label466:
     long l2;
     long l1;
     if (m < i2)
@@ -184,7 +188,7 @@ public class MessageForGrayTips
           j = Integer.parseInt((String)localObject4);
           i = ((String)localObject1).indexOf(',');
           if (i == -1) {
-            break label520;
+            break label532;
           }
           localObject2 = ((String)localObject1).substring(0, i);
           localObject1 = ((String)localObject1).substring(i + 1, ((String)localObject1).length());
@@ -219,21 +223,21 @@ public class MessageForGrayTips
       try
       {
         l1 = Long.parseLong((String)localObject2);
-        localArrayList.add(new dcq(i, j, l1, k, n, (String)localObject4, (String)localObject5));
+        localArrayList.add(new dds(i, j, l1, k, n, (String)localObject4, (String)localObject5));
         m += 1;
         localObject2 = localObject1;
         break;
         k = 1;
-        break label223;
-        label520:
+        break label233;
+        label532:
         i = Integer.parseInt((String)localObject1);
-        break label356;
+        break label366;
         localObject4 = null;
         localObject2 = "";
         i1 = i;
         i = j;
         j = i1;
-        break label454;
+        break label466;
         k = ((String)localObject1).indexOf(',');
         localObject2 = ((String)localObject1).substring(0, k);
         localObject1 = ((String)localObject1).substring(k + 1, ((String)localObject1).length());
@@ -248,7 +252,7 @@ public class MessageForGrayTips
           i = j;
           j = k;
           k = i1;
-          break label454;
+          break label466;
         }
         localObject4 = null;
         localObject2 = localObject1;
@@ -256,10 +260,10 @@ public class MessageForGrayTips
         i = j;
         j = k;
         k = i1;
-        break label454;
+        break label466;
         i1 = ((String)localObject1).indexOf(',');
         if (i1 == -1) {
-          break label1490;
+          break label1502;
         }
         localObject2 = ((String)localObject1).substring(0, i1);
         localObject4 = ((String)localObject1).substring(i1 + 1, ((String)localObject1).length());
@@ -276,7 +280,7 @@ public class MessageForGrayTips
           i1 = i;
           i = j;
           j = i1;
-          break label454;
+          break label466;
         }
         localObject5 = localObject2;
         localObject4 = localObject1;
@@ -285,7 +289,7 @@ public class MessageForGrayTips
         i1 = i;
         i = j;
         j = i1;
-        break label454;
+        break label466;
         i = ((String)localObject1).indexOf(',');
         localObject2 = ((String)localObject1).substring(0, i);
         localObject1 = ((String)localObject1).substring(i + 1, ((String)localObject1).length());
@@ -304,7 +308,7 @@ public class MessageForGrayTips
           localObject2 = ((String)localObject1).substring(0, i1);
           localObject1 = ((String)localObject1).substring(i1 + 1, ((String)localObject1).length());
           localObject4 = null;
-          break label454;
+          break label466;
         }
         localObject4 = null;
         localObject2 = localObject1;
@@ -325,9 +329,9 @@ public class MessageForGrayTips
         j = i + 1;
         while (j < localArrayList.size())
         {
-          if (((dcq)localArrayList.get(i)).jdField_a_of_type_Int > ((dcq)localArrayList.get(j)).jdField_a_of_type_Int)
+          if (((dds)localArrayList.get(i)).jdField_a_of_type_Int > ((dds)localArrayList.get(j)).jdField_a_of_type_Int)
           {
-            localObject1 = (dcq)localArrayList.get(i);
+            localObject1 = (dds)localArrayList.get(i);
             localArrayList.add(i, localArrayList.get(j));
             localArrayList.add(j, localObject1);
           }
@@ -342,16 +346,16 @@ public class MessageForGrayTips
       i = 0;
       if (localIterator.hasNext())
       {
-        localObject4 = (dcq)localIterator.next();
-        str2 = (String)localObject3 + ((String)localObject1).substring(0, ((dcq)localObject4).jdField_a_of_type_Int - i);
-        String str3 = ((String)localObject1).substring(((dcq)localObject4).jdField_a_of_type_Int - i, ((dcq)localObject4).b - i);
-        localObject3 = ((String)localObject1).substring(((dcq)localObject4).b - i, ((String)localObject1).length());
-        i = ((dcq)localObject4).b;
-        ((dcq)localObject4).jdField_a_of_type_Int = str2.length();
-        if (((dcq)localObject4).jdField_a_of_type_Boolean) {}
-        for (localObject1 = str2 + ((FriendsManagerImp)localObject5).a(this.frienduin, new StringBuilder().append("").append(((dcq)localObject4).jdField_a_of_type_Long).toString());; localObject1 = str2 + str3)
+        localObject4 = (dds)localIterator.next();
+        str2 = (String)localObject3 + ((String)localObject1).substring(0, ((dds)localObject4).jdField_a_of_type_Int - i);
+        String str3 = ((String)localObject1).substring(((dds)localObject4).jdField_a_of_type_Int - i, ((dds)localObject4).b - i);
+        localObject3 = ((String)localObject1).substring(((dds)localObject4).b - i, ((String)localObject1).length());
+        i = ((dds)localObject4).b;
+        ((dds)localObject4).jdField_a_of_type_Int = str2.length();
+        if (((dds)localObject4).jdField_a_of_type_Boolean) {}
+        for (localObject1 = str2 + ((FriendsManagerImp)localObject5).a(this.frienduin, new StringBuilder().append("").append(((dds)localObject4).jdField_a_of_type_Long).toString());; localObject1 = str2 + str3)
         {
-          ((dcq)localObject4).b = ((String)localObject1).length();
+          ((dds)localObject4).b = ((String)localObject1).length();
           localObject4 = localObject1;
           localObject1 = localObject3;
           localObject3 = localObject4;
@@ -363,13 +367,13 @@ public class MessageForGrayTips
       localObject3 = localArrayList.iterator();
       while (((Iterator)localObject3).hasNext())
       {
-        localObject4 = (dcq)((Iterator)localObject3).next();
+        localObject4 = (dds)((Iterator)localObject3).next();
         if (localObject4 != null) {
-          ((SpannableStringBuilder)localObject1).setSpan(new MessageForGrayTips.HightlightClickableSpan(this, paramQQAppInterface, i, paramContext, (dcq)localObject4), ((dcq)localObject4).jdField_a_of_type_Int, ((dcq)localObject4).b, 33);
+          ((SpannableStringBuilder)localObject1).setSpan(new MessageForGrayTips.HightlightClickableSpan(this, paramQQAppInterface, i, paramContext, (dds)localObject4), ((dds)localObject4).jdField_a_of_type_Int, ((dds)localObject4).b, 33);
         }
       }
       return localObject1;
-      label1490:
+      label1502:
       localObject3 = localObject1;
       localObject1 = null;
     }

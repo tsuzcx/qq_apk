@@ -30,17 +30,17 @@ public class AppSetting
   private static String D;
   private static final String E = "N";
   private static String F;
-  public static int a = 537044116;
-  public static final String a = "607";
+  public static int a = 537047120;
+  public static final String a = "660";
   public static final boolean a = true;
   public static int b = 0;
   public static final String b = "130";
   public static final boolean b = false;
   public static int c = 0;
-  public static final String c = "B4663756AFAD5954";
+  public static final String c = "A806C1BBC858BBCE";
   public static final boolean c = true;
   public static int d = 0;
-  public static final String d = "108074";
+  public static final String d = "108360";
   public static final boolean d = false;
   public static int e = 1000;
   public static final String e = "AQQ_2013 4.6";
@@ -48,21 +48,21 @@ public class AppSetting
   public static int f = e + 1;
   public static final String f = "2013";
   public static final boolean f = false;
-  public static final String g = "3.4.0";
+  public static final String g = "3.5.0";
   public static boolean g = false;
   public static final String h = "5.3.1";
   public static final boolean h = true;
   public static final String i = "QQ/4.6";
   public static final boolean i = true;
-  public static final String j = "V 3.4.0.607";
+  public static final String j = "V 3.5.0.660";
   public static boolean j = false;
-  public static final String k = "3.4.0.607";
+  public static final String k = "3.5.0.660";
   public static boolean k = false;
-  public static final String l = "3.4.0.607.2015-11-16.r108074.YingYongBao";
+  public static final String l = "3.5.0.660.2016-06-24.r108360.YingYongBao";
   public static boolean l = false;
-  public static final String m = "2013 3.4.0";
+  public static final String m = "2013 3.5.0";
   public static final boolean m = true;
-  public static final String n = "2013 3.4.0607";
+  public static final String n = "2013 3.5.0660";
   public static boolean n = false;
   public static String o;
   public static boolean o = false;
@@ -106,7 +106,7 @@ public class AppSetting
   
   public static final String a()
   {
-    return "B4663756AFAD5954";
+    return "A806C1BBC858BBCE";
   }
   
   public static String a(Context paramContext)
@@ -435,7 +435,7 @@ public class AppSetting
       if (str2.length() > 20) {
         localObject2 = str2.substring(0, 20);
       }
-      D = "AQQ_2013 4.6/2013 3.4.0607&NA_0/000000&ADR&" + F + "18" + "&" + (String)localObject2 + "&" + C + "&" + "B4663756AFAD5954" + "&" + A + "&" + "V3";
+      D = "AQQ_2013 4.6/2013 3.5.0660&NA_0/000000&ADR&" + F + "18" + "&" + (String)localObject2 + "&" + C + "&" + "A806C1BBC858BBCE" + "&" + A + "&" + "V3";
       return D;
       label297:
       str2 = "ALL";
@@ -444,7 +444,7 @@ public class AppSetting
   
   public static String c()
   {
-    return "2013 3.4.0";
+    return "2013 3.5.0";
   }
 }
 

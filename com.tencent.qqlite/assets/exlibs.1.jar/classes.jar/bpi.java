@@ -1,46 +1,15 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-class bpi
-  implements Runnable
+public class bpi
+  implements View.OnClickListener
 {
-  bpi(bph parambph) {}
+  public bpi(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_AndroidViewView == null) {
-      return;
-    }
-    RelativeLayout.LayoutParams localLayoutParams;
-    switch (this.a.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 0: 
-      localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.leftMargin += (int)(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a * 34.0F);
-      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-      this.a.jdField_a_of_type_AndroidViewView.setTag("right");
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-      return;
-      localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.leftMargin -= (int)(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a * 34.0F);
-      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-      this.a.jdField_a_of_type_AndroidViewView.setTag("left");
-      continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839121);
-      continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839120);
-      continue;
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      continue;
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    }
+    this.a.finish();
   }
 }
 

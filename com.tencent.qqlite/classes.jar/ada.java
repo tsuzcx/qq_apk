@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
 
 public class ada
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   public ada(ChatHistory paramChatHistory) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    new adb(this).start();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = this.a.a(this.a.b, this.a.a, localStringBuilder);
+    Object localObject = null;
+    paramView = localObject;
+    if (localStringBuilder != null)
+    {
+      paramView = localObject;
+      if (localStringBuilder.length() > 0) {
+        paramView = localStringBuilder.toString();
+      }
+    }
+    if (i > 0)
+    {
+      this.a.a(paramView);
+      return;
+    }
+    this.a.b(this.a.getString(2131363411));
   }
 }
 

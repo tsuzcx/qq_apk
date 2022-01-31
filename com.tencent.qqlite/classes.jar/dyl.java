@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
-import com.tencent.mobileqq.music.SongInfo;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.log.ReportLogHelper;
+import java.util.Timer;
 
-public class dyl
-  implements Runnable
+class dyl
+  implements View.OnClickListener
 {
-  public dyl(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, SongInfo paramSongInfo) {}
+  dyl(dyk paramdyk, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlaySongChanged(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
+    paramView = ReportLogHelper.a(this.jdField_a_of_type_Dyk.a, 2131363569);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    paramView.show();
+    new Timer().schedule(new dym(this, paramView), 100L);
   }
 }
 

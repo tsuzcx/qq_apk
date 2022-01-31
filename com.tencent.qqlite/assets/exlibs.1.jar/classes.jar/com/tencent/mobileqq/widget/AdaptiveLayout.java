@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
-import exh;
+import ezn;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -82,7 +82,7 @@ public class AdaptiveLayout
             m -= this.d;
             i1 = Math.max(j, m);
             n = i + (this.e + k);
-            this.a.put(Integer.valueOf(i4), new exh(this, m, k));
+            this.a.put(Integer.valueOf(i4), new ezn(this, m, k));
             i = this.mPaddingLeft;
             i3 = this.mPaddingRight + i;
             i2 = 0;
@@ -113,7 +113,7 @@ public class AdaptiveLayout
       m -= this.d;
       i1 = Math.max(j, m);
       n = i + k;
-      this.a.put(Integer.valueOf(i4), new exh(this, m, k));
+      this.a.put(Integer.valueOf(i4), new ezn(this, m, k));
     }
     this.g = i1;
     this.h = n;
@@ -166,7 +166,7 @@ public class AdaptiveLayout
     label505:
     for (;;)
     {
-      localObject = (exh)this.a.get(localObject);
+      localObject = (ezn)this.a.get(localObject);
       int k = this.d;
       int m = this.e;
       int i3;
@@ -193,20 +193,20 @@ public class AdaptiveLayout
             i5 = i4;
             if (localView.getVisibility() != 8)
             {
-              i5 = (((exh)localObject).b - localView.getMeasuredHeight()) / 2 + (k + j);
+              i5 = (((ezn)localObject).b - localView.getMeasuredHeight()) / 2 + (k + j);
               localView.layout(i4, i5, localView.getMeasuredWidth() + i4, localView.getMeasuredHeight() + i5);
               i5 = i4 + (localView.getMeasuredWidth() + i3);
             }
             i2 += 1;
           }
-          i = this.mPaddingLeft + paramInt3 - paramInt1 - ((exh)localObject).a;
+          i = this.mPaddingLeft + paramInt3 - paramInt1 - ((ezn)localObject).a;
           i3 = k;
           break label162;
-          i = this.mPaddingLeft + (paramInt3 - paramInt1 - ((exh)localObject).a) / 2;
+          i = this.mPaddingLeft + (paramInt3 - paramInt1 - ((ezn)localObject).a) / 2;
           i3 = k;
           break label162;
           i = i1 - i2;
-          k = (paramInt3 - paramInt1 - (((exh)localObject).a - this.d * (i - 1))) / i;
+          k = (paramInt3 - paramInt1 - (((ezn)localObject).a - this.d * (i - 1))) / i;
           break;
           k = this.mPaddingTop + paramInt4 - paramInt2 - this.h;
           continue;
@@ -215,7 +215,7 @@ public class AdaptiveLayout
         m = (paramInt4 - paramInt2 - (this.h - this.e * (i7 - 1))) / i7;
       }
       if (i != i4) {}
-      for (int i = ((exh)localObject).b + m + j;; i = j)
+      for (int i = ((ezn)localObject).b + m + j;; i = j)
       {
         n += 1;
         j = i;

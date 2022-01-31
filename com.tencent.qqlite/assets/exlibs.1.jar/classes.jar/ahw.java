@@ -1,28 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.mobileqq.widget.QQToast;
 
 public class ahw
-  implements ConditionSearchManager.IConfigListener
+  implements View.OnClickListener
 {
   public ahw(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((this.a.s == 1) || (this.a.s == 2))
-    {
-      if (paramBoolean) {
-        break label55;
-      }
-      this.a.a();
-      QQToast.a(this.a, 2131364394, 0).b(this.a.getTitleBarHeight());
-    }
-    label55:
-    while (paramInt != 2) {
-      return;
-    }
     this.a.a();
-    this.a.b(this.a.s);
   }
 }
 

@@ -1,17 +1,4 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
-
-public class cyj
-  implements Comparator
-{
-  public cyj(C2CMessageProcessor paramC2CMessageProcessor) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
-  }
-}
+public class cyj {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.qqlite\classes.jar

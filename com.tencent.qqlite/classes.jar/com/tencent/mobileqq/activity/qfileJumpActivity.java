@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import cjv;
-import cjw;
+import ckw;
+import ckx;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
@@ -47,12 +47,12 @@ public class qfileJumpActivity
   
   private void d()
   {
-    new Handler().postDelayed(new cjv(this), 10L);
+    new Handler().postDelayed(new ckw(this), 10L);
   }
   
   private void e()
   {
-    new Handler().postDelayed(new cjw(this), 10L);
+    new Handler().postDelayed(new ckx(this), 10L);
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)

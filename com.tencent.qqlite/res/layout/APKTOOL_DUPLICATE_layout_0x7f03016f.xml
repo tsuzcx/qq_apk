@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/skin_aio_input_bar_bg" android:paddingLeft="15.0dip" android:paddingTop="21.0dip" android:paddingBottom="11.0dip" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906ac" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906b8" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginBottom="6.0dip" />
-    <TextView android:textSize="11.0dip" android:textColor="#ff000000" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906b9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</LinearLayout>
+    <com.dataline.util.widget.AsyncImageView android:id="@id/image" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="false" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0902c7" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020033" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/image" android:layout_alignTop="@id/image" android:layout_alignRight="@id/image" android:layout_alignBottom="@id/image" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906ad" android:paddingLeft="3.0dip" android:paddingBottom="3.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020403" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

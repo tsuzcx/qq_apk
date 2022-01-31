@@ -31,8 +31,8 @@ public class ContactSearchableTroop
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
-    this.y = paramLong2;
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131362944);
+    this.A = paramLong2;
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131362951);
     ChnToSpell.a(paramContext);
     if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopname != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopname.length() != 0))
     {
@@ -47,7 +47,7 @@ public class ContactSearchableTroop
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin) != 3) {
       return 0;
     }
-    return 2130839359;
+    return 2130839424;
   }
   
   protected long a()
@@ -101,27 +101,27 @@ public class ContactSearchableTroop
       str3 = this.b;
       str4 = this.jdField_c_of_type_JavaLangString;
       paramString = paramString.toLowerCase();
-      this.x = -9223372036854775808L;
+      this.z = -9223372036854775808L;
       if ((str1 == null) || (str1.length() == 0)) {
         break label357;
       }
       if ((!str1.equals(paramString)) && ((str3 == null) || (!str3.equals(paramString))) && ((str4 == null) || (!str4.equals(paramString)))) {
         break label216;
       }
-      if (1125899906842624L > this.x)
+      if (1125899906842624L > this.z)
       {
         if ((str1.equals(paramString)) || (str1.equals(str3))) {
           break label204;
         }
         l = 1125899906842624L + 4503599627370496L;
         label154:
-        this.x = (l + 0L);
+        this.z = (l + 0L);
         this.jdField_c_of_type_Int = 1;
       }
-      if (this.x == -9223372036854775808L) {
+      if (this.z == -9223372036854775808L) {
         break label357;
       }
-      this.x += this.y;
+      this.z += this.A;
     }
     label198:
     label204:
@@ -154,7 +154,7 @@ public class ContactSearchableTroop
           break label338;
         }
         l = 562949953421312L;
-        if (l <= this.x) {
+        if (l <= this.z) {
           break label344;
         }
         if ((k >= 0) || (str1.equals(str3))) {
@@ -163,7 +163,7 @@ public class ContactSearchableTroop
       }
       for (l += 4503599627370496L;; l += 9007199254740992L)
       {
-        this.x = (l + 0L);
+        this.z = (l + 0L);
         this.jdField_c_of_type_Int = 1;
         break;
         i = -1;
@@ -184,9 +184,9 @@ public class ContactSearchableTroop
     label346:
     label357:
     if (str2.equals(paramString)) {
-      if (1125899906842624L > this.x)
+      if (1125899906842624L > this.z)
       {
-        this.x = (1125899906842624L + 9007199254740992L + 0L);
+        this.z = (1125899906842624L + 9007199254740992L + 0L);
         this.jdField_c_of_type_Int = 0;
       }
     }
@@ -195,9 +195,9 @@ public class ContactSearchableTroop
     label481:
     for (;;)
     {
-      if (this.x != -9223372036854775808L)
+      if (this.z != -9223372036854775808L)
       {
-        this.x += this.y;
+        this.z += this.A;
         return;
         i = str2.indexOf(paramString);
         if (i < 0) {
@@ -209,10 +209,10 @@ public class ContactSearchableTroop
       }
       for (l = 562949953421312L;; l = 281474976710656L)
       {
-        if (l <= this.x) {
+        if (l <= this.z) {
           break label481;
         }
-        this.x = (l + 9007199254740992L + 0L);
+        this.z = (l + 9007199254740992L + 0L);
         this.jdField_c_of_type_Int = 0;
         break label400;
         break;

@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.MixedImageOnclickListener;
+import com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder;
 
 public class bwv
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bwv(ShakeItemBuilder paramShakeItemBuilder) {}
+  public bwv(MixedMsgItemBuilder paramMixedMsgItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if (MixedMsgItemBuilder.a(this.a)) {
+      return;
+    }
+    MixedMsgItemBuilder.a(this.a).onClick(paramView);
+  }
 }
 
 

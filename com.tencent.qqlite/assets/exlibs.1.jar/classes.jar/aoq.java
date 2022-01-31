@@ -1,21 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.profile.ProfileCardInfo;
 
-public class aoq
-  extends BroadcastReceiver
+class aoq
+  implements Runnable
 {
-  public aoq(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  aoq(aop paramaop) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ((this.a.a.a.a.equals(this.a.app.a())) && (FriendProfileCardActivity.a(this.a) != null)) {
-      FriendProfileCardActivity.a(this.a).sendEmptyMessage(2);
+    Card localCard = ((FriendsManager)this.a.a.app.getManager(43)).a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = localCard;
+    if (localCard != null) {
+      this.a.a.runOnUiThread(new aor(this));
     }
   }
 }

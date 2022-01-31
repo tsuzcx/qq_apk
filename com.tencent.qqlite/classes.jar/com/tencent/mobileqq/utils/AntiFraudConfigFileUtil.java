@@ -11,9 +11,9 @@ import com.tencent.mobileqq.app.SecSvcHandler;
 import com.tencent.mobileqq.app.SecSvcObserver;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import esw;
-import esy;
-import esz;
+import evb;
+import evd;
+import eve;
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -45,11 +45,11 @@ public class AntiFraudConfigFileUtil
   private static final String q = "Type";
   private static final String r = "Value";
   private Bundle jdField_a_of_type_AndroidOsBundle = null;
-  private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new esw(this);
+  private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new evb(this);
   
   public static AntiFraudConfigFileUtil a()
   {
-    return esz.a;
+    return eve.a;
   }
   
   private String a(String paramString)
@@ -94,7 +94,7 @@ public class AntiFraudConfigFileUtil
   
   private void a(String paramString1, String paramString2, String paramString3)
   {
-    new esy(this, paramString1, paramString3, paramString2).run();
+    new evd(this, paramString1, paramString3, paramString2).run();
   }
   
   private void b(String paramString)

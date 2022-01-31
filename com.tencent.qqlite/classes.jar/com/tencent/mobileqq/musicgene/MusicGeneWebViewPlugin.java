@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -26,12 +25,13 @@ import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mobileqq.webviewplugin.JsBridgeListener;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import dyv;
-import dyw;
-import dyx;
-import dyy;
-import dyz;
-import dza;
+import com.tencent.qphone.base.util.QLog;
+import dzy;
+import dzz;
+import eaa;
+import eab;
+import eac;
+import ead;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -50,36 +50,36 @@ import org.json.JSONObject;
 public class MusicGeneWebViewPlugin
   extends WebViewPlugin
 {
-  private static final String A = "uin";
-  private static final String B = "geneId";
-  private static final String C = "index";
-  private static final String D = "state";
-  private static final String E = "code";
-  private static final String F = "playUrl";
-  private static final String G = "songPage";
-  private static final String H = "songId";
-  private static final String I = "songName";
-  private static final String J = "singerName";
-  private static final String K = "albumName";
-  private static final String L = "albumImg";
-  private static final String M = "curTime";
-  private static final String N = "totalTime";
-  private static final String O = "type";
-  private static final String P = "volume";
-  private static final String Q = "imgUrl";
-  private static final String R = "title";
-  private static final String S = "desc";
-  private static final String T = "src";
-  private static final String U = "audioUrl";
-  private static final String V = "appid";
-  private static final String W = "iconUrl";
-  private static final String X = "geneType";
-  private static final String Y = "101";
-  private static final String Z = "0";
+  private static final String A = "list";
+  private static final String B = "uin";
+  private static final String C = "geneId";
+  private static final String D = "index";
+  private static final String E = "state";
+  private static final String F = "code";
+  private static final String G = "playUrl";
+  private static final String H = "songPage";
+  private static final String I = "songId";
+  private static final String J = "songName";
+  private static final String K = "singerName";
+  private static final String L = "albumName";
+  private static final String M = "albumImg";
+  private static final String N = "curTime";
+  private static final String O = "totalTime";
+  private static final String P = "type";
+  private static final String Q = "volume";
+  private static final String R = "imgUrl";
+  private static final String S = "title";
+  private static final String T = "desc";
+  private static final String U = "src";
+  private static final String V = "audioUrl";
+  private static final String W = "appid";
+  private static final String X = "iconUrl";
+  private static final String Y = "geneType";
+  private static final String Z = "101";
   public static final long a = 1101244924L;
   public static final String a = "2ua27x0nPOgcDHFM";
-  private static final String aa = "1";
-  private static final String ab = "qqmusic";
+  private static final String aa = "0";
+  private static final String ab = "1";
   private static final String ac = "webCallApp";
   private static final String ad = "bindApp";
   private static final String ae = "unbindApp";
@@ -122,17 +122,17 @@ public class MusicGeneWebViewPlugin
   public static final String s = "BUNDLE_KEY_URL";
   public static final String t = "BUNDLE_KEY_FROM_PLAY_BAR";
   public static final String u = "BUNDLE_KEY_JSONARRAY_SONG_LIST";
-  private static final String v = MusicGeneWebViewPlugin.class.getSimpleName();
-  private static final String w = "BUNDLE_KEY_FILE_PATH";
-  private static final String x = "action";
-  private static final String y = "data";
-  private static final String z = "list";
+  public static final String v = "qqmusic";
+  private static final String w = MusicGeneWebViewPlugin.class.getSimpleName();
+  private static final String x = "BUNDLE_KEY_FILE_PATH";
+  private static final String y = "action";
+  private static final String z = "data";
   private int jdField_a_of_type_Int = 0;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dyx(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new eaa(this);
   private Context jdField_a_of_type_AndroidContentContext = null;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new dyv(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new dyy(this, Looper.getMainLooper());
-  private IQQPlayerCallback.Stub jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerCallback$Stub = new dyw(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new dzy(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new eab(this, Looper.getMainLooper());
+  private IQQPlayerCallback.Stub jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerCallback$Stub = new dzz(this);
   private IQQPlayerService jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService = null;
   private SongInfo jdField_a_of_type_ComTencentMobileqqMusicSongInfo = null;
   private Timer jdField_a_of_type_JavaUtilTimer = new Timer();
@@ -200,7 +200,7 @@ public class MusicGeneWebViewPlugin
     try
     {
       String str1 = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a();
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a(3, v);
+      String str2 = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a(3, w);
       localSongInfo1 = localSongInfo2;
       if (str1 != null)
       {
@@ -258,8 +258,8 @@ public class MusicGeneWebViewPlugin
   
   private void a()
   {
-    dza localdza = new dza(this);
-    this.jdField_a_of_type_JavaUtilTimer.schedule(localdza, 1000L, 1000L);
+    ead localead = new ead(this);
+    this.jdField_a_of_type_JavaUtilTimer.schedule(localead, 1000L, 1000L);
   }
   
   private void a(Bitmap paramBitmap)
@@ -359,7 +359,7 @@ public class MusicGeneWebViewPlugin
     //   126: aload 9
     //   128: astore 8
     //   130: aload 9
-    //   132: ldc 44
+    //   132: ldc 47
     //   134: iload 4
     //   136: sipush 1000
     //   139: idiv
@@ -368,7 +368,7 @@ public class MusicGeneWebViewPlugin
     //   144: aload 9
     //   146: astore 8
     //   148: aload 9
-    //   150: ldc 47
+    //   150: ldc 50
     //   152: iload_3
     //   153: sipush 1000
     //   156: idiv
@@ -377,14 +377,14 @@ public class MusicGeneWebViewPlugin
     //   161: aload 9
     //   163: astore 8
     //   165: aload 9
-    //   167: ldc 11
+    //   167: ldc 14
     //   169: iload_1
     //   170: invokevirtual 502	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   173: pop
     //   174: aload 9
     //   176: astore 8
     //   178: aload 9
-    //   180: ldc 17
+    //   180: ldc 20
     //   182: iload_2
     //   183: invokevirtual 502	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   186: pop
@@ -608,7 +608,7 @@ public class MusicGeneWebViewPlugin
     try
     {
       String str1 = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a();
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a(3, v);
+      String str2 = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a(3, w);
       bool1 = bool2;
       if (!TextUtils.isEmpty(str1))
       {
@@ -632,6 +632,37 @@ public class MusicGeneWebViewPlugin
     callJs(String.format("try{qqmusicBridge.appTrigger('%s');}catch(e){}", new Object[] { "CALLPAGE_SHARE" }));
   }
   
+  private void d()
+  {
+    try
+    {
+      if (this.mRuntime != null)
+      {
+        Activity localActivity = this.mRuntime.a();
+        if (localActivity != null)
+        {
+          Context localContext = localActivity.getApplicationContext();
+          if (localContext != null) {
+            localActivity.bindService(new Intent(localActivity, QQPlayerService.class), this.jdField_a_of_type_AndroidContentServiceConnection, 33);
+          }
+          if (this.jdField_a_of_type_AndroidContentContext == null) {
+            this.jdField_a_of_type_AndroidContentContext = localContext;
+          }
+          QLog.e(w, 1, "MusicGeneWebViewPlugin.bindQQPlayerService end!");
+          return;
+        }
+        QLog.e(w, 1, "MusicGeneWebViewPlugin.bindQQPlayerService activity is null!");
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e(w, 1, "MusicGeneWebViewPlugin.bindQQPlayerService exception", localException);
+      return;
+    }
+    QLog.e(w, 1, "MusicGeneWebViewPlugin.bindQQPlayerService mRuntime is null!");
+  }
+  
   protected boolean handleEvent(String paramString, int paramInt, Map paramMap)
   {
     if ((paramInt == 1) && (this.jdField_a_of_type_AndroidContentContext != null))
@@ -649,8 +680,12 @@ public class MusicGeneWebViewPlugin
     if ("qqmusic".equals(paramString2))
     {
       paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
-      if (paramVarArgs == null) {
-        return false;
+      if ((paramVarArgs == null) || (this.jdField_a_of_type_AndroidContentContext == null))
+      {
+        d();
+        if ((paramVarArgs == null) || (this.jdField_a_of_type_AndroidContentContext == null)) {
+          return false;
+        }
       }
       if (!"webCallApp".equals(paramString3)) {}
     }
@@ -712,7 +747,7 @@ public class MusicGeneWebViewPlugin
               paramVarArgs.a(this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerCallback$Stub);
               paramVarArgs.a(paramString1);
               paramVarArgs.a(103);
-              paramVarArgs.a(paramVarArgs.a(3, v), paramString3, i1);
+              paramVarArgs.a(paramVarArgs.a(3, w), paramString3, i1);
               paramString2 = "0";
               paramString1 = new JSONObject();
               paramString1.put("code", paramString2);
@@ -816,7 +851,7 @@ public class MusicGeneWebViewPlugin
           }
           paramString2 = new JSONObject();
           paramString1 = paramVarArgs.a();
-          paramString3 = paramVarArgs.a(3, v);
+          paramString3 = paramVarArgs.a(3, w);
           if ((paramString1 == null) || (!paramString1.equals(paramString3))) {
             continue;
           }
@@ -956,7 +991,7 @@ public class MusicGeneWebViewPlugin
                 paramString2 = new File(new File(AppConstants.as + File.separator + "diskcache"), paramString2);
                 if ((paramString2 == null) || (!paramString2.exists()))
                 {
-                  ThreadManager.a(new dyz(this, paramString1, paramString2));
+                  ThreadManager.a(new eac(this, paramString1, paramString2));
                   paramString1 = new JSONObject();
                   paramString1.put("code", "0");
                   paramJsBridgeListener.a(paramString1);
@@ -1103,20 +1138,11 @@ public class MusicGeneWebViewPlugin
   
   public void onCreate()
   {
-    super.onCreate();
-    Object localObject = this.mRuntime.a();
-    if ((localObject != null) && ((localObject instanceof MusicGeneQQBrowserActivity)))
-    {
-      this.jdField_a_of_type_AndroidContentContext = ((Activity)localObject).getApplicationContext();
-      if (this.jdField_a_of_type_AndroidContentContext != null)
-      {
-        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQPlayerService.class);
-        this.jdField_a_of_type_AndroidContentContext.bindService((Intent)localObject, this.jdField_a_of_type_AndroidContentServiceConnection, 33);
-        localObject = new IntentFilter();
-        ((IntentFilter)localObject).addAction("BROAD_CAST_CALL_PAGE_SHARE");
-        this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-      }
+    Activity localActivity = this.mRuntime.a();
+    if (localActivity != null) {
+      this.jdField_a_of_type_AndroidContentContext = localActivity.getApplicationContext();
     }
+    super.onCreate();
   }
   
   protected void onDestroy()
@@ -1126,34 +1152,38 @@ public class MusicGeneWebViewPlugin
     try
     {
       i1 = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a();
-      if (i1 != 2) {
-        if (i1 != 3) {}
-      }
+      if (i1 != 2) {}
     }
-    catch (RemoteException localRemoteException1)
+    catch (RemoteException localRemoteException2)
     {
-      for (;;)
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.c();
+        a(4);
+      }
+      catch (RemoteException localRemoteException2)
       {
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.c();
-          a(4);
-          this.jdField_a_of_type_AndroidContentContext.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-          this.jdField_a_of_type_AndroidContentContext.stopService(new Intent(this.jdField_a_of_type_AndroidContentContext, QQPlayerService.class));
-          this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-          this.jdField_a_of_type_AndroidContentContext = null;
-          super.onDestroy();
-          return;
-          localRemoteException1 = localRemoteException1;
-          localRemoteException1.printStackTrace();
-          int i1 = 4;
-        }
-        catch (RemoteException localRemoteException2)
-        {
+          for (;;)
+          {
+            this.jdField_a_of_type_AndroidContentContext.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
+            this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+            label70:
+            this.jdField_a_of_type_AndroidContentContext = null;
+            super.onDestroy();
+            return;
+            localRemoteException1 = localRemoteException1;
+            localRemoteException1.printStackTrace();
+            int i1 = 4;
+          }
+          localRemoteException2 = localRemoteException2;
           localRemoteException2.printStackTrace();
-          continue;
         }
-        this.jdField_a_of_type_AndroidContentContext.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
+        catch (Exception localException)
+        {
+          break label70;
+        }
       }
     }
   }

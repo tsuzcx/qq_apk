@@ -38,14 +38,14 @@ public class LengthInputFilter
       {
         paramInt4 -= j;
         if (paramInt4 < 0) {
-          break label157;
+          break label161;
         }
         paramInt3 = i + paramInt3;
         break;
         j = StringAddition.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
       }
     }
-    label157:
+    label161:
     if (paramInt3 == paramInt1) {
       return "";
     }

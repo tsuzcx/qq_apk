@@ -1,20 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class aqg
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aqg(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public aqg(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.c();
-    GesturePWDUtils.setGestureUnlockFailedType(this.a, 0);
-    StatisticCollector.a(this.a.getBaseContext()).a(this.a.app, this.a.app.a(), "Gesture_pwd", "click_forgive", 0, 1, "0", null, null, null, null);
+    int j = 1;
+    paramCompoundButton = this.a;
+    String str = this.a.app.a();
+    if (paramBoolean)
+    {
+      i = 2;
+      GesturePWDUtils.setGesturePWDState(paramCompoundButton, str, i);
+      this.a.a(paramBoolean);
+      paramCompoundButton = this.a.app;
+      if (!paramBoolean) {
+        break label93;
+      }
+    }
+    label93:
+    for (int i = j;; i = 0)
+    {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
+      this.a.a();
+      return;
+      i = 1;
+      break;
+    }
   }
 }
 

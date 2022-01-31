@@ -14,7 +14,7 @@ class pp
     if (QRCardActivity.a(this.a.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity) != null) {
       QRCardActivity.a(this.a.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity).dismiss();
     }
-    paramView = (TextView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131296566);
+    paramView = (TextView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131296569);
     if ((paramView.getText() instanceof String)) {
       this.a.a((String)paramView.getText());
     }

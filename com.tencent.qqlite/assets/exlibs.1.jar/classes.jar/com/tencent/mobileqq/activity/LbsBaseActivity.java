@@ -8,14 +8,14 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import arr;
-import ars;
-import art;
-import aru;
-import arv;
 import arw;
 import arx;
 import ary;
+import arz;
+import asa;
+import asb;
+import asc;
+import asd;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
@@ -75,8 +75,8 @@ public class LbsBaseActivity
   {
     if (this.a == null)
     {
-      this.a = a(17039380, 2131363202, 2131364497, 2131363209, new art(this), new aru(this));
-      this.a.setOnDismissListener(new arv(this, paramRunnable));
+      this.a = a(17039380, 2131363212, 2131364508, 2131363219, new ary(this), new arz(this));
+      this.a.setOnDismissListener(new asa(this, paramRunnable));
     }
     c();
     this.a.show();
@@ -84,15 +84,15 @@ public class LbsBaseActivity
   
   private void h(Runnable paramRunnable)
   {
-    paramRunnable = new arw(this, paramRunnable);
-    this.b = a(2131363205, a(), 2131363210, 2131363209, new arx(this), new ary(this));
+    paramRunnable = new asb(this, paramRunnable);
+    this.b = a(2131363215, a(), 2131363220, 2131363219, new asc(this), new asd(this));
     this.b.setOnDismissListener(paramRunnable);
     this.b.show();
   }
   
   protected int a()
   {
-    return 2131363206;
+    return 2131363216;
   }
   
   protected Dialog a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
@@ -101,28 +101,28 @@ public class LbsBaseActivity
     Object localObject1 = getResources().getString(paramInt2);
     String str2 = getResources().getString(paramInt3);
     String str1 = getResources().getString(paramInt4);
-    Dialog localDialog = new Dialog(this, 2131624119);
+    Dialog localDialog = new Dialog(this, 2131624120);
     localDialog.setContentView(2130903135);
-    TextView localTextView = (TextView)localDialog.findViewById(2131296911);
+    TextView localTextView = (TextView)localDialog.findViewById(2131296912);
     if (localTextView != null)
     {
       localTextView.setText((CharSequence)localObject2);
       localTextView.setContentDescription((CharSequence)localObject2);
     }
-    localObject2 = (TextView)localDialog.findViewById(2131296470);
+    localObject2 = (TextView)localDialog.findViewById(2131296473);
     if (localObject2 != null)
     {
       ((TextView)localObject2).setText((CharSequence)localObject1);
       ((TextView)localObject2).setContentDescription((CharSequence)localObject1);
     }
-    localObject1 = (TextView)localDialog.findViewById(2131296914);
+    localObject1 = (TextView)localDialog.findViewById(2131296915);
     if (localObject1 != null)
     {
       ((TextView)localObject1).setText(str2);
       ((TextView)localObject1).setContentDescription(str2);
       ((TextView)localObject1).setOnClickListener(paramOnClickListener1);
     }
-    paramOnClickListener1 = (TextView)localDialog.findViewById(2131296915);
+    paramOnClickListener1 = (TextView)localDialog.findViewById(2131296916);
     if (paramOnClickListener1 != null)
     {
       paramOnClickListener1.setText(str1);
@@ -196,7 +196,7 @@ public class LbsBaseActivity
   
   protected void d(Runnable paramRunnable)
   {
-    this.c = a(2131363203, 2131363204, 2131362794, 2131363211, new arr(this), new ars(this, paramRunnable));
+    this.c = a(2131363213, 2131363214, 2131362801, 2131363221, new arw(this), new arx(this, paramRunnable));
     this.c.show();
   }
   

@@ -34,7 +34,7 @@ public class jl
       {
         str2 = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getString("lastVersion", null);
         localObject2 = new mobileqq_mp.WebviewWhiteListRequset();
-        if ((str2 != null) && (str2.length() > 0) && ("2013 3.4.0".equals(localObject3))) {
+        if ((str2 != null) && (str2.length() > 0) && ("2013 3.5.0".equals(localObject3))) {
           ((mobileqq_mp.WebviewWhiteListRequset)localObject2).version.set(str2);
         }
         localObject3 = new NewIntent(this.a.jdField_a_of_type_AndroidContentContext, ProtoServlet.class);
@@ -60,7 +60,7 @@ public class jl
       if (str2.length() > 0)
       {
         localObject1 = localObject2;
-        if ("2013 3.4.0".equals(localObject3))
+        if ("2013 3.5.0".equals(localObject3))
         {
           localObject1 = new Bundle();
           ((Bundle)localObject1).putString("If-Modified-Since", str2);

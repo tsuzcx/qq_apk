@@ -1,10 +1,12 @@
 package com.tencent.smtt.export.external.extension.proxy;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.webkit.ValueCallback;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebChromeClientExtension;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
 import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.HitTestResult;
@@ -14,6 +16,8 @@ import java.util.HashMap;
 public class ProxyWebChromeClientExtension
   implements IX5WebChromeClientExtension
 {
+  private static boolean sCompatibleNewOnSavePassword = true;
+  private static boolean sCompatibleOpenFileChooser = true;
   protected IX5WebChromeClientExtension mWebChromeClient;
   
   public void acquireWakeLock()
@@ -136,6 +140,8 @@ public class ProxyWebChromeClientExtension
     }
   }
   
+  public void onPrintPage() {}
+  
   public void onPromptNotScalable(IX5WebViewExtension paramIX5WebViewExtension)
   {
     if (this.mWebChromeClient != null) {
@@ -150,10 +156,37 @@ public class ProxyWebChromeClientExtension
     }
   }
   
+  public boolean onSavePassword(ValueCallback<String> paramValueCallback, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
+  {
+    if ((this.mWebChromeClient != null) && (sCompatibleNewOnSavePassword)) {
+      try
+      {
+        paramBoolean = this.mWebChromeClient.onSavePassword(paramValueCallback, paramString1, paramString2, paramString3, paramString4, paramString5, paramBoolean);
+        return paramBoolean;
+      }
+      catch (NoSuchMethodError paramValueCallback)
+      {
+        if ((paramValueCallback.getMessage() == null) || (!paramValueCallback.getMessage().contains("onSavePassword"))) {
+          throw paramValueCallback;
+        }
+        sCompatibleNewOnSavePassword = false;
+      }
+    }
+    return false;
+  }
+  
   public boolean onSavePassword(String paramString1, String paramString2, String paramString3, boolean paramBoolean, Message paramMessage)
   {
     if (this.mWebChromeClient != null) {
-      return this.mWebChromeClient.onSavePassword(paramString1, paramString2, paramString3, paramBoolean, paramMessage);
+      try
+      {
+        paramBoolean = this.mWebChromeClient.onSavePassword(paramString1, paramString2, paramString3, paramBoolean, paramMessage);
+        return paramBoolean;
+      }
+      catch (NoSuchMethodError paramString1)
+      {
+        paramString1.printStackTrace();
+      }
     }
     return false;
   }
@@ -162,6 +195,23 @@ public class ProxyWebChromeClientExtension
   {
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.onX5ReadModeAvailableChecked(paramHashMap);
+    }
+  }
+  
+  public void openFileChooser(ValueCallback<Uri[]> paramValueCallback, String paramString1, String paramString2)
+  {
+    if ((this.mWebChromeClient != null) && (sCompatibleOpenFileChooser)) {}
+    try
+    {
+      this.mWebChromeClient.openFileChooser(paramValueCallback, paramString1, paramString2);
+      return;
+    }
+    catch (NoSuchMethodError paramValueCallback)
+    {
+      if ((paramValueCallback.getMessage() == null) || (!paramValueCallback.getMessage().contains("openFileChooser"))) {
+        throw paramValueCallback;
+      }
+      sCompatibleOpenFileChooser = false;
     }
   }
   

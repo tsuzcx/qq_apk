@@ -1,17 +1,39 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.open.agent.RecommendListManager;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class fbw
-  implements Runnable
+  extends Handler
 {
-  public fbw(RecommendListManager paramRecommendListManager, String paramString, Bitmap paramBitmap) {}
+  public fbw(TabBarView paramTabBarView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ((ImageView)((View)this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.a.get(this.jdField_a_of_type_JavaLangString)).findViewById(2131296453)).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      TabBarView.a(this.a, 0.0F);
+      TabBarView.a(this.a, 0.1D);
+      this.a.invalidate();
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      if (TabBarView.a(this.a) < 1.0F)
+      {
+        TabBarView.a(this.a, 0.1D);
+        this.a.invalidate();
+        sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+        return;
+      }
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
+      return;
+    }
+    TabBarView.a(this.a, 1.0F);
+    TabBarView.a(this.a, TabBarView.a(this.a), TabBarView.b(this.a));
+    TabBarView.a(this.a, TabBarView.b(this.a));
+    this.a.invalidate();
   }
 }
 

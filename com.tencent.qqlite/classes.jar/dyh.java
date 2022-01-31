@@ -1,48 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
 public class dyh
-  implements Runnable
+  extends BaseAdapter
 {
-  public dyh(MultiMsgManager paramMultiMsgManager, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean) {}
+  private View a;
   
-  public void run()
+  public dyh(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    int j;
-    int k;
-    StringBuilder localStringBuilder;
-    if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)localObject).structingMsg.mMsgAction)))
-    {
-      localObject = MultiMsgManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
-      if (localObject != null)
-      {
-        j = ((List)localObject).size();
-        k = MultiMsgManager.a().a((Collection)localObject);
-        localObject = new HashMap();
-        localStringBuilder = new StringBuilder();
-        if (!this.jdField_a_of_type_Boolean) {
-          break label228;
-        }
-      }
+    this.a = paramView;
+  }
+  
+  public int getCount()
+  {
+    if (this.a == null) {
+      return 0;
     }
-    label228:
-    for (int i = 0;; i = 1)
-    {
-      ((HashMap)localObject).put("result", i + "");
-      ((HashMap)localObject).put("msgCount", j + "");
-      ((HashMap)localObject).put("picCount", k + "");
-      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "multiMsgSend", this.jdField_a_of_type_Boolean, 30000L, 0L, (HashMap)localObject, "");
-      return;
-    }
+    return 1;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return this.a;
   }
 }
 

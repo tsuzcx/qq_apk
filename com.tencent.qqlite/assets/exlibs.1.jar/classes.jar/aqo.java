@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 
 public class aqo
   implements DialogInterface.OnClickListener
 {
-  public aqo(GroupManagerActivity paramGroupManagerActivity) {}
+  public aqo(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GroupManagerActivity.a(this.a, null);
+    paramDialogInterface.dismiss();
   }
 }
 

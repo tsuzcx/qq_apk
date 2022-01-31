@@ -1,7 +1,5 @@
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.widget.ImageView;
 import com.tencent.mobileqq.activity.ChatHistory;
 
 public class adf
@@ -11,8 +9,7 @@ public class adf
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatHistory.a(this.a).setEnabled(true);
-    this.a.c.dismiss();
+    new adg(this).start();
   }
 }
 

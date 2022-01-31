@@ -1,21 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AlbumUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class cio
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public cio(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public cio(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.b) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
-    }
+    this.a.setResult(1);
     this.a.finish();
-    AlbumUtil.a(this.a, true, false);
   }
 }
 

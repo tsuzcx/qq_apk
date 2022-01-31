@@ -1,36 +1,39 @@
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import MessageSvcPack.UinPairReadInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
+import com.tencent.mobileqq.app.message.C2CMessageProcessor;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
+import java.util.ArrayList;
 
 public class czn
-  implements ProtoReqManager.IProtoRespBack
+  implements BaseMessageProcessor.RequestBuilder
 {
-  public czn(SystemMessageProcessor paramSystemMessageProcessor, long paramLong1, long paramLong2, long paramLong3) {}
+  public czn(C2CMessageProcessor paramC2CMessageProcessor, ArrayList paramArrayList) {}
   
-  public void a(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  public ToServiceMsg a()
   {
-    try
+    Object localObject = new StringBuilder("-ReportList-");
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
     {
-      paramProtoResp = paramProtoResp.a.getWupBuffer();
-      paramProtoReq = new structmsg.RspSystemMsgRead();
-      paramProtoReq.mergeFrom(paramProtoResp);
-      int i = paramProtoReq.head.result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "clearGroupSystemMsgResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
-      }
-      return;
+      UinPairReadInfo localUinPairReadInfo = (UinPairReadInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      ((StringBuilder)localObject).append("-uin:").append(localUinPairReadInfo.lPeerUin).append("-ReadTime-").append(localUinPairReadInfo.lLastReadTime);
+      i += 1;
     }
-    catch (Exception paramProtoResp)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.", 2, "clearGroupSystemMsgResp exception", paramProtoResp);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.C2CMessageProcessor", 2, "<ReadReport><S>_C2C:" + ((StringBuilder)localObject).toString());
     }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageC2CMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("MessageSvc.MsgReadedReport");
+    ((ToServiceMsg)localObject).extraData.putSerializable("vMsgKey", this.jdField_a_of_type_JavaUtilArrayList);
+    ((ToServiceMsg)localObject).extraData.putByteArray("vSyncCookie", this.jdField_a_of_type_ComTencentMobileqqAppMessageC2CMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a());
+    ((ToServiceMsg)localObject).extraData.putBoolean("bPbReadedReport", true);
+    ((ToServiceMsg)localObject).setEnableFastResend(true);
+    return localObject;
   }
 }
 

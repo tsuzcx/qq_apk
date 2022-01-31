@@ -1,15 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
 public class cln
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public String a;
-  boolean jdField_a_of_type_Boolean;
+  public cln(BannerManager paramBannerManager) {}
   
-  cln(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public void onClick(View paramView)
+  {
+    this.a.a(7, 0);
+    this.a.a(null);
+  }
 }
 
 

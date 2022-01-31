@@ -1,14 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 class bhn
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  bhn(bhl parambhl) {}
+  bhn(bhm parambhm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    RegisterPhoneNumActivity.a(this.a.a, true);
   }
 }
 

@@ -1,19 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class bok
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public bok(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
+  public bok(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.findViewById(2131298882).getHandler().postDelayed(new bol(this), 150L);
+    this.a.l();
+    paramView = this.a.p;
+    this.a.a("Clk_find", paramView, "");
   }
 }
 

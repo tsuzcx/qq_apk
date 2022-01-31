@@ -7,15 +7,17 @@ import android.preference.PreferenceManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.pic.DownCallBack;
 import com.tencent.mobileqq.pic.DownCallBack.DownResult;
 import com.tencent.mobileqq.pic.PicPreDownloadUtils;
 import com.tencent.mobileqq.pic.PicPreDownloader;
 import com.tencent.mobileqq.streamtransfile.StreamDataManager;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.QLog;
-import ehw;
+import ejc;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -36,7 +38,7 @@ public class TransFileController
   public static final int c = 2;
   public static final String c = "use";
   public QQAppInterface a;
-  public ehw a;
+  public ejc a;
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public ConcurrentHashMap a;
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
@@ -46,7 +48,7 @@ public class TransFileController
   
   public TransFileController(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Ehw = null;
+    this.jdField_a_of_type_Ejc = null;
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
@@ -54,7 +56,7 @@ public class TransFileController
       QLog.d("Q.richmedia.TransFileController", 2, "construct transfilecontroller:" + this);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ehw = new ehw(ThreadManager.b());
+    this.jdField_a_of_type_Ejc = new ejc(ThreadManager.b());
   }
   
   public static String a(TransferRequest paramTransferRequest)
@@ -517,7 +519,16 @@ public class TransFileController
     if (str2 == null)
     {
       str1 = BuddyTransfileProcessor.a(String.valueOf(l2), null, 2, null);
-      StreamDataManager.a(str1, 1, paramStreamInfo.iMsgId);
+      str2 = MessageForPtt.getLocalFilePath(Utils.a(paramStreamInfo.pttFormat), str1);
+      StreamDataManager.a(str2, 1, paramStreamInfo.iMsgId);
+      StreamDataManager.a(str2, (short)paramStreamInfo.msgSeq);
+      StreamDataManager.b(str2, paramStreamInfo.random);
+      str1 = str2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.richmedia.TransFileController", 2, "onReceiveStreamAction  key is:" + str2 + ",msgSeq is:" + paramStreamInfo.msgSeq + ",random is:" + paramStreamInfo.random);
+        str1 = str2;
+      }
     }
     a(String.valueOf(l1), str1, -1000L, paramStreamInfo, paramStreamData, paramLong1, paramLong2);
   }
@@ -563,8 +574,8 @@ public class TransFileController
             {
               this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramTransferRequest);
               paramTransferRequest.b(str);
-              if (this.jdField_a_of_type_Ehw != null) {
-                this.jdField_a_of_type_Ehw.a(paramTransferRequest);
+              if (this.jdField_a_of_type_Ejc != null) {
+                this.jdField_a_of_type_Ejc.a(paramTransferRequest);
               }
             }
             return;
@@ -849,21 +860,25 @@ public class TransFileController
     return false;
   }
   
-  public boolean a(String paramString1, String paramString2, long paramLong, short paramShort)
+  public boolean a(String paramString1, String paramString2, long paramLong, short paramShort, int paramInt1, int paramInt2)
   {
     if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString1 + paramLong))
     {
-      paramString2 = new BuddyTransfileProcessor(paramString1, paramString2, true, null, null, 2, -1, false, this, paramLong);
-      paramString2.a(paramLong);
-      paramString2.c();
-      paramString2.b(paramString1 + paramLong);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1 + paramLong, paramString2);
-      paramString2.a(paramShort, false);
-      return true;
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        paramString2 = new BuddyTransfileProcessor(paramString1, paramString2, true, null, null, 2, -1, false, this, paramLong);
+        paramString2.a(paramLong);
+        paramString2.c();
+        paramString2.b(paramString1 + paramLong);
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1 + paramLong, paramString2);
+        paramString2.a(paramShort, false, paramInt1, paramInt2);
+        return true;
+      }
+      return false;
     }
     paramString1 = (BuddyTransfileProcessor)a(paramString1, paramString2, paramLong);
     if (paramString1 != null) {
-      paramString1.a(paramShort, false);
+      paramString1.a(paramShort, false, paramInt1, paramInt2);
     }
     return false;
   }
@@ -1075,7 +1090,7 @@ public class TransFileController
     //   44: aload_1
     //   45: ifnull +7 -> 52
     //   48: aload_1
-    //   49: invokevirtual 676	com/tencent/mobileqq/transfile/ShortVideoDownloadProcessor:i	()V
+    //   49: invokevirtual 706	com/tencent/mobileqq/transfile/ShortVideoDownloadProcessor:i	()V
     //   52: iconst_1
     //   53: istore 4
     //   55: aload_0
@@ -1264,7 +1279,7 @@ public class TransFileController
     //   44: aload_1
     //   45: ifnull +7 -> 52
     //   48: aload_1
-    //   49: invokevirtual 694	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:i	()V
+    //   49: invokevirtual 724	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:i	()V
     //   52: iconst_1
     //   53: istore 4
     //   55: aload_0

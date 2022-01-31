@@ -1,25 +1,28 @@
-import com.tencent.mobileqq.activity.selectmember.DiscussionListInnerFrame;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
-import java.util.HashMap;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.LoginManagerActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class clo
-  implements Comparator
+  implements View.OnClickListener
 {
-  public clo(DiscussionListInnerFrame paramDiscussionListInnerFrame, HashMap paramHashMap) {}
+  public clo(BannerManager paramBannerManager) {}
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public void onClick(View paramView)
   {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131297378: 
+      paramView = new Intent(BannerManager.a(this.a), LoginManagerActivity.class);
+      paramView.putExtra("loginInfo", this.a.d);
+      BannerManager.a(this.a).startActivity(paramView);
+      return;
     }
-    if (l1 > l2) {
-      return 1;
-    }
-    return 0;
+    this.a.a();
   }
 }
 

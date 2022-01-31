@@ -1,19 +1,27 @@
-import com.tencent.widget.AbsListView;
+import android.app.Activity;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.base.TicketUtils.TicketCallback;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class fhk
+  implements TicketUtils.TicketCallback
 {
-  private int a;
-  
-  private fhk(AbsListView paramAbsListView) {}
+  public fhk(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, long paramLong, Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
   
   public void a()
   {
-    this.a = AbsListView.a(this.b);
+    LogUtility.a("MyAppApi", "onGetA1Fail ---");
+    ThreadManager.b().post(new fhm(this));
   }
   
-  public boolean a()
+  public void a(String paramString, byte[] paramArrayOfByte)
   {
-    return (this.b.hasWindowFocus()) && (AbsListView.b(this.b) == this.a);
+    LogUtility.a("MyAppApi", "onGetA1 ---");
+    ThreadManager.b().post(new fhl(this, paramArrayOfByte, paramString));
   }
 }
 

@@ -15,6 +15,7 @@ public class DiscussionConstants
   public static final String k = "QRCodeSvc.discuss_decode";
   public static final String l = "QQServiceDiscussSvc.ReqJoinDiscuss";
   public static final String m = "OidbSvc.0x865_3";
+  public static final String n = "OidbSvc.0x921_0";
 }
 
 

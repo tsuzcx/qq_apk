@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class ale
+class ale
   implements Runnable
 {
-  public ale(EmosmActivity paramEmosmActivity) {}
+  ale(alc paramalc, int paramInt) {}
   
   public void run()
   {
-    EmosmActivity.a(this.a);
+    if (this.jdField_a_of_type_Int > this.jdField_a_of_type_Alc.a.c)
+    {
+      this.jdField_a_of_type_Alc.a.a.setText("内容超出!" + this.jdField_a_of_type_Alc.a.b);
+      this.jdField_a_of_type_Alc.a.a.setTextColor(-65536);
+      EditInfoActivity.c(this.jdField_a_of_type_Alc.a, false);
+      return;
+    }
+    this.jdField_a_of_type_Alc.a.a.setText(this.jdField_a_of_type_Alc.a.b);
+    this.jdField_a_of_type_Alc.a.a.setTextColor(Color.rgb(119, 119, 119));
+    EditInfoActivity.d(this.jdField_a_of_type_Alc.a, true);
   }
 }
 

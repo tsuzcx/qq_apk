@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.GridListView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.graphics.Point;
 
-public class eyk
-  implements View.OnClickListener
+public final class eyk
+  implements eym
 {
-  public eyk(GridListView paramGridListView) {}
-  
-  public void onClick(View paramView)
+  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
   {
-    int i = ((Integer)paramView.getTag(2131298451)).intValue();
-    this.a.a.a(this.a, paramView, i, 0L);
+    float f1 = paramPoint1.x;
+    float f2 = paramPoint1.y;
+    return new Point((int)(f1 + (paramPoint2.x - f1) * paramFloat), (int)(f2 + (paramPoint2.y - f2) * paramFloat));
   }
 }
 

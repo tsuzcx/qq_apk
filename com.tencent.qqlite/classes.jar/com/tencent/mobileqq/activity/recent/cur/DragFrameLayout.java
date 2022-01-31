@@ -20,9 +20,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
-import cku;
-import ckv;
-import ckw;
+import clv;
+import clw;
+import clx;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,7 +34,7 @@ public class DragFrameLayout
 {
   public static final float a = 1.1F;
   public static final int a = -1;
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130838230, 2130838231, 2130838232, 2130838233, 2130838234 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130838249, 2130838250, 2130838251, 2130838252, 2130838253 };
   private static final float jdField_b_of_type_Float = 0.3F;
   public static final int b = 0;
   private static final float c = 0.7F;
@@ -48,9 +48,9 @@ public class DragFrameLayout
   private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF(-1.0F, -1.0F);
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private View jdField_a_of_type_AndroidViewView;
-  private cku jdField_a_of_type_Cku;
-  private ckv jdField_a_of_type_Ckv;
-  private ckw jdField_a_of_type_Ckw;
+  private clv jdField_a_of_type_Clv;
+  private clw jdField_a_of_type_Clw;
+  private clx jdField_a_of_type_Clx;
   private DragFrameLayout.IDragViewProvider jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$IDragViewProvider;
   private final List jdField_a_of_type_JavaUtilList = new ArrayList();
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
@@ -174,20 +174,20 @@ public class DragFrameLayout
   {
     if (this.k != -1)
     {
-      if (this.jdField_a_of_type_Ckw != null)
+      if (this.jdField_a_of_type_Clx != null)
       {
-        getHandler().removeCallbacks(this.jdField_a_of_type_Ckw);
-        this.jdField_a_of_type_Ckw = null;
+        getHandler().removeCallbacks(this.jdField_a_of_type_Clx);
+        this.jdField_a_of_type_Clx = null;
       }
-      if (this.jdField_a_of_type_Ckv != null)
+      if (this.jdField_a_of_type_Clw != null)
       {
-        getHandler().removeCallbacks(this.jdField_a_of_type_Ckv);
-        this.jdField_a_of_type_Ckv = null;
+        getHandler().removeCallbacks(this.jdField_a_of_type_Clw);
+        this.jdField_a_of_type_Clw = null;
       }
-      if (this.jdField_a_of_type_Cku != null)
+      if (this.jdField_a_of_type_Clv != null)
       {
-        getHandler().removeCallbacks(this.jdField_a_of_type_Cku);
-        this.jdField_a_of_type_Cku = null;
+        getHandler().removeCallbacks(this.jdField_a_of_type_Clv);
+        this.jdField_a_of_type_Clv = null;
       }
       this.k = -1;
       a(false);
@@ -325,8 +325,8 @@ public class DragFrameLayout
           if (this.k != 3) {
             break;
           }
-        } while (this.jdField_a_of_type_Ckw == null);
-        localObject = this.jdField_a_of_type_Ckw.a();
+        } while (this.jdField_a_of_type_Clx == null);
+        localObject = this.jdField_a_of_type_Clx.a();
         this.jdField_a_of_type_AndroidGraphicsPointF.set((PointF)localObject);
         this.d = ((float)Math.sqrt((this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) * (this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) + (this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.centerY()) * (this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.centerY())));
         paramCanvas.save();
@@ -346,7 +346,7 @@ public class DragFrameLayout
         paramCanvas.restore();
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16711936);
         paramCanvas.drawBitmap(this.b, this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.width() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.height() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-        postDelayed(this.jdField_a_of_type_Ckw, 60L);
+        postDelayed(this.jdField_a_of_type_Clx, 60L);
         return;
         if (this.k == 2)
         {
@@ -356,20 +356,20 @@ public class DragFrameLayout
         if (this.k != 4) {
           break;
         }
-      } while (this.jdField_a_of_type_Ckv == null);
-      localObject = this.jdField_a_of_type_Ckv.a();
+      } while (this.jdField_a_of_type_Clw == null);
+      localObject = this.jdField_a_of_type_Clw.a();
       if (localObject != null) {
         paramCanvas.drawBitmap((Bitmap)localObject, null, new RectF(this.jdField_a_of_type_AndroidGraphicsPointF.x - ((Bitmap)localObject).getWidth() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y - ((Bitmap)localObject).getHeight() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.x + ((Bitmap)localObject).getWidth() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y + ((Bitmap)localObject).getHeight() / 2.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-      postDelayed(this.jdField_a_of_type_Ckv, 50L);
+      postDelayed(this.jdField_a_of_type_Clw, 50L);
       return;
-    } while ((this.k != 5) || (this.jdField_a_of_type_Cku == null));
-    Object localObject = this.jdField_a_of_type_Cku.a();
-    Bitmap localBitmap = this.jdField_a_of_type_Cku.a();
+    } while ((this.k != 5) || (this.jdField_a_of_type_Clv == null));
+    Object localObject = this.jdField_a_of_type_Clv.a();
+    Bitmap localBitmap = this.jdField_a_of_type_Clv.a();
     if ((localBitmap != null) && (((PointF)localObject).x > 0.0F) && (((PointF)localObject).y > 0.0F)) {
       paramCanvas.drawBitmap(localBitmap, null, new RectF(((PointF)localObject).x - localBitmap.getWidth() / 2.0F, ((PointF)localObject).y - localBitmap.getHeight() / 2.0F, ((PointF)localObject).x + localBitmap.getWidth() / 2.0F, ((PointF)localObject).y + localBitmap.getHeight() / 2.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    postDelayed(this.jdField_a_of_type_Cku, 40L);
+    postDelayed(this.jdField_a_of_type_Clv, 40L);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -418,7 +418,7 @@ public class DragFrameLayout
                 this.k = 3;
                 this.jdField_a_of_type_AndroidGraphicsPointF.set(f1, f2);
                 paramMotionEvent = new RectF(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY(), this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
-                this.jdField_a_of_type_Ckw = new ckw(this, new PointF(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY()), paramMotionEvent);
+                this.jdField_a_of_type_Clx = new clx(this, new PointF(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY()), paramMotionEvent);
                 invalidate();
                 return true;
               }
@@ -440,7 +440,7 @@ public class DragFrameLayout
                 return true;
                 this.k = 4;
                 this.jdField_a_of_type_AndroidGraphicsPointF.set(f1, f2);
-                this.jdField_a_of_type_Ckv = new ckv(this, this.jdField_a_of_type_AndroidGraphicsPointF);
+                this.jdField_a_of_type_Clw = new clw(this, this.jdField_a_of_type_AndroidGraphicsPointF);
               }
             }
             bool1 = bool2;

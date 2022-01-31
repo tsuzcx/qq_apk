@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.app.NearFieldDiscussHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import tencent.im.nearfield_discuss.nearfield_discuss.LBSInfo;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.LiteWifiphotoActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class clk
-  implements Runnable
+  implements View.OnClickListener
 {
-  public clk(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public clk(BannerManager paramBannerManager) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    NearFieldDiscussHandler localNearFieldDiscussHandler = (NearFieldDiscussHandler)this.a.app.a(32);
-    nearfield_discuss.LBSInfo localLBSInfo = CreateFaceToFaceDiscussionActivity.a(this.a);
-    localNearFieldDiscussHandler.b(this.a.a.toString(), this.a.b, localLBSInfo);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    paramView = new Intent(BannerManager.a(this.a), LiteWifiphotoActivity.class);
+    paramView.putExtra("isFromStatusbar", true);
+    BannerManager.a(this.a).startActivity(paramView);
   }
 }
 

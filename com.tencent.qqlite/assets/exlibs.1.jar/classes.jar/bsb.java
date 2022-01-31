@@ -1,34 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
 public class bsb
-  implements TabBarView.OnTabChangeListener
+  implements Runnable
 {
-  public bsb(VisitorsActivity paramVisitorsActivity) {}
+  public bsb(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    View localView = this.a.a.getChildAt(0);
-    if (paramInt2 == 0)
-    {
-      str = "已选中" + this.a.getString(2131363541);
-      localView.setContentDescription(str);
-      localView = this.a.a.getChildAt(1);
-      if (paramInt2 != 1) {
-        break label125;
-      }
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+      this.a.a.dismiss();
     }
-    label125:
-    for (String str = "已选中" + this.a.getString(2131363542);; str = this.a.getString(2131363542))
-    {
-      localView.setContentDescription(str);
-      this.a.a(paramInt2);
-      return;
-      str = this.a.getString(2131363541);
-      break;
-    }
+    this.a.a = null;
   }
 }
 

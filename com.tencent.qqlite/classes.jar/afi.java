@@ -1,34 +1,27 @@
-import android.view.View;
-import com.tencent.biz.webviewplugin.ReportPlugin;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
+import mqq.observer.AccountObserver;
 
 public class afi
-  implements ActionSheet.OnButtonClickListener
+  extends AccountObserver
 {
-  public afi(ChatSettingForTroop paramChatSettingForTroop, ActionSheet paramActionSheet) {}
+  public afi(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void a(View paramView, int paramInt)
+  public void onUpdateSKey(String paramString1, String paramString2)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app != null))
+    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    if (paramString1 == null) {
+      while (i > 0)
       {
-        ReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, 301, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.c, "", this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getAccount());
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.al == 1) {
-          ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.b);
-        }
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b - 1);
+        i -= 1;
       }
     }
+    TroopUtils.a(paramString1, this.a.app.a(), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.d, this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter);
   }
 }
 

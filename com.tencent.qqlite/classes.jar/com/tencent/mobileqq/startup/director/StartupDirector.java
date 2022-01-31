@@ -21,8 +21,8 @@ import com.tencent.mobileqq.startup.step.Step;
 import com.tencent.mobileqq.startup.step.Step.AmStepFactory;
 import com.tencent.mobileqq.utils.ShortcutUtils;
 import com.tencent.qphone.base.util.QLog;
-import eef;
-import eeg;
+import efk;
+import efl;
 import java.io.File;
 import java.util.ArrayList;
 import mqq.app.AppActivity;
@@ -344,12 +344,12 @@ public class StartupDirector
     paramBaseApplicationImpl = new StartupDirector();
     paramBaseApplicationImpl.a(0);
     Step.AmStepFactory.a(0, paramBaseApplicationImpl, jdField_a_of_type_ArrayOfInt).b();
-    if (BaseApplicationImpl.h == 1)
+    if (BaseApplicationImpl.g == 1)
     {
       paramBaseApplicationImpl.a(1);
       return paramBaseApplicationImpl;
     }
-    if (BaseApplicationImpl.h == 3)
+    if (BaseApplicationImpl.g == 3)
     {
       Step.AmStepFactory.a(12, paramBaseApplicationImpl, null).b();
       Step.AmStepFactory.a(10, paramBaseApplicationImpl, null).b();
@@ -358,7 +358,7 @@ public class StartupDirector
     }
     jdField_e_of_type_Boolean = false;
     Step.AmStepFactory.a(12, paramBaseApplicationImpl, null).b();
-    if (BaseApplicationImpl.h == 2)
+    if (BaseApplicationImpl.g == 2)
     {
       new Thread(Step.AmStepFactory.a(0, paramBaseApplicationImpl, k)).start();
       Step.AmStepFactory.a(0, paramBaseApplicationImpl, j).b();
@@ -367,7 +367,7 @@ public class StartupDirector
     if (BaseApplicationImpl.processName.endsWith(":MSF")) {}
     for (int i1 = 4;; i1 = -1)
     {
-      BaseApplicationImpl.h = i1;
+      BaseApplicationImpl.g = i1;
       Step.AmStepFactory.a(0, paramBaseApplicationImpl, i).b();
       break;
     }
@@ -400,7 +400,7 @@ public class StartupDirector
     }
     a(5);
     a(2, 0, 3000L);
-    if (BaseApplicationImpl.h == 1) {
+    if (BaseApplicationImpl.g == 1) {
       b(12, 0, 10000L);
     }
   }
@@ -446,13 +446,13 @@ public class StartupDirector
     localTextView.setTextColor(-1);
     localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     if (!paramBoolean1) {
-      localTextView.setText(2131362829);
+      localTextView.setText(2131362836);
     }
     for (;;)
     {
       paramAppActivity.setContentView(localTextView);
       InjectUtils.a(paramAppActivity, "SuicideFailed", Integer.toString(jdField_c_of_type_Int));
-      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new eeg(this, paramAppActivity), 8000L);
+      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new efl(this, paramAppActivity), 8000L);
       return;
       localTextView.setText("程序启动失败，请稍候重试.");
     }
@@ -497,7 +497,7 @@ public class StartupDirector
     label188:
     for (paramBoolean = bool;; paramBoolean = false)
     {
-      ThreadManager.b().postDelayed(new eef(this, paramBoolean, l1, l2 - l3, l4, l5 - l6), 10000L);
+      ThreadManager.b().postDelayed(new efk(this, paramBoolean, l1, l2 - l3, l4, l5 - l6), 10000L);
       BaseApplicationImpl.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector = null;
       return;
     }
@@ -739,7 +739,7 @@ public class StartupDirector
               paramMessage = ThreadManager.a();
               i1 = paramMessage.getPriority();
               paramMessage.setPriority(10);
-              if (BaseApplicationImpl.h == 3) {
+              if (BaseApplicationImpl.g == 3) {
                 a(jdField_c_of_type_ArrayOfInt, null, 6);
               }
               for (;;)

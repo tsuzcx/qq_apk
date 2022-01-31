@@ -1,45 +1,27 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.activity.PortraitImageview;
-import com.tencent.mobileqq.activity.PortraitImageview.OnImageTouchedListener;
-import com.tencent.mobileqq.activity.PortraitImageview.SimpleOnGestureListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class bau
-  extends PortraitImageview.SimpleOnGestureListener
+  implements IStatusListener
 {
-  private bau(PortraitImageview paramPortraitImageview) {}
+  public bau(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(int paramInt, RichStatus paramRichStatus) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (this.a.a() > this.a.f()) {
-      this.a.a(this.a.f());
-    }
-    for (;;)
-    {
-      return true;
-      this.a.a(this.a.f() * 3.0F, paramMotionEvent.getX(), paramMotionEvent.getY(), 350.0F);
-    }
+    PermisionPrivacyActivity.a(this.a, this.a.e.a(), paramBoolean);
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void b(int paramInt, boolean paramBoolean)
   {
-    if (((paramMotionEvent1 != null) && (paramMotionEvent1.getPointerCount() > 1)) || ((paramMotionEvent2 != null) && (paramMotionEvent2.getPointerCount() > 1)) || ((this.a.jdField_a_of_type_AndroidViewScaleGestureDetector != null) && (this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress()))) {
-      return false;
+    if (paramInt == -1) {
+      PermisionPrivacyActivity.a(this.a, 2131364034);
     }
-    this.a.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.a(-paramFloat1, -paramFloat2);
-    this.a.setImageMatrix(this.a.a());
-    return true;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview$OnImageTouchedListener != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview$OnImageTouchedListener.a();
-      return false;
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    PermisionPrivacyActivity.a(this.a, this.a.e.a(), PermisionPrivacyActivity.a(this.a).b());
   }
 }
 

@@ -6,12 +6,12 @@ import android.os.Parcelable.Creator;
 import android.util.SparseBooleanArray;
 import android.view.View.BaseSavedState;
 import com.tencent.util.LongSparseArray;
-import fhj;
+import fjp;
 
 public class AbsListView$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new fhj();
+  public static final Parcelable.Creator CREATOR = new fjp();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long = -1L;
   SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray;

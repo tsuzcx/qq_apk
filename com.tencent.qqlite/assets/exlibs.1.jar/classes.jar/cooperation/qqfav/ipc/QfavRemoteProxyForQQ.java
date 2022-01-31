@@ -6,8 +6,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.RemoteException;
 import cooperation.qqfav.QfavPluginProxyService;
-import fla;
-import flb;
+import fng;
+import fnh;
 import java.util.HashSet;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import mqq.app.AppRuntime;
@@ -31,7 +31,7 @@ public class QfavRemoteProxyForQQ
     this.jdField_a_of_type_CooperationQqfavIpcIQfavRemoteProxyInterface = null;
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
     this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_AndroidContentServiceConnection = new flb(this);
+    this.jdField_a_of_type_AndroidContentServiceConnection = new fnh(this);
     this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
   }
   
@@ -41,7 +41,7 @@ public class QfavRemoteProxyForQQ
     {
       Looper localLooper = Looper.getMainLooper();
       if (Thread.currentThread() != localLooper.getThread()) {
-        new Handler(localLooper).post(new fla(this, paramQfavRemoteProxyCallWrapper));
+        new Handler(localLooper).post(new fng(this, paramQfavRemoteProxyCallWrapper));
       }
     }
     else

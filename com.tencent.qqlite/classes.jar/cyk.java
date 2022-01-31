@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.AutomatorObserver;
+import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
 
 public class cyk
-  implements Comparator
+  extends AutomatorObserver
 {
-  public cyk(C2CMessageProcessor paramC2CMessageProcessor) {}
+  private cyk(GetCheckUpdate paramGetCheckUpdate) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
+    this.a.a(7);
   }
 }
 

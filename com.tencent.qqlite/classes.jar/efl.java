@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
-import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+import com.tencent.mobileqq.startup.director.StartupDirector;
+import mqq.app.AppActivity;
 
 public class efl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public efl(StructMsgForHypertext paramStructMsgForHypertext) {}
+  public efl(StartupDirector paramStartupDirector, AppActivity paramAppActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    new StructMsgClickHandler(paramView).a("web", this.a.mSourceUrl, null, null);
+    this.jdField_a_of_type_MqqAppAppActivity.superFinish();
+    System.exit(0);
   }
 }
 

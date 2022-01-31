@@ -1,15 +1,20 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.AutoCompleteTextView;
 import com.tencent.mobileqq.activity.LoginActivity;
 
 public class att
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   public att(LoginActivity paramLoginActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a();
+    if (this.a.a.isPopupShowing()) {
+      this.a.a.dismissDropDown();
+    }
+    return false;
   }
 }
 

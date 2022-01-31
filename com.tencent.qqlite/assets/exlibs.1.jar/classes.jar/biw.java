@@ -1,16 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-import tencent.im.kqq.searchgroup.SearchGroup.GroupInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.SearchTroopListActivity;
 
 public class biw
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements DialogInterface.OnCancelListener
 {
-  public ImageView a;
-  public TextView a;
-  public SearchGroup.GroupInfo a;
-  public TextView b;
-  public TextView c;
+  public biw(SearchTroopListActivity paramSearchTroopListActivity) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.a.a = null;
+    if (!this.a.isFinishing()) {
+      this.a.finish();
+    }
+  }
 }
 
 

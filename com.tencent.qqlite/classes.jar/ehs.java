@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.transfile.ShortVideoDownloadProcessor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ehs
   implements Runnable
 {
-  public ehs(ShortVideoDownloadProcessor paramShortVideoDownloadProcessor) {}
+  public ehs(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
   public void run()
   {
-    this.a.c();
+    QQToast.a(BaseApplicationImpl.a, "WebP格式的图片不支持原图发送，请使用标清质量来发送。", 1).a();
   }
 }
 

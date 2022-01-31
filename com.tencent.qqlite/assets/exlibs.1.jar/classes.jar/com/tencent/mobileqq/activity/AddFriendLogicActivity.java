@@ -156,7 +156,7 @@ public class AddFriendLogicActivity
     case 1: 
       if (paramString.equals(this.app.a()))
       {
-        QQToast.a(this, 2131363365, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131363376, 0).b(getTitleBarHeight());
         finish();
         return false;
       }
@@ -173,7 +173,7 @@ public class AddFriendLogicActivity
             if ((paramString == null) || (paramString.groupid < 0)) {
               break;
             }
-            QQToast.a(this.app.getApplication(), 2131363366, 0).b(getTitleBarHeight());
+            QQToast.a(this.app.getApplication(), 2131363377, 0).b(getTitleBarHeight());
             finish();
             return false;
           }
@@ -195,7 +195,7 @@ public class AddFriendLogicActivity
     }
     while (!NetworkUtil.e(this))
     {
-      QQToast.a(this.app.getApplication(), 2131363516, 0).b(getTitleBarHeight());
+      QQToast.a(this.app.getApplication(), 2131363527, 0).b(getTitleBarHeight());
       finish();
       return false;
       if (this.h == 10004)
@@ -215,7 +215,7 @@ public class AddFriendLogicActivity
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
     }
     ((FriendListHandler)this.app.a(1)).a(this.f, this.h, this.jdField_g_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363369);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363380);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(new wo(this));
     if (!isFinishing()) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
@@ -269,7 +269,7 @@ public class AddFriendLogicActivity
       localOpenID = this.app.a().a(this.jdField_g_of_type_JavaLangString);
       if ((localOpenID == null) || (TextUtils.isEmpty(localOpenID.openID)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363369);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363380);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
         this.jdField_a_of_type_AndroidOsHandler = new Handler();
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(new wp(this), 3000L);
@@ -296,7 +296,7 @@ public class AddFriendLogicActivity
     int j = ((Intent)localObject).getShortExtra("group_option", (short)2);
     if (((FriendManager)this.app.getManager(8)).a(str) != null)
     {
-      QQToast.a(this.app.getApplication(), 2131363367, 0).b(getTitleBarHeight());
+      QQToast.a(this.app.getApplication(), 2131363378, 0).b(getTitleBarHeight());
       finish();
       return false;
     }
@@ -304,9 +304,9 @@ public class AddFriendLogicActivity
     {
       localObject = getIntent().getStringExtra("nick_name");
       if ((localObject == null) || (((String)localObject).length() == 0)) {
-        getString(2131362806);
+        getString(2131362813);
       }
-      QQToast.a(this.app.getApplication(), 2131363368, 0).b(getTitleBarHeight());
+      QQToast.a(this.app.getApplication(), 2131363379, 0).b(getTitleBarHeight());
       finish();
       return false;
     }
@@ -343,7 +343,7 @@ public class AddFriendLogicActivity
       if (this.i != 1) {
         break label263;
       }
-      j = 2131362778;
+      j = 2131362785;
       str2 = getString(j);
     }
     label263:
@@ -354,7 +354,7 @@ public class AddFriendLogicActivity
       if (localObject2 == null)
       {
         if (this.i == 1) {
-          localObject1 = getString(2131362780);
+          localObject1 = getString(2131362787);
         }
       }
       else
@@ -375,7 +375,7 @@ public class AddFriendLogicActivity
         if (this.i != 1) {
           break label369;
         }
-        str1 = getString(2131362784);
+        str1 = getString(2131362791);
       }
       for (;;)
       {
@@ -384,29 +384,29 @@ public class AddFriendLogicActivity
         this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton((String)localObject2, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
         this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(str1, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
         if ((this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null) || (this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null)) {
-          this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131296926).setVisibility(8);
+          this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131296927).setVisibility(8);
         }
         return;
-        j = 2131362779;
+        j = 2131362786;
         break;
         if (this.i == 2)
         {
-          localObject1 = getString(2131362781);
+          localObject1 = getString(2131362788);
           break label145;
         }
         if (this.i == 3)
         {
-          localObject1 = getString(2131362782);
+          localObject1 = getString(2131362789);
           break label145;
         }
         localObject1 = localObject2;
         if (this.i != 4) {
           break label145;
         }
-        localObject1 = getString(2131362783);
+        localObject1 = getString(2131362790);
         break label145;
         label330:
-        localObject2 = getString(2131362785);
+        localObject2 = getString(2131362792);
         break label167;
         label342:
         localObject2 = str3;
@@ -417,7 +417,7 @@ public class AddFriendLogicActivity
         localObject2 = str3;
         break label167;
         label369:
-        str1 = getString(2131362786);
+        str1 = getString(2131362793);
         continue;
         label380:
         if (TextUtils.isEmpty(str1.trim())) {
@@ -435,11 +435,11 @@ public class AddFriendLogicActivity
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131362444);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131362487);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131362445);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131362488);
     wt localwt = new wt(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131362794, localwt);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131362445, localwt);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131362801, localwt);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131362446, localwt);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   

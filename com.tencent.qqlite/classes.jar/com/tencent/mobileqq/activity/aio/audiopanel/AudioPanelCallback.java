@@ -4,9 +4,9 @@ public abstract interface AudioPanelCallback
 {
   public abstract boolean a();
   
-  public abstract void e();
+  public abstract void b();
   
-  public abstract void f();
+  public abstract void c();
 }
 
 

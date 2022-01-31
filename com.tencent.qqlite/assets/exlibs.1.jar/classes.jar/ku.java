@@ -16,8 +16,8 @@ public class ku
   
   public boolean onPreDraw()
   {
-    ImageView localImageView1 = (ImageView)this.a.findViewById(2131296614);
-    ImageView localImageView2 = (ImageView)this.a.findViewById(2131296622);
+    ImageView localImageView1 = (ImageView)this.a.findViewById(2131296617);
+    ImageView localImageView2 = (ImageView)this.a.findViewById(2131296625);
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     this.a.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
     int i = localDisplayMetrics.widthPixels - localImageView1.getWidth() - AIOUtils.a(50.0F, this.a.getResources()) - localImageView2.getWidth();

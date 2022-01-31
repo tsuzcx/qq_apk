@@ -1,21 +1,28 @@
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import java.util.ArrayList;
 
-public class anj
+class anj
   implements Runnable
 {
-  public anj(ForwardRecentActivity paramForwardRecentActivity) {}
+  anj(anf paramanf, Drawable paramDrawable) {}
   
   public void run()
   {
-    if (this.a.isFinishing()) {}
-    do
+    if ((this.jdField_a_of_type_Anf.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_Anf.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()))
+    {
+      ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_Anf.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a.get("PhotoConst.PHOTO_PATHS");
+      if (localArrayList != null) {
+        this.jdField_a_of_type_Anf.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true, localArrayList.size());
+      }
+    }
+    else
     {
       return;
-      this.a.d = true;
-      ForwardRecentActivity.a(this.a).d();
-    } while ((!this.a.b) || (this.a.f != 11));
-    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131362372));
+    }
+    this.jdField_a_of_type_Anf.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true, 0);
   }
 }
 

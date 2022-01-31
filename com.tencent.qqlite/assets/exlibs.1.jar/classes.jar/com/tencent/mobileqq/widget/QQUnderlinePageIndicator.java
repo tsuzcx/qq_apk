@@ -10,7 +10,7 @@ import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 import com.tencent.mobileqq.activity.recent.cur.IDragView.OnChangeModeListener;
 import com.tencent.mobileqq.app.Frame;
 import com.tencent.mobileqq.app.FrameActivity.TabInfo;
-import ezd;
+import fbj;
 import java.util.List;
 
 public class QQUnderlinePageIndicator
@@ -104,7 +104,7 @@ public class QQUnderlinePageIndicator
     }
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
     invalidate();
-    post(new ezd(this));
+    post(new fbj(this));
   }
 }
 

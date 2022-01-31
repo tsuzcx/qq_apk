@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import ded;
-import dee;
+import dff;
+import dfg;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -49,18 +49,18 @@ public class SogouEmojiTaskController
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "func addTask begins, packId:" + paramString1 + ",exprId:" + paramString2);
     }
-    dee localdee = new dee();
+    dfg localdfg = new dfg();
     this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-    localdee.jdField_a_of_type_JavaLangString = paramString1;
-    localdee.b = paramString2;
-    localdee.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localdfg.jdField_a_of_type_JavaLangString = paramString1;
+    localdfg.b = paramString2;
+    localdfg.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
     if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localdee);
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localdfg);
     }
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "func addTask ends, mCurTaskId:" + this.jdField_a_of_type_Int + ",task size:" + this.jdField_a_of_type_JavaUtilMap.size());
     }
-    b(2131364057);
+    b(2131364068);
     return this.jdField_a_of_type_Int;
   }
   
@@ -100,7 +100,7 @@ public class SogouEmojiTaskController
     }
     if (this.jdField_a_of_type_JavaUtilMap != null)
     {
-      if ((dee)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null) {}
+      if ((dfg)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null) {}
       for (boolean bool = true;; bool = false)
       {
         if (QLog.isColorLevel()) {
@@ -153,8 +153,8 @@ public class SogouEmojiTaskController
         QLog.d(jdField_a_of_type_JavaLangString, 2, "func showProgressDialog ends");
       }
       return;
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this.jdField_a_of_type_AndroidAppActivity, 2131624119);
-      this.jdField_a_of_type_AndroidAppProgressDialog.setOnDismissListener(new ded(this));
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this.jdField_a_of_type_AndroidAppActivity, 2131624120);
+      this.jdField_a_of_type_AndroidAppProgressDialog.setOnDismissListener(new dff(this));
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
       this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130903271);

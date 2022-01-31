@@ -21,7 +21,7 @@ import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
 import com.tencent.mobileqq.systemmsg.SystemMsgController;
 import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.qphone.base.util.QLog;
-import cye;
+import czg;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -1391,7 +1391,7 @@ public abstract class BaseMessageManager
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b.put(MsgProxyUtils.a(paramString, paramInt1), Boolean.valueOf(true));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cye(this, paramString, paramInt1, paramInt2, paramRefreshMessageContext));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new czg(this, paramString, paramInt1, paramInt2, paramRefreshMessageContext));
   }
   
   public void a(String paramString, int paramInt, long paramLong) {}

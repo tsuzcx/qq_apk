@@ -1,7 +1,7 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class axm
   implements View.OnClickListener
@@ -10,13 +10,11 @@ public class axm
   
   public void onClick(View paramView)
   {
-    if (NearbyPeopleProfileActivity.a(this.a) == 0)
+    if ((NearbyPeopleProfileActivity.a(this.a) != null) && (!this.a.isFinishing()))
     {
-      NearbyPeopleProfileActivity.i(this.a);
-      return;
+      NearbyPeopleProfileActivity.a(this.a).dismiss();
+      NearbyPeopleProfileActivity.a(this.a, null);
     }
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004B38", "0X8004B38", 0, 0, "", "", "", "");
-    NearbyPeopleProfileActivity.h(this.a);
   }
 }
 

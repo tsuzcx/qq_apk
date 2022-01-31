@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import android.text.format.Time;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.MD5;
-import cut;
+import cvu;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.app.MobileQQ;
@@ -90,7 +90,7 @@ public class ProcessExitReceiver
       } while (paramContext == null);
       paramIntent = paramContext.getStringArrayList("procNameList");
     } while ((!a(paramContext.getString("verify"), paramIntent)) || (!a(paramIntent)));
-    new cut(this).start();
+    new cvu(this).start();
     return;
     this.a.getApplication().otherProcessExit(true);
   }

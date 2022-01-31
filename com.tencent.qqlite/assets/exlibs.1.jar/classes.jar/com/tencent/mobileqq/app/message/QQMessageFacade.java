@@ -66,7 +66,7 @@ import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MsgAutoMonitorUtil;
-import cze;
+import dag;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -289,71 +289,90 @@ public class QQMessageFacade
       }
       return;
     }
-    BaseMessageManager.AddMessageContext localAddMessageContext = new BaseMessageManager.AddMessageContext(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject1 = new BaseMessageManager.AddMessageContext(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     long l2 = paramList.size();
-    Object localObject1 = paramList.iterator();
-    while (((Iterator)localObject1).hasNext())
+    Object localObject2 = paramList.iterator();
+    Object localObject3;
+    while (((Iterator)localObject2).hasNext())
     {
-      localObject2 = (MessageRecord)((Iterator)localObject1).next();
-      a(((MessageRecord)localObject2).istroop).a((MessageRecord)localObject2, paramEntityManager, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, localAddMessageContext);
+      localObject3 = (MessageRecord)((Iterator)localObject2).next();
+      a(((MessageRecord)localObject3).istroop).a((MessageRecord)localObject3, paramEntityManager, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, (BaseMessageManager.AddMessageContext)localObject1);
     }
-    Object localObject2 = a();
-    if (localObject2 != null)
+    paramEntityManager = a();
+    int i2;
+    if (paramEntityManager != null)
     {
-      int i2 = 0;
-      paramEntityManager = null;
-      i1 = i2;
-      if (((QQMessageFacade.Message)localObject2).istroop == 1)
+      i2 = 0;
+      if (paramEntityManager.istroop == 1)
       {
-        localObject1 = localAddMessageContext.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.a(((QQMessageFacade.Message)localObject2).frienduin);
-        paramEntityManager = (EntityManager)localObject1;
+        localObject2 = ((BaseMessageManager.AddMessageContext)localObject1).jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.a(paramEntityManager.frienduin);
         i1 = i2;
-        if (localObject1 != null)
+        if (localObject2 != null)
         {
-          paramEntityManager = (EntityManager)localObject1;
           i1 = i2;
-          if (((MessageInfo)localObject1).a() == ((QQMessageFacade.Message)localObject2).shmsgseq)
-          {
-            i1 = 1;
-            paramEntityManager = (EntityManager)localObject1;
+          if (((MessageInfo)localObject2).b() == paramEntityManager.shmsgseq) {
+            i1 = ((MessageInfo)localObject2).a();
           }
         }
-      }
-      if (i1 == 0) {
-        break label459;
+        paramEntityManager.bizType = i1;
       }
     }
-    label459:
-    for (i1 = paramEntityManager.a();; i1 = 0)
+    else
     {
-      ((QQMessageFacade.Message)localObject2).bizType = i1;
-      paramEntityManager = localAddMessageContext.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      while (paramEntityManager.hasNext())
+      localObject2 = ((BaseMessageManager.AddMessageContext)localObject1).jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    }
+    for (;;)
+    {
+      if (!((Iterator)localObject2).hasNext()) {
+        break label579;
+      }
+      localObject3 = (String)((Iterator)localObject2).next();
+      RecentUser localRecentUser = (RecentUser)((BaseMessageManager.AddMessageContext)localObject1).jdField_a_of_type_JavaUtilMap.get(localObject3);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.QQMessageFacade", 2, "addMessage saveRecentUser uin = " + localRecentUser.uin + " , type = " + localRecentUser.type + ", lastmsgtime = " + localRecentUser.lastmsgtime);
+      }
+      RecentUtil.a(localRecentUser, this);
+      ((BaseMessageManager.AddMessageContext)localObject1).jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy.a((RecentUser)((BaseMessageManager.AddMessageContext)localObject1).jdField_a_of_type_JavaUtilMap.get(localObject3));
+      if (paramEntityManager != null)
       {
-        localObject1 = (String)paramEntityManager.next();
-        localObject2 = (RecentUser)localAddMessageContext.jdField_a_of_type_JavaUtilMap.get(localObject1);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.QQMessageFacade", 2, "addMessage saveRecentUser uin = " + ((RecentUser)localObject2).uin + " , type = " + ((RecentUser)localObject2).type + ", lastmsgtime = " + ((RecentUser)localObject2).lastmsgtime);
+        if (paramEntityManager.istroop == 3000)
+        {
+          ((BaseMessageManager.AddMessageContext)localObject1).jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.b(localRecentUser.uin + "&" + 3000);
+          continue;
+          i1 = i2;
+          if (paramEntityManager.istroop != 3000) {
+            break;
+          }
+          localObject2 = ((BaseMessageManager.AddMessageContext)localObject1).jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.a(paramEntityManager.frienduin + "&" + 3000);
+          i1 = i2;
+          if (localObject2 == null) {
+            break;
+          }
+          i1 = i2;
+          if (((MessageInfo)localObject2).b() != paramEntityManager.shmsgseq) {
+            break;
+          }
+          i1 = ((MessageInfo)localObject2).b();
+          break;
         }
-        RecentUtil.a((RecentUser)localObject2, this);
-        localAddMessageContext.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy.a((RecentUser)localAddMessageContext.jdField_a_of_type_JavaUtilMap.get(localObject1));
-        localAddMessageContext.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.b(((RecentUser)localObject2).uin);
+        ((BaseMessageManager.AddMessageContext)localObject1).jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.b(localRecentUser.uin);
       }
     }
-    paramEntityManager = localAddMessageContext.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+    label579:
+    paramEntityManager = ((BaseMessageManager.AddMessageContext)localObject1).jdField_b_of_type_JavaUtilMap.keySet().iterator();
     while (paramEntityManager.hasNext())
     {
-      localObject1 = (String)paramEntityManager.next();
-      TroopAssistantManager.a().a((MessageRecord)localAddMessageContext.jdField_b_of_type_JavaUtilMap.get(localObject1), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localObject2 = (String)paramEntityManager.next();
+      TroopAssistantManager.a().a((MessageRecord)((BaseMessageManager.AddMessageContext)localObject1).jdField_b_of_type_JavaUtilMap.get(localObject2), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
     if (paramBoolean3) {
-      localAddMessageContext.jdField_a_of_type_ComTencentMobileqqAppMessageConversationFacade.a(paramList);
+      ((BaseMessageManager.AddMessageContext)localObject1).jdField_a_of_type_ComTencentMobileqqAppMessageConversationFacade.a(paramList);
     }
-    paramList = localAddMessageContext.jdField_c_of_type_JavaUtilMap.keySet().iterator();
+    paramList = ((BaseMessageManager.AddMessageContext)localObject1).jdField_c_of_type_JavaUtilMap.keySet().iterator();
     while (paramList.hasNext())
     {
       paramEntityManager = (String)paramList.next();
-      paramEntityManager = (MessageRecord)localAddMessageContext.jdField_c_of_type_JavaUtilMap.get(paramEntityManager);
+      paramEntityManager = (MessageRecord)((BaseMessageManager.AddMessageContext)localObject1).jdField_c_of_type_JavaUtilMap.get(paramEntityManager);
       paramEntityManager = a(paramEntityManager.frienduin, paramEntityManager.istroop);
       a(paramEntityManager);
       if (QLog.isColorLevel()) {
@@ -1101,7 +1120,7 @@ public class QQMessageFacade
   
   public void a()
   {
-    ThreadManager.a(new cze(this));
+    ThreadManager.a(new dag(this));
   }
   
   public void a(int paramInt)

@@ -9,9 +9,9 @@ import com.tencent.open.base.LogUtility;
 import com.tencent.open.base.StringAddition;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import fcp;
-import fcq;
-import fcr;
+import fev;
+import few;
+import fex;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -48,9 +48,9 @@ public abstract class BaseInterface
     if (this.firstIn)
     {
       Timer localTimer = ThreadManager.a();
-      fcp localfcp = new fcp(this, paramWebView, paramLong1);
-      this.mTask = localfcp;
-      localTimer.schedule(localfcp, paramLong2, paramLong2);
+      fev localfev = new fev(this, paramWebView, paramLong1);
+      this.mTask = localfev;
+      localTimer.schedule(localfev, paramLong2, paramLong2);
       this.firstIn = false;
     }
     try
@@ -87,7 +87,7 @@ public abstract class BaseInterface
     finally {}
     if (localArrayList.size() > 0)
     {
-      new Handler(Looper.getMainLooper()).post(new fcq(this, paramLong, localArrayList, paramWebView));
+      new Handler(Looper.getMainLooper()).post(new few(this, paramLong, localArrayList, paramWebView));
       return;
     }
     LogUtility.c(TAG, "Response<callBatch> AsyncInterface no need response");
@@ -96,7 +96,7 @@ public abstract class BaseInterface
   protected void batchCallbackError(WebView paramWebView, long paramLong, String paramString)
   {
     LogUtility.c(TAG, "batchCallbackError guid : " + paramLong + ", msg : " + paramString);
-    new Handler(Looper.getMainLooper()).post(new fcr(this, paramLong, paramString, paramWebView));
+    new Handler(Looper.getMainLooper()).post(new fex(this, paramLong, paramString, paramWebView));
   }
   
   public void call(String paramString, List paramList, JsBridge.JsBridgeListener paramJsBridgeListener)

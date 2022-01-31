@@ -1,33 +1,46 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
 public class dmi
-  implements Runnable
+  extends IClickListener_Ver51
 {
-  public dmi(QfileRecentAllFileTabView paramQfileRecentAllFileTabView) {}
+  public dmi(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
   
-  public void run()
+  public void a()
   {
-    this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      String str = QfileTimeUtils.a(localFileManagerEntity.srvTime);
-      if (!this.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
-        this.a.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
-      }
-      ((List)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).add(localFileManagerEntity);
-    }
-    this.a.i();
-    this.a.setSelect(0);
-    this.a.a(true);
-    this.a.c = false;
+    this.a.a.a().c();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().l();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().m();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().n();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().o();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

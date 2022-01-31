@@ -1,26 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.plugin.PluginManagerV2;
-
 public class fkp
-  implements DialogInterface.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  
-  private fkp(PluginManagerV2 paramPluginManagerV2, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_CooperationPluginPluginManagerV2.cancelInstall(this.jdField_a_of_type_JavaLangString);
-  }
+  public float a;
+  public int a;
+  public int b;
 }
 
 

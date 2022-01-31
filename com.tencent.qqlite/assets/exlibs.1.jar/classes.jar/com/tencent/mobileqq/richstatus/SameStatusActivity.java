@@ -40,10 +40,10 @@ import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
 import com.tencent.widget.XListView;
-import ecg;
-import ech;
-import eci;
-import ecj;
+import edl;
+import edm;
+import edn;
+import edo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -83,7 +83,7 @@ public class SameStatusActivity
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private ecj jdField_a_of_type_Ecj;
+  private edo jdField_a_of_type_Edo;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private HashSet jdField_a_of_type_JavaUtilHashSet = new HashSet();
@@ -109,7 +109,7 @@ public class SameStatusActivity
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(false, false);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839354);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839419);
     if (paramInt == 3)
     {
       this.jdField_e_of_type_AndroidWidgetTextView.setText("此时没有找到与你做相同事情的人");
@@ -131,7 +131,7 @@ public class SameStatusActivity
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppCardObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new ech(this);
+      this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new edm(this);
       this.app.a(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
     }
     if (this.jdField_a_of_type_JavaUtilHashMap == null)
@@ -167,7 +167,7 @@ public class SameStatusActivity
       this.jdField_b_of_type_Long = System.currentTimeMillis();
       return;
     }
-    a(1, getString(2131363356));
+    a(1, getString(2131363366));
     this.jdField_a_of_type_ComTencentWidgetXListView.B();
   }
   
@@ -203,18 +203,18 @@ public class SameStatusActivity
   
   private void f()
   {
-    Drawable localDrawable = getResources().getDrawable(2130838086);
+    Drawable localDrawable = getResources().getDrawable(2130838105);
     localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), localDrawable.getMinimumHeight());
     this.jdField_i_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, localDrawable, null);
     this.jdField_i_of_type_AndroidWidgetTextView.setOnClickListener(this);
     b(this.g);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131298815));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837635);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130903643, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298810));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131298841));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837660);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130903652, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298836));
     this.jdField_e_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298809));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837910);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298835));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837928);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(true, true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2130903274, this.jdField_a_of_type_ComTencentWidgetXListView, false));
@@ -222,8 +222,8 @@ public class SameStatusActivity
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
-    this.jdField_a_of_type_Ecj = new ecj(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ecj);
+    this.jdField_a_of_type_Edo = new edo(this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Edo);
   }
   
   private void g()
@@ -237,7 +237,7 @@ public class SameStatusActivity
   
   private void h()
   {
-    d(new eci(this));
+    d(new edn(this));
   }
   
   private void i()
@@ -288,7 +288,7 @@ public class SameStatusActivity
     this.d.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localView, -1, -1, true);
     this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131624153);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131624154);
   }
   
   public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
@@ -345,7 +345,7 @@ public class SameStatusActivity
       if (this.r != 2)
       {
         this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.b();
-        this.jdField_a_of_type_Ecj.notifyDataSetChanged();
+        this.jdField_a_of_type_Edo.notifyDataSetChanged();
       }
     }
     else
@@ -453,7 +453,7 @@ public class SameStatusActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ecj.notifyDataSetChanged();
+      this.jdField_a_of_type_Edo.notifyDataSetChanged();
       return;
       g();
       break;
@@ -495,10 +495,10 @@ public class SameStatusActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentViewNoBackground(2130903645);
+    setContentViewNoBackground(2130903654);
     e();
     f();
-    b(new ecg(this));
+    b(new edl(this));
     return true;
   }
   
@@ -535,7 +535,7 @@ public class SameStatusActivity
     if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
       a(2);
     }
-    a(1, 2131363356);
+    a(1, 2131363366);
     return true;
   }
   

@@ -137,11 +137,11 @@ public final class qs
         return;
         label414:
         localObject1 = DialogUtil.a(this.jdField_a_of_type_MqqAppAppActivity, 230);
-        ((QQCustomDialog)localObject1).setTitle(2131362433);
+        ((QQCustomDialog)localObject1).setTitle(2131362434);
         ((QQCustomDialog)localObject1).setMessage(paramBundle);
         localObject2 = new qt(this);
-        ((QQCustomDialog)localObject1).setPositiveButton(2131362795, new qu(this, paramBundle));
-        ((QQCustomDialog)localObject1).setNegativeButton(2131362794, (DialogInterface.OnClickListener)localObject2);
+        ((QQCustomDialog)localObject1).setPositiveButton(2131362802, new qu(this, paramBundle));
+        ((QQCustomDialog)localObject1).setNegativeButton(2131362801, (DialogInterface.OnClickListener)localObject2);
         ((QQCustomDialog)localObject1).setOnCancelListener((DialogInterface.OnCancelListener)localObject2);
         ((QQCustomDialog)localObject1).show();
         ScannerUtils.a(paramInt, paramBundle, this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);

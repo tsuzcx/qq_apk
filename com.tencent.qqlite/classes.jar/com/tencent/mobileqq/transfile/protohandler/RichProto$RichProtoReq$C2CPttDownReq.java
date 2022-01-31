@@ -3,6 +3,7 @@ package com.tencent.mobileqq.transfile.protohandler;
 public class RichProto$RichProtoReq$C2CPttDownReq
   extends RichProto.RichProtoReq.ReqCommon
 {
+  public int a;
   public String a;
   public boolean a;
   public String b;

@@ -11,24 +11,24 @@ public class TroopCreateLogic$TroopCreateResult
       return 0;
     }
     if ((paramInt == 70) || (paramInt == 7)) {
-      return 2131362316;
-    }
-    if ((paramInt == 97) || (paramInt == 9)) {
       return 2131362317;
     }
-    if ((paramInt == 98) || (paramInt == 10)) {
+    if ((paramInt == 97) || (paramInt == 9)) {
       return 2131362318;
     }
-    if ((paramInt == 101) || (paramInt == 11) || (paramInt == 102) || (paramInt == 103) || (paramInt == 14)) {
+    if ((paramInt == 98) || (paramInt == 10)) {
       return 2131362319;
     }
-    if ((paramInt == 105) || (paramInt == 16)) {
+    if ((paramInt == 101) || (paramInt == 11) || (paramInt == 102) || (paramInt == 103) || (paramInt == 14)) {
       return 2131362320;
     }
-    if (paramInt == 21) {
+    if ((paramInt == 105) || (paramInt == 16)) {
       return 2131362321;
     }
-    return 2131362322;
+    if (paramInt == 21) {
+      return 2131362322;
+    }
+    return 2131362323;
   }
 }
 

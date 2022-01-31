@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200fa" android:layout_width="fill_parent" android:layout_height="63.0dip"
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02019d" android:layout_width="fill_parent" android:layout_height="62.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0sp" android:textColor="#ff868686" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0909d0" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="43.0dip" />
-</LinearLayout>
+    <ImageView android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0902f3" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201c1" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b008d" android:ellipsize="end" android:id="@id/tv_name" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0909e8" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0902f3" android:layout_centerVertical="true" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a9" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0909e8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="30.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.widget.OvalProgress;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 
 public class eyr
+  implements Runnable
 {
-  float jdField_a_of_type_Float;
-  float b;
-  float c;
-  float d;
+  public eyr(HttpCommunicator paramHttpCommunicator) {}
   
-  eyr(OvalProgress paramOvalProgress) {}
+  public void run()
+  {
+    this.a.c();
+  }
 }
 
 

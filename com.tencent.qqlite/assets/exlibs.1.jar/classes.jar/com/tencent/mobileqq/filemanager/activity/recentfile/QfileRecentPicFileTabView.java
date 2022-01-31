@@ -12,10 +12,10 @@ import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
 import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
 import com.tencent.qphone.base.util.QLog;
-import dmv;
-import dmw;
-import dmx;
-import dmy;
+import dnx;
+import dny;
+import dnz;
+import doa;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -39,7 +39,7 @@ public class QfileRecentPicFileTabView
   
   private void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dmv(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dnx(this);
   }
   
   private void h()
@@ -53,7 +53,7 @@ public class QfileRecentPicFileTabView
       return;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a().R();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new dmw(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new dny(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51);
   }
   
@@ -64,7 +64,7 @@ public class QfileRecentPicFileTabView
   
   protected void a()
   {
-    a(new dmx(this));
+    a(new dnz(this));
   }
   
   protected void b(FileManagerEntity paramFileManagerEntity)
@@ -75,7 +75,7 @@ public class QfileRecentPicFileTabView
     if (paramFileManagerEntity.nFileType != 0) {
       return;
     }
-    a(new dmy(this, paramFileManagerEntity));
+    a(new doa(this, paramFileManagerEntity));
   }
   
   protected boolean b(FileManagerEntity paramFileManagerEntity)

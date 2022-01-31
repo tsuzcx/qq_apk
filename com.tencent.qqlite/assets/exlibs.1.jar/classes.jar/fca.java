@@ -1,16 +1,18 @@
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateListener;
-import com.tencent.open.agent.SocialFriendChooser;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.widget.UnderlinePageIndicator.SavedState;
 
-class fca
-  implements OpenSdkFriendService.CheckAvatarUpdateListener
+public final class fca
+  implements Parcelable.Creator
 {
-  fca(fbz paramfbz) {}
-  
-  public void a()
+  public UnderlinePageIndicator.SavedState a(Parcel paramParcel)
   {
-    ((OpenFrame)this.a.a.a.getCurrentView()).f();
+    return new UnderlinePageIndicator.SavedState(paramParcel, null);
+  }
+  
+  public UnderlinePageIndicator.SavedState[] a(int paramInt)
+  {
+    return new UnderlinePageIndicator.SavedState[paramInt];
   }
 }
 

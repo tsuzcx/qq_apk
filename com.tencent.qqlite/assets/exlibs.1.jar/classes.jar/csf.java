@@ -1,174 +1,69 @@
-import android.util.Pair;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.DiscussionIconHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.app.ConfigHandler;
 
 public class csf
-  extends Thread
+  implements Runnable
 {
-  public boolean a;
+  public csf(ConfigHandler paramConfigHandler, String paramString1, String paramString2) {}
   
-  private csf(DiscussionIconHelper paramDiscussionIconHelper)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
+  /* Error */
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.dih", 2, "CheckDisIconThread start.");
-    }
-    int i;
-    long l;
-    String str1;
-    label62:
-    String str2;
-    csh localcsh;
-    Object localObject7;
-    int j;
-    boolean bool1;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = 0;
-      l = System.currentTimeMillis();
-      str1 = null;
-      Object localObject1 = null;
-      synchronized (DiscussionIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper))
-      {
-        Iterator localIterator = DiscussionIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper).keySet().iterator();
-        if (!localIterator.hasNext()) {
-          break label546;
-        }
-        str2 = (String)localIterator.next();
-        localcsh = (csh)DiscussionIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper).get(str2);
-        if ((localcsh != null) && (localcsh.jdField_b_of_type_Int >= 8)) {
-          DiscussionIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper).a(false, true, str2);
-        }
-      }
-      if ((localcsh == null) || (localcsh.jdField_a_of_type_JavaLangString == null) || (localcsh.jdField_a_of_type_Byte == 3)) {
-        break label808;
-      }
-      if ((localcsh.jdField_a_of_type_Byte == 1) && (l - localcsh.jdField_a_of_type_Long >= DiscussionIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper)))
-      {
-        localObject7 = str1;
-        if (str1 == null) {
-          localObject7 = new ArrayList();
-        }
-        j = localcsh.jdField_a_of_type_JavaUtilArrayList.size();
-        localcsh.jdField_a_of_type_Byte = 2;
-        if (j <= 0) {
-          break label825;
-        }
-        bool2 = true;
-        bool1 = bool2;
-        if (localcsh.jdField_b_of_type_JavaLangString != null)
-        {
-          str1 = DiscussionIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper, localcsh.jdField_a_of_type_JavaUtilArrayList, str2, false);
-          bool1 = bool2;
-          if (localcsh.jdField_b_of_type_JavaLangString.equals(str1)) {
-            bool1 = false;
-          }
-        }
-        bool2 = bool1;
-        if (bool1)
-        {
-          ((ArrayList)localObject7).add(Pair.create(str2, localcsh));
-          DiscussionIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper).remove(str2);
-        }
-      }
-    }
-    label546:
-    label808:
-    label811:
-    label814:
-    label822:
-    label825:
-    for (boolean bool2 = bool1;; bool2 = false)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.qqhead.dih", 2, "CheckDisIcon expired: " + str2 + ", iconCount: " + j + ", faceCount:" + localcsh.jdField_a_of_type_Int + ", isTryCreate: " + bool2 + ", faceUinSet: " + localcsh.jdField_a_of_type_JavaLangString);
-        break label814;
-        if ((localcsh.jdField_a_of_type_Byte == 2) && (l - localcsh.jdField_a_of_type_Long >= DiscussionIconHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.qqhead.dih", 2, "CheckDisIcon timeout: " + str2 + ", iconCount: " + localcsh.jdField_a_of_type_JavaUtilArrayList.size() + ", faceCount:" + localcsh.jdField_a_of_type_Int + ", faceUinSet: " + localcsh.jdField_a_of_type_JavaLangString);
-          }
-          if (localObject2 != null) {
-            break label811;
-          }
-          ??? = new ArrayList();
-        }
-        for (;;)
-        {
-          for (;;)
-          {
-            ((ArrayList)???).add(str2);
-            i += 1;
-            break label822;
-            if (localcsh.jdField_a_of_type_Byte == 3) {
-              break label808;
-            }
-            i += 1;
-            break label822;
-            if ((this.jdField_a_of_type_Boolean) && (str1 != null))
-            {
-              j = 0;
-              while ((j < str1.size()) && (this.jdField_a_of_type_Boolean))
-              {
-                localObject7 = (Pair)str1.get(j);
-                DiscussionIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper, (String)((Pair)localObject7).first, (csh)((Pair)localObject7).second, true);
-                j += 1;
-              }
-            }
-            if ((this.jdField_a_of_type_Boolean) && (??? != null))
-            {
-              j = 0;
-              while ((j < ((ArrayList)???).size()) && (this.jdField_a_of_type_Boolean))
-              {
-                str1 = (String)((ArrayList)???).get(j);
-                this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper.c(str1);
-                j += 1;
-              }
-            }
-            if (i == 0) {}
-            synchronized (DiscussionIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper))
-            {
-              DiscussionIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper, null);
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.qqhead.dih", 2, "CheckDisIconThread exit. isRunning=" + this.jdField_a_of_type_Boolean);
-              }
-              return;
-              if (!this.jdField_a_of_type_Boolean) {
-                break;
-              }
-            }
-          }
-          try
-          {
-            synchronized (DiscussionIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper))
-            {
-              DiscussionIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper).wait(DiscussionIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper) / 10);
-            }
-            localObject5 = finally;
-            throw localObject5;
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            break label781;
-          }
-          break label822;
-        }
-      }
-      Object localObject6 = localObject7;
-      i += 1;
-      break label62;
-    }
+    // Byte code:
+    //   0: new 27	java/io/File
+    //   3: dup
+    //   4: aload_0
+    //   5: getfield 16	csf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   8: invokespecial 30	java/io/File:<init>	(Ljava/lang/String;)V
+    //   11: astore_1
+    //   12: aload_0
+    //   13: getfield 14	csf:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
+    //   16: getfield 35	com/tencent/mobileqq/app/ConfigHandler:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   19: new 37	java/net/URL
+    //   22: dup
+    //   23: aload_0
+    //   24: getfield 18	csf:b	Ljava/lang/String;
+    //   27: invokespecial 38	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   30: aload_1
+    //   31: invokestatic 43	com/tencent/mobileqq/utils/HttpDownloadUtil:a	(Lcom/tencent/common/app/AppInterface;Ljava/net/URL;Ljava/io/File;)Z
+    //   34: ifeq +16 -> 50
+    //   37: aload_0
+    //   38: getfield 14	csf:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
+    //   41: iconst_3
+    //   42: iconst_1
+    //   43: aload_0
+    //   44: getfield 16	csf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   47: invokevirtual 46	com/tencent/mobileqq/app/ConfigHandler:a	(IZLjava/lang/Object;)V
+    //   50: aload_0
+    //   51: getfield 14	csf:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
+    //   54: aload_0
+    //   55: getfield 18	csf:b	Ljava/lang/String;
+    //   58: invokestatic 49	com/tencent/mobileqq/app/ConfigHandler:a	(Lcom/tencent/mobileqq/app/ConfigHandler;Ljava/lang/String;)V
+    //   61: return
+    //   62: astore_1
+    //   63: aload_0
+    //   64: getfield 14	csf:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
+    //   67: aload_0
+    //   68: getfield 18	csf:b	Ljava/lang/String;
+    //   71: invokestatic 49	com/tencent/mobileqq/app/ConfigHandler:a	(Lcom/tencent/mobileqq/app/ConfigHandler;Ljava/lang/String;)V
+    //   74: return
+    //   75: astore_1
+    //   76: aload_0
+    //   77: getfield 14	csf:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
+    //   80: aload_0
+    //   81: getfield 18	csf:b	Ljava/lang/String;
+    //   84: invokestatic 49	com/tencent/mobileqq/app/ConfigHandler:a	(Lcom/tencent/mobileqq/app/ConfigHandler;Ljava/lang/String;)V
+    //   87: aload_1
+    //   88: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	89	0	this	csf
+    //   11	20	1	localFile	java.io.File
+    //   62	1	1	localException	java.lang.Exception
+    //   75	13	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	50	62	java/lang/Exception
+    //   12	50	75	finally
   }
 }
 

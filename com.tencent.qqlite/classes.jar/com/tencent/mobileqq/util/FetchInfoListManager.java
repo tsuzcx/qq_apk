@@ -5,7 +5,7 @@ import android.os.Looper;
 import android.os.Message;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
-import ery;
+import eud;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
@@ -25,7 +25,7 @@ public class FetchInfoListManager
   {
     this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager$FetchInfoListener = paramFetchInfoListener;
     this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoReq = new FetchInfoReq();
-    this.jdField_a_of_type_AndroidOsHandler = new ery(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new eud(this, Looper.getMainLooper());
   }
   
   private boolean a(FetchInfoReq paramFetchInfoReq)

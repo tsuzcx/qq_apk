@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
 public class djz
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public djz(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public djz(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.notifyDataSetChanged();
+    QfileBaseCloudFileTabView.a(this.a);
   }
 }
 

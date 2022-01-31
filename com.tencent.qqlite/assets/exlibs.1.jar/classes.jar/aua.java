@@ -1,30 +1,85 @@
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Filter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.DropdownView;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
 
 public class aua
-  implements Runnable
+  extends ArrayAdapter
+  implements View.OnClickListener
 {
-  public aua(LoginInfoActivity paramLoginInfoActivity) {}
+  Filter jdField_a_of_type_AndroidWidgetFilter;
   
-  public void run()
+  public aua(LoginActivity paramLoginActivity, Context paramContext)
   {
-    try
-    {
-      if ((LoginInfoActivity.a(this.a) != null) && (LoginInfoActivity.a(this.a).isShowing()))
-      {
-        LoginInfoActivity.a(this.a).dismiss();
-        LoginInfoActivity.a(this.a).cancel();
-      }
-      LoginInfoActivity.a(this.a, null);
-      return;
+    super(paramContext, 2130903042, 2131296450, paramLoginActivity.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public String a(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.app.b(((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin());
+  }
+  
+  public String b(int paramInt)
+  {
+    return ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.size() == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView.b().setVisibility(8);
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      return super.getCount();
+      this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView.b().setVisibility(0);
     }
+  }
+  
+  public Filter getFilter()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetFilter == null) {
+      this.jdField_a_of_type_AndroidWidgetFilter = new aub(this);
+    }
+    return this.jdField_a_of_type_AndroidWidgetFilter;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = super.getView(paramInt, paramView, paramViewGroup);
+    paramViewGroup = (LinearLayout)paramView.findViewById(2131296448);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131296449);
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.a(((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin(), false);
+    if (localBitmap != null) {
+      localImageView.setImageBitmap(localBitmap);
+    }
+    for (;;)
+    {
+      localImageView = (ImageView)paramView.findViewById(2131296451);
+      localImageView.setTag(Integer.valueOf(paramInt));
+      localImageView.setOnClickListener(this);
+      localImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.getString(2131362920));
+      paramView.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.getString(2131362906) + "%s", new Object[] { ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin() }));
+      paramViewGroup.setOnClickListener(new auc(this, paramInt));
+      return paramView;
+      localImageView.setImageResource(2130838139);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.e = ((Integer)paramView.getTag()).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.showDialog(1);
   }
 }
 

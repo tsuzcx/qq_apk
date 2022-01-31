@@ -8,7 +8,7 @@ import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.storage.StorageManager;
 import android.util.Log;
-import ewr;
+import eyw;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -20,7 +20,7 @@ public class SDCardMountInforUtil
 {
   private static SDCardMountInforUtil jdField_a_of_type_ComTencentMobileqqUtilsKapalaiadapterSdcardmountinforutilSDCardMountInforUtil;
   private final int jdField_a_of_type_Int = 0;
-  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ewr(this);
+  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new eyw(this);
   private Context jdField_a_of_type_AndroidContentContext;
   private final File jdField_a_of_type_JavaIoFile = new File(Environment.getRootDirectory().getAbsoluteFile() + File.separator + "etc" + File.separator + "vold.conf");
   public final String a;

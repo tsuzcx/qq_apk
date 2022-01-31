@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f09062a" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02037c" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00da"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/tips_popup_win_bg" android:layout_width="wrap_content" android:layout_height="100.0dip" android:minWidth="145.0dip">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090635" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="14.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090636" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="9.0dip" android:layout_marginRight="20.0dip" android:singleLine="true" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f09062b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <android.support.v4.view.ViewPager android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09040d" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" />
+        <com.tencent.mobileqq.troop.widget.DotIndexView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09062c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09062d" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="21.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020380" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a9" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090338" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a022a" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

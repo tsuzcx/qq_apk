@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
 
-public class bwn
+class bwn
   implements Runnable
 {
-  AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
-  String jdField_a_of_type_JavaLangString;
-  
-  public bwn(String paramString, AudioPlayer paramAudioPlayer)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = paramAudioPlayer;
-  }
+  bwn(bwl parambwl) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(this.jdField_a_of_type_JavaLangString);
+    ((ChatActivity)this.a.a.b).a().H();
   }
 }
 

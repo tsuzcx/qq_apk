@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.XListView android:id="@id/common_xlistview" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020083" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0b0011" android:divider="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201e8" android:dividerHeight="1.0px" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
-</LinearLayout>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:scanner="http://schemas.android.com/apk/res/com.tencent.qqlite">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:baselineAligned="false">
+        <RelativeLayout android:gravity="top" android:id="@id/rlCommenTitle" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020365" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+            <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="96.0dip" android:layout_marginRight="96.0dip" android:text="@null" android:singleLine="true" android:layout_centerInParent="true" />
+            <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:maxWidth="200.0dip" android:includeFontPadding="false" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020716" android:drawablePadding="6.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f09061f" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f090625" android:layout_below="@id/rlCommenTitle" android:layout_alignParentLeft="true">
+            <com.tencent.biz.widgets.ScannerView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09060c" android:layout_width="fill_parent" android:layout_height="fill_parent" scanner:autoStart="false" />
+            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09060d" android:background="#00000030" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <LinearLayout android:layout_gravity="center|right|top" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090625" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020365" android:paddingLeft="0.0dip" android:paddingTop="20.0dip" android:paddingRight="0.0dip" android:paddingBottom="20.0dip" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c0091" android:layout_height="fill_parent" android:layout_below="@id/rlCommenTitle" android:layout_alignParentRight="true">
+            <TextView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090620" android:layout_width="80.0dip" android:layout_height="wrap_content" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020364" android:layout_weight="1.0" />
+            <TextView android:enabled="false" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090621" android:layout_width="80.0dip" android:layout_height="wrap_content" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02036f" android:layout_weight="1.0" />
+            <TextView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090622" android:layout_width="80.0dip" android:layout_height="wrap_content" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02036e" android:layout_weight="1.0" />
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f090623" android:background="#ff333333" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f090624" android:layout_centerVertical="true" style="?android:attr/progressBarStyleSmall" />
+        <TextView android:textSize="18.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090624" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0266" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</merge>

@@ -1,32 +1,15 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EmosmDetailActivity;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
 
-public class alt
-  implements View.OnClickListener
+public final class alt
+  implements Runnable
 {
-  public alt(EmosmDetailActivity paramEmosmDetailActivity) {}
+  public alt(Context paramContext, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.EmosmDetailActivity", 2, "voice icon clicked");
-    }
-    EmosmDetailActivity.a(this.a.app, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Ep_detail_play", 0);
-    if (this.a.app.d())
-    {
-      QQToast.a(this.a.app.a(), 2131363140, 0).b(this.a.a.getResources().getDimensionPixelSize(2131492887));
-      return;
-    }
-    MediaPlayerManager.a(this.a.app).a(MarketFaceItemBuilder.a);
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131492887));
   }
 }
 

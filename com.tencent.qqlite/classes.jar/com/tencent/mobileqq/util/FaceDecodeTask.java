@@ -7,8 +7,8 @@ import android.util.Pair;
 import com.tencent.mobileqq.app.DiscussionHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import erp;
-import erq;
+import etu;
+import etv;
 import java.util.ArrayList;
 
 public class FaceDecodeTask
@@ -19,7 +19,7 @@ public class FaceDecodeTask
   private static Object jdField_a_of_type_JavaLangObject = new Object();
   private static final String jdField_a_of_type_JavaLangString = "Q.qqhead.FaceDecodeTask";
   private static ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private static erq[] jdField_a_of_type_ArrayOfErq;
+  private static etv[] jdField_a_of_type_ArrayOfEtv;
   public static final int b = 4;
   public static final int c = 11;
   public static final int d = 101;
@@ -52,22 +52,22 @@ public class FaceDecodeTask
         if (jdField_a_of_type_AndroidOsHandler != null) {
           jdField_a_of_type_AndroidOsHandler.removeMessages(e);
         }
-        if (jdField_a_of_type_ArrayOfErq != null)
+        if (jdField_a_of_type_ArrayOfEtv != null)
         {
           i = 0;
-          if (i < jdField_a_of_type_ArrayOfErq.length)
+          if (i < jdField_a_of_type_ArrayOfEtv.length)
           {
-            if (jdField_a_of_type_ArrayOfErq[i] == null) {
+            if (jdField_a_of_type_ArrayOfEtv[i] == null) {
               break label107;
             }
-            jdField_a_of_type_ArrayOfErq[i].a();
+            jdField_a_of_type_ArrayOfEtv[i].a();
             break label107;
           }
         }
         synchronized (jdField_a_of_type_JavaUtilArrayList)
         {
           jdField_a_of_type_JavaUtilArrayList.notifyAll();
-          jdField_a_of_type_ArrayOfErq = null;
+          jdField_a_of_type_ArrayOfEtv = null;
           jdField_a_of_type_AndroidOsLooper = null;
           jdField_a_of_type_AndroidOsHandler = null;
           return;
@@ -91,20 +91,20 @@ public class FaceDecodeTask
   
   private static void b()
   {
-    if (jdField_a_of_type_ArrayOfErq == null) {
+    if (jdField_a_of_type_ArrayOfEtv == null) {
       synchronized (jdField_a_of_type_JavaLangObject)
       {
-        if (jdField_a_of_type_ArrayOfErq == null)
+        if (jdField_a_of_type_ArrayOfEtv == null)
         {
           jdField_a_of_type_AndroidOsLooper = Looper.getMainLooper();
-          jdField_a_of_type_AndroidOsHandler = new erp(jdField_a_of_type_AndroidOsLooper);
+          jdField_a_of_type_AndroidOsHandler = new etu(jdField_a_of_type_AndroidOsLooper);
           jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-          jdField_a_of_type_ArrayOfErq = new erq[f];
+          jdField_a_of_type_ArrayOfEtv = new etv[f];
           int i = 0;
-          while (i < jdField_a_of_type_ArrayOfErq.length)
+          while (i < jdField_a_of_type_ArrayOfEtv.length)
           {
-            jdField_a_of_type_ArrayOfErq[i] = new erq(null);
-            jdField_a_of_type_ArrayOfErq[i].start();
+            jdField_a_of_type_ArrayOfEtv[i] = new etv(null);
+            jdField_a_of_type_ArrayOfEtv[i].start();
             i += 1;
           }
         }

@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarOfflineFile.BaseActionBarOfflineFile;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class dsz
-  implements View.OnClickListener
+class dsz
+  implements FMDialogUtil.FMDialogInterface
 {
-  public dsz(LocalMusicFileView paramLocalMusicFileView) {}
+  dsz(dsy paramdsy) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (LocalMusicFileView.a(this.a))
-    {
-      LocalMusicFileView.a(this.a);
-      return;
-    }
-    LocalMusicFileView.b(this.a);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.a.a.h();
+    this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().i();
+    this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.d();
   }
+  
+  public void b() {}
 }
 
 

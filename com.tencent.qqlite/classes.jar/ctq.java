@@ -1,217 +1,70 @@
-import android.annotation.SuppressLint;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.util.Pair;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.MemoryManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.EmoticonManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.util.SortUtils;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.emoticon.ReqInfo;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Map;
 
 public class ctq
-  implements Runnable
+  extends DownloadListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  boolean jdField_a_of_type_Boolean;
-  
-  public ctq(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
+  public ctq(EmoticonManagerImp paramEmoticonManagerImp, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    if (MemoryManager.a() == null)
-    {
-      MemoryManager.a(new ArrayList());
-      MemoryManager.a().add("com.android.browser");
-      MemoryManager.a().add("com.android.email");
-      MemoryManager.a().add("com.sec.android.app.readershub");
-    }
-    if (MemoryManager.b() == null)
-    {
-      MemoryManager.b(new ArrayList());
-      paramQQAppInterface = Pattern.compile("^com.*.android.*");
-      MemoryManager.b().add(paramQQAppInterface);
-    }
-    if (MemoryManager.c() == null)
-    {
-      MemoryManager.c(new ArrayList());
-      MemoryManager.c().add("system");
-      MemoryManager.c().add("com.android.");
-      MemoryManager.c().add("com.google.process.");
-      MemoryManager.c().add("android.process.");
-    }
+    super(paramString1, paramString2);
   }
   
-  private boolean a(String paramString)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramString.startsWith("com.tencent.qqlite"))
+    EmojiManager localEmojiManager = (EmojiManager)EmoticonManagerImp.a(this.a).getManager(39);
+    Object localObject1 = paramDownloadTask.a();
+    EmoticonPackage localEmoticonPackage = (EmoticonPackage)((Bundle)localObject1).getSerializable("emoticonPackage");
+    Object localObject2 = EmosmUtils.getEmosmJsonUrl(localEmoticonPackage.epId);
+    int i = ((Bundle)localObject1).getInt("jsonType", EmojiManager.c);
+    localObject1 = (File)paramDownloadTask.a.get(localObject2);
+    localObject2 = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
+    ReqInfo localReqInfo = new ReqInfo();
+    if (((File)localObject1).exists())
     {
-      bool1 = true;
-      return bool1;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i >= MemoryManager.a().size()) {
-        break label56;
+      localObject1 = FileUtils.a((File)localObject1);
+      localObject1 = localEmojiManager.a(localEmoticonPackage, i, (byte[])localObject1, (ArrayList)localObject2, localArrayList, localReqInfo);
+      if (localObject1 == null) {
+        break label151;
       }
-      bool1 = bool2;
-      if (paramString.equals(MemoryManager.a().get(i))) {
+      localEmojiManager.a("param_error", (String)localObject1);
+      localEmojiManager.a(localEmoticonPackage, 11008);
+    }
+    label151:
+    do
+    {
+      do
+      {
+        return;
+        localObject1 = null;
         break;
-      }
-      i += 1;
-    }
-    label56:
-    i = 0;
-    while (i < MemoryManager.b().size())
-    {
-      if (((Pattern)MemoryManager.b().get(i)).matcher(paramString).find()) {
-        return true;
-      }
-      i += 1;
-    }
-    i = 0;
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i >= MemoryManager.c().size()) {
-        break;
-      }
-      if (paramString.startsWith((String)MemoryManager.c().get(i))) {
-        return true;
-      }
-      i += 1;
-    }
-  }
-  
-  @SuppressLint({"NewApi"})
-  public void run()
-  {
-    for (;;)
-    {
-      long l3;
-      try
-      {
-        boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.i;
-        if (bool) {
-          return;
-        }
-        int i = this.jdField_a_of_type_Int;
-        switch (i)
-        {
-        default: 
-          return;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        Intent localIntent;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("Q.Memory.MemoryManager", 2, "AlertMemoryRunner exception, actionType=" + this.jdField_a_of_type_Int, localThrowable);
-        localThrowable.printStackTrace();
-        return;
-        l1 = DeviceInfoUtil.d();
-        l2 = DeviceInfoUtil.c();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.Memory.MemoryManager", 2, "clear memory, availMemSize=" + l1 / 1048576L + "M, totalMemSize=" + l2 / 1048576L + "M");
-        l3 = MemoryManager.a().a() * l2 / 100L;
-        if (l1 < l3) {
-          continue;
-        }
-        return;
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences("MemoryInfomation", 0);
-        l4 = ((SharedPreferences)localObject1).getLong("lastClearTime", 0L);
-        long l5 = System.currentTimeMillis();
-        if (l5 >= l4) {
-          continue;
-        }
-        localObject1 = ((SharedPreferences)localObject1).edit();
-        ((SharedPreferences.Editor)localObject1).putLong("lastClearTime", l5);
-        ((SharedPreferences.Editor)localObject1).commit();
-        return;
-        MemoryManager.a().a(l3, l1);
-        l4 = l5 - l4;
-        l5 = MemoryManager.a().b();
-        if (l4 >= l5) {
-          continue;
-        }
-        return;
-        MemoryManager.a().b(l3, l1);
-        localObject4 = new ArrayList();
-        Iterator localIterator = ((ActivityManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("activity")).getRunningAppProcesses().iterator();
-        if (!localIterator.hasNext()) {
-          break label637;
-        }
-        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
-        String str = localRunningAppProcessInfo.processName;
-        if ((localRunningAppProcessInfo.importance == 100) || ((localRunningAppProcessInfo.importance == 200) && ((localRunningAppProcessInfo.importance != 200) || (localRunningAppProcessInfo.importanceReasonCode == 0))) || (a(str))) {
-          continue;
-        }
-        ((ArrayList)localObject4).add(Pair.create(str, Long.valueOf(DeviceInfoUtil.a(localRunningAppProcessInfo.pid))));
-        continue;
-      }
-      finally
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-        this.jdField_a_of_type_AndroidContentContext = null;
-      }
-      long l1 = DeviceInfoUtil.d();
-      long l2 = DeviceInfoUtil.c();
+      } while (paramDownloadTask.a() != 3);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.Memory.MemoryManager", 2, "check memory, availMemSize=" + l1 / 1048576L + "M, totalMemSize=" + l2 / 1048576L + "M");
+        QLog.i("EmoticonManagerImp", 2, "json is complete,result ok: " + localEmoticonPackage.epId);
       }
-      l2 = l2 * MemoryManager.a().a() / 100L;
-      if (l1 >= l2)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-        this.jdField_a_of_type_AndroidContentContext = null;
-        return;
-      }
-      localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, NotificationActivity.class);
-      localIntent.putExtra("type", 10);
-      localIntent.setFlags(872415232);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      continue;
-      long l4;
-      label637:
-      SortUtils.a((ArrayList)localObject4);
-      Object localObject4 = (ActivityManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("activity");
-      Object localObject3 = localObject2.edit();
-      ((SharedPreferences.Editor)localObject3).putLong("lastClearTime", System.currentTimeMillis());
-      ((SharedPreferences.Editor)localObject3).commit();
-      localObject3 = StatisticCollector.a(BaseApplication.getContext());
-      localObject4 = new HashMap();
-      ((HashMap)localObject4).put("osVersion", Build.VERSION.RELEASE);
-      ((HashMap)localObject4).put("deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-      ((HashMap)localObject4).put("remainMemSize", String.valueOf(l1));
-      ((HashMap)localObject4).put("totalMemSize", String.valueOf(l2));
-      ((HashMap)localObject4).put("warningMemSize", String.valueOf(l3));
-      ((HashMap)localObject4).put("time", String.valueOf(l4 / 60000L));
-      ((StatisticCollector)localObject3).a("", "MemoryClear", true, 0L, 0L, (HashMap)localObject4, "");
-    }
+      paramDownloadTask = (EmoticonPackage)this.a.a.get(localEmoticonPackage.epId);
+    } while (paramDownloadTask == null);
+    paramDownloadTask.name = localEmoticonPackage.name;
+    paramDownloadTask.mark = localEmoticonPackage.mark;
+    paramDownloadTask.type = localEmoticonPackage.type;
+    paramDownloadTask.mobileFeetype = localEmoticonPackage.mobileFeetype;
+    paramDownloadTask.downloadCount = localEmoticonPackage.downloadCount;
+    paramDownloadTask.type = localEmoticonPackage.type;
+    this.a.a(paramDownloadTask);
+    this.a.a(paramDownloadTask.epId);
+    localEmojiManager.b(localEmoticonPackage);
   }
 }
 

@@ -1,22 +1,15 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class cnf
-  implements TextWatcher
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  private cnf(SelectMemberActivity paramSelectMemberActivity) {}
+  public CheckBox a;
+  public TextView a;
   
-  public void afterTextChanged(Editable paramEditable)
-  {
-    paramEditable = this.a.a.getText().toString();
-    this.a.b(paramEditable);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  private cnf(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
 }
 
 

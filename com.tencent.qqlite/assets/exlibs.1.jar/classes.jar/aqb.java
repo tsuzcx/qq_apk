@@ -1,39 +1,14 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
 
-public class aqb
-  implements CompoundButton.OnCheckedChangeListener
+class aqb
+  implements Runnable
 {
-  public aqb(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  aqb(aqa paramaqa) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    int j = 1;
-    paramCompoundButton = this.a;
-    String str = this.a.app.a();
-    if (paramBoolean)
-    {
-      i = 2;
-      GesturePWDUtils.setGesturePWDState(paramCompoundButton, str, i);
-      this.a.a(paramBoolean);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label93;
-      }
-    }
-    label93:
-    for (int i = j;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
-      this.a.a();
-      return;
-      i = 1;
-      break;
-    }
+    this.a.a.a.a();
   }
 }
 

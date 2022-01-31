@@ -21,7 +21,7 @@ import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileBaseTabView;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import dvf;
+import dwi;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Constructor;
@@ -44,7 +44,7 @@ public class FileCategoryUtil
   
   static
   {
-    a = new dvf();
+    a = new dwi();
   }
   
   public static int a(Context paramContext)
@@ -246,7 +246,7 @@ public class FileCategoryUtil
     //   12: astore_1
     //   13: aload_0
     //   14: iconst_0
-    //   15: invokestatic 315	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/database/Cursor;I)Ljava/util/Map;
+    //   15: invokestatic 317	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/database/Cursor;I)Ljava/util/Map;
     //   18: astore_3
     //   19: aload_3
     //   20: astore_1
@@ -555,65 +555,65 @@ public class FileCategoryUtil
     //   27: putfield 173	android/content/pm/ApplicationInfo:publicSourceDir	Ljava/lang/String;
     //   30: aload_3
     //   31: aload 4
-    //   33: invokevirtual 463	android/content/pm/PackageManager:getResourcesForApplication	(Landroid/content/pm/ApplicationInfo;)Landroid/content/res/Resources;
+    //   33: invokevirtual 465	android/content/pm/PackageManager:getResourcesForApplication	(Landroid/content/pm/ApplicationInfo;)Landroid/content/res/Resources;
     //   36: astore_0
-    //   37: new 465	android/util/TypedValue
+    //   37: new 467	android/util/TypedValue
     //   40: dup
-    //   41: invokespecial 466	android/util/TypedValue:<init>	()V
+    //   41: invokespecial 468	android/util/TypedValue:<init>	()V
     //   44: astore_1
     //   45: aload_0
     //   46: aload 4
     //   48: getfield 103	android/content/pm/ApplicationInfo:icon	I
     //   51: aload_1
     //   52: iconst_1
-    //   53: invokevirtual 470	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
+    //   53: invokevirtual 472	android/content/res/Resources:getValue	(ILandroid/util/TypedValue;Z)V
     //   56: aload_1
-    //   57: getfield 474	android/util/TypedValue:string	Ljava/lang/CharSequence;
-    //   60: invokevirtual 205	java/lang/Object:toString	()Ljava/lang/String;
-    //   63: astore 5
-    //   65: aload_0
-    //   66: aload_1
+    //   57: getfield 476	android/util/TypedValue:string	Ljava/lang/CharSequence;
+    //   60: invokeinterface 207 1 0
+    //   65: astore 5
     //   67: aload_0
-    //   68: invokevirtual 478	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
-    //   71: aload_1
-    //   72: getfield 481	android/util/TypedValue:assetCookie	I
-    //   75: aload 5
-    //   77: invokevirtual 485	android/content/res/AssetManager:openNonAssetFd	(ILjava/lang/String;)Landroid/content/res/AssetFileDescriptor;
-    //   80: invokevirtual 491	android/content/res/AssetFileDescriptor:createInputStream	()Ljava/io/FileInputStream;
-    //   83: aconst_null
-    //   84: invokestatic 497	android/graphics/drawable/Drawable:createFromResourceStream	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
-    //   87: astore_0
-    //   88: aload_0
-    //   89: astore_1
+    //   68: aload_1
+    //   69: aload_0
+    //   70: invokevirtual 480	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
+    //   73: aload_1
+    //   74: getfield 483	android/util/TypedValue:assetCookie	I
+    //   77: aload 5
+    //   79: invokevirtual 487	android/content/res/AssetManager:openNonAssetFd	(ILjava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+    //   82: invokevirtual 493	android/content/res/AssetFileDescriptor:createInputStream	()Ljava/io/FileInputStream;
+    //   85: aconst_null
+    //   86: invokestatic 499	android/graphics/drawable/Drawable:createFromResourceStream	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
+    //   89: astore_0
     //   90: aload_0
-    //   91: ifnonnull +10 -> 101
-    //   94: aload 4
-    //   96: aload_3
-    //   97: invokevirtual 501	android/content/pm/ApplicationInfo:loadIcon	(Landroid/content/pm/PackageManager;)Landroid/graphics/drawable/Drawable;
-    //   100: astore_1
-    //   101: aload_1
-    //   102: areturn
-    //   103: astore_0
-    //   104: aload_2
+    //   91: astore_1
+    //   92: aload_0
+    //   93: ifnonnull +10 -> 103
+    //   96: aload 4
+    //   98: aload_3
+    //   99: invokevirtual 503	android/content/pm/ApplicationInfo:loadIcon	(Landroid/content/pm/PackageManager;)Landroid/graphics/drawable/Drawable;
+    //   102: astore_1
+    //   103: aload_1
+    //   104: areturn
     //   105: astore_0
-    //   106: goto -18 -> 88
-    //   109: astore_0
-    //   110: aload_2
+    //   106: aload_2
+    //   107: astore_0
+    //   108: goto -18 -> 90
     //   111: astore_0
-    //   112: goto -24 -> 88
+    //   112: aload_2
+    //   113: astore_0
+    //   114: goto -24 -> 90
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	115	0	paramContext	Context
-    //   0	115	1	paramString	String
-    //   1	110	2	localObject	Object
-    //   6	91	3	localPackageManager	PackageManager
-    //   16	79	4	localApplicationInfo	ApplicationInfo
-    //   63	13	5	str	String
+    //   0	117	0	paramContext	Context
+    //   0	117	1	paramString	String
+    //   1	112	2	localObject	Object
+    //   6	93	3	localPackageManager	PackageManager
+    //   16	81	4	localApplicationInfo	ApplicationInfo
+    //   65	13	5	str	String
     // Exception table:
     //   from	to	target	type
-    //   30	65	103	android/content/pm/PackageManager$NameNotFoundException
-    //   65	88	103	android/content/pm/PackageManager$NameNotFoundException
-    //   65	88	109	java/io/IOException
+    //   30	67	105	android/content/pm/PackageManager$NameNotFoundException
+    //   67	90	105	android/content/pm/PackageManager$NameNotFoundException
+    //   67	90	111	java/io/IOException
   }
   
   public static Map b(Context paramContext)
@@ -635,13 +635,13 @@ public class FileCategoryUtil
     //   4: aload_1
     //   5: aconst_null
     //   6: iload_2
-    //   7: invokestatic 505	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+    //   7: invokestatic 507	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
     //   10: astore_0
     //   11: aload_0
     //   12: astore_1
     //   13: aload_0
     //   14: iconst_2
-    //   15: invokestatic 315	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/database/Cursor;I)Ljava/util/Map;
+    //   15: invokestatic 317	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/database/Cursor;I)Ljava/util/Map;
     //   18: astore_3
     //   19: aload_3
     //   20: astore_1
@@ -761,13 +761,13 @@ public class FileCategoryUtil
     //   4: aload_1
     //   5: aconst_null
     //   6: iload_2
-    //   7: invokestatic 452	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:c	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+    //   7: invokestatic 454	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:c	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
     //   10: astore_0
     //   11: aload_0
     //   12: astore_1
     //   13: aload_0
     //   14: iconst_1
-    //   15: invokestatic 315	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/database/Cursor;I)Ljava/util/Map;
+    //   15: invokestatic 317	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/database/Cursor;I)Ljava/util/Map;
     //   18: astore_3
     //   19: aload_3
     //   20: astore_1

@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.MagicFaceViewBinder;
 
-public class dfy
-  extends FMObserver
+class dfy
+  implements Runnable
 {
-  public dfy(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
+  dfy(dfx paramdfx, int paramInt, MagicFaceViewBinder paramMagicFaceViewBinder) {}
   
-  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
+  public void run()
   {
-    super.a(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
+    if (EmoticonMainPanel.g == 2)
+    {
+      this.jdField_a_of_type_Dfx.a.a = this.jdField_a_of_type_Dfx.a.c;
+      if (EmoticonMainPanel.i == this.jdField_a_of_type_Int) {
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewMagicFaceViewBinder.d();
+      }
+    }
   }
 }
 

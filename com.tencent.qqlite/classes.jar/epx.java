@@ -1,31 +1,18 @@
-import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
 
 public class epx
   implements View.OnClickListener
 {
-  public epx(MediaControllerX paramMediaControllerX) {}
+  public epx(VideoPlayLogic paramVideoPlayLogic) {}
   
   public void onClick(View paramView)
   {
-    if (!this.a.b)
-    {
-      this.a.b = true;
-      MediaControllerX.b(this.a).setBackgroundResource(2130838462);
-      MediaControllerX.b(this.a).setContentDescription(this.a.getResources().getString(2131362355));
-    }
-    for (;;)
-    {
-      if (this.a.c != null) {
-        this.a.c.onClick(paramView);
-      }
-      return;
-      this.a.b = false;
-      MediaControllerX.b(this.a).setBackgroundResource(2130838452);
-      MediaControllerX.b(this.a).setContentDescription(this.a.getResources().getString(2131362356));
+    if ((VideoPlayLogic.a(this.a) instanceof ChatActivity)) {
+      ((ChatActivity)VideoPlayLogic.a(this.a)).a().S();
     }
   }
 }

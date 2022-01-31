@@ -15,13 +15,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import byk;
-import byl;
-import bym;
-import byn;
-import byo;
-import byp;
-import byq;
+import bzk;
+import bzl;
+import bzm;
+import bzn;
+import bzo;
+import bzp;
+import bzq;
 import com.tencent.common.galleryactivity.AbstractImageAdapter;
 import com.tencent.common.galleryactivity.AbstractImageListModel;
 import com.tencent.common.galleryactivity.AbstractImageListScene;
@@ -67,7 +67,7 @@ public class AIOImageListScene
   static final int p = 2;
   private long jdField_a_of_type_Long;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private byq jdField_a_of_type_Byq;
+  private bzq jdField_a_of_type_Bzq;
   private AIOImageListModel jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel;
   private IAIOImageProvider jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider;
   public ArrayList a;
@@ -84,7 +84,7 @@ public class AIOImageListScene
   
   private void a(String paramString)
   {
-    if (paramString.equalsIgnoreCase(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131364250)))
+    if (paramString.equalsIgnoreCase(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131364261)))
     {
       this.jdField_a_of_type_Boolean = true;
       return;
@@ -156,7 +156,7 @@ public class AIOImageListScene
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new byl(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new bzl(this));
     Object localObject;
     switch (paramInt1)
     {
@@ -165,15 +165,15 @@ public class AIOImageListScene
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
       return;
     case 1: 
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(String.format(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131364260), new Object[] { Integer.valueOf(paramInt2) }));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131362795, new DialogUtil.DialogOnClickAdapter());
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(String.format(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131364271), new Object[] { Integer.valueOf(paramInt2) }));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131362802, new DialogUtil.DialogOnClickAdapter());
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
     case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131364259);
-      localObject = new bym(this, paramInt2);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131362794, (DialogInterface.OnClickListener)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131362445, (DialogInterface.OnClickListener)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131364270);
+      localObject = new bzm(this, paramInt2);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131362801, (DialogInterface.OnClickListener)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131362446, (DialogInterface.OnClickListener)localObject);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
     }
@@ -183,26 +183,26 @@ public class AIOImageListScene
     String str;
     if (paramInt2 == 22)
     {
-      localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131363013);
-      str = this.jdField_a_of_type_AndroidAppActivity.getString(2131363014);
+      localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131363023);
+      str = this.jdField_a_of_type_AndroidAppActivity.getString(2131363024);
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, (String)localObject, str, null, null);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle((String)localObject);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(str);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131362795, new DialogUtil.DialogOnClickAdapter());
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131362802, new DialogUtil.DialogOnClickAdapter());
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
       if (paramInt2 == 24)
       {
-        localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131363011);
-        str = this.jdField_a_of_type_AndroidAppActivity.getString(2131363012);
+        localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131363021);
+        str = this.jdField_a_of_type_AndroidAppActivity.getString(2131363022);
       }
       else if (paramInt2 == 23)
       {
-        localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131363009);
-        str = this.jdField_a_of_type_AndroidAppActivity.getString(2131363010);
+        localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131363019);
+        str = this.jdField_a_of_type_AndroidAppActivity.getString(2131363020);
       }
       else
       {
@@ -219,7 +219,7 @@ public class AIOImageListScene
     }
     if (this.jdField_a_of_type_AndroidAppDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_AndroidAppActivity, 2131624119);
+      this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_AndroidAppActivity, 2131624120);
       this.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
       this.jdField_a_of_type_AndroidAppDialog.show();
       this.jdField_a_of_type_AndroidAppDialog.setContentView(2130903271);
@@ -237,9 +237,9 @@ public class AIOImageListScene
         this.jdField_a_of_type_AndroidAppDialog.show();
       }
       return;
-      str = localTextView.getResources().getText(2131364253) + str;
+      str = localTextView.getResources().getText(2131364264) + str;
       continue;
-      str = localTextView.getResources().getText(2131364254) + str;
+      str = localTextView.getResources().getText(2131364265) + str;
     }
   }
   
@@ -255,7 +255,7 @@ public class AIOImageListScene
       QLog.d("AIOImageListScene", 2, "forwardAllImage");
     }
     Object localObject = BaseApplication.getContext();
-    boolean bool = SettingCloneUtil.readValue((Context)localObject, null, ((Context)localObject).getString(2131363052), "qqsetting_auto_receive_pic_key", true);
+    boolean bool = SettingCloneUtil.readValue((Context)localObject, null, ((Context)localObject).getString(2131363062), "qqsetting_auto_receive_pic_key", true);
     int i1;
     int i2;
     if (NetworkUtil.b(BaseApplication.getContext()) == 1)
@@ -340,7 +340,7 @@ public class AIOImageListScene
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131364251);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131364262);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
       {
@@ -356,11 +356,11 @@ public class AIOImageListScene
       this.jdField_b_of_type_AndroidWidgetImageView.setClickable(true);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131364250);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131364261);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((AIOImageInfo)localIterator.next()).a(2);
+      ((GalleryImage)localIterator.next()).a(2);
     }
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter.notifyDataSetChanged();
@@ -368,7 +368,7 @@ public class AIOImageListScene
   
   protected View.OnClickListener a()
   {
-    return new byp(this);
+    return new bzp(this);
   }
   
   protected AbstractImageAdapter a(Activity paramActivity, int paramInt)
@@ -380,12 +380,12 @@ public class AIOImageListScene
   
   protected AdapterView.OnItemClickListener a()
   {
-    return new byn(this);
+    return new bzn(this);
   }
   
   protected GestureSelectGridView.OnSelectListener a()
   {
-    return new byo(this);
+    return new bzo(this);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -401,10 +401,10 @@ public class AIOImageListScene
     default: 
       return;
     case 20: 
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131364255) + AppConstants.au, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131492887));
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131364266) + AppConstants.au, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131492887));
       return;
     case 21: 
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131364256) + AppConstants.au, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131492887));
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131364267) + AppConstants.au, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131492887));
       return;
     case 22: 
     case 23: 
@@ -461,17 +461,17 @@ public class AIOImageListScene
             ((AIOPhotoListAdapter)this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a(i1), (View)localObject1);
           }
         }
-      } while ((paramInt2 != 2) || (this.jdField_a_of_type_Byq == null));
-      localObject1 = this.jdField_a_of_type_Byq;
-    } while ((((byq)localObject1).a == null) || (((byq)localObject1).a.a.jdField_a_of_type_Long != paramLong) || (((byq)localObject1).a.a.d != paramInt1));
-    Object localObject3 = ((byq)localObject1).a.a;
+      } while ((paramInt2 != 2) || (this.jdField_a_of_type_Bzq == null));
+      localObject1 = this.jdField_a_of_type_Bzq;
+    } while ((((bzq)localObject1).a == null) || (((bzq)localObject1).a.a.jdField_a_of_type_Long != paramLong) || (((bzq)localObject1).a.a.d != paramInt1));
+    Object localObject3 = ((bzq)localObject1).a.a;
     if (paramInt3 == 1) {}
     for (;;)
     {
       ((AIOImageData)localObject3).e = ???;
-      synchronized (((byq)localObject1).a)
+      synchronized (((bzq)localObject1).a)
       {
-        ((byq)localObject1).a.notifyAll();
+        ((bzq)localObject1).a.notifyAll();
         return;
       }
       String str = "I:E";
@@ -489,8 +489,8 @@ public class AIOImageListScene
   public void a(Integer... paramVarArgs)
   {
     c(paramVarArgs[0].intValue(), 0);
-    this.jdField_a_of_type_Byq = new byq(this, this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Byq.execute(paramVarArgs);
+    this.jdField_a_of_type_Bzq = new bzq(this, this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Bzq.execute(paramVarArgs);
   }
   
   public boolean d()
@@ -556,11 +556,11 @@ public class AIOImageListScene
   
   protected void k()
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidAppActivity, null, 2131624119);
-    localActionSheet.a(2131364248);
-    localActionSheet.a(2131364249, 5);
-    localActionSheet.d(2131362794);
-    localActionSheet.a(new byk(this, localActionSheet));
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidAppActivity, null, 2131624120);
+    localActionSheet.a(2131364259);
+    localActionSheet.a(2131364260, 5);
+    localActionSheet.d(2131362801);
+    localActionSheet.a(new bzk(this, localActionSheet));
     localActionSheet.show();
   }
   
@@ -570,7 +570,7 @@ public class AIOImageListScene
       QLog.d("AIOImageListScene", 2, "saveAllImage");
     }
     Object localObject = BaseApplication.getContext();
-    boolean bool = SettingCloneUtil.readValue((Context)localObject, null, ((Context)localObject).getString(2131363052), "qqsetting_auto_receive_pic_key", true);
+    boolean bool = SettingCloneUtil.readValue((Context)localObject, null, ((Context)localObject).getString(2131363062), "qqsetting_auto_receive_pic_key", true);
     int i1;
     int i2;
     if (NetworkUtil.b(BaseApplication.getContext()) == 1)
@@ -619,9 +619,9 @@ public class AIOImageListScene
   public void onCancel(DialogInterface paramDialogInterface)
   {
     this.jdField_a_of_type_AndroidAppDialog = null;
-    paramDialogInterface = this.jdField_a_of_type_Byq;
+    paramDialogInterface = this.jdField_a_of_type_Bzq;
     if (paramDialogInterface != null) {
-      byq.a(paramDialogInterface, false);
+      bzq.a(paramDialogInterface, false);
     }
   }
 }

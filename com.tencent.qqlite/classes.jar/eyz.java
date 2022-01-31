@@ -1,42 +1,19 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.vas.ClubContentJsonTask.TaskInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class eyz
-  extends Handler
+public final class eyz
+  implements Runnable
 {
-  public eyz(QQProgressNotifier paramQQProgressNotifier, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public eyz(ClubContentJsonTask.TaskInfo paramTaskInfo, File paramFile) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 1) {
-      this.a.a(paramMessage.arg1, (String)paramMessage.obj, paramMessage.arg2);
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramMessage.what != 2);
-      this.a.a();
-    } while ((paramMessage.arg1 != 3) && (paramMessage.arg1 != 4) && (paramMessage.arg1 != 6) && (paramMessage.arg1 != 5));
-    if ((paramMessage.arg1 == 6) || (paramMessage.arg1 == 5))
-    {
-      paramMessage = new Intent();
-      paramMessage.putExtra("isNeedFinish", true);
-      this.a.a.setResult(-1, paramMessage);
-    }
-    for (;;)
-    {
-      this.a.a.finish();
-      return;
-      this.a.a.setResult(-1);
+    boolean bool = HttpDownloadUtil.a(null, EmosmUtils.insertMtype("VIP_emosm", this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo.b), this.jdField_a_of_type_JavaIoFile);
+    if (QLog.isColorLevel()) {
+      QLog.d("ClubContentJsonTask", 2, "downloadIfNotExists, " + this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo.a + ",ret=" + bool);
     }
   }
 }

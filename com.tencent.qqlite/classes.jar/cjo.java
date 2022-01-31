@@ -1,32 +1,24 @@
-import android.content.res.Resources;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class cjo
-  implements AdapterView.OnItemSelectedListener
+  implements View.OnClickListener
 {
-  public cjo(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public cjo(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    this.a.jdField_b_of_type_Int = paramInt;
-    if (this.a.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(this.a.jdField_b_of_type_Int))) {
-      this.a.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-    }
-    while (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 1)
+    if (!CameraPreviewActivity.a(this.a))
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt + 1 + " / " + this.a.jdField_a_of_type_JavaUtilArrayList.size());
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      if (this.a.b) {
+        ReportController.b(this.a.app, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
+      }
+      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
+      paramView.setClickable(false);
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getResources().getString(2131363438));
   }
 }
 

@@ -1,27 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarOnlineFile.BaseActionBarOnlineFile;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.dataline.util.file.ImageInfo;
+import java.util.Comparator;
 
-public class dsb
-  implements View.OnClickListener
+public final class dsb
+  implements Comparator
 {
-  public dsb(BaseActionBarOnlineFile paramBaseActionBarOnlineFile) {}
-  
-  public void onClick(View paramView)
+  public int a(ImageInfo paramImageInfo1, ImageInfo paramImageInfo2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    this.a.h();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g())
-    {
-      FileManagerReporter.a("0X8004BBC");
-      return;
-    }
-    FileManagerReporter.a("0X8004BD2");
+    return -Long.valueOf(paramImageInfo1.a()).compareTo(Long.valueOf(paramImageInfo2.a()));
   }
 }
 

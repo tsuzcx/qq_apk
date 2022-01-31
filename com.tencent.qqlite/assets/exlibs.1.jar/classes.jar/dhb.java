@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
 public class dhb
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public dhb(LocalFileBrowserActivity paramLocalFileBrowserActivity, int paramInt) {}
+  public dhb(FMActivity paramFMActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelected(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelection(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelected(true);
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
+    this.a.finish();
   }
 }
 

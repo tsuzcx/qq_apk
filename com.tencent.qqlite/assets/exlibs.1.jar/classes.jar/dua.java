@@ -1,13 +1,42 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileView;
+import android.text.format.Time;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
 
-class dua
-  implements Runnable
+public class dua
+  implements SeekBar.OnSeekBarChangeListener
 {
-  dua(dtz paramdtz, int paramInt, String paramString) {}
+  public dua(LocalMusicFileView paramLocalMusicFileView) {}
   
-  public void run()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Dtz.a.a.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+    if ((LocalMusicFileView.a(this.a) == null) || (!LocalMusicFileView.a(this.a).b(LocalMusicFileView.a(this.a)))) {}
+    while (!paramBoolean) {
+      return;
+    }
+    LocalMusicFileView.a(this.a).a(paramInt);
+    paramSeekBar = new Time();
+    paramSeekBar.set(paramInt);
+    paramSeekBar = paramSeekBar.format("%M:%S");
+    LocalMusicFileView.a(this.a).setText(paramSeekBar);
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((LocalMusicFileView.a(this.a) == null) || (!LocalMusicFileView.a(this.a).b(LocalMusicFileView.a(this.a)))) {
+      return;
+    }
+    LocalMusicFileView.a(this.a).d();
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((LocalMusicFileView.a(this.a) == null) || (!LocalMusicFileView.a(this.a).b(LocalMusicFileView.a(this.a)))) {
+      return;
+    }
+    LocalMusicFileView.a(this.a).e();
   }
 }
 

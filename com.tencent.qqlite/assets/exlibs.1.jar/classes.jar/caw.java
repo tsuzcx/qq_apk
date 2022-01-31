@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.activity.aio.AIOTipsController;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
 public class caw
-  implements Runnable
+  extends ProxyObserver
 {
-  public caw(TipsManager paramTipsManager) {}
+  public caw(TroopChatPie paramTroopChatPie) {}
   
-  public void run()
+  public void b()
   {
-    if (TipsManager.a(this.a) != null) {
-      TipsManager.a(this.a).a();
-    }
-    TipsManager.a(this.a, null);
-    if (this.a.a != null) {
-      this.a.a.clear();
-    }
+    this.a.d(false);
   }
 }
 

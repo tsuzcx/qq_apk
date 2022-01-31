@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PhotoFileView;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
-class dtv
-  extends FMObserver
+public class dtv
+  implements View.OnClickListener
 {
-  dtv(dtu paramdtu) {}
+  public dtv(FileBrowserActivity paramFileBrowserActivity) {}
   
-  protected void a(ThumbnailInfo paramThumbnailInfo)
+  public void onClick(View paramView)
   {
-    IFileViewerAdapter localIFileViewerAdapter;
-    if ((paramThumbnailInfo.a instanceof IFileViewerAdapter))
-    {
-      localIFileViewerAdapter = (IFileViewerAdapter)paramThumbnailInfo.a;
-      if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() >= 1)) {}
-    }
-    else
-    {
-      return;
-    }
-    this.a.a.a(localIFileViewerAdapter, paramThumbnailInfo.b);
+    this.a.onBackPressed();
   }
 }
 

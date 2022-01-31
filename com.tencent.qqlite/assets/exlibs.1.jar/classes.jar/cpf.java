@@ -1,14 +1,23 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class cpf
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public String a;
-  public TextView b;
+  public cpf(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  
+  public void onGlobalLayout()
+  {
+    ShortVideoPlayActivity.a(this.a, ShortVideoPlayActivity.c(this.a).getWidth());
+    ShortVideoPlayActivity.b(this.a, ShortVideoPlayActivity.c(this.a).getHeight());
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + ShortVideoPlayActivity.b(this.a) + ",mSurfaceViewHeight:" + ShortVideoPlayActivity.c(this.a));
+    }
+    ShortVideoPlayActivity.c(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+  }
 }
 
 

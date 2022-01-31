@@ -1,42 +1,42 @@
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.widget.AbsListView;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
 public class fhg
-  extends fhk
   implements Runnable
 {
-  public int a;
-  
-  private fhg(AbsListView paramAbsListView)
-  {
-    super(paramAbsListView, null);
-  }
+  public fhg(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView.q) {}
-    ListAdapter localListAdapter;
-    int i;
-    boolean bool;
-    View localView;
-    do
+    try
     {
-      do
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c);
+      if (localTMAssistantDownloadTaskInfo != null)
       {
-        return;
-        localListAdapter = this.jdField_a_of_type_ComTencentWidgetAbsListView.a;
-        i = this.jdField_a_of_type_Int;
-        bool = AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, i, this.jdField_a_of_type_ComTencentWidgetAbsListView.a.getCount());
-      } while ((localListAdapter == null) || ((!bool) && (!AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView))) || (!a()));
-      localView = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(i - this.jdField_a_of_type_ComTencentWidgetAbsListView.ao);
-    } while ((localView == null) && (!AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView)));
-    AbsListView localAbsListView = this.jdField_a_of_type_ComTencentWidgetAbsListView;
-    if (bool) {}
-    for (long l = localListAdapter.getItemId(i);; l = 0L)
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c).mSavePath;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        if (!this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b.equals("1101070898"))
+        {
+          long l = localTMAssistantDownloadTaskInfo.mTotalDataLen;
+          this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, l);
+        }
+      }
+    }
+    catch (Exception localException)
     {
-      localAbsListView.a(localView, i, l);
-      return;
+      for (;;)
+      {
+        LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
+      }
+    }
+    StaticAnalyz.a("300", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
+    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a) {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
     }
   }
 }

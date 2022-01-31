@@ -1,18 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.ArrayList;
 
 public class anp
-  implements View.OnClickListener
+  extends TroopObserver
 {
   public anp(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
   {
-    int i = ForwardRecentActivity.a(this.a).k();
-    int j = ((Integer)paramView.getTag(-1)).intValue();
-    this.a.a(ForwardRecentActivity.a(this.a), paramView, Integer.valueOf(j + i).intValue(), paramView.getId());
+    if (paramBoolean1) {
+      ForwardRecentActivity.b(this.a);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, ArrayList paramArrayList, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
+      ForwardRecentActivity.b(this.a);
+    }
   }
 }
 

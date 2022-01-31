@@ -1,53 +1,15 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityActivity.AccountInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
 
 public class fah
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public fah(AuthorityActivity paramAuthorityActivity) {}
+  public fah(CustomedTabWidget paramCustomedTabWidget) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a.equals(localObject)) {}
-    for (;;)
-    {
-      return;
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      if (paramBoolean)
-      {
-        GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-        try
-        {
-          localObject = paramBundle.getByteArray("data");
-          paramBundle = (Bundle)localObject;
-          if (!this.a.i) {
-            paramBundle = this.a.b((byte[])localObject);
-          }
-          if (paramBundle != null)
-          {
-            localGetAppinfoResponse.mergeFrom(paramBundle);
-            if ((localGetAppinfoResponse.has()) && (localGetAppinfoResponse.ret.get() == 0))
-            {
-              paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-              paramBundle.what = 3;
-              paramBundle.obj = localGetAppinfoResponse;
-              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
-              return;
-            }
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
-        }
-      }
-    }
+    this.a.setCurrentTab(this.a.indexOfChild(paramView));
   }
 }
 

@@ -1,25 +1,41 @@
-import android.app.Dialog;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.os.Handler;
+import com.tencent.biz.common.util.OpenIdObserver;
+import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
 public class ans
-  implements Animation.AnimationListener
+  extends OpenIdObserver
 {
   public ans(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    this.a.jdField_a_of_type_AndroidAppDialog.show();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    if ((this.a.isFinishing()) || (this.a.d)) {}
+    do
+    {
+      return;
+      ForwardRecentActivity.a(this.a).d();
+      if (this.a.a != null) {
+        this.a.a.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardRecentActivity", 2, "openIdObserver success");
+        }
+        if (!paramOpenID.openID.equals(this.a.w)) {
+          this.a.a();
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("ForwardRecentActivity", 2, "openIdObserver fail");
+      }
+    } while ((!this.a.b) || (this.a.f != 11));
+    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131362373));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

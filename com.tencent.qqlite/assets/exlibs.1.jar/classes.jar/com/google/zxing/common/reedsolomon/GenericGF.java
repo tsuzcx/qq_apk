@@ -1,16 +1,16 @@
 package com.google.zxing.common.reedsolomon;
 
-import dw;
+import dt;
 
 public final class GenericGF
 {
   private static final int jdField_a_of_type_Int = 0;
   public static final GenericGF a;
-  private dw jdField_a_of_type_Dw;
+  private dt jdField_a_of_type_Dt;
   private boolean jdField_a_of_type_Boolean = false;
   private int[] jdField_a_of_type_ArrayOfInt;
   private final int jdField_b_of_type_Int;
-  private dw jdField_b_of_type_Dw;
+  private dt jdField_b_of_type_Dt;
   private int[] jdField_b_of_type_ArrayOfInt;
   private final int c;
   
@@ -55,8 +55,8 @@ public final class GenericGF
       this.jdField_b_of_type_ArrayOfInt[this.jdField_a_of_type_ArrayOfInt[i]] = i;
       i += 1;
     }
-    this.jdField_a_of_type_Dw = new dw(this, new int[] { 0 });
-    this.jdField_b_of_type_Dw = new dw(this, new int[] { 1 });
+    this.jdField_a_of_type_Dt = new dt(this, new int[] { 0 });
+    this.jdField_b_of_type_Dt = new dt(this, new int[] { 1 });
     this.jdField_a_of_type_Boolean = true;
   }
   
@@ -78,24 +78,24 @@ public final class GenericGF
     return this.jdField_a_of_type_ArrayOfInt[paramInt];
   }
   
-  public dw a()
+  public dt a()
   {
     b();
-    return this.jdField_a_of_type_Dw;
+    return this.jdField_a_of_type_Dt;
   }
   
-  public dw a(int paramInt1, int paramInt2)
+  public dt a(int paramInt1, int paramInt2)
   {
     b();
     if (paramInt1 < 0) {
       throw new IllegalArgumentException();
     }
     if (paramInt2 == 0) {
-      return this.jdField_a_of_type_Dw;
+      return this.jdField_a_of_type_Dt;
     }
     int[] arrayOfInt = new int[paramInt1 + 1];
     arrayOfInt[0] = paramInt2;
-    return new dw(this, arrayOfInt);
+    return new dt(this, arrayOfInt);
   }
   
   public int b(int paramInt)
@@ -116,10 +116,10 @@ public final class GenericGF
     return this.jdField_a_of_type_ArrayOfInt[((this.jdField_b_of_type_ArrayOfInt[paramInt1] + this.jdField_b_of_type_ArrayOfInt[paramInt2]) % (this.jdField_b_of_type_Int - 1))];
   }
   
-  dw b()
+  dt b()
   {
     b();
-    return this.jdField_b_of_type_Dw;
+    return this.jdField_b_of_type_Dt;
   }
   
   public int c(int paramInt)

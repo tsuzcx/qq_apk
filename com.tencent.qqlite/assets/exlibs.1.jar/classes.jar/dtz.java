@@ -1,42 +1,31 @@
 import android.app.Activity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.CanPreviewOfflineFileView;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-class dtz
-  extends FMObserver
+public class dtz
+  implements View.OnClickListener
 {
-  dtz(dty paramdty) {}
+  public dtz(CanPreviewOfflineFileView paramCanPreviewOfflineFileView) {}
   
-  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, String paramString5)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        dty.a(this.a, paramString3, paramString4, paramInt2, paramString2);
-        this.a.a.e();
-        return;
-      }
-      finally {}
-      PreviewingOfflineFileView.b(this.a.a).runOnUiThread(new dub(this, paramInt1, paramString1));
+    CanPreviewOfflineFileView.a(this.a).b(1);
+    if (!NetworkUtil.e(BaseApplicationImpl.getContext())) {
+      FMToastUtil.a(CanPreviewOfflineFileView.a(this.a).getString(2131363581));
     }
-  }
-  
-  protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, String paramString5)
-  {
-    if (paramBoolean) {}
-    for (;;)
+    do
     {
-      try
-      {
-        dty.a(this.a, paramString3, paramString4, paramInt2, paramString2);
-        this.a.a.e();
-        return;
-      }
-      finally {}
-      PreviewingOfflineFileView.a(this.a.a).runOnUiThread(new dua(this, paramInt1, paramString1));
-    }
+      return;
+      CanPreviewOfflineFileView.a(this.a).a(true);
+      CanPreviewOfflineFileView.b(this.a).b(false);
+    } while (CanPreviewOfflineFileView.b(this.a) == null);
+    CanPreviewOfflineFileView.c(this.a).c();
   }
 }
 

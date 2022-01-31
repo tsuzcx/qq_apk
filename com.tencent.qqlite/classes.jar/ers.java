@@ -1,26 +1,13 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
-import java.util.LinkedList;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
 
 public class ers
-  extends DiscussionObserver
+  implements Runnable
 {
-  private ers(FaceDecoder paramFaceDecoder) {}
+  public ers(MessageSubtitleView paramMessageSubtitleView) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void run()
   {
-    if (FaceDecoder.a(this.a) != null)
-    {
-      Bitmap localBitmap = this.a.a(101, paramString);
-      if ((paramBoolean1) && (localBitmap != null)) {
-        FaceDecoder.a(this.a).a(FaceDecoder.a(this.a) + FaceDecoder.a(this.a).size(), 101, paramString, localBitmap);
-      }
-    }
-    if ((!FaceDecoder.a(this.a)) && (!FaceDecoder.a(this.a).isEmpty()) && (FaceDecoder.a(this.a) < 4)) {
-      FaceDecoder.a(this.a);
-    }
+    MessageSubtitleView.a(this.a);
   }
 }
 

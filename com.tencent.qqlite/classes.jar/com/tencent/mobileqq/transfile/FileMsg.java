@@ -43,51 +43,52 @@ public class FileMsg
   public static final int Z = 5001;
   public static final String a = "gif";
   static String[] a;
-  public static final int aA = 9009;
-  public static final int aB = 4606;
-  public static final int aC = 8;
-  public static final int aD = 9061;
-  public static final int aE = 9060;
-  public static final int aF = 9024;
-  public static final int aG = 9035;
-  public static final int aH = 9053;
-  public static final int aI = 9052;
-  public static final int aJ = 9054;
-  public static final int aK = 9057;
-  public static final int aL = 9032;
-  public static final int aM = 9001;
-  public static final int aN = 90451;
-  public static final int aO = 90460;
-  public static final int aP = 0;
-  public static final int aQ = 1;
-  public static final int aR = 2;
-  public static final int aT = 0;
-  public static final int aU = 1;
-  public static final int aV = 2;
-  public static final int ac = 0;
-  public static final int ad = 1;
-  public static final int ae = 2;
-  public static final int af = 3;
-  public static final int ag = 4;
-  public static final int ah = 5;
-  public static final int ai = 9001;
-  public static final int aj = 9006;
-  public static final int ak = 9005;
-  public static final int al = 9048;
-  public static final int am = 9015;
-  public static final int an = 9011;
-  public static final int ao = 9003;
-  public static final int ap = 9004;
-  public static final int aq = 9008;
-  public static final int ar = 9023;
-  public static final int as = 9040;
-  public static final int at = 9041;
-  public static final int au = 9042;
-  public static final int av = 9043;
-  public static final int aw = 9045;
-  public static final int ax = 9080;
-  public static final int ay = 9081;
-  public static final int az = 9082;
+  public static final int aA = 9082;
+  public static final int aB = 9009;
+  public static final int aC = 4606;
+  public static final int aD = 8;
+  public static final int aE = 9061;
+  public static final int aF = 9060;
+  public static final int aG = 9024;
+  public static final int aH = 9035;
+  public static final int aI = 9053;
+  public static final int aJ = 9052;
+  public static final int aK = 9054;
+  public static final int aL = 9057;
+  public static final int aM = 9032;
+  public static final int aN = 9001;
+  public static final int aO = 90451;
+  public static final int aP = 90460;
+  public static final int aQ = 0;
+  public static final int aR = 1;
+  public static final int aS = 2;
+  public static final int aU = 0;
+  public static final int aV = 1;
+  public static final int aW = 2;
+  public static final int aa = 7000;
+  public static final int ad = 0;
+  public static final int ae = 1;
+  public static final int af = 2;
+  public static final int ag = 3;
+  public static final int ah = 4;
+  public static final int ai = 5;
+  public static final int aj = 9001;
+  public static final int ak = 9006;
+  public static final int al = 9005;
+  public static final int am = 9048;
+  public static final int an = 9015;
+  public static final int ao = 9011;
+  public static final int ap = 9003;
+  public static final int aq = 9004;
+  public static final int ar = 9008;
+  public static final int as = 9023;
+  public static final int at = 9040;
+  public static final int au = 9041;
+  public static final int av = 9042;
+  public static final int aw = 9043;
+  public static final int ax = 9045;
+  public static final int ay = 9080;
+  public static final int az = 9081;
   public static final int b = 0;
   static String[] b;
   public static final int c = 1;
@@ -133,10 +134,10 @@ public class FileMsg
   public OutputStream a;
   public boolean a;
   public byte[] a;
-  public int aS = -1;
-  private int aW = 0;
-  public int aa;
+  public int aT = -1;
+  private int aX = 0;
   public int ab;
+  public int ac;
   public long b;
   public FileMsg.StepBaseInfo b;
   public FileMsg.StepTransInfo b;
@@ -421,13 +422,13 @@ public class FileMsg
       try
       {
         localInputStream = a();
-        if (paramInt1 <= this.aW) {
+        if (paramInt1 <= this.aX) {
           continue;
         }
-        localInputStream.skip(paramInt1 - this.aW);
-        this.aW = paramInt1;
+        localInputStream.skip(paramInt1 - this.aX);
+        this.aX = paramInt1;
         localInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, paramInt2);
-        this.aW += paramInt2;
+        this.aX += paramInt2;
       }
       catch (Exception localException)
       {
@@ -435,7 +436,7 @@ public class FileMsg
         continue;
       }
       return this.jdField_a_of_type_ArrayOfByte;
-      if (paramInt1 < this.aW)
+      if (paramInt1 < this.aX)
       {
         localInputStream = a();
         localInputStream.skip(paramInt1);
@@ -537,7 +538,7 @@ public class FileMsg
   
   public void c(int paramInt)
   {
-    this.ab = paramInt;
+    this.ac = paramInt;
   }
   
   public void c(String paramString)

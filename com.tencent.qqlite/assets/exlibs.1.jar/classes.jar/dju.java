@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
-class dju
-  implements Runnable
+public class dju
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  dju(djs paramdjs, long paramLong) {}
+  public dju(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    QfileBaseLocalFileTabView.a(this.jdField_a_of_type_Djs.a);
-    QfileBaseLocalFileTabView.c(this.jdField_a_of_type_Djs.a).a().a(this.jdField_a_of_type_Long);
+    this.a.d();
   }
 }
 

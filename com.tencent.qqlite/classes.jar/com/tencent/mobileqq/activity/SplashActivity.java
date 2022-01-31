@@ -29,24 +29,24 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bkm;
-import bkn;
-import bko;
-import bkp;
-import bkq;
 import bkr;
 import bks;
 import bkt;
+import bku;
 import bkv;
 import bkw;
 import bkx;
 import bky;
-import bkz;
 import bla;
 import blb;
 import blc;
 import bld;
 import ble;
+import blf;
+import blg;
+import blh;
+import bli;
+import blj;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -138,11 +138,11 @@ public class SplashActivity
   public static final int q = 35;
   public Dialog a;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bkr(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bkw(this);
   public View a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private bld jdField_a_of_type_Bld;
+  private bli jdField_a_of_type_Bli;
   public MainAssistObserver a;
   private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
   private QQUnderlinePageIndicator jdField_a_of_type_ComTencentMobileqqWidgetQQUnderlinePageIndicator;
@@ -214,28 +214,28 @@ public class SplashActivity
     ((TextView)localView.findViewById(2131297054)).setText(paramInt2);
     if (paramDragFrameLayout != null)
     {
-      DragTextView localDragTextView = (DragTextView)localView.findViewById(2131298839);
+      DragTextView localDragTextView = (DragTextView)localView.findViewById(2131298865);
       localDragTextView.setOnModeChangeListener(paramDragFrameLayout);
       localDragTextView.setDragViewType(2);
     }
     return localView;
   }
   
-  private void a(int paramInt, ble paramble)
+  private void a(int paramInt, blj paramblj)
   {
-    if (paramble == null) {}
+    if (paramblj == null) {}
     do
     {
       do
       {
         return;
         if (QLog.isColorLevel()) {
-          QLog.d("SplashActivity", 2, paramble.jdField_a_of_type_JavaLangString + " is execute");
+          QLog.d("SplashActivity", 2, paramblj.jdField_a_of_type_JavaLangString + " is execute");
         }
         if (paramInt == 2131296388)
         {
-          paramble = this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a();
-          if ((paramble == null) || (paramble.a == null))
+          paramblj = this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a();
+          if ((paramblj == null) || (paramblj.a == null))
           {
             if (QLog.isColorLevel()) {
               QLog.w("SplashActivity", 2, "mWrapper is null");
@@ -246,9 +246,9 @@ public class SplashActivity
           {
             ReportController.b((QQAppInterface)this.mRuntime, "CliOper", "", "", "0X80041C1", "0X80041C1", 0, 0, "", "", "", "");
             return;
-            if (paramble.a.iUpgradeType == 0) {
+            if (paramblj.a.iUpgradeType == 0) {
               QQToast.a(getApplicationContext(), 0, "已是最新版本", 0).b(getResources().getDimensionPixelSize(2131492887));
-            } else if ((paramble != null) && (paramble.a != null)) {
+            } else if ((paramblj != null) && (paramblj.a != null)) {
               UpgradeDetailActivity.a(this, UpgradeController.a().a(), false, false, true);
             }
           }
@@ -265,8 +265,8 @@ public class SplashActivity
         c();
         return;
       }
-    } while (paramble.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo == null);
-    a(paramble.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
+    } while (paramblj.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo == null);
+    a(paramblj.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
   }
   
   private void a(Intent paramIntent)
@@ -370,9 +370,9 @@ public class SplashActivity
     View localView2;
     for (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = ((DragFrameLayout)paramView.findViewById(2131297286));; this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = ((DragFrameLayout)findViewById(2131297286)))
     {
-      paramView = a(2131297289, 2131362940, this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
-      localView1 = a(2131297290, 2131362941, null);
-      localView2 = a(2131297291, 2131363552, null);
+      paramView = a(2131297289, 2131362947, this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
+      localView1 = a(2131297290, 2131362948, null);
+      localView2 = a(2131297291, 2131363563, null);
       this.jdField_a_of_type_ArrayOfAndroidViewView = new View[] { paramView, localView1, localView2 };
       View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
       int i2 = arrayOfView.length;
@@ -386,9 +386,9 @@ public class SplashActivity
     this.jdField_a_of_type_JavaUtilHashMap.put("消息", paramView);
     this.jdField_a_of_type_JavaUtilHashMap.put("联系人", localView1);
     this.jdField_a_of_type_JavaUtilHashMap.put("我", localView2);
-    this.jdField_a_of_type_JavaUtilHashMap.put("消息_num", paramView.findViewById(2131298839));
-    this.jdField_a_of_type_JavaUtilHashMap.put("联系人_num", localView1.findViewById(2131298839));
-    this.jdField_a_of_type_JavaUtilHashMap.put("我_num", localView2.findViewById(2131298839));
+    this.jdField_a_of_type_JavaUtilHashMap.put("消息_num", paramView.findViewById(2131298865));
+    this.jdField_a_of_type_JavaUtilHashMap.put("联系人_num", localView1.findViewById(2131298865));
+    this.jdField_a_of_type_JavaUtilHashMap.put("我_num", localView2.findViewById(2131298865));
     return this.jdField_a_of_type_ArrayOfAndroidViewView;
   }
   
@@ -468,8 +468,8 @@ public class SplashActivity
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    Object localObject = new ble();
-    ((ble)localObject).jdField_a_of_type_JavaLangString = getResources().getString(2131363731);
+    Object localObject = new blj();
+    ((blj)localObject).jdField_a_of_type_JavaLangString = getResources().getString(2131363742);
     localArrayList.add(new Pair(Integer.valueOf(2131296388), localObject));
     localObject = this.app.a().a("com.tx.abouthelp");
     if ((localObject != null) && (((ResourcePluginInfo)localObject).cLocalState != 0))
@@ -477,33 +477,33 @@ public class SplashActivity
       if (QLog.isColorLevel()) {
         QLog.d("SplashActivity", 2, "feedback plugin is add overmenu");
       }
-      ble localble = new ble();
-      localble.jdField_a_of_type_JavaLangString = ((ResourcePluginInfo)localObject).strResName;
-      localble.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo = ((ResourcePluginInfo)localObject);
-      localArrayList.add(new Pair(Integer.valueOf(2131296389), localble));
+      blj localblj = new blj();
+      localblj.jdField_a_of_type_JavaLangString = ((ResourcePluginInfo)localObject).strResName;
+      localblj.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo = ((ResourcePluginInfo)localObject);
+      localArrayList.add(new Pair(Integer.valueOf(2131296389), localblj));
     }
-    localObject = new ble();
-    ((ble)localObject).jdField_a_of_type_JavaLangString = getResources().getString(2131363043);
+    localObject = new blj();
+    ((blj)localObject).jdField_a_of_type_JavaLangString = getResources().getString(2131363053);
     localArrayList.add(new Pair(Integer.valueOf(2131296390), localObject));
-    localObject = new ble();
-    ((ble)localObject).jdField_a_of_type_JavaLangString = getResources().getString(2131363114);
+    localObject = new blj();
+    ((blj)localObject).jdField_a_of_type_JavaLangString = getResources().getString(2131363124);
     localArrayList.add(new Pair(Integer.valueOf(2131296391), localObject));
-    localObject = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
+    localObject = (ActionSheet)ActionSheetHelper.a(this, null, 2131624120);
     int i1 = 0;
     if (i1 < localArrayList.size())
     {
       if (2131296391 == ((Integer)((Pair)localArrayList.get(i1)).first).intValue()) {
-        ((ActionSheet)localObject).d(((ble)((Pair)localArrayList.get(i1)).second).jdField_a_of_type_JavaLangString);
+        ((ActionSheet)localObject).d(((blj)((Pair)localArrayList.get(i1)).second).jdField_a_of_type_JavaLangString);
       }
       for (;;)
       {
         i1 += 1;
         break;
-        ((ActionSheet)localObject).c(((ble)((Pair)localArrayList.get(i1)).second).jdField_a_of_type_JavaLangString);
+        ((ActionSheet)localObject).c(((blj)((Pair)localArrayList.get(i1)).second).jdField_a_of_type_JavaLangString);
       }
     }
-    ((ActionSheet)localObject).a(new bkz(this, localArrayList, (ActionSheet)localObject));
-    ((ActionSheet)localObject).setOnDismissListener(new bla(this));
+    ((ActionSheet)localObject).a(new ble(this, localArrayList, (ActionSheet)localObject));
+    ((ActionSheet)localObject).setOnDismissListener(new blf(this));
     ((ActionSheet)localObject).setCanceledOnTouchOutside(true);
     this.jdField_b_of_type_AndroidAppDialog = ((Dialog)localObject);
     try
@@ -556,17 +556,17 @@ public class SplashActivity
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297141));
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297287)).setFocusable(true);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296907));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296908));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296909));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296908));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296909));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296910));
     IphoneTitleBarActivity.setLayerType(this.jdField_b_of_type_AndroidWidgetRelativeLayout);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("搜索");
     this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription("更多");
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838043);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bks(this));
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838041);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new bkt(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838062);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bkx(this));
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838060);
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new bky(this));
   }
   
   private void m()
@@ -575,9 +575,9 @@ public class SplashActivity
     localIntent.putExtra("param_type", 3000);
     localIntent.putExtra("param_subtype", 0);
     localIntent.putExtra("param_from", 1003);
-    localIntent.putExtra("param_title", jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131364074));
-    localIntent.putExtra("param_done_button_wording", jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131363970));
-    localIntent.putExtra("param_done_button_highlight_wording", jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131363971));
+    localIntent.putExtra("param_title", jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131364085));
+    localIntent.putExtra("param_done_button_wording", jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131363981));
+    localIntent.putExtra("param_done_button_highlight_wording", jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131363982));
     localIntent.putExtra("param_max", 49);
     localIntent.putExtra("multi_chat", true);
     localIntent.setFlags(603979776);
@@ -609,23 +609,23 @@ public class SplashActivity
   
   public Dialog a(String paramString1, String paramString2, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    Dialog localDialog = new Dialog(this, 2131624119);
+    Dialog localDialog = new Dialog(this, 2131624120);
     localDialog.setContentView(2130903187);
-    TextView localTextView = (TextView)localDialog.findViewById(2131296911);
+    TextView localTextView = (TextView)localDialog.findViewById(2131296912);
     if (localTextView != null) {
       localTextView.setText(paramString1);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131296470);
+    paramString1 = (TextView)localDialog.findViewById(2131296473);
     if (paramString1 != null) {
       paramString1.setText(paramString2);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131296914);
-    if (paramString1 != null) {
-      paramString1.setText(2131362794);
-    }
     paramString1 = (TextView)localDialog.findViewById(2131296915);
     if (paramString1 != null) {
-      paramString1.setText(2131362795);
+      paramString1.setText(2131362801);
+    }
+    paramString1 = (TextView)localDialog.findViewById(2131296916);
+    if (paramString1 != null) {
+      paramString1.setText(2131362802);
     }
     localDialog.setOnDismissListener(paramOnDismissListener);
     return localDialog;
@@ -702,10 +702,10 @@ public class SplashActivity
           if (i3 <= 99) {
             break label906;
           }
-          i4 = getResources().getDimensionPixelSize(2131493073);
-          i5 = getResources().getDimensionPixelSize(2131493070);
+          i4 = getResources().getDimensionPixelSize(2131493075);
+          i5 = getResources().getDimensionPixelSize(2131493072);
           i1 = 4;
-          i2 = 2130839341;
+          i2 = 2130839406;
           label439:
           localObject = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
           if (localObject != null)
@@ -725,8 +725,8 @@ public class SplashActivity
             if (i1 != 1) {
               break label936;
             }
-            i4 = getResources().getDimensionPixelSize(2131493072);
-            i6 = getResources().getDimensionPixelSize(2131493071);
+            i4 = getResources().getDimensionPixelSize(2131493074);
+            i6 = getResources().getDimensionPixelSize(2131493073);
             i5 = i4;
           }
           for (;;)
@@ -770,12 +770,12 @@ public class SplashActivity
             break label177;
             localSharedPreferences.edit().putBoolean((String)localObject + this.app.getAccount(), bool).commit();
             break label256;
-            i4 = getResources().getDimensionPixelSize(2131493071);
-            i5 = getResources().getDimensionPixelSize(2131493070);
+            i4 = getResources().getDimensionPixelSize(2131493073);
+            i5 = getResources().getDimensionPixelSize(2131493072);
             i2 = 0;
             break label439;
-            i4 = getResources().getDimensionPixelSize(2131493073);
-            i5 = getResources().getDimensionPixelSize(2131493070);
+            i4 = getResources().getDimensionPixelSize(2131493075);
+            i5 = getResources().getDimensionPixelSize(2131493072);
             i6 = i4;
           }
         }
@@ -788,21 +788,21 @@ public class SplashActivity
   
   public Dialog b(String paramString1, String paramString2, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    Dialog localDialog = new Dialog(this, 2131624119);
+    Dialog localDialog = new Dialog(this, 2131624120);
     localDialog.setContentView(2130903135);
-    TextView localTextView = (TextView)localDialog.findViewById(2131296911);
+    TextView localTextView = (TextView)localDialog.findViewById(2131296912);
     if (localTextView != null) {
       localTextView.setText(paramString1);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131296470);
+    paramString1 = (TextView)localDialog.findViewById(2131296473);
     if (paramString1 != null) {
       paramString1.setText(paramString2);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131296914);
+    paramString1 = (TextView)localDialog.findViewById(2131296915);
     if (paramString1 != null) {
       paramString1.setText(17039370);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131296915);
+    paramString1 = (TextView)localDialog.findViewById(2131296916);
     if (paramString1 != null) {
       paramString1.setText(17039360);
     }
@@ -848,7 +848,7 @@ public class SplashActivity
       this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.c();
       jdField_a_of_type_Boolean = false;
       if (isResume()) {
-        runOnUiThread(new bkx(this));
+        runOnUiThread(new blc(this));
       }
       StartupTracker.a("Main_Start", null);
     }
@@ -910,8 +910,8 @@ public class SplashActivity
         a(1, Contacts.class, this.jdField_a_of_type_ArrayOfAndroidViewView[1]);
         a(2, QQSetting.class, this.jdField_a_of_type_ArrayOfAndroidViewView[2]);
         this.jdField_a_of_type_JavaUtilList = a();
-        this.jdField_a_of_type_Bld = new bld(this, null);
-        this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Bld);
+        this.jdField_a_of_type_Bli = new bli(this, null);
+        this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Bli);
         this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(0);
         ((FrameActivity.TabInfo)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_AndroidViewView.setSelected(true);
         k();
@@ -942,9 +942,9 @@ public class SplashActivity
         }
         this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.i();
         if (QLog.isColorLevel()) {
-          QLog.d("Version", 2, "QQ_Version:3.4.0.607");
+          QLog.d("Version", 2, "QQ_Version:3.5.0.660");
         }
-        QLog.sBuildNumber = "3.4.0.607.2015-11-16.r108074.YingYongBao";
+        QLog.sBuildNumber = "3.5.0.660.2016-06-24.r108360.YingYongBao";
         StartupTracker.a("Main_OnCreat", null);
         return true;
         setContentView(2130903231);
@@ -1178,14 +1178,14 @@ public class SplashActivity
         if (QLog.isColorLevel()) {
           QLog.d("SplashActivity", 2, "onResume start push");
         }
-        new Handler().postDelayed(new bkm(this), 800L);
+        new Handler().postDelayed(new bkr(this), 800L);
       }
       if (this.app.a() != null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("SplashActivity", 2, "onResume security detect push banner");
         }
-        new Handler().postDelayed(new bkv(this), 800L);
+        new Handler().postDelayed(new bla(this), 800L);
       }
       if ((!TextUtils.isEmpty(this.app.getAccount())) && (!"0".equals(this.app.getAccount())))
       {
@@ -1194,7 +1194,7 @@ public class SplashActivity
         {
           QLog.d("SplashActivity", 1, "PCActive tips");
           SettingCloneUtil.writeValue(this.app.a(), this.app.getAccount(), null, "pcactive_has_notice", true);
-          new Handler().postDelayed(new bkw(this), 800L);
+          new Handler().postDelayed(new blb(this), 800L);
         }
       }
       StartupTracker.a("Main_OnResume", null);
@@ -1226,16 +1226,16 @@ public class SplashActivity
     if (isFinishing()) {
       return;
     }
-    Dialog localDialog = a("退出", "你确定退出QQ？", new blb(this));
-    Object localObject = (TextView)localDialog.findViewById(2131296915);
+    Dialog localDialog = a("退出", "你确定退出QQ？", new blg(this));
+    Object localObject = (TextView)localDialog.findViewById(2131296916);
     if (localObject != null) {
-      ((TextView)localObject).setOnClickListener(new blc(this, localDialog));
+      ((TextView)localObject).setOnClickListener(new blh(this, localDialog));
     }
-    localObject = (TextView)localDialog.findViewById(2131296914);
+    localObject = (TextView)localDialog.findViewById(2131296915);
     if (localObject != null) {
-      ((TextView)localObject).setOnClickListener(new bkn(this));
+      ((TextView)localObject).setOnClickListener(new bks(this));
     }
-    localObject = getString(2131363737);
+    localObject = getString(2131363748);
     boolean bool = SettingCloneUtil.isContainValue(this, this.app.a(), (String)localObject, "qqsetting_receivemsg_whenexit_key");
     this.e = SettingCloneUtil.readValue(this, this.app.a(), (String)localObject, "qqsetting_receivemsg_whenexit_key", true);
     localObject = (CheckBox)localDialog.findViewById(2131297087);
@@ -1243,7 +1243,7 @@ public class SplashActivity
       ((CheckBox)localObject).setVisibility(8);
     }
     ((CheckBox)localObject).setChecked(this.e);
-    ((CheckBox)localObject).setOnCheckedChangeListener(new bko(this));
+    ((CheckBox)localObject).setOnCheckedChangeListener(new bkt(this));
     this.jdField_a_of_type_AndroidAppDialog = localDialog;
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
@@ -1322,14 +1322,14 @@ public class SplashActivity
     Object localObject = new TextView(this);
     ((TextView)localObject).setTextColor(-16777216);
     ((TextView)localObject).setTextSize(getResources().getInteger(2131558400));
-    ((TextView)localObject).setText(2131363245);
+    ((TextView)localObject).setText(2131363255);
     localLinearLayout.addView((View)localObject);
     localObject = new CheckBox(this);
     ((CheckBox)localObject).setTextColor(-16777216);
-    ((CheckBox)localObject).setText(2131363246);
+    ((CheckBox)localObject).setText(2131363256);
     ((CheckBox)localObject).setChecked(true);
     localLinearLayout.addView((View)localObject);
-    return DialogUtil.a(this, 230).setTitle(getString(2131363247)).addView(localLinearLayout).setPositiveButton(2131363248, new bkq(this, (CheckBox)localObject)).setNegativeButton(2131363249, new bkp(this, (CheckBox)localObject));
+    return DialogUtil.a(this, 230).setTitle(getString(2131363257)).addView(localLinearLayout).setPositiveButton(2131363258, new bkv(this, (CheckBox)localObject)).setNegativeButton(2131363259, new bku(this, (CheckBox)localObject));
   }
   
   protected void onDestroy()
@@ -1358,7 +1358,7 @@ public class SplashActivity
   {
     boolean bool1;
     boolean bool2;
-    if (paramMenuItem.getItemId() == 2131296758)
+    if (paramMenuItem.getItemId() == 2131296759)
     {
       SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
       paramMenuItem = "";
@@ -1413,7 +1413,7 @@ public class SplashActivity
     for (paramString = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;; paramString = null)
     {
       localDragTextView.setOnModeChangeListener(paramString);
-      new Handler().postDelayed(new bky(this, i1), 100L);
+      new Handler().postDelayed(new bld(this, i1), 100L);
       return;
       if (paramString.equals(Contacts.class.getName()))
       {

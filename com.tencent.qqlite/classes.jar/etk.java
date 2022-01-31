@@ -1,8 +1,19 @@
-import com.tencent.mobileqq.utils.DBUtils;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
+import com.tencent.mobileqq.troop.widget.VideoViewX.OnSeekListener;
 
 public class etk
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  public static DBUtils a = new DBUtils(null);
+  public etk(VideoViewX paramVideoViewX) {}
+  
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  {
+    if (VideoViewX.a(this.a) != null) {
+      VideoViewX.a(this.a).i();
+    }
+  }
 }
 
 

@@ -1,17 +1,13 @@
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
 
-class aom
+public class aom
   implements Runnable
 {
-  aom(aol paramaol) {}
+  public aom(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
   public void run()
   {
-    if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) {
-      this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.g(this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-    }
-    this.a.a.a.a(2131363891, 1);
+    this.a.n();
   }
 }
 

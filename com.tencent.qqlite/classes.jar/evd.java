@@ -1,25 +1,39 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.File;
 
 public class evd
-  implements View.OnClickListener
+  implements Runnable
 {
-  int jdField_a_of_type_Int;
+  public evd(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil, String paramString1, String paramString2, String paramString3) {}
   
-  public evd(QQCustomSingleButtonDialog paramQQCustomSingleButtonDialog, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.dismiss();
+    String str1 = AntiFraudConfigFileUtil.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil, this.jdField_a_of_type_JavaLangString);
+    File localFile = new File(str1);
+    Object localObject = localFile.getParent();
+    localObject = new File((String)localObject + "/download" + this.jdField_a_of_type_JavaLangString + ".xml");
+    if (((File)localObject).exists()) {
+      ((File)localObject).delete();
     }
+    if (HttpDownloadUtil.a(null, MsfSdkUtils.insertMtype("QPSingle", this.b), (File)localObject))
+    {
+      String str2 = SecUtil.a(((File)localObject).getAbsolutePath());
+      if (this.c.equalsIgnoreCase(str2)) {}
+    }
+    else
+    {
+      return;
+    }
+    if (((File)localObject).renameTo(localFile))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
+      AntiFraudConfigFileUtil.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil, str1);
+      return;
+    }
+    ((File)localObject).delete();
   }
 }
 

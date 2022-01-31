@@ -1,23 +1,33 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.book.BookEditText;
-import com.tencent.mobileqq.text.QQText;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.aio.ChatBackground;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.widget.XPanelContainer;
 
 public class cba
-  implements InputFilter
+  implements Animation.AnimationListener
 {
-  public cba(BookEditText paramBookEditText) {}
+  public cba(TroopChatPie paramTroopChatPie) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a(paramSpanned.toString());
-    if (this.a.a(paramCharSequence.toString()) == 0) {
-      BookEditText.a(this.a);
-    }
-    while (!QQText.a(paramCharSequence.toString())) {
-      return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
-    }
-    return "";
+    this.a.f.setVisibility(8);
+    this.a.g.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.f.setVisibility(0);
+    this.a.g.setVisibility(0);
+    TroopChatPie.b(this.a).setBackgroundDrawable(this.a.a.a.a);
+    TroopChatPie.b(this.a).setBackgroundResource(2130839315);
+    TroopChatPie.a(this.a).setBackgroundResource(2130839217);
   }
 }
 

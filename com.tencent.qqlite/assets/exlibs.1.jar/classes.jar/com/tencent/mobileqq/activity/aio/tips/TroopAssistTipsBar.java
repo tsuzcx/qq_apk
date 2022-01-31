@@ -2,9 +2,9 @@ package com.tencent.mobileqq.activity.aio.tips;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import cax;
-import cay;
-import caz;
+import cby;
+import cbz;
+import cca;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -20,13 +20,13 @@ public class TroopAssistTipsBar
   implements TipsBarTask
 {
   private static final String jdField_a_of_type_JavaLangString = TroopAssistTipsBar.class.getSimpleName();
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new caz(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cca(this);
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public TroopAioTips a;
-  private UpScrollHideView.onViewHideListener jdField_a_of_type_ComTencentMobileqqWidgetUpScrollHideView$onViewHideListener = new cay(this);
+  private UpScrollHideView.onViewHideListener jdField_a_of_type_ComTencentMobileqqWidgetUpScrollHideView$onViewHideListener = new cbz(this);
   private boolean jdField_a_of_type_Boolean = false;
   
   public TroopAssistTipsBar(QQAppInterface paramQQAppInterface, TipsManager paramTipsManager, BaseActivity paramBaseActivity, SessionInfo paramSessionInfo, TroopAioTips paramTroopAioTips)
@@ -45,8 +45,8 @@ public class TroopAssistTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364145);
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364152);
+    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364156);
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364163);
     paramVarArgs = ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramVarArgs, str, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_ComTencentMobileqqWidgetUpScrollHideView$onViewHideListener);
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "AIOchat", "exp_setmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
     return paramVarArgs;
@@ -74,7 +74,7 @@ public class TroopAssistTipsBar
     } while (!QLog.isColorLevel());
     QLog.d(jdField_a_of_type_JavaLangString, 2, "navigateBar is show, return ");
     return;
-    ThreadManager.b(new cax(this));
+    ThreadManager.b(new cby(this));
   }
   
   public boolean a()

@@ -7,7 +7,7 @@ import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.IJsCallBack;
 import com.tencent.open.business.base.JsCallbackManager;
 import com.tencent.smtt.sdk.WebView;
-import ffx;
+import fid;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -117,7 +117,7 @@ public class WebViewDownloadListener
             {
               localObject = "javascript:QzoneApp.fire('loadProcess'," + paramString + ");void(0);";
               LogUtility.a(jdField_a_of_type_JavaLangString, "commonJsCallBack >>> " + (String)localObject);
-              this.jdField_a_of_type_AndroidOsHandler.post(new ffx(this, localWebView, (String)localObject));
+              this.jdField_a_of_type_AndroidOsHandler.post(new fid(this, localWebView, (String)localObject));
             }
             else
             {

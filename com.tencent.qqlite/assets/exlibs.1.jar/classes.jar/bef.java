@@ -1,13 +1,16 @@
 import com.tencent.mobileqq.activity.QQSetting;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
-class bef
-  implements Runnable
+public class bef
+  extends ConfigObserver
 {
-  bef(bed parambed) {}
+  public bef(QQSetting paramQQSetting) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    this.a.a.b();
+    QQSetting.a(this.a, paramUpgradeDetailWrapper);
+    QQSetting.a(this.a);
   }
 }
 

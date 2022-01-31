@@ -1,17 +1,64 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.widget.XPanelContainer;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
+import android.view.View;
+import android.view.ViewConfiguration;
+import com.tencent.widget.AbsListView;
 
-public class fjh
-  implements ValueAnimator.AnimatorUpdateListener
+public final class fjh
+  implements Runnable
 {
-  public fjh(XPanelContainer paramXPanelContainer, int paramInt) {}
+  public fjh(AbsListView paramAbsListView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
+    Object localObject;
+    int i;
+    boolean bool;
+    if (this.a.ab == 0)
+    {
+      this.a.ab = 1;
+      localObject = this.a.getChildAt(this.a.W - this.a.ao);
+      if ((localObject != null) && (!((View)localObject).hasFocusable()))
+      {
+        this.a.P = 0;
+        if (this.a.q) {
+          break label249;
+        }
+        ((View)localObject).setPressed(true);
+        this.a.setPressed(true);
+        this.a.i();
+        this.a.a(this.a.W, (View)localObject);
+        this.a.refreshDrawableState();
+        i = ViewConfiguration.getLongPressTimeout();
+        bool = this.a.isLongClickable();
+        if (this.a.c != null)
+        {
+          localObject = this.a.c.getCurrent();
+          if ((localObject != null) && ((localObject instanceof TransitionDrawable)))
+          {
+            if (!bool) {
+              break label230;
+            }
+            ((TransitionDrawable)localObject).startTransition(i);
+          }
+        }
+      }
+    }
+    while (bool)
+    {
+      if (AbsListView.a(this.a) == null) {
+        AbsListView.a(this.a, new fjg(this.a, null));
+      }
+      AbsListView.a(this.a).a();
+      this.a.postDelayed(AbsListView.a(this.a), i);
+      return;
+      label230:
+      ((TransitionDrawable)localObject).resetTransition();
+    }
+    this.a.ab = 2;
+    return;
+    label249:
+    this.a.ab = 2;
   }
 }
 

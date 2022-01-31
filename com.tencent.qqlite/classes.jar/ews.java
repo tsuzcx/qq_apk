@@ -1,24 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.pathtracker.VipPathTracker;
-import mqq.app.AppRuntime;
-import mqq.manager.ServerConfigManager.ConfigType;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 
 public class ews
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ews(VipPathTracker paramVipPathTracker, AppRuntime paramAppRuntime) {}
+  public ews(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).a(ServerConfigManager.ConfigType.common, "PathTrack");
-    VipPathTracker localVipPathTracker = this.jdField_a_of_type_ComTencentMobileqqUtilsPathtrackerVipPathTracker;
-    if ((!TextUtils.isEmpty(str)) && (str.equals("0"))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      VipPathTracker.a(localVipPathTracker, Boolean.valueOf(bool));
-      return;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
     }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
   }
 }
 

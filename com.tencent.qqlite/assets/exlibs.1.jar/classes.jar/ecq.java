@@ -1,42 +1,29 @@
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationManager;
-import com.tencent.mobileqq.richstatus.StatusJsHandler;
+import com.tencent.mobileqq.richstatus.ActionInfo;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.IActionListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
 
 public class ecq
-  implements Runnable
+  implements IActionListener
 {
-  public ecq(StatusJsHandler paramStatusJsHandler, LocationManager paramLocationManager) {}
+  public ecq(EditActivity paramEditActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2)
   {
-    Object localObject1 = new Criteria();
-    ((Criteria)localObject1).setAltitudeRequired(false);
-    ((Criteria)localObject1).setBearingRequired(false);
-    ((Criteria)localObject1).setCostAllowed(true);
-    ((Criteria)localObject1).setPowerRequirement(1);
-    try
+    if ((paramInt1 == 102) && (EditActivity.a(this.a).b != 0) && (" ".equals(EditActivity.a(this.a).c)))
     {
-      ((Criteria)localObject1).setAccuracy(1);
-      Object localObject2 = this.jdField_a_of_type_AndroidLocationLocationManager.getBestProvider((Criteria)localObject1, true);
-      localObject2 = this.jdField_a_of_type_AndroidLocationLocationManager.getLastKnownLocation((String)localObject2);
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler.b, ((Location)localObject2).getLongitude() + "," + ((Location)localObject2).getLatitude());
-      return;
+      ActionInfo localActionInfo = EditActivity.a(this.a).a(EditActivity.a(this.a).b);
+      if (localActionInfo != null)
+      {
+        EditActivity.a(this.a).c = localActionInfo.d;
+        EditActivity.a(this.a, false);
+      }
     }
-    catch (Exception localException2)
+    if (EditActivity.a(this.a) != null)
     {
-      try
-      {
-        ((Criteria)localObject1).setAccuracy(2);
-        localObject1 = this.jdField_a_of_type_AndroidLocationLocationManager.getBestProvider((Criteria)localObject1, true);
-        localObject1 = this.jdField_a_of_type_AndroidLocationLocationManager.getLastKnownLocation((String)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler.b, ((Location)localObject1).getLongitude() + "," + ((Location)localObject1).getLatitude());
-        return;
-      }
-      catch (Exception localException1)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler.b, "0, 0");
-      }
+      EditActivity.a(this.a, true);
+      EditActivity.a(this.a).notifyDataSetChanged();
     }
   }
 }

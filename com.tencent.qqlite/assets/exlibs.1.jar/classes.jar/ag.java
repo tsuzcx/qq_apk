@@ -1,14 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.dataline.activities.LiteActivity;
 
 class ag
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  ag(ae paramae) {}
+  ag(af paramaf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    LiteActivity.a(LiteActivity.a(this.a.a));
   }
 }
 

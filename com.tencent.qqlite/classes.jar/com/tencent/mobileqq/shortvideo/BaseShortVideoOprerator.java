@@ -18,13 +18,13 @@ import com.tencent.mobileqq.pic.UpCallBack.SendResult;
 import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.QLog;
-import eec;
-import eed;
-import eee;
+import efh;
+import efi;
+import efj;
 import tencent.im.msg.im_msg_body.RichText;
 
 public abstract class BaseShortVideoOprerator
-  implements DownCallBack, UpCallBack, InfoBuilder, eee
+  implements DownCallBack, UpCallBack, InfoBuilder, efj
 {
   public static final int a = 0;
   public static final int b = 1;
@@ -43,7 +43,7 @@ public abstract class BaseShortVideoOprerator
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new eec(this, Looper.getMainLooper());
+      this.jdField_a_of_type_AndroidOsHandler = new efh(this, Looper.getMainLooper());
     }
   }
   
@@ -161,7 +161,7 @@ public abstract class BaseShortVideoOprerator
   
   private void b(ShortVideoUploadInfo paramShortVideoUploadInfo)
   {
-    ThreadManager.b().post(new eed(this, paramShortVideoUploadInfo));
+    ThreadManager.b().post(new efi(this, paramShortVideoUploadInfo));
   }
   
   public MessageRecord a(im_msg_body.RichText paramRichText)

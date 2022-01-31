@@ -1,32 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.utils.MusicCacheManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData.ActionCountdownOver;
+import java.util.TimerTask;
 
 public class dyo
-  implements Runnable
+  extends TimerTask
 {
-  public dyo(QQPlayerService paramQQPlayerService) {}
+  public dyo(ActionGlobalData paramActionGlobalData) {}
   
   public void run()
   {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    SharedPreferences localSharedPreferences = this.a.getSharedPreferences("QQPlayerService.sp", 0);
-    long l1 = localSharedPreferences.getLong("del_timestamp", 0L);
-    long l2 = localCalendar.getTimeInMillis();
-    if (l1 < l2)
+    ActionGlobalData.a(this.a);
+    ActionGlobalData localActionGlobalData = this.a;
+    localActionGlobalData.a -= 0.1F;
+    if (ActionGlobalData.a(this.a) != null) {
+      ActionGlobalData.a(this.a).b();
+    }
+    if (ActionGlobalData.b(this.a) * 100 == this.a.c * 1000)
     {
-      localSharedPreferences.edit().putLong("del_timestamp", l2).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicCacheManager", 2, "lastDel<today =====>> delCacheByTimeAndSpace");
+      this.a.a = 0.0F;
+      if (ActionGlobalData.a(this.a) != null) {
+        ActionGlobalData.a(this.a).a();
       }
-      MusicCacheManager.b();
+      cancel();
     }
   }
 }

@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import cau;
+import cbv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -36,8 +36,8 @@ public class ReaderTipsBar
   public View a(Object... paramVarArgs)
   {
     paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130903070, null);
-    paramVarArgs.setOnClickListener(new cau(this));
-    ((TextView)paramVarArgs.findViewById(2131296584)).setText(this.jdField_a_of_type_JavaLangString);
+    paramVarArgs.setOnClickListener(new cbv(this));
+    ((TextView)paramVarArgs.findViewById(2131296587)).setText(this.jdField_a_of_type_JavaLangString);
     return paramVarArgs;
   }
   

@@ -1,16 +1,24 @@
+import android.os.AsyncTask;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
-class ape
-  implements Runnable
+public class ape
+  implements Animation.AnimationListener
 {
-  ape(apd paramapd) {}
+  public ape(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a.a != null) && (!this.a.a.isFinishing())) {
-      this.a.a.a(2131363446, 1);
-    }
+    this.a.a.execute(new Void[0]);
+    this.a.c = false;
+    FriendProfileImageActivity.a(this.a).setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

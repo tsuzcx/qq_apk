@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
 
-public class aor
-  implements View.OnClickListener
+class aor
+  implements Runnable
 {
-  public aor(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  aor(aoq paramaoq) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
-    if ((this.a.a.a != null) && (this.a.a.a.a) && (this.a.app != null) && (!"0".equals(this.a.app.a()))) {
-      this.a.app.a(this.a);
+    if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) {
+      this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.g(this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
     }
+    this.a.a.a.a(2131363902, 1);
   }
 }
 

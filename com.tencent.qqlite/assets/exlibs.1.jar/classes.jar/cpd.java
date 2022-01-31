@@ -1,26 +1,23 @@
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
-import java.util.HashMap;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class cpd
-  implements Comparator
+  implements Animation.AnimationListener
 {
-  public cpd(DiscussionListAdapter2 paramDiscussionListAdapter2, HashMap paramHashMap) {}
+  public cpd(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
-    }
-    if (l1 > l2) {
-      return 1;
-    }
-    return 0;
+    ShortVideoPlayActivity.a(this.a, true);
+    ShortVideoPlayActivity.a(this.a).setVisibility(4);
+    ShortVideoPlayActivity.b(this.a).setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

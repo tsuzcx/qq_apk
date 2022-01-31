@@ -1,19 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
 
 public class epu
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public epu(MediaControllerX paramMediaControllerX) {}
+  public epu(VideoPlayLogic paramVideoPlayLogic, CharSequence paramCharSequence1, CharSequence paramCharSequence2) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((paramMotionEvent.getAction() == 0) && (MediaControllerX.a(this.a))) {
-      this.a.c();
+    if (VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic) != null) {
+      VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).a(this.jdField_a_of_type_JavaLangCharSequence, this.b);
     }
-    return false;
   }
 }
 

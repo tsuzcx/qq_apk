@@ -39,8 +39,8 @@ public class pn
     this.jdField_a_of_type_AndroidViewView = paramView;
     paramView.setSelected(true);
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131298937, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getString(2131363564));
-    QRCardActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity, MenuPopupDialog.a(paramView, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getString(2131363277), localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener, new po(this, paramView)));
+    localQQCustomMenu.a(2131298963, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getString(2131363575));
+    QRCardActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity, MenuPopupDialog.a(paramView, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getString(2131363287), localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener, new po(this, paramView)));
     return true;
   }
 }

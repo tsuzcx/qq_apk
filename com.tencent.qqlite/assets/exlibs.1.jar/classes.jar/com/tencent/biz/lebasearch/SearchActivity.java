@@ -168,8 +168,8 @@ public class SearchActivity
       this.jdField_a_of_type_ComTencentWidgetXListView.setEnabled(false);
       this.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(false);
       this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131362794);
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131362650));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131362801);
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131362657));
       return;
     }
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -200,15 +200,15 @@ public class SearchActivity
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetExtendInputMethodRelativeLayout = ((ExtendInputMethodRelativeLayout)findViewById(2131297543));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetExtendInputMethodRelativeLayout.setOnSizeChangedListenner(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297544));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297957));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297962));
     this.jdField_a_of_type_AndroidWidgetEditText.setHint("");
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297950));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131298408));
-    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131362650));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297955));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131298430));
+    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131362657));
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131297549));
-    this.c = ((RelativeLayout)findViewById(2131296865));
-    this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296866));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296867));
+    this.c = ((RelativeLayout)findViewById(2131296866));
+    this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296867));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296868));
     this.jdField_b_of_type_ComTencentWidgetXListView.setOnItemClickListener(this.jdField_b_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
     LinearLayout localLinearLayout = new LinearLayout(this);
     localLinearLayout.setOrientation(1);
@@ -236,7 +236,7 @@ public class SearchActivity
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Nm);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new nj(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(getString(2131362649));
+    this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(getString(2131362656));
   }
   
   public void a(String paramString)
@@ -265,8 +265,8 @@ public class SearchActivity
     if (paramString.equals(""))
     {
       this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131362794);
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131362650));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131362801);
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131362657));
       if (this.jdField_a_of_type_JavaUtilList.size() == 0)
       {
         a(0);
@@ -276,8 +276,8 @@ public class SearchActivity
       return;
     }
     this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131362649);
-    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131362649));
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131362656);
+    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131362656));
     SearchProtocol.a(this.app, this, this.jdField_a_of_type_ComTencentBizLebasearchSearchProtocol$SearchObserver, paramString);
   }
   
@@ -339,17 +339,17 @@ public class SearchActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131298408: 
+    case 2131298430: 
       do
       {
         return;
-        if (this.jdField_a_of_type_AndroidWidgetButton.getText().toString().equals(getString(2131362794)))
+        if (this.jdField_a_of_type_AndroidWidgetButton.getText().toString().equals(getString(2131362801)))
         {
           ReportController.b(this.app, "CliOper", "", "", "0X8004B23", "0X8004B23", 0, 0, null, null, null, null);
           finish();
           return;
         }
-      } while ((!this.jdField_a_of_type_AndroidWidgetButton.getText().toString().equals(getString(2131362649))) || (TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText())));
+      } while ((!this.jdField_a_of_type_AndroidWidgetButton.getText().toString().equals(getString(2131362656))) || (TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText())));
       this.k = 2;
       SearchProtocol.a(this.app, this, this.jdField_a_of_type_ComTencentBizLebasearchSearchProtocol$SearchObserver, this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), this.jdField_b_of_type_JavaUtilList);
       b(true);

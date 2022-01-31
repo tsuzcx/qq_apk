@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aio;
+import ait;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -14,7 +14,7 @@ public class DirectForwardActivity
   public static final String a = "toUin";
   public static final String b = "uinType";
   public static final String c = "openerProc";
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aio(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ait(this);
   ForwardOperations jdField_a_of_type_ComTencentMobileqqActivityForwardOperations;
   public String d;
   

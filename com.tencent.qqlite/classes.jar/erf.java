@@ -1,40 +1,39 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import android.util.Log;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.util.VersionUtils;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class erf
-  implements MediaPlayer.OnErrorListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public erf(VideoViewX paramVideoViewX) {}
+  public erf(AvatarWallAdapter paramAvatarWallAdapter, Activity paramActivity, ActionSheet paramActionSheet) {}
   
-  @TargetApi(8)
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void a(View paramView, int paramInt)
   {
-    Log.d(VideoViewX.a(this.a), "Error: " + paramInt1 + "," + paramInt2);
-    VideoViewX.b(this.a);
-    VideoViewX.c(this.a, -1);
-    VideoViewX.d(this.a, -1);
-    VideoViewX.b(this.a, true);
-    if (VideoViewX.a(this.a) != null)
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ArrayOfInt.length)) {
+      return;
+    }
+    switch (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ArrayOfInt[paramInt])
     {
-      VideoViewX.a(this.a).d();
-      VideoViewX.a(this.a).c();
     }
-    if (VersionUtils.b()) {
-      ((AudioManager)BaseApplication.getContext().getSystemService("audio")).abandonAudioFocus(this.a.a);
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      AvatarWallAdapter.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this.jdField_a_of_type_AndroidAppActivity, 15);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a(this.jdField_a_of_type_AndroidAppActivity, 8 - this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b);
     }
-    if ((VideoViewX.a(this.a) != null) && (VideoViewX.a(this.a).onError(VideoViewX.a(this.a), paramInt1, paramInt2))) {}
-    while (this.a.getWindowToken() == null) {
-      return true;
-    }
-    return true;
   }
 }
 

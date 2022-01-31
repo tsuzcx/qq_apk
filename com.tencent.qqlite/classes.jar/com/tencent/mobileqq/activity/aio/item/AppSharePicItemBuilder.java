@@ -55,7 +55,7 @@ public class AppSharePicItemBuilder
         paramHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         return;
       }
-      String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131363594);
+      String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131363605);
       String str1;
       if (((MessageForPic)localObject).shareAppID != 0L)
       {
@@ -65,7 +65,7 @@ public class AppSharePicItemBuilder
         {
           str1 = str2;
           if (localAppShareID.messagetail != null) {
-            str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131363593) + localAppShareID.messagetail;
+            str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131363604) + localAppShareID.messagetail;
           }
         }
       }
@@ -83,7 +83,7 @@ public class AppSharePicItemBuilder
           continue;
           str1 = str2;
           if (((MessageForPic)localObject).msgtype == -3001) {
-            str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131363816);
+            str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131363827);
           }
         }
       }
@@ -165,7 +165,7 @@ public class AppSharePicItemBuilder
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt == 2131298932) {
+    if (paramInt == 2131298958) {
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
     }
   }

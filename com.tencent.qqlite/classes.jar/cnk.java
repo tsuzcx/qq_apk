@@ -1,16 +1,19 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class cnk
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements View.OnClickListener
 {
-  public int a;
-  public TextView a;
-  public TroopInfo a;
+  public cnk(SelectMemberActivity paramSelectMemberActivity) {}
   
-  private cnk(TroopListInnerFrame paramTroopListInnerFrame) {}
+  public void onClick(View paramView)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 0);
+  }
 }
 
 

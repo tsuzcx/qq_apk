@@ -1,61 +1,23 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.Leba;
 import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.app.LebaUtil;
-import com.tencent.mobileqq.config.DownloadIconsListener;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import java.io.File;
+import java.util.List;
 
-public class asm
-  extends DownloadIconsListener
+class asm
+  implements Runnable
 {
-  public asm(Leba paramLeba) {}
+  asm(asl paramasl, List paramList) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void run()
   {
-    int j = this.a.a.getCount();
-    int i = 0;
-    boolean bool1;
-    for (boolean bool2 = false; i < j; bool2 = bool1)
+    if (Leba.a(this.jdField_a_of_type_Asl.a) != null)
     {
-      Object localObject = (LebaViewItem)this.a.a.getItem(i);
-      bool1 = bool2;
-      if (((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo != null)
-      {
-        bool1 = bool2;
-        if (paramString.equals(((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName))
-        {
-          ((LebaViewItem)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(paramBitmap);
-          bool2 = true;
-          localObject = LebaUtil.a(this.a.a(), paramString, ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName);
-          bool1 = bool2;
-          if (localObject != null)
-          {
-            bool1 = bool2;
-            if (paramBitmap != null)
-            {
-              bool1 = bool2;
-              if (BaseApplicationImpl.a != null)
-              {
-                localObject = "LebaIcon://" + ((File)localObject).getAbsolutePath();
-                bool1 = bool2;
-                if (BaseApplicationImpl.a.get(localObject) == null)
-                {
-                  BaseApplicationImpl.a.put(localObject, paramBitmap);
-                  bool1 = bool2;
-                }
-              }
-            }
-          }
-        }
+      Leba.a(this.jdField_a_of_type_Asl.a).clear();
+      Leba.a(this.jdField_a_of_type_Asl.a).addAll(this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_Asl.a.a != null) {
+        this.jdField_a_of_type_Asl.a.a.notifyDataSetChanged();
       }
-      i += 1;
+      Leba.b(this.jdField_a_of_type_Asl.a);
     }
-    this.a.b(new asn(this, paramString, paramBitmap, bool2));
   }
 }
 

@@ -2,7 +2,7 @@ package cooperation.qzone.util;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import flq;
+import fnw;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -99,7 +99,7 @@ public final class PerfTracer
   public static final void a(String paramString1, String paramString2)
   {
     long l1 = System.currentTimeMillis();
-    a().post(new flq(paramString1, l1, paramString2));
+    a().post(new fnw(paramString1, l1, paramString2));
   }
   
   private static boolean c(String paramString)

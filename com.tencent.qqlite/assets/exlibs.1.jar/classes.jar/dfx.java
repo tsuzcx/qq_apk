@@ -1,56 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonViewBinder;
+import com.tencent.mobileqq.emoticonview.MagicFaceViewBinder;
+import java.util.List;
 
 public class dfx
-  implements View.OnClickListener
+  implements Runnable
 {
-  public dfx(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
+  public dfx(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.j())
+    int i;
+    Object localObject;
+    if (this.a.c != null)
     {
-      FMDataCache.b();
-      this.a.f(false);
-      if (this.a.g())
+      i = 0;
+      int j = this.a.c.size();
+      if (i >= j) {
+        break label107;
+      }
+      localObject = (EmoticonViewBinder)this.a.c.get(i);
+      if ((localObject == null) || (!(localObject instanceof MagicFaceViewBinder))) {
+        break label73;
+      }
+      localObject = (MagicFaceViewBinder)localObject;
+    }
+    for (;;)
+    {
+      if ((i == -1) || (localObject == null))
       {
-        this.a.setResult(5);
-        this.a.finish();
         return;
+        label73:
+        i += 1;
+        break;
       }
-      BaseFileAssistantActivity.a(this.a).setVisibility(0);
-      BaseFileAssistantActivity.b(this.a).setText(2131361939);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(8);
-      this.a.setTitle(this.a.b);
-      this.a.d();
-      this.a.c();
-      if (this.a.jdField_a_of_type_Int == 1) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (localObject != null) {
+        ((MagicFaceViewBinder)localObject).c();
       }
-      this.a.b(false);
+      this.a.post(new dfy(this, i, (MagicFaceViewBinder)localObject));
       return;
+      label107:
+      localObject = null;
+      i = -1;
     }
-    if (BaseFileAssistantActivity.a(this.a) != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("BaseFileAssistantActivity<FileAssistant>", 2, "onRightEditClick");
-      }
-      BaseFileAssistantActivity.a(this.a).g();
-    }
-    FMDataCache.b();
-    this.a.f(true);
-    BaseFileAssistantActivity.c(this.a).setVisibility(0);
-    BaseFileAssistantActivity.d(this.a).setText(2131361966);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(0);
-    this.a.d();
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.b(true);
   }
 }
 

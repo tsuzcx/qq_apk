@@ -1,25 +1,25 @@
-import com.tencent.mobileqq.app.ChatBackgroundManagerImp;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.adapter.TroopListAdapter2;
+import com.tencent.mobileqq.adapter.TroopListAdapter2.OnTroopListClickListener;
+import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListItem;
+import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListViewItemTag;
 
 public class cqo
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cqo(ChatBackgroundManagerImp paramChatBackgroundManagerImp) {}
+  public cqo(TroopListAdapter2 paramTroopListAdapter2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    paramView = paramView.getTag();
+    if (!(paramView instanceof TroopListAdapter2.TroopListViewItemTag)) {}
+    do
     {
-      File localFile = new File(ChatBackgroundManagerImp.c);
-      HttpDownloadUtil.a(ChatBackgroundManagerImp.a(this.a), EmosmUtils.insertMtype("VIP_emosm", "http://i.gtimg.cn/qqshow/admindata/comdata/backgroundMall_chat_1/xydata.js"), localFile);
       return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+      paramView = (TroopListAdapter2.TroopListViewItemTag)paramView;
+    } while ((paramView.a == null) || (paramView.a.a == null));
+    this.a.a.a(paramView.a.a, paramView.a.g);
   }
 }
 

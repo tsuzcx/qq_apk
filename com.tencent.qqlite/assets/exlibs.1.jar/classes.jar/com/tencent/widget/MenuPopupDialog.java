@@ -47,7 +47,7 @@ public class MenuPopupDialog
   {
     paramMenuPopupDialog = (RelativeLayout)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903234, null);
     Resources localResources = paramContext.getResources();
-    Object localObject1 = (TextView)paramMenuPopupDialog.findViewById(2131296911);
+    Object localObject1 = (TextView)paramMenuPopupDialog.findViewById(2131296912);
     if ((paramString != null) && (!"".equals(paramString)))
     {
       ((TextView)localObject1).setText(paramString);
@@ -55,7 +55,7 @@ public class MenuPopupDialog
     }
     for (;;)
     {
-      float f = localResources.getDimension(2131493097);
+      float f = localResources.getDimension(2131493099);
       paramString = (LinearLayout)paramMenuPopupDialog.findViewById(2131297302);
       int j = paramQQCustomMenu.a();
       int i = 0;
@@ -63,13 +63,13 @@ public class MenuPopupDialog
       {
         Object localObject2 = paramQQCustomMenu.a(i);
         localObject1 = new TextView(paramContext);
-        ((TextView)localObject1).setTextColor(localResources.getColor(2131427511));
+        ((TextView)localObject1).setTextColor(localResources.getColor(2131427517));
         ((TextView)localObject1).setSingleLine(true);
         ((TextView)localObject1).setTextSize(0, localResources.getDimension(2131492871));
         ((TextView)localObject1).setText(((QQCustomMenuItem)localObject2).a());
         ((TextView)localObject1).setContentDescription(((QQCustomMenuItem)localObject2).a() + "操作");
         ((TextView)localObject1).setId(((QQCustomMenuItem)localObject2).a());
-        ((TextView)localObject1).setBackgroundResource(2130838130);
+        ((TextView)localObject1).setBackgroundResource(2130838149);
         ((TextView)localObject1).setGravity(17);
         ((TextView)localObject1).setOnClickListener(paramOnClickListener);
         localObject2 = new LinearLayout.LayoutParams(-1, (int)f);
@@ -78,19 +78,19 @@ public class MenuPopupDialog
         if (i != j - 1)
         {
           localObject1 = new View(paramContext);
-          ((View)localObject1).setBackgroundResource(2130837991);
+          ((View)localObject1).setBackgroundResource(2130838010);
           paramString.addView((View)localObject1, -1, 1);
         }
         i += 1;
       }
-      ((TextView)localObject1).setText(localResources.getString(2131363513));
+      ((TextView)localObject1).setText(localResources.getString(2131363524));
     }
     return paramMenuPopupDialog;
   }
   
   public static MenuPopupDialog a(View paramView, String paramString, QQCustomMenu paramQQCustomMenu, View.OnClickListener paramOnClickListener, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    jdField_a_of_type_ComTencentWidgetMenuPopupDialog = new MenuPopupDialog(paramView.getContext(), 2131624119);
+    jdField_a_of_type_ComTencentWidgetMenuPopupDialog = new MenuPopupDialog(paramView.getContext(), 2131624120);
     jdField_a_of_type_ComTencentWidgetMenuPopupDialog.setContentView(a(jdField_a_of_type_ComTencentWidgetMenuPopupDialog, paramView.getContext(), paramString, paramQQCustomMenu, paramOnClickListener));
     jdField_a_of_type_ComTencentWidgetMenuPopupDialog.setOnDismissListener(paramOnDismissListener);
     jdField_a_of_type_ComTencentWidgetMenuPopupDialog.setCanceledOnTouchOutside(true);

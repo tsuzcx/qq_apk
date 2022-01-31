@@ -17,7 +17,7 @@ public class ze
     if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
     {
       this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      paramString = this.a.getString(2131362896);
+      paramString = this.a.getString(2131362903);
       QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
     }
   }

@@ -17,12 +17,12 @@ public class OldApplication
     BaseApplicationImpl.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.a();
     SoLoadUtilNew.setReport(new SoLoadReportImpl());
     TimeFormatterUtils.a();
-    BaseApplicationImpl.appnewmsgicon = 2130838144;
-    BaseApplicationImpl.qqlaunchicon = 2130838046;
+    BaseApplicationImpl.appnewmsgicon = 2130838163;
+    BaseApplicationImpl.qqlaunchicon = 2130838065;
     BaseApplicationImpl.defaultNotifSoundResourceId = 2131165185;
-    BaseApplicationImpl.devlockQuickloginIcon = 2130838504;
+    BaseApplicationImpl.devlockQuickloginIcon = 2130838529;
     mqq.app.MainService.isDebugVersion = false;
-    if (BaseApplicationImpl.h == 1)
+    if (BaseApplicationImpl.g == 1)
     {
       BaseApplicationImpl.jdField_a_of_type_Long = SystemClock.uptimeMillis();
       BaseApplicationImpl.b = BaseApplicationImpl.jdField_a_of_type_Long;
@@ -35,7 +35,7 @@ public class OldApplication
       {
         Class.forName("android.os.AsyncTask");
         return "com.tencent.qqlite".equals(BaseApplicationImpl.processName);
-        if (BaseApplicationImpl.h != 4) {
+        if (BaseApplicationImpl.g != 4) {
           IPluginAdapterProxy.setProxy(new PluginAdapterImpl());
         }
       }

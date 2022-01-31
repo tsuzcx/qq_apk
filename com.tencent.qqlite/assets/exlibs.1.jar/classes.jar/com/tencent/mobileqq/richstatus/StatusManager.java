@@ -20,13 +20,13 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import ebh;
-import ebj;
-import ecu;
-import ecv;
-import ecw;
-import ecx;
-import ecy;
+import ecm;
+import eco;
+import edz;
+import eea;
+import eeb;
+import eec;
+import eed;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,7 +46,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import protocol.KQQConfig.GetResourceReqInfo;
 
 public class StatusManager
-  implements ebj, Manager
+  implements eco, Manager
 {
   public static final int a = -3;
   private static final long jdField_a_of_type_Long = 65L;
@@ -106,7 +106,7 @@ public class StatusManager
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private RichStatus jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
   private StatusObserver jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver;
-  private ebh jdField_a_of_type_Ebh;
+  private ecm jdField_a_of_type_Ecm;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private HashSet jdField_a_of_type_JavaUtilHashSet;
@@ -142,7 +142,7 @@ public class StatusManager
     if (this.jdField_a_of_type_AndroidOsAsyncTask != null) {
       return 100;
     }
-    this.jdField_a_of_type_AndroidOsAsyncTask = new ecu(this).execute(new Void[0]);
+    this.jdField_a_of_type_AndroidOsAsyncTask = new edz(this).execute(new Void[0]);
     return 100;
   }
   
@@ -275,9 +275,9 @@ public class StatusManager
           localStatusManager1.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = null;
         }
         localStatusManager2 = localStatusManager1;
-        if (localStatusManager1.jdField_a_of_type_Ebh != null)
+        if (localStatusManager1.jdField_a_of_type_Ecm != null)
         {
-          localStatusManager1.jdField_a_of_type_Ebh.a();
+          localStatusManager1.jdField_a_of_type_Ecm.a();
           localStatusManager2 = localStatusManager1;
         }
       }
@@ -291,7 +291,7 @@ public class StatusManager
     if (QLog.isColorLevel()) {
       QLog.d("Q.richstatus.xml", 2, "removeOldIcons(" + paramSparseArray1 + ", " + paramSparseArray2 + ")");
     }
-    File localFile = ebh.a();
+    File localFile = ecm.a();
     boolean bool1;
     if (localFile == null)
     {
@@ -529,7 +529,7 @@ public class StatusManager
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new ecv(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new eea(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
   }
   
@@ -546,7 +546,7 @@ public class StatusManager
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = new ecx(this);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = new eec(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver);
   }
   
@@ -599,7 +599,7 @@ public class StatusManager
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramRichStatus;
       ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(paramRichStatus, paramInt);
       if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver == null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ecw(this);
+        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new eeb(this);
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
       return 100;
@@ -644,7 +644,7 @@ public class StatusManager
       this.jdField_b_of_type_JavaUtilArrayList = null;
       if ((this.jdField_c_of_type_JavaUtilArrayList == null) && (this.jdField_b_of_type_AndroidOsAsyncTask == null))
       {
-        this.jdField_b_of_type_AndroidOsAsyncTask = new ecy(this);
+        this.jdField_b_of_type_AndroidOsAsyncTask = new eed(this);
         this.jdField_b_of_type_AndroidOsAsyncTask.execute(new Void[0]);
       }
     }
@@ -669,18 +669,18 @@ public class StatusManager
   public Bitmap a(int paramInt1, int paramInt2)
   {
     localObject7 = null;
-    if (this.jdField_a_of_type_Ebh == null) {
-      this.jdField_a_of_type_Ebh = new ebh("StatusIcon_", this);
+    if (this.jdField_a_of_type_Ecm == null) {
+      this.jdField_a_of_type_Ecm = new ecm("StatusIcon_", this);
     }
     localObject3 = (ActionInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
     Object localObject5 = paramInt1 + "_s_" + paramInt2;
-    Object localObject6 = this.jdField_a_of_type_Ebh;
+    Object localObject6 = this.jdField_a_of_type_Ecm;
     Object localObject1;
     if (localObject3 != null) {
       if (paramInt2 == 201)
       {
         localObject1 = ((ActionInfo)localObject3).jdField_a_of_type_JavaLangString;
-        localObject6 = ((ebh)localObject6).a((String)localObject5, null, (String)localObject1);
+        localObject6 = ((ecm)localObject6).a((String)localObject5, null, (String)localObject1);
         if ((localObject3 == null) && (c()) && (localObject6 == null)) {
           this.jdField_a_of_type_JavaUtilHashSet.add(localObject5);
         }
@@ -713,7 +713,7 @@ public class StatusManager
     }
     try
     {
-      localObject5 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources(), 2130839080);
+      localObject5 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources(), 2130839113);
       localObject1 = localObject5;
       BaseApplicationImpl.a.put("StatusIcon_RichStatusDefaultSmall", localObject5, (byte)0);
       localObject3 = localObject7;
@@ -739,7 +739,7 @@ public class StatusManager
       break;
       localObject1 = null;
       break;
-      localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources(), 2130839080);
+      localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources(), 2130839113);
       localObject3 = localObject7;
       break label208;
       if (paramInt2 != 200) {
@@ -751,12 +751,12 @@ public class StatusManager
         if (localObject3 != null) {
           break label376;
         }
-        localObject3 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources(), 2130839082);
+        localObject3 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources(), 2130839115);
         BaseApplicationImpl.a.put("StatusIcon_RichStatusDefaultSmall", localObject3, (byte)0);
         localObject1 = null;
         break label208;
       }
-      localObject3 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources(), 2130839082);
+      localObject3 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources(), 2130839115);
       localObject1 = null;
       break label208;
     }
@@ -1003,10 +1003,10 @@ public class StatusManager
     //   429: aload 9
     //   431: invokevirtual 805	com/tencent/mobileqq/persistence/EntityManager:a	()V
     //   434: aload 8
-    //   436: new 807	ecz
+    //   436: new 807	eee
     //   439: dup
     //   440: aload_0
-    //   441: invokespecial 808	ecz:<init>	(Lcom/tencent/mobileqq/richstatus/StatusManager;)V
+    //   441: invokespecial 808	eee:<init>	(Lcom/tencent/mobileqq/richstatus/StatusManager;)V
     //   444: invokestatic 814	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   447: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   450: ifeq +33 -> 483
@@ -1392,7 +1392,7 @@ public class StatusManager
     {
       if (localObject1 != null)
       {
-        localObject2 = this.jdField_a_of_type_Ebh.a(str, null, (String)localObject1);
+        localObject2 = this.jdField_a_of_type_Ecm.a(str, null, (String)localObject1);
         if (localObject2 == null) {
           break label50;
         }
@@ -1720,12 +1720,12 @@ public class StatusManager
   public Object[] a(int paramInt1, int paramInt2)
   {
     Object localObject2 = null;
-    if (this.jdField_a_of_type_Ebh == null) {
-      this.jdField_a_of_type_Ebh = new ebh("StatusIcon_", this);
+    if (this.jdField_a_of_type_Ecm == null) {
+      this.jdField_a_of_type_Ecm = new ecm("StatusIcon_", this);
     }
     Object localObject3 = (ActionInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
     String str2 = paramInt1 + "_" + paramInt2;
-    Object localObject1 = this.jdField_a_of_type_Ebh.a(str2);
+    Object localObject1 = this.jdField_a_of_type_Ecm.a(str2);
     String str1;
     if (localObject1 == null)
     {
@@ -1736,12 +1736,12 @@ public class StatusManager
       {
         localObject1 = ((ActionInfo)localObject3).g.replace("$U", Integer.toString(paramInt2)).replace("$D", Integer.toString(paramInt2 % 100)).replace("$T", Integer.toString(paramInt2 % 1000));
         str1 = paramInt1 + "_s_" + 201;
-        localObject3 = this.jdField_a_of_type_Ebh.a(str1);
-        ebh localebh = this.jdField_a_of_type_Ebh;
+        localObject3 = this.jdField_a_of_type_Ecm.a(str1);
+        ecm localecm = this.jdField_a_of_type_Ecm;
         if (localObject3 != null)
         {
           label201:
-          localebh.a(str2, (String)localObject2, (String)localObject1);
+          localecm.a(str2, (String)localObject2, (String)localObject1);
           if (localObject3 != null) {
             break label324;
           }
@@ -1752,7 +1752,7 @@ public class StatusManager
           if (localObject1 != null) {
             break label319;
           }
-          localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources(), 2130839080);
+          localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources(), 2130839113);
           BaseApplicationImpl.a.put("StatusIcon_RichStatusDefaultSmall", localObject1, (byte)0);
           paramInt1 = 0;
         }
@@ -1766,7 +1766,7 @@ public class StatusManager
       localObject2 = str1;
       break label201;
       label297:
-      localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources(), 2130839080);
+      localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources(), 2130839113);
       paramInt1 = 0;
       continue;
       label319:

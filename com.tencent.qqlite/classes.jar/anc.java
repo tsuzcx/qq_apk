@@ -1,17 +1,18 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
+import com.tencent.mobileqq.activity.ForwardOperations;
 
-class anc
-  implements Runnable
+public class anc
+  implements DialogInterface.OnDismissListener
 {
-  anc(ana paramana, URLDrawable paramURLDrawable) {}
+  public anc(ForwardOperations paramForwardOperations) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.jdField_a_of_type_Ana.a != null) && (this.jdField_a_of_type_Ana.a.isShowing()))
-    {
-      this.jdField_a_of_type_Ana.a.setPreviewImage(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new and(this));
+    if ((this.a.a instanceof DirectForwardActivity)) {
+      this.a.a.finish();
     }
   }
 }

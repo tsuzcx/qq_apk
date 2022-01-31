@@ -10,8 +10,8 @@ import android.util.DisplayMetrics;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.qqlite.R.styleable;
-import exq;
-import exr;
+import ezw;
+import ezx;
 import java.lang.reflect.Field;
 
 public class ClearableEditText
@@ -46,12 +46,12 @@ public class ClearableEditText
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.F);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.G);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(0);
     this.d = paramContext.getDimensionPixelSize(1, -1);
     this.e = paramContext.getDimensionPixelSize(2, -1);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837955);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837973);
     }
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {
@@ -63,8 +63,8 @@ public class ClearableEditText
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.d, this.e);
       setClearButtonVisible(false);
     }
-    setOnTouchListener(new exq(this));
-    addTextChangedListener(new exr(this));
+    setOnTouchListener(new ezw(this));
+    addTextChangedListener(new ezx(this));
     paramContext.recycle();
   }
   

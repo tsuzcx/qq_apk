@@ -121,7 +121,7 @@ public class PopupMenu
     if (this.f != 0)
     {
       localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      ((ImageView)localObject1).setBackgroundResource(2130838007);
+      ((ImageView)localObject1).setBackgroundResource(2130838026);
       localObject2 = new LinearLayout.LayoutParams(-1, -2, 1.0F);
       this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     }

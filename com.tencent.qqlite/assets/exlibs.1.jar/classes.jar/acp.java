@@ -1,47 +1,96 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Message;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.data.ChatBackgroundInfo;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.widget.MyGridView;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class acp
-  extends Handler
+  extends TransProcessorHandler
 {
-  public acp() {}
-  
-  public acp(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public acp(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
   
   public void handleMessage(Message paramMessage)
   {
-    int i = paramMessage.what;
-    Object localObject = (Object[])paramMessage.obj;
-    if (i == 1)
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if (!localFileMsg.jdField_e_of_type_JavaLangString.contains(AppConstants.bb)) {}
+    label484:
+    for (;;)
     {
-      if (ChatBackgroundSettingActivity.l < 3)
+      return;
+      ChatBackgroundInfo localChatBackgroundInfo = new ChatBackgroundInfo();
+      int i = 1;
+      Object localObject;
+      if (i < this.a.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.getChildCount())
       {
-        paramMessage = (String)localObject[0];
-        localObject = (QQAppInterface)localObject[1];
-        ChatBackgroundSettingActivity.a((QQAppInterface)localObject, paramMessage, StatisticCollector.a(BaseApplication.getContext()));
-        ChatBackgroundSettingActivity.l += 1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundSettingActivity.l);
+        localObject = ((ChatBackgroundInfo)this.a.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.getChildAt(i).getTag()).url;
+        if (localFileMsg.k.equals(localObject))
+        {
+          localObject = this.a.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.getChildAt(i);
+          localChatBackgroundInfo = (ChatBackgroundInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(i - 1);
         }
-        Message localMessage = ChatBackgroundSettingActivity.a.obtainMessage();
-        localMessage.what = 1;
-        localMessage.obj = new Object[] { paramMessage, localObject };
-        ChatBackgroundSettingActivity.a.sendMessageDelayed(localMessage, 120000L);
+      }
+      for (;;)
+      {
+        if (localObject == null) {
+          break label484;
+        }
+        View localView = ((View)localObject).findViewById(2131296796);
+        ProgressBar localProgressBar = (ProgressBar)((View)localObject).findViewById(2131296797);
+        ImageView localImageView = (ImageView)((View)localObject).findViewById(2131296794);
+        switch (paramMessage.what)
+        {
+        case 2005: 
+        default: 
+          return;
+        case 2001: 
+          localImageView.setVisibility(8);
+          localView.setVisibility(0);
+          localView.setContentDescription(((View)localObject).getResources().getString(2131364374, new Object[] { Integer.valueOf(i + 1) }));
+          localProgressBar.setMax(100);
+          localProgressBar.setProgress(0);
+          this.a.jdField_a_of_type_JavaUtilHashMap.put(localChatBackgroundInfo.id, Long.valueOf(System.currentTimeMillis()));
+          return;
+          i += 1;
+          break;
+        case 2002: 
+          localImageView.setVisibility(8);
+          localView.setVisibility(0);
+          float f = localProgressBar.getMax();
+          localProgressBar.setProgress((int)((float)localFileMsg.jdField_e_of_type_Long / (float)localFileMsg.a * f));
+          return;
+        case 2003: 
+          localImageView.setVisibility(8);
+          localView.setVisibility(8);
+          ((View)localObject).findViewById(2131296792).setContentDescription(((View)localObject).getResources().getString(2131364372, new Object[] { Integer.valueOf(i + 1) }));
+          this.a.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a(localChatBackgroundInfo);
+          this.a.b.put(localChatBackgroundInfo.id, Long.valueOf(System.currentTimeMillis()));
+          this.a.a(0, localChatBackgroundInfo);
+          return;
+        case 2004: 
+          localImageView.setVisibility(0);
+          localView.setVisibility(8);
+          this.a.a(1, localChatBackgroundInfo);
+          return;
+        case 2006: 
+          this.a.a(1, localChatBackgroundInfo);
+          Toast.makeText(this.a.jdField_a_of_type_AndroidAppActivity, this.a.getBaseContext().getString(2131363523), 0).show();
+          return;
+          localObject = null;
+          i = 0;
+        }
       }
     }
-    else {
-      return;
-    }
-    ChatBackgroundSettingActivity.l = 0;
   }
 }
 

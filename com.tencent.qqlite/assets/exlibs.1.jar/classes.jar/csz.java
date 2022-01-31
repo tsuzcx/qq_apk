@@ -1,8 +1,15 @@
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+
 public class csz
+  implements Runnable
 {
-  public long a = 0L;
-  public long b = 0L;
-  public long c = 0L;
+  public csz(DataLineHandler paramDataLineHandler) {}
+  
+  public void run()
+  {
+    FMToastUtil.a(2131361875);
+  }
 }
 
 

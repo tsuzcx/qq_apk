@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.app.message.BaseMessageManager;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.CheckMsgCount;
+import com.tencent.mobileqq.app.message.MultiMsgProxy;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.Map;
 
-class cyf
+public class cyf
   implements Runnable
 {
-  cyf(cye paramcye) {}
+  public cyf(CheckMsgCount paramCheckMsgCount) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.b.containsKey(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.b.remove(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
-    }
+    CheckMsgCount.a(this.a).a.a().l();
+    CheckMsgCount.b(this.a).a.a().c();
   }
 }
 

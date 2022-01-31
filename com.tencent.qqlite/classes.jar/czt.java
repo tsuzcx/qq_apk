@@ -1,17 +1,25 @@
-import com.dataline.util.WaitEvent;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
+import com.tencent.mobileqq.app.message.DiscMessageProcessor;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class czt
-  implements Runnable
+  implements BaseMessageProcessor.RequestBuilder
 {
-  public czt(DataLineMsgProxy paramDataLineMsgProxy, DataLineMsgRecord paramDataLineMsgRecord, WaitEvent paramWaitEvent) {}
+  public czt(DiscMessageProcessor paramDiscMessageProcessor, long paramLong1, long paramLong2) {}
   
-  public void run()
+  public ToServiceMsg a()
   {
-    DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, null);
-    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.DiscMessageProcessor", 2, "<ReadReport><S>_Discussion_disUin:" + this.jdField_a_of_type_Long + " lastReadSeq:" + this.b);
+    }
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageDiscMessageProcessor.a.a("MessageSvc.DisMsgReadConfirm");
+    localToServiceMsg.extraData.putLong("groupuin", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putLong("lastReadSeq", this.b);
+    localToServiceMsg.setEnableFastResend(true);
+    return localToServiceMsg;
   }
 }
 

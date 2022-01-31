@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
-class cfx
-  implements DialogInterface.OnDismissListener
+public class cfx
+  implements DialogInterface.OnClickListener
 {
-  cfx(cfw paramcfw, View paramView) {}
+  public cfx(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    paramDialogInterface.dismiss();
   }
 }
 

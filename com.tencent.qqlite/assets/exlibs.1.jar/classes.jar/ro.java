@@ -12,7 +12,7 @@ public class ro
   public void onAnimationEnd(Animation paramAnimation)
   {
     this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838195);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838214);
     this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   

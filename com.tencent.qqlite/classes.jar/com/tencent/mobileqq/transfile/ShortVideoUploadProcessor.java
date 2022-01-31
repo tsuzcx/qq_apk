@@ -30,9 +30,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.SSCM;
-import eht;
-import ehu;
-import ehw;
+import eiz;
+import eja;
+import ejc;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -50,7 +50,7 @@ public class ShortVideoUploadProcessor
   public static final String W = "ShortVideoUploadProcessor";
   public static final String X = "QQ_&_MoblieQQ_&_QQ";
   private String Y;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ehu(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new eja(this);
   private ShortVideoTransManager jdField_a_of_type_ComTencentMobileqqAppShortVideoTransManager;
   private ShortVideoUpInfo jdField_a_of_type_ComTencentMobileqqDataShortVideoUpInfo;
   int aN = 0;
@@ -177,7 +177,7 @@ public class ShortVideoUploadProcessor
       paramArrayOfByte.append(((ServerAddr)localObject2).jdField_b_of_type_Int);
     }
     paramArrayOfByte.append("/qqupload?ver=");
-    paramArrayOfByte.append("607");
+    paramArrayOfByte.append("660");
     paramArrayOfByte.append("&ukey=");
     paramArrayOfByte.append(this.V);
     paramArrayOfByte.append("&filekey=");
@@ -918,7 +918,7 @@ public class ShortVideoUploadProcessor
       this.aw = 0;
       this.L = "";
       this.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new eht(this));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new eiz(this));
     }
     return 0;
   }
@@ -937,17 +937,17 @@ public class ShortVideoUploadProcessor
     this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.a();
     RichProto.RichProtoReq localRichProtoReq = new RichProto.RichProtoReq();
     RichProto.RichProtoReq.ShortVideoUpReq localShortVideoUpReq = new RichProto.RichProtoReq.ShortVideoUpReq();
-    localShortVideoUpReq.jdField_d_of_type_Int = ((int)this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long);
+    localShortVideoUpReq.jdField_c_of_type_Int = ((int)this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long);
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoUploadProcessor", 2, "sendGetUrlReq()----busiReq.seq : " + localShortVideoUpReq.jdField_d_of_type_Int);
+      QLog.d("ShortVideoUploadProcessor", 2, "sendGetUrlReq()----busiReq.seq : " + localShortVideoUpReq.jdField_c_of_type_Int);
     }
     localShortVideoUpReq.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_JavaLangString;
     localShortVideoUpReq.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_b_of_type_JavaLangString;
-    localShortVideoUpReq.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int;
+    localShortVideoUpReq.jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int;
     localShortVideoUpReq.i = 0;
     localShortVideoUpReq.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_b_of_type_JavaLangString;
     String str;
-    if (localShortVideoUpReq.jdField_c_of_type_Int == 0)
+    if (localShortVideoUpReq.jdField_d_of_type_Int == 0)
     {
       localShortVideoUpReq.jdField_a_of_type_Int = 0;
       localShortVideoUpReq.jdField_b_of_type_Int = 2;
@@ -990,12 +990,12 @@ public class ShortVideoUploadProcessor
       do
       {
         return;
-        if (1 == localShortVideoUpReq.jdField_c_of_type_Int)
+        if (1 == localShortVideoUpReq.jdField_d_of_type_Int)
         {
           localShortVideoUpReq.jdField_a_of_type_Int = 1;
           break;
         }
-        if (3000 == localShortVideoUpReq.jdField_c_of_type_Int)
+        if (3000 == localShortVideoUpReq.jdField_d_of_type_Int)
         {
           localShortVideoUpReq.jdField_a_of_type_Int = 2;
           break;

@@ -319,7 +319,7 @@ public class LBSService
         int j = 0;
         try
         {
-          i = Integer.parseInt("607");
+          i = Integer.parseInt("660");
           int i2 = arrayOfInt.length;
           j = 0;
           while (j < i2)
@@ -329,7 +329,7 @@ public class LBSService
             ((SummaryCardBusiEntry.comm)localObject3).seq.set(paramToServiceMsg.getAppSeq());
             ((SummaryCardBusiEntry.comm)localObject3).service.set(arrayOfInt[j]);
             ((SummaryCardBusiEntry.comm)localObject3).platform.set(2);
-            ((SummaryCardBusiEntry.comm)localObject3).qqver.set("3.4.0.607");
+            ((SummaryCardBusiEntry.comm)localObject3).qqver.set("3.5.0.660");
             ((SummaryCardBusiEntry.comm)localObject3).build.set(i);
             localObject3 = ((SummaryCardBusiEntry.comm)localObject3).toByteArray();
             int k = localObject3.length;
@@ -1600,7 +1600,7 @@ public class LBSService
     Object localObject4;
     if (!bool)
     {
-      localObject3 = new SSummaryCardQueryReq(1, Long.parseLong(paramToServiceMsg.getUin()), l2, "3.4.0", n, 109L);
+      localObject3 = new SSummaryCardQueryReq(1, Long.parseLong(paramToServiceMsg.getUin()), l2, "3.5.0", n, 109L);
       localObject4 = new UniPacket(true);
       ((UniPacket)localObject4).setEncodeName("utf-8");
       ((UniPacket)localObject4).setFuncName("query");
@@ -1612,7 +1612,7 @@ public class LBSService
     {
       try
       {
-        i = Integer.parseInt("607");
+        i = Integer.parseInt("660");
         localArrayList = new ArrayList();
         if ((l2 > 0L) || (bool))
         {
@@ -1653,7 +1653,7 @@ public class LBSService
               }
             }
             ((SummaryCardBusiEntry.comm)localObject6).platform.set(2);
-            ((SummaryCardBusiEntry.comm)localObject6).qqver.set("3.4.0.607");
+            ((SummaryCardBusiEntry.comm)localObject6).qqver.set("3.5.0.660");
             ((SummaryCardBusiEntry.comm)localObject6).build.set(i);
             tmp329_327 = ((SummaryCardBusiEntry.comm)localObject6).toByteArray();
             int k = tmp329_327.length;
@@ -1822,7 +1822,7 @@ public class LBSService
         localSSummaryCardSetLabel = new SSummaryCardSetLabel();
         localSSummaryCardSetLabel.cmd = 4;
         localSSummaryCardSetLabel.uin = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
-        localSSummaryCardSetLabel.version = "3.4.0";
+        localSSummaryCardSetLabel.version = "3.5.0";
         localSSummaryCardSetLabel.platform = 109L;
         localSSummaryCardSetLabel.labels = new ArrayList();
         localObject = ((List)localObject).iterator();
@@ -1859,7 +1859,7 @@ public class LBSService
       localSSummaryCardLikeIt.likeuin = paramToServiceMsg.extraData.getLong("destUin");
       localSSummaryCardLikeIt.label = paramToServiceMsg.extraData.getLong("labelId");
       localSSummaryCardLikeIt.platform = 109L;
-      localSSummaryCardLikeIt.version = "3.4.0";
+      localSSummaryCardLikeIt.version = "3.5.0";
       paramUniPacket.setServantName("SummaryCard");
       paramUniPacket.setFuncName("LikeIt");
       paramUniPacket.put("SSummaryCardLikeIt", localSSummaryCardLikeIt);

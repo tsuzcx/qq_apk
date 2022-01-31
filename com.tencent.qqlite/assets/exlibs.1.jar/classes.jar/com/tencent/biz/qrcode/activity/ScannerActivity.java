@@ -50,6 +50,7 @@ public class ScannerActivity
   public static final String g = "exttype";
   public static int h = 0;
   public static final String h = "extvalue";
+  public static final int i = 2;
   public static final String i = "scanForResult";
   public static final String j = "from";
   public static final String k = "finishAfterSucc";
@@ -166,7 +167,7 @@ public class ScannerActivity
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
     localQQCustomDialog.setMessage("类库损坏请重新启动QQ");
     qo localqo = new qo(this);
-    localQQCustomDialog.setPositiveButton(2131362795, localqo);
+    localQQCustomDialog.setPositiveButton(2131362802, localqo);
     localQQCustomDialog.setOnCancelListener(localqo);
     localQQCustomDialog.show();
   }
@@ -188,9 +189,9 @@ public class ScannerActivity
     this.jdField_f_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
-    localQQCustomDialog.setMessage(2131362406);
+    localQQCustomDialog.setMessage(2131362407);
     qp localqp = new qp(this);
-    localQQCustomDialog.setPositiveButton(2131362795, localqp);
+    localQQCustomDialog.setPositiveButton(2131362802, localqp);
     localQQCustomDialog.setOnCancelListener(localqp);
     localQQCustomDialog.show();
   }
@@ -207,6 +208,16 @@ public class ScannerActivity
     }
     this.jdField_f_of_type_Boolean = false;
     b(paramString);
+  }
+  
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    }
+    finish();
   }
   
   public void doOnConfigurationChanged(Configuration paramConfiguration)
@@ -238,16 +249,16 @@ public class ScannerActivity
         this.jdField_a_of_type_Boolean = true;
         setRequestedOrientation(0);
       }
-      super.setContentView(2130903359);
+      super.setContentView(2130903362);
       this.l = "";
       this.m = "";
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131297823);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297801));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297821));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297820));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297822));
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131297819);
-      this.jdField_a_of_type_ComTencentBizWidgetsScannerView = ((ScannerView)findViewById(2131297800));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131297827);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297805));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297825));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297824));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297826));
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131297823);
+      this.jdField_a_of_type_ComTencentBizWidgetsScannerView = ((ScannerView)findViewById(2131297804));
       this.jdField_a_of_type_ComTencentBizWidgetsScannerView.setScanListener(this);
       this.jdField_a_of_type_ComTencentBizWidgetsScannerView.setFileDecodeListener(this);
       this.jdField_f_of_type_Int = getResources().getDimensionPixelOffset(2131492887);
@@ -269,14 +280,14 @@ public class ScannerActivity
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      findViewById(2131296897).setOnClickListener(this);
-      ((TextView)findViewById(2131296897)).setText(2131362375);
-      ((TextView)findViewById(2131296891)).setText(2131362375);
-      findViewById(2131296897).setContentDescription(getString(2131364516));
+      findViewById(2131296898).setOnClickListener(this);
+      ((TextView)findViewById(2131296898)).setText(2131362376);
+      ((TextView)findViewById(2131296892)).setText(2131362376);
+      findViewById(2131296898).setContentDescription(getString(2131364539));
       this.jdField_f_of_type_Boolean = false;
       this.jdField_h_of_type_Boolean = super.getPackageManager().hasSystemFeature("android.hardware.camera");
       if ((!this.jdField_h_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetTextView != null)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362403);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362404);
       }
       this.n = paramBundle.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
       if (this.n != null) {
@@ -285,9 +296,9 @@ public class ScannerActivity
       this.i = paramBundle.getBooleanExtra("scanForResult", false);
       this.j = paramBundle.getBooleanExtra("finishAfterSucc", false);
       return true;
-      super.setContentView(2130903358);
-      this.l = getString(2131362416);
-      this.m = getString(2131362417);
+      super.setContentView(2130903361);
+      this.l = getString(2131362417);
+      this.m = getString(2131362418);
       break;
       label513:
       if ("ImagePreviewActivity".equals(str)) {
@@ -326,7 +337,7 @@ public class ScannerActivity
     if (this.jdField_g_of_type_Boolean)
     {
       this.jdField_g_of_type_Boolean = false;
-      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130838364, 0, 0);
+      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130838383, 0, 0);
       this.jdField_b_of_type_AndroidWidgetTextView.setText(this.l);
     }
     this.jdField_a_of_type_ComTencentBizWidgetsScannerView.b();
@@ -361,7 +372,7 @@ public class ScannerActivity
     do
     {
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362402);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362403);
       this.jdField_d_of_type_Boolean = true;
       if (this.jdField_a_of_type_ComTencentBizWidgetsScannerView.a()) {
         this.jdField_b_of_type_AndroidWidgetTextView.setEnabled(true);
@@ -372,7 +383,7 @@ public class ScannerActivity
   
   public void g()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362404);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362405);
   }
   
   public void h()
@@ -394,7 +405,7 @@ public class ScannerActivity
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
     localQQCustomDialog.setMessage("类库损坏请重新启动QQ");
     qn localqn = new qn(this);
-    localQQCustomDialog.setPositiveButton(2131362795, localqn);
+    localQQCustomDialog.setPositiveButton(2131362802, localqn);
     localQQCustomDialog.setOnCancelListener(localqn);
     localQQCustomDialog.show();
   }
@@ -405,7 +416,7 @@ public class ScannerActivity
     {
     default: 
       return;
-    case 2131297820: 
+    case 2131297824: 
       paramView = new Intent();
       paramView.setClass(this, PhotoListActivity.class);
       paramView.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ScannerActivity.class.getName());
@@ -417,7 +428,7 @@ public class ScannerActivity
       AlbumUtil.a(this, false, true);
       ReportController.b(this.app, "P_CliOper", "Pb_account_lifeservice", "", "saoyisao", "xiangce", 0, 1, 0, "", "", "", "");
       return;
-    case 2131297821: 
+    case 2131297825: 
       paramView = this.jdField_a_of_type_ComTencentBizWidgetsScannerView;
       boolean bool;
       if (!this.jdField_g_of_type_Boolean)
@@ -427,7 +438,7 @@ public class ScannerActivity
         if (!this.jdField_g_of_type_Boolean) {
           break label263;
         }
-        this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130838357, 0, 0);
+        this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130838376, 0, 0);
         this.jdField_b_of_type_AndroidWidgetTextView.setText(this.m);
       }
       for (;;)
@@ -436,14 +447,14 @@ public class ScannerActivity
         return;
         bool = false;
         break;
-        this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130838364, 0, 0);
+        this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130838383, 0, 0);
         this.jdField_b_of_type_AndroidWidgetTextView.setText(this.l);
       }
-    case 2131297822: 
+    case 2131297826: 
       label263:
       paramView = new Intent(this, QRDisplayActivity.class);
       String str = this.app.a();
-      paramView.putExtra("title", getString(2131362426));
+      paramView.putExtra("title", getString(2131362427));
       paramView.putExtra("nick", ContactUtils.g(this.app, str));
       paramView.putExtra("uin", str);
       paramView.putExtra("type", 1);

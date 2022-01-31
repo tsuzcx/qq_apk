@@ -13,8 +13,8 @@ import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.Short
 import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import ehs;
-import ehw;
+import eiy;
+import ejc;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -465,7 +465,7 @@ public class ShortVideoDownloadProcessor
       localStringBuilder.append(localServerAddr.jdField_b_of_type_Int);
     }
     localStringBuilder.append("/qqdownload?ver=");
-    localStringBuilder.append("607");
+    localStringBuilder.append("660");
     localStringBuilder.append("&rkey=");
     localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
     localStringBuilder.append("&filetype=");
@@ -482,17 +482,17 @@ public class ShortVideoDownloadProcessor
     this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.a();
     RichProto.RichProtoReq localRichProtoReq = new RichProto.RichProtoReq();
     RichProto.RichProtoReq.ShortVideoDownReq localShortVideoDownReq = new RichProto.RichProtoReq.ShortVideoDownReq();
-    localShortVideoDownReq.jdField_d_of_type_Int = ((int)this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long);
+    localShortVideoDownReq.jdField_c_of_type_Int = ((int)this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long);
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoDownloadProcessor", 2, "sendGetUrlReq()----busiReq.seq : " + localShortVideoDownReq.jdField_d_of_type_Int);
+      QLog.d("ShortVideoDownloadProcessor", 2, "sendGetUrlReq()----busiReq.seq : " + localShortVideoDownReq.jdField_c_of_type_Int);
     }
     localShortVideoDownReq.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_JavaLangString;
     localShortVideoDownReq.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_b_of_type_JavaLangString;
     localShortVideoDownReq.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_c_of_type_JavaLangString;
-    localShortVideoDownReq.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int;
+    localShortVideoDownReq.jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int;
     localShortVideoDownReq.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_b_of_type_JavaLangString;
     localShortVideoDownReq.jdField_e_of_type_Int = 0;
-    if (localShortVideoDownReq.jdField_c_of_type_Int == 0) {
+    if (localShortVideoDownReq.jdField_d_of_type_Int == 0) {
       localShortVideoDownReq.jdField_a_of_type_Int = 0;
     }
     for (;;)
@@ -510,9 +510,9 @@ public class ShortVideoDownloadProcessor
       a(9366, "illegal app", null, this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo);
       d();
       return;
-      if (1 == localShortVideoDownReq.jdField_c_of_type_Int) {
+      if (1 == localShortVideoDownReq.jdField_d_of_type_Int) {
         localShortVideoDownReq.jdField_a_of_type_Int = 1;
-      } else if (3000 == localShortVideoDownReq.jdField_c_of_type_Int) {
+      } else if (3000 == localShortVideoDownReq.jdField_d_of_type_Int) {
         localShortVideoDownReq.jdField_a_of_type_Int = 2;
       } else {
         localShortVideoDownReq.jdField_a_of_type_Int = 3;
@@ -664,7 +664,7 @@ public class ShortVideoDownloadProcessor
       d(2001);
       this.aw = 0;
       this.L = "";
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new ehs(this));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new eiy(this));
     }
     return 0;
   }

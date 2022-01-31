@@ -7,8 +7,8 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
-import cwr;
-import cwt;
+import cxt;
+import cxv;
 import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.concurrent.Executor;
@@ -26,8 +26,10 @@ public final class ThreadManager
   public static final boolean a = false;
   private static Handler jdField_b_of_type_AndroidOsHandler;
   private static HandlerThread jdField_b_of_type_AndroidOsHandlerThread;
-  private static Handler c;
+  private static Handler jdField_c_of_type_AndroidOsHandler;
+  private static HandlerThread jdField_c_of_type_AndroidOsHandlerThread;
   private static Handler d;
+  private static Handler e;
   
   static
   {
@@ -65,7 +67,7 @@ public final class ThreadManager
     if (jdField_a_of_type_JavaUtilTimer == null) {}
     try
     {
-      jdField_a_of_type_JavaUtilTimer = new cwr("QQ_Timer");
+      jdField_a_of_type_JavaUtilTimer = new cxt("QQ_Timer");
       return jdField_a_of_type_JavaUtilTimer;
     }
     finally {}
@@ -73,7 +75,7 @@ public final class ThreadManager
   
   public static Executor a()
   {
-    return new cwt(null);
+    return new cxv(null);
   }
   
   public static void a() {}
@@ -148,13 +150,13 @@ public final class ThreadManager
   
   public static Handler c()
   {
-    if (c == null) {}
+    if (e == null) {}
     try
     {
-      HandlerThread localHandlerThread = new HandlerThread("Msg_Handler");
-      localHandlerThread.start();
-      c = new Handler(localHandlerThread.getLooper());
-      return c;
+      jdField_c_of_type_AndroidOsHandlerThread = new HandlerThread("QQ_UI");
+      jdField_c_of_type_AndroidOsHandlerThread.start();
+      e = new Handler(jdField_c_of_type_AndroidOsHandlerThread.getLooper());
+      return e;
     }
     finally {}
   }
@@ -168,6 +170,19 @@ public final class ThreadManager
       localHandlerThread.start();
       d = new Handler(localHandlerThread.getLooper());
       return d.getLooper();
+    }
+    finally {}
+  }
+  
+  public static Handler d()
+  {
+    if (jdField_c_of_type_AndroidOsHandler == null) {}
+    try
+    {
+      HandlerThread localHandlerThread = new HandlerThread("Msg_Handler");
+      localHandlerThread.start();
+      jdField_c_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+      return jdField_c_of_type_AndroidOsHandler;
     }
     finally {}
   }

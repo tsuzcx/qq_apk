@@ -1,49 +1,16 @@
-import android.view.animation.AlphaAnimation;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.eAnimType;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.IGetVideoCallback;
 
-public class dup
-  implements Runnable
+class dup
+  implements FileManagerUtil.IGetVideoCallback
 {
-  public dup(PreviewingOfflineFileViewBase paramPreviewingOfflineFileViewBase) {}
+  dup(duo paramduo) {}
   
-  public void run()
+  public void a(Bitmap paramBitmap)
   {
-    if (PreviewingOfflineFileViewBase.a(this.a) == null) {
-      PreviewingOfflineFileViewBase.a(this.a, (LinearLayout)PreviewingOfflineFileViewBase.a(this.a).findViewById(2131298041));
-    }
-    if (PreviewingOfflineFileViewBase.b(this.a)) {
-      PreviewingOfflineFileViewBase.a(this.a, 20);
-    }
-    for (;;)
-    {
-      if (PreviewingOfflineFileViewBase.b(this.a) == null) {
-        PreviewingOfflineFileViewBase.b(this.a, new FilePreviewAnimQueue(PreviewingOfflineFileViewBase.a(this.a)));
-      }
-      ((ProgressBar)PreviewingOfflineFileViewBase.a(this.a).findViewById(2131298042)).setVisibility(0);
-      ((TextView)PreviewingOfflineFileViewBase.a(this.a).findViewById(2131298043)).setText(2131363566);
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
-      localAlphaAnimation.setFillAfter(true);
-      FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-      localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-      localFilePreviewAnim.jdField_a_of_type_Boolean = true;
-      localFilePreviewAnim.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue$eAnimType = FilePreviewAnimQueue.eAnimType.eAlphaAnim;
-      localFilePreviewAnim.jdField_a_of_type_Int = 500;
-      PreviewingOfflineFileViewBase.b(this.a).a(localFilePreviewAnim);
-      PreviewingOfflineFileViewBase.b(this.a).a();
-      if (QLog.isColorLevel()) {
-        QLog.i("PreviewingOfflineFileViewBase<FileAssistant>", 2, "showGetmore(1000)");
-      }
-      return;
-      PreviewingOfflineFileViewBase.a(this.a, 140);
-    }
+    LocalVideoFileView.d(this.a.a).runOnUiThread(new duq(this, paramBitmap));
   }
 }
 

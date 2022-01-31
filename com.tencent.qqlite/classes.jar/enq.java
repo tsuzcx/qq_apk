@@ -1,15 +1,50 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopMessageProcessor;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.troop.data.NearbyOpenTroop;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.troop.group_activity_info.GroupActInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class enq
-  implements Comparator
+  extends BizTroopObserver
 {
-  public enq(TroopMessageProcessor paramTroopMessageProcessor) {}
+  public enq(NearbyOpenTroop paramNearbyOpenTroop) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  private void a(group_activity_info.GroupActInfo paramGroupActInfo)
   {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+    Message localMessage = Message.obtain();
+    localMessage.what = 1001;
+    localMessage.obj = paramGroupActInfo;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, List paramList)
+  {
+    if ((!paramBoolean2) || (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    int j = 0;
+    int i = j;
+    if (paramBoolean1)
+    {
+      paramString = paramList.iterator();
+      i = j;
+      if (paramString.hasNext())
+      {
+        a((group_activity_info.GroupActInfo)paramString.next());
+        i = 1;
+      }
+    }
+    if (i == 0)
+    {
+      NearbyOpenTroop.b(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("EnterTroopTipsMsg", 2, "没有群活动消息，之后直接生成tips");
+      }
+    }
+    NearbyOpenTroop.a(this.a);
   }
 }
 

@@ -26,7 +26,7 @@ public class ms
     if (!paramBoolean)
     {
       EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
-      this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a(2131362450);
+      this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a(2131362451);
       paramBundle = this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity;
       paramBundle.jdField_a_of_type_Int -= 1;
       if (this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_Int == 0) {
@@ -73,15 +73,15 @@ public class ms
             continue;
           }
           EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
-          this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a(2131362450);
+          this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a(2131362451);
           break;
         }
         EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
-        this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a(2131362450);
+        this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a(2131362451);
       }
       catch (Exception paramBundle) {}
       EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
-      this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a(2131362450);
+      this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a(2131362451);
       break;
       break;
       label459:

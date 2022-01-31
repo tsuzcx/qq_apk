@@ -38,7 +38,7 @@ public class ProfileLabelPanel
   public ProfileLabelPanel(Context paramContext, ProfileLabelPanel.LabelStatusManager paramLabelStatusManager, List paramList, ProfileLabelCallBack paramProfileLabelCallBack)
   {
     this(paramContext);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130903586, this);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130903595, this);
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager = paramLabelStatusManager;
     a(paramContext, paramProfileLabelCallBack);
@@ -46,11 +46,11 @@ public class ProfileLabelPanel
   
   protected void a(Context paramContext, ProfileLabelCallBack paramProfileLabelCallBack)
   {
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298651));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298650));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298677));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298676));
     this.b.setText(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(0)).typeInfo);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(0)).typeName);
-    this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator = ((CirclePageIndicator)this.jdField_a_of_type_AndroidViewView.findViewById(2131298652));
+    this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator = ((CirclePageIndicator)this.jdField_a_of_type_AndroidViewView.findViewById(2131298678));
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131297066));
     this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter = new ProfileLabelPanelAdapter(paramContext, this.jdField_a_of_type_JavaUtilList);
     this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.a(paramProfileLabelCallBack);

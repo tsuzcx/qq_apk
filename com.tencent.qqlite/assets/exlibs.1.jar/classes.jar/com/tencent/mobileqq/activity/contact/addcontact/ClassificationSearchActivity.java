@@ -13,10 +13,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import cbw;
-import cbx;
-import cby;
-import cbz;
+import ccx;
+import ccy;
+import ccz;
+import cda;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.mobileqq.utils.ImageUtil;
@@ -45,7 +45,7 @@ public class ClassificationSearchActivity
   private static final int v = 2;
   public int a;
   private View jdField_a_of_type_AndroidViewView;
-  private cbz jdField_a_of_type_Cbz;
+  private cda jdField_a_of_type_Cda;
   private List jdField_a_of_type_JavaUtilList = new ArrayList(20);
   public boolean a;
   int b;
@@ -119,7 +119,7 @@ public class ClassificationSearchActivity
   {
     super.a(paramString);
     this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_Cbz.notifyDataSetChanged();
+    this.jdField_a_of_type_Cda.notifyDataSetChanged();
   }
   
   protected boolean a(ArrayList paramArrayList)
@@ -149,11 +149,11 @@ public class ClassificationSearchActivity
   protected void c()
   {
     super.c();
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new cbx(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ccy(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription("搜索栏" + this.jdField_d_of_type_JavaLangString);
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2130903456, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+      this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2130903461, this.jdField_a_of_type_ComTencentWidgetXListView, false);
       this.jdField_a_of_type_AndroidViewView.setClickable(false);
       this.jdField_a_of_type_AndroidViewView.setFocusable(true);
     }
@@ -170,7 +170,7 @@ public class ClassificationSearchActivity
         this.jdField_a_of_type_Int = i;
         this.jdField_a_of_type_JavaUtilList.addAll(jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult.jdField_b_of_type_JavaUtilList);
         this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade.a(jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult.jdField_b_of_type_Int);
-        ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298097)).setText(ViewFactory.a(jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult.jdField_a_of_type_Int));
+        ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298102)).setText(ViewFactory.a(jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult.jdField_a_of_type_Int));
         jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult = null;
         this.jdField_c_of_type_JavaUtilHashMap.putAll(jdField_a_of_type_JavaUtilHashMap);
         e();
@@ -210,7 +210,7 @@ public class ClassificationSearchActivity
     super.doOnResume();
     if (this.jdField_d_of_type_Boolean)
     {
-      Looper.myQueue().addIdleHandler(new cbw(this));
+      Looper.myQueue().addIdleHandler(new ccx(this));
       this.jdField_d_of_type_Boolean = false;
     }
   }
@@ -243,10 +243,10 @@ public class ClassificationSearchActivity
       k();
       return;
     }
-    if (this.jdField_a_of_type_Cbz == null)
+    if (this.jdField_a_of_type_Cda == null)
     {
-      this.jdField_a_of_type_Cbz = new cbz(this, null);
-      this.jdField_a_of_type_Cbz.a(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Cda = new cda(this, null);
+      this.jdField_a_of_type_Cda.a(this.jdField_a_of_type_JavaUtilList);
       View localView = this.jdField_a_of_type_AndroidViewView;
       StringBuilder localStringBuilder = new StringBuilder();
       if (this.f == 0)
@@ -255,8 +255,8 @@ public class ClassificationSearchActivity
         label136:
         localView.setContentDescription((String)localObject + "搜索结果");
         this.jdField_a_of_type_ComTencentWidgetXListView.a(this.jdField_a_of_type_AndroidViewView);
-        this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Cbz);
-        this.a = this.jdField_a_of_type_Cbz;
+        this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Cda);
+        this.a = this.jdField_a_of_type_Cda;
       }
     }
     else
@@ -269,11 +269,11 @@ public class ClassificationSearchActivity
       if (!this.jdField_b_of_type_Boolean) {
         break label277;
       }
-      this.jdField_a_of_type_Cbz.a().addAll(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Cda.a().addAll(this.jdField_a_of_type_JavaUtilList);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Cbz.notifyDataSetChanged();
+      this.jdField_a_of_type_Cda.notifyDataSetChanged();
       if (!this.jdField_c_of_type_Boolean) {
         break;
       }
@@ -283,7 +283,7 @@ public class ClassificationSearchActivity
       localObject = "生活服务";
       break label136;
       label277:
-      this.jdField_a_of_type_Cbz.a(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Cda.a(this.jdField_a_of_type_JavaUtilList);
     }
   }
   
@@ -304,9 +304,9 @@ public class ClassificationSearchActivity
       this.jdField_c_of_type_Boolean = true;
       return;
     }
-    QQToast.a(this, 2131363516, 0).b(getTitleBarHeight());
+    QQToast.a(this, 2131363527, 0).b(getTitleBarHeight());
     this.jdField_a_of_type_Int = 4;
-    this.jdField_a_of_type_Cbz.notifyDataSetChanged();
+    this.jdField_a_of_type_Cda.notifyDataSetChanged();
   }
   
   public void g()
@@ -324,7 +324,7 @@ public class ClassificationSearchActivity
     if (this.jdField_a_of_type_Int == 2)
     {
       this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Cbz.notifyDataSetChanged();
+      this.jdField_a_of_type_Cda.notifyDataSetChanged();
     }
   }
   
@@ -340,15 +340,15 @@ public class ClassificationSearchActivity
       a(paramView.jdField_b_of_type_Int, paramView.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record);
     }
     label34:
-    while ((!(paramView instanceof cby)) || ((this.jdField_a_of_type_Int != 3) && (this.jdField_a_of_type_Int != 4))) {
+    while ((!(paramView instanceof ccz)) || ((this.jdField_a_of_type_Int != 3) && (this.jdField_a_of_type_Int != 4))) {
       return;
     }
     if (NetworkUtil.e(this)) {}
     for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 4)
     {
-      this.jdField_a_of_type_Cbz.notifyDataSetChanged();
+      this.jdField_a_of_type_Cda.notifyDataSetChanged();
       return;
-      QQToast.a(this, 2131363516, 0).b(getTitleBarHeight());
+      QQToast.a(this, 2131363527, 0).b(getTitleBarHeight());
     }
   }
 }

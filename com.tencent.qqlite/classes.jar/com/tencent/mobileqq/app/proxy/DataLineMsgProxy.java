@@ -15,15 +15,15 @@ import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.service.message.MessageCache;
-import czq;
-import czr;
-import czs;
-import czt;
-import czu;
-import czv;
-import czw;
-import czx;
-import czy;
+import das;
+import dat;
+import dau;
+import dav;
+import daw;
+import dax;
+import day;
+import daz;
+import dba;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
@@ -235,7 +235,7 @@ public class DataLineMsgProxy
       localFileManagerEntity.fileSize = FileManagerUtil.a((String)localObject2);
       localFileManagerEntity.isReaded = true;
       localFileManagerEntity.peerUin = ((String)localObject1);
-      localFileManagerEntity.peerNick = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131364060);
+      localFileManagerEntity.peerNick = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131364071);
       localFileManagerEntity.strFilePath = ((String)localObject2);
       localFileManagerEntity.srvTime = (MessageCache.a() * 1000L);
       localFileManagerEntity.fileName = str;
@@ -410,7 +410,7 @@ public class DataLineMsgProxy
       a(paramDataLineMsgRecord, null);
       return l;
     }
-    new Handler(localLooper).post(new czt(this, paramDataLineMsgRecord, localWaitEvent));
+    new Handler(localLooper).post(new dav(this, paramDataLineMsgRecord, localWaitEvent));
     localWaitEvent.a(-1L);
     return 0L;
   }
@@ -786,7 +786,7 @@ public class DataLineMsgProxy
       d(paramLong);
       return;
     }
-    new Handler(localLooper).post(new czw(this, paramLong));
+    new Handler(localLooper).post(new day(this, paramLong));
   }
   
   public void a(long paramLong, String paramString)
@@ -802,7 +802,7 @@ public class DataLineMsgProxy
       }
       return;
     }
-    new Handler((Looper)localObject).post(new czu(this, paramLong, paramString));
+    new Handler((Looper)localObject).post(new daw(this, paramLong, paramString));
   }
   
   public void a(long paramLong, String paramString, byte[] paramArrayOfByte)
@@ -819,7 +819,7 @@ public class DataLineMsgProxy
       }
       return;
     }
-    new Handler((Looper)localObject).post(new czv(this, paramLong, paramString, paramArrayOfByte));
+    new Handler((Looper)localObject).post(new dax(this, paramLong, paramString, paramArrayOfByte));
   }
   
   public void a(Entity paramEntity, ProxyListener paramProxyListener)
@@ -832,7 +832,7 @@ public class DataLineMsgProxy
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, DataLineMsgRecord.tableName(), paramEntity, 0, paramProxyListener);
       return;
     }
-    new Handler(localLooper).post(new czq(this, paramEntity, paramProxyListener, localWaitEvent));
+    new Handler(localLooper).post(new das(this, paramEntity, paramProxyListener, localWaitEvent));
     localWaitEvent.a(-1L);
   }
   
@@ -849,7 +849,7 @@ public class DataLineMsgProxy
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramString1, paramContentValues, paramString2, paramArrayOfString, 1, paramProxyListener);
       return;
     }
-    new Handler(localLooper).post(new czr(this, paramString1, paramContentValues, paramString2, paramArrayOfString, paramProxyListener));
+    new Handler(localLooper).post(new dat(this, paramString1, paramContentValues, paramString2, paramArrayOfString, paramProxyListener));
   }
   
   protected void a(String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener)
@@ -860,7 +860,7 @@ public class DataLineMsgProxy
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramString1, paramString2, paramArrayOfString, 2, paramProxyListener);
       return;
     }
-    new Handler(localLooper).post(new czs(this, paramString1, paramString2, paramArrayOfString, paramProxyListener));
+    new Handler(localLooper).post(new dau(this, paramString1, paramString2, paramArrayOfString, paramProxyListener));
   }
   
   public void a(Date paramDate)
@@ -1033,7 +1033,7 @@ public class DataLineMsgProxy
       e(paramLong);
       return;
     }
-    new Handler(localLooper).post(new czx(this, paramLong));
+    new Handler(localLooper).post(new daz(this, paramLong));
   }
   
   public void c()
@@ -1064,7 +1064,7 @@ public class DataLineMsgProxy
       }
       return;
     }
-    new Handler((Looper)localObject).post(new czy(this, paramLong));
+    new Handler((Looper)localObject).post(new dba(this, paramLong));
   }
   
   public void d()

@@ -1,16 +1,60 @@
-import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.EmosmDetailActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.emoticon.ReqInfo;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Map;
 
-public final class alp
-  implements Runnable
+public class alp
+  extends DownloadListener
 {
-  public alp(int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, PicEmoticonInfo paramPicEmoticonInfo, String paramString) {}
-  
-  public void run()
+  public alp(EmosmDetailActivity paramEmosmDetailActivity, String paramString1, String paramString2)
   {
-    EmosmDetailActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a, this.jdField_a_of_type_AndroidContentContext.getString(2131362939), this.jdField_a_of_type_JavaLangString);
+    super(paramString1, paramString2);
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    EmojiManager localEmojiManager;
+    Object localObject1;
+    EmoticonPackage localEmoticonPackage;
+    Object localObject2;
+    int i;
+    ReqInfo localReqInfo;
+    if (paramDownloadTask.a() == 3)
+    {
+      localEmojiManager = (EmojiManager)this.a.app.getManager(39);
+      localObject1 = paramDownloadTask.a();
+      localEmoticonPackage = (EmoticonPackage)((Bundle)localObject1).getSerializable("emoticonPackage");
+      localObject2 = EmosmUtils.getEmosmJsonUrl(localEmoticonPackage.epId);
+      i = ((Bundle)localObject1).getInt("jsonType", EmojiManager.c);
+      paramDownloadTask = (File)paramDownloadTask.a.get(localObject2);
+      localObject1 = new ArrayList();
+      localObject2 = new ArrayList();
+      localReqInfo = new ReqInfo();
+      if (!paramDownloadTask.exists()) {
+        break label135;
+      }
+    }
+    label135:
+    for (paramDownloadTask = FileUtils.a(paramDownloadTask); localEmojiManager.a(localEmoticonPackage, i, paramDownloadTask, (ArrayList)localObject1, (ArrayList)localObject2, localReqInfo) != null; paramDownloadTask = null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.EmosmDetailActivity", 2, "json is complete,result ok: " + EmosmDetailActivity.a(this.a));
+    }
+    this.a.app.getPreferences().edit().putInt("emosm_json_last_download_timestamp", (int)(System.currentTimeMillis() / 1000L)).commit();
+    this.a.runOnUiThread(new alq(this, localEmoticonPackage));
   }
 }
 

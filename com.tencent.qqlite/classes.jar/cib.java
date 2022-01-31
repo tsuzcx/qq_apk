@@ -1,27 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-public class cib
-  extends Handler
+class cib
+  implements Runnable
 {
-  private WeakReference a;
+  cib(cia paramcia) {}
   
-  public cib(SettingActivity2 paramSettingActivity2)
+  public void run()
   {
-    this.a = new WeakReference(paramSettingActivity2);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((SettingActivity2)this.a.get() == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    }
-    throw new RuntimeException("Unknown message: " + paramMessage.what);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.f();
+    this.a.a.jdField_a_of_type_Cid.sendEmptyMessage(3);
   }
 }
 

@@ -42,7 +42,7 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.ImageTestUtil;
-import etr;
+import evw;
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileInputStream;
@@ -344,7 +344,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838036);
+      localBitmap1 = BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838055);
       if ((localBitmap1 != null) && (BaseApplicationImpl.a != null)) {
         BaseApplicationImpl.a.put("static://DefaultFace", localBitmap1);
       }
@@ -857,18 +857,18 @@ public class ImageUtil
     //   59: astore 10
     //   61: aload 11
     //   63: invokevirtual 335	android/graphics/Bitmap:getWidth	()I
-    //   66: istore 8
+    //   66: istore 9
     //   68: aload 11
     //   70: invokevirtual 407	android/graphics/Bitmap:getHeight	()I
-    //   73: istore 9
+    //   73: istore 8
     //   75: fconst_1
     //   76: fstore 4
-    //   78: iload 9
-    //   80: iload 8
+    //   78: iload 8
+    //   80: iload 9
     //   82: if_icmple +144 -> 226
     //   85: iload_1
     //   86: i2f
-    //   87: iload 8
+    //   87: iload 9
     //   89: i2f
     //   90: fconst_1
     //   91: fmul
@@ -876,7 +876,7 @@ public class ImageUtil
     //   93: fstore 5
     //   95: fload 5
     //   97: fstore 4
-    //   99: iload 9
+    //   99: iload 8
     //   101: i2f
     //   102: fload 5
     //   104: fmul
@@ -885,7 +885,7 @@ public class ImageUtil
     //   107: fcmpl
     //   108: ifle +302 -> 410
     //   111: iconst_0
-    //   112: iload 9
+    //   112: iload 8
     //   114: i2f
     //   115: fload 5
     //   117: fmul
@@ -909,8 +909,8 @@ public class ImageUtil
     //   146: aload 11
     //   148: iconst_0
     //   149: iconst_0
-    //   150: iload 8
-    //   152: iload 9
+    //   150: iload 9
+    //   152: iload 8
     //   154: aload 10
     //   156: iconst_1
     //   157: invokestatic 578	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
@@ -947,12 +947,12 @@ public class ImageUtil
     //   222: astore_0
     //   223: aload 10
     //   225: areturn
-    //   226: iload 9
-    //   228: iload 8
+    //   226: iload 8
+    //   228: iload 9
     //   230: if_icmpge +180 -> 410
     //   233: iload_2
     //   234: i2f
-    //   235: iload 9
+    //   235: iload 8
     //   237: i2f
     //   238: fconst_1
     //   239: fmul
@@ -960,7 +960,7 @@ public class ImageUtil
     //   241: fstore 5
     //   243: fload 5
     //   245: fstore 4
-    //   247: iload 8
+    //   247: iload 9
     //   249: i2f
     //   250: fload 5
     //   252: fmul
@@ -968,7 +968,7 @@ public class ImageUtil
     //   254: i2f
     //   255: fcmpl
     //   256: ifle +154 -> 410
-    //   259: iload 8
+    //   259: iload 9
     //   261: i2f
     //   262: fload 5
     //   264: fmul
@@ -1066,8 +1066,8 @@ public class ImageUtil
     //   93	192	5	f2	float
     //   127	285	6	i1	int
     //   130	285	7	i2	int
-    //   66	194	8	i3	int
-    //   73	163	9	i4	int
+    //   73	163	8	i3	int
+    //   66	194	9	i4	int
     //   16	277	10	localObject1	Object
     //   344	25	10	localObject2	Object
     //   395	1	10	localObject3	Object
@@ -4247,7 +4247,7 @@ public class ImageUtil
   private static void a(String paramString, Context paramContext, boolean paramBoolean)
   {
     if ((paramContext != null) && ((paramContext instanceof BaseActivity))) {
-      new Thread(new etr((QQAppInterface)((BaseActivity)paramContext).getAppRuntime(), paramString, paramBoolean), "report_send_photo_performance").start();
+      new Thread(new evw((QQAppInterface)((BaseActivity)paramContext).getAppRuntime(), paramString, paramBoolean), "report_send_photo_performance").start();
     }
   }
   
@@ -4455,36 +4455,36 @@ public class ImageUtil
     //   26: return
     //   27: aload 10
     //   29: invokevirtual 335	android/graphics/Bitmap:getWidth	()I
-    //   32: istore 8
+    //   32: istore 7
     //   34: aload 10
     //   36: invokevirtual 407	android/graphics/Bitmap:getHeight	()I
-    //   39: istore 7
+    //   39: istore 8
     //   41: iload_2
     //   42: i2f
-    //   43: iload 8
+    //   43: iload 7
     //   45: i2f
     //   46: fdiv
-    //   47: fstore 6
+    //   47: fstore 5
     //   49: iload_3
     //   50: i2f
-    //   51: iload 7
+    //   51: iload 8
     //   53: i2f
     //   54: fdiv
-    //   55: fstore 5
+    //   55: fstore 6
     //   57: new 489	android/graphics/Matrix
     //   60: dup
     //   61: invokespecial 490	android/graphics/Matrix:<init>	()V
     //   64: astore_0
     //   65: aload_0
-    //   66: fload 6
-    //   68: fload 5
+    //   66: fload 5
+    //   68: fload 6
     //   70: invokevirtual 494	android/graphics/Matrix:postScale	(FF)Z
     //   73: pop
     //   74: aload 10
     //   76: iconst_0
     //   77: iconst_0
-    //   78: iload 8
-    //   80: iload 7
+    //   78: iload 7
+    //   80: iload 8
     //   82: aload_0
     //   83: iconst_0
     //   84: invokestatic 578	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
@@ -4562,10 +4562,10 @@ public class ImageUtil
     //   0	201	2	paramInt1	int
     //   0	201	3	paramInt2	int
     //   0	201	4	paramInt3	int
-    //   55	14	5	f1	float
-    //   47	20	6	f2	float
-    //   39	42	7	i1	int
-    //   32	47	8	i2	int
+    //   47	20	5	f1	float
+    //   55	14	6	f2	float
+    //   32	47	7	i1	int
+    //   39	42	8	i2	int
     //   1	1	9	localObject1	Object
     //   144	24	9	localException1	Exception
     //   186	5	9	localObject2	Object
@@ -7103,7 +7103,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838037);
+      localBitmap1 = BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838056);
       if ((localBitmap1 != null) && (BaseApplicationImpl.a != null)) {
         BaseApplicationImpl.a.put("static://DefaultFace140_140", localBitmap1);
       }
@@ -8426,7 +8426,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = a(BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838100), 50, 50);
+      localBitmap1 = a(BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838119), 50, 50);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -8573,7 +8573,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130837739);
+      localBitmap1 = BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130837756);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -8602,7 +8602,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130839375);
+      localBitmap1 = BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130839440);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -8631,7 +8631,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838504);
+      localBitmap1 = BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838529);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {

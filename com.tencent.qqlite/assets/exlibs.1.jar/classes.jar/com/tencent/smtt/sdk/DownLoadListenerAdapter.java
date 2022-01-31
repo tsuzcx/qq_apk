@@ -17,6 +17,11 @@ class DownLoadListenerAdapter
     this.mWebView = paramWebView;
   }
   
+  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  {
+    onDownloadStart(paramString1, null, null, paramString2, paramString3, paramString4, paramLong, null, null);
+  }
+  
   public void onDownloadStart(String paramString1, String paramString2, byte[] paramArrayOfByte, String paramString3, String paramString4, String paramString5, long paramLong, String paramString6, String paramString7)
   {
     if (this.mListener == null)

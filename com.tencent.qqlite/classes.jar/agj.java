@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.activity.Contacts;
+import com.tencent.mobileqq.adapter.BuddyListAdapter;
+import com.tencent.mobileqq.app.MessageObserver;
 
-class agj
-  implements Runnable
+public class agj
+  extends MessageObserver
 {
-  agj(agh paramagh, boolean paramBoolean) {}
+  private agj(Contacts paramContacts) {}
   
-  public void run()
+  protected void a()
   {
-    Conversation.a(this.jdField_a_of_type_Agh.a, 800L);
-    PullRefreshHeader localPullRefreshHeader = Conversation.a(this.jdField_a_of_type_Agh.a);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 0;; i = 2)
+    if (this.a.jdField_a_of_type_Boolean) {
+      this.a.a(1400L, true);
+    }
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    Contacts localContacts = this.a;
+    if (paramInt1 != 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      localPullRefreshHeader.a(i);
+      localContacts.c = bool;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter.b();
+      }
       return;
     }
   }

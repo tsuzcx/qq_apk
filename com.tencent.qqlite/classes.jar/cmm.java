@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.app.NearFieldDiscussHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import tencent.im.nearfield_discuss.nearfield_discuss.LBSInfo;
 
 public class cmm
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cmm(SelectMemberActivity paramSelectMemberActivity) {}
+  public cmm(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.g();
+    nearfield_discuss.LBSInfo localLBSInfo = CreateFaceToFaceDiscussionActivity.a(this.a);
+    ((NearFieldDiscussHandler)this.a.app.a(32)).a(this.a.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.b, localLBSInfo, true);
+    this.a.jdField_a_of_type_Boolean = true;
   }
 }
 

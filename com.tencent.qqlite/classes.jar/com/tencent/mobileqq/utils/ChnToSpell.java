@@ -20,12 +20,12 @@ public class ChnToSpell
   public static final int b = 2;
   private static Hashtable jdField_b_of_type_JavaUtilHashtable = new Hashtable(128);
   private static final String[] jdField_b_of_type_ArrayOfJavaLangString;
-  private static final int c = 2048;
-  private static final int d = 8544;
-  private static final int e = 8575;
-  private static final int f = 12295;
-  private static final int g = 19968;
-  private static final int h = 40869;
+  public static final int c = 19968;
+  public static final int d = 40869;
+  private static final int e = 2048;
+  private static final int f = 8544;
+  private static final int g = 8575;
+  private static final int h = 12295;
   private static final int i = 65281;
   private static final int j = 65374;
   private static final int k = 33;

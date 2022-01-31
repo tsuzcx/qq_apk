@@ -1,17 +1,16 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.BindGroupConfirmActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.QFavDownloadProgressDialog;
+import com.tencent.mobileqq.widget.QFavDownloadProgressDialog.Callback;
 
 public class faz
-  implements Runnable
+  implements View.OnClickListener
 {
-  public faz(BindGroupConfirmActivity paramBindGroupConfirmActivity, Bitmap paramBitmap) {}
+  public faz(QFavDownloadProgressDialog paramQFavDownloadProgressDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    QFavDownloadProgressDialog.a(this.a).b();
   }
 }
 

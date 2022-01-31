@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
-import java.util.List;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.JumpAction;
 
 public class evy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public evy(SendMessageHandler paramSendMessageHandler, long paramLong, String paramString) {}
+  public evy(JumpAction paramJumpAction) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler) >= SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler).size()) {
-      return;
+    if ((JumpAction.a(this.a) != null) && (JumpAction.a(this.a).isShowing())) {
+      JumpAction.a(this.a).dismiss();
     }
-    int i = SendMessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler);
-    SendMessageHandler.SendMessageRunnable localSendMessageRunnable = (SendMessageHandler.SendMessageRunnable)SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler).get(i);
-    localSendMessageRunnable.jdField_a_of_type_Int = i;
-    localSendMessageRunnable.g = System.currentTimeMillis();
-    localSendMessageRunnable.c = this.jdField_a_of_type_Long;
-    localSendMessageRunnable.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localSendMessageRunnable.run();
+    JumpAction.a(this.a);
   }
 }
 

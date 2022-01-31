@@ -26,11 +26,11 @@ import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dyd;
-import dye;
-import dyf;
-import dyg;
-import dyh;
+import dzg;
+import dzh;
+import dzi;
+import dzj;
+import dzk;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -81,7 +81,7 @@ public class MultiMsgManager
   {
     paramMessageObserver = PicBusiManager.a(7, 7);
     paramMessageObserver.a(paramArrayList2);
-    paramMessageObserver.a(new dyf(this, paramArrayList1, paramQQAppInterface, paramString, paramInt, paramHashMap, paramMessageRecord));
+    paramMessageObserver.a(new dzi(this, paramArrayList1, paramQQAppInterface, paramString, paramInt, paramHashMap, paramMessageRecord));
     PicBusiManager.a(paramMessageObserver, paramQQAppInterface);
   }
   
@@ -111,7 +111,7 @@ public class MultiMsgManager
         if (QLog.isColorLevel()) {
           QLog.d("MultiMsg", 2, "pack multi msg done.............................");
         }
-        if (!a(paramQQAppInterface, paramHashMap, paramQQAppInterface.a(), paramString, paramString, paramInt, paramMessageRecord.uniseq, 1035, new dyg(this, paramMessageRecord, paramQQAppInterface, paramString, paramInt))) {
+        if (!a(paramQQAppInterface, paramHashMap, paramQQAppInterface.a(), paramString, paramString, paramInt, paramMessageRecord.uniseq, 1035, new dzj(this, paramMessageRecord, paramQQAppInterface, paramString, paramInt))) {
           break;
         }
       } while (!QLog.isColorLevel());
@@ -333,12 +333,12 @@ public class MultiMsgManager
     if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
       return;
     }
-    paramQQAppInterface.a(new dyd(this, paramArrayList, paramIntent, paramSessionInfo, paramQQAppInterface, paramContext));
+    paramQQAppInterface.a(new dzg(this, paramArrayList, paramIntent, paramSessionInfo, paramQQAppInterface, paramContext));
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean)
   {
-    paramQQAppInterface.a(new dyh(this, paramQQAppInterface, paramString, paramInt, paramLong, paramBoolean));
+    paramQQAppInterface.a(new dzk(this, paramQQAppInterface, paramString, paramInt, paramLong, paramBoolean));
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, long paramLong, DownCallBack paramDownCallBack)
@@ -352,7 +352,7 @@ public class MultiMsgManager
     while ((paramArrayList == null) || (paramArrayList.size() == 0)) {
       return;
     }
-    paramQQAppInterface.a(new dye(this, paramArrayList, paramHashMap, paramMessageRecord, paramQQAppInterface, paramInt, paramString));
+    paramQQAppInterface.a(new dzh(this, paramArrayList, paramHashMap, paramMessageRecord, paramQQAppInterface, paramInt, paramString));
   }
   
   public void a(QQAppInterface paramQQAppInterface, List paramList, boolean paramBoolean)

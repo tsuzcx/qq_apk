@@ -1,106 +1,26 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
-import com.tencent.mobileqq.activity.photo.ImageInfo;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URL;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.TextSignatureItemBuilder;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 
-public final class byh
-  extends AsyncTask
+public class byh
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public byh(Context paramContext, int paramInt, QQAppInterface paramQQAppInterface, URLDrawable paramURLDrawable, String paramString) {}
+  public int a;
+  public long a;
+  public ViewGroup a;
+  public ImageView a;
+  AnyScaleTypeImageView jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView;
+  public String a;
+  public TextView b;
+  public String b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  protected Integer a(Void... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly(false);
-    }
-    URLDrawable.removeMemoryCacheByUrl(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    paramVarArgs = ((MessageForPic)this.jdField_a_of_type_ComTencentImageURLDrawable.getTag()).path;
-    if (AIOGalleryUtils.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs)) {
-      return Integer.valueOf(2);
-    }
-    paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
-    if (!AbsDownloader.a(paramVarArgs)) {
-      return Integer.valueOf(1);
-    }
-    paramVarArgs = SecUtil.a(AbsDownloader.a(paramVarArgs).getAbsolutePath());
-    if (("".equals(paramVarArgs)) || (paramVarArgs == null)) {
-      return Integer.valueOf(1);
-    }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    paramVarArgs = AppConstants.av + (String)localObject1 + paramVarArgs + ".jpg";
-    localObject1 = paramVarArgs + ".tmp";
-    Object localObject2 = new File((String)localObject1);
-    if (((File)localObject2).exists()) {
-      ((File)localObject2).delete();
-    }
-    if (!((File)localObject2).exists()) {}
-    try
-    {
-      ImageUtil.a((String)localObject1);
-      if (this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo((String)localObject1) == null) {
-        break label324;
-      }
-      localObject2 = new ImageInfo();
-      ((ImageInfo)localObject2).c = this.jdField_a_of_type_JavaLangString;
-      if (ImageUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject1, paramVarArgs, (ImageInfo)localObject2, 1))
-      {
-        localObject2 = new File(paramVarArgs);
-        localObject1 = new File((String)localObject1);
-        if (((File)localObject2).exists())
-        {
-          ((File)localObject1).delete();
-          return Integer.valueOf(AIOGalleryUtils.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs));
-        }
-        throw new Exception("compressPic file fail");
-      }
-    }
-    catch (Exception paramVarArgs)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("AIOGalleryUtils", 2, "", paramVarArgs);
-      }
-      return Integer.valueOf(1);
-    }
-    return Integer.valueOf(1);
-    label324:
-    throw new Exception("save file fail");
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    if (paramInteger.intValue() == 0)
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_AndroidContentContext.getString(2131363406), 0).b(this.jdField_a_of_type_Int);
-      paramInteger = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(ChatActivity.class);
-      if (paramInteger != null) {
-        paramInteger.obtainMessage(10).sendToTarget();
-      }
-    }
-    do
-    {
-      return;
-      if (paramInteger.intValue() == 1)
-      {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_AndroidContentContext.getString(2131363442), 0).b(this.jdField_a_of_type_Int);
-        return;
-      }
-    } while (paramInteger.intValue() != 2);
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_AndroidContentContext.getString(2131363409), 0).b(this.jdField_a_of_type_Int);
-  }
+  public byh(TextSignatureItemBuilder paramTextSignatureItemBuilder) {}
 }
 
 

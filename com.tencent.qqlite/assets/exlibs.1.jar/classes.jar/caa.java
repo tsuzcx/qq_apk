@@ -1,16 +1,18 @@
-import com.tencent.biz.anonymous.QQAnonymousDialog;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
 
 public class caa
-  implements Runnable
+  implements View.OnClickListener
 {
-  public caa(TroopChatPie paramTroopChatPie) {}
+  public caa(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
+    BusinessCmrTmpChatPie.a(this.a).setVisibility(8);
+    BusinessCmrTmpChatPie.a(this.a).setVisibility(0);
   }
 }
 

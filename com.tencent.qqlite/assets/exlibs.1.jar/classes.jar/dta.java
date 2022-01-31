@@ -1,22 +1,32 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.SeekBar;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarOfflineFile.BaseActionBarOfflineFile;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 public class dta
   implements View.OnClickListener
 {
-  public dta(LocalMusicFileView paramLocalMusicFileView) {}
+  public dta(BaseActionBarOfflineFile paramBaseActionBarOfflineFile) {}
   
   public void onClick(View paramView)
   {
-    FileManagerReporter.a("0X8004BE3");
-    if (LocalMusicFileView.a(this.a) != null) {
-      LocalMusicFileView.b(this.a).a(LocalMusicFileView.a(this.a));
+    if ((FileManagerUtil.a()) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize > 5242880L)) {
+      FMDialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), 2131362018, 2131362016, new dtb(this));
     }
-    LocalMusicFileView.a(this.a).setProgress(0);
+    while (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g())
+    {
+      FileManagerReporter.a("0X8004BBA");
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      this.a.h();
+    }
+    FileManagerReporter.a("0X8004BD0");
   }
 }
 

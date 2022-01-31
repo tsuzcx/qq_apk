@@ -1,13 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.Switch;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
 public class fiv
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public fiv(Switch paramSwitch) {}
+  public fiv(OpenSDKAppInterface paramOpenSDKAppInterface) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

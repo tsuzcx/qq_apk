@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bto
   implements Runnable
 {
-  public bto(PressToSpeakPanel paramPressToSpeakPanel, String paramString) {}
+  public bto(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
   public void run()
   {
-    PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).c(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.g();
+    QQToast.a(this.a.a, 2131363148, 1).b(this.a.a.getTitleBarHeight());
   }
 }
 

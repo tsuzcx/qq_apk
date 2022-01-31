@@ -1,16 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class asa
-  implements AdapterView.OnItemClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public asa(Leba paramLeba) {}
+  public asa(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a(paramView, paramInt, null);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

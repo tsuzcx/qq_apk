@@ -54,9 +54,9 @@ public class HorizontalListViewAdapter
     if (paramView == null)
     {
       paramViewGroup = new HorizontalListViewAdapter.HlistViewHolder();
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903407, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297976));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297977));
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903412, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297981));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297982));
       paramView.setTag(paramViewGroup);
       if (paramInt != this.jdField_a_of_type_Int) {
         break label161;

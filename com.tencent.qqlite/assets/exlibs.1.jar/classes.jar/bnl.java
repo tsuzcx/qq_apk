@@ -1,49 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.util.CommUtils.IHttpGetString;
-import com.tencent.mobileqq.activity.TroopManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.SharePreferenceUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class bnl
-  implements CommUtils.IHttpGetString
+  implements ActionSheet.OnButtonClickListener
 {
-  public bnl(TroopManageActivity paramTroopManageActivity) {}
+  public bnl(TroopInfoActivity paramTroopInfoActivity, ActionSheet paramActionSheet) {}
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public void a(View paramView, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.troopmanage", 4, "get group statics ok:" + paramString);
-      }
-      Object localObject = new JSONObject(paramString);
-      if ((((JSONObject)localObject).has("title")) && (((JSONObject)localObject).has("url")))
-      {
-        paramString = ((JSONObject)localObject).getString("title");
-        localObject = ((JSONObject)localObject).getString("url");
-        SharePreferenceUtils.a(this.a.app.getApplication(), this.a.app.a() + "_" + "GoupStatisticsTitle", paramString);
-        SharePreferenceUtils.a(this.a.app.getApplication(), this.a.app.a() + "_" + "GoupStatisticsUrl", (String)localObject);
-        if (this.a.isFinishing()) {
-          return;
-        }
-        if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject)))
-        {
-          TroopManageActivity.a(this.a, paramString, (String)localObject);
-          return;
-        }
-      }
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      if (QLog.isColorLevel())
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.aO != this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.a.r) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.m();
+      }
+      try
       {
-        QLog.e("Q.troopmanage", 2, paramString.toString());
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
         return;
-        TroopManageActivity.a(this.a);
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.c(1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.a.r = 1;
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.c(0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.a.r = 0;
+      continue;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.a.r != 3)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.a.r = 2;
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.c(2);
       }
     }
   }

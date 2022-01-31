@@ -1,22 +1,41 @@
-import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame.TroopListAdapter;
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
-import java.util.Comparator;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 
 public class cni
-  implements Comparator
+  implements Animation.AnimationListener
 {
-  private cni(TroopListInnerFrame.TroopListAdapter paramTroopListAdapter) {}
+  public cni(SelectMemberActivity paramSelectMemberActivity, TranslateAnimation paramTranslateAnimation, AlphaAnimation paramAlphaAnimation, long paramLong) {}
   
-  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
-      return 1;
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.f();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
+      SelectMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity).setVisibility(8);
+      new Thread(new cnj(this)).start();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.PerfTrace", 2, "selectmember search up anim time: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      }
     }
-    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
-      return -1;
-    }
-    return 0;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

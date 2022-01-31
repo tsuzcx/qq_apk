@@ -1,35 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShakeWindow;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
 public class bwt
-  implements View.OnClickListener
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public bwt(ShakeItemBuilder paramShakeItemBuilder) {}
+  public FrameLayout a;
+  public ImageView a;
+  public ProgressBar a;
+  public PicEmoticonInfo a;
+  public boolean a;
+  public ImageView b;
+  public ImageView c;
+  public ImageView d;
+  public ImageView e;
+  public ImageView f;
   
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.shakemsg", 2, "shake msg onClick() is called");
-    }
-    if (ShakeItemBuilder.a(this.a)) {
-      return;
-    }
-    paramView = (MessageForShakeWindow)AIOUtils.a(paramView);
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))
-    {
-      ((ChatActivity)this.a.jdField_a_of_type_AndroidContentContext).a().T();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramView.frienduin, false);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramView.frienduin, false);
-  }
+  public bwt(MarketFaceItemBuilder paramMarketFaceItemBuilder) {}
 }
 
 

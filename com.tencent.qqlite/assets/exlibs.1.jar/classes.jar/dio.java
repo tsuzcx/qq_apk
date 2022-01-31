@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 
-class dio
-  implements Runnable
+public class dio
 {
-  dio(dil paramdil) {}
+  public int a;
+  public int b;
   
-  public void run()
+  public dio(LocalFileBrowserActivity paramLocalFileBrowserActivity)
   {
-    QfileBaseCloudFileTabView.a(this.a.a);
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+  }
+  
+  public dio(LocalFileBrowserActivity paramLocalFileBrowserActivity, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

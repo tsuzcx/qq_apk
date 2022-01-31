@@ -1,27 +1,21 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
-import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.smtt.sdk.WebView;
 
 public class ffe
-  implements TicketUtils.TicketCallback
+  implements Runnable
 {
-  public ffe(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, long paramLong, Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
+  public ffe(OpenJsBridge.OpenJsBridgeListener paramOpenJsBridgeListener, String paramString1, String paramString2, WebView paramWebView) {}
   
-  public void a()
+  public void run()
   {
-    LogUtility.a("MyAppApi", "onGetA1Fail ---");
-    ThreadManager.b().post(new ffg(this));
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    LogUtility.a("MyAppApi", "onGetA1 ---");
-    ThreadManager.b().post(new fff(this, paramArrayOfByte, paramString));
+    LogUtility.b("Response", "AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':0,'data':" + this.b + "});");
+    try
+    {
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':0,'data':" + this.b + "});");
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

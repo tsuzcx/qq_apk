@@ -1,25 +1,14 @@
-import com.tencent.biz.lebasearch.SearchProtocol;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import cooperation.qzone.QZoneHelper;
+import com.tencent.mobileqq.observer.GetRedPointExObserver;
 
 public class ask
-  implements Runnable
+  extends GetRedPointExObserver
 {
   public ask(Leba paramLeba) {}
   
-  public void run()
+  protected void a()
   {
-    QZoneHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    Leba.a(this.a);
-    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12);
-    if ((localWebProcessManager != null) && (localWebProcessManager.c())) {
-      localWebProcessManager.e();
-    }
-    SearchProtocol.a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    SearchProtocol.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentBizLebasearchSearchProtocol$SearchObserver);
-    this.a.o();
+    Leba.b(this.a);
   }
 }
 

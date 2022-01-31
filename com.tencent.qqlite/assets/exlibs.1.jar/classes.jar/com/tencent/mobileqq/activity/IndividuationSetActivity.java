@@ -27,11 +27,11 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import ara;
-import arb;
-import arc;
-import ard;
 import arf;
+import arg;
+import arh;
+import ari;
+import ark;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.AppConstants;
@@ -93,10 +93,10 @@ public class IndividuationSetActivity
   public ImageView a;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   public TextView a;
-  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new ara(this);
+  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new arf(this);
   private SVIPHandler jdField_a_of_type_ComTencentMobileqqAppSVIPHandler;
   EmojiJsHandler jdField_a_of_type_ComTencentMobileqqEmojiEmojiJsHandler = null;
-  NightModeLogic.NightModeCallback jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic$NightModeCallback = new arf(this);
+  NightModeLogic.NightModeCallback jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic$NightModeCallback = new ark(this);
   private NightModeLogic jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic;
   private Switch jdField_a_of_type_ComTencentWidgetSwitch;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
@@ -201,7 +201,7 @@ public class IndividuationSetActivity
       Object localObject2;
       try
       {
-        localObject1 = SkinUtils.a(((Resources)localObject1).getDrawable(2130839220));
+        localObject1 = SkinUtils.a(((Resources)localObject1).getDrawable(2130839278));
         return ImageUtil.a(a((Bitmap)localObject1, paramInt1, paramInt2), this.jdField_a_of_type_Float * 4.0F);
       }
       catch (NullPointerException localNullPointerException1)
@@ -229,7 +229,7 @@ public class IndividuationSetActivity
       {
         try
         {
-          localObject2 = SkinUtils.a(((Resources)localObject2).getDrawable(2130837672));
+          localObject2 = SkinUtils.a(((Resources)localObject2).getDrawable(2130837697));
         }
         catch (NullPointerException localNullPointerException2)
         {
@@ -287,7 +287,7 @@ public class IndividuationSetActivity
         }
         try
         {
-          localObject3 = SkinUtils.a(((Resources)localObject3).getDrawable(2130839220));
+          localObject3 = SkinUtils.a(((Resources)localObject3).getDrawable(2130839278));
         }
         catch (Exception localException3)
         {
@@ -320,7 +320,7 @@ public class IndividuationSetActivity
             if (QLog.isColorLevel()) {
               QLog.d("ThemeDownloadTrace", 2, "thumb does not exist,get default bg");
             }
-            localObject4 = SkinUtils.a(((Resources)localObject4).getDrawable(2130839220));
+            localObject4 = SkinUtils.a(((Resources)localObject4).getDrawable(2130839278));
           }
         }
       }
@@ -401,7 +401,7 @@ public class IndividuationSetActivity
       paramView.b("100005.100002");
       if (!BaseApplicationImpl.jdField_a_of_type_Boolean)
       {
-        Toast.makeText(this, getString(2131363264), 0).show();
+        Toast.makeText(this, getString(2131363274), 0).show();
         ReportController.b(this.app, "CliOper", "", "", "Trends_tab", "Enter_theme_mall", 0, 0, "", "", "", "");
       }
     }
@@ -427,7 +427,7 @@ public class IndividuationSetActivity
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
         break;
       }
-      Toast.makeText(this, getString(2131363511), 0).show();
+      Toast.makeText(this, getString(2131363522), 0).show();
       break;
       if (paramInt == 2131297209)
       {
@@ -510,7 +510,7 @@ public class IndividuationSetActivity
     }
     if (EmojiUtil.a())
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131364082);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131364093);
       this.l.setContentDescription("Emoji表情，继续下载");
     }
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
@@ -543,7 +543,7 @@ public class IndividuationSetActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new arc(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new arh(this));
       return;
       a(true);
     }
@@ -571,7 +571,7 @@ public class IndividuationSetActivity
   private void e()
   {
     if (this.app != null) {
-      this.app.a(new ard(this));
+      this.app.a(new ari(this));
     }
   }
   
@@ -622,7 +622,7 @@ public class IndividuationSetActivity
       {
         RelativeLayout localRelativeLayout = (RelativeLayout)super.findViewById(m);
         ImageView localImageView = new ImageView(this);
-        localImageView.setImageDrawable(getResources().getDrawable(2130838955));
+        localImageView.setImageDrawable(getResources().getDrawable(2130838988));
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
         localLayoutParams.addRule(9, -1);
         localLayoutParams.addRule(10, -1);
@@ -693,7 +693,7 @@ public class IndividuationSetActivity
     for (;;)
     {
       this.k.setContentDescription("夜间模式");
-      this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new arb(this));
+      this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new arg(this));
       this.l = findViewById(2131297221);
       this.l.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297222));
@@ -745,7 +745,7 @@ public class IndividuationSetActivity
           this.jdField_c_of_type_Boolean = true;
           this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
           this.jdField_b_of_type_AndroidWidgetTextView.setText(((RedTouchManager)localObject1).a((BusinessInfoCheckUpdate.AppInfo)localObject2));
-          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130839339);
+          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130839404);
           this.jdField_a_of_type_AndroidViewView.setVisibility(8);
           this.jdField_b_of_type_AndroidViewView.setVisibility(8);
           return;
@@ -781,7 +781,7 @@ public class IndividuationSetActivity
               try
               {
                 if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-                  this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839029);
+                  this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839062);
                 }
                 localObject2 = URLDrawable.getDrawable((String)localObject1, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, false);
                 if (localObject2 != null)
@@ -798,7 +798,7 @@ public class IndividuationSetActivity
                 if (QLog.isColorLevel()) {
                   QLog.d("IndividuationSetActivity", 2, "red icon load fail, iconUrl=" + (String)localObject1);
                 }
-                localObject1 = getResources().getDrawable(2130839029);
+                localObject1 = getResources().getDrawable(2130839062);
                 this.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
                 this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(0);
                 localException.printStackTrace();
@@ -815,7 +815,7 @@ public class IndividuationSetActivity
         return;
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_d_of_type_AndroidWidgetTextView.setText(((RedTouchManager)localObject1).a(localException));
-        this.jdField_d_of_type_AndroidWidgetTextView.setBackgroundResource(2130839339);
+        this.jdField_d_of_type_AndroidWidgetTextView.setBackgroundResource(2130839404);
         this.jdField_d_of_type_AndroidViewView.setVisibility(8);
         this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
         this.jdField_c_of_type_AndroidViewView.setVisibility(8);
@@ -857,7 +857,7 @@ public class IndividuationSetActivity
           this.jdField_d_of_type_Boolean = true;
           this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
           this.jdField_c_of_type_AndroidWidgetTextView.setText(((RedTouchManager)localObject1).a((BusinessInfoCheckUpdate.AppInfo)localObject3));
-          this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130839339);
+          this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130839404);
           this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
           this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
           return;
@@ -926,7 +926,7 @@ public class IndividuationSetActivity
   
   protected String b_()
   {
-    return super.getString(2131363113);
+    return super.getString(2131363123);
   }
   
   /* Error */
@@ -1063,7 +1063,7 @@ public class IndividuationSetActivity
     this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler = ((SVIPHandler)this.app.a(12));
     this.jdField_a_of_type_JavaUtilList = ClubContentJsonTask.a(this.app.getApplication().getApplicationContext());
     a();
-    super.setTitle(2131363191);
+    super.setTitle(2131363201);
     super.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
     this.jdField_a_of_type_ComTencentMobileqqEmojiEmojiJsHandler = new EmojiJsHandler(getActivity());
     this.jdField_a_of_type_ComTencentMobileqqEmojiEmojiJsHandler.a();

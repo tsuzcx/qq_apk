@@ -1,17 +1,63 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import android.support.v4.view.ViewPager;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonPageIndicator;
+import com.tencent.mobileqq.emoticonview.EmoticonPagerAdapter;
+import com.tencent.mobileqq.emoticonview.EmoticonViewBinder;
+import com.tencent.mobileqq.emoticonview.RecentAndFavPanelViewBinder;
+import java.util.ArrayList;
+import java.util.List;
 
 public class dfz
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public dfz(FMActivity paramFMActivity) {}
+  public dfz(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.a.setResult(8001);
-    this.a.finish();
+    Object localObject;
+    int i;
+    int k;
+    if ((EmoticonMainPanel.g == 1) && (EmoticonMainPanel.h == 0) && (this.a.b != null) && (this.a.b.size() > 0))
+    {
+      localObject = (EmoticonViewBinder)this.a.b.get(0);
+      if ((localObject != null) && ((localObject instanceof RecentAndFavPanelViewBinder)))
+      {
+        localObject = (RecentAndFavPanelViewBinder)localObject;
+        ((RecentAndFavPanelViewBinder)localObject).a(true);
+        if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter != null) {
+          this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.notifyDataSetChanged();
+        }
+        this.a.jdField_a_of_type_JavaUtilList = this.a.b;
+        i = ((RecentAndFavPanelViewBinder)localObject).a();
+        k = ((RecentAndFavPanelViewBinder)localObject).b();
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPageIndicator.setRecent(true);
+        if (i != 0) {
+          break label258;
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPageIndicator.setVisibility(4);
+      }
+    }
+    for (;;)
+    {
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(localObject);
+      int j = this.a.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem();
+      i = j;
+      if (j >= k) {
+        i = k - 1;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.a(localArrayList);
+        this.a.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter);
+        this.a.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(i, false);
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.a(true);
+      }
+      return;
+      label258:
+      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPageIndicator.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPageIndicator.a(i, false);
+    }
   }
 }
 

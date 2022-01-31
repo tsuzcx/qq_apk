@@ -1,28 +1,15 @@
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.eAnimType;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
 
 public class dun
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dun(PreviewingOfflineFileViewBase paramPreviewingOfflineFileViewBase) {}
+  public dun(LocalVideoFileView paramLocalVideoFileView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (PreviewingOfflineFileViewBase.a(this.a) == null) {
-      PreviewingOfflineFileViewBase.a(this.a, new FilePreviewAnimQueue(PreviewingOfflineFileViewBase.a(this.a)));
-    }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setFillAfter(true);
-    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = false;
-    localFilePreviewAnim.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue$eAnimType = FilePreviewAnimQueue.eAnimType.eAlphaAnim;
-    localFilePreviewAnim.jdField_a_of_type_Int = 1500;
-    PreviewingOfflineFileViewBase.a(this.a).a(localFilePreviewAnim);
-    PreviewingOfflineFileViewBase.a(this.a).a();
+    LocalVideoFileView.c(this.a);
   }
 }
 

@@ -1,39 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.NearbyPeopleListFrame;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import android.os.Handler;
+import android.os.Message;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class awt
-  implements OverScrollViewListener
+  implements Animation.AnimationListener
 {
-  public awt(NearbyPeopleListFrame paramNearbyPeopleListFrame) {}
+  public awt(NearbyActivity paramNearbyActivity, int paramInt) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(this.a.jdField_a_of_type_Long);
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(this.a.jdField_a_of_type_Long);
-    if (NetworkUtil.e(NearbyPeopleListFrame.c(this.a)))
+    if (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity) != null)
     {
-      this.a.a(true, true);
-      return true;
+      paramAnimation = new Message();
+      paramAnimation.what = 1;
+      paramAnimation.arg1 = (this.jdField_a_of_type_Int + 1);
+      NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity).sendMessageDelayed(paramAnimation, 200L);
     }
-    paramView = NearbyPeopleListFrame.a(this.a).obtainMessage(1, 1, 0);
-    NearbyPeopleListFrame.a(this.a).sendMessageDelayed(paramView, 1000L);
-    return true;
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(this.a.jdField_a_of_type_Long);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

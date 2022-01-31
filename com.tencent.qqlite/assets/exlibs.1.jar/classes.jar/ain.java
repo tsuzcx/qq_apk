@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class ain
-  implements Runnable
+class ain
+  implements DialogInterface.OnClickListener
 {
-  public ain(DialogActivity paramDialogActivity, QQCustomDialog paramQQCustomDialog) {}
+  ain(aim paramaim) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DialogActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDialogActivity, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
+    this.a.a.a();
+    DevlockQuickLoginActivity.c(this.a.a);
+    DevlockQuickLoginActivity.b(this.a.a, 0, 2130968593);
   }
 }
 

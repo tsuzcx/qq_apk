@@ -1,15 +1,15 @@
-import android.content.Context;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
+import android.view.animation.Interpolator;
+import com.tencent.util.AnimateUtils;
+import com.tencent.widget.ListView;
 
-public final class fkw
-  extends Thread
+public class fkw
+  implements Interpolator
 {
-  public fkw(Context paramContext, OnPluginInstallListener paramOnPluginInstallListener) {}
+  private fkw(ListView paramListView) {}
   
-  public void run()
+  public float getInterpolation(float paramFloat)
   {
-    PluginManagerHelper.getPluginInterface(this.jdField_a_of_type_AndroidContentContext, new fkx(this));
+    return AnimateUtils.a(paramFloat);
   }
 }
 

@@ -16,7 +16,7 @@ import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.util.VersionUtils;
-import dcw;
+import ddy;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -169,7 +169,7 @@ public class QQEntityManagerFactory
         if (j < 1) {}
         for (;;)
         {
-          this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString, null, i, new dcw(this));
+          this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString, null, i, new ddy(this));
           this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
           return this.dbHelper;
           i = j;

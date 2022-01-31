@@ -50,7 +50,7 @@ public class QfileLocalFileCategoryAdapter
     paramView.jdField_a_of_type_JavaLangObject = localFileInfo;
     if (localFileInfo.a())
     {
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130838513);
+      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130838538);
       paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localFileInfo.e());
       return localView;

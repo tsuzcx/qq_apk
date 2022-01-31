@@ -1,8 +1,8 @@
 package com.tencent.smtt.sdk;
 
-import com.tencent.smtt.export.external.WebViewWizardBase;
 import com.tencent.smtt.utils.ReflectionUtils;
 import java.io.File;
+import java.io.InputStream;
 import java.util.Map;
 
 public final class CacheManager
@@ -23,11 +23,20 @@ public final class CacheManager
     return ((Boolean)localObject).booleanValue();
   }
   
+  public static InputStream getCacheFile(String paramString, boolean paramBoolean)
+  {
+    SDKEngine localSDKEngine = SDKEngine.getInstance(false);
+    if ((localSDKEngine != null) && (localSDKEngine.isX5Core())) {
+      return localSDKEngine.wizard().getCacheFile(paramString, paramBoolean);
+    }
+    return null;
+  }
+  
   public static Object getCacheFile(String paramString, Map<String, String> paramMap)
   {
     SDKEngine localSDKEngine = SDKEngine.getInstance(false);
     if ((localSDKEngine != null) && (localSDKEngine.isX5Core())) {
-      return localSDKEngine.wizard().getCacheFile(paramString, paramMap);
+      return localSDKEngine.wizard().getCachFileBaseDir();
     }
     try
     {

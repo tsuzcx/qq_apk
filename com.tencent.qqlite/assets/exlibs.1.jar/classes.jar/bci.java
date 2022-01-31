@@ -1,14 +1,25 @@
+import android.os.Message;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity.NativeChromeClient;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 
 public class bci
   implements Runnable
 {
-  public bci(QQBrowserActivity.NativeChromeClient paramNativeChromeClient, String paramString) {}
+  public bci(QQBrowserActivity paramQQBrowserActivity, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity$NativeChromeClient.a.setTitle(this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      Thread.sleep(5000L);
+      String str = HttpUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, MsfSdkUtils.insertMtype("Web", this.jdField_a_of_type_JavaLangString), "POST", null, null);
+      if ((str != null) && (!"".equals(str.trim()))) {
+        Message.obtain(QQBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity), 100, str).sendToTarget();
+      }
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
 }
 

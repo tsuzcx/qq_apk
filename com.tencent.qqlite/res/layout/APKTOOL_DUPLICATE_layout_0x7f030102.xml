@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f090527" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203a2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f090527" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203b5" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a5" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0902dd" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f090529" />
+    <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a9" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0902dd" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f090529" />
 </RelativeLayout>

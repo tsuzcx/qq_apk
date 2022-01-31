@@ -1,16 +1,14 @@
-import android.widget.TextView;
 import com.dataline.activities.LiteActivity;
+import java.util.Observable;
 
 public class ao
   implements Runnable
 {
-  public ao(LiteActivity paramLiteActivity) {}
+  public ao(LiteActivity paramLiteActivity, Observable paramObservable, Object paramObject) {}
   
   public void run()
   {
-    if (LiteActivity.a(this.a) != null) {
-      LiteActivity.a(this.a).setVisibility(8);
-    }
+    LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, this.jdField_a_of_type_JavaUtilObservable, this.jdField_a_of_type_JavaLangObject);
   }
 }
 

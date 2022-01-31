@@ -1,16 +1,16 @@
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
-import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
 import com.tencent.mobileqq.model.EmoticonManager;
 
 public class dfk
   implements Runnable
 {
-  public dfk(HorizonEmoticonTabs paramHorizonEmoticonTabs, QQAppInterface paramQQAppInterface, BigEmoticonViewBinder paramBigEmoticonViewBinder) {}
+  public dfk(BigEmoticonViewBinder paramBigEmoticonViewBinder) {}
   
   public void run()
   {
-    ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.a);
+    ((EmoticonManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, Boolean.valueOf(true));
   }
 }
 

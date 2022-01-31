@@ -1,7 +1,7 @@
 package com.tencent.smtt.sdk;
 
 import android.content.Context;
-import com.tencent.smtt.export.external.WebViewWizardBase;
+import com.tencent.smtt.export.external.DexLoader;
 import java.lang.reflect.Field;
 
 public class CookieSyncManager
@@ -9,7 +9,13 @@ public class CookieSyncManager
   private static CookieSyncManager sRef;
   private static android.webkit.CookieSyncManager sysCookieSyncManager;
   
-  private CookieSyncManager(Context paramContext) {}
+  private CookieSyncManager(Context paramContext)
+  {
+    SDKEngine localSDKEngine = SDKEngine.getInstance(false);
+    if ((localSDKEngine != null) && (localSDKEngine.isX5Core())) {
+      localSDKEngine.wizard().dexLoader().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_createInstance", new Class[] { Context.class }, new Object[] { paramContext });
+    }
+  }
   
   public static CookieSyncManager createInstance(Context paramContext)
   {
@@ -43,7 +49,7 @@ public class CookieSyncManager
     Object localObject = SDKEngine.getInstance(false);
     if ((localObject != null) && (((SDKEngine)localObject).isX5Core()))
     {
-      ((SDKEngine)localObject).wizard().cookieSyncManager_startSync();
+      ((SDKEngine)localObject).wizard().dexLoader().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_startSync", new Class[0], new Object[0]);
       return;
     }
     sysCookieSyncManager.startSync();
@@ -62,7 +68,7 @@ public class CookieSyncManager
     SDKEngine localSDKEngine = SDKEngine.getInstance(false);
     if ((localSDKEngine != null) && (localSDKEngine.isX5Core()))
     {
-      localSDKEngine.wizard().cookieSyncManager_stopSync();
+      localSDKEngine.wizard().dexLoader().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_stopSync", new Class[0], new Object[0]);
       return;
     }
     sysCookieSyncManager.stopSync();
@@ -73,7 +79,7 @@ public class CookieSyncManager
     SDKEngine localSDKEngine = SDKEngine.getInstance(false);
     if ((localSDKEngine != null) && (localSDKEngine.isX5Core()))
     {
-      localSDKEngine.wizard().cookieSyncManager_Sync();
+      localSDKEngine.wizard().dexLoader().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_Sync", new Class[0], new Object[0]);
       return;
     }
     sysCookieSyncManager.sync();

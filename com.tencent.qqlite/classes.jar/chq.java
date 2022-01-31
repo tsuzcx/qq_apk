@@ -1,24 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.phone.PhoneFrame;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class chq
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public chq(PhoneFrameActivity paramPhoneFrameActivity) {}
+  public chq(ContactListView paramContactListView) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = this.a.a.a();
-    if ((paramView != null) && (paramView.v == 11))
-    {
-      ForwardOperations.a(this.a, false, "shareToQQ", paramView.a);
-      com.tencent.mobileqq.app.PhoneContactManagerImp.c = false;
-    }
-    this.a.setResult(1);
-    this.a.finish();
+    this.a.a.a(new chr(this));
+    this.a.h();
+    this.a.m();
   }
 }
 

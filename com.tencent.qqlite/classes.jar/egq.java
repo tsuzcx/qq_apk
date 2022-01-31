@@ -1,121 +1,138 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.transfile.BaseTransProcessor.StepInfo;
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.galleryactivity.AnimationUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemImage;
+import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.util.BinderWarpper;
+import mqq.app.AccountNotMatchException;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public class egq
-  implements ITransactionCallback
+public final class egq
+  implements View.OnClickListener
 {
-  public egq(C2CPicUploadProcessor paramC2CPicUploadProcessor, long paramLong) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap paramHashMap)
+  public void onClick(View paramView)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
-    String str1 = (String)paramHashMap.get("rep_bdhTrans");
-    String str2 = (String)paramHashMap.get("segspercnt");
-    String str3 = (String)paramHashMap.get("param_conf_segSize");
-    String str4 = (String)paramHashMap.get("param_conf_segNum");
-    String str5 = (String)paramHashMap.get("param_conf_connNum");
-    String str6 = (String)paramHashMap.get("param_fin_lost");
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", str5);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_fin_lost", str6);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.a(l2, l3, l4, l5);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.b);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.d();
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap paramHashMap)
-  {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    paramArrayOfByte = (String)paramHashMap.get("rep_bdhTrans");
-    String str1 = (String)paramHashMap.get("segspercnt");
-    String str2 = (String)paramHashMap.get("param_conf_segSize");
-    String str3 = (String)paramHashMap.get("param_conf_segNum");
-    String str4 = (String)paramHashMap.get("param_conf_connNum");
-    String str5 = (String)paramHashMap.get("param_fin_lost");
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms" + " ,fileSize:" + this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_Long + " transInfo:" + paramArrayOfByte);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.timeCost_Cache));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", paramArrayOfByte);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str1);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str2);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str3);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", str4);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_fin_lost", str5);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.b.b();
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.b.a = 1;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_h_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_Long;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.t();
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.a(l2, l3, l4, l5);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b();
-  }
-  
-  public void onSwitch2BackupChannel()
-  {
-    long l = SystemClock.uptimeMillis();
-    switch (this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.aM)
+    localObject1 = paramView.findViewById(2131296292);
+    if (localObject1 == null) {}
+    Object localObject2;
+    Context localContext;
+    Object localObject3;
+    Intent localIntent;
+    for (;;)
     {
-    default: 
       return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.c("<BDH_LOG> onSwitch2BackupChannel() BUT current status is INIT");
-      return;
-    case 2: 
-      this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.c("<BDH_LOG> onSwitch2BackupChannel() BUT current status is HTTP");
-      return;
+      paramView = ((View)localObject1).getTag(2131296292);
+      if ((paramView instanceof StructMsgForImageShare))
+      {
+        localObject2 = (StructMsgForImageShare)paramView;
+        localContext = ((View)localObject1).getContext();
+        try
+        {
+          paramView = (QQAppInterface)((BaseApplicationImpl)localContext.getApplicationContext()).getAppRuntime(((StructMsgForImageShare)localObject2).currentAccountUin);
+          AbsShareMsg.doReport(paramView, (AbsShareMsg)localObject2);
+          localObject3 = ((StructMsgForImageShare)localObject2).getFirstImageElement();
+          if (localObject3 != null) {
+            if ((!MsgUtils.b(((StructMsgForImageShare)localObject2).mIsSend)) && (((StructMsgItemImage)localObject3).a != null))
+            {
+              paramView = PicItemBuilder.a(localContext, ((StructMsgItemImage)localObject3).a);
+              if (paramView != null) {
+                if (paramView.getStatus() == 2)
+                {
+                  paramView.restartDownload();
+                  return;
+                }
+              }
+            }
+          }
+        }
+        catch (AccountNotMatchException paramView)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("StructMsg", 2, paramView.getStackTrace().toString());
+            }
+            paramView = null;
+          }
+          if ((paramView.getStatus() == 0) && (!paramView.isDownloadStarted()))
+          {
+            paramView.startDownload();
+            return;
+          }
+          localIntent = new Intent(localContext, AIOGalleryActivity.class);
+          localIntent.putExtra("curType", ((StructMsgForImageShare)localObject2).uinType);
+          localIntent.putExtra("_id", ((StructMsgForImageShare)localObject2).uniseq);
+          localIntent.putExtra("urlAtServer", ((StructMsgItemImage)localObject3).i);
+          localIntent.putExtra("KEY_FILE_ID", ((StructMsgItemImage)localObject3).b);
+          localIntent.putExtra("picMD5", ((StructMsgItemImage)localObject3).j);
+          localIntent.putExtra("url", ((StructMsgItemImage)localObject3).h);
+          localIntent.putExtra("friendUin", ((StructMsgForImageShare)localObject2).uin);
+          localIntent.putExtra("KEY_MSG_VERSION_CODE", ((StructMsgForImageShare)localObject2).messageVersion);
+          localIntent.putExtra("isSend", ((StructMsgForImageShare)localObject2).mIsSend);
+          localIntent.putExtra("KEY_BUSI_TYPE", 1030);
+          localIntent.putExtra("IS_FROMOTHER_TERMINAL_KEY", MsgUtils.c(((StructMsgForImageShare)localObject2).mIsSend));
+          localIntent.putExtra("uin", ((StructMsgForImageShare)localObject2).uin);
+          if (((StructMsgForImageShare)localObject2).mIsSend != 1) {}
+        }
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.c("<BDH_LOG> onSwitch2BackupChannel() switch to HTTP channel");
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.aM = 2;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_switchChannel", String.valueOf(l - this.jdField_a_of_type_Long));
-    StatisticCollector.a(BaseApplication.getContext()).a(null, "actSwitchChnl", true, l - this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_Long, null, "");
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.s();
-  }
-  
-  public void onTransStart()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.c("<BDH_LOG> onTransStart()");
-    this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.b.a();
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    C2CPicUploadProcessor localC2CPicUploadProcessor = this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor;
-    FileMsg localFileMsg = this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg;
-    long l = paramInt;
-    localFileMsg.e = l;
-    localC2CPicUploadProcessor.jdField_h_of_type_Long = l;
-    if ((paramInt < this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_a_of_type_Long) && (!this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.jdField_h_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.d)) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileC2CPicUploadProcessor.f();
+    for (paramView = ((StructMsgForImageShare)localObject2).currentAccountUin;; paramView = ((StructMsgForImageShare)localObject2).uin)
+    {
+      localIntent.putExtra("KEY_TROOP_CODE", paramView);
+      localIntent.putExtra("fileSize", ((StructMsgItemImage)localObject3).c);
+      localIntent.putExtra("KEY_TIME", ((StructMsgItemImage)localObject3).d);
+      localIntent.putExtra("KEY_SUB_VERSION", 5);
+      localIntent.putExtra("KEY_FILE_SIZE_FLAG", 0);
+      localIntent.putExtra("IS_APP_SHARE_PIC", true);
+      localIntent.putExtra("uniSeq", ((StructMsgForImageShare)localObject2).uniseq);
+      localIntent.putExtra("KEY_THUMBNAL_BOUND", AnimationUtils.a((View)localObject1));
+      localObject2 = ((StructMsgItemImage)localObject3).a;
+      if (localObject2 == null) {
+        break;
+      }
+      localIntent.addFlags(603979776);
+      localObject1 = ((MessageForPic)localObject2).selfuin;
+      paramView = (View)localObject1;
+      if (((MessageForPic)localObject2).isMultiMsg) {}
+      try
+      {
+        localObject3 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+        paramView = (View)localObject1;
+        if ((localObject3 instanceof QQAppInterface)) {
+          paramView = ((AppRuntime)localObject3).getAccount();
+        }
+      }
+      catch (Exception paramView)
+      {
+        for (;;)
+        {
+          paramView = (View)localObject1;
+        }
+      }
+      paramView = new AIOImageProviderService(paramView, ((MessageForPic)localObject2).frienduin, ((MessageForPic)localObject2).istroop, (MessageForPic)localObject2);
+      localObject1 = AIOGalleryUtils.a((MessageForPic)localObject2);
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putParcelable("extra.IMAGE_PROVIDER", new BinderWarpper(paramView.asBinder()));
+      ((Bundle)localObject2).putParcelable("extra.EXTRA_CURRENT_IMAGE", (Parcelable)localObject1);
+      localIntent.putExtras((Bundle)localObject2);
+      localContext.startActivity(localIntent);
+      return;
     }
   }
 }

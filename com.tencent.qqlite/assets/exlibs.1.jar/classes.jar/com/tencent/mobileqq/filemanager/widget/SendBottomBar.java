@@ -17,22 +17,22 @@ import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import dwd;
-import dwe;
-import dwg;
-import dwh;
+import dxg;
+import dxh;
+import dxj;
+import dxk;
 
 public class SendBottomBar
   extends RelativeLayout
 {
   public ProgressDialog a;
   private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dwd(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dxg(this);
   public TextView a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   private BaseFileAssistantActivity jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity;
   private IClickListener_Ver51 jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new dwe(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new dxh(this);
   private TextView jdField_b_of_type_AndroidWidgetTextView = null;
   private TextView c = null;
   private TextView d = null;
@@ -41,7 +41,7 @@ public class SendBottomBar
   public SendBottomBar(Context paramContext)
   {
     super(paramContext, null);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903424, this);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903429, this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     d();
   }
@@ -49,7 +49,7 @@ public class SendBottomBar
   public SendBottomBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903424, this, true);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903429, this, true);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     d();
   }
@@ -57,11 +57,11 @@ public class SendBottomBar
   private void d()
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)this.jdField_a_of_type_AndroidContentContext);
-    this.d = ((TextView)findViewById(2131298028));
-    this.e = ((TextView)findViewById(2131298029));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296941));
+    this.d = ((TextView)findViewById(2131298033));
+    this.e = ((TextView)findViewById(2131298034));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296942));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-    this.c = ((TextView)findViewById(2131298027));
+    this.c = ((TextView)findViewById(2131298032));
     this.c.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getAppRuntime());
   }
@@ -148,7 +148,7 @@ public class SendBottomBar
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
       }
       return;
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(SplashActivity.sTopActivity, 2131624119);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(SplashActivity.sTopActivity, 2131624120);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
       this.jdField_a_of_type_AndroidAppProgressDialog.getWindow().setContentView(2130903271);
@@ -161,7 +161,7 @@ public class SendBottomBar
   {
     if ((FileManagerUtil.a()) && (FMDataCache.a()) && (paramBoolean))
     {
-      FMDialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362018, 2131362016, new dwg(this));
+      FMDialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362018, 2131362016, new dxj(this));
       return;
     }
     b();
@@ -169,7 +169,7 @@ public class SendBottomBar
   
   public void b()
   {
-    new dwh(this).execute(new Void[0]);
+    new dxk(this).execute(new Void[0]);
   }
   
   public void c()

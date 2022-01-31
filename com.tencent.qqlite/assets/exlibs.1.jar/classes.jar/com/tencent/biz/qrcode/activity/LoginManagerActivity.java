@@ -54,7 +54,7 @@ public class LoginManagerActivity
       ((NewIntent)localObject1).putExtra(ToServiceMsg.class.getSimpleName(), (Parcelable)localObject2);
       this.app.startServlet((NewIntent)localObject1);
     }
-    Toast.makeText(this, 2131362414, 0).show();
+    Toast.makeText(this, 2131362415, 0).show();
     super.finish();
     Object localObject1 = new Intent("com.tencent.qqlite.action.PC_STATUS_MANAGE");
     ((Intent)localObject1).putExtra("status", "logout");
@@ -64,25 +64,25 @@ public class LoginManagerActivity
   public void onClick(View paramView)
   {
     paramView = DialogUtil.a(this, 230);
-    paramView.setMessage(2131362413);
-    paramView.setPositiveButton(2131362434, new pd(this));
-    paramView.setNegativeButton(2131362794, new pe(this));
+    paramView.setMessage(2131362414);
+    paramView.setPositiveButton(2131362435, new pd(this));
+    paramView.setNegativeButton(2131362801, new pe(this));
     paramView.show();
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130903356);
-    super.setTitle(2131362411);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297815));
-    this.b = ((TextView)findViewById(2131297812));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297814));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297811));
+    super.setContentView(2130903359);
+    super.setTitle(2131362412);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297819));
+    this.b = ((TextView)findViewById(2131297816));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297818));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297815));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     paramBundle = this.app.a();
     this.b.setText(ContactUtils.g(this.app, paramBundle));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131362408, new Object[] { getIntent().getStringExtra("loginInfo") }));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131362409, new Object[] { getIntent().getStringExtra("loginInfo") }));
     new pb(this, paramBundle).start();
   }
 }

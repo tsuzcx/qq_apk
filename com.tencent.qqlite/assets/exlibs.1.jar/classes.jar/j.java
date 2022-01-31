@@ -1,12 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.LiteActivity;
+import com.dataline.activities.LiteAdvanceActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticAssist;
+import mqq.app.MobileQQ;
 
-public final class j
-  implements DialogInterface.OnClickListener
+public class j
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public j(LiteActivity paramLiteActivity) {}
+  
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    StatisticAssist.a(this.a.app.getApplication().getApplicationContext(), this.a.app.a(), "dl_ckadv");
+    paramView = new Intent(this.a, LiteAdvanceActivity.class);
+    this.a.startActivityForResult(paramView, 7);
   }
 }
 

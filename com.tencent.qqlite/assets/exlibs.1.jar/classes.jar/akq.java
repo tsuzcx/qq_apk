@@ -1,22 +1,20 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.DoodleActivity;
 
 public class akq
   implements View.OnClickListener
 {
-  public akq(EditActivity paramEditActivity) {}
+  public akq(DoodleActivity paramDoodleActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.f();
-    paramView = this.a.a.getText().toString();
-    Intent localIntent = this.a.getIntent();
-    localIntent.putExtra("result", paramView);
-    this.a.setResult(-1, localIntent);
-    this.a.finish();
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+    this.a.a();
   }
 }
 

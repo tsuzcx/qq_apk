@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileCategoryBrowserActivity;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 
 public class dkr
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public dkr(QfileLocalFileCategoryBrowserActivity paramQfileLocalFileCategoryBrowserActivity) {}
+  public dkr(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    QfileLocalFileCategoryBrowserActivity.a(this.a, paramView);
+    this.a.d();
   }
 }
 

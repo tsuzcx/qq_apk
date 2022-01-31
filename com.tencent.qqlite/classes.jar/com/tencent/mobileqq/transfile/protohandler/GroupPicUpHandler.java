@@ -43,8 +43,8 @@ public class GroupPicUpHandler
     paramReqCommon = (RichProto.RichProtoReq.PicUpReq)paramReqCommon;
     cmd0x388.TryUpImgReq localTryUpImgReq = new cmd0x388.TryUpImgReq();
     localTryUpImgReq.setHasFlag(true);
-    localTryUpImgReq.uint64_src_uin.set(Long.valueOf(paramReqCommon.jdField_c_of_type_JavaLangString).longValue());
-    localTryUpImgReq.uint64_group_code.set(Long.valueOf(paramReqCommon.d).longValue());
+    localTryUpImgReq.uint64_src_uin.set(Long.valueOf(paramReqCommon.c).longValue());
+    localTryUpImgReq.uint64_group_code.set(Long.valueOf(paramReqCommon.jdField_d_of_type_JavaLangString).longValue());
     localTryUpImgReq.uint64_file_id.set(paramInt);
     localTryUpImgReq.uint64_file_size.set(paramReqCommon.jdField_a_of_type_Long);
     localTryUpImgReq.bytes_file_md5.set(ByteStringMicro.copyFrom(paramReqCommon.jdField_a_of_type_ArrayOfByte));
@@ -54,7 +54,7 @@ public class GroupPicUpHandler
     localTryUpImgReq.uint32_pic_width.set(paramReqCommon.jdField_a_of_type_Int);
     localTryUpImgReq.uint32_pic_height.set(paramReqCommon.jdField_b_of_type_Int);
     PBUInt32Field localPBUInt32Field = localTryUpImgReq.uint32_bu_type;
-    if (paramReqCommon.jdField_c_of_type_Int == 1) {}
+    if (paramReqCommon.jdField_d_of_type_Int == 1) {}
     for (paramInt = 1;; paramInt = 2)
     {
       localPBUInt32Field.set(paramInt);

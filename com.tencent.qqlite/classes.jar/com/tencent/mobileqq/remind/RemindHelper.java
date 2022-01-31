@@ -12,7 +12,7 @@ import com.tencent.mobileqq.widget.DispatchActionMoveScrollView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import ear;
+import ebw;
 import java.util.Date;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -84,16 +84,16 @@ public class RemindHelper
     if (jdField_a_of_type_Boolean)
     {
       jdField_a_of_type_Boolean = false;
-      localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null, 2131624119);
-      ((DispatchActionMoveScrollView)localActionSheet.findViewById(2131296499)).jdField_a_of_type_Boolean = true;
-      localObject = (IosTimepicker)((LayoutInflater)localObject).inflate(2130903694, null);
+      localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null, 2131624120);
+      ((DispatchActionMoveScrollView)localActionSheet.findViewById(2131296502)).jdField_a_of_type_Boolean = true;
+      localObject = (IosTimepicker)((LayoutInflater)localObject).inflate(2130903703, null);
       ((IosTimepicker)localObject).setMaxDays(25568);
       ((IosTimepicker)localObject).a(paramContext, localActionSheet, paramLong, paramOnTimePickerSelectListener, null);
       if (Build.VERSION.SDK_INT >= 11) {
         localActionSheet.getWindow().setFlags(16777216, 16777216);
       }
       localActionSheet.b((View)localObject, null);
-      localActionSheet.setOnDismissListener(new ear((IosTimepicker)localObject, paramJsBridgeListener));
+      localActionSheet.setOnDismissListener(new ebw((IosTimepicker)localObject, paramJsBridgeListener));
     }
     try
     {

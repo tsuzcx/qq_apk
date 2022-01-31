@@ -24,15 +24,15 @@ import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
 import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
 import com.tencent.mobileqq.statistics.PluginStatisticsCollector;
 import com.tencent.mobileqq.widget.QFavDownloadProgressDialog;
-import fjw;
-import fjx;
-import fjy;
-import fjz;
-import fka;
-import fkd;
-import fke;
-import fkf;
-import fkg;
+import fmc;
+import fmd;
+import fme;
+import fmf;
+import fmg;
+import fmj;
+import fmk;
+import fml;
+import fmm;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -43,14 +43,14 @@ public abstract class IPluginManager
   extends RemotePluginManager.Stub
   implements Manager
 {
-  public static final int a = 266474;
+  public static final int a = 269202;
   private static Dialog jdField_a_of_type_AndroidAppDialog = null;
   private static volatile PluginManagerClient jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient;
   private static PluginManagerHelper.OnPluginManagerLoadedListener jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener;
   private static QFavDownloadProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog = null;
-  public static final String a = "952C8C795C49A348C49D50D14234A97E";
+  public static final String a = "21D0A5C0BB2D2AC3BF151A727EC4BDF9";
   public static final boolean a = false;
-  public static final String b = "http://i.gtimg.cn/qqshow/admindata/comdata/vip_mobile_theme_lite_night/qqfav20151110.zip";
+  public static final String b = "http://i.gtimg.cn/qqshow/admindata/comdata/vip_mobile_theme_lite_night/qqfav20160615.zip";
   
   private static Dialog a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
@@ -61,23 +61,23 @@ public abstract class IPluginManager
     if ((paramString != null) && (!"".equals(paramString))) {}
     for (paramString = String.format((String)localObject, new Object[] { paramString });; paramString = (String)localObject)
     {
-      paramContext = new Dialog(paramContext, 2131624119);
+      paramContext = new Dialog(paramContext, 2131624120);
       paramContext.setContentView(2130903135);
-      localObject = (TextView)paramContext.findViewById(2131296911);
+      localObject = (TextView)paramContext.findViewById(2131296912);
       if (localObject != null) {
         ((TextView)localObject).setText(str3);
       }
-      localObject = (TextView)paramContext.findViewById(2131296470);
+      localObject = (TextView)paramContext.findViewById(2131296473);
       if (localObject != null) {
         ((TextView)localObject).setText(paramString);
       }
-      paramString = (TextView)paramContext.findViewById(2131296914);
+      paramString = (TextView)paramContext.findViewById(2131296915);
       if (paramString != null)
       {
         paramString.setText(str2);
         paramString.setOnClickListener(paramOnClickListener1);
       }
-      paramString = (TextView)paramContext.findViewById(2131296915);
+      paramString = (TextView)paramContext.findViewById(2131296916);
       if (paramString != null)
       {
         paramString.setText(str1);
@@ -96,14 +96,14 @@ public abstract class IPluginManager
   {
     PluginInfo localPluginInfo = new PluginInfo();
     localPluginInfo.mID = "qqfav.apk";
-    localPluginInfo.mMD5 = "952C8C795C49A348C49D50D14234A97E";
+    localPluginInfo.mMD5 = "21D0A5C0BB2D2AC3BF151A727EC4BDF9";
     localPluginInfo.mType = 0;
     localPluginInfo.mPackageName = "com.qqfav";
-    localPluginInfo.mLength = 266474L;
+    localPluginInfo.mLength = 269202L;
     localPluginInfo.mCurVersion = 10000L;
     localPluginInfo.mState = 0;
     localPluginInfo.mUpdateType = 1;
-    localPluginInfo.mURL = "http://i.gtimg.cn/qqshow/admindata/comdata/vip_mobile_theme_lite_night/qqfav20151110.zip";
+    localPluginInfo.mURL = "http://i.gtimg.cn/qqshow/admindata/comdata/vip_mobile_theme_lite_night/qqfav20160615.zip";
     return localPluginInfo;
   }
   
@@ -120,7 +120,7 @@ public abstract class IPluginManager
       ((Toast)localObject).setGravity(17, 0, 0);
       ((Toast)localObject).show();
     }
-    Object localObject = new fjw();
+    Object localObject = new fmc();
     if (paramPluginParams.jdField_a_of_type_AndroidAppDialog != null) {
       new SplashDialogWrapper(paramActivity, paramPluginParams.jdField_a_of_type_AndroidAppDialog, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString, paramPluginParams.jdField_a_of_type_Boolean, paramPluginParams.jdField_c_of_type_Int).show();
     }
@@ -141,7 +141,7 @@ public abstract class IPluginManager
     {
       paramPluginParams.jdField_c_of_type_JavaLangString = ((File)localObject).getCanonicalPath();
       label21:
-      localObject = new fkf();
+      localObject = new fml();
       AppRuntime localAppRuntime = BaseApplicationImpl.a.a();
       if (!(localAppRuntime instanceof QQAppInterface))
       {
@@ -202,7 +202,7 @@ public abstract class IPluginManager
   private static QFavDownloadProgressDialog b(Context paramContext, String paramString)
   {
     paramContext = new QFavDownloadProgressDialog(paramContext);
-    paramContext.a(new fjy(paramString, paramContext));
+    paramContext.a(new fme(paramString, paramContext));
     return paramContext;
   }
   
@@ -240,7 +240,7 @@ public abstract class IPluginManager
     {
       paramPluginParams.jdField_c_of_type_JavaLangString = ((File)localObject).getCanonicalPath();
       label21:
-      localObject = new fkg();
+      localObject = new fmm();
       AppRuntime localAppRuntime = BaseApplicationImpl.a.a();
       if (!(localAppRuntime instanceof QQAppInterface))
       {
@@ -288,7 +288,7 @@ public abstract class IPluginManager
     }
     if ((jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient == null) || (!jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.useful()))
     {
-      jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener = new fjx(paramContext, paramPluginParams, paramOnPluginReadyListener);
+      jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener = new fmd(paramContext, paramPluginParams, paramOnPluginReadyListener);
       PluginManagerHelper.getPluginInterface(paramContext, jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener);
       return;
     }
@@ -336,12 +336,12 @@ public abstract class IPluginManager
     }
     if (paramPluginParams.jdField_b_of_type_JavaLangString.equals("qqfav.apk"))
     {
-      jdField_a_of_type_AndroidAppDialog = a(paramContext, 2131363268, 2131363273, 2131362794, 2131363448, (float)Math.round(25.412940979003906D) / 100.0F + "", new fjz(), new fka(paramContext, paramPluginParams, paramOnPluginReadyListener));
-      jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new fkd());
+      jdField_a_of_type_AndroidAppDialog = a(paramContext, 2131363278, 2131363283, 2131362801, 2131363459, (float)Math.round(25.673103332519531D) / 100.0F + "", new fmf(), new fmg(paramContext, paramPluginParams, paramOnPluginReadyListener));
+      jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new fmj());
       jdField_a_of_type_AndroidAppDialog.show();
       return;
     }
-    jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin(paramPluginParams.jdField_b_of_type_JavaLangString, new fke(paramOnPluginReadyListener, paramContext, paramPluginParams));
+    jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin(paramPluginParams.jdField_b_of_type_JavaLangString, new fmk(paramOnPluginReadyListener, paramContext, paramPluginParams));
   }
   
   public abstract PluginInfo a(String paramString);

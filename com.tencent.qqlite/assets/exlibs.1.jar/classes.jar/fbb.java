@@ -1,49 +1,29 @@
-import android.os.Bundle;
 import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import mqq.observer.BusinessObserver;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.mobileqq.widget.QQMapView.QQMapViewObserver;
+import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 
 public class fbb
-  implements BusinessObserver
+  extends Handler
 {
-  public fbb(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  public fbb(QQMapView paramQQMapView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.a.app.a().equals(localObject)) {}
-    for (;;)
-    {
-      return;
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      if (paramBoolean)
-      {
-        localObject = new GetAppInfoProto.GetAppinfoResponse();
-        try
-        {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle != null)
-          {
-            ((GetAppInfoProto.GetAppinfoResponse)localObject).mergeFrom(paramBundle);
-            if ((((GetAppInfoProto.GetAppinfoResponse)localObject).has()) && (((GetAppInfoProto.GetAppinfoResponse)localObject).ret.get() == 0))
-            {
-              paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-              paramBundle.what = 3;
-              paramBundle.obj = localObject;
-              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
-              return;
-            }
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
-        }
-      }
+    GeoPoint localGeoPoint;
+    if ((paramMessage != null) && (paramMessage.obj != null) && (this.a.a != null)) {
+      localGeoPoint = (GeoPoint)paramMessage.obj;
     }
+    switch (paramMessage.arg1)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.a.b(localGeoPoint);
+      return;
+    }
+    this.a.a.c(localGeoPoint);
   }
 }
 

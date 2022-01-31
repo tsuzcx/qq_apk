@@ -1,45 +1,15 @@
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
 
 public class ayo
-  implements IphonePickerView.PickerViewAdapter
+  implements ConditionSearchManager.IConfigListener
 {
   public ayo(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public int a()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 4;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    int i = 3;
-    if (paramInt2 < 0) {}
-    for (paramInt1 = 0;; paramInt1 = paramInt2)
-    {
-      if (paramInt1 > 3) {
-        paramInt1 = i;
-      }
-      for (;;)
-      {
-        switch (paramInt1)
-        {
-        default: 
-          return "";
-        case 0: 
-          return "保密";
-        case 1: 
-          return "单身";
-        case 2: 
-          return "恋爱中";
-        }
-        return "已婚";
-      }
+    if ((paramBoolean) && (paramInt == 2)) {
+      NearbyPeopleProfileActivity.x(this.a);
     }
   }
 }

@@ -1,18 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class axs
-  implements View.OnClickListener
+  implements TextWatcher
 {
   public axs(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    NearbyPeopleProfileActivity.k(this.a);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800482C", "0X800482C", 0, 0, "", "", "", "");
+    NearbyPeopleProfileActivity.a(this.a, NearbyPeopleProfileActivity.a(this.a), 36);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,24 +1,29 @@
 import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.CommonWebActivity;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bho
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bho(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, String paramString) {}
+  public bho(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
-    if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
+    if (!RegisterPhoneNumActivity.a(this.a)) {
       return;
     }
-    Object localObject1 = localObject2;
-    if (!((String)localObject2).startsWith("http://")) {
-      localObject1 = "http://" + (String)localObject2;
-    }
-    localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.getActivity(), QQBrowserActivity.class);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
+    RegisterPhoneNumActivity.a(this.a, false);
+    this.a.b.postDelayed(new bhp(this), 1000L);
+    paramView = new Intent(this.a, CommonWebActivity.class);
+    paramView.putExtra("uin", this.a.app.a());
+    paramView.putExtra("ba_is_login", false);
+    paramView.putExtra("url", "http://zc.qq.com/chs/agreement1_chs.html");
+    paramView.putExtra("hide_more_button", true);
+    this.a.startActivity(paramView);
   }
 }
 

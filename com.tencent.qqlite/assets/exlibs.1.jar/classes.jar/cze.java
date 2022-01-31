@@ -1,33 +1,26 @@
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.RecentUser;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.AccostMessageProcessor;
+import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MsgAutoMonitorUtil;
-import com.tencent.widget.TraceUtils;
 
 public class cze
-  implements Runnable
+  implements BaseMessageProcessor.RequestBuilder
 {
-  public cze(QQMessageFacade paramQQMessageFacade) {}
+  public cze(AccostMessageProcessor paramAccostMessageProcessor, byte[] paramArrayOfByte, int paramInt) {}
   
-  public void run()
+  public ToServiceMsg a()
   {
-    TraceUtils.a("initMsgCache");
-    long l1 = System.currentTimeMillis();
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageAccostMessageProcessor.a.a("MessageSvc.GetMsgV4");
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.QQMessageFacade", 2, "before refreshCache");
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "--->getC2CMessage cChannel: 4vCookies: " + this.jdField_a_of_type_ArrayOfByte + ",cSyncFlag:" + this.jdField_a_of_type_Int);
     }
-    this.a.a().a();
-    this.a.d();
-    QQMessageFacade.a(this.a);
-    this.a.notifyObservers(new RecentUser());
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.msg.QQMessageFacade", 2, "after refreshCache");
-      long l2 = System.currentTimeMillis();
-      MsgAutoMonitorUtil.a().a("MSG_InitCostTime", l2 - l1 + "");
-    }
-    TraceUtils.a();
+    localToServiceMsg.extraData.putByte("cChannel", (byte)4);
+    localToServiceMsg.extraData.putByteArray("vCookies", this.jdField_a_of_type_ArrayOfByte);
+    localToServiceMsg.extraData.putInt("cSyncFlag", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putByte("onlineSyncFlag", (byte)1);
+    return localToServiceMsg;
   }
 }
 

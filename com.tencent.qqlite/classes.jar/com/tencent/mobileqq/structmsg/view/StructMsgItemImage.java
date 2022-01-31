@@ -61,6 +61,13 @@ public class StructMsgItemImage
       Object localObject2 = localObject1;
       if (localObject1 == null)
       {
+        if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("StructMsg", 2, "StructMsgItemImage.createView.mImageShareMsg == null nudnik trick");
+          }
+          return new View(paramContext);
+        }
         MessageForPic localMessageForPic = new MessageForPic();
         localMessageForPic.path = this.h;
         localMessageForPic.uuid = this.i;
@@ -94,7 +101,7 @@ public class StructMsgItemImage
       else
       {
         if ((paramView == null) || (!(paramView instanceof ChatThumbView))) {
-          break label343;
+          break label373;
         }
       }
       for (paramContext = (ChatThumbView)paramView;; paramContext = paramView)
@@ -103,7 +110,7 @@ public class StructMsgItemImage
         return paramContext;
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uin;
         break;
-        label343:
+        label373:
         paramView = new ChatThumbView(paramContext);
         paramView.setAdjustViewBounds(true);
         float f = paramContext.getResources().getDisplayMetrics().density;
@@ -197,19 +204,19 @@ public class StructMsgItemImage
       str = "";
       paramXmlSerializer.attribute(null, "uuid", str);
       if (this.j != null) {
-        break label128;
+        break label131;
       }
       str = "";
-      label41:
+      label42:
       paramXmlSerializer.attribute(null, "md5", str);
       paramXmlSerializer.attribute(null, "GroupFiledid", String.valueOf(this.b));
       paramXmlSerializer.attribute(null, "filesize", String.valueOf(this.c));
       if (this.h != null) {
-        break label136;
+        break label139;
       }
     }
-    label128:
-    label136:
+    label131:
+    label139:
     for (String str = "";; str = this.h)
     {
       paramXmlSerializer.attribute(null, "local_path", str);
@@ -218,7 +225,7 @@ public class StructMsgItemImage
       str = this.i;
       break;
       str = this.j;
-      break label41;
+      break label42;
     }
   }
   
@@ -241,10 +248,10 @@ public class StructMsgItemImage
       if (str2 == null)
       {
         paramStructMsgNode = "";
-        label69:
+        label72:
         this.j = paramStructMsgNode;
         if (str1 != null) {
-          break label141;
+          break label143;
         }
         paramStructMsgNode = "";
         this.h = paramStructMsgNode;
@@ -268,8 +275,8 @@ public class StructMsgItemImage
         QLog.d("StructMsg", 2, paramStructMsgNode.getMessage());
         return true;
         paramStructMsgNode = str2;
-        break label69;
-        label141:
+        break label72;
+        label143:
         paramStructMsgNode = str1;
       }
       catch (NumberFormatException paramStructMsgNode)

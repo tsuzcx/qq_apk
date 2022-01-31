@@ -1,38 +1,56 @@
 import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import com.tencent.qphone.base.util.QLog;
 
 public class dgz
-  implements AdapterView.OnItemClickListener
+  implements View.OnClickListener
 {
-  public dgz(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public dgz(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    paramAdapterView = (FileInfo)this.a.a.get(paramInt);
-    if (paramAdapterView.a()) {
-      LocalFileBrowserActivity.a(this.a, paramAdapterView.d(), true);
-    }
-    while (!this.a.j()) {
-      return;
-    }
-    if (FMDataCache.a(paramAdapterView)) {
-      FMDataCache.b(paramAdapterView);
-    }
-    for (;;)
+    if (this.a.j())
     {
-      this.a.m();
-      LocalFileBrowserActivity.a(this.a);
-      return;
-      if (this.a.b) {
-        FMDataCache.b();
+      FMDataCache.b();
+      this.a.f(false);
+      if (this.a.g())
+      {
+        this.a.setResult(5);
+        this.a.finish();
+        return;
       }
-      FMDataCache.a(paramAdapterView);
+      BaseFileAssistantActivity.a(this.a).setVisibility(0);
+      BaseFileAssistantActivity.b(this.a).setText(2131361939);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(8);
+      this.a.setTitle(this.a.b);
+      this.a.d();
+      this.a.c();
+      if (this.a.jdField_a_of_type_Int == 1) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      }
+      this.a.b(false);
+      return;
     }
+    if (BaseFileAssistantActivity.a(this.a) != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("BaseFileAssistantActivity<FileAssistant>", 2, "onRightEditClick");
+      }
+      BaseFileAssistantActivity.a(this.a).g();
+    }
+    FMDataCache.b();
+    this.a.f(true);
+    BaseFileAssistantActivity.c(this.a).setVisibility(0);
+    BaseFileAssistantActivity.d(this.a).setText(2131361966);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(0);
+    this.a.d();
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.b(true);
   }
 }
 

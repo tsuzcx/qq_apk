@@ -10,7 +10,7 @@ class MQPSecJsPlugin$4
   
   public void run()
   {
-    QQToast.a(this.this$0.activity, this.this$0.activity.getString(2131362790), 0).b(this.this$0.activity.getTitleBarHeight());
+    QQToast.a(this.this$0.activity, this.this$0.activity.getString(2131362797), 0).b(this.this$0.activity.getTitleBarHeight());
   }
 }
 

@@ -1,11 +1,7 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.dataline.activities.LiteActivity;
-import com.dataline.activities.LiteAdvanceActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticAssist;
-import mqq.app.MobileQQ;
+import com.dataline.util.ItemHolder;
 
 public class k
   implements View.OnClickListener
@@ -14,9 +10,8 @@ public class k
   
   public void onClick(View paramView)
   {
-    StatisticAssist.a(this.a.app.getApplication().getApplicationContext(), this.a.app.a(), "dl_ckadv");
-    paramView = new Intent(this.a, LiteAdvanceActivity.class);
-    this.a.startActivityForResult(paramView, 7);
+    paramView = (ItemHolder)((ItemHolder)paramView.getTag()).clone();
+    LiteActivity.a(this.a, paramView);
   }
 }
 

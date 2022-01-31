@@ -1,24 +1,16 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.DiscussionListInnerFrame;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
-class cmr
-  implements Runnable
+public class cmr
 {
-  cmr(cmq paramcmq) {}
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public TextView b;
   
-  public void run()
-  {
-    try
-    {
-      if (!this.a.a.isFinishing())
-      {
-        this.a.a.a.dismiss();
-        this.a.a.finish();
-      }
-      return;
-    }
-    catch (Exception localException) {}
-  }
+  private cmr(DiscussionListInnerFrame paramDiscussionListInnerFrame) {}
 }
 
 

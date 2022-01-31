@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class brb
-  implements DialogInterface.OnClickListener
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public brb(UpgradeActivity paramUpgradeActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.c();
-  }
+  public TextView a;
+  public TroopTransferActivity.TroopMemberItem a;
 }
 
 

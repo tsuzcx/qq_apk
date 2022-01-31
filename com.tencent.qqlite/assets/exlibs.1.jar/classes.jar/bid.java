@@ -1,15 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class bid
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public bid(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public bid(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    try
+    {
+      if ((RegisterQQNumberActivity.a(this.a) != null) && (RegisterQQNumberActivity.a(this.a).isShowing()))
+      {
+        RegisterQQNumberActivity.a(this.a).dismiss();
+        RegisterQQNumberActivity.a(this.a).cancel();
+      }
+      RegisterQQNumberActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

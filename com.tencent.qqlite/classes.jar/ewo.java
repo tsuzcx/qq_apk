@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogDevLock;
 
 public class ewo
-  extends Thread
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = -1;
-  volatile boolean jdField_a_of_type_Boolean = false;
+  public ewo(QQCustomDialogDevLock paramQQCustomDialogDevLock, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  ewo(HttpCommunicator paramHttpCommunicator) {}
-  
-  public void run() {}
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogDevLock, 1);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogDevLock.dismiss();
+  }
 }
 
 

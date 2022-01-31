@@ -45,7 +45,7 @@ public class GrpTransfileProcessor
     {
       label40:
       long l = this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.a;
-      if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.aa == 1) {}
+      if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.ab == 1) {}
       for (paramBoolean = bool;; paramBoolean = false)
       {
         str = TransfileUtile.a(str, l, i, paramBoolean);

@@ -1,31 +1,13 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.graphics.drawable.Drawable;
 
-public class eug
-  implements View.OnClickListener
+class eug
+  implements Runnable
 {
-  int jdField_a_of_type_Int;
+  eug(euf parameuf, Drawable paramDrawable) {}
   
-  public eug(QQCustomDialog paramQQCustomDialog, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.onArrayItemClick != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.onArrayItemClick.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.customWhichToCallBack(this.jdField_a_of_type_Int));
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
+    this.jdField_a_of_type_Euf.a.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

@@ -1,42 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class axk
-  implements Runnable
+class axk
+  implements DialogInterface.OnClickListener
 {
-  public axk(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  axk(axi paramaxi, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NearbyPeopleProfileActivity.a(this.a, (ays)NearbyPeopleProfileActivity.a(this.a).poll());
-    if (NearbyPeopleProfileActivity.a(this.a) == null) {
-      return;
-    }
-    CompressInfo localCompressInfo = new CompressInfo();
-    localCompressInfo.c = NearbyPeopleProfileActivity.a(this.a).a;
-    localCompressInfo.g = 0;
-    localCompressInfo.f = 0;
-    CompressOperator.a(localCompressInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyPeopleProfileActivity.uploadPhoto(), img_path = " + localCompressInfo.e);
-    }
-    if (!StringUtil.b(localCompressInfo.e))
-    {
-      TransferRequest localTransferRequest = new TransferRequest();
-      localTransferRequest.a = true;
-      localTransferRequest.h = localCompressInfo.e;
-      localTransferRequest.b = 8;
-      this.a.app.a().a(localTransferRequest);
-      return;
-    }
-    this.a.runOnUiThread(new axl(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    NearbyPeopleProfileActivity.e(this.jdField_a_of_type_Axi.a);
   }
 }
 

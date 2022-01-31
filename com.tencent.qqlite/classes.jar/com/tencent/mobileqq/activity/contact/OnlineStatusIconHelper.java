@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.contact;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.AssetManager;
-import cbc;
+import ccd;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 import javax.xml.parsers.SAXParser;
@@ -39,8 +39,8 @@ public class OnlineStatusIconHelper
     try
     {
       SAXParser localSAXParser = SAXParserFactory.newInstance().newSAXParser();
-      cbc localcbc = new cbc(this);
-      localSAXParser.parse(paramContext.getAssets().open("online_status_icon_config.xml"), localcbc);
+      ccd localccd = new ccd(this);
+      localSAXParser.parse(paramContext.getAssets().open("online_status_icon_config.xml"), localccd);
       return;
     }
     catch (Exception paramContext) {}

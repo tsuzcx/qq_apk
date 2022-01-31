@@ -1,12 +1,25 @@
-import com.tencent.mobileqq.app.MessageHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
 
-public class cub
+public final class cub
+  implements Parcelable.Creator
 {
-  public int a;
-  public long a;
-  public short a;
+  public FriendListHandler.QQHeadDetails a(Parcel paramParcel)
+  {
+    FriendListHandler.QQHeadDetails localQQHeadDetails = new FriendListHandler.QQHeadDetails(null);
+    localQQHeadDetails.jdField_a_of_type_Int = paramParcel.readInt();
+    localQQHeadDetails.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQQHeadDetails.jdField_a_of_type_Long = paramParcel.readLong();
+    localQQHeadDetails.jdField_a_of_type_Byte = paramParcel.readByte();
+    localQQHeadDetails.b = paramParcel.readString();
+    return localQQHeadDetails;
+  }
   
-  private cub(MessageHandler paramMessageHandler) {}
+  public FriendListHandler.QQHeadDetails[] a(int paramInt)
+  {
+    return new FriendListHandler.QQHeadDetails[paramInt];
+  }
 }
 
 

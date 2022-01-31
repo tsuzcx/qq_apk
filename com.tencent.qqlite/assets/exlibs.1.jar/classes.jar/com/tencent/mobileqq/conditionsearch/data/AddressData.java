@@ -2,7 +2,7 @@ package com.tencent.mobileqq.conditionsearch.data;
 
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
-import dbr;
+import dct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -65,7 +65,7 @@ public class AddressData
   
   private void a(AppInterface paramAppInterface, String paramString)
   {
-    paramAppInterface.runOnUiThread(new dbr(this, paramString));
+    paramAppInterface.runOnUiThread(new dct(this, paramString));
   }
   
   private boolean a(String paramString, Map paramMap)

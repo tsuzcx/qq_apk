@@ -75,7 +75,7 @@ public class ChatXListView
       if (i != 0) {
         break label52;
       }
-      if ((this.jdField_b_of_type_Float != -1.0F) || (!this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView$OnBottomOverScrollListener.i())) {}
+      if ((this.jdField_b_of_type_Float != -1.0F) || (!this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView$OnBottomOverScrollListener.j())) {}
     }
     for (this.jdField_b_of_type_Float = paramMotionEvent.getY();; this.jdField_b_of_type_Float = -1.0F)
     {
@@ -106,7 +106,7 @@ public class ChatXListView
   {
     super.offsetChildrenTopAndBottom(paramInt);
     if ((paramInt != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.l(paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.k(paramInt);
     }
   }
   
@@ -120,7 +120,7 @@ public class ChatXListView
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = paramInt2 - paramInt4;
     if ((paramInt1 != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.l(-paramInt1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.k(-paramInt1);
     }
   }
   

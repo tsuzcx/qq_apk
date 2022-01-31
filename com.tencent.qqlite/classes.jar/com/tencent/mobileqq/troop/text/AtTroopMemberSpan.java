@@ -18,8 +18,10 @@ import android.widget.EditText;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
 import com.tencent.mobileqq.text.EmotcationConstants;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.ContactUtils;
-import eok;
+import com.tencent.qphone.base.util.QLog;
+import eqa;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -74,6 +76,43 @@ public class AtTroopMemberSpan
     return paramString1;
   }
   
+  public static SpannableString a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, EditText paramEditText, boolean paramBoolean2)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramEditText == null)) {
+      return null;
+    }
+    AtTroopMemberSpan[] arrayOfAtTroopMemberSpan = (AtTroopMemberSpan[])paramEditText.getEditableText().getSpans(0, paramEditText.getEditableText().toString().length(), AtTroopMemberSpan.class);
+    int i = 0;
+    while (i < arrayOfAtTroopMemberSpan.length)
+    {
+      if (arrayOfAtTroopMemberSpan[i].jdField_a_of_type_JavaLangString.contentEquals(paramString2)) {
+        return null;
+      }
+      i += 1;
+    }
+    i = paramEditText.getWidth();
+    int j = paramEditText.getPaddingLeft();
+    int k = paramEditText.getPaddingRight();
+    try
+    {
+      paramQQAppInterface = a(paramQQAppInterface, paramContext, paramString1, paramString2, paramString3, paramBoolean1, i - j - k, paramEditText.getPaint(), paramBoolean2);
+      if (paramQQAppInterface == null) {
+        return null;
+      }
+    }
+    catch (OutOfMemoryError paramQQAppInterface)
+    {
+      for (;;)
+      {
+        paramQQAppInterface = null;
+      }
+      paramContext = paramQQAppInterface.jdField_b_of_type_JavaLangString;
+      paramString1 = new SpannableString(paramContext + " ");
+      paramString1.setSpan(paramQQAppInterface, 0, paramContext.length(), 33);
+    }
+    return paramString1;
+  }
+  
   public static AtTroopMemberSpan a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt, Paint paramPaint)
   {
     if ((paramQQAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramInt <= 0)) {}
@@ -83,6 +122,54 @@ public class AtTroopMemberSpan
       if ((!paramBoolean) && (!paramString2.equalsIgnoreCase("0"))) {}
       for (paramQQAppInterface = ContactUtils.d(paramQQAppInterface, paramString1, paramString2); !TextUtils.isEmpty(paramQQAppInterface); paramQQAppInterface = paramString3) {
         return new AtTroopMemberSpan(paramContext, paramString2, paramQQAppInterface, paramInt, paramPaint);
+      }
+    }
+  }
+  
+  private static AtTroopMemberSpan a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, int paramInt, Paint paramPaint, boolean paramBoolean2)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramInt <= 0)) {}
+    for (;;)
+    {
+      return null;
+      if (paramBoolean2) {
+        if ((!paramBoolean1) && (!paramString2.equalsIgnoreCase("0")))
+        {
+          paramString1 = ContactUtils.e(paramQQAppInterface, paramString1, paramString2);
+          paramQQAppInterface = paramString1;
+          if (TextUtils.isEmpty(paramString1))
+          {
+            paramQQAppInterface = paramString1;
+            if (!TextUtils.isEmpty(paramString3)) {
+              paramQQAppInterface = paramString3;
+            }
+          }
+        }
+      }
+      while (!TextUtils.isEmpty(paramQQAppInterface))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("_At_Me_DISC", 2, " memUin:" + paramString2 + " troopMemName:" + Utils.a(paramQQAppInterface) + " isTroop:" + paramBoolean2);
+        }
+        return new AtTroopMemberSpan(paramContext, paramString2, paramQQAppInterface, paramInt, paramPaint);
+        paramQQAppInterface = paramString3;
+        continue;
+        if (!paramString2.equalsIgnoreCase("0"))
+        {
+          paramString1 = ContactUtils.c(paramQQAppInterface, paramString2, true);
+          paramQQAppInterface = paramString1;
+          if (TextUtils.isEmpty(paramString1))
+          {
+            paramQQAppInterface = paramString1;
+            if (!TextUtils.isEmpty(paramString3)) {
+              paramQQAppInterface = paramString3;
+            }
+          }
+        }
+        else
+        {
+          paramQQAppInterface = paramString3;
+        }
       }
     }
   }
@@ -100,7 +187,7 @@ public class AtTroopMemberSpan
       return localStringBuffer.toString();
     }
     if (arrayOfAtTroopMemberSpan.length > 1) {
-      Arrays.sort(arrayOfAtTroopMemberSpan, new eok(paramEditable));
+      Arrays.sort(arrayOfAtTroopMemberSpan, new eqa(paramEditable));
     }
     int j = 0;
     while (i < arrayOfAtTroopMemberSpan.length)

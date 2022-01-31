@@ -1,30 +1,18 @@
+import android.app.Dialog;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class bdj
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public bdj(QQMapActivity paramQQMapActivity, ActionSheet paramActionSheet) {}
+  public bdj(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.i();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.runOnUiThread(new bdk(this));
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

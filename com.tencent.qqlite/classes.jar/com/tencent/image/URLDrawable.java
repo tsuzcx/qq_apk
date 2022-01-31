@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.Callback;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.os.AsyncTask;
+import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.support.v4.util.LruCache;
 import android.support.v4.util.MQLruCache;
@@ -894,6 +895,9 @@ public class URLDrawable
     paramURLState.setLevel(getLevel());
     paramURLState.setCallback(this);
     paramURLState.setBounds(getBounds());
+    if (Build.VERSION.SDK_INT >= 23) {
+      this.mCurrDrawable = paramURLState;
+    }
     if ((paramURLState instanceof RegionDrawable)) {
       ((RegionDrawable)paramURLState).setTargetDensity(this.mTargetDensity);
     }

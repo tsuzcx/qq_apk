@@ -1,59 +1,51 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.pic.compress.PicQualityCommon;
-import com.tencent.mobileqq.pic.compress.PicType;
-import com.tencent.mobileqq.pic.compress.PicTypeLong;
-import com.tencent.mobileqq.pic.compress.Utils;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.RemoteException;
+import com.tencent.mobileqq.music.IQQPlayerService;
+import com.tencent.mobileqq.music.IQQPlayerService.Stub;
+import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
 
 public class dzy
-  extends PicQualityCommon
+  implements ServiceConnection
 {
-  public dzy(PicTypeLong paramPicTypeLong, PicType paramPicType)
+  public dzy(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    super(paramPicType);
+    MusicGeneWebViewPlugin.a(this.a, IQQPlayerService.Stub.a(paramIBinder));
+    try
+    {
+      paramComponentName = MusicGeneWebViewPlugin.a(this.a).a(3, MusicGeneWebViewPlugin.a());
+      paramIBinder = MusicGeneWebViewPlugin.a(this.a).a();
+      if ((paramIBinder != null) && (paramIBinder.equals(paramComponentName))) {
+        MusicGeneWebViewPlugin.a(this.a).a(MusicGeneWebViewPlugin.a(this.a));
+      }
+      return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      paramComponentName.printStackTrace();
+    }
   }
   
-  protected boolean b()
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    boolean bool1 = false;
-    this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e = Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.c, this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.g);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e)) {
-      Logger.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString + " destPath is empty");
-    }
-    boolean bool2;
-    do
+    try
     {
-      return bool1;
-      if (FileUtils.b(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e))
-      {
-        Logger.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString + " destPath exist. return true");
-        return true;
+      if (MusicGeneWebViewPlugin.a(this.a) != null) {
+        MusicGeneWebViewPlugin.a(this.a).b(MusicGeneWebViewPlugin.a(this.a));
       }
-      try
+      MusicGeneWebViewPlugin.a(this.a, null);
+      return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
       {
-        Bitmap localBitmap = BitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.c);
-        if (localBitmap == null)
-        {
-          Logger.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString + " bm == null, maybe is broken");
-          return false;
-        }
+        paramComponentName.printStackTrace();
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.a(true);
-        Logger.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString + " decodeFile oom, execute commonCompress()");
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e = "";
-        return this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.c();
-      }
-      bool2 = Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e, localOutOfMemoryError, this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a(), this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a);
-      bool1 = bool2;
-    } while (localOutOfMemoryError == null);
-    localOutOfMemoryError.recycle();
-    return bool2;
+    }
   }
 }
 

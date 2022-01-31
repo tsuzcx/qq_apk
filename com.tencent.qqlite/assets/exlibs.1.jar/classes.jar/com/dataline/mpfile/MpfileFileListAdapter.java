@@ -64,32 +64,32 @@ public class MpfileFileListAdapter
     {
       paramViewGroup = paramView;
       if (paramView == null) {
-        paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903447, null);
+        paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903452, null);
       }
       paramView = (MpfileItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      ((TextView)paramViewGroup.findViewById(2131296760)).setText(paramView.jdField_a_of_type_JavaLangString);
-      ((ImageView)paramViewGroup.findViewById(2131296759)).setImageResource(2130838512);
+      ((TextView)paramViewGroup.findViewById(2131296761)).setText(paramView.jdField_a_of_type_JavaLangString);
+      ((ImageView)paramViewGroup.findViewById(2131296760)).setImageResource(2130838537);
       return paramViewGroup;
     }
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903449, null);
+      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903454, null);
     }
     paramView = (MpfileItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    ((TextView)paramViewGroup.findViewById(2131296760)).setText(paramView.jdField_a_of_type_JavaLangString);
-    AsyncImageView localAsyncImageView = (AsyncImageView)paramViewGroup.findViewById(2131296759);
+    ((TextView)paramViewGroup.findViewById(2131296761)).setText(paramView.jdField_a_of_type_JavaLangString);
+    AsyncImageView localAsyncImageView = (AsyncImageView)paramViewGroup.findViewById(2131296760);
     String str1 = String.format("%s/%s", new Object[] { MpfileDataCenter.a(), paramView.jdField_a_of_type_JavaLangString });
     String str2 = FileUtil.a(str1);
     if ((str2 != null) && (FileManagerUtil.a(str2) == 0) && (MpfileDataCenter.k != null) && (MpfileDataCenter.k.length() > 0))
     {
       str1 = String.format("http://%s:%d/qqmpfile/?action=thumbnail&fileid=%s", new Object[] { MpfileDataCenter.k, Integer.valueOf(MpfileDataCenter.E), paramView.b });
-      localAsyncImageView.setDefaultImage(2130838527);
+      localAsyncImageView.setDefaultImage(2130838552);
       localAsyncImageView.setAsyncImage(str1);
     }
     for (;;)
     {
-      ((TextView)paramViewGroup.findViewById(2131298083)).setText(FileUtil.a(paramView.jdField_a_of_type_Long));
-      ((TextView)paramViewGroup.findViewById(2131298088)).setText(paramView.c);
+      ((TextView)paramViewGroup.findViewById(2131298088)).setText(FileUtil.a(paramView.jdField_a_of_type_Long));
+      ((TextView)paramViewGroup.findViewById(2131298093)).setText(paramView.c);
       return paramViewGroup;
       FileManagerUtil.a(localAsyncImageView, str1);
     }

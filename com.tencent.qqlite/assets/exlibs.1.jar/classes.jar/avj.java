@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.MayKnowManActivity;
 
 public class avj
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public avj(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
+  public avj(MayKnowManActivity paramMayKnowManActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Toast.makeText(this.a, 2131362803, 0).show();
+    this.a.a = null;
   }
 }
 

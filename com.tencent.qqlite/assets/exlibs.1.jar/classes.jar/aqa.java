@@ -1,55 +1,69 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.os.Handler;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
+import com.tencent.mobileqq.gesturelock.LockPatternView.DisplayMode;
+import com.tencent.mobileqq.gesturelock.LockPatternView.OnPatternListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aqa
-  extends BaseAdapter
+  implements LockPatternView.OnPatternListener
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  public aqa(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
   
-  public aqa(GesturePWDCreateActivity paramGesturePWDCreateActivity, Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-  }
+  public void a() {}
   
-  public int getCount()
+  public void a(List paramList)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a.length;
+    if (paramList != null) {
+      switch (this.a.b)
+      {
+      }
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a != null) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a.length) && (paramInt >= 0)) {
-      return Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a[paramInt]);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903206, null);
-    }
-    paramView = paramViewGroup.findViewById(2131297159);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a.length) && (this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a[paramInt] > 0))
+    do
     {
-      paramView.setBackgroundResource(2130838700);
-      return paramViewGroup;
+      return;
+      if ((paramList != null) && (paramList.size() >= 3))
+      {
+        this.a.a(paramList);
+        this.a.jdField_a_of_type_JavaLangString = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.a.app.a());
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131364013);
+        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new aqb(this), 500L);
+        this.a.b = 1;
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
+      this.a.a(1, this.a.getString(2131364016));
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new aqc(this), 500L);
+      return;
+      paramList = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.a.app.a());
+      if ((this.a.jdField_a_of_type_JavaLangString == null) || (paramList == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramList))) {
+        break;
+      }
+      GesturePWDUtils.setGesturePWD(this.a, this.a.app.a(), this.a.jdField_a_of_type_JavaLangString);
+      GesturePWDUtils.setGesturePWDState(this.a, this.a.app.a(), 2);
+      ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Gesture_password", 0, 1, "", "", "", "");
+      this.a.a(2, this.a.getString(2131364014));
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new aqd(this), 300L);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.gesturelock.creat", 2, "gesture lock create success...");
+    return;
+    this.a.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new aqe(this), 500L);
+    this.a.a(1, this.a.getString(2131364015));
+  }
+  
+  public void b() {}
+  
+  public void b(List paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.gesturelock.creat", 2, "celladd.");
     }
-    paramView.setBackgroundResource(2130839451);
-    return paramViewGroup;
   }
 }
 

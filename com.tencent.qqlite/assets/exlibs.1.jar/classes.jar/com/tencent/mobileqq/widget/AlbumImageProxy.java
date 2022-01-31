@@ -14,9 +14,9 @@ import com.tencent.mobileqq.util.SkinUtils;
 import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import exi;
-import exj;
-import exk;
+import ezo;
+import ezp;
+import ezq;
 
 public class AlbumImageProxy
   extends ImageViewTouche
@@ -37,22 +37,22 @@ public class AlbumImageProxy
   public AlbumImageProxy(QQAppInterface paramQQAppInterface, Context paramContext, AttributeSet paramAttributeSet, String paramString, boolean paramBoolean)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidOsHandler = new exi(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ezo(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     setHexFileKey(paramString);
     setCacheImageBmp(paramBoolean);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new exk(this, null));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new ezq(this, null));
   }
   
   public AlbumImageProxy(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt, boolean paramBoolean)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidOsHandler = new exi(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ezo(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_Int = paramInt;
     setHexFileKey(paramString);
     setCacheImageBmp(paramBoolean);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new exk(this, null));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new ezq(this, null));
   }
   
   private Bitmap a(String paramString)
@@ -103,7 +103,7 @@ public class AlbumImageProxy
   {
     int i = CardHandler.b(BaseApplication.getContext());
     if (2 != this.jdField_b_of_type_Int) {
-      new exj(this, paramString, i).start();
+      new ezp(this, paramString, i).start();
     }
   }
   

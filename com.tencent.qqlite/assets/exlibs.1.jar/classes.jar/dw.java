@@ -1,220 +1,304 @@
-import com.google.zxing.common.reedsolomon.GenericGF;
+import com.google.zxing.qrcode.encoder.ByteMatrix;
 
 public final class dw
 {
-  private final GenericGF jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF;
-  private final int[] jdField_a_of_type_ArrayOfInt;
+  private static final int a = 3;
+  private static final int b = 3;
+  private static final int c = 40;
+  private static final int d = 10;
   
-  public dw(GenericGF paramGenericGF, int[] paramArrayOfInt)
+  public static int a(ByteMatrix paramByteMatrix)
   {
-    if (paramArrayOfInt.length == 0) {
-      throw new IllegalArgumentException();
-    }
-    this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF = paramGenericGF;
-    int j = paramArrayOfInt.length;
-    if ((j > 1) && (paramArrayOfInt[0] == 0))
+    return a(paramByteMatrix, true) + a(paramByteMatrix, false);
+  }
+  
+  private static int a(ByteMatrix paramByteMatrix, boolean paramBoolean)
+  {
+    int m;
+    int n;
+    label20:
+    int i1;
+    if (paramBoolean)
     {
-      while ((i < j) && (paramArrayOfInt[i] == 0)) {
-        i += 1;
+      m = paramByteMatrix.a();
+      if (!paramBoolean) {
+        break label99;
       }
-      if (i == j)
+      n = paramByteMatrix.b();
+      paramByteMatrix = paramByteMatrix.a();
+      i1 = 0;
+    }
+    int j;
+    for (int i = 0;; i = j)
+    {
+      if (i1 >= m) {
+        return i;
+      }
+      j = -1;
+      int i2 = 0;
+      int i3 = 0;
+      label45:
+      if (i2 < n)
       {
-        this.jdField_a_of_type_ArrayOfInt = paramGenericGF.a().jdField_a_of_type_ArrayOfInt;
-        return;
+        if (paramBoolean)
+        {
+          k = paramByteMatrix[i1][i2];
+          label65:
+          if (k != j) {
+            break label120;
+          }
+        }
+        for (int k = i3 + 1;; k = i3)
+        {
+          i2 += 1;
+          i3 = k;
+          break label45;
+          m = paramByteMatrix.b();
+          break;
+          label99:
+          n = paramByteMatrix.a();
+          break label20;
+          k = paramByteMatrix[i2][i1];
+          break label65;
+          label120:
+          j = i;
+          if (i3 >= 5) {
+            j = i + (i3 - 5 + 3);
+          }
+          i3 = 1;
+          i = j;
+          j = k;
+        }
       }
-      this.jdField_a_of_type_ArrayOfInt = new int[j - i];
-      System.arraycopy(paramArrayOfInt, i, this.jdField_a_of_type_ArrayOfInt, 0, this.jdField_a_of_type_ArrayOfInt.length);
-      return;
-    }
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-  }
-  
-  int a()
-  {
-    return this.jdField_a_of_type_ArrayOfInt.length - 1;
-  }
-  
-  int a(int paramInt)
-  {
-    return this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_ArrayOfInt.length - 1 - paramInt)];
-  }
-  
-  public dw a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 < 0) {
-      throw new IllegalArgumentException();
-    }
-    if (paramInt2 == 0) {
-      return this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.a();
-    }
-    int i = this.jdField_a_of_type_ArrayOfInt.length;
-    int[] arrayOfInt = new int[i + paramInt1];
-    paramInt1 = 0;
-    while (paramInt1 < i)
-    {
-      arrayOfInt[paramInt1] = this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.b(this.jdField_a_of_type_ArrayOfInt[paramInt1], paramInt2);
-      paramInt1 += 1;
-    }
-    return new dw(this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF, arrayOfInt);
-  }
-  
-  dw a(dw paramdw)
-  {
-    if (!this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.equals(paramdw.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF)) {
-      throw new IllegalArgumentException("GenericGFPolys do not have same GenericGF field");
-    }
-    if (a()) {
-      return paramdw;
-    }
-    if (paramdw.a()) {
-      return this;
-    }
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
-    int[] arrayOfInt = paramdw.jdField_a_of_type_ArrayOfInt;
-    if (localObject.length > arrayOfInt.length) {
-      paramdw = arrayOfInt;
-    }
-    for (;;)
-    {
-      arrayOfInt = new int[localObject.length];
-      int j = localObject.length - paramdw.length;
-      System.arraycopy(localObject, 0, arrayOfInt, 0, j);
-      int i = j;
-      while (i < localObject.length)
-      {
-        arrayOfInt[i] = GenericGF.a(paramdw[(i - j)], localObject[i]);
-        i += 1;
+      j = i;
+      if (i3 > 5) {
+        j = i + (i3 - 5 + 3);
       }
-      return new dw(this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF, arrayOfInt);
-      paramdw = (dw)localObject;
-      localObject = arrayOfInt;
+      i1 += 1;
     }
+    return i;
   }
   
-  boolean a()
+  static boolean a(int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ArrayOfInt[0] == 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public int[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfInt;
-  }
-  
-  public dw[] a(dw paramdw)
-  {
-    if (!this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.equals(paramdw.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF)) {
-      throw new IllegalArgumentException("GenericGFPolys do not have same GenericGF field");
-    }
-    if (paramdw.a()) {
-      throw new IllegalArgumentException("Divide by 0");
-    }
-    dw localdw2 = this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.a();
-    int i = paramdw.a(paramdw.a());
-    i = this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.c(i);
-    dw localdw3;
-    for (dw localdw1 = this; (localdw1.a() >= paramdw.a()) && (!localdw1.a()); localdw1 = localdw1.a(localdw3))
+    switch (paramInt1)
     {
-      int j = localdw1.a() - paramdw.a();
-      int k = this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.b(localdw1.a(localdw1.a()), i);
-      localdw3 = paramdw.a(j, k);
-      localdw2 = localdw2.a(this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.a(j, k));
+    default: 
+      throw new IllegalArgumentException("Invalid mask pattern: " + paramInt1);
+    case 0: 
+      paramInt1 = paramInt3 + paramInt2 & 0x1;
     }
-    return new dw[] { localdw2, localdw1 };
+    while (paramInt1 == 0)
+    {
+      return true;
+      paramInt1 = paramInt3 & 0x1;
+      continue;
+      paramInt1 = paramInt2 % 3;
+      continue;
+      paramInt1 = (paramInt3 + paramInt2) % 3;
+      continue;
+      paramInt1 = (paramInt3 >>> 1) + paramInt2 / 3 & 0x1;
+      continue;
+      paramInt1 = paramInt3 * paramInt2;
+      paramInt1 = paramInt1 % 3 + (paramInt1 & 0x1);
+      continue;
+      paramInt1 = paramInt3 * paramInt2;
+      paramInt1 = paramInt1 % 3 + (paramInt1 & 0x1) & 0x1;
+      continue;
+      paramInt1 = paramInt3 * paramInt2 % 3 + (paramInt3 + paramInt2 & 0x1) & 0x1;
+    }
+    return false;
   }
   
-  public dw b(dw paramdw)
+  public static int b(ByteMatrix paramByteMatrix)
   {
-    if (!this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.equals(paramdw.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF)) {
-      throw new IllegalArgumentException("GenericGFPolys do not have same GenericGF field");
-    }
-    if ((a()) || (paramdw.a())) {
-      return this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.a();
-    }
-    int[] arrayOfInt1 = this.jdField_a_of_type_ArrayOfInt;
-    int k = arrayOfInt1.length;
-    paramdw = paramdw.jdField_a_of_type_ArrayOfInt;
-    int m = paramdw.length;
-    int[] arrayOfInt2 = new int[k + m - 1];
+    byte[][] arrayOfByte = paramByteMatrix.a();
+    int n = paramByteMatrix.b();
+    int i1 = paramByteMatrix.a();
     int i = 0;
-    while (i < k)
+    int j = 0;
+    while (i < i1 - 1)
     {
-      int n = arrayOfInt1[i];
-      int j = 0;
-      while (j < m)
+      int k = 0;
+      while (k < n - 1)
       {
-        arrayOfInt2[(i + j)] = GenericGF.a(arrayOfInt2[(i + j)], this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.b(n, paramdw[j]));
-        j += 1;
+        int i2 = arrayOfByte[i][k];
+        int m = j;
+        if (i2 == arrayOfByte[i][(k + 1)])
+        {
+          m = j;
+          if (i2 == arrayOfByte[(i + 1)][k])
+          {
+            m = j;
+            if (i2 == arrayOfByte[(i + 1)][(k + 1)]) {
+              m = j + 1;
+            }
+          }
+        }
+        k += 1;
+        j = m;
       }
       i += 1;
     }
-    return new dw(this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF, arrayOfInt2);
+    return j * 3;
   }
   
-  public String toString()
+  public static int c(ByteMatrix paramByteMatrix)
   {
-    StringBuilder localStringBuilder = new StringBuilder(a() * 8);
-    int i = a();
-    if (i >= 0)
+    byte[][] arrayOfByte = paramByteMatrix.a();
+    int n = paramByteMatrix.b();
+    int i1 = paramByteMatrix.a();
+    int k = 0;
+    int i = 0;
+    while (k < i1)
     {
-      int k = a(i);
-      int j;
-      if (k != 0)
+      int m = 0;
+      while (m < n)
       {
-        if (k >= 0) {
-          break label104;
-        }
-        localStringBuilder.append(" - ");
-        j = -k;
-        label50:
-        if ((i == 0) || (j != 1))
+        int j = i;
+        if (m + 6 < n)
         {
-          j = this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.b(j);
-          if (j != 0) {
-            break label127;
+          j = i;
+          if (arrayOfByte[k][m] == 1)
+          {
+            j = i;
+            if (arrayOfByte[k][(m + 1)] == 0)
+            {
+              j = i;
+              if (arrayOfByte[k][(m + 2)] == 1)
+              {
+                j = i;
+                if (arrayOfByte[k][(m + 3)] == 1)
+                {
+                  j = i;
+                  if (arrayOfByte[k][(m + 4)] == 1)
+                  {
+                    j = i;
+                    if (arrayOfByte[k][(m + 5)] == 0)
+                    {
+                      j = i;
+                      if (arrayOfByte[k][(m + 6)] == 1) {
+                        if ((m + 10 >= n) || (arrayOfByte[k][(m + 7)] != 0) || (arrayOfByte[k][(m + 8)] != 0) || (arrayOfByte[k][(m + 9)] != 0) || (arrayOfByte[k][(m + 10)] != 0))
+                        {
+                          j = i;
+                          if (m - 4 >= 0)
+                          {
+                            j = i;
+                            if (arrayOfByte[k][(m - 1)] == 0)
+                            {
+                              j = i;
+                              if (arrayOfByte[k][(m - 2)] == 0)
+                              {
+                                j = i;
+                                if (arrayOfByte[k][(m - 3)] == 0)
+                                {
+                                  j = i;
+                                  if (arrayOfByte[k][(m - 4)] != 0) {}
+                                }
+                              }
+                            }
+                          }
+                        }
+                        else
+                        {
+                          j = i + 40;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
-          localStringBuilder.append('1');
         }
-        label80:
-        if (i != 0)
+        i = j;
+        if (k + 6 < i1)
         {
-          if (i != 1) {
-            break label161;
+          i = j;
+          if (arrayOfByte[k][m] == 1)
+          {
+            i = j;
+            if (arrayOfByte[(k + 1)][m] == 0)
+            {
+              i = j;
+              if (arrayOfByte[(k + 2)][m] == 1)
+              {
+                i = j;
+                if (arrayOfByte[(k + 3)][m] == 1)
+                {
+                  i = j;
+                  if (arrayOfByte[(k + 4)][m] == 1)
+                  {
+                    i = j;
+                    if (arrayOfByte[(k + 5)][m] == 0)
+                    {
+                      i = j;
+                      if (arrayOfByte[(k + 6)][m] == 1) {
+                        if ((k + 10 >= i1) || (arrayOfByte[(k + 7)][m] != 0) || (arrayOfByte[(k + 8)][m] != 0) || (arrayOfByte[(k + 9)][m] != 0) || (arrayOfByte[(k + 10)][m] != 0))
+                        {
+                          i = j;
+                          if (k - 4 >= 0)
+                          {
+                            i = j;
+                            if (arrayOfByte[(k - 1)][m] == 0)
+                            {
+                              i = j;
+                              if (arrayOfByte[(k - 2)][m] == 0)
+                              {
+                                i = j;
+                                if (arrayOfByte[(k - 3)][m] == 0)
+                                {
+                                  i = j;
+                                  if (arrayOfByte[(k - 4)][m] != 0) {}
+                                }
+                              }
+                            }
+                          }
+                        }
+                        else
+                        {
+                          i = j + 40;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
-          localStringBuilder.append('x');
         }
+        m += 1;
       }
-      for (;;)
-      {
-        i -= 1;
-        break;
-        label104:
-        j = k;
-        if (localStringBuilder.length() <= 0) {
-          break label50;
-        }
-        localStringBuilder.append(" + ");
-        j = k;
-        break label50;
-        label127:
-        if (j == 1)
-        {
-          localStringBuilder.append('a');
-          break label80;
-        }
-        localStringBuilder.append("a^");
-        localStringBuilder.append(j);
-        break label80;
-        label161:
-        localStringBuilder.append("x^");
-        localStringBuilder.append(i);
-      }
+      k += 1;
     }
-    return localStringBuilder.toString();
+    return i;
+  }
+  
+  public static int d(ByteMatrix paramByteMatrix)
+  {
+    byte[][] arrayOfByte = paramByteMatrix.a();
+    int n = paramByteMatrix.b();
+    int i1 = paramByteMatrix.a();
+    int i = 0;
+    int j = 0;
+    while (i < i1)
+    {
+      byte[] arrayOfByte1 = arrayOfByte[i];
+      k = 0;
+      while (k < n)
+      {
+        int m = j;
+        if (arrayOfByte1[k] == 1) {
+          m = j + 1;
+        }
+        k += 1;
+        j = m;
+      }
+      i += 1;
+    }
+    i = paramByteMatrix.a();
+    int k = paramByteMatrix.b();
+    return (int)(Math.abs(j / (i * k) - 0.5D) * 20.0D) * 10;
   }
 }
 

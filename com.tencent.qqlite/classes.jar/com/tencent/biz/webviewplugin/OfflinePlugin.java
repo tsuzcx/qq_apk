@@ -98,7 +98,7 @@ public class OfflinePlugin
           localOfflineUpdateStatus.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("wifiUpdatingText");
           localOfflineUpdateStatus.d = ((JSONObject)localObject2).optString("updateCompletedText");
         }
-        localOfflineUpdateStatus.e = ((Activity)localObject1).getResources().getString(2131362499);
+        localOfflineUpdateStatus.e = ((Activity)localObject1).getResources().getString(2131362501);
         jdField_a_of_type_JavaUtilHashMap.put(this.jdField_c_of_type_JavaLangString, localOfflineUpdateStatus);
         localObject2 = paramJSONObject.optString("url");
         localOfflineUpdateStatus.jdField_f_of_type_JavaLangString = ((String)localObject2);
@@ -123,7 +123,7 @@ public class OfflinePlugin
       paramJSONObject = localOfflineUpdateStatus.jdField_c_of_type_JavaLangString;
     } while ((TextUtils.isEmpty((CharSequence)localObject2)) || (i <= 0));
     localOfflineUpdateStatus.b(0);
-    Object localObject1 = ((Activity)localObject1).getResources().getDrawable(2130838642);
+    Object localObject1 = ((Activity)localObject1).getResources().getDrawable(2130838669);
     ((Drawable)localObject1).setBounds(0, 0, 40, 40);
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables((Drawable)localObject1, null, null, null);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramJSONObject);
@@ -443,7 +443,7 @@ public class OfflinePlugin
       return false;
     case 0: 
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMap.jdField_c_of_type_JavaLangString);
-      paramString = paramString.getResources().getDrawable(2130838642);
+      paramString = paramString.getResources().getDrawable(2130838669);
       paramString.setBounds(0, 0, 40, 40);
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramString, null, null, null);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
@@ -461,7 +461,7 @@ public class OfflinePlugin
       return false;
     case 3: 
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMap.d);
-      paramString = paramString.getResources().getDrawable(2130837747);
+      paramString = paramString.getResources().getDrawable(2130837907);
       paramString.setBounds(0, 0, paramString.getMinimumWidth(), paramString.getMinimumHeight());
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramString, null, null, null);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
@@ -499,10 +499,10 @@ public class OfflinePlugin
       this.jdField_a_of_type_ComTencentBizAuthorizeConfig = AuthorizeConfig.a();
       c();
     } while ((localActivity == null) || (!(localActivity instanceof QQBrowserActivity)));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localActivity.findViewById(2131296634));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localActivity.findViewById(2131296637));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localActivity.findViewById(2131296636));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localActivity.findViewById(2131296635));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localActivity.findViewById(2131296637));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localActivity.findViewById(2131296640));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localActivity.findViewById(2131296639));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localActivity.findViewById(2131296638));
   }
   
   public void onDestroy()

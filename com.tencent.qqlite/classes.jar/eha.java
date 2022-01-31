@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.transfile.FileAssistantDownloader;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
 
 public class eha
+  extends Handler
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b = false;
-  public boolean c = false;
-  
-  public eha(FileAssistantDownloader paramFileAssistantDownloader)
+  public eha(GroupSystemMsgController paramGroupSystemMsgController, Looper paramLooper)
   {
-    this.jdField_a_of_type_Boolean = false;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((GroupSystemMsgController.a(this.a)) && (GroupSystemMsgController.a(this.a) != null))
+    {
+      GroupSystemMsgController.a(this.a, false);
+      GroupSystemMsgController.a(this.a).a().a(3);
+    }
   }
 }
 

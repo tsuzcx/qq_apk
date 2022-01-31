@@ -7,14 +7,6 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
-import bqu;
-import bqv;
-import bqw;
-import bqx;
-import bqy;
-import bqz;
-import bra;
-import brb;
 import brc;
 import brd;
 import bre;
@@ -22,6 +14,14 @@ import brf;
 import brg;
 import brh;
 import bri;
+import brj;
+import brk;
+import brl;
+import brm;
+import brn;
+import bro;
+import brp;
+import brq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -207,18 +207,18 @@ public class UpgradeActivity
         break label455;
       }
       ((QQCustomDialog)localObject).setCanceledOnTouchOutside(false);
-      ((QQCustomDialog)localObject).setOnDismissListener(new bra(this));
+      ((QQCustomDialog)localObject).setOnDismissListener(new bri(this));
       return localObject;
       localObject = DialogUtil.a(this, 230).setTitle(this.c).setMessage(this.jdField_d_of_type_JavaLangString);
-      ((QQCustomDialog)localObject).setPositiveButton(2131363148, new brc(this)).setNegativeButton(2131363151, new brb(this)).setOnKeyListener(new bqu(this));
+      ((QQCustomDialog)localObject).setPositiveButton(2131363158, new brk(this)).setNegativeButton(2131363161, new brj(this)).setOnKeyListener(new brc(this));
       continue;
       if (this.j == 0)
       {
         localObject = DialogUtil.a(this, 230).setTitle(this.c).setMessage(this.jdField_d_of_type_JavaLangString);
         if (UpgradeController.a().a() == 4) {}
-        for (paramInt = 2131363149;; paramInt = 2131363148)
+        for (paramInt = 2131363159;; paramInt = 2131363158)
         {
-          ((QQCustomDialog)localObject).setPositiveButton(paramInt, new brf(this)).setNegativeButton(2131363150, new bre(this)).setOnKeyListener(new brd(this));
+          ((QQCustomDialog)localObject).setPositiveButton(paramInt, new brn(this)).setNegativeButton(2131363160, new brm(this)).setOnKeyListener(new brl(this));
           break;
         }
       }
@@ -226,21 +226,21 @@ public class UpgradeActivity
         break;
       }
       ReportController.b(this.app, "CliOper", "", "", "0X800417D", "0X800417D", 0, 0, "", "", "", "");
-      localObject = DialogUtil.a(this, this.c, this.jdField_d_of_type_JavaLangString, this.e, new brg(this), "关闭", new brh(this));
-      ((QQCustomSingleButtonDialog)localObject).setOnKeyListener(new bri(this));
+      localObject = DialogUtil.a(this, this.c, this.jdField_d_of_type_JavaLangString, this.e, new bro(this), "关闭", new brp(this));
+      ((QQCustomSingleButtonDialog)localObject).setOnKeyListener(new brq(this));
       if (localObject != null)
       {
         ((QQCustomSingleButtonDialog)localObject).setCanceledOnTouchOutside(false);
-        ((QQCustomSingleButtonDialog)localObject).setOnDismissListener(new bqv(this));
+        ((QQCustomSingleButtonDialog)localObject).setOnDismissListener(new brd(this));
         return localObject;
       }
       localObject = null;
       continue;
       localObject = DialogUtil.a(this, 230).setTitle(this.c).setMessage(this.jdField_d_of_type_JavaLangString);
-      ((QQCustomDialog)localObject).setPositiveButton("继续下载", new bqx(this)).setNegativeButton("取消", new bqw(this));
+      ((QQCustomDialog)localObject).setPositiveButton("继续下载", new brf(this)).setNegativeButton("取消", new bre(this));
       continue;
       localObject = DialogUtil.a(this, 230).setTitle(this.c).setMessage(this.jdField_d_of_type_JavaLangString);
-      ((QQCustomDialog)localObject).setPositiveButton("重试", new bqz(this)).setNegativeButton("取消", new bqy(this));
+      ((QQCustomDialog)localObject).setPositiveButton("重试", new brh(this)).setNegativeButton("取消", new brg(this));
     }
     label455:
     return null;

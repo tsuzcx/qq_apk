@@ -28,11 +28,11 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.vas.ClubContentJsonTask;
 import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import def;
-import deg;
-import deh;
-import dei;
-import dfb;
+import dfh;
+import dfi;
+import dfj;
+import dfk;
+import dgd;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +95,7 @@ public class BigEmoticonViewBinder
   private void a(View paramView)
   {
     Object localObject1 = paramView.findViewById(2131297069);
-    EmoticonLinearLayout localEmoticonLinearLayout = (EmoticonLinearLayout)paramView.findViewById(2131298609);
+    EmoticonLinearLayout localEmoticonLinearLayout = (EmoticonLinearLayout)paramView.findViewById(2131298635);
     localEmoticonLinearLayout.setPanelViewType(2006);
     localEmoticonLinearLayout.setVisibility(8);
     View localView3 = ((View)localObject1).findViewById(2131297053);
@@ -116,8 +116,8 @@ public class BigEmoticonViewBinder
     localButton2.setOnClickListener(this);
     ((Button)localObject2).setOnClickListener(this);
     localImageButton.setOnClickListener(this);
-    localButton3.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131364035));
-    localButton2.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131363537));
+    localButton3.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131364046));
+    localButton2.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131363548));
     if (QLog.isColorLevel()) {
       QLog.d("log_greverye", 2, "func updateDownloadView, pkgStatus:" + this.q);
     }
@@ -158,7 +158,7 @@ public class BigEmoticonViewBinder
       }
       if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter = new dfb(this, 2006);
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter = new dgd(this, 2006);
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.b(false);
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.d(false);
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.c(false);
@@ -280,7 +280,7 @@ public class BigEmoticonViewBinder
     }
     if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter = new dfb(this, 2006);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter = new dgd(this, 2006);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.b(false);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.d(false);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.c(false);
@@ -446,7 +446,7 @@ public class BigEmoticonViewBinder
     {
       localObject = (ProgressBar)((View)localObject).findViewById(2131297059);
       if (localObject != null) {
-        ((ProgressBar)localObject).post(new def(this, (ProgressBar)localObject, paramInt));
+        ((ProgressBar)localObject).post(new dfh(this, (ProgressBar)localObject, paramInt));
       }
     }
   }
@@ -535,7 +535,7 @@ public class BigEmoticonViewBinder
   public void b()
   {
     View localView = c(0);
-    localView.post(new deg(this, localView));
+    localView.post(new dfi(this, localView));
   }
   
   public void c()
@@ -545,7 +545,7 @@ public class BigEmoticonViewBinder
     {
       localObject = (ImageView)((View)localObject).findViewById(2131297048);
       if ((localObject != null) && (((ImageView)localObject).getVisibility() == 0)) {
-        ((ImageView)localObject).post(new deh(this, (ImageView)localObject));
+        ((ImageView)localObject).post(new dfj(this, (ImageView)localObject));
       }
     }
   }
@@ -556,7 +556,7 @@ public class BigEmoticonViewBinder
     {
       this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.hasReadUpdatePage = true;
       this.jdField_a_of_type_Int = 1;
-      ThreadManager.b(new dei(this));
+      ThreadManager.b(new dfk(this));
     }
   }
   

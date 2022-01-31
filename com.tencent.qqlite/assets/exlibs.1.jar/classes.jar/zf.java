@@ -24,7 +24,7 @@ public class zf
     if (((paramString == null) && (this.a.f.equals(this.a.app.a()))) || ((paramString != null) && (paramString.equals(this.a.f))))
     {
       this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      QQToast.a(this.a, 2, 2131363387, 0).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a, 2, 2131363398, 0).b(this.a.getTitleBarHeight());
       this.a.setResult(-1, null);
       this.a.finish();
     }
@@ -35,7 +35,7 @@ public class zf
     if (!paramBoolean)
     {
       this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      QQToast.a(this.a, 1, 2131363388, 0).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a, 1, 2131363399, 0).b(this.a.getTitleBarHeight());
       return;
     }
     if (NetworkUtil.e(this.a))
@@ -51,7 +51,7 @@ public class zf
       return;
     }
     this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    QQToast.a(this.a, 2, 2131363387, 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a, 2, 2131363398, 0).b(this.a.getTitleBarHeight());
     this.a.setResult(-1);
     this.a.finish();
   }
@@ -68,7 +68,7 @@ public class zf
     if ((this.a.h == 2) || (!NetworkUtil.e(this.a)))
     {
       this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      QQToast.a(this.a, 2, 2131363387, 0).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a, 2, 2131363398, 0).b(this.a.getTitleBarHeight());
       this.a.setResult(-1, null);
       this.a.finish();
       return;
@@ -97,7 +97,7 @@ public class zf
       try
       {
         this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-        AutoRemarkActivity.a(this.a).setContentDescription(this.a.getResources().getString(2131363031) + this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+        AutoRemarkActivity.a(this.a).setContentDescription(this.a.getResources().getString(2131363041) + this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
         this.a.g = paramInt;
         this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.a(this.a.g));
         this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
@@ -138,18 +138,18 @@ public class zf
             {
             default: 
               this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-              QQToast.a(this.a, 2, 2131363387, 0).b(this.a.getTitleBarHeight());
+              QQToast.a(this.a, 2, 2131363398, 0).b(this.a.getTitleBarHeight());
               this.a.a();
               return;
             case 0: 
             case 100: 
               this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-              QQToast.a(this.a.getActivity(), 2, 2131363670, 0).b(this.a.getTitleBarHeight());
+              QQToast.a(this.a.getActivity(), 2, 2131363681, 0).b(this.a.getTitleBarHeight());
               this.a.a();
               return;
             }
             this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-            QQToast.a(this.a, 2, 2131363387, 0).b(this.a.getTitleBarHeight());
+            QQToast.a(this.a, 2, 2131363398, 0).b(this.a.getTitleBarHeight());
             this.a.a();
             return;
           }
@@ -162,12 +162,12 @@ public class zf
         } while (!QLog.isColorLevel());
         QLog.d("AutoRemarkActivity", 2, "add friend response error and ErroString = " + paramString);
         return;
-        QQToast.a(this.a, 1, 2131363386, 0).b(this.a.getTitleBarHeight());
+        QQToast.a(this.a, 1, 2131363397, 0).b(this.a.getTitleBarHeight());
       } while (!QLog.isColorLevel());
       QLog.d("AutoRemarkActivity", 2, "add friend response error and no ErroString");
       return;
       this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      QQToast.a(this.a, 1, 2131363386, 0).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a, 1, 2131363397, 0).b(this.a.getTitleBarHeight());
     } while (!QLog.isColorLevel());
     QLog.d("AutoRemarkActivity", 2, "add friend response error and isSuccuss = NO");
   }

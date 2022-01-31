@@ -1,45 +1,45 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-public class bpq
-  implements View.OnClickListener
+class bpq
+  implements Runnable
 {
-  public bpq(TroopRequestActivity paramTroopRequestActivity) {}
+  bpq(bpp parambpp) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    long l = System.currentTimeMillis();
-    if ((l - TroopRequestActivity.d > 0L) && (l - TroopRequestActivity.d < 800L)) {
+    if (this.a.jdField_a_of_type_AndroidViewView == null) {
       return;
     }
-    TroopRequestActivity.d = l;
-    if (((FriendManager)this.a.app.getManager(8)).b(TroopRequestActivity.c(this.a))) {
-      paramView = new ProfileActivity.AllInOne(TroopRequestActivity.c(this.a), 1);
+    RelativeLayout.LayoutParams localLayoutParams;
+    switch (this.a.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 0: 
+      localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.leftMargin += (int)(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a * 34.0F);
+      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      this.a.jdField_a_of_type_AndroidViewView.setTag("right");
     }
     for (;;)
     {
-      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, TroopRequestActivity.a(this.a).msg.group_code.get() + "", "3", "", "");
-      ProfileActivity.b(this.a, paramView);
+      this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
       return;
-      if ((TroopRequestActivity.a(this.a).msg.group_msg_type.get() == 2) && (TroopRequestActivity.a(this.a).msg.sub_type.get() == 3))
-      {
-        paramView = new ProfileActivity.AllInOne(TroopRequestActivity.c(this.a), 26);
-        paramView.d = 1;
-      }
-      else
-      {
-        paramView = new ProfileActivity.AllInOne(TroopRequestActivity.c(this.a), 19);
-      }
+      localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.leftMargin -= (int)(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a * 34.0F);
+      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      this.a.jdField_a_of_type_AndroidViewView.setTag("left");
+      continue;
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839155);
+      continue;
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839154);
+      continue;
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      continue;
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
     }
   }
 }

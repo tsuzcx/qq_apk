@@ -1,13 +1,25 @@
-import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class baq
-  implements Runnable
+  extends FriendListObserver
 {
-  public baq(PortraitImageview paramPortraitImageview) {}
+  public baq(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void run()
+  protected void d(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.postInvalidate();
+    if (!paramBoolean1) {
+      this.a.a(2131364034, 1);
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
+  }
+  
+  protected void e(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
+    }
   }
 }
 

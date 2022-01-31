@@ -14,20 +14,20 @@ public class CustomerLoadingDialog
 {
   public CustomerLoadingDialog(Context paramContext)
   {
-    super(paramContext, 2131624136);
+    super(paramContext, 2131624137);
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    Object localObject = LayoutInflater.from(getContext()).inflate(2130903564, null);
+    Object localObject = LayoutInflater.from(getContext()).inflate(2130903573, null);
     paramBundle = getWindow();
     paramBundle.setContentView((View)localObject);
     localObject = paramBundle.getAttributes();
     ((WindowManager.LayoutParams)localObject).width = -2;
     ((WindowManager.LayoutParams)localObject).height = -2;
     ((WindowManager.LayoutParams)localObject).gravity = 48;
-    ((WindowManager.LayoutParams)localObject).y += getContext().getResources().getDimensionPixelOffset(2131493094);
+    ((WindowManager.LayoutParams)localObject).y += getContext().getResources().getDimensionPixelOffset(2131493096);
     paramBundle.setAttributes((WindowManager.LayoutParams)localObject);
     setCanceledOnTouchOutside(false);
   }

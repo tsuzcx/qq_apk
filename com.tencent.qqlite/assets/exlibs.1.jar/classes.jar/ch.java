@@ -1,17 +1,26 @@
 import com.dataline.mpfile.LiteMpFileFileListActivity;
+import com.dataline.mpfile.MpFileDataReportCenter;
 import com.dataline.mpfile.MpfileDataCenter;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.dataline.mpfile.MpfileDataReportInfo;
+import com.dataline.util.DBNetworkUtil;
 
-public class ch
+class ch
   implements Runnable
 {
-  public ch(LiteMpFileFileListActivity paramLiteMpFileFileListActivity) {}
+  ch(cg paramcg) {}
   
   public void run()
   {
-    DataLineHandler localDataLineHandler = (DataLineHandler)((QQAppInterface)this.a.getAppRuntime()).a(8);
-    LiteMpFileFileListActivity.a(this.a, localDataLineHandler.a().a(false));
+    MpfileDataReportInfo localMpfileDataReportInfo = new MpfileDataReportInfo();
+    localMpfileDataReportInfo.jdField_b_of_type_Int = 254;
+    localMpfileDataReportInfo.jdField_a_of_type_Int = 0;
+    localMpfileDataReportInfo.jdField_a_of_type_JavaLangString = MpfileDataCenter.k;
+    localMpfileDataReportInfo.d = MpfileDataCenter.E;
+    localMpfileDataReportInfo.jdField_b_of_type_JavaLangString = DBNetworkUtil.b();
+    localMpfileDataReportInfo.jdField_b_of_type_Long = LiteMpFileFileListActivity.b(this.a.a);
+    localMpfileDataReportInfo.c = LiteMpFileFileListActivity.c(this.a.a);
+    MpFileDataReportCenter.a(this.a.a.app, localMpfileDataReportInfo);
+    this.a.a.a(MpfileDataCenter.t);
   }
 }
 

@@ -1,49 +1,20 @@
-import java.util.HashMap;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
 
 public class edp
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private static HashMap a = new HashMap();
+  public edp(StatusHistoryActivity paramStatusHistoryActivity, int paramInt) {}
   
-  public static String a(long paramLong)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    try
-    {
-      String str = (String)a.get(String.valueOf(paramLong));
-      return str;
+    paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
+    if ((paramFloat1 <= -this.jdField_a_of_type_Int) && (paramFloat2 < 0.5F)) {
+      return StatusHistoryActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusHistoryActivity);
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(long paramLong)
-  {
-    try
-    {
-      a.remove(String.valueOf(paramLong));
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(long paramLong, String paramString)
-  {
-    try
-    {
-      a.put(String.valueOf(paramLong), paramString);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    return false;
   }
 }
 

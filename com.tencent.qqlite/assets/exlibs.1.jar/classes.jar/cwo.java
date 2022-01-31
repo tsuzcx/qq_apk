@@ -1,19 +1,12 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
+import AvatarInfo.QQHeadInfo;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class cwo
+class cwo
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Intent jdField_a_of_type_AndroidContentIntent;
-  public String a;
+  QQHeadInfo jdField_a_of_type_AvatarInfoQQHeadInfo;
+  ToServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
   
-  public cwo(StartAppCheckHandler paramStartAppCheckHandler, String paramString, Context paramContext, Intent paramIntent)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-  }
+  private cwo(cwm paramcwm) {}
 }
 
 

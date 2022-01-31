@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.service.HttpNotify;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import java.util.Comparator;
 
 public class crr
-  implements HttpNotify
+  implements Comparator
 {
-  public crr(DataLineHandler paramDataLineHandler) {}
+  public crr(ConditionSearchManager paramConditionSearchManager) {}
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void a(long paramLong1, boolean paramBoolean, long paramLong2) {}
+  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
+  {
+    int j = paramBaseAddress1.d.compareTo(paramBaseAddress2.d);
+    int i = j;
+    if (j == 0) {
+      i = paramBaseAddress1.c.compareTo(paramBaseAddress2.c);
+    }
+    return i;
+  }
 }
 
 

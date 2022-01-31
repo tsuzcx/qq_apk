@@ -1,62 +1,52 @@
-import android.view.LayoutInflater;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.mobileqq.data.Groups;
-import java.util.List;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.qphone.base.util.QLog;
 
 public class cly
-  extends BaseAdapter
+  extends TouchDelegate
 {
-  private cly(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
-  
-  public int getCount()
+  public cly(DragTextView paramDragTextView, Rect paramRect, View paramView)
   {
-    if (this.a.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    super(paramRect, paramView);
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Drag", 2, "DragTouchDelegate.onTouchEvent:" + paramMotionEvent.getAction() + ", " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY());
     }
-    return this.a.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())) {
-      return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.a.getVisibility() != 0) {
+      return false;
     }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if ((paramView != null) && (paramView.getTag() != null))
+    if (DragTextView.a(this.a) == -1) {
+      return false;
+    }
+    Object localObject = (ViewGroup)this.a.getParent();
+    if (localObject == null) {
+      return false;
+    }
+    Rect localRect = new Rect();
+    ((ViewGroup)localObject).getGlobalVisibleRect(localRect);
+    localObject = new Rect();
+    this.a.getGlobalVisibleRect((Rect)localObject);
+    if (DragTextView.a(this.a) == 2)
     {
-      cmb localcmb = (cmb)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = localcmb;
+      ((Rect)localObject).left = ((int)(((Rect)localObject).left - localRect.left - DragTextView.a(this.a) * 0.5D));
+      ((Rect)localObject).top = ((int)(((Rect)localObject).top - localRect.top - DragTextView.a(this.a) * 1.5D));
+      ((Rect)localObject).right = ((int)(((Rect)localObject).right - localRect.left + DragTextView.a(this.a) * 1.5D));
     }
-    for (;;)
+    for (((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom - localRect.top + DragTextView.a(this.a) * 0.5D)); ((Rect)localObject).contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()); ((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom - localRect.top + DragTextView.a(this.a))))
     {
-      paramView.a.setText(((Groups)getItem(paramInt)).group_name);
-      paramView.a.setContentDescription(((Groups)getItem(paramInt)).group_name + "分组");
-      if (paramInt != 0) {
-        break;
-      }
-      paramView.a.setOnClickListener(new clz(this));
-      return paramViewGroup;
-      paramView = new cmb(this, null);
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903618, this.a.jdField_a_of_type_ComTencentWidgetXListView, false);
-      paramView.a = ((Button)paramViewGroup.findViewById(2131297530));
-      paramViewGroup.setTag(paramView);
+      return this.a.onTouchEvent(paramMotionEvent);
+      ((Rect)localObject).left = ((int)(((Rect)localObject).left - localRect.left - DragTextView.a(this.a)));
+      ((Rect)localObject).top = ((int)(((Rect)localObject).top - localRect.top - DragTextView.a(this.a)));
+      ((Rect)localObject).right = ((int)(((Rect)localObject).right - localRect.left + DragTextView.a(this.a)));
     }
-    paramView.a.setOnClickListener(new cma(this, paramInt));
-    return paramViewGroup;
+    return false;
   }
 }
 

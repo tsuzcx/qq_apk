@@ -187,34 +187,34 @@ public class BaseDownloadTransfer
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 28
+    //   1: astore 29
     //   3: aconst_null
-    //   4: astore 27
+    //   4: astore 28
     //   6: aconst_null
     //   7: astore 18
     //   9: aconst_null
-    //   10: astore 29
+    //   10: astore 27
     //   12: aconst_null
-    //   13: astore 24
+    //   13: astore 25
     //   15: aconst_null
     //   16: astore 26
     //   18: aconst_null
     //   19: astore 20
     //   21: aconst_null
-    //   22: astore 25
+    //   22: astore 24
     //   24: iconst_0
     //   25: istore 4
     //   27: iconst_0
     //   28: istore_3
     //   29: iload 4
     //   31: istore_1
-    //   32: aload 29
+    //   32: aload 27
     //   34: astore 21
     //   36: iload_3
     //   37: istore_2
-    //   38: aload 28
+    //   38: aload 29
     //   40: astore 22
-    //   42: aload 27
+    //   42: aload 28
     //   44: astore 23
     //   46: aload 18
     //   48: astore 17
@@ -225,13 +225,13 @@ public class BaseDownloadTransfer
     //   58: astore 30
     //   60: iload 4
     //   62: istore_1
-    //   63: aload 29
+    //   63: aload 27
     //   65: astore 21
     //   67: iload_3
     //   68: istore_2
-    //   69: aload 28
+    //   69: aload 29
     //   71: astore 22
-    //   73: aload 27
+    //   73: aload 28
     //   75: astore 23
     //   77: aload 18
     //   79: astore 17
@@ -912,7 +912,7 @@ public class BaseDownloadTransfer
     //   1474: lstore 11
     //   1476: goto -525 -> 951
     //   1479: astore 17
-    //   1481: aload 25
+    //   1481: aload 24
     //   1483: astore 20
     //   1485: aload 21
     //   1487: astore 18
@@ -1010,7 +1010,7 @@ public class BaseDownloadTransfer
     //   1692: lstore 13
     //   1694: goto -623 -> 1071
     //   1697: astore 21
-    //   1699: aload 24
+    //   1699: aload 25
     //   1701: astore 20
     //   1703: aload 22
     //   1705: astore 18
@@ -1792,13 +1792,13 @@ public class BaseDownloadTransfer
     //   3221	1	21	localIOException15	IOException
     //   40	2784	22	localObject23	Object
     //   44	2784	23	localObject24	Object
-    //   13	1687	24	localObject25	Object
-    //   22	1460	25	localObject26	Object
+    //   22	1460	24	localObject25	Object
+    //   13	1687	25	localObject26	Object
     //   16	2252	26	localObject27	Object
-    //   4	1458	27	localObject28	Object
+    //   10	1452	27	localObject28	Object
     //   1655	31	27	localException3	java.lang.Exception
-    //   1	574	28	str	String
-    //   10	54	29	localObject29	Object
+    //   4	571	28	str	String
+    //   1	69	29	localObject29	Object
     //   58	767	30	localURL	URL
     // Exception table:
     //   from	to	target	type

@@ -1,15 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.lebasearch.SearchActivity;
+import com.tencent.mobileqq.activity.Leba;
 
 public class asx
-  implements Runnable
+  implements View.OnFocusChangeListener
 {
-  public asx(LoginActivity paramLoginActivity, String paramString) {}
+  public asx(Leba paramLeba) {}
   
-  public void run()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.a(this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.runOnUiThread(new asy(this, localBitmap));
+    if (paramBoolean)
+    {
+      paramView.clearFocus();
+      SearchActivity.a(this.a.a());
+    }
   }
 }
 

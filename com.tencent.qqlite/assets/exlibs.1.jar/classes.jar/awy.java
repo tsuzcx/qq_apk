@@ -1,41 +1,39 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
 import com.tencent.mobileqq.activity.NearbyPeopleListFrame;
-import com.tencent.widget.XListView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
 
 public class awy
-  extends Handler
+  implements OverScrollViewListener
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public awy(NearbyPeopleListFrame paramNearbyPeopleListFrame) {}
   
-  public awy(NearbyPeopleListFrame paramNearbyPeopleListFrame1, NearbyPeopleListFrame paramNearbyPeopleListFrame2)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramNearbyPeopleListFrame2);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(this.a.jdField_a_of_type_Long);
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    NearbyPeopleListFrame localNearbyPeopleListFrame = (NearbyPeopleListFrame)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localNearbyPeopleListFrame == null) {}
-    do
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(this.a.jdField_a_of_type_Long);
+    if (NetworkUtil.e(NearbyPeopleListFrame.c(this.a)))
     {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        NearbyPeopleListFrame.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleListFrame);
-        localNearbyPeopleListFrame.a.B();
-      }
-    } while (paramMessage.arg1 != 1);
-    NearbyPeopleListFrame.a(localNearbyPeopleListFrame, 1, 2131363356);
-    return;
-    NearbyPeopleListFrame.b(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleListFrame);
-    localNearbyPeopleListFrame.a.B();
-    NearbyPeopleListFrame.a(localNearbyPeopleListFrame, 1, localNearbyPeopleListFrame.a(2131363516));
+      this.a.a(true, true);
+      return true;
+    }
+    paramView = NearbyPeopleListFrame.a(this.a).obtainMessage(1, 1, 0);
+    NearbyPeopleListFrame.a(this.a).sendMessageDelayed(paramView, 1000L);
+    return true;
   }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(this.a.jdField_a_of_type_Long);
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

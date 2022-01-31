@@ -94,7 +94,7 @@ public class SetPwdJsPlugin
       this.activity = ((QQBrowserActivity)this.mRuntime.a());
     }
     if ((this.activity != null) && ((this.activity.getIntent().getLongExtra("business", 0L) & 0x8000) != 0L)) {
-      ((TextView)this.activity.findViewById(2131296897)).setBackgroundDrawable(this.activity.getResources().getDrawable(2130839260));
+      ((TextView)this.activity.findViewById(2131296898)).setBackgroundDrawable(this.activity.getResources().getDrawable(2130839318));
     }
   }
   

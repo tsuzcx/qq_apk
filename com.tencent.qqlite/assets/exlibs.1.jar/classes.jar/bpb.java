@@ -1,17 +1,17 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-public class bpb
+class bpb
   implements View.OnClickListener
 {
-  public bpb(TroopMemberListActivity paramTroopMemberListActivity) {}
+  bpb(bpa parambpa, Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {
-    this.a.l();
-    paramView = this.a.p;
-    this.a.a("Clk_find", paramView, "");
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

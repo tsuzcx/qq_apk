@@ -25,7 +25,7 @@ public class ContactSearchablePublicAccount
   public ContactSearchablePublicAccount(QQAppInterface paramQQAppInterface, PublicAccountInfo paramPublicAccountInfo, String paramString, long paramLong1, long paramLong2)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.y = paramLong2;
+    this.A = paramLong2;
     this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
     this.jdField_a_of_type_JavaLangString = paramString;
     ChnToSpell.a(paramQQAppInterface.a());
@@ -88,7 +88,7 @@ public class ContactSearchablePublicAccount
     if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.certifiedGrade <= 0L) {
       return null;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources().getDrawable(2130838177);
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources().getDrawable(2130838196);
   }
   
   public PublicAccountInfo a()
@@ -106,19 +106,19 @@ public class ContactSearchablePublicAccount
   
   public void a(String paramString)
   {
-    this.x = -9223372036854775808L;
+    this.z = -9223372036854775808L;
     if (((this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name != null) && (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name.equalsIgnoreCase(paramString))) || ((this.b != null) && (this.b.equalsIgnoreCase(paramString))) || ((this.c != null) && (this.c.equalsIgnoreCase(paramString))))
     {
-      this.x = 1125899906842624L;
+      this.z = 1125899906842624L;
       if ((this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name.equals(paramString)) && (!this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name.equals(this.b)))
       {
-        this.x += 4503599627370496L;
-        this.x = 1125899906842624L;
+        this.z += 4503599627370496L;
+        this.z = 1125899906842624L;
         label134:
-        if (this.x == -9223372036854775808L) {
+        if (this.z == -9223372036854775808L) {
           break label313;
         }
-        this.x += this.y + 0L;
+        this.z += this.A + 0L;
       }
     }
     long l1;
@@ -127,28 +127,28 @@ public class ContactSearchablePublicAccount
     do
     {
       return;
-      this.x += 9007199254740992L;
+      this.z += 9007199254740992L;
       break;
       l1 = a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name, paramString, this.b);
       long l2 = b(this.b, paramString, this.b);
       long l3 = b(this.c, paramString, this.b);
-      this.x = Math.max(l1, l2);
-      this.x = Math.max(this.x, l3);
-      if (this.x == -9223372036854775808L) {
+      this.z = Math.max(l1, l2);
+      this.z = Math.max(this.z, l3);
+      if (this.z == -9223372036854775808L) {
         break label134;
       }
-      if ((this.x != l1) && (!this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name.equals(this.b)))
+      if ((this.z != l1) && (!this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name.equals(this.b)))
       {
-        this.x += 4503599627370496L;
+        this.z += 4503599627370496L;
         break label134;
       }
-      this.x += 9007199254740992L;
+      this.z += 9007199254740992L;
       break label134;
       str = this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.displayNumber;
     } while ((TextUtils.isEmpty(str)) || (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.extendType != 2));
     if (str.equals(paramString)) {
-      if (1125899906842624L > this.x) {
-        this.x += 9007199254740992L;
+      if (1125899906842624L > this.z) {
+        this.z += 9007199254740992L;
       }
     }
     label443:
@@ -156,9 +156,9 @@ public class ContactSearchablePublicAccount
     for (;;)
     {
       label373:
-      if (this.x != -9223372036854775808L)
+      if (this.z != -9223372036854775808L)
       {
-        this.x += this.y + 0L;
+        this.z += this.A + 0L;
         return;
         int i = str.indexOf(paramString);
         if (i < 0) {
@@ -170,10 +170,10 @@ public class ContactSearchablePublicAccount
       }
       for (l1 = 562949953421312L;; l1 = 281474976710656L)
       {
-        if (l1 <= this.x) {
+        if (l1 <= this.z) {
           break label448;
         }
-        this.x += 9007199254740992L;
+        this.z += 9007199254740992L;
         break label373;
         break;
       }

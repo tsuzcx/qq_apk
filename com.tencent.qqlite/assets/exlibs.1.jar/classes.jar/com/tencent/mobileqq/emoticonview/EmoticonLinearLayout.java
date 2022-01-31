@@ -23,9 +23,9 @@ import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.statistics.ReportController;
-import dem;
-import den;
-import deo;
+import dfo;
+import dfp;
+import dfq;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,9 +43,9 @@ public class EmoticonLinearLayout
   private AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
   public EmoticonCallback a;
   private EmoticonInfo jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo;
-  EmoticonLinearLayout.DataObserver jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$DataObserver = new dem(this);
+  EmoticonLinearLayout.DataObserver jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$DataObserver = new dfo(this);
   public EmoticonLinearLayout.EmoticonAdapter a;
-  private deo jdField_a_of_type_Deo;
+  private dfq jdField_a_of_type_Dfq;
   public Runnable a;
   public List a;
   public boolean a;
@@ -58,7 +58,7 @@ public class EmoticonLinearLayout
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 6;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangRunnable = new den(this);
+    this.jdField_a_of_type_JavaLangRunnable = new dfp(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_b_of_type_Int = super.getResources().getColor(2131427407);
     setOrientation(1);
@@ -191,7 +191,7 @@ public class EmoticonLinearLayout
       paramView = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo;
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo = paramEmoticonInfo;
       if ((paramView != null) && (paramView.c == 6) && ((paramView instanceof PicEmoticonInfo)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a();
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
       }
       if ((paramEmoticonInfo.c == 6) && ((paramEmoticonInfo instanceof PicEmoticonInfo)) && ((localDrawable instanceof URLDrawable)))
       {
@@ -237,7 +237,7 @@ public class EmoticonLinearLayout
     {
       ((WindowManager)getContext().getSystemService("window")).removeViewImmediate(this.jdField_b_of_type_AndroidWidgetFrameLayout);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a();
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
       }
       if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback != null) {
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo);
@@ -259,8 +259,8 @@ public class EmoticonLinearLayout
     for (;;)
     {
       return true;
-      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Deo != null)) {
-        removeCallbacks(this.jdField_a_of_type_Deo);
+      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Dfq != null)) {
+        removeCallbacks(this.jdField_a_of_type_Dfq);
       }
       if ((this.jdField_a_of_type_AndroidViewView != null) && (!this.jdField_a_of_type_Boolean)) {
         a(this.jdField_a_of_type_AndroidViewView);
@@ -273,19 +273,19 @@ public class EmoticonLinearLayout
       this.jdField_a_of_type_AndroidViewView = a(paramMotionEvent.getX(), paramMotionEvent.getY());
       if (this.jdField_a_of_type_AndroidViewView != null)
       {
-        if (this.jdField_a_of_type_Deo == null) {
-          this.jdField_a_of_type_Deo = new deo(this);
+        if (this.jdField_a_of_type_Dfq == null) {
+          this.jdField_a_of_type_Dfq = new dfq(this);
         }
-        this.jdField_a_of_type_Deo.a();
-        postDelayed(this.jdField_a_of_type_Deo, ViewConfiguration.getLongPressTimeout());
+        this.jdField_a_of_type_Dfq.a();
+        postDelayed(this.jdField_a_of_type_Dfq, ViewConfiguration.getLongPressTimeout());
         paramMotionEvent = (EmoticonInfo)this.jdField_a_of_type_AndroidViewView.getTag();
         if ((paramMotionEvent != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback != null) && ("delete".equals(paramMotionEvent.a)))
         {
           this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback.a();
           continue;
           setPressed(false);
-          if (this.jdField_a_of_type_Deo != null) {
-            removeCallbacks(this.jdField_a_of_type_Deo);
+          if (this.jdField_a_of_type_Dfq != null) {
+            removeCallbacks(this.jdField_a_of_type_Dfq);
           }
           removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
           b();

@@ -1,10 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.widget.QQToast;
 
 public final class alr
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public alr(Context paramContext) {}
+  
+  public void run()
+  {
+    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131363420), 0).b(this.a.getResources().getDimensionPixelSize(2131492887));
+  }
 }
 
 

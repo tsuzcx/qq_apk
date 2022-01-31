@@ -1,25 +1,23 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
 public class cde
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public cde(BaseTroopView paramBaseTroopView) {}
+  public cde(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidAppDialog.show();
-    this.a.c.setAnimation(null);
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.a.b.setVisibility(8);
+    this.a.setResult(0);
+    if ((this.a instanceof SearchContactsActivity))
+    {
+      this.a.l();
+      return;
+    }
+    SearchBaseActivity.a(this.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,52 +1,105 @@
-import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.net.URLEncoder;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.GestureSelectGridView;
+import com.tencent.widget.GestureSelectGridView.OnSelectListener;
 
 public class ckb
-  implements View.OnClickListener
+  implements GestureSelectGridView.OnSelectListener
 {
-  public ckb(BannerManager paramBannerManager) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void onClick(View paramView)
+  public ckb(PhotoListActivity paramPhotoListActivity) {}
+  
+  public void a()
   {
-    if (!BannerManager.a(this.a)) {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Boolean) {}
+    while (!QLog.isColorLevel()) {
       return;
     }
-    BannerManager.a(this.a, false);
-    new Handler().postDelayed(new ckc(this), 1000L);
-    paramView = (QQAppInterface)BannerManager.a(this.a).getAppRuntime();
-    String str = paramView.a();
-    Object localObject = new StringBuilder("http://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_reg_input_psw");
-    ((StringBuilder)localObject).append("?");
-    ((StringBuilder)localObject).append("uin=");
-    ((StringBuilder)localObject).append(str);
-    ((StringBuilder)localObject).append("&plat=1");
-    ((StringBuilder)localObject).append("&app=1");
-    ((StringBuilder)localObject).append("&version=3.4.0.607");
-    ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
-    ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
-    ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
-    localObject = ((StringBuilder)localObject).toString();
-    Intent localIntent = new Intent();
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("url", (String)localObject);
-    localIntent.putExtra("uin", str);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    VasWebviewUtil.a(BannerManager.a(this.a), (String)localObject, 32768L, localIntent, false, -1);
-    PhoneNumLoginImpl.a().a(paramView);
-    BannerManager.a(this.a).sendEmptyMessageDelayed(4, 1000L);
-    ReportController.b(paramView, "CliOper", "", "", "Mobile_signup", "Clk_blue_pw", 0, 0, "", "", "", "");
+    QLog.d("OnSelectListener", 2, "onSelectEnd");
+  }
+  
+  public void a(int paramInt)
+  {
+    boolean bool = false;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Boolean) {}
+    LocalMediaInfo localLocalMediaInfo;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("OnSelectListener", 2, "onSelectBegin beginIndex:" + paramInt);
+      }
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Int = -2147483648;
+      this.b = 2147483647;
+      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Ckh.a(paramInt);
+      if (localLocalMediaInfo.b == 2) {
+        bool = true;
+      }
+      this.jdField_a_of_type_Boolean = bool;
+    } while (!PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, localLocalMediaInfo, this.jdField_a_of_type_Boolean));
+    PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.n();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("OnSelectListener", 2, "onSelectChanged beginIndex:" + paramInt1 + " selectIndex:" + paramInt2);
+    }
+    int i = Math.min(paramInt1, paramInt2);
+    int j = Math.max(paramInt1, paramInt2);
+    if (paramInt2 < paramInt1) {
+      this.b = Math.min(paramInt2, this.b);
+    }
+    for (;;)
+    {
+      paramInt1 = i;
+      while (paramInt1 <= j)
+      {
+        PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Ckh.a(paramInt1), this.jdField_a_of_type_Boolean);
+        paramInt1 += 1;
+      }
+      this.jdField_a_of_type_Int = Math.max(paramInt2, this.jdField_a_of_type_Int);
+    }
+    paramInt1 = this.b;
+    PhotoListActivity localPhotoListActivity;
+    LocalMediaInfo localLocalMediaInfo;
+    boolean bool;
+    if (paramInt1 < i)
+    {
+      localPhotoListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity;
+      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Ckh.a(paramInt1);
+      if (!this.jdField_a_of_type_Boolean) {}
+      for (bool = true;; bool = false)
+      {
+        PhotoListActivity.a(localPhotoListActivity, localLocalMediaInfo, bool);
+        paramInt1 += 1;
+        break;
+      }
+    }
+    paramInt1 = j + 1;
+    if (paramInt1 <= this.jdField_a_of_type_Int)
+    {
+      localPhotoListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity;
+      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Ckh.a(paramInt1);
+      if (!this.jdField_a_of_type_Boolean) {}
+      for (bool = true;; bool = false)
+      {
+        PhotoListActivity.a(localPhotoListActivity, localLocalMediaInfo, bool);
+        paramInt1 += 1;
+        break;
+      }
+    }
+    PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.n();
   }
 }
 

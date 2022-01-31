@@ -222,10 +222,10 @@ public class QRDisplayActivity
   {
     if (this.jdField_b_of_type_ComTencentWidgetActionSheet == null)
     {
-      this.jdField_b_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null, 2131624119));
-      this.jdField_b_of_type_ComTencentWidgetActionSheet.a(2131362431, 1);
+      this.jdField_b_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null, 2131624120));
       this.jdField_b_of_type_ComTencentWidgetActionSheet.a(2131362432, 1);
-      this.jdField_b_of_type_ComTencentWidgetActionSheet.d(2131362794);
+      this.jdField_b_of_type_ComTencentWidgetActionSheet.a(2131362433, 1);
+      this.jdField_b_of_type_ComTencentWidgetActionSheet.d(2131362801);
       this.jdField_b_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new py(this));
       this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new pz(this));
     }
@@ -247,7 +247,7 @@ public class QRDisplayActivity
     }
     for (;;)
     {
-      a(2130837975, str);
+      a(2130837994, str);
       finish();
       return;
       str = "讨论组不存在";
@@ -309,7 +309,7 @@ public class QRDisplayActivity
     if ((this.jdField_a_of_type_Long & 0x800) != 0L)
     {
       if (this.jdField_d_of_type_Int == 2) {
-        localObject1 = BitmapFactory.decodeResource(getResources(), 2130838177);
+        localObject1 = BitmapFactory.decodeResource(getResources(), 2130838196);
       }
     }
     else
@@ -333,14 +333,14 @@ public class QRDisplayActivity
       if (this.jdField_d_of_type_Int != 1) {
         break;
       }
-      localObject1 = BitmapFactory.decodeResource(getResources(), 2130838238);
+      localObject1 = BitmapFactory.decodeResource(getResources(), 2130838257);
       break;
       label434:
       if (super.isResume())
       {
         paramBundle = DialogUtil.a(this, 230);
-        paramBundle.setMessage(2131362377);
-        paramBundle.setPositiveButton(2131362795, new qc(this));
+        paramBundle.setMessage(2131362378);
+        paramBundle.setPositiveButton(2131362802, new qc(this));
         paramBundle.show();
       }
       else
@@ -426,8 +426,8 @@ public class QRDisplayActivity
     if (super.isResume())
     {
       QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
-      localQQCustomDialog.setMessage(2131362376);
-      localQQCustomDialog.setPositiveButton(2131362795, new pr(this));
+      localQQCustomDialog.setMessage(2131362377);
+      localQQCustomDialog.setPositiveButton(2131362802, new pr(this));
       localQQCustomDialog.show();
       return;
     }
@@ -441,7 +441,7 @@ public class QRDisplayActivity
       if (paramInt1 != 1) {
         break label91;
       }
-      a(0, getString(2131362430));
+      a(0, getString(2131362431));
       if (QLog.isColorLevel()) {
         QLog.i("QRDisplayActivity", 2, "shareQRCode success");
       }
@@ -468,7 +468,7 @@ public class QRDisplayActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    super.setContentView(2130903352);
+    super.setContentView(2130903355);
     paramBundle = super.getIntent();
     this.k = paramBundle.getIntExtra("reportFlag", 0);
     super.setTitle(paramBundle.getStringExtra("title"));
@@ -483,15 +483,15 @@ public class QRDisplayActivity
     int m;
     if (this.jdField_e_of_type_Int == 1)
     {
-      this.g = getString(2131362420);
-      this.jdField_b_of_type_AndroidViewView = super.findViewById(2131297799);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297803));
-      this.jdField_c_of_type_AndroidViewView = super.findViewById(2131297798);
-      this.jdField_a_of_type_AndroidViewView = super.findViewById(2131297804);
-      this.jdField_d_of_type_AndroidViewView = findViewById(2131297805);
-      this.jdField_e_of_type_AndroidViewView = findViewById(2131297806);
+      this.g = getString(2131362421);
+      this.jdField_b_of_type_AndroidViewView = super.findViewById(2131297803);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297807));
+      this.jdField_c_of_type_AndroidViewView = super.findViewById(2131297802);
+      this.jdField_a_of_type_AndroidViewView = super.findViewById(2131297808);
+      this.jdField_d_of_type_AndroidViewView = findViewById(2131297809);
+      this.jdField_e_of_type_AndroidViewView = findViewById(2131297810);
       this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131363847));
+      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131363858));
       if (QLog.isDevelopLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 4, "display qrcode, type: " + this.jdField_e_of_type_Int);
       }
@@ -505,8 +505,8 @@ public class QRDisplayActivity
         this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler = ((DiscussionHandler)this.app.a(6));
         this.app.registObserver(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$GetNicknameObserver);
       }
-      this.jdField_h_of_type_AndroidWidgetTextView.setContentDescription(getString(2131362502));
-      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131362503));
+      this.jdField_h_of_type_AndroidWidgetTextView.setContentDescription(getString(2131362504));
+      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131362505));
       setResult(-1, getIntent());
       paramBundle = (FriendsManagerImp)this.app.getManager(8);
       localObject2 = (DiscussionManager)this.app.getManager(45);
@@ -532,13 +532,13 @@ public class QRDisplayActivity
       return true;
       if (this.jdField_e_of_type_Int == 2)
       {
-        this.g = getString(2131362421);
+        this.g = getString(2131362422);
         break;
       }
       if (this.jdField_e_of_type_Int != 5) {
         break;
       }
-      this.g = getString(2131362422);
+      this.g = getString(2131362423);
       break;
       label589:
       localObject2 = ((DiscussionManager)localObject2).a(this.jdField_h_of_type_JavaLangString);
@@ -637,12 +637,12 @@ public class QRDisplayActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131297805) {
+    if (paramView.getId() == 2131297809) {
       if (!this.jdField_a_of_type_Boolean) {
         a();
       }
     }
-    while (paramView.getId() != 2131297809) {
+    while (paramView.getId() != 2131297813) {
       return;
     }
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null) {
@@ -673,7 +673,7 @@ public class QRDisplayActivity
       return;
       int m = -1;
       if (!WXShareHelper.a().a()) {
-        m = 2131363697;
+        m = 2131363708;
       }
       for (;;)
       {
@@ -683,7 +683,7 @@ public class QRDisplayActivity
         QRUtils.a(1, m);
         break;
         if (!WXShareHelper.a().b()) {
-          m = 2131363698;
+          m = 2131363709;
         }
       }
       label89:
@@ -704,7 +704,7 @@ public class QRDisplayActivity
         this.l = String.valueOf(System.currentTimeMillis());
         paramAdapterView = WXShareHelper.a();
         paramView = this.l;
-        str1 = String.format(getString(2131363960), new Object[] { this.f });
+        str1 = String.format(getString(2131363971), new Object[] { this.f });
         localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
         str2 = this.i;
         if (paramInt != 1) {
@@ -722,7 +722,7 @@ public class QRDisplayActivity
       if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363558);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363569);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(false);
       }
       DiscussionInfoCardActivity.a(this.app, this, 2, this.jdField_j_of_type_JavaLangString, this.jdField_h_of_type_JavaLangString, this.f, this.jdField_j_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);

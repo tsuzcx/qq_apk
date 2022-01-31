@@ -1,26 +1,41 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.util.FaceDrawable;
+import com.tencent.mobileqq.util.FaceInfo;
 
 public class eub
-  implements View.OnClickListener
+  extends FriendListObserver
 {
-  public eub(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  private eub(FaceDrawable paramFaceDrawable) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 0);
-    }
-    try
+    FaceDrawable.a(this.a, paramBoolean, 1, paramString, FaceDrawable.a(this.a));
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    int i = 200;
+    if (paramInt == 3000) {}
+    while (i != FaceDrawable.a(this.a).d)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      }
       return;
+      if (paramInt == 3001) {
+        i = 202;
+      } else if (paramInt == 3002) {
+        i = 204;
+      }
     }
-    catch (Exception paramView) {}
+    FaceDrawable.a(this.a, paramBoolean1, 32, paramString, FaceDrawable.a(this.a));
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    FaceDrawable.a(this.a, paramBoolean, 11, paramString, FaceDrawable.a(this.a));
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    FaceDrawable.a(this.a, paramBoolean, 4, paramString, FaceDrawable.a(this.a));
   }
 }
 

@@ -1,17 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import java.lang.ref.WeakReference;
 
 public class cjc
-  implements ActionSheet.OnButtonClickListener
+  extends Handler
 {
-  public cjc(PhotoListActivity paramPhotoListActivity, ArrayList paramArrayList, ActionSheet paramActionSheet) {}
+  private WeakReference a;
   
-  public void a(View paramView, int paramInt)
+  public cjc(SettingActivity2 paramSettingActivity2)
   {
-    PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentWidgetActionSheet, paramInt);
+    this.a = new WeakReference(paramSettingActivity2);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((SettingActivity2)this.a.get() == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    throw new RuntimeException("Unknown message: " + paramMessage.what);
   }
 }
 

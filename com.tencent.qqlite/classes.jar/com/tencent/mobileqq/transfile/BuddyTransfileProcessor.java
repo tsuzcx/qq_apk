@@ -26,8 +26,8 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import egm;
-import egn;
+import ehq;
+import ehr;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -45,9 +45,9 @@ public class BuddyTransfileProcessor
   public static final String U = "pttcenter";
   public static final String V = "picplatform";
   private static final String Z = "photo/";
-  public static final int aJ = 0;
-  public static final int aK = 1;
-  public static final int aL = 2;
+  public static final int aL = 0;
+  public static final int aM = 1;
+  public static final int aN = 2;
   private static final String aa = "file/";
   private static List jdField_b_of_type_JavaUtilList = new ArrayList();
   public static final String c = "streamptt";
@@ -59,13 +59,15 @@ public class BuddyTransfileProcessor
   private String X;
   private String Y;
   long jdField_a_of_type_Long = -1L;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new egm(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ehq(this);
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   public boolean a;
   int aG = 0;
   int aH = -1;
   int aI = -1;
-  private int aM;
+  public int aJ = 0;
+  public int aK = 0;
+  private int aO;
   int ao = 0;
   int ap = 1;
   private long jdField_b_of_type_Long;
@@ -97,7 +99,7 @@ public class BuddyTransfileProcessor
     {
       b(false);
       e(paramInt2);
-      this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.aS = 0;
+      this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.aT = 0;
       if (FileUtils.c(paramString3)) {
         this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_JavaLangString = paramString3;
       }
@@ -118,10 +120,10 @@ public class BuddyTransfileProcessor
         if (paramString1 != null)
         {
           this.jdField_b_of_type_Long = MessageUtils.a(paramString1.msgUid);
-          this.aM = ((int)paramString1.shmsgseq);
+          this.aO = ((int)paramString1.shmsgseq);
         }
         if (QLog.isColorLevel()) {
-          QLog.e("streamptt", 2, "random:" + this.jdField_b_of_type_Long + " msgseq:" + this.aM);
+          QLog.e("streamptt", 2, "random:" + this.jdField_b_of_type_Long + " msgseq:" + this.aO);
         }
       }
       return;
@@ -171,11 +173,11 @@ public class BuddyTransfileProcessor
       }
       localC2CPicMsgParseResult = new BuddyTransfileProcessor.C2CPicMsgParseResult();
       if (paramShort != 169) {
-        break label382;
+        break label383;
       }
       localC2CPicMsgParseResult.jdField_a_of_type_Int = 1;
       if (paramArrayOfByte[0] != 1) {
-        break label409;
+        break label410;
       }
       paramShort = paramArrayOfByte[1];
       int i = PkgTools.a(paramArrayOfByte, 2);
@@ -224,13 +226,13 @@ public class BuddyTransfileProcessor
           QLog.d("streamptt", 2, "analysisFileC2cMsg fail");
         }
         return null;
-        label382:
+        label383:
         if ((paramArrayOfByte[0] == 22) && (paramArrayOfByte[1] == 32)) {
           return a(paramArrayOfByte, false);
         }
         paramShort = 0;
       }
-      label409:
+      label410:
       l1 = 0L;
       paramShort = 0;
     }
@@ -348,6 +350,11 @@ public class BuddyTransfileProcessor
   
   public static String a(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte)
   {
+    return a(paramString1, paramString2, paramInt, paramArrayOfByte, true);
+  }
+  
+  public static String a(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean)
+  {
     Object localObject = AppConstants.as + paramString1 + "/";
     switch (paramInt)
     {
@@ -379,7 +386,7 @@ public class BuddyTransfileProcessor
         str1 = str2;
         localObject = paramString1;
         if (paramString2 != null) {
-          break label536;
+          break label541;
         }
         if (QLog.isColorLevel()) {
           QLog.i("streamptt", 2, "pttdown,33333");
@@ -389,7 +396,7 @@ public class BuddyTransfileProcessor
         paramString2 = paramString1;
         localObject = paramArrayOfByte;
         if (!QLog.isColorLevel()) {
-          break label527;
+          break label532;
         }
         QLog.i("streamptt", 2, "pttdown,name = " + paramArrayOfByte);
         localObject = ".amr";
@@ -401,14 +408,14 @@ public class BuddyTransfileProcessor
         str1 = str2;
         localObject = paramString1;
         if (paramString2 != null) {
-          break label536;
+          break label541;
         }
         String str3 = c();
         str1 = str2;
         paramString2 = paramString1;
         localObject = str3;
         if (paramArrayOfByte == null) {
-          break label527;
+          break label532;
         }
         paramArrayOfByte = str3 + HexUtil.bytes2HexStr(paramArrayOfByte).substring(0, 5);
         localObject = ".jpg";
@@ -429,7 +436,7 @@ public class BuddyTransfileProcessor
         paramString2 = str1;
         paramArrayOfByte = (byte[])localObject;
         break;
-        if (!paramString1.exists()) {
+        if ((paramBoolean) && (!paramString1.exists())) {
           try
           {
             paramString1.createNewFile();
@@ -437,11 +444,11 @@ public class BuddyTransfileProcessor
           catch (IOException paramString2) {}
         }
       }
-      label527:
+      label532:
       paramString1 = str1;
       paramArrayOfByte = (byte[])localObject;
       continue;
-      label536:
+      label541:
       paramArrayOfByte = "";
       paramString1 = str1;
       paramString2 = (String)localObject;
@@ -470,7 +477,7 @@ public class BuddyTransfileProcessor
         a(this.Y, 0, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_c_of_type_Long, this.aI);
         a(2, 9311, "friend_block");
         d();
-        StreamDataManager.c(str);
+        StreamDataManager.b(str);
         StreamDataManager.a(str);
         if (paramUploadStreamStruct.jdField_b_of_type_Int == 58) {
           q();
@@ -513,11 +520,11 @@ public class BuddyTransfileProcessor
               }
               a(2, 9310, "retry overflow");
               d();
-              StreamDataManager.c(str);
+              StreamDataManager.b(str);
               StreamDataManager.a(str);
               return;
             }
-            i3 = StreamDataManager.d(str);
+            i3 = StreamDataManager.c(str);
             i2 = StreamDataManager.b(str);
             this.ap = i;
             QLog.d("streamptt.send", 2, "server reset.ResetSeq: " + i + " packnum: " + i2 + ",slices:" + i3 + " uniseq:" + this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_c_of_type_Long + ",flowLayer:" + s1 + ",prelayer:" + s2);
@@ -531,7 +538,7 @@ public class BuddyTransfileProcessor
           this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.a(2, 2);
           return;
         } while (this.l);
-        i1 = StreamDataManager.d(str);
+        i1 = StreamDataManager.c(str);
         i2 = StreamDataManager.a(str);
         if (paramUploadStreamStruct.jdField_a_of_type_Int >= i2) {
           break;
@@ -595,6 +602,11 @@ public class BuddyTransfileProcessor
     Object localObject = new byte[3];
     PkgTools.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i.length(), (byte[])localObject, 0, 3, "utf-8");
     localObject = (MessageForPtt)MessageRecordFactory.a(-2002);
+    ((MessageForPtt)localObject).voiceType = ((int)paramStreamInfo.pttFormat);
+    ((MessageForPtt)localObject).voiceLength = ((int)paramStreamInfo.pttTime);
+    if (QLog.isColorLevel()) {
+      QLog.d("streamptt", 2, "voiceLength createMessageDataBaseContent " + ((MessageForPtt)localObject).voiceLength);
+    }
     ((MessageForPtt)localObject).selfuin = this.W;
     ((MessageForPtt)localObject).frienduin = this.Y;
     ((MessageForPtt)localObject).senderuin = this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.m;
@@ -605,7 +617,7 @@ public class BuddyTransfileProcessor
     ((MessageForPtt)localObject).msgtype = -2002;
     ((MessageForPtt)localObject).istroop = 0;
     ((MessageForPtt)localObject).urlAtServer = this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i;
-    ((MessageForPtt)localObject).url = this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_JavaLangString;
+    ((MessageForPtt)localObject).url = MessageForPtt.getMsgFilePath(((MessageForPtt)localObject).voiceType, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_JavaLangString);
     ((MessageForPtt)localObject).fileSize = 1000L;
     ((MessageForPtt)localObject).itemType = 2;
     ((MessageForPtt)localObject).isread = false;
@@ -689,7 +701,7 @@ public class BuddyTransfileProcessor
             QLog.d("streamptt.recv", 2, "curFlowLayer: " + i + " received shFlowLayer:" + paramStreamInfo.shFlowLayer + ",seq" + paramStreamData.shPackSeq + ",packNum:" + paramStreamInfo.shPackNum + " lkey:" + paramLong1);
           }
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), false, NetworkUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()), 2, 0, paramStreamData.vData.length);
-          StreamDataManager.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i, paramLong1);
+          StreamDataManager.c(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i, paramLong1);
           if (i != paramStreamInfo.shFlowLayer)
           {
             this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.W, this.X, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i, StreamDataManager.c(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i), paramLong1);
@@ -713,7 +725,7 @@ public class BuddyTransfileProcessor
               QLog.d("streamptt.recv", 2, "cancelled:" + this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i);
             }
             this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.Y, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_c_of_type_Long);
-            StreamDataManager.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i);
+            StreamDataManager.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i, true);
             StreamDataManager.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i);
             return;
           }
@@ -721,7 +733,7 @@ public class BuddyTransfileProcessor
           StreamDataManager.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i, paramStreamData.vData, 800, paramStreamData.shPackSeq);
         } while (paramStreamInfo.shPackNum <= 0);
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.Y, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_c_of_type_Long);
-        StreamDataManager.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i);
+        StreamDataManager.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i, false);
         StreamDataManager.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i);
         paramStreamData = this.W + "_" + this.X + "_" + paramStreamInfo.iMsgId;
         if (!jdField_b_of_type_JavaUtilList.contains(paramStreamData)) {
@@ -759,19 +771,27 @@ public class BuddyTransfileProcessor
     e();
   }
   
-  public void a(short paramShort, boolean paramBoolean)
+  public void a(short paramShort, boolean paramBoolean, int paramInt1, int paramInt2)
   {
+    this.aJ = paramInt2;
+    this.aK = paramInt1;
+    if (QLog.isColorLevel()) {
+      QLog.d("RecordParams", 2, "startSendOneStreamPack:" + paramInt2 + ", " + paramInt1 + ", " + paramShort);
+    }
     this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg$StepTransInfo.d = true;
+    String str = "";
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && ("0".equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))) {}
-    String str;
     do
     {
       return;
       this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.B = 1001;
       b(2);
       this.jdField_b_of_type_Boolean = false;
-      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+      }
       b(2);
       if (paramShort > this.aG) {
         this.aG = paramShort;
@@ -782,7 +802,7 @@ public class BuddyTransfileProcessor
         return;
       }
     } while ((this.jdField_a_of_type_JavaUtilConcurrentExecutorService == null) || (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()));
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new egn(this, str, paramShort, paramBoolean));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ehr(this, str, paramShort, paramBoolean));
   }
   
   public void a(boolean paramBoolean)
@@ -797,8 +817,8 @@ public class BuddyTransfileProcessor
           localMessageForPtt.url = this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_JavaLangString;
           localMessageForPtt.fileSize = this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_Long;
           localMessageForPtt.itemType = this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_Int;
-          if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.aa != 1) {
-            break label320;
+          if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.ab != 1) {
+            break label317;
           }
           paramBoolean = true;
           localMessageForPtt.isread = paramBoolean;
@@ -819,7 +839,7 @@ public class BuddyTransfileProcessor
             this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.Y, 0, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_c_of_type_Long, this.jdField_a_of_type_Long);
             localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.Y, 0);
             if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i != null) && (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i.equals(((QQMessageFacade.Message)localObject).pttUrl))) {
-              ((QQMessageFacade.Message)localObject).pttUrl = this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_JavaLangString;
+              ((QQMessageFacade.Message)localObject).pttUrl = localMessageForPtt.url;
             }
           }
           else
@@ -834,7 +854,7 @@ public class BuddyTransfileProcessor
       {
         localException.printStackTrace();
       }
-      label320:
+      label317:
       paramBoolean = false;
     }
   }
@@ -843,7 +863,7 @@ public class BuddyTransfileProcessor
   {
     while (paramShort1 <= paramShort2)
     {
-      a((short)paramShort1, true);
+      a((short)paramShort1, true, this.aK, this.aJ);
       paramShort1 += 1;
     }
   }

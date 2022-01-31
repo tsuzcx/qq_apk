@@ -1,18 +1,10 @@
-import android.graphics.Color;
-import android.widget.TextView;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.EditInfoActivity;
 
-class aky
-  implements Runnable
+public class aky
+  extends Handler
 {
-  aky(akx paramakx) {}
-  
-  public void run()
-  {
-    this.a.a.a.setText(this.a.a.b);
-    this.a.a.a.setTextColor(Color.rgb(119, 119, 119));
-    EditInfoActivity.b(this.a.a, true);
-  }
+  public aky(EditInfoActivity paramEditInfoActivity) {}
 }
 
 

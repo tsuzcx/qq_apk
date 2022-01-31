@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.utils;
 
 import android.annotation.TargetApi;
+import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -8,6 +9,7 @@ import android.content.pm.ApplicationInfo;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.os.ParcelUuid;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -15,6 +17,8 @@ import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.HashSet;
 import mqq.app.MobileQQ;
 
 public class AudioHelper
@@ -47,9 +51,55 @@ public class AudioHelper
     b = new int[] { 26, 27 };
   }
   
+  /* Error */
   public static long a(Context paramContext, byte[] paramArrayOfByte, int paramInt, float paramFloat)
   {
-    return 2000L;
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 42	com/tencent/mobileqq/utils/AudioHelper:jdField_a_of_type_Boolean	Z
+    //   6: ifne +27 -> 33
+    //   9: getstatic 44	com/tencent/mobileqq/utils/AudioHelper:g	I
+    //   12: iconst_3
+    //   13: if_icmpge +20 -> 33
+    //   16: getstatic 44	com/tencent/mobileqq/utils/AudioHelper:g	I
+    //   19: iconst_1
+    //   20: iadd
+    //   21: putstatic 44	com/tencent/mobileqq/utils/AudioHelper:g	I
+    //   24: aload_0
+    //   25: ldc 57
+    //   27: invokestatic 63	com/tencent/commonsdk/soload/SoLoadUtilNew:loadSoByName	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   30: putstatic 42	com/tencent/mobileqq/utils/AudioHelper:jdField_a_of_type_Boolean	Z
+    //   33: getstatic 42	com/tencent/mobileqq/utils/AudioHelper:jdField_a_of_type_Boolean	Z
+    //   36: ifeq +17 -> 53
+    //   39: aload_1
+    //   40: iload_2
+    //   41: fload_3
+    //   42: invokestatic 67	com/tencent/mobileqq/utils/AudioHelper:enlargeVolum	([BIF)J
+    //   45: lstore 4
+    //   47: ldc 2
+    //   49: monitorexit
+    //   50: lload 4
+    //   52: lreturn
+    //   53: ldc2_w 9
+    //   56: lstore 4
+    //   58: goto -11 -> 47
+    //   61: astore_0
+    //   62: ldc 2
+    //   64: monitorexit
+    //   65: aload_0
+    //   66: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	67	0	paramContext	Context
+    //   0	67	1	paramArrayOfByte	byte[]
+    //   0	67	2	paramInt	int
+    //   0	67	3	paramFloat	float
+    //   45	12	4	l1	long
+    // Exception table:
+    //   from	to	target	type
+    //   3	33	61	finally
+    //   33	47	61	finally
   }
   
   public static AudioHelper.AudioPlayerParameter a()
@@ -179,6 +229,37 @@ public class AudioHelper
     return false;
   }
   
+  @TargetApi(15)
+  public static boolean a(BluetoothDevice paramBluetoothDevice)
+  {
+    Object localObject;
+    if (Build.VERSION.SDK_INT >= 15)
+    {
+      localObject = paramBluetoothDevice.getUuids();
+      if (localObject != null) {
+        break label19;
+      }
+    }
+    for (;;)
+    {
+      return false;
+      label19:
+      paramBluetoothDevice = new ParcelUuid[2];
+      paramBluetoothDevice[0] = ParcelUuid.fromString("0000110B-0000-1000-8000-00805F9B34FB");
+      paramBluetoothDevice[1] = ParcelUuid.fromString("0000110D-0000-1000-8000-00805F9B34FB");
+      localObject = new HashSet(Arrays.asList((Object[])localObject));
+      int n = paramBluetoothDevice.length;
+      int m = 0;
+      while (m < n)
+      {
+        if (((HashSet)localObject).contains(paramBluetoothDevice[m])) {
+          return true;
+        }
+        m += 1;
+      }
+    }
+  }
+  
   public static boolean a(Context paramContext)
   {
     return ((AudioManager)paramContext.getSystemService("audio")).isBluetoothA2dpOn();
@@ -264,6 +345,9 @@ public class AudioHelper
   {
     return (Build.MODEL.contains("ZTE-T U960s")) && (Build.VERSION.SDK_INT <= 10);
   }
+  
+  @Deprecated
+  public static native long enlargeVolum(byte[] paramArrayOfByte, int paramInt, float paramFloat);
   
   private static boolean f()
   {

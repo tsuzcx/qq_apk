@@ -9,8 +9,8 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import eao;
-import eap;
+import ebt;
+import ebu;
 
 public class VipBannerInfo
 {
@@ -33,7 +33,7 @@ public class VipBannerInfo
   public static void a(Context paramContext)
   {
     paramContext = paramContext.getSharedPreferences("QQLite", 0);
-    ThreadManager.a().post(new eao(paramContext));
+    ThreadManager.a().post(new ebt(paramContext));
   }
   
   public static void a(Conversation paramConversation)
@@ -52,7 +52,7 @@ public class VipBannerInfo
       } while (localHandler == null);
       localRedTouchManager = (RedTouchManager)paramConversation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(32);
     } while (localRedTouchManager == null);
-    ThreadManager.a().post(new eap(localRedTouchManager, localSharedPreferences, paramConversation, localHandler));
+    ThreadManager.a().post(new ebu(localRedTouchManager, localSharedPreferences, paramConversation, localHandler));
   }
   
   public static void b(Conversation paramConversation)

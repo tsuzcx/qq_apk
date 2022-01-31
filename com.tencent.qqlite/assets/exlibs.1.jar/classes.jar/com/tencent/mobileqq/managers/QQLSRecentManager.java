@@ -24,7 +24,7 @@ import com.tencent.mobileqq.newfriend.NewFriendMessage;
 import com.tencent.mobileqq.utils.QQUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dxm;
+import dyp;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
@@ -163,7 +163,7 @@ public class QQLSRecentManager
         if (i != 0) {
           break label222;
         }
-        new Handler(Looper.getMainLooper()).post(new dxm(this, paramQQAppInterface, paramString, paramInt));
+        new Handler(Looper.getMainLooper()).post(new dyp(this, paramQQAppInterface, paramString, paramInt));
         return;
         i = 0;
         break;
@@ -355,8 +355,8 @@ public class QQLSRecentManager
       } while (!QLog.isColorLevel());
       QLog.d("QQLSActivity", 2, "QQLSRecentManager update retrun because unread =0 || isNewFriendEnterAio" + f);
       return;
-      bool1 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363738), "qqsetting_lock_screen_whenexit_key", true);
-      bool2 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363281), "qqsetting_notify_showcontent_key", true);
+      bool1 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363749), "qqsetting_lock_screen_whenexit_key", true);
+      bool2 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363291), "qqsetting_notify_showcontent_key", true);
     } while ((!Boolean.valueOf(bool1).booleanValue()) || (!Boolean.valueOf(bool2).booleanValue()));
     a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, AppConstants.V, 4000, true);
   }

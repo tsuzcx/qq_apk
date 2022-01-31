@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import ckt;
+import clu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ public class RecommendAdapter
   private static final int jdField_a_of_type_Int = 50;
   public static final String a = "RecommendAdapter";
   private static final int b = 7;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ckt(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new clu(this);
   private OnRecentUserOpsListener jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener = null;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   private List jdField_a_of_type_JavaUtilList = null;

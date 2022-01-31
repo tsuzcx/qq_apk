@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.app.QPSafeCheckHandler;
-import com.tencent.mobileqq.app.SafeCenterPushHandler;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
 
 public class cux
-  extends Thread
+  extends SendMessageHandler.SendMessageRunnable
 {
-  public cux(QPSafeCheckHandler paramQPSafeCheckHandler, byte[] paramArrayOfByte) {}
+  public cux(MessageHandler paramMessageHandler, MessageRecord paramMessageRecord, long paramLong) {}
   
   public void run()
   {
-    SafeCenterPushHandler.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQPSafeCheckHandler.b(this.jdField_a_of_type_ArrayOfByte);
+    MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Long, this.c, this.jdField_a_of_type_Int);
   }
 }
 

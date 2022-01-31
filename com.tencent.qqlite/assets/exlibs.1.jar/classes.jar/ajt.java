@@ -1,10 +1,14 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class ajt
-  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public TextView a;
+  public String a;
+  public short a;
+  public String b;
+  public String c;
+  public String d;
+  
+  private ajt(DiscussionMemberActivity paramDiscussionMemberActivity) {}
 }
 
 

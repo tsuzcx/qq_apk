@@ -39,12 +39,12 @@ public class ContactSearchableDiscussion
   public ContactSearchableDiscussion(Context paramContext, QQAppInterface paramQQAppInterface, DiscussionInfo paramDiscussionInfo, int paramInt1, long paramLong1, long paramLong2, int paramInt2, List paramList)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.y = paramLong2;
+    this.A = paramLong2;
     this.e = paramInt1;
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131362946);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131362953);
     ChnToSpell.a(paramContext);
     if ((paramDiscussionInfo.discussionName != null) && (paramDiscussionInfo.discussionName.length() != 0))
     {
@@ -266,9 +266,9 @@ public class ContactSearchableDiscussion
             break label612;
           }
           l = 1125899906842624L + 4503599627370496L;
-          if (this.x < l)
+          if (this.z < l)
           {
-            this.x = l;
+            this.z = l;
             this.f = 2;
             this.d = str1;
           }
@@ -285,9 +285,9 @@ public class ContactSearchableDiscussion
             break label769;
           }
           l = 1125899906842624L + 4503599627370496L;
-          if (this.x < l)
+          if (this.z < l)
           {
-            this.x = l;
+            this.z = l;
             this.f = 2;
             this.d = str1;
           }
@@ -308,9 +308,9 @@ public class ContactSearchableDiscussion
             break label926;
           }
           l = 1125899906842624L + 4503599627370496L;
-          if (this.x < l)
+          if (this.z < l)
           {
-            this.x = l;
+            this.z = l;
             this.f = 2;
             this.d = str1;
           }
@@ -329,10 +329,10 @@ public class ContactSearchableDiscussion
         }
         for (l = 1125899906842624L + 4503599627370496L;; l = 1125899906842624L + 9007199254740992L)
         {
-          if (this.x >= l) {
+          if (this.z >= l) {
             break label1093;
           }
-          this.x = l;
+          this.z = l;
           this.f = 2;
           this.d = ((String)localObject);
           break;
@@ -363,10 +363,10 @@ public class ContactSearchableDiscussion
           label758:
           for (l += 4503599627370496L;; l += 9007199254740992L)
           {
-            if (this.x >= l) {
+            if (this.z >= l) {
               break label767;
             }
-            this.x = l;
+            this.z = l;
             this.f = 2;
             this.d = str1;
             break;
@@ -403,10 +403,10 @@ public class ContactSearchableDiscussion
           }
           for (l += 4503599627370496L;; l += 9007199254740992L)
           {
-            if (this.x >= l) {
+            if (this.z >= l) {
               break label924;
             }
-            this.x = l;
+            this.z = l;
             this.f = 2;
             this.d = str1;
             break;
@@ -443,10 +443,10 @@ public class ContactSearchableDiscussion
           }
           for (l += 4503599627370496L;; l += 9007199254740992L)
           {
-            if (this.x >= l) {
+            if (this.z >= l) {
               break label1081;
             }
-            this.x = l;
+            this.z = l;
             this.f = 2;
             this.d = str1;
             break label477;
@@ -486,10 +486,10 @@ public class ContactSearchableDiscussion
       }
       for (l += 4503599627370496L;; l += 9007199254740992L)
       {
-        if (this.x >= l) {
+        if (this.z >= l) {
           break label1238;
         }
-        this.x = l;
+        this.z = l;
         this.f = 2;
         this.d = ((String)localObject);
         break label26;
@@ -508,14 +508,14 @@ public class ContactSearchableDiscussion
   @SuppressLint({"DefaultLocale"})
   private void c(String paramString)
   {
-    if (this.x != -9223372036854775808L) {}
+    if (this.z != -9223372036854775808L) {}
     long l;
     do
     {
       return;
       l = a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqModelFriendManager, paramString);
     } while (l == -1L);
-    this.x = (l + 0L + 9007199254740992L + this.y);
+    this.z = (l + 0L + 9007199254740992L + this.A);
     this.f = 3;
   }
   
@@ -577,11 +577,11 @@ public class ContactSearchableDiscussion
     }
     for (;;)
     {
-      this.x = l;
+      this.z = l;
       b(str1);
-      if (this.x != -9223372036854775808L)
+      if (this.z != -9223372036854775808L)
       {
-        this.x += this.y;
+        this.z += this.A;
         return;
         paramString = null;
         break;

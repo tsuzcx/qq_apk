@@ -18,8 +18,8 @@ import com.tencent.mobileqq.utils.StartupTracker;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.AnimateUtils;
 import com.tencent.util.VersionUtils;
-import fjh;
-import fji;
+import fln;
+import flo;
 
 public class XPanelContainer
   extends FrameLayout
@@ -146,7 +146,7 @@ public class XPanelContainer
         if (paramInt <= 1) {
           break label350;
         }
-        if (paramInt == 2)
+        if (paramInt == 3)
         {
           com.tencent.mobileqq.emoticonview.EmoticonMainPanel.jdField_b_of_type_Long = System.currentTimeMillis();
           StartupTracker.a(null, "AIO_EmoticonPanel_OpenDuration");
@@ -183,7 +183,7 @@ public class XPanelContainer
                 paramInt = getHeight();
                 localObject = ValueAnimator.ofInt(new int[] { paramInt, paramInt - this.jdField_c_of_type_Int });
                 ((ValueAnimator)localObject).setDuration(150L);
-                ((ValueAnimator)localObject).addUpdateListener(new fjh(this, paramInt));
+                ((ValueAnimator)localObject).addUpdateListener(new fln(this, paramInt));
                 ((ValueAnimator)localObject).start();
                 return;
               }
@@ -261,7 +261,7 @@ public class XPanelContainer
         int m = getHeight();
         ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { m - this.jdField_c_of_type_Int, m });
         localValueAnimator.setDuration(150L);
-        localValueAnimator.addUpdateListener(new fji(this, m));
+        localValueAnimator.addUpdateListener(new flo(this, m));
         localValueAnimator.start();
       }
       else

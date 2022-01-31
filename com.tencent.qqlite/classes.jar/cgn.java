@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
 
-class cgn
-  implements Runnable
+public class cgn
+  extends FMObserver
 {
-  cgn(cgm paramcgm) {}
+  public cgn(MainAssistObserver paramMainAssistObserver) {}
   
-  public void run()
-  {
-    this.a.a.a.a.f();
-  }
+  protected void a() {}
 }
 
 

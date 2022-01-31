@@ -24,13 +24,6 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import cog;
-import coh;
-import coi;
-import coj;
-import cok;
-import col;
-import com;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -42,9 +35,16 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
-import coo;
-import cop;
-import coq;
+import cpi;
+import cpj;
+import cpk;
+import cpl;
+import cpm;
+import cpn;
+import cpo;
+import cpp;
+import cpq;
+import cpr;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -70,10 +70,10 @@ public class ShortVideoPreviewActivity
   private static final int o = 5;
   private long jdField_a_of_type_Long;
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cog(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cpi(this);
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new coj(this);
+  private SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new cpl(this);
   private SurfaceView jdField_a_of_type_AndroidViewSurfaceView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -103,9 +103,9 @@ public class ShortVideoPreviewActivity
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
+    //   1: astore 6
     //   3: aconst_null
-    //   4: astore 6
+    //   4: astore 4
     //   6: aconst_null
     //   7: astore 7
     //   9: aconst_null
@@ -147,8 +147,8 @@ public class ShortVideoPreviewActivity
     //   78: ireturn
     //   79: aload_2
     //   80: invokestatic 111	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
-    //   83: astore 9
-    //   85: aload 9
+    //   83: astore 8
+    //   85: aload 8
     //   87: ifnonnull +56 -> 143
     //   90: invokestatic 100	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   93: ifeq +11 -> 104
@@ -178,11 +178,11 @@ public class ShortVideoPreviewActivity
     //   141: iconst_2
     //   142: ireturn
     //   143: aload_0
-    //   144: aload 9
+    //   144: aload 8
     //   146: invokevirtual 118	android/graphics/Bitmap:getWidth	()I
     //   149: putfield 120	com/tencent/mobileqq/activity/shortvideo/ShortVideoPreviewActivity:i	I
     //   152: aload_0
-    //   153: aload 9
+    //   153: aload 8
     //   155: invokevirtual 123	android/graphics/Bitmap:getHeight	()I
     //   158: putfield 125	com/tencent/mobileqq/activity/shortvideo/ShortVideoPreviewActivity:j	I
     //   161: new 127	java/io/File
@@ -263,10 +263,10 @@ public class ShortVideoPreviewActivity
     //   324: aload_0
     //   325: getfield 184	com/tencent/mobileqq/activity/shortvideo/ShortVideoPreviewActivity:g	Ljava/lang/String;
     //   328: invokespecial 130	java/io/File:<init>	(Ljava/lang/String;)V
-    //   331: astore 8
+    //   331: astore 9
     //   333: new 127	java/io/File
     //   336: dup
-    //   337: aload 8
+    //   337: aload 9
     //   339: invokevirtual 195	java/io/File:getParent	()Ljava/lang/String;
     //   342: invokespecial 130	java/io/File:<init>	(Ljava/lang/String;)V
     //   345: astore_2
@@ -279,21 +279,21 @@ public class ShortVideoPreviewActivity
     //   360: aload_2
     //   361: invokevirtual 204	java/io/File:mkdirs	()Z
     //   364: pop
-    //   365: aload 8
+    //   365: aload 9
     //   367: invokevirtual 198	java/io/File:exists	()Z
     //   370: ifeq +11 -> 381
-    //   373: aload 8
+    //   373: aload 9
     //   375: invokevirtual 207	java/io/File:isFile	()Z
     //   378: ifne +9 -> 387
-    //   381: aload 8
+    //   381: aload 9
     //   383: invokevirtual 210	java/io/File:createNewFile	()Z
     //   386: pop
     //   387: new 212	java/io/FileOutputStream
     //   390: dup
-    //   391: aload 8
+    //   391: aload 9
     //   393: invokespecial 213	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   396: astore_2
-    //   397: aload 9
+    //   397: aload 8
     //   399: getstatic 219	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   402: bipush 50
     //   404: aload_2
@@ -303,12 +303,12 @@ public class ShortVideoPreviewActivity
     //   410: invokevirtual 226	java/io/FileOutputStream:flush	()V
     //   413: new 138	java/io/FileInputStream
     //   416: dup
-    //   417: aload 8
+    //   417: aload 9
     //   419: invokespecial 141	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   422: astore 4
     //   424: aload_0
     //   425: aload 4
-    //   427: aload 8
+    //   427: aload 9
     //   429: invokevirtual 134	java/io/File:length	()J
     //   432: invokestatic 147	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
     //   435: invokestatic 153	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
@@ -405,46 +405,46 @@ public class ShortVideoPreviewActivity
     //   619: astore_2
     //   620: aconst_null
     //   621: astore 8
-    //   623: aload 4
-    //   625: astore 6
-    //   627: aload 6
-    //   629: astore 7
-    //   631: aload_2
-    //   632: astore 4
-    //   634: aload 8
-    //   636: astore_3
-    //   637: invokestatic 100	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   640: ifeq +23 -> 663
-    //   643: aload 6
-    //   645: astore 7
-    //   647: aload_2
-    //   648: astore 4
-    //   650: aload 8
-    //   652: astore_3
-    //   653: ldc 22
-    //   655: iconst_2
-    //   656: ldc 238
-    //   658: aload 5
-    //   660: invokestatic 241	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   663: aload 8
-    //   665: ifnull +8 -> 673
-    //   668: aload 8
-    //   670: invokevirtual 177	java/io/FileInputStream:close	()V
-    //   673: aload 6
-    //   675: ifnull +8 -> 683
-    //   678: aload 6
-    //   680: invokevirtual 231	java/io/FileOutputStream:close	()V
+    //   623: aload 6
+    //   625: astore 7
+    //   627: aload_2
+    //   628: astore 4
+    //   630: aload 8
+    //   632: astore_3
+    //   633: invokestatic 100	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   636: ifeq +23 -> 659
+    //   639: aload 6
+    //   641: astore 7
+    //   643: aload_2
+    //   644: astore 4
+    //   646: aload 8
+    //   648: astore_3
+    //   649: ldc 22
+    //   651: iconst_2
+    //   652: ldc 238
+    //   654: aload 5
+    //   656: invokestatic 241	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   659: aload 8
+    //   661: ifnull +8 -> 669
+    //   664: aload 8
+    //   666: invokevirtual 177	java/io/FileInputStream:close	()V
+    //   669: aload 6
+    //   671: ifnull +8 -> 679
+    //   674: aload 6
+    //   676: invokevirtual 231	java/io/FileOutputStream:close	()V
+    //   679: aload_2
+    //   680: ifnull +7 -> 687
     //   683: aload_2
-    //   684: ifnull +7 -> 691
-    //   687: aload_2
-    //   688: invokevirtual 177	java/io/FileInputStream:close	()V
-    //   691: iconst_5
-    //   692: ireturn
-    //   693: astore 5
-    //   695: aconst_null
-    //   696: astore_2
-    //   697: aconst_null
-    //   698: astore 8
+    //   684: invokevirtual 177	java/io/FileInputStream:close	()V
+    //   687: iconst_5
+    //   688: ireturn
+    //   689: astore 5
+    //   691: aconst_null
+    //   692: astore_2
+    //   693: aconst_null
+    //   694: astore 8
+    //   696: aload 4
+    //   698: astore 6
     //   700: aload 6
     //   702: astore 7
     //   704: aload_2
@@ -538,11 +538,11 @@ public class ShortVideoPreviewActivity
     //   870: astore_2
     //   871: goto -270 -> 601
     //   874: astore_3
-    //   875: goto -202 -> 673
+    //   875: goto -206 -> 669
     //   878: astore_3
-    //   879: goto -196 -> 683
+    //   879: goto -200 -> 679
     //   882: astore_2
-    //   883: goto -192 -> 691
+    //   883: goto -196 -> 687
     //   886: astore_3
     //   887: goto -139 -> 748
     //   890: astore_3
@@ -588,35 +588,35 @@ public class ShortVideoPreviewActivity
     //   965: astore 5
     //   967: aconst_null
     //   968: astore_2
-    //   969: aload_3
-    //   970: astore 8
-    //   972: goto -272 -> 700
-    //   975: astore 5
-    //   977: aconst_null
-    //   978: astore 4
-    //   980: aload_2
-    //   981: astore 6
-    //   983: aload 4
-    //   985: astore_2
-    //   986: aload_3
-    //   987: astore 8
-    //   989: goto -289 -> 700
-    //   992: astore 5
-    //   994: aload_2
-    //   995: astore 6
-    //   997: aload 4
-    //   999: astore_2
-    //   1000: aload_3
-    //   1001: astore 8
-    //   1003: goto -303 -> 700
-    //   1006: astore 5
-    //   1008: aconst_null
-    //   1009: astore_2
-    //   1010: aload 4
-    //   1012: astore 6
+    //   969: aload 4
+    //   971: astore 6
+    //   973: aload_3
+    //   974: astore 8
+    //   976: goto -276 -> 700
+    //   979: astore 5
+    //   981: aconst_null
+    //   982: astore 4
+    //   984: aload_2
+    //   985: astore 6
+    //   987: aload 4
+    //   989: astore_2
+    //   990: aload_3
+    //   991: astore 8
+    //   993: goto -293 -> 700
+    //   996: astore 5
+    //   998: aload_2
+    //   999: astore 6
+    //   1001: aload 4
+    //   1003: astore_2
+    //   1004: aload_3
+    //   1005: astore 8
+    //   1007: goto -307 -> 700
+    //   1010: astore 5
+    //   1012: aconst_null
+    //   1013: astore_2
     //   1014: aload_3
     //   1015: astore 8
-    //   1017: goto -390 -> 627
+    //   1017: goto -394 -> 623
     //   1020: astore 5
     //   1022: aconst_null
     //   1023: astore 4
@@ -626,7 +626,7 @@ public class ShortVideoPreviewActivity
     //   1030: astore_2
     //   1031: aload_3
     //   1032: astore 8
-    //   1034: goto -407 -> 627
+    //   1034: goto -411 -> 623
     //   1037: astore 5
     //   1039: aload_2
     //   1040: astore 6
@@ -634,7 +634,7 @@ public class ShortVideoPreviewActivity
     //   1044: astore_2
     //   1045: aload_3
     //   1046: astore 8
-    //   1048: goto -421 -> 627
+    //   1048: goto -425 -> 623
     //   1051: astore 4
     //   1053: aconst_null
     //   1054: astore_2
@@ -651,7 +651,7 @@ public class ShortVideoPreviewActivity
     //   start	length	slot	name	signature
     //   0	1076	0	this	ShortVideoPreviewActivity
     //   13	725	1	i1	int
-    //   22	58	2	localBitmap1	Bitmap
+    //   22	58	2	localBitmap	Bitmap
     //   140	1	2	localIOException1	java.io.IOException
     //   172	426	2	localObject1	Object
     //   613	1	2	localIOException2	java.io.IOException
@@ -687,32 +687,32 @@ public class ShortVideoPreviewActivity
     //   894	1	3	localIOException25	java.io.IOException
     //   898	1	3	localIOException26	java.io.IOException
     //   902	144	3	localIOException27	java.io.IOException
-    //   1	554	4	localFileInputStream	java.io.FileInputStream
-    //   561	63	4	localIOException28	java.io.IOException
-    //   632	411	4	localObject9	Object
+    //   4	551	4	localFileInputStream	java.io.FileInputStream
+    //   561	18	4	localIOException28	java.io.IOException
+    //   628	415	4	localObject9	Object
     //   1051	1	4	localIOException29	java.io.IOException
     //   1058	8	4	localIOException30	java.io.IOException
-    //   1071	1	4	localObject10	Object
-    //   10	597	5	localObject11	Object
-    //   616	43	5	localException1	Exception
-    //   693	39	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   779	182	5	localObject12	Object
+    //   1071	1	4	localIOException31	java.io.IOException
+    //   10	597	5	localObject10	Object
+    //   616	39	5	localException1	Exception
+    //   689	43	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   779	182	5	localObject11	Object
     //   965	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   975	1	5	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   992	1	5	localOutOfMemoryError4	java.lang.OutOfMemoryError
-    //   1006	1	5	localException2	Exception
+    //   979	1	5	localOutOfMemoryError3	java.lang.OutOfMemoryError
+    //   996	1	5	localOutOfMemoryError4	java.lang.OutOfMemoryError
+    //   1010	1	5	localException2	Exception
     //   1020	1	5	localException3	Exception
     //   1037	1	5	localException4	Exception
-    //   1067	1	5	localIOException31	java.io.IOException
-    //   4	750	6	localIOException32	java.io.IOException
+    //   1067	1	5	localIOException32	java.io.IOException
+    //   1	753	6	localObject12	Object
     //   917	9	6	localObject13	Object
     //   931	6	6	localObject14	Object
     //   942	10	6	localObject15	Object
-    //   981	60	6	localObject16	Object
+    //   971	70	6	localObject16	Object
     //   1063	7	6	localIOException33	java.io.IOException
-    //   7	952	7	localIOException34	java.io.IOException
-    //   331	716	8	localObject17	Object
-    //   83	315	9	localBitmap2	Bitmap
+    //   7	952	7	localObject17	Object
+    //   83	964	8	localObject18	Object
+    //   331	97	9	localFile	File
     // Exception table:
     //   from	to	target	type
     //   132	140	140	java/io/IOException
@@ -727,11 +727,11 @@ public class ShortVideoPreviewActivity
     //   79	85	616	java/lang/Exception
     //   90	104	616	java/lang/Exception
     //   143	190	616	java/lang/Exception
-    //   14	23	693	java/lang/OutOfMemoryError
-    //   27	41	693	java/lang/OutOfMemoryError
-    //   79	85	693	java/lang/OutOfMemoryError
-    //   90	104	693	java/lang/OutOfMemoryError
-    //   143	190	693	java/lang/OutOfMemoryError
+    //   14	23	689	java/lang/OutOfMemoryError
+    //   27	41	689	java/lang/OutOfMemoryError
+    //   79	85	689	java/lang/OutOfMemoryError
+    //   90	104	689	java/lang/OutOfMemoryError
+    //   143	190	689	java/lang/OutOfMemoryError
     //   762	766	768	java/io/IOException
     //   14	23	771	finally
     //   27	41	771	finally
@@ -754,9 +754,9 @@ public class ShortVideoPreviewActivity
     //   554	559	862	java/io/IOException
     //   589	593	866	java/io/IOException
     //   597	601	870	java/io/IOException
-    //   668	673	874	java/io/IOException
-    //   678	683	878	java/io/IOException
-    //   687	691	882	java/io/IOException
+    //   664	669	874	java/io/IOException
+    //   674	679	878	java/io/IOException
+    //   683	687	882	java/io/IOException
     //   743	748	886	java/io/IOException
     //   753	758	890	java/io/IOException
     //   785	789	894	java/io/IOException
@@ -772,8 +772,8 @@ public class ShortVideoPreviewActivity
     //   424	485	931	finally
     //   513	533	931	finally
     //   567	583	942	finally
-    //   637	643	957	finally
-    //   653	663	957	finally
+    //   633	639	957	finally
+    //   649	659	957	finally
     //   710	716	957	finally
     //   726	736	957	finally
     //   190	249	965	java/lang/OutOfMemoryError
@@ -782,15 +782,15 @@ public class ShortVideoPreviewActivity
     //   365	381	965	java/lang/OutOfMemoryError
     //   381	387	965	java/lang/OutOfMemoryError
     //   387	397	965	java/lang/OutOfMemoryError
-    //   397	424	975	java/lang/OutOfMemoryError
-    //   424	485	992	java/lang/OutOfMemoryError
-    //   513	533	992	java/lang/OutOfMemoryError
-    //   190	249	1006	java/lang/Exception
-    //   283	360	1006	java/lang/Exception
-    //   360	365	1006	java/lang/Exception
-    //   365	381	1006	java/lang/Exception
-    //   381	387	1006	java/lang/Exception
-    //   387	397	1006	java/lang/Exception
+    //   397	424	979	java/lang/OutOfMemoryError
+    //   424	485	996	java/lang/OutOfMemoryError
+    //   513	533	996	java/lang/OutOfMemoryError
+    //   190	249	1010	java/lang/Exception
+    //   283	360	1010	java/lang/Exception
+    //   360	365	1010	java/lang/Exception
+    //   365	381	1010	java/lang/Exception
+    //   381	387	1010	java/lang/Exception
+    //   387	397	1010	java/lang/Exception
     //   397	424	1020	java/lang/Exception
     //   424	485	1037	java/lang/Exception
     //   513	533	1037	java/lang/Exception
@@ -825,7 +825,7 @@ public class ShortVideoPreviewActivity
   {
     if (!FileUtils.b(this.jdField_c_of_type_JavaLangString))
     {
-      QQToast.a(this, 2131364407, 0).a();
+      QQToast.a(this, 2131364418, 0).a();
       return;
     }
     try
@@ -846,7 +846,7 @@ public class ShortVideoPreviewActivity
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(this);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(this.jdField_c_of_type_JavaLangString);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new cok(this, paramInt));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new cpm(this, paramInt));
       return;
     }
     catch (Exception localException)
@@ -855,7 +855,7 @@ public class ShortVideoPreviewActivity
         QLog.e("ShortVideoPreviewActivity", 2, "#play#, msec=" + paramInt, localException);
       }
       g();
-      DialogUtil.a(this, 232, null, getString(2131364414), new col(this), null).show();
+      DialogUtil.a(this, 232, null, getString(2131364425), new cpn(this), null).show();
     }
   }
   
@@ -883,7 +883,7 @@ public class ShortVideoPreviewActivity
         if (QLog.isColorLevel()) {
           QLog.e("ShortVideoPreviewActivity", 2, "ShortVideoPreviewActivity initData(),mVideoPath or mUin is empty or mVideoPath not exits, just finish.");
         }
-        QQToast.a(this, 2131364407, 0).a();
+        QQToast.a(this, 2131364418, 0).a();
         finish();
       }
       return;
@@ -907,13 +907,13 @@ public class ShortVideoPreviewActivity
       if (paramInt == 1)
       {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838929);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838956);
       }
       while (QLog.isColorLevel())
       {
         QLog.d("ShortVideoPreviewActivity", 2, "changePlayState, playState => " + a(paramInt));
         return;
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838928);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838955);
       }
     }
   }
@@ -924,7 +924,7 @@ public class ShortVideoPreviewActivity
       switch (this.u)
       {
       default: 
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131362795);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131362802);
       }
     }
     for (;;)
@@ -933,19 +933,19 @@ public class ShortVideoPreviewActivity
       {
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
         if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362483);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362484);
         }
       }
       return;
       this.jdField_b_of_type_AndroidWidgetTextView.setText("发送");
       continue;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131362795);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131362802);
     }
   }
   
   private void c(int paramInt)
   {
-    DialogUtil.a(this, 232, null, getString(paramInt), new cop(this), null).show();
+    DialogUtil.a(this, 232, null, getString(paramInt), new cpq(this), null).show();
   }
   
   private void d()
@@ -986,7 +986,7 @@ public class ShortVideoPreviewActivity
         }
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624119);
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624120);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130903271);
@@ -1082,7 +1082,7 @@ public class ShortVideoPreviewActivity
           {
             this.jdField_a_of_type_Long = new File(this.jdField_c_of_type_JavaLangString).length();
             localObject = ShortVideoUtils.a(this, this.jdField_a_of_type_Long);
-            DialogUtil.a(this, 232, null, String.format(getResources().getString(2131364422), new Object[] { localObject }), new com(this), new coo(this)).show();
+            DialogUtil.a(this, 232, null, String.format(getResources().getString(2131364433), new Object[] { localObject }), new cpo(this), new cpp(this)).show();
             return;
             i1 = 0;
             break;
@@ -1090,14 +1090,14 @@ public class ShortVideoPreviewActivity
             i1 = 0;
             continue;
           }
-          new coq(this, null).execute(new Void[0]);
+          new cpr(this, null).execute(new Void[0]);
           return;
         }
-        c(2131364419);
+        c(2131364430);
         return;
       }
     }
-    QQToast.a(this, 1, 2131363511, 0).b(getTitleBarHeight());
+    QQToast.a(this, 1, 2131363522, 0).b(getTitleBarHeight());
   }
   
   private void k()
@@ -1119,19 +1119,19 @@ public class ShortVideoPreviewActivity
         QLog.d("ShortVideoPreviewActivity", 2, "onCreate(), mSavedCurPosition : " + this.s + ",mSavedPlayState : " + a(this.t));
       }
     }
-    super.setContentView(2130903541);
-    this.jdField_a_of_type_AndroidViewSurfaceView = ((SurfaceView)findViewById(2131298452));
+    super.setContentView(2130903550);
+    this.jdField_a_of_type_AndroidViewSurfaceView = ((SurfaceView)findViewById(2131298477));
     this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().setType(3);
     this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().addCallback(this.jdField_a_of_type_AndroidViewSurfaceHolder$Callback);
-    this.jdField_a_of_type_AndroidViewSurfaceView.getViewTreeObserver().addOnGlobalLayoutListener(new coh(this));
+    this.jdField_a_of_type_AndroidViewSurfaceView.getViewTreeObserver().addOnGlobalLayoutListener(new cpj(this));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297048));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297060));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298462));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298487));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298456));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298481));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new coi(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new cpk(this));
     c();
     paramBundle = new IntentFilter();
     paramBundle.addAction("android.intent.action.SCREEN_OFF");
@@ -1165,7 +1165,7 @@ public class ShortVideoPreviewActivity
     case 2131297060: 
       finish();
       return;
-    case 2131298456: 
+    case 2131298481: 
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoPreviewActivity", 2, "handleClick: mPlayState = " + a(this.p));
       }
@@ -1183,7 +1183,7 @@ public class ShortVideoPreviewActivity
       case 0: 
         if (this.app.d())
         {
-          QQToast.a(this, 0, 2131364424, 0).a();
+          QQToast.a(this, 0, 2131364435, 0).a();
           return;
         }
         a(0);

@@ -11,7 +11,7 @@ import android.os.Looper;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import dxh;
+import dyk;
 import java.io.File;
 
 public abstract class ReportLogHelper
@@ -23,13 +23,13 @@ public abstract class ReportLogHelper
   
   public static ProgressDialog a(Context paramContext, int paramInt)
   {
-    Drawable localDrawable = paramContext.getResources().getDrawable(2130839101);
-    paramContext = new ProgressDialog(paramContext, 2131624119);
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130839134);
+    paramContext = new ProgressDialog(paramContext, 2131624120);
     paramContext.show();
     paramContext.getWindow().setContentView(2130903049);
     paramContext.setContentView(2130903049);
-    ((TextView)paramContext.findViewById(2131296470)).setText(paramInt);
-    ((ProgressBar)paramContext.findViewById(2131296469)).setIndeterminateDrawable(localDrawable);
+    ((TextView)paramContext.findViewById(2131296473)).setText(paramInt);
+    ((ProgressBar)paramContext.findViewById(2131296472)).setIndeterminateDrawable(localDrawable);
     return paramContext;
   }
   
@@ -53,7 +53,7 @@ public abstract class ReportLogHelper
   
   public static void a(Activity paramActivity, String paramString, Handler paramHandler)
   {
-    paramHandler.post(new dxh(paramActivity, paramString));
+    paramHandler.post(new dyk(paramActivity, paramString));
   }
   
   /* Error */

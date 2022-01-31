@@ -22,9 +22,9 @@ public class TroopCreateAdvanceData
   public int a()
   {
     if ((this.e == 97) || (this.e == 9)) {
-      return 2131362315;
+      return 2131362316;
     }
-    return 2131362314;
+    return 2131362315;
   }
   
   public boolean a()

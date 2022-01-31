@@ -151,12 +151,12 @@ public class IndividuationPlugin
       {
         if (!BaseApplicationImpl.a)
         {
-          Toast.makeText(this.mActivity, this.mActivity.getString(2131363264), 0).show();
+          Toast.makeText(this.mActivity, this.mActivity.getString(2131363274), 0).show();
           return;
         }
         if (!Utils.e())
         {
-          Toast.makeText(this.mActivity, this.mActivity.getString(2131363511), 0).show();
+          Toast.makeText(this.mActivity, this.mActivity.getString(2131363522), 0).show();
           return;
         }
       }
@@ -176,7 +176,7 @@ public class IndividuationPlugin
         {
           paramJSONObject = new Intent(this.mActivity, ChatBackgroundSettingActivity.class);
           paramJSONObject.putExtra("bg_replace_entrance", 8);
-          paramJSONObject.putExtra("selfSet_leftViewText", this.mActivity.getString(2131363113));
+          paramJSONObject.putExtra("selfSet_leftViewText", this.mActivity.getString(2131363123));
           super.startActivityForResult(paramJSONObject, (byte)1);
           return;
         }
@@ -211,7 +211,7 @@ public class IndividuationPlugin
         if ("0".equals(localObject))
         {
           paramString = new Intent(this.mActivity, QQBrowserActivity.class);
-          paramString.putExtra("url", URLDecoder.decode(paramJSONObject.getString("detailId"), "UTF-8").replace("{uin}", this.mBrowserApp.a()).replace("{client}", "androidQQ").replace("{version}", "3.4.0.607").replace("{platformId}", "2").replace("{device}", Build.DEVICE).replace("{system}", Build.VERSION.RELEASE).replace("{systemInt}", Integer.toString(Build.VERSION.SDK_INT)).replace("{adtag}", "mvip.gongneng.anroid.individuation.web").replace("{updateFlag}", "false").replace("{density}", ThemeUtil.getThemeDensity(this.mBrowserApp.getApplication().getApplicationContext())));
+          paramString.putExtra("url", URLDecoder.decode(paramJSONObject.getString("detailId"), "UTF-8").replace("{uin}", this.mBrowserApp.a()).replace("{client}", "androidQQ").replace("{version}", "3.5.0.660").replace("{platformId}", "2").replace("{device}", Build.DEVICE).replace("{system}", Build.VERSION.RELEASE).replace("{systemInt}", Integer.toString(Build.VERSION.SDK_INT)).replace("{adtag}", "mvip.gongneng.anroid.individuation.web").replace("{updateFlag}", "false").replace("{density}", ThemeUtil.getThemeDensity(this.mBrowserApp.getApplication().getApplicationContext())));
           this.mActivity.startActivity(paramString);
           return;
         }

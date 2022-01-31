@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/APKTOOL_DUPLICATE_style_0x7f0e011e"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09087e" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02058f" style="@style/APKTOOL_DUPLICATE_style_0x7f0e011f" />
-    <TextView android:id="@id/item_txt" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a09af" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0120" />
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090880" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0122" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090883" android:visibility="visible" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020668" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0121" />
-</LinearLayout>

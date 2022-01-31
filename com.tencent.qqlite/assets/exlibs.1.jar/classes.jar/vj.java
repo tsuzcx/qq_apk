@@ -35,8 +35,8 @@ public class vj
       {
         if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
         {
-          TextView localTextView1 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131296455);
-          TextView localTextView2 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131296456);
+          TextView localTextView1 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131296458);
+          TextView localTextView2 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131296459);
           localTextView1.setText(ContactUtils.g(this.a.app, paramString));
           localTextView2.setText(this.a.app.b(paramString));
           a(paramString, j);

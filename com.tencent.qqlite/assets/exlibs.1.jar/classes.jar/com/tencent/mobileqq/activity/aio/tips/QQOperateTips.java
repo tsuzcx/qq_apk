@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.tips;
 
 import android.app.Activity;
 import android.view.View;
-import cat;
+import cbu;
 import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.MessageHandlerUtils;
@@ -46,7 +46,7 @@ public class QQOperateTips
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cat(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cbu(this));
   }
   
   private void b()

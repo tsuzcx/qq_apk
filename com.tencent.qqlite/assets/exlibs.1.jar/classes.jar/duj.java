@@ -1,15 +1,44 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
-import java.util.TimerTask;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
 
 public class duj
-  extends TimerTask
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public duj(PreviewingOfflineFileViewBase paramPreviewingOfflineFileViewBase) {}
+  public duj(LocalVideoFileView paramLocalVideoFileView) {}
   
-  public void run()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    PreviewingOfflineFileViewBase.e(this.a).runOnUiThread(new duk(this));
+    LocalVideoFileView.a(this.a, paramInt);
+    if (paramBoolean)
+    {
+      paramSeekBar = LocalVideoFileView.a(this.a, paramInt);
+      LocalVideoFileView.a(this.a).setText(paramSeekBar);
+      if ((LocalVideoFileView.a(this.a) != null) && (LocalVideoFileView.a(this.a).b(LocalVideoFileView.a(this.a)))) {}
+    }
+    else
+    {
+      return;
+    }
+    LocalVideoFileView.a(this.a).a(paramInt);
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((LocalVideoFileView.a(this.a) == null) || (!LocalVideoFileView.a(this.a).b(LocalVideoFileView.a(this.a)))) {
+      return;
+    }
+    LocalVideoFileView.a(this.a).d();
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((LocalVideoFileView.a(this.a) == null) || (!LocalVideoFileView.a(this.a).b(LocalVideoFileView.a(this.a)))) {
+      return;
+    }
+    LocalVideoFileView.a(this.a).e();
   }
 }
 

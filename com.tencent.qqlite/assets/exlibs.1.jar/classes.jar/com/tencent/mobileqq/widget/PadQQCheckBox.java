@@ -59,13 +59,13 @@ public class PadQQCheckBox
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838118);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838137);
     }
     for (;;)
     {
       refreshDrawableState();
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838116);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838135);
     }
   }
 }

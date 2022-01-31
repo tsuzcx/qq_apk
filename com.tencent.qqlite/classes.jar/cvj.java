@@ -1,184 +1,213 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.Conversation;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
+import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.transfile.FMTSrvAddrProvider;
-import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppActivity;
 
 public class cvj
-  implements INetInfoHandler
+  extends ContactBindObserver
 {
-  private cvj(QQAppInterface paramQQAppInterface) {}
+  public cvj(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  private void a()
+  private boolean a()
   {
-    NetworkCenter.a().b();
+    int i = this.a.d();
+    boolean bool = this.a.c();
+    long l2 = System.currentTimeMillis();
+    long l1 = -1L;
+    RespondQueryQQBindingStat localRespondQueryQQBindingStat = this.a.a();
+    if (localRespondQueryQQBindingStat != null) {
+      l1 = localRespondQueryQQBindingStat.lastUsedFlag;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact", 2, "isShouldQueryContacts state:" + i + ", isFirst:" + this.a.jdField_a_of_type_Boolean + ", isAccessable:" + bool + ", currentTime:" + l2 + ", uploadTime:" + this.a.jdField_d_of_type_Long + ", downloadTime:" + this.a.b + ", lastUsedFlag:" + l1 + ", mCurrentBindState:" + this.a.jdField_a_of_type_Int);
+    }
+    return (!this.a.jdField_a_of_type_Boolean) && (this.a.g()) && (bool) && (this.a.jdField_a_of_type_Int != 6) && (l1 != 2L) && (l2 - this.a.jdField_d_of_type_Long > 120000L);
   }
   
-  private void a(int paramInt, String paramString)
+  void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("raw_photo", 2, "type:" + paramInt + ",logmsg:" + paramString);
+      QLog.d("ThemeDownloadTrace", 2, "phoneContactOb.onQueryBindState() is called,isOpeningShare is:" + PhoneContactManagerImp.jdField_c_of_type_Boolean);
     }
-    if (1 == paramInt) {
-      this.a.C();
-    }
-    while (2 != paramInt) {
+    if (PhoneContactManagerImp.jdField_c_of_type_Boolean) {}
+    label392:
+    label397:
+    label405:
+    do
+    {
+      do
+      {
+        return;
+        if (!this.a.d()) {
+          break;
+        }
+      } while (PhoneNumLoginImpl.a().a());
+      Object localObject2 = null;
+      StringBuilder localStringBuilder = null;
+      int i;
+      if (PhoneContactManagerImp.a(this.a).isLogin())
+      {
+        i = this.a.b();
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDownloadTrace", 2, "bindState = " + i);
+        }
+      }
+      switch (i)
+      {
+      default: 
+        localObject1 = localStringBuilder;
+        localObject2 = localObject1;
+        if (i != 1)
+        {
+          localObject2 = localObject1;
+          if (i != 2)
+          {
+            ContactUtils.a(PhoneContactManagerImp.a(this.a), 1);
+            localObject2 = localObject1;
+          }
+        }
+        localObject1 = BaseActivity.sTopActivity;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder().append("topActivity is:").append(localObject1).append(",isFinishing is:");
+          if (localObject1 == null) {
+            break label392;
+          }
+        }
+        break;
+      }
+      for (boolean bool = ((AppActivity)localObject1).isFinishing();; bool = false)
+      {
+        QLog.d("ThemeDownloadTrace", 2, bool + ",i is:" + localObject2);
+        if ((localObject1 == null) || (((AppActivity)localObject1).isFinishing()) || (((AppActivity)localObject1).getAppRuntime() != PhoneContactManagerImp.a(this.a))) {
+          break label405;
+        }
+        if (localObject2 == null) {
+          break label397;
+        }
+        ((AppActivity)localObject1).startActivity(localObject2);
+        ((AppActivity)localObject1).overridePendingTransition(2130968639, 2130968589);
+        return;
+        localObject1 = new Intent(PhoneContactManagerImp.a(this.a).a().getApplicationContext(), PhoneLaunchActivity.class);
+        ((Intent)localObject1).putExtra("needAlert", true);
+        ContactUtils.a(PhoneContactManagerImp.a(this.a));
+        break;
+        localObject1 = localStringBuilder;
+        if (this.a.a() == null) {
+          break;
+        }
+        localObject1 = localStringBuilder;
+        if (this.a.a().lastUsedFlag != 3L) {
+          break;
+        }
+        localObject1 = new Intent(PhoneContactManagerImp.a(this.a).a().getApplicationContext(), PhoneMatchActivity.class);
+        break;
+      }
+      this.a.h();
+      return;
+      this.a.h();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeDownloadTrace", 2, "mgr.isPhoneContactFirstRun() result is false");
+      }
+    } while ((!PhoneContactManagerImp.a(this.a).isLogin()) || (!ContactUtils.a(this.a, PhoneContactManagerImp.a(this.a))) || (BaseActivity.sTopActivity == null));
+    Object localObject1 = new Intent(PhoneContactManagerImp.a(this.a).a().getApplicationContext(), PhoneLaunchActivity.class);
+    ((Intent)localObject1).putExtra("needAlert", true);
+    BaseActivity.sTopActivity.startActivity((Intent)localObject1);
+    BaseActivity.sTopActivity.overridePendingTransition(2130968639, 2130968589);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("contact_bind_info_upload", paramBoolean).commit();
+    this.a.jdField_d_of_type_Long = 0L;
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_Int = 8;
+      this.a.e();
+      this.a.c();
+      PhoneContactManagerImp.a(this.a, 2);
       return;
     }
-    this.a.D();
+    this.a.jdField_d_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = 5;
   }
   
-  public void onNetMobile2None()
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    a(3, "onNetMobile2None");
-    ReportLog.a("Network", "onNetMobile2None()");
-    Handler localHandler = this.a.a(FileManagerNotifyCenter.class);
-    if (localHandler != null) {
-      localHandler.obtainMessage(10001, null).sendToTarget();
-    }
-    localHandler = this.a.a(Conversation.class);
-    if (localHandler != null) {
-      localHandler.obtainMessage(10001, QQAppInterface.a(this.a).getString(2131362790)).sendToTarget();
-    }
-    FMTSrvAddrProvider.a().a();
-    QQAppInterface.a(this.a);
-    this.a.a().a(1);
-    a();
-    if (QQAppInterface.a(this.a) != null) {
-      QQAppInterface.a(this.a).onNetMobile2None();
+    if ((paramBoolean) && (paramInt == 0)) {
+      this.a.c();
     }
   }
   
-  public void onNetMobile2Wifi()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    a(2, "onNetMobile2Wifi");
-    ReportLog.a("Network", "onNetMobile2Wifi()");
-    Object localObject = this.a.a(FileManagerNotifyCenter.class);
-    if (localObject != null) {
-      ((Handler)localObject).obtainMessage(10001, null).sendToTarget();
+    this.a.jdField_c_of_type_Long = 0L;
+    if (this.a.jdField_a_of_type_Boolean) {
+      c(paramBoolean1);
     }
-    localObject = this.a.a(Conversation.class);
-    if (localObject != null) {
-      ((Handler)localObject).obtainMessage(10001, null).sendToTarget();
+    if (paramBoolean3) {
+      a();
     }
-    FMTSrvAddrProvider.a().a();
-    QQAppInterface.a(this.a);
-    this.a.a().a(1);
-    a();
-    if (QQAppInterface.a(this.a) != null) {
-      QQAppInterface.a(this.a).onNetMobile2Wifi();
-    }
-    this.a.a();
-    localObject = (EarlyDownloadManager)this.a.getManager(58);
-    if (localObject != null) {
-      ((EarlyDownloadManager)localObject).a();
+    if (a()) {
+      PhoneContactManagerImp.a(this.a);
     }
   }
   
-  public void onNetNone2Mobile()
+  protected void b(boolean paramBoolean)
   {
-    a(1, "onNetNone2Mobile");
-    ReportLog.a("Network", "onNetNone2Mobile()");
-    Object localObject = this.a.a(Conversation.class);
-    if (localObject != null) {
-      ((Handler)localObject).obtainMessage(10001, null).sendToTarget();
-    }
-    localObject = this.a.a(ChatHistory.class);
-    if (localObject != null) {
-      ((Handler)localObject).obtainMessage(6, null).sendToTarget();
-    }
-    FMTSrvAddrProvider.a().a();
-    QQAppInterface.a(this.a);
-    this.a.a().a(2);
-    a();
-    if (QQAppInterface.a(this.a) != null) {
-      QQAppInterface.a(this.a).onNetNone2Mobile();
-    }
-    localObject = (EarlyDownloadManager)this.a.getManager(58);
-    if (localObject != null) {
-      ((EarlyDownloadManager)localObject).a();
+    if (paramBoolean)
+    {
+      this.a.c();
+      this.a.jdField_a_of_type_Int = 1;
     }
   }
   
-  public void onNetNone2Wifi()
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    a(2, "onNetNone2Wifi");
-    ReportLog.a("Network", "onNetNone2Wifi()");
-    Object localObject = this.a.a(Conversation.class);
-    if (localObject != null) {
-      ((Handler)localObject).obtainMessage(10001, null).sendToTarget();
+    this.a.b = 0L;
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.e();
     }
-    localObject = this.a.a(ChatHistory.class);
-    if (localObject != null) {
-      ((Handler)localObject).obtainMessage(6, null).sendToTarget();
+    if (paramBoolean1)
+    {
+      this.a.jdField_a_of_type_Int = 11;
+      return;
     }
-    FMTSrvAddrProvider.a().a();
-    QQAppInterface.a(this.a);
-    this.a.a().a(1);
-    a();
-    if (QQAppInterface.a(this.a) != null) {
-      QQAppInterface.a(this.a).onNetNone2Wifi();
-    }
-    this.a.a();
-    localObject = (EarlyDownloadManager)this.a.getManager(58);
-    if (localObject != null) {
-      ((EarlyDownloadManager)localObject).a();
+    this.a.jdField_a_of_type_Int = 10;
+  }
+  
+  void c(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      cvk localcvk = new cvk(this);
+      PhoneContactManagerImp.a(this.a).a(localcvk);
     }
   }
   
-  public void onNetWifi2Mobile()
+  protected void c(boolean paramBoolean1, boolean paramBoolean2)
   {
-    a(1, "onNetWifi2Mobile");
-    ReportLog.a("Network", "onNetWifi2Mobile()");
-    Object localObject = this.a.a(FileManagerNotifyCenter.class);
-    if (localObject != null) {
-      ((Handler)localObject).obtainMessage(10001, null).sendToTarget();
-    }
-    localObject = this.a.a(Conversation.class);
-    if (localObject != null) {
-      ((Handler)localObject).obtainMessage(10001, null).sendToTarget();
-    }
-    FMTSrvAddrProvider.a().a();
-    QQAppInterface.a(this.a);
-    this.a.a().a(2);
-    a();
-    if (QQAppInterface.a(this.a) != null) {
-      QQAppInterface.a(this.a).onNetWifi2Mobile();
-    }
-    localObject = (EarlyDownloadManager)this.a.getManager(58);
-    if (localObject != null) {
-      ((EarlyDownloadManager)localObject).a();
-    }
+    PhoneContactManagerImp.a(this.a, true);
   }
   
-  public void onNetWifi2None()
+  protected void d(boolean paramBoolean)
   {
-    a(3, "onNetWifi2None");
-    ReportLog.a("Network", "onNetWifi2None()");
-    Handler localHandler = this.a.a(FileManagerNotifyCenter.class);
-    if (localHandler != null) {
-      localHandler.obtainMessage(10001, null).sendToTarget();
-    }
-    localHandler = this.a.a(Conversation.class);
-    if (localHandler != null) {
-      localHandler.obtainMessage(10001, QQAppInterface.b(this.a).getString(2131362790)).sendToTarget();
-    }
-    FMTSrvAddrProvider.a().a();
-    QQAppInterface.a(this.a);
-    this.a.a().a(1);
-    a();
-    if (QQAppInterface.a(this.a) != null) {
-      QQAppInterface.a(this.a).onNetWifi2None();
+    if (paramBoolean)
+    {
+      this.a.e();
+      PhoneContactManagerImp.a(this.a);
     }
   }
 }

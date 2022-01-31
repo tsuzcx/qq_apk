@@ -1,5 +1,7 @@
 package com.tencent.smtt.export.external.extension.interfaces;
 
+import java.util.Map;
+
 public abstract interface IX5WebSettingsExtension
 {
   public abstract boolean getPageSolarEnableFlag();
@@ -12,13 +14,21 @@ public abstract interface IX5WebSettingsExtension
   
   public abstract boolean isWebViewInBackground();
   
+  public abstract void setAcceptCookie(boolean paramBoolean);
+  
+  public abstract void setAdditionalHttpHeaders(Map<String, String> paramMap);
+  
   public abstract void setDayOrNight(boolean paramBoolean);
   
   public abstract void setEnableUnderLine(boolean paramBoolean);
   
   public abstract void setFitScreen(boolean paramBoolean);
   
+  public abstract void setFloatVideoEnabled(boolean paramBoolean);
+  
   public abstract void setImgAsDownloadFile(boolean paramBoolean);
+  
+  public abstract void setOnContextMenuEnable(boolean paramBoolean);
   
   public abstract void setOnlyDomTreeBuild(boolean paramBoolean);
   
@@ -31,6 +41,8 @@ public abstract interface IX5WebSettingsExtension
   public abstract void setPreFectchEnableWhenHasMedia(boolean paramBoolean);
   
   public abstract void setReadModeWebView(boolean paramBoolean);
+  
+  public abstract void setRecordRequestEnabled(boolean paramBoolean);
   
   public abstract void setRememberScaleValue(boolean paramBoolean);
   

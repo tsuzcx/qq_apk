@@ -2,7 +2,7 @@ package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
 import android.app.Activity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import dty;
+import dva;
 
 public class PreviewingOfflineFileView
   extends PreviewingOfflineFileViewBase
@@ -13,7 +13,7 @@ public class PreviewingOfflineFileView
   public PreviewingOfflineFileView(Activity paramActivity, QQAppInterface paramQQAppInterface)
   {
     super(paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewPreviewingOfflineFileViewBase$IControllProxyInterface = new dty(this, paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewPreviewingOfflineFileViewBase$IControllProxyInterface = new dva(this, paramQQAppInterface);
   }
   
   protected PreviewingOfflineFileViewBase.IControllProxyInterface a()

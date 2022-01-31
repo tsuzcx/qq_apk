@@ -8,9 +8,9 @@ import android.os.Handler.Callback;
 import android.text.TextUtils;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import bjo;
-import bjp;
-import bjq;
+import bjt;
+import bju;
+import bjv;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.FriendManager;
@@ -25,7 +25,7 @@ public class ShortcutRouterActivity
   private static final int jdField_a_of_type_Int = 0;
   private static final int b = 1;
   private static final int c = 2;
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new bjq(this);
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new bjv(this);
   private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback;
   
   private int a(Intent paramIntent)
@@ -58,9 +58,9 @@ public class ShortcutRouterActivity
     }
     for (;;)
     {
-      localQQCustomDialog.setNegativeButton(2131363660, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+      localQQCustomDialog.setNegativeButton(2131363671, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
       localQQCustomDialog.addView(localTextView);
-      localQQCustomDialog.setOnDismissListener(new bjp(this));
+      localQQCustomDialog.setOnDismissListener(new bju(this));
       if (!isFinishing()) {
         localQQCustomDialog.show();
       }
@@ -89,7 +89,7 @@ public class ShortcutRouterActivity
     {
       if ((!TextUtils.isEmpty(str2)) && (str2.equals("starClub")) && (str1.equals(ChatActivity.class.getName())))
       {
-        QQToast.a(this, getString(2131362932), 0).b(getTitleBarHeight());
+        QQToast.a(this, getString(2131362939), 0).b(getTitleBarHeight());
         finish();
         return true;
       }
@@ -109,7 +109,7 @@ public class ShortcutRouterActivity
     for (;;)
     {
       return true;
-      QQToast.a(this, getString(2131362932), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131362939), 0).b(getTitleBarHeight());
       finish();
       return true;
       c();
@@ -119,7 +119,7 @@ public class ShortcutRouterActivity
       paramBundle.getIntExtra("uintype", 0);
       paramBundle.getStringExtra("extraUin");
       if (this.jdField_a_of_type_AndroidOsHandler$Callback == null) {
-        this.jdField_a_of_type_AndroidOsHandler$Callback = new bjo(this);
+        this.jdField_a_of_type_AndroidOsHandler$Callback = new bjt(this);
       }
     }
   }

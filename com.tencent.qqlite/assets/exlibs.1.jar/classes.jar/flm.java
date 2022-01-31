@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.GpsInfo4LocalImage;
+import android.database.DataSetObserver;
+import com.tencent.widget.XCursorAdapter;
 
-public final class flm
-  implements Parcelable.Creator
+public class flm
+  extends DataSetObserver
 {
-  public GpsInfo4LocalImage a(Parcel paramParcel)
+  private flm(XCursorAdapter paramXCursorAdapter) {}
+  
+  public void onChanged()
   {
-    return new GpsInfo4LocalImage(paramParcel.readFloat(), paramParcel.readFloat());
+    this.a.a = true;
+    this.a.notifyDataSetChanged();
   }
   
-  public GpsInfo4LocalImage[] a(int paramInt)
+  public void onInvalidated()
   {
-    return null;
+    this.a.a = false;
+    this.a.notifyDataSetInvalidated();
   }
 }
 

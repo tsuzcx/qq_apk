@@ -1,76 +1,36 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQServiceEntry;
-import com.tencent.mobileqq.app.QQServiceEntry.Tag;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 
 public class cvt
-  extends BaseAdapter
+  extends cuj
 {
-  public cvt(QQServiceEntry paramQQServiceEntry, int paramInt)
+  protected void a()
   {
-    paramQQServiceEntry.jdField_a_of_type_JavaUtilList = new ArrayList();
-    cvs[] arrayOfcvs = QQServiceEntry.jdField_a_of_type_ArrayOfCvs;
-    int j = arrayOfcvs.length;
-    int i = 0;
-    while (i < j)
+    super.a();
+    if (this.b >= cuf.a().a / 12000L)
     {
-      cvs localcvs = arrayOfcvs[i];
-      if ((localcvs.jdField_a_of_type_Int & paramInt) != 0) {
-        paramQQServiceEntry.jdField_a_of_type_JavaUtilList.add(localcvs);
-      }
-      i += 1;
+      CoreService.d();
+      this.a.f();
+      this.b = 0L;
     }
   }
   
-  public int getCount()
+  protected void a(String paramString)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQServiceEntry$Tag.a.getContext();
-    paramViewGroup = paramView;
-    if (paramView == null)
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.qqlite".equals(paramString)) {}
+    for (int i = 2;; i = 3)
     {
-      paramViewGroup = ((LayoutInflater)((Context)localObject).getSystemService("layout_inflater")).inflate(2130903632, null);
-      paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-2, this.a.i + 4));
+      localGuardManager.a(i, paramString);
+      return;
     }
-    paramView = (ImageView)paramViewGroup.findViewById(2131296759);
-    paramView.setAdjustViewBounds(true);
-    paramView.setImageDrawable(((Context)localObject).getResources().getDrawable(((cvs)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).b));
-    localObject = paramView.getDrawable();
-    if (!this.a.jdField_a_of_type_Boolean) {
-      ((TextView)paramViewGroup.findViewById(2131296760)).setText(((cvs)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      paramView.setImageDrawable((Drawable)localObject);
-      return paramViewGroup;
-      ((Drawable)localObject).setColorFilter(-1, PorterDuff.Mode.SRC_IN);
-    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.e();
+    CoreService.c();
   }
 }
 

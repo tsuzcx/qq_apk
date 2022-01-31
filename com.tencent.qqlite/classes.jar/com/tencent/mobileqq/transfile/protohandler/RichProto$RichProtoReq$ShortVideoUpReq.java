@@ -11,7 +11,7 @@ public class RichProto$RichProtoReq$ShortVideoUpReq
   public long b;
   public String b;
   public byte[] b;
-  public int d;
+  public int c;
   public int e;
   public int f;
   public int g;

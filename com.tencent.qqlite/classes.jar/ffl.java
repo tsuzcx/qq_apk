@@ -1,16 +1,23 @@
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.ControlPolicyUtil;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.widget.Toast;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.ToastUtil;
 
 public class ffl
   implements Runnable
 {
-  public ffl(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
+  public ffl(ToastUtil paramToastUtil, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    StaticAnalyz.a("100", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
-    ControlPolicyUtil.a();
+    if (this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a == null)
+    {
+      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a = Toast.makeText(CommonDataAdapter.a().a(), this.jdField_a_of_type_Int, this.b);
+      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setText(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setDuration(this.b);
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
   }
 }
 

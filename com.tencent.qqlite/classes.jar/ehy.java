@@ -1,31 +1,16 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.transfile.VideoThumbDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.qq.taf.jce.JceOutputStream;
+import com.tencent.mobileqq.transfile.CommenTransFileProcessor;
+import java.util.TimerTask;
 
 public class ehy
-  implements BitmapDecoder
+  extends TimerTask
 {
-  public ehy(VideoThumbDownloader paramVideoThumbDownloader) {}
+  public ehy(CommenTransFileProcessor paramCommenTransFileProcessor, JceOutputStream paramJceOutputStream) {}
   
-  public Bitmap a(URL paramURL)
+  public void run()
   {
-    String str = paramURL.getPath();
-    try
-    {
-      Bitmap localBitmap = VideoThumbDownloader.a(this.a, str);
-      paramURL = localBitmap;
-      if (localBitmap == null) {
-        paramURL = VideoThumbDownloader.b(this.a, str);
-      }
-      return paramURL;
-    }
-    catch (Throwable paramURL)
-    {
-      QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-    }
-    return null;
+    byte[] arrayOfByte = this.jdField_a_of_type_ComQqTafJceJceOutputStream.toByteArray();
+    CommenTransFileProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileCommenTransFileProcessor, this.jdField_a_of_type_ComTencentMobileqqTransfileCommenTransFileProcessor.a, arrayOfByte);
   }
 }
 

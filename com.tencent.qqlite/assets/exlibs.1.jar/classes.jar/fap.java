@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.widget.GridListView;
+import com.tencent.mobileqq.widget.GridListView.GridListAdapter;
+import com.tencent.mobileqq.widget.GridListView.WraperAdapter;
 
 public class fap
-  implements DialogInterface.OnClickListener
+  extends DataSetObserver
 {
-  public fap(AuthorityActivity paramAuthorityActivity) {}
+  public fap(GridListView paramGridListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onChanged()
   {
-    paramDialogInterface.dismiss();
+    GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetInvalidated();
   }
 }
 

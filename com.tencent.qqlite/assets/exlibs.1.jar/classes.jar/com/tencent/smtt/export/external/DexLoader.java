@@ -28,6 +28,23 @@ public class DexLoader
     }
   }
   
+  public DexLoader(Context paramContext, String[] paramArrayOfString, String paramString, DexLoader paramDexLoader)
+  {
+    paramContext = paramDexLoader.getClassLoader();
+    int i = 0;
+    while (i < paramArrayOfString.length)
+    {
+      paramContext = new DexClassLoader(paramArrayOfString[i], paramString, null, paramContext);
+      this.mClassLoader = paramContext;
+      i += 1;
+    }
+  }
+  
+  public DexClassLoader getClassLoader()
+  {
+    return this.mClassLoader;
+  }
+  
   public Object getStaticField(String paramString1, String paramString2)
   {
     try
@@ -37,9 +54,9 @@ public class DexLoader
       localObject = ((Field)localObject).get(null);
       return localObject;
     }
-    catch (Exception localException)
+    catch (Throwable localThrowable)
     {
-      Log.e(getClass().getSimpleName(), "'" + paramString1 + "' get field '" + paramString2 + "' failed", localException);
+      Log.e(getClass().getSimpleName(), "'" + paramString1 + "' get field '" + paramString2 + "' failed", localThrowable);
     }
     return null;
   }
@@ -53,7 +70,7 @@ public class DexLoader
       paramObject = paramArrayOfClass.invoke(paramObject, paramVarArgs);
       return paramObject;
     }
-    catch (Exception paramObject)
+    catch (Throwable paramObject)
     {
       Log.e(getClass().getSimpleName(), "'" + paramString1 + "' invoke method '" + paramString2 + "' failed", paramObject);
     }
@@ -69,7 +86,7 @@ public class DexLoader
       paramArrayOfClass = paramArrayOfClass.invoke(null, paramVarArgs);
       return paramArrayOfClass;
     }
-    catch (Exception paramArrayOfClass)
+    catch (Throwable paramArrayOfClass)
     {
       Log.e(getClass().getSimpleName(), "'" + paramString1 + "' invoke static method '" + paramString2 + "' failed", paramArrayOfClass);
     }
@@ -83,9 +100,9 @@ public class DexLoader
       Class localClass = this.mClassLoader.loadClass(paramString);
       return localClass;
     }
-    catch (Exception localException)
+    catch (Throwable localThrowable)
     {
-      Log.e(getClass().getSimpleName(), "loadClass '" + paramString + "' failed", localException);
+      Log.e(getClass().getSimpleName(), "loadClass '" + paramString + "' failed", localThrowable);
     }
     return null;
   }
@@ -97,9 +114,9 @@ public class DexLoader
       Object localObject = this.mClassLoader.loadClass(paramString).newInstance();
       return localObject;
     }
-    catch (Exception localException)
+    catch (Throwable localThrowable)
     {
-      Log.e(getClass().getSimpleName(), "create " + paramString + " instance failed", localException);
+      Log.e(getClass().getSimpleName(), "create " + paramString + " instance failed", localThrowable);
     }
     return null;
   }
@@ -111,11 +128,26 @@ public class DexLoader
       paramArrayOfClass = this.mClassLoader.loadClass(paramString).getConstructor(paramArrayOfClass).newInstance(paramVarArgs);
       return paramArrayOfClass;
     }
-    catch (Exception paramArrayOfClass)
+    catch (Throwable paramArrayOfClass)
     {
       Log.e(getClass().getSimpleName(), "create '" + paramString + "' instance failed", paramArrayOfClass);
     }
     return null;
+  }
+  
+  public void setStaticField(String paramString1, String paramString2, Object paramObject)
+  {
+    try
+    {
+      Field localField = this.mClassLoader.loadClass(paramString1).getField(paramString2);
+      localField.setAccessible(true);
+      localField.set(null, paramObject);
+      return;
+    }
+    catch (Throwable paramObject)
+    {
+      Log.e(getClass().getSimpleName(), "'" + paramString1 + "' set field '" + paramString2 + "' failed", paramObject);
+    }
   }
 }
 

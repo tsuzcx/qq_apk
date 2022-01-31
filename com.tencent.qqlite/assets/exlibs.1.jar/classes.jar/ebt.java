@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-public class ebt
-  implements IStatusListener
+public final class ebt
+  implements Runnable
 {
-  public ebt(EditActivity paramEditActivity) {}
+  public ebt(SharedPreferences paramSharedPreferences) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus)
+  public void run()
   {
-    if (paramInt != 100)
-    {
-      EditActivity.a(this.a, null);
-      EditActivity.a(this.a, null);
-    }
-    EditActivity.b(this.a, true);
+    this.a.edit().putBoolean("new_red_point_received", true).commit();
   }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

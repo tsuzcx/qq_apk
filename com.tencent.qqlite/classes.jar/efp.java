@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTimer;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView.TimerCallback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver;
+import com.tencent.mobileqq.statistics.ReportController;
+import mqq.app.AppRuntime;
 
-public class efp
-  implements CountdownTextView.TimerCallback
+public final class efp
+  extends PluginRecoverReceiver
 {
-  public efp(StructMsgItemTimer paramStructMsgItemTimer, CountdownTextView paramCountdownTextView) {}
-  
-  public void a()
+  protected void onRecver(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, 0L));
-  }
-  
-  public void a(long paramLong)
-  {
-    paramLong /= 1000L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, paramLong));
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Long = paramLong;
+    AppRuntime localAppRuntime = BaseApplicationImpl.a.a();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      ReportController.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "NetPlugins", "Download", 9527, 0, "0", "0", paramString, "");
+    }
   }
 }
 

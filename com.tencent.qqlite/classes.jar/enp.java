@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.troop.data.TroopMessageManager;
-import java.util.Map;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.NearbyOpenTroop;
 
-class enp
-  implements Runnable
+public class enp
+  extends BizTroopObserver
 {
-  enp(eno parameno) {}
+  public enp(NearbyOpenTroop paramNearbyOpenTroop) {}
   
-  public void run()
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3)
   {
-    if (TroopMessageManager.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager).b.containsKey(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
-      TroopMessageManager.c(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager).b.remove(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
+    if (!paramString2.equals(this.a.jdField_a_of_type_JavaLangString))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.a.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
+      NearbyOpenTroop.a(this.a);
+      return;
     }
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.b = true;
+      this.a.d = paramString1;
+      this.a.e = paramString2;
+      this.a.c = paramBoolean;
+      this.a.f = paramString3;
+      return;
+    }
+    NearbyOpenTroop.a(this.a, paramString1, paramString2, paramBoolean, paramString3);
   }
 }
 

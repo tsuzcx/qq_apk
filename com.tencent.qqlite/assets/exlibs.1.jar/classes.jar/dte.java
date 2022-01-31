@@ -1,25 +1,55 @@
-import android.text.format.Time;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.base.FileViewerFacade;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar.IActionBarClickEvent;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter.HlistViewHolder;
+import com.tencent.widget.ActionSheet;
+import java.io.FileNotFoundException;
 
-class dte
-  implements Runnable
+public final class dte
+  implements View.OnClickListener
 {
-  dte(dtd paramdtd) {}
+  public dte(IFileBrowser paramIFileBrowser, QQAppInterface paramQQAppInterface, String paramString, Activity paramActivity, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((LocalMusicFileView.a(this.a.a.a) == null) || (!LocalMusicFileView.a(this.a.a.a).b(LocalMusicFileView.a(this.a.a.a)))) {
+    FileManagerEntity localFileManagerEntity2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a();
+    if (localFileManagerEntity2 == null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString);
+    }
+    FileManagerEntity localFileManagerEntity1 = localFileManagerEntity2;
+    if (localFileManagerEntity2 == null) {}
+    try
+    {
+      localFileManagerEntity1 = FileManagerUtil.a(new FileInfo(this.jdField_a_of_type_JavaLangString));
+      FileViewerFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, localFileManagerEntity1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity1.nSessionId);
+      if ((paramView.getTag() instanceof HorizontalListViewAdapter.HlistViewHolder))
+      {
+        paramView = (HorizontalListViewAdapter.HlistViewHolder)paramView.getTag();
+        if (paramView.a.isShowing()) {
+          paramView.a.dismiss();
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent != null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent.h();
+      }
       return;
     }
-    int i = LocalMusicFileView.a(this.a.a.a).b();
-    LocalMusicFileView.a(this.a.a.a).setProgress(i);
-    Object localObject = new Time();
-    ((Time)localObject).set(i);
-    localObject = ((Time)localObject).format("%M:%S");
-    LocalMusicFileView.a(this.a.a.a).setText((CharSequence)localObject);
+    catch (FileNotFoundException paramView)
+    {
+      paramView.printStackTrace();
+      FMToastUtil.a(2131361995);
+    }
   }
 }
 

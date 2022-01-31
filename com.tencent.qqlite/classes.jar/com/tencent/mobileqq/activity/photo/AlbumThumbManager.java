@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
-import cil;
+import cjm;
 import com.tencent.component.network.utils.BytesBufferPool;
 import com.tencent.component.network.utils.BytesBufferPool.BytesBuffer;
 import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
@@ -21,7 +21,7 @@ import java.nio.ByteBuffer;
 public class AlbumThumbManager
 {
   private static final int jdField_a_of_type_Int = 16;
-  private static cil jdField_a_of_type_Cil;
+  private static cjm jdField_a_of_type_Cjm;
   private static final BytesBufferPool jdField_a_of_type_ComTencentComponentNetworkUtilsBytesBufferPool = new BytesBufferPool(4, 204800);
   private static AlbumThumbManager jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumThumbManager;
   private static ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
@@ -144,7 +144,7 @@ public class AlbumThumbManager
     //   105	114	117	finally
   }
   
-  private boolean a(byte[] paramArrayOfByte, long paramLong, cil paramcil)
+  private boolean a(byte[] paramArrayOfByte, long paramLong, cjm paramcjm)
   {
     if (paramArrayOfByte == null) {}
     BlobCache.LookupRequest localLookupRequest;
@@ -162,7 +162,7 @@ public class AlbumThumbManager
       {
         localLookupRequest = new BlobCache.LookupRequest();
         localLookupRequest.jdField_a_of_type_Long = paramLong;
-        localLookupRequest.jdField_a_of_type_ArrayOfByte = paramcil.jdField_a_of_type_ArrayOfByte;
+        localLookupRequest.jdField_a_of_type_ArrayOfByte = paramcjm.jdField_a_of_type_ArrayOfByte;
         synchronized (this.jdField_a_of_type_JavaLangObject)
         {
           if (!this.jdField_a_of_type_CommonQzoneComponentCacheCommonBlobCache.a(localLookupRequest)) {
@@ -176,9 +176,9 @@ public class AlbumThumbManager
         return false;
       }
     } while (!a(paramArrayOfByte, localLookupRequest.jdField_a_of_type_ArrayOfByte, localLookupRequest.jdField_a_of_type_Int - 16, 16));
-    paramcil.jdField_a_of_type_ArrayOfByte = localLookupRequest.jdField_a_of_type_ArrayOfByte;
-    paramcil.jdField_a_of_type_Int = 0;
-    paramcil.b = (localLookupRequest.jdField_a_of_type_Int - 16);
+    paramcjm.jdField_a_of_type_ArrayOfByte = localLookupRequest.jdField_a_of_type_ArrayOfByte;
+    paramcjm.jdField_a_of_type_Int = 0;
+    paramcjm.b = (localLookupRequest.jdField_a_of_type_Int - 16);
     return true;
   }
   
@@ -409,10 +409,10 @@ public class AlbumThumbManager
   {
     try
     {
-      if (jdField_a_of_type_Cil == null)
+      if (jdField_a_of_type_Cjm == null)
       {
-        jdField_a_of_type_Cil = new cil(102400, null);
-        jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.wrap(jdField_a_of_type_Cil.jdField_a_of_type_ArrayOfByte);
+        jdField_a_of_type_Cjm = new cjm(102400, null);
+        jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.wrap(jdField_a_of_type_Cjm.jdField_a_of_type_ArrayOfByte);
       }
       jdField_a_of_type_JavaNioByteBuffer.clear();
       paramBitmapPool = SecurityUtil.a(???.toString());
@@ -426,7 +426,7 @@ public class AlbumThumbManager
         {
           try
           {
-            if (a(paramBitmapPool, l, jdField_a_of_type_Cil)) {
+            if (a(paramBitmapPool, l, jdField_a_of_type_Cjm)) {
               continue;
             }
             paramBitmapDecoder = paramBitmapDecoder.a(???);
@@ -452,9 +452,9 @@ public class AlbumThumbManager
             ??? = null;
             continue;
             jdField_a_of_type_JavaNioByteBuffer.clear();
-            jdField_a_of_type_JavaNioByteBuffer.put(jdField_a_of_type_Cil.jdField_a_of_type_ArrayOfByte, 0, jdField_a_of_type_Cil.b);
-            int j = jdField_a_of_type_JavaNioByteBuffer.getInt(jdField_a_of_type_Cil.b - 8);
-            int k = jdField_a_of_type_JavaNioByteBuffer.getInt(jdField_a_of_type_Cil.b - 4);
+            jdField_a_of_type_JavaNioByteBuffer.put(jdField_a_of_type_Cjm.jdField_a_of_type_ArrayOfByte, 0, jdField_a_of_type_Cjm.b);
+            int j = jdField_a_of_type_JavaNioByteBuffer.getInt(jdField_a_of_type_Cjm.b - 8);
+            int k = jdField_a_of_type_JavaNioByteBuffer.getInt(jdField_a_of_type_Cjm.b - 4);
             if ((j <= 500) || (k <= 500)) {
               continue;
             }
@@ -462,7 +462,7 @@ public class AlbumThumbManager
             ??? = null;
             continue;
             ??? = Bitmap.createBitmap(j, k, Bitmap.Config.RGB_565);
-            jdField_a_of_type_JavaNioByteBuffer.limit(jdField_a_of_type_Cil.b - 8);
+            jdField_a_of_type_JavaNioByteBuffer.limit(jdField_a_of_type_Cjm.b - 8);
             jdField_a_of_type_JavaNioByteBuffer.position(0);
             ???.copyPixelsFromBuffer(jdField_a_of_type_JavaNioByteBuffer);
             continue;
@@ -495,7 +495,7 @@ public class AlbumThumbManager
     try
     {
       jdField_a_of_type_ComTencentComponentNetworkUtilsBytesBufferPool.clear();
-      jdField_a_of_type_Cil = null;
+      jdField_a_of_type_Cjm = null;
       jdField_a_of_type_JavaNioByteBuffer = null;
       return;
     }

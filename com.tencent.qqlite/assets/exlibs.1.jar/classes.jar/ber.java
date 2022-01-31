@@ -1,7 +1,13 @@
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class ber
   implements View.OnClickListener
@@ -10,8 +16,20 @@ public class ber
   
   public void onClick(View paramView)
   {
-    this.a.o();
-    ReportController.b(this.a.a, "CliOper", "", "", "Setting_tab", "Clk_myalbum", 0, 0, "", "", "", "");
+    int i = this.a.a.getPreferences().getInt("nearby_people_profile_ok_new", -1);
+    boolean bool = this.a.a.getPreferences().getBoolean("nearby_people_skip_guide", false);
+    if ((i == -1) && (!bool))
+    {
+      QQSetting.a(this.a, new QQProgressDialog(this.a.a(), (int)this.a.a().getResources().getDimension(2131492887)));
+      QQSetting.a(this.a).a("正在检查资料");
+      QQSetting.a(this.a).show();
+      paramView = (CardHandler)this.a.a.a(2);
+      if (paramView != null) {
+        paramView.g();
+      }
+      return;
+    }
+    NearbyActivity.a(this.a.a(), 0, 0);
   }
 }
 

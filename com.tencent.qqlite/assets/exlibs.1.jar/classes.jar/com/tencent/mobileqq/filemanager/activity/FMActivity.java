@@ -25,10 +25,10 @@ import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import dfz;
-import dga;
-import dgb;
-import dgc;
+import dhb;
+import dhc;
+import dhd;
+import dhe;
 import java.util.ArrayList;
 
 public class FMActivity
@@ -42,7 +42,7 @@ public class FMActivity
   public VerifyPwdView a;
   IBaseTabViewEvent jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantIBaseTabViewEvent = null;
   public QfileTabBarView a;
-  dgc jdField_a_of_type_Dgc = null;
+  dhe jdField_a_of_type_Dhe = null;
   public RelativeLayout b;
   public TextView b;
   TextView c;
@@ -66,23 +66,23 @@ public class FMActivity
   
   private void b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView = ((QfileTabBarView)findViewById(2131298001));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView = ((QfileTabBarView)findViewById(2131298006));
     if ((g()) && (paramInt != 5))
     {
-      this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131297994));
+      this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131297999));
       this.jdField_a_of_type_AndroidWidgetRadioGroup.setVisibility(0);
       if (this.jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener == null) {
         p();
       }
       this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener);
-      this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131297996));
+      this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131298001));
       this.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(true);
       q();
     }
     do
     {
       return;
-      setLeftViewName(2131364492);
+      setLeftViewName(2131364503);
       i();
       switch (paramInt)
       {
@@ -106,7 +106,7 @@ public class FMActivity
       setTitle(this.jdField_b_of_type_JavaLangString);
       r();
     } while (!g());
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296897));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296898));
     this.jdField_c_of_type_AndroidWidgetTextView.setText("全部");
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }
@@ -121,7 +121,7 @@ public class FMActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView = new VerifyPwdView(this);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a(this.jdField_b_of_type_AndroidWidgetRelativeLayout, new dgb(this, paramInt));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a(this.jdField_b_of_type_AndroidWidgetRelativeLayout, new dhd(this, paramInt));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.b();
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
@@ -145,11 +145,11 @@ public class FMActivity
   
   private void o()
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this, 2131624119);
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this, 2131624120);
     localQQCustomDialog.setContentView(2130903139);
-    localQQCustomDialog.setTitle(getString(2131362362));
-    localQQCustomDialog.setMessage(getString(2131362363));
-    localQQCustomDialog.setNegativeButton(getString(2131362364), new dfz(this));
+    localQQCustomDialog.setTitle(getString(2131362363));
+    localQQCustomDialog.setMessage(getString(2131362364));
+    localQQCustomDialog.setNegativeButton(getString(2131362365), new dhb(this));
     localQQCustomDialog.setCanceledOnTouchOutside(false);
     localQQCustomDialog.setCancelable(false);
     localQQCustomDialog.show();
@@ -157,7 +157,7 @@ public class FMActivity
   
   private void p()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener = new dga(this);
+    this.jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener = new dhc(this);
   }
   
   private void q()
@@ -185,7 +185,7 @@ public class FMActivity
     if (j())
     {
       if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297993));
+        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297998));
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setText(2131362061);
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -269,28 +269,28 @@ public class FMActivity
       QLog.d("FMActivity<FileAssistant>", 2, "doOnCreate type[" + this.jdField_a_of_type_Int + "],select[" + g() + "]");
     }
     if ((g()) && (this.jdField_a_of_type_Int != 5) && (this.jdField_a_of_type_Int != 6)) {
-      a(2130903411);
+      a(2130903416);
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298000));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298005));
       b(this.jdField_a_of_type_Int);
       if (this.jdField_a_of_type_Int == 6) {
         f();
       }
       int i = getResources().getDisplayMetrics().heightPixels;
-      ((LinearLayout)findViewById(2131297992)).setLayoutParams(new RelativeLayout.LayoutParams(-1, i));
+      ((LinearLayout)findViewById(2131297997)).setLayoutParams(new RelativeLayout.LayoutParams(-1, i));
       this.app.a().h();
       return true;
-      setContentView(2130903411);
+      setContentView(2130903416);
       ((RelativeLayout)findViewById(2131297141)).setVisibility(8);
     }
   }
   
   protected void doOnPause()
   {
-    if (this.jdField_a_of_type_Dgc != null) {
-      removeObserver(this.jdField_a_of_type_Dgc);
+    if (this.jdField_a_of_type_Dhe != null) {
+      removeObserver(this.jdField_a_of_type_Dhe);
     }
     super.doOnPause();
   }
@@ -300,8 +300,8 @@ public class FMActivity
     if ((getIntent().getBooleanExtra("key_check_troop_privilege", false)) && (this.jdField_d_of_type_JavaLangString != null))
     {
       ((TroopHandler)this.app.a(17)).l(this.jdField_d_of_type_JavaLangString);
-      this.jdField_a_of_type_Dgc = new dgc(this);
-      addObserver(this.jdField_a_of_type_Dgc);
+      this.jdField_a_of_type_Dhe = new dhe(this);
+      addObserver(this.jdField_a_of_type_Dhe);
     }
     super.doOnResume();
   }
@@ -347,7 +347,7 @@ public class FMActivity
       localIntent.putExtra("STRING_Show_Pic_Category", false);
       localIntent.putExtra("STRING_Show_Driver_Category", false);
       localIntent.putExtra("STRING_Show_First_Space", false);
-      if ((paramView.getId() == 2131297993) || (paramView.getId() == 2131296897))
+      if ((paramView.getId() == 2131297998) || (paramView.getId() == 2131296898))
       {
         localIntent.putExtra("localSdCardfile", 1408041717);
         localIntent.putExtra("STRING_Show_Download_Category", false);
@@ -357,7 +357,7 @@ public class FMActivity
         overridePendingTransition(2130968596, 2130968599);
         return;
       }
-    } while (paramView.getId() != 2131298034);
+    } while (paramView.getId() != 2131298039);
     localIntent.putExtra("localSdCardfile", 1408041716);
     localIntent.putExtra("STRING_Show_Download_Category", false);
     a().an();

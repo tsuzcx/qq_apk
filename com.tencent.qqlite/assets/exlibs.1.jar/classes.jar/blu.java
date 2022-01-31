@@ -1,102 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistSetGuideActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class blu
-  extends FriendListObserver
+  implements View.OnClickListener
 {
-  public blu(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public blu(TroopAssistSetGuideActivity paramTroopAssistSetGuideActivity) {}
   
-  protected void a()
+  public void onClick(View paramView)
   {
-    this.a.d();
-  }
-  
-  void a(String paramString)
-  {
-    if (!paramString.equals(this.a.app.getAccount())) {
-      return;
-    }
-    this.a.a.obtainMessage(1).sendToTarget();
-    this.a.runOnUiThread(new blv(this));
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      return;
-    }
-    if ((this.a.app.a() != null) && (this.a.app.a().equals(paramString)))
+    switch (paramView.getId())
     {
-      new Thread(new blw(this, paramString)).start();
+    default: 
+      return;
+    case 2131298931: 
+      TroopAssistSetGuideActivity.a(this.a);
+      ReportController.b(this.a.app, "CliOper", "", "", "Grp_helper", "Clk_not_set", 0, 0, "", "", "", "");
       return;
     }
-    this.a.d();
+    TroopAssistSetGuideActivity.b(this.a);
+    ReportController.b(this.a.app, "CliOper", "", "", "Grp_helper", "Clk_quiet_mode", 0, 0, "", "", "", "");
   }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("head", 2, "ContactsActivity.onUpdateCustomHead: uin:" + paramString + ", success :" + paramBoolean);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
-  {
-    if (paramBoolean) {
-      this.a.a.sendEmptyMessage(1);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Map paramMap)
-  {
-    if ((paramMap == null) || (paramMap.size() == 0)) {}
-    do
-    {
-      return;
-      paramMap = paramMap.entrySet().iterator();
-      if (paramMap.hasNext())
-      {
-        String str = (String)((Map.Entry)paramMap.next()).getKey();
-        int i = this.a.app.b(str);
-        if ((i == 1) || (i == 4)) {
-          TroopAssistantManager.a().c(str, this.a.app);
-        }
-        for (;;)
-        {
-          this.a.d();
-          break;
-          if (i == 3) {
-            TroopAssistantManager.a().b(str, this.a.app);
-          }
-        }
-      }
-    } while (!this.a.isResume());
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.app.a(), 2130837985, this.a.getString(2131363418), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a.app.a(), 2130837975, this.a.getString(2131363419), 0).b(this.a.getTitleBarHeight());
-  }
-  
-  protected void a(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    if (paramBoolean) {
-      new Thread(new blx(this)).start();
-    }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString) {}
 }
 
 

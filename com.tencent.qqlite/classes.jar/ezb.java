@@ -1,45 +1,24 @@
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.QQToastNotifier;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.vas.ClubContentJsonTask;
+import com.tencent.mobileqq.vas.ClubContentJsonTask.TaskInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class ezb
-  extends Handler
+public final class ezb
+  implements Runnable
 {
-  public ezb(QQToastNotifier paramQQToastNotifier, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ezb(ClubContentJsonTask.TaskInfo paramTaskInfo, File paramFile, Context paramContext, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    paramMessage = (ezc)paramMessage.obj;
-    if (this.a.jdField_a_of_type_AndroidWidgetToast == null)
-    {
-      if ((paramMessage.jdField_a_of_type_JavaLangString != null) && (paramMessage.jdField_a_of_type_JavaLangString.length() > 0)) {}
-      for (this.a.jdField_a_of_type_AndroidWidgetToast = QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramMessage.jdField_a_of_type_Int, paramMessage.jdField_a_of_type_JavaLangString, paramMessage.c).a(paramMessage.d);; this.a.jdField_a_of_type_AndroidWidgetToast = QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramMessage.jdField_a_of_type_Int, paramMessage.b, paramMessage.c).a(paramMessage.d))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetToast.show();
-        return;
-      }
+    boolean bool = HttpDownloadUtil.a(null, EmosmUtils.insertMtype("VIP_other", this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo.b), this.jdField_a_of_type_JavaIoFile);
+    if (QLog.isColorLevel()) {
+      QLog.d("ClubContentJsonTask", 2, "updateJson, " + this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo.b + ",ret=" + bool);
     }
-    View localView = this.a.jdField_a_of_type_AndroidWidgetToast.getView();
-    TextView localTextView = (TextView)localView.findViewById(2131297375);
-    if ((paramMessage.jdField_a_of_type_JavaLangString != null) && (paramMessage.jdField_a_of_type_JavaLangString.length() > 0)) {
-      localTextView.setText(paramMessage.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      ((ImageView)localView.findViewById(2131297374)).setImageResource(QQToast.a(paramMessage.jdField_a_of_type_Int));
-      this.a.jdField_a_of_type_AndroidWidgetToast.setDuration(paramMessage.c);
-      break;
-      localTextView.setText(this.a.jdField_a_of_type_AndroidContentContext.getString(paramMessage.b));
+    if (bool) {
+      ClubContentJsonTask.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo.d, this.jdField_a_of_type_Int);
     }
   }
 }

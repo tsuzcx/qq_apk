@@ -14,9 +14,9 @@ import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask;
 import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
-import emr;
-import ems;
-import emt;
+import eog;
+import eoh;
+import eoi;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -83,8 +83,8 @@ public class TroopFeedsDataManager
     this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
     this.jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem = null;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new emr(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new emt(this);
+    this.jdField_a_of_type_AndroidOsHandler = new eog(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new eoi(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaLangLong = paramLong;
   }
@@ -380,7 +380,7 @@ public class TroopFeedsDataManager
     if (QLog.isColorLevel()) {
       QLog.d("TroopFeedsDataManager", 2, "begin load feed: " + System.currentTimeMillis());
     }
-    ThreadManager.a().post(new ems(this));
+    ThreadManager.a().post(new eoh(this));
   }
   
   public void a(TroopNotificationCache paramTroopNotificationCache)
@@ -400,7 +400,7 @@ public class TroopFeedsDataManager
     ((Bundle)localObject2).putString("fid", "" + paramTroopFeedItem.id);
     ((Bundle)localObject2).putString("ft", "" + paramTroopFeedItem.orginType);
     ((Bundle)localObject2).putString("bkn", "" + a(str));
-    ((Bundle)localObject2).putString("version", "3.4.0");
+    ((Bundle)localObject2).putString("version", "3.5.0");
     ((Bundle)localObject2).putString("platform", "android");
     ((Bundle)localObject2).putString("Cookie", "uin=o" + (String)localObject1 + ";skey=" + str);
     localObject1 = new HashMap();
@@ -424,7 +424,7 @@ public class TroopFeedsDataManager
     ((Bundle)localObject2).putString("fnum", "5");
     ((Bundle)localObject2).putString("bkn", "" + a(str));
     ((Bundle)localObject2).putString("fids", a(this.jdField_a_of_type_JavaUtilList));
-    ((Bundle)localObject2).putString("ver", "3.4.0");
+    ((Bundle)localObject2).putString("ver", "3.5.0");
     ((Bundle)localObject2).putString("src", "1");
     ((Bundle)localObject2).putString("platform", "android");
     ((Bundle)localObject2).putString("Cookie", "uin=o" + (String)localObject1 + ";skey=" + str);

@@ -32,13 +32,13 @@ public class QQAnonymousDialog
   
   public QQAnonymousDialog(Context paramContext)
   {
-    super(paramContext, 2131624119);
+    super(paramContext, 2131624120);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(new ko(this));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903367, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297846));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297845));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903370, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297850));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297849));
   }
   
   public void a(int paramInt, String paramString)
@@ -48,17 +48,17 @@ public class QQAnonymousDialog
     default: 
       return;
     case 1: 
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838403);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838422);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
       return;
     case 3: 
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838397);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838416);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
       return;
     }
     this.f = 0;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838402);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362624));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838421);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362631));
   }
   
   public void dismiss()

@@ -1,105 +1,31 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GestureSelectGridView;
-import com.tencent.widget.GestureSelectGridView.OnSelectListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class cja
-  implements GestureSelectGridView.OnSelectListener
+  implements ActionSheet.OnButtonClickListener
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public cja(SettingActivity2 paramSettingActivity2, ActionSheet paramActionSheet) {}
   
-  public cja(PhotoListActivity paramPhotoListActivity) {}
-  
-  public void a()
+  public void a(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Boolean) {}
-    while (!QLog.isColorLevel()) {
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b(2131363461);
       return;
     }
-    QLog.d("OnSelectListener", 2, "onSelectEnd");
-  }
-  
-  public void a(int paramInt)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Boolean) {}
-    LocalMediaInfo localLocalMediaInfo;
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b == null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("OnSelectListener", 2, "onSelectBegin beginIndex:" + paramInt);
-      }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Int = -2147483648;
-      this.b = 2147483647;
-      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Cjg.a(paramInt);
-      if (localLocalMediaInfo.b == 2) {
-        bool = true;
-      }
-      this.jdField_a_of_type_Boolean = bool;
-    } while (!PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, localLocalMediaInfo, this.jdField_a_of_type_Boolean));
-    PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.n();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Boolean) {
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b = new cjb(this);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("OnSelectListener", 2, "onSelectChanged beginIndex:" + paramInt1 + " selectIndex:" + paramInt2);
-    }
-    int i = Math.min(paramInt1, paramInt2);
-    int j = Math.max(paramInt1, paramInt2);
-    if (paramInt2 < paramInt1) {
-      this.b = Math.min(paramInt2, this.b);
-    }
-    for (;;)
-    {
-      paramInt1 = i;
-      while (paramInt1 <= j)
-      {
-        PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Cjg.a(paramInt1), this.jdField_a_of_type_Boolean);
-        paramInt1 += 1;
-      }
-      this.jdField_a_of_type_Int = Math.max(paramInt2, this.jdField_a_of_type_Int);
-    }
-    paramInt1 = this.b;
-    PhotoListActivity localPhotoListActivity;
-    LocalMediaInfo localLocalMediaInfo;
-    boolean bool;
-    if (paramInt1 < i)
-    {
-      localPhotoListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity;
-      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Cjg.a(paramInt1);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        PhotoListActivity.a(localPhotoListActivity, localLocalMediaInfo, bool);
-        paramInt1 += 1;
-        break;
-      }
-    }
-    paramInt1 = j + 1;
-    if (paramInt1 <= this.jdField_a_of_type_Int)
-    {
-      localPhotoListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity;
-      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Cjg.a(paramInt1);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        PhotoListActivity.a(localPhotoListActivity, localLocalMediaInfo, bool);
-        paramInt1 += 1;
-        break;
-      }
-    }
-    PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.n();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.a.d();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b(2131363392, 0L);
   }
 }
 

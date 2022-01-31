@@ -28,8 +28,8 @@ import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.Login;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import fcb;
-import fcc;
+import feh;
+import fei;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -66,8 +66,8 @@ public class SwitchAccountActivity
   {
     this.jdField_a_of_type_MqqManagerWtloginManager = null;
     this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new fcb(this);
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new fcc(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new feh(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new fei(this);
   }
   
   public static String a(String paramString1, String paramString2)
@@ -138,12 +138,12 @@ public class SwitchAccountActivity
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 1) {
             break label379;
           }
-          paramString.setBackgroundResource(2130837924);
+          paramString.setBackgroundResource(2130837942);
         }
       }
       return;
       label379:
-      paramString.setBackgroundResource(2130837927);
+      paramString.setBackgroundResource(2130837945);
       return;
       label386:
       i += 1;
@@ -311,9 +311,9 @@ public class SwitchAccountActivity
       if (k < this.jdField_b_of_type_JavaUtilArrayList.size())
       {
         localObject4 = localLayoutInflater.inflate(2130903041, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-        localObject6 = (TextView)((View)localObject4).findViewById(2131296443);
-        TextView localTextView = (TextView)((View)localObject4).findViewById(2131296444);
-        localObject5 = (ImageView)((View)localObject4).findViewById(2131296439);
+        localObject6 = (TextView)((View)localObject4).findViewById(2131296446);
+        TextView localTextView = (TextView)((View)localObject4).findViewById(2131296447);
+        localObject5 = (ImageView)((View)localObject4).findViewById(2131296442);
         localObject1 = new WloginSimpleInfo();
         SimpleAccount localSimpleAccount = (SimpleAccount)this.jdField_b_of_type_JavaUtilArrayList.get(k);
         localObject2 = localSimpleAccount.getUin();
@@ -335,9 +335,9 @@ public class SwitchAccountActivity
           }
         }
         if (i == 0) {
-          ((View)localObject4).setBackgroundResource(2130837927);
+          ((View)localObject4).setBackgroundResource(2130837945);
         }
-        ((Button)((View)localObject4).findViewById(2131296442)).setOnClickListener(this);
+        ((Button)((View)localObject4).findViewById(2131296445)).setOnClickListener(this);
         ((View)localObject4).setOnClickListener(this);
         ((View)localObject4).setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
         ((View)localObject4).setTag(localObject2);
@@ -355,9 +355,9 @@ public class SwitchAccountActivity
       if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (i >= 0))
       {
         localObject1 = localLayoutInflater.inflate(2130903041, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-        localObject4 = (TextView)((View)localObject1).findViewById(2131296443);
-        localObject5 = (TextView)((View)localObject1).findViewById(2131296444);
-        localObject2 = (ImageView)((View)localObject1).findViewById(2131296439);
+        localObject4 = (TextView)((View)localObject1).findViewById(2131296446);
+        localObject5 = (TextView)((View)localObject1).findViewById(2131296447);
+        localObject2 = (ImageView)((View)localObject1).findViewById(2131296442);
         localObject3 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
         localObject6 = new WloginSimpleInfo();
         this.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo((String)localObject3, (WloginSimpleInfo)localObject6);
@@ -374,9 +374,9 @@ public class SwitchAccountActivity
           }
         }
         if (j == 0) {
-          ((View)localObject1).setBackgroundResource(2130837927);
+          ((View)localObject1).setBackgroundResource(2130837945);
         }
-        ((Button)((View)localObject1).findViewById(2131296442)).setOnClickListener(this);
+        ((Button)((View)localObject1).findViewById(2131296445)).setOnClickListener(this);
         ((View)localObject1).setOnClickListener(this);
         ((View)localObject1).setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
         ((View)localObject1).setTag(localObject3);
@@ -452,7 +452,7 @@ public class SwitchAccountActivity
   
   protected void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(super.getString(2131363827));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(super.getString(2131363838));
     if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
@@ -496,8 +496,8 @@ public class SwitchAccountActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131296442: 
-    case 2131296438: 
+    case 2131296445: 
+    case 2131296441: 
       do
       {
         do
@@ -519,7 +519,7 @@ public class SwitchAccountActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130903655);
+    super.setContentView(2130903664);
     this.jdField_a_of_type_AndroidContentSharedPreferences = super.getSharedPreferences("accountList", 0);
     this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
     if (super.getIntent().getExtras() != null) {
@@ -528,9 +528,9 @@ public class SwitchAccountActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.quicklogin.SwitchAccountActivity", 2, "mReqSrc:" + this.jdField_b_of_type_Int);
     }
-    super.setTitle(2131363819);
+    super.setTitle(2131363830);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131298835));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131298861));
     this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)super.getAppRuntime());
     this.jdField_a_of_type_MqqManagerWtloginManager = ((WtloginManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(1));

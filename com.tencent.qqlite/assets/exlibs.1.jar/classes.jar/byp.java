@@ -1,17 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack.Stub;
 
-public class byp
-  implements View.OnClickListener
+class byp
+  extends IAIOImageProviderCallBack.Stub
 {
-  public byp(AIOImageListScene paramAIOImageListScene) {}
+  byp(byo parambyo) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2)
   {
-    AIOImageListScene.a(this.a, ((TextView)paramView).getText().toString());
-    AIOImageListScene.b(this.a);
+    this.a.a.runOnUiThread(new byr(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2));
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    this.a.a.runOnUiThread(new byq(this, paramLong, paramInt1, paramInt2, paramInt3, paramString));
+  }
+  
+  public void a(AIOImageData[] paramArrayOfAIOImageData, int paramInt)
+  {
+    this.a.a.runOnUiThread(new bys(this, paramArrayOfAIOImageData, paramInt));
   }
 }
 

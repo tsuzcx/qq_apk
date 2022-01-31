@@ -1,28 +1,44 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.List;
 
 public class chy
-  implements ActionSheet.OnButtonClickListener
+  extends BaseAdapter
 {
-  public chy(SettingActivity2 paramSettingActivity2, ActionSheet paramActionSheet) {}
+  private chy(ContactListView paramContactListView) {}
   
-  public void a(View paramView, int paramInt)
+  public int getCount()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    if (paramInt == 0)
+    if (this.a.b == null) {
+      return 0;
+    }
+    return this.a.b.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.a.b.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null)
     {
-      if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b(2131363450);
-      }
+      paramViewGroup = this.a.a();
+      paramViewGroup.setOnClickListener(this.a);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.setResult(2);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.finish();
+    paramView = (PhoneContact)this.a.b.get(paramInt);
+    ContactListView.a(this.a, paramViewGroup, paramView);
+    return paramViewGroup;
   }
 }
 

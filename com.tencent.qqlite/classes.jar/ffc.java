@@ -1,22 +1,25 @@
+import android.text.TextUtils;
+import com.tencent.open.appcommon.js.DownloadInterface;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.smtt.sdk.WebView;
 
 public class ffc
   implements Runnable
 {
-  public ffc(DownloadManager paramDownloadManager, String paramString) {}
+  public ffc(DownloadInterface paramDownloadInterface, String paramString) {}
   
   public void run()
   {
     try
     {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
+      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.webview != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.webview.loadUrl(this.jdField_a_of_type_JavaLangString);
+      }
       return;
     }
     catch (Exception localException)
     {
-      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
+      LogUtility.a(this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.TAG, "webview loadUrl>>> ", localException);
     }
   }
 }

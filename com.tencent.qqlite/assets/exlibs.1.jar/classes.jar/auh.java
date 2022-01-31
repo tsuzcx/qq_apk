@@ -1,33 +1,35 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import QQService.SvcDevLoginInfo;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.SubAccountObserver;
 
-public class auh
-  implements CompoundButton.OnCheckedChangeListener
+class auh
+  extends SubAccountObserver
 {
-  public auh(LoginInfoActivity paramLoginInfoActivity) {}
+  auh(aug paramaug, SvcDevLoginInfo paramSvcDevLoginInfo) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    if (paramCompoundButton == LoginInfoActivity.a(this.a).a())
-    {
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label85;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.LoginInfoActivity", 2, "onGetKeyBack mainAccount=" + paramString1 + " subAccount=" + paramString2 + " key=" + paramString3);
     }
-    label85:
-    for (int i = 1;; i = 0)
+    if ((paramString3 == null) || (paramString3.length() > 0))
     {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Mobile_pc_online", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, this.a.app.a(), "login_accounts", "qqsetting_bothonline_key", paramBoolean);
-      this.a.app.l();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "onGetKeyBack begin to kickOutDev");
+      }
+      if (EquipmentLockImpl.a().a(this.jdField_a_of_type_Aug.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app, this.jdField_a_of_type_QQServiceSvcDevLoginInfo.iAppId, (byte)1, HexUtil.a(paramString3), this.jdField_a_of_type_Aug.jdField_a_of_type_Int))
+      {
+        LoginInfoActivity.a(this.jdField_a_of_type_Aug.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, 1);
+        return;
+      }
+      LoginInfoActivity.a(this.jdField_a_of_type_Aug.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).post(new aui(this));
       return;
     }
+    LoginInfoActivity.a(this.jdField_a_of_type_Aug.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).post(new auj(this));
   }
 }
 

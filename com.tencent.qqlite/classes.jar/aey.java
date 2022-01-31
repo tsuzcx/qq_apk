@@ -1,72 +1,59 @@
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.troopinfo.TroopUnreadMsgInfo;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneHelper;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class aey
-  extends TroopObserver
+  implements Runnable
 {
   public aey(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, List paramList, int paramInt)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
-    while ((!paramBoolean1) || (paramList == null) || (paramList.size() <= 0)) {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {
       return;
-    }
-    paramInt = 0;
-    label31:
-    TroopUnreadMsgInfo localTroopUnreadMsgInfo;
-    if (paramInt < paramList.size())
-    {
-      localTroopUnreadMsgInfo = (TroopUnreadMsgInfo)paramList.get(paramInt);
-      if ((localTroopUnreadMsgInfo != null) && (Utils.a(localTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c)))
-      {
-        if (localTroopUnreadMsgInfo.jdField_a_of_type_Long != 2L) {
-          break label206;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.i = localTroopUnreadMsgInfo.b;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.h = localTroopUnreadMsgInfo.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-        if (paramBoolean2) {
-          QZoneHelper.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.h);
-        }
-      }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.chatopttroop", 2, "onUpdateTroopUnreadMsg| isPush = " + paramBoolean2 + ", " + localTroopUnreadMsgInfo);
-      }
-      paramInt += 1;
-      break label31;
-      break;
-      label206:
-      if (localTroopUnreadMsgInfo.jdField_a_of_type_Long == 1L)
+      Object localObject3;
+      try
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.j = localTroopUnreadMsgInfo.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.k = localTroopUnreadMsgInfo.b;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+        localObject3 = this.a.app.a().createEntityManager();
+        if (localObject3 == null) {
+          break label182;
+        }
+        Object localObject1 = ((EntityManager)localObject3).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c }, null, null, null, null);
+        ((EntityManager)localObject3).a();
+        if (localObject1 == null) {
+          break label179;
+        }
+        localObject3 = new ArrayList(((List)localObject1).size());
+        localObject1 = ((List)localObject1).iterator();
+        if (((Iterator)localObject1).hasNext())
+        {
+          ((ArrayList)localObject3).add(((TroopMemberInfo)((Iterator)localObject1).next()).memberuin);
+          continue;
+        }
+        if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
+          break label179;
+        }
       }
-      else if (localTroopUnreadMsgInfo.jdField_a_of_type_Long == 1101236949L)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.l = localTroopUnreadMsgInfo.b;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
-      }
-      else
-      {
-        Message localMessage = Message.obtain();
-        localMessage.what = 15;
-        localMessage.arg1 = localTroopUnreadMsgInfo.b;
-        localMessage.obj = Long.valueOf(localTroopUnreadMsgInfo.jdField_a_of_type_Long);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      }
+      finally {}
+      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      localMessage.what = 13;
+      localMessage.obj = localObject3;
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      label179:
+      return;
+      label182:
+      localMessage = null;
     }
   }
 }

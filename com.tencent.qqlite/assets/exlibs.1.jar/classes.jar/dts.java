@@ -1,52 +1,56 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.OfflineVideoFileView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.OfflineVideoFileViewBase.IControllProxyInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseQfileActionBar;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 
 public class dts
-  implements OfflineVideoFileViewBase.IControllProxyInterface
+  implements View.OnClickListener
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver;
+  public dts(BaseQfileActionBar paramBaseQfileActionBar) {}
   
-  public dts(OfflineVideoFileView paramOfflineVideoFileView, QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dtt(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
-    }
-  }
-  
-  public void c()
-  {
-    if (1 == OfflineVideoFileView.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewOfflineVideoFileView).c())
+    Object localObject = null;
+    paramView = localObject;
+    switch (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType)
     {
-      FileManagerEntity localFileManagerEntity = OfflineVideoFileView.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewOfflineVideoFileView).a();
-      if (localFileManagerEntity == null) {
-        break label47;
+    default: 
+      paramView = localObject;
+    }
+    for (;;)
+    {
+      if (paramView != null) {
+        FileManagerReporter.a(paramView);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localFileManagerEntity, 5);
-    }
-    label47:
-    while (!QLog.isColorLevel()) {
+      this.a.d();
+      this.a.g();
       return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g())
+      {
+        paramView = "0X8004BB7";
+      }
+      else
+      {
+        paramView = "0X8004BCD";
+        continue;
+        if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g())
+        {
+          paramView = "0X8004BB8";
+        }
+        else
+        {
+          paramView = "0X8004BCE";
+          continue;
+          if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g()) {
+            paramView = "0X8004BB9";
+          } else {
+            paramView = "0X8004BCF";
+          }
+        }
+      }
     }
-    QLog.w("OfflineVideoFileView", 2, "initVarView get entity return null, so can not download video thumb");
   }
 }
 

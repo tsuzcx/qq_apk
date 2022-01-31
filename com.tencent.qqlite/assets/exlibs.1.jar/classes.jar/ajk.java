@@ -1,17 +1,24 @@
 import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class ajk
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public ajk(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public ajk(DiscussionMemberActivity paramDiscussionMemberActivity, TranslateAnimation paramTranslateAnimation, Dialog paramDialog) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidAppDialog.cancel();
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation) {
+      this.jdField_a_of_type_AndroidAppDialog.show();
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

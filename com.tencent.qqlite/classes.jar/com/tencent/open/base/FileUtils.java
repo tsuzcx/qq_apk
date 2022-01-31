@@ -51,27 +51,27 @@ public class FileUtils
     //   27: invokevirtual 89	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
     //   30: aload_1
     //   31: invokevirtual 95	android/content/res/AssetManager:list	(Ljava/lang/String;)[Ljava/lang/String;
-    //   34: astore 10
+    //   34: astore 9
     //   36: new 97	java/io/File
     //   39: dup
     //   40: aload_2
     //   41: invokespecial 100	java/io/File:<init>	(Ljava/lang/String;)V
-    //   44: astore 9
+    //   44: astore 10
     //   46: iload 4
     //   48: istore_3
-    //   49: aload 9
+    //   49: aload 10
     //   51: invokevirtual 103	java/io/File:exists	()Z
     //   54: ifne +14 -> 68
     //   57: iload 4
     //   59: istore_3
-    //   60: aload 9
+    //   60: aload 10
     //   62: invokevirtual 106	java/io/File:mkdirs	()Z
     //   65: ifne +3 -> 68
     //   68: iload_3
-    //   69: aload 10
+    //   69: aload 9
     //   71: arraylength
     //   72: if_icmpge -50 -> 22
-    //   75: aload 10
+    //   75: aload 9
     //   77: iload_3
     //   78: aaload
     //   79: astore 5
@@ -173,7 +173,7 @@ public class FileUtils
     //   283: goto -124 -> 159
     //   286: new 97	java/io/File
     //   289: dup
-    //   290: aload 9
+    //   290: aload 10
     //   292: aload 5
     //   294: invokespecial 142	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   297: astore 6
@@ -301,8 +301,8 @@ public class FileUtils
     //   297	202	6	localObject1	Object
     //   1	491	7	localObject2	Object
     //   4	239	8	localObject3	Object
-    //   44	247	9	localFile	File
-    //   34	42	10	arrayOfString	String[]
+    //   34	42	9	arrayOfString	String[]
+    //   44	247	10	localFile	File
     //   369	19	11	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type

@@ -1,46 +1,25 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.widget.MenuPopupDialog;
 
 public class dlh
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  public dlh(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
+  public dlh(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    localLinkedHashMap.put("已下载图片", new ArrayList());
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext())
-    {
-      FileInfo localFileInfo = (FileInfo)localIterator.next();
-      String str = localFileInfo.a();
-      if ((str != null) && (str.length() != 0))
-      {
-        localObject = str;
-        if (!str.equalsIgnoreCase("QQfile_recv")) {}
-      }
-      else
-      {
-        localObject = "已下载图片";
-      }
-      if (!localLinkedHashMap.containsKey(localObject)) {
-        localLinkedHashMap.put(localObject, new ArrayList());
-      }
-      ((List)localLinkedHashMap.get(localObject)).add(localFileInfo);
+    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
+      return false;
     }
-    Object localObject = localLinkedHashMap.keySet().iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (((List)localLinkedHashMap.get((String)((Iterator)localObject).next())).size() == 0) {
-        ((Iterator)localObject).remove();
-      }
-    }
-    QfileLocalFilePicTabView.a(this.a, new dli(this, localLinkedHashMap));
+    paramView.setSelected(true);
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131296443, paramView.getContext().getString(2131363260));
+    QfileBaseLocalFileTabView.a(this.a, MenuPopupDialog.a(paramView, paramView.getContext().getString(2131363287), localQQCustomMenu, new dli(this, paramView), new dlj(this, paramView)));
+    return true;
   }
 }
 

@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class bqu
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public bqu(UpgradeActivity paramUpgradeActivity) {}
+  public bqu(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 4) {
-      this.a.c();
-    }
-    return false;
+    this.a.a.cancel();
   }
 }
 

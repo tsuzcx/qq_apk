@@ -1,14 +1,23 @@
-import com.tencent.widget.VerticalGallery;
+import com.tencent.util.DumpMemInfoHandler;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
 public class fiz
-  implements Runnable
+  implements Comparator
 {
-  public fiz(VerticalGallery paramVerticalGallery) {}
+  public fiz(DumpMemInfoHandler paramDumpMemInfoHandler) {}
   
-  public void run()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    VerticalGallery.a(this.a, false);
-    this.a.f_();
+    int i = ((Integer)((Map.Entry)paramObject1).getValue()).intValue();
+    int j = ((Integer)((Map.Entry)paramObject2).getValue()).intValue();
+    if (i == j) {
+      return 0;
+    }
+    if (i < j) {
+      return 2;
+    }
+    return -1;
   }
 }
 

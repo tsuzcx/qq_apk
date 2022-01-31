@@ -9,13 +9,13 @@ import android.view.View.OnClickListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
-import chd;
-import che;
-import chf;
-import chg;
-import chh;
-import chi;
-import chk;
+import cie;
+import cif;
+import cig;
+import cih;
+import cii;
+import cij;
+import cil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.utils.ChnToSpell;
@@ -35,8 +35,8 @@ public class CountryActivity
   public static final String a = "k_name";
   public static final String b = "k_code";
   public View a;
-  private chg jdField_a_of_type_Chg;
-  public chk a;
+  private cih jdField_a_of_type_Cih;
+  public cil a;
   public IndexView a;
   private PinnedDividerListView jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
   public ArrayList a;
@@ -49,12 +49,12 @@ public class CountryActivity
     this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   }
   
-  public static void a(View paramView, chh paramchh)
+  public static void a(View paramView, cii paramcii)
   {
-    paramView = (chi)paramView.getTag();
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramchh.b);
-    paramView.b.setText("+" + paramchh.c);
-    paramView.jdField_a_of_type_Chh = paramchh;
+    paramView = (cij)paramView.getTag();
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramcii.b);
+    paramView.b.setText("+" + paramcii.c);
+    paramView.jdField_a_of_type_Cii = paramcii;
   }
   
   private static View b(LayoutInflater paramLayoutInflater, boolean paramBoolean)
@@ -63,24 +63,24 @@ public class CountryActivity
     if (paramBoolean) {
       paramLayoutInflater.setPadding(paramLayoutInflater.getPaddingLeft(), paramLayoutInflater.getPaddingTop(), (int)DisplayUtils.a(BaseApplicationImpl.a, 40.0F), paramLayoutInflater.getPaddingBottom());
     }
-    chi localchi = new chi(null);
-    localchi.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131297404));
-    localchi.b = ((TextView)paramLayoutInflater.findViewById(2131297381));
-    paramLayoutInflater.setTag(localchi);
+    cij localcij = new cij(null);
+    localcij.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131297404));
+    localcij.b = ((TextView)paramLayoutInflater.findViewById(2131297381));
+    paramLayoutInflater.setTag(localcij);
     return paramLayoutInflater;
   }
   
   public void a(View paramView)
   {
-    paramView = (chi)paramView.getTag();
-    if (paramView.jdField_a_of_type_Chh != null)
+    paramView = (cij)paramView.getTag();
+    if (paramView.jdField_a_of_type_Cii != null)
     {
-      if ((this.jdField_a_of_type_Chk != null) && (this.jdField_a_of_type_Chk.isShowing())) {
-        this.jdField_a_of_type_Chk.dismiss();
+      if ((this.jdField_a_of_type_Cil != null) && (this.jdField_a_of_type_Cil.isShowing())) {
+        this.jdField_a_of_type_Cil.dismiss();
       }
       Intent localIntent = new Intent();
-      localIntent.putExtra("k_name", paramView.jdField_a_of_type_Chh.b);
-      localIntent.putExtra("k_code", paramView.jdField_a_of_type_Chh.c);
+      localIntent.putExtra("k_name", paramView.jdField_a_of_type_Cii.b);
+      localIntent.putExtra("k_code", paramView.jdField_a_of_type_Cii.c);
       setResult(-1, localIntent);
       finish();
     }
@@ -125,22 +125,22 @@ public class CountryActivity
     paramBundle = "#";
     j = arrayOfString.length;
     i = 0;
-    chh localchh;
+    cii localcii;
     if (i < j)
     {
-      localchh = new chh(arrayOfString[i]);
-      localObject1 = localchh.a;
+      localcii = new cii(arrayOfString[i]);
+      localObject1 = localcii.a;
       if (paramBundle.equals(localObject1)) {
         break label537;
       }
-      ((ArrayList)localObject2).add(new chh((String)localObject1));
+      ((ArrayList)localObject2).add(new cii((String)localObject1));
       paramBundle = (Bundle)localObject1;
     }
     label532:
     label537:
     for (;;)
     {
-      ((ArrayList)localObject2).add(localchh);
+      ((ArrayList)localObject2).add(localcii);
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, Integer.valueOf(((Integer)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1)).intValue() + 1));
       i += 1;
       break;
@@ -161,15 +161,15 @@ public class CountryActivity
         break;
         this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
         setTitle("选择国家和地区");
-        this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131296890).getParent());
+        this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131296891).getParent());
         this.b = ((View)this.jdField_a_of_type_AndroidViewView.getParent());
         this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131297403));
-        this.p.setImageResource(2130838043);
+        this.p.setImageResource(2130838062);
         this.p.setContentDescription("搜索");
         this.p.setVisibility(0);
         this.p.setOnClickListener(this);
-        this.jdField_a_of_type_Chg = new chg(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Chg);
+        this.jdField_a_of_type_Cih = new cih(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Cih);
         this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131297395));
         this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(this.jdField_a_of_type_ArrayOfJavaLangString, true);
         this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setOnIndexChangedListener(this);
@@ -183,17 +183,17 @@ public class CountryActivity
   {
     if (paramView == this.p)
     {
-      this.jdField_a_of_type_Chk = new chk(this, this);
-      this.jdField_a_of_type_Chk.setCanceledOnTouchOutside(true);
+      this.jdField_a_of_type_Cil = new cil(this, this);
+      this.jdField_a_of_type_Cil.setCanceledOnTouchOutside(true);
       int i = this.jdField_a_of_type_AndroidViewView.getHeight();
       paramView = new TranslateAnimation(0.0F, 0.0F, 0.0F, -i);
       paramView.setDuration(300L);
       paramView.setFillAfter(true);
-      paramView.setAnimationListener(new chd(this));
+      paramView.setAnimationListener(new cie(this));
       TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -i, 0.0F);
       localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setAnimationListener(new che(this, i));
-      this.jdField_a_of_type_Chk.setOnDismissListener(new chf(this, i, localTranslateAnimation));
+      localTranslateAnimation.setAnimationListener(new cif(this, i));
+      this.jdField_a_of_type_Cil.setOnDismissListener(new cig(this, i, localTranslateAnimation));
       this.b.startAnimation(paramView);
       return;
     }

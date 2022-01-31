@@ -229,6 +229,7 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqGetDiscussInfo", new int[] { 6 });
     jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqQuitDiscuss", new int[] { 6 });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x865_3", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x921_0", new int[] { 6 });
     jdField_a_of_type_JavaUtilMap.put("QzoneService.GetNewAndUnread", new int[] { 7 });
     jdField_a_of_type_JavaUtilMap.put("TransService.FileDeleteReq", new int[] { 8 });
     jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PushParam", new int[] { 9 });
@@ -279,6 +280,7 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("GrpMemberLBS.ReportLBS", new int[] { 19 });
     jdField_a_of_type_JavaUtilMap.put("GrpMemberLBS.GetNeighbours", new int[] { 19 });
     jdField_a_of_type_JavaUtilMap.put("ModifyExamine.GetModifyTimes", new int[] { 19 });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileSearch", new int[] { 19 });
     jdField_a_of_type_JavaUtilMap.put("SecCheckSigSvc.UploadReq", new int[] { 20, 21, 23 });
     jdField_a_of_type_JavaUtilMap.put("SecSafeChkSvc.MainCmd", new int[] { 25 });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d2_0", new int[] { 26 });

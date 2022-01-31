@@ -1,46 +1,44 @@
-import android.annotation.SuppressLint;
 import android.content.Context;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.adapter.ForwardSelectionFriendListAdapter;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.EmosmDetailActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.EmosmHandler;
+import com.tencent.mobileqq.app.EmosmHandler.EmosmHandlerListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.search.ContactSearchableFriend;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.tencent.mobileqq.data.EmosmResp;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class ame
-  extends SearchResultDialog
+public final class ame
+  implements EmosmHandler.EmosmHandlerListener
 {
-  public ame(ForwardFriendListActivity paramForwardFriendListActivity, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
-  {
-    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
-  }
+  public ame(EmosmHandler paramEmosmHandler, int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, PicEmoticonInfo paramPicEmoticonInfo, ImageView paramImageView, QQProgressDialog paramQQProgressDialog, SessionInfo paramSessionInfo) {}
   
-  @SuppressLint({"UseSparseArrays"})
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void a(boolean paramBoolean, int paramInt, EmosmResp paramEmosmResp)
   {
-    ArrayList localArrayList = new ArrayList();
-    HashMap localHashMap = ForwardFriendListActivity.a(this.a).a();
-    Iterator localIterator = localHashMap.keySet().iterator();
-    while (localIterator.hasNext())
+    if ((paramInt == 6) || (paramInt == 7) || (paramInt == 107))
     {
-      Object localObject = (ArrayList)localHashMap.get((Integer)localIterator.next());
-      if (localObject != null)
-      {
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          Friends localFriends = (Friends)((Iterator)localObject).next();
-          localArrayList.add(new ContactSearchableFriend(paramContext, paramQQAppInterface, localFriends, ForwardFriendListActivity.a(this.a).a(localFriends.groupid), 0L, 34359738368L));
-        }
+      this.jdField_a_of_type_ComTencentMobileqqAppEmosmHandler.b(this);
+      if (paramBoolean != true) {
+        break label100;
       }
+      paramInt = paramEmosmResp.delEpId;
+      if ((paramEmosmResp.keySeq != null) && (!paramEmosmResp.keySeq.equals(""))) {
+        break label92;
+      }
+      paramEmosmResp = "你暂时没有此表情的权限。";
     }
-    return localArrayList;
+    for (;;)
+    {
+      EmosmDetailActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, this.jdField_a_of_type_AndroidWidgetImageView, paramInt, paramEmosmResp, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      return;
+      label92:
+      paramEmosmResp = paramEmosmResp.keySeq;
+      continue;
+      label100:
+      paramInt = -404;
+      paramEmosmResp = "服务器忙，请稍后再试";
+    }
   }
 }
 

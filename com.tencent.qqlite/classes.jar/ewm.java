@@ -1,14 +1,11 @@
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ewm
-  implements Runnable
 {
-  public ewm(HttpCommunicator paramHttpCommunicator) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void run()
-  {
-    this.a.c();
-  }
+  private ewm(QQCustomDialog paramQQCustomDialog) {}
 }
 
 

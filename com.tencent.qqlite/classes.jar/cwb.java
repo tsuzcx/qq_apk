@@ -1,20 +1,16 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
 
 public class cwb
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cwb(ScreenShot paramScreenShot) {}
+  public cwb(QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.jdField_a_of_type_Cwe.a(true);
-    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
-      KapalaiAdapterUtil.a().b(this.a.jdField_a_of_type_AndroidViewWindow);
+    PhoneContactManager localPhoneContactManager = (PhoneContactManager)this.a.getManager(10);
+    if (localPhoneContactManager != null) {
+      localPhoneContactManager.a(false);
     }
   }
 }

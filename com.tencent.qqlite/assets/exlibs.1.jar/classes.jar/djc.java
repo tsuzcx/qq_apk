@@ -1,16 +1,9 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
 
-class djc
-  implements View.OnClickListener
+public class djc
 {
-  djc(djb paramdjb) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.h();
-  }
+  private static final int a = 12;
+  public View[] a = new View[12];
 }
 
 

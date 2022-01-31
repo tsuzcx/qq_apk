@@ -1,44 +1,34 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar.IActionBarClickEvent;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter.HlistViewHolder;
+import com.tencent.widget.ActionSheet;
 
-public class dth
-  implements SeekBar.OnSeekBarChangeListener
+public final class dth
+  implements View.OnClickListener
 {
-  public dth(LocalVideoFileView paramLocalVideoFileView) {}
+  public dth(QQAppInterface paramQQAppInterface, String paramString, Activity paramActivity, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    LocalVideoFileView.a(this.a, paramInt);
-    if (paramBoolean)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0, false);
+    String str = FileManagerUtil.a(this.jdField_a_of_type_JavaLangString);
+    FMToastUtil.b(FileManagerUtil.d(str) + this.jdField_a_of_type_AndroidAppActivity.getString(2131361998));
+    if ((paramView.getTag() instanceof HorizontalListViewAdapter.HlistViewHolder))
     {
-      paramSeekBar = LocalVideoFileView.a(this.a, paramInt);
-      LocalVideoFileView.a(this.a).setText(paramSeekBar);
-      if ((LocalVideoFileView.a(this.a) != null) && (LocalVideoFileView.a(this.a).b(LocalVideoFileView.a(this.a)))) {}
+      paramView = (HorizontalListViewAdapter.HlistViewHolder)paramView.getTag();
+      if (paramView.a.isShowing()) {
+        paramView.a.dismiss();
+      }
     }
-    else
-    {
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent.d();
     }
-    LocalVideoFileView.a(this.a).a(paramInt);
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((LocalVideoFileView.a(this.a) == null) || (!LocalVideoFileView.a(this.a).b(LocalVideoFileView.a(this.a)))) {
-      return;
-    }
-    LocalVideoFileView.a(this.a).d();
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((LocalVideoFileView.a(this.a) == null) || (!LocalVideoFileView.a(this.a).b(LocalVideoFileView.a(this.a)))) {
-      return;
-    }
-    LocalVideoFileView.a(this.a).e();
   }
 }
 

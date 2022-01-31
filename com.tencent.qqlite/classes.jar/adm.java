@@ -1,29 +1,78 @@
 import android.os.Handler;
-import android.view.View;
-import com.tencent.image.Utils;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
 public class adm
-  implements ActionSheet.OnButtonClickListener
+  extends MessageObserver
 {
-  public adm(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, ActionSheet paramActionSheet) {}
+  public adm(ChatHistory paramChatHistory) {}
   
-  public void a(View paramView, int paramInt)
+  protected void a(boolean paramBoolean)
   {
-    switch (paramInt)
+    this.a.l();
+    if (!paramBoolean)
     {
+      Message localMessage = this.a.a.obtainMessage(5);
+      this.a.a(localMessage);
     }
-    for (;;)
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (!paramBoolean1)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      int i = 1;
+      if (paramBoolean2) {
+        i = 7;
+      }
+      paramString = this.a.a.obtainMessage(i);
+      this.a.a(paramString);
       return;
-      paramView = ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory).obtainMessage(1);
-      ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory).sendMessageDelayed(paramView, 800L);
-      Utils.executeAsyncTaskOnThreadPool(new adn(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
     }
+    this.a.app.a().c();
+    paramString = this.a.a.obtainMessage(0);
+    this.a.a(paramString);
+  }
+  
+  protected void a_(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(1);
+      this.a.a(localMessage);
+      return;
+    }
+    this.a.app.a().c();
+    Message localMessage = this.a.a.obtainMessage(0);
+    this.a.a(localMessage);
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(3);
+      this.a.a(localMessage);
+      return;
+    }
+    Message localMessage = this.a.a.obtainMessage(2);
+    this.a.a(localMessage);
+  }
+  
+  protected void b_(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(1);
+      this.a.a(localMessage);
+      return;
+    }
+    this.a.app.a().c();
+    Message localMessage = this.a.a.obtainMessage(0);
+    this.a.a(localMessage);
   }
 }
 

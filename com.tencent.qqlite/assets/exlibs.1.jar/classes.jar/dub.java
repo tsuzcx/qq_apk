@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
 
-class dub
-  implements Runnable
+public class dub
+  implements View.OnClickListener
 {
-  dub(dtz paramdtz, int paramInt, String paramString) {}
+  public dub(LocalMusicFileView paramLocalMusicFileView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Dtz.a.a.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+    if (LocalMusicFileView.a(this.a))
+    {
+      LocalMusicFileView.a(this.a);
+      return;
+    }
+    LocalMusicFileView.b(this.a);
   }
 }
 

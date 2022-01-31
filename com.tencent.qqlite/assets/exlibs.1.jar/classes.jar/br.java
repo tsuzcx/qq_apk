@@ -1,73 +1,38 @@
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
-import com.dataline.activities.LiteVideoActivity;
-import com.dataline.util.file.ImageInfo;
-import com.dataline.util.file.SendInfo;
-import java.io.File;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.TextView;
+import com.dataline.activities.LiteWifiphotoActivity;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class br
-  implements AdapterView.OnItemClickListener
+  extends BroadcastReceiver
 {
-  public br(LiteVideoActivity paramLiteVideoActivity) {}
+  public br(LiteWifiphotoActivity paramLiteWifiphotoActivity) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = 0;
-    paramAdapterView = paramAdapterView.getAdapter();
-    if (paramAdapterView == null)
+    if (paramIntent != null)
     {
-      paramAdapterView = null;
-      if ((paramAdapterView != null) && ((paramAdapterView instanceof ImageInfo)))
+      paramContext = paramIntent.getAction();
+      if (paramContext != null)
       {
-        paramAdapterView = (ImageInfo)paramAdapterView;
-        paramView = (bt)paramView.getTag();
-        if (LiteVideoActivity.a(this.a, paramAdapterView)) {
-          break label148;
+        if (!paramContext.equals("com.tencent.dataline.wifiphoto.ACTION_WIFIPHOTO_CLOSE")) {
+          break label54;
         }
-        if (LiteVideoActivity.b(this.a)) {
-          break label71;
+        paramContext = (DataLineHandler)this.a.app.a(8);
+        if (paramContext != null) {
+          paramContext.g();
         }
+        this.a.finish();
       }
     }
-    label71:
-    while (!LiteVideoActivity.a(this.a, paramAdapterView.a()))
-    {
+    label54:
+    while (!paramContext.equals("com.tencent.dataline.wifiphoto.ACTION_WIFIPHOTO_CONNECTED")) {
       return;
-      paramAdapterView = paramAdapterView.getItem(paramInt);
-      break;
     }
-    LiteVideoActivity.a(this.a, paramAdapterView);
-    paramView.b.setVisibility(0);
-    paramView = SendInfo.a(paramAdapterView.a(), null, 0L);
-    LiteVideoActivity.a(this.a).add(paramView);
-    paramAdapterView = new File(paramAdapterView.a());
-    LiteVideoActivity.a(this.a, paramAdapterView.length());
-    return;
-    label148:
-    LiteVideoActivity.b(this.a, paramAdapterView);
-    paramView.b.setVisibility(4);
-    paramView = paramAdapterView.a();
-    paramInt = i;
-    for (;;)
-    {
-      if (paramInt < LiteVideoActivity.a(this.a).size())
-      {
-        if (paramView.equals(((SendInfo)LiteVideoActivity.a(this.a).get(paramInt)).a())) {
-          LiteVideoActivity.a(this.a).remove(paramInt);
-        }
-      }
-      else
-      {
-        paramAdapterView = new File(paramAdapterView.a());
-        LiteVideoActivity.b(this.a, paramAdapterView.length());
-        return;
-      }
-      paramInt += 1;
-    }
+    LiteWifiphotoActivity.a(this.a).setText(2131361857);
   }
 }
 

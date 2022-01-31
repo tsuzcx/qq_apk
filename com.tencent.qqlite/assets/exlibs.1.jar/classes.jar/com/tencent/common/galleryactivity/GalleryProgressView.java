@@ -47,8 +47,8 @@ public class GalleryProgressView
   
   public void a(Activity paramActivity, AbstractGalleryScene paramAbstractGalleryScene)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((RelativeLayout)paramAbstractGalleryScene.a()).findViewById(2131297899));
-    Bitmap localBitmap = BitmapFactory.decodeResource(paramActivity.getResources(), 2130839041);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((RelativeLayout)paramAbstractGalleryScene.a()).findViewById(2131297904));
+    Bitmap localBitmap = BitmapFactory.decodeResource(paramActivity.getResources(), 2130839074);
     paramAbstractGalleryScene = localBitmap;
     if (localBitmap == null) {
       paramAbstractGalleryScene = Bitmap.createBitmap(4, 4, Bitmap.Config.ARGB_8888);

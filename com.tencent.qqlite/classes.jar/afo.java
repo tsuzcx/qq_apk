@@ -1,15 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class afo
-  implements View.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  public afo(ChatSettingForTroop paramChatSettingForTroop) {}
+  public afo(ChatSettingForTroop paramChatSettingForTroop, ImageView paramImageView, URLDrawable paramURLDrawable) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    ChatSettingForTroop.a(this.a);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 

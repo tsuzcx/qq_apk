@@ -1,34 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.NearPeopleFilterActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.widget.ActionSheet;
 
 public class awm
-  implements Animation.AnimationListener
+  implements IphonePickerView.IphonePickListener
 {
-  public awm(NearbyActivity paramNearbyActivity, boolean paramBoolean, int paramInt1, int paramInt2, long paramLong) {}
+  public awm(NearPeopleFilterActivity paramNearPeopleFilterActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if ((this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.a.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
     {
-      if (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity) != null)
-      {
-        paramAnimation = new Message();
-        paramAnimation.what = 1;
-        paramAnimation.arg1 = this.jdField_a_of_type_Int;
-        paramAnimation.arg2 = 1003;
-        NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity).sendMessageDelayed(paramAnimation, 400L);
-      }
-      return;
+      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = null;
     }
-    NearbyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.a.i == 0)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters.a[paramInt2]);
+      this.a.c = paramInt2;
+      return;
+    }
+    this.a.b.setRightText(com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters.b[paramInt2]);
+    this.a.d = paramInt2;
+  }
 }
 
 

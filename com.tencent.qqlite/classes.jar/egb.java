@@ -1,25 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.systemmsg.SystemMsgController;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
 public class egb
-  extends Handler
+  extends URLDrawableDownListener.Adapter
 {
-  public egb(SystemMsgController paramSystemMsgController, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public egb(AbsShareMsg paramAbsShareMsg) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if ((SystemMsgController.a(this.a)) && (SystemMsgController.a(this.a) != null))
-    {
-      SystemMsgController.a(this.a, false);
-      SystemMsgController.a(this.a).a().a(3);
-    }
+    paramView.setBackgroundDrawable(null);
   }
 }
 

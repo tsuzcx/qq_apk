@@ -1,13 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class bvr
-  implements DialogInterface.OnClickListener
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public bvr(MarketFaceItemBuilder paramMarketFaceItemBuilder) {}
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public ProgressBar b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public bvr(FileItemBuilder paramFileItemBuilder) {}
 }
 
 

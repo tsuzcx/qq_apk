@@ -1,29 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.NearPeopleFilterActivity;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class awn
-  implements Animation.AnimationListener
+  implements DialogInterface.OnDismissListener
 {
-  public awn(NearbyActivity paramNearbyActivity, int paramInt) {}
+  public awn(NearPeopleFilterActivity paramNearPeopleFilterActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity) != null)
+    if (this.a.i == 0)
     {
-      paramAnimation = new Message();
-      paramAnimation.what = 1;
-      paramAnimation.arg1 = this.jdField_a_of_type_Int;
-      paramAnimation.arg2 = 1001;
-      NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity).sendMessageDelayed(paramAnimation, 400L);
+      this.a.a.setRightTextColor(2);
+      this.a.a.setContentDescription("年龄" + com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters.a[this.a.c]);
+      return;
     }
+    this.a.b.setRightTextColor(2);
+    this.a.b.setContentDescription("星座" + com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters.b[this.a.d]);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

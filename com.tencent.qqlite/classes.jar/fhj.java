@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.AbsListView.SavedState;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.MyAppApi;
 
-public final class fhj
-  implements Parcelable.Creator
+public class fhj
+  extends BroadcastReceiver
 {
-  public AbsListView.SavedState a(Parcel paramParcel)
-  {
-    return new AbsListView.SavedState(paramParcel, null);
-  }
+  public fhj(MyAppApi paramMyAppApi) {}
   
-  public AbsListView.SavedState[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new AbsListView.SavedState[paramInt];
+    LogUtility.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
+    if ((paramIntent != null) && (paramIntent.getAction().equals("mqql.intent.action.ACCOUNT_EXPIRED"))) {
+      this.a.f();
+    }
   }
 }
 

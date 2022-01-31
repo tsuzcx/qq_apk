@@ -1,28 +1,56 @@
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.LoginManagerActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.StatisticConstants;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ckn
   implements View.OnClickListener
 {
-  public ckn(BannerManager paramBannerManager) {}
+  public ckn(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int j = 0;
+    this.a.b.setClickable(false);
+    paramView = this.a.getIntent();
+    Object localObject;
+    int i;
+    if (paramView.getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false))
     {
-    default: 
-      return;
-    case 2131297378: 
-      paramView = new Intent(BannerManager.a(this.a), LoginManagerActivity.class);
-      paramView.putExtra("loginInfo", this.a.d);
-      BannerManager.a(this.a).startActivity(paramView);
-      return;
+      localObject = PhotoPreviewActivity.a(this.a).iterator();
+      for (long l = 0L; ((Iterator)localObject).hasNext(); l += FileUtils.a((String)((Iterator)localObject).next())) {}
+      if (l > 5242880L)
+      {
+        i = 1;
+        if ((!FileManagerUtil.a()) || (i == 0)) {
+          break label149;
+        }
+        FMDialogUtil.a(this.a, 2131362018, 2131362016, new cko(this));
+      }
     }
-    this.a.a();
+    for (;;)
+    {
+      localObject = paramView.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
+      i = j;
+      if (localObject != null) {
+        i = ((ArrayList)localObject).size();
+      }
+      StatisticConstants.a(paramView, i);
+      return;
+      i = 0;
+      break;
+      label149:
+      PhotoPreviewActivity.b(this.a);
+      continue;
+      PhotoPreviewActivity.b(this.a);
+    }
   }
 }
 

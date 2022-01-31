@@ -154,8 +154,8 @@ public class TroopInfoData
       this.jdField_m_of_type_JavaLangString = paramTroopInfo.mRichFingerMemo;
       this.jdField_a_of_type_Long = paramTroopInfo.dwGroupClassExt;
       this.jdField_c_of_type_Int = paramTroopInfo.wMemberNum;
-      this.jdField_h_of_type_JavaLangString = String.format(paramResources.getString(2131363629), new Object[] { Integer.valueOf(paramTroopInfo.wMemberNum) });
-      this.u = String.format(paramResources.getString(2131363629), new Object[] { Integer.valueOf(paramTroopInfo.wMemberMax) });
+      this.jdField_h_of_type_JavaLangString = String.format(paramResources.getString(2131363640), new Object[] { Integer.valueOf(paramTroopInfo.wMemberNum) });
+      this.u = String.format(paramResources.getString(2131363640), new Object[] { Integer.valueOf(paramTroopInfo.wMemberMax) });
       this.jdField_r_of_type_JavaLangString = paramTroopInfo.joinTroopQuestion;
       this.s = paramTroopInfo.joinTroopAnswer;
       switch (paramTroopInfo.cGroupOption)
@@ -198,11 +198,11 @@ public class TroopInfoData
         QLog.i("TroopInfoData", 2, "updateTroopInfoData: time = " + (System.currentTimeMillis() - l1));
       }
       return;
-      this.jdField_n_of_type_JavaLangString = paramResources.getString(2131363090);
+      this.jdField_n_of_type_JavaLangString = paramResources.getString(2131363100);
       break;
-      this.jdField_n_of_type_JavaLangString = paramResources.getString(2131363091);
+      this.jdField_n_of_type_JavaLangString = paramResources.getString(2131363101);
       break;
-      this.jdField_n_of_type_JavaLangString = paramResources.getString(2131363092);
+      this.jdField_n_of_type_JavaLangString = paramResources.getString(2131363102);
       break;
     }
   }
@@ -273,7 +273,7 @@ public class TroopInfoData
     this.o = paramString1;
     b(paramString2);
     this.jdField_c_of_type_Int = paramInt;
-    this.jdField_h_of_type_JavaLangString = String.format(paramResources.getString(2131363629), new Object[] { Integer.valueOf(paramInt) });
+    this.jdField_h_of_type_JavaLangString = String.format(paramResources.getString(2131363640), new Object[] { Integer.valueOf(paramInt) });
   }
   
   public void a(String paramString1, String paramString2)

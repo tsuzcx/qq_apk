@@ -1,15 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.SystemMsgController;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ehd
   implements Runnable
 {
-  public ehd(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
+  public ehd(SystemMsgController paramSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.a, "WebP格式的图片不支持原图发送，请使用标清质量来发送。", 1).a();
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putInt("unread_system_msg", this.jdField_a_of_type_Int).commit();
+    }
   }
 }
 

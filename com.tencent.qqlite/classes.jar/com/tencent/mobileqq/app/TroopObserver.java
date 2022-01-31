@@ -5,8 +5,8 @@ import android.os.Bundle;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.troopshare.TroopShareResp;
 import com.tencent.qphone.base.util.QLog;
-import cwv;
-import cww;
+import cxx;
+import cxy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -291,13 +291,13 @@ public class TroopObserver
                       } while (!QLog.isColorLevel());
                       QLog.d("Q.troopinfo", 2, paramObject.toString());
                       return;
-                      paramObject = (cww)paramObject;
+                      paramObject = (cxy)paramObject;
                       a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean, paramObject.b, paramObject.jdField_a_of_type_JavaUtilList);
                       return;
-                      paramObject = (cww)paramObject;
+                      paramObject = (cxy)paramObject;
                       a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean, paramObject.b, paramObject.jdField_a_of_type_Long, paramObject.jdField_a_of_type_JavaUtilList);
                       return;
-                      paramObject = (cwv)paramObject;
+                      paramObject = (cxx)paramObject;
                       a(paramObject.jdField_a_of_type_Long, paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean, paramObject.jdField_a_of_type_JavaLangString, paramObject.b, paramObject.c);
                       return;
                       paramObject = (Object[])paramObject;

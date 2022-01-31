@@ -1,24 +1,34 @@
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 
-class ccp
-  implements Runnable
+public class ccp
+  implements TextWatcher
 {
-  ccp(cco paramcco) {}
+  public ccp(SearchResultDialog paramSearchResultDialog) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (NewFriendActivity.a(this.a.a) != null) {
-      NewFriendActivity.a(this.a.a).k();
+    paramEditable = SearchResultDialog.a(this.a).getText().toString();
+    String str = paramEditable.trim();
+    if (TextUtils.isEmpty(str)) {
+      this.a.a(paramEditable, paramEditable);
     }
-    for (;;)
+    while (paramEditable.equals(""))
     {
-      ReportController.b(this.a.a.app, "CliOper", "", "", "frd_recommend", "clean_apply", 0, 0, "", "", "", "");
+      this.a.findViewById(2131297955).setVisibility(8);
       return;
-      SystemMsgListView.a(this.a.a.app);
+      this.a.a(str, paramEditable);
     }
+    this.a.findViewById(2131297955).setVisibility(0);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

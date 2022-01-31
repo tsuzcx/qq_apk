@@ -1,17 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.transfile.FileAssistantDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import java.net.URL;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ehb
-  implements BitmapDecoder
+  implements Runnable
 {
-  public ehb(FileAssistantDownloader paramFileAssistantDownloader) {}
+  public ehb(GroupSystemMsgController paramGroupSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
   
-  public Bitmap a(URL paramURL)
+  public void run()
   {
-    paramURL = this.a.a(paramURL);
-    return FileAssistantDownloader.a(this.a, paramURL);
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean("group_system_msg_nomore_msg", this.jdField_a_of_type_Boolean).commit();
+    }
   }
 }
 

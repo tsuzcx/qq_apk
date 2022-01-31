@@ -1,28 +1,30 @@
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
+import com.tencent.open.base.http.HttpBaseUtil;
+import com.tencent.open.base.http.HttpBaseUtil.Statistic;
+import com.tencent.open.business.base.OpenConfig;
+import org.json.JSONObject;
 
 public class ffq
-  implements TicketUtils.TicketCallback
+  implements Runnable
 {
-  public ffq(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, Bundle paramBundle, long paramLong, Context paramContext, boolean paramBoolean1, boolean paramBoolean2) {}
+  public ffq(OpenConfig paramOpenConfig, Bundle paramBundle) {}
   
-  public void a()
+  public void run()
   {
-    LogUtility.c("TIME-STATISTIC", "onGetA1Fail");
-    ThreadManager.b().post(new ffs(this));
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    LogUtility.c("TIME-STATISTIC", "onGetA1");
-    ThreadManager.b().post(new ffr(this, paramArrayOfByte, paramString));
+    try
+    {
+      JSONObject localJSONObject = HttpBaseUtil.a(HttpBaseUtil.a("http://cgi.connect.qq.com/qqconnectopen/openapi/policy_conf", "GET", this.jdField_a_of_type_AndroidOsBundle).a);
+      this.jdField_a_of_type_ComTencentOpenBusinessBaseOpenConfig.a(localJSONObject);
+      this.jdField_a_of_type_ComTencentOpenBusinessBaseOpenConfig.a = 0;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
 }
 

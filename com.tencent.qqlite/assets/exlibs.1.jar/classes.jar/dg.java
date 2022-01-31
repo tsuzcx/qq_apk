@@ -1,14 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.dataline.util.HttpDownload.HttpDownloadListenerPack;
 
-class dg
-  implements DialogInterface.OnClickListener
+public class dg
+  implements Runnable
 {
-  dg(de paramde) {}
+  public dg(HttpDownload.HttpDownloadListenerPack paramHttpDownloadListenerPack, long paramLong1, String paramString, long paramLong2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComDatalineUtilHttpDownload$HttpDownloadListenerPack.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

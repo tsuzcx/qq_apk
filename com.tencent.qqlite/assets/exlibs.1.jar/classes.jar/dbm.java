@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.ISearchListener;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import java.util.List;
+import java.util.concurrent.ThreadFactory;
 
-public class dbm
-  implements ConditionSearchManager.ISearchListener
+public final class dbm
+  implements ThreadFactory
 {
-  public dbm(SearchResultActivity paramSearchResultActivity) {}
-  
-  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2)
+  public Thread newThread(Runnable paramRunnable)
   {
-    if (!paramBoolean1)
-    {
-      this.a.b = 3;
-      this.a.jdField_a_of_type_Dbo.notifyDataSetChanged();
-      return;
+    paramRunnable = new Thread("Bubble_Animation");
+    if (paramRunnable.isDaemon()) {
+      paramRunnable.setDaemon(false);
     }
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    if (paramRunnable.getPriority() != 5) {
+      paramRunnable.setPriority(5);
     }
-    paramList = this.a;
-    if (paramBoolean2) {}
-    for (int i = 1;; i = 0)
-    {
-      paramList.b = i;
-      break;
-    }
+    return paramRunnable;
   }
 }
 

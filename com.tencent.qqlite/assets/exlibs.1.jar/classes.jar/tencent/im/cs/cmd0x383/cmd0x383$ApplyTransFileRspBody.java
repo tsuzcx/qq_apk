@@ -8,7 +8,6 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class cmd0x383$ApplyTransFileRspBody
   extends MessageMicro
 {
-  public static final int STR_SAVE_FILE_PATH_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "str_save_file_path" }, new Object[] { "" }, ApplyTransFileRspBody.class);
   public final PBStringField str_save_file_path = PBField.initString("");
 }

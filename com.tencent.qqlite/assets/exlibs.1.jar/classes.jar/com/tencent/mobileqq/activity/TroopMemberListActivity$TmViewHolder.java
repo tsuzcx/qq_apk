@@ -27,17 +27,17 @@ public class TroopMemberListActivity$TmViewHolder
   {
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297009));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297402));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTroopMemberListSlideItem = ((TroopMemberListSlideItem)paramView.findViewById(2131297828));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131298884);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131298847);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131298848);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTroopMemberListSlideItem = ((TroopMemberListSlideItem)paramView.findViewById(2131297832));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131298910);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131298873);
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131298874);
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297011));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298885));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296875));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298886));
-    this.e = ((TextView)paramView.findViewById(2131298888));
-    this.f = ((TextView)paramView.findViewById(2131298850));
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131298887);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298911));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296876));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298912));
+    this.e = ((TextView)paramView.findViewById(2131298914));
+    this.f = ((TextView)paramView.findViewById(2131298876));
+    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131298913);
     this.jdField_a_of_type_Boolean = false;
   }
 }

@@ -1,23 +1,20 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class cko
-  implements View.OnClickListener
+class cko
+  implements FMDialogUtil.FMDialogInterface
 {
-  public cko(BannerManager paramBannerManager) {}
+  cko(ckn paramckn) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = new Intent(BannerManager.a(this.a), TroopAssisSettingActivity.class);
-    BannerManager.a(this.a).startActivityForResult(paramView, 9001);
-    BannerManager.a(this.a).sendEmptyMessageDelayed(1, 1000L);
-    ReportController.b(BannerManager.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
+    PhotoPreviewActivity.b(this.a.a);
+  }
+  
+  public void b()
+  {
+    this.a.a.b.setClickable(true);
   }
 }
 

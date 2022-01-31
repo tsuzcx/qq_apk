@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.DoodleActivity;
 
-class akj
-  implements DialogInterface.OnClickListener
+public class akj
+  implements View.OnClickListener
 {
-  akj(akh paramakh) {}
+  public akj(DoodleActivity paramDoodleActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.a.setVisibility(0);
+    this.a.b.setVisibility(8);
+  }
 }
 
 

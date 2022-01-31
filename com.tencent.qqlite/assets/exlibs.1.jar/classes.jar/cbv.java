@@ -1,21 +1,20 @@
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.app.LBSObserver;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.tips.ReaderTipsBar;
 
 public class cbv
-  extends LBSObserver
+  implements View.OnClickListener
 {
-  public cbv(AddContactsView paramAddContactsView) {}
+  public cbv(ReaderTipsBar paramReaderTipsBar) {}
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      this.a.a = paramLBSInfo.a();
-    }
-    if ((this.a.a == null) || (this.a.a.length != 4)) {
-      this.a.a = new String[] { "-1", "-1", "-1", "-1" };
-    }
-    this.a.d();
+    paramView = new Intent();
+    paramView.setAction("com.qqreader.aioback2reader");
+    paramView.putExtra("bookid", ReaderTipsBar.a(this.a));
+    ReaderTipsBar.a(this.a).sendBroadcast(paramView);
   }
 }
 

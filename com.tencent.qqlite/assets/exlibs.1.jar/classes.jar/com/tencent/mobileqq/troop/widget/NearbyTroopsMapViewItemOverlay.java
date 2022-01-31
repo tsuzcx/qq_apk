@@ -172,10 +172,10 @@ public class NearbyTroopsMapViewItemOverlay
             if ((this.jdField_a_of_type_AndroidContentContext != null) && (paramBoolean1))
             {
               if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-                this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130838283);
+                this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130838302);
               }
               if (this.b == null) {
-                this.b = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130838285);
+                this.b = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130838304);
               }
               if (!Long.toString(((GroupInfo)localObject2).lCreator).equals(this.jdField_a_of_type_JavaLangString)) {
                 break label610;
@@ -208,7 +208,7 @@ public class NearbyTroopsMapViewItemOverlay
               if ((this.jdField_a_of_type_AndroidContentContext != null) && (!paramBoolean1))
               {
                 if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-                  this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838284);
+                  this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838303);
                 }
                 ((NearbyTroopsMapViewOverlayItem)localObject1).setMarker(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
               }

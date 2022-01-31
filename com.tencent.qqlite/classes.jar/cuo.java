@@ -1,109 +1,52 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ContactSorter;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.model.FriendManager;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.LebaHelper;
+import com.tencent.mobileqq.config.DownloadIconsListener;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.io.File;
+import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
 
 public class cuo
-  extends AsyncTask
+  implements Runnable
 {
-  private static final String jdField_a_of_type_JavaLangString = "PhoneContactManager.ContactFriendTask";
+  public cuo(LebaHelper paramLebaHelper, URL paramURL, File paramFile, String paramString) {}
   
-  private cuo(PhoneContactManagerImp paramPhoneContactManagerImp) {}
-  
-  protected List a(RespondQueryQQBindingStat... paramVarArgs)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactManager.ContactFriendTask", 2, "doInBackground");
-    }
-    Object localObject = paramVarArgs[0];
-    paramVarArgs = new ArrayList();
-    paramVarArgs.addAll(PhoneContactManagerImp.a(this.a).values());
-    Collections.sort(paramVarArgs, new cup(this));
-    ArrayList localArrayList = new ArrayList();
-    FriendManager localFriendManager = (FriendManager)PhoneContactManagerImp.a(this.a).getManager(8);
-    Iterator localIterator;
-    if (paramVarArgs.size() > 0)
+    try
     {
-      localObject = ((RespondQueryQQBindingStat)localObject).mobileNo;
-      localIterator = paramVarArgs.iterator();
-    }
-    PhoneContact localPhoneContact;
-    do
-    {
-      do
+      if (!HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaNetURL, this.jdField_a_of_type_JavaIoFile)) {
+        break label199;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("LebaHelper", 2, "Download icon key = " + this.jdField_a_of_type_JavaLangString + "suc--------");
+      }
+      Bitmap localBitmap = LebaHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper, this.jdField_a_of_type_JavaIoFile);
+      if (localBitmap != null)
       {
-        if (localIterator.hasNext())
-        {
-          paramVarArgs = (PhoneContact)localIterator.next();
-          if (!isCancelled()) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("LebaHelper", 2, "Download icon key = " + this.jdField_a_of_type_JavaLangString + "notify UI++++++++");
         }
-        else
-        {
-          Collections.sort(localArrayList, new cuq(this));
-          return localArrayList;
+        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper.d.iterator();
+        while (localIterator.hasNext()) {
+          ((DownloadIconsListener)localIterator.next()).a(this.jdField_a_of_type_JavaLangString, localBitmap);
         }
-      } while ((localObject != null) && (((String)localObject).endsWith(paramVarArgs.mobileNo.trim())));
-      localPhoneContact = (PhoneContact)paramVarArgs.clone();
-      if (localPhoneContact.pinyinFirst == null) {
-        localPhoneContact.pinyinFirst = PhoneContactManagerImp.d(localPhoneContact.pinyinInitial);
       }
-    } while (TextUtils.isEmpty(localPhoneContact.uin));
-    if (localPhoneContact.uin.equals("0"))
+      LebaHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper, this.jdField_a_of_type_JavaLangString);
+    }
+    catch (Exception localException)
     {
-      paramVarArgs = null;
-      label222:
-      if ((paramVarArgs == null) || (paramVarArgs.groupid < 0)) {
-        break label295;
-      }
-      localPhoneContact.nickName = ContactSorter.a(paramVarArgs);
-      localPhoneContact.remark = paramVarArgs.remark;
-      localPhoneContact.faceUrl = Short.toString(paramVarArgs.faceid);
-      localPhoneContact.sortWeight = 262144;
+      this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper.jdField_a_of_type_JavaUtilSet.remove(this.jdField_a_of_type_JavaLangString);
+      LebaHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper, this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    for (;;)
-    {
-      localArrayList.add(localPhoneContact);
-      break;
-      paramVarArgs = localFriendManager.c(localPhoneContact.uin);
-      break label222;
-      label295:
-      localPhoneContact.uin = "0";
-      if (localFriendManager.e(localPhoneContact.nationCode + localPhoneContact.mobileCode))
-      {
-        localPhoneContact.sortWeight = 131072;
-        localPhoneContact.hasSendAddReq = true;
-      }
-      else
-      {
-        localPhoneContact.sortWeight = 65536;
-      }
-    }
-  }
-  
-  protected void a(List paramList)
-  {
-    if (!isCancelled()) {
-      this.a.a(paramList);
-    }
-  }
-  
-  protected void onCancelled()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactManager.ContactFriendTask", 2, "on cancelled");
-    }
-    PhoneContactManagerImp.a(this.a, null);
+    return;
+    label199:
+    this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper.jdField_a_of_type_JavaUtilSet.remove(this.jdField_a_of_type_JavaLangString);
+    LebaHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper, this.jdField_a_of_type_JavaLangString);
   }
 }
 

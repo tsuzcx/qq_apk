@@ -1,6 +1,5 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class ajj
@@ -10,7 +9,7 @@ public class ajj
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
+    DiscussionMemberActivity.a(this.a);
   }
 }
 

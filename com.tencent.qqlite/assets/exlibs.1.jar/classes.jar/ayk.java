@@ -1,17 +1,23 @@
+import android.view.View;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ayk
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public ayk(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public ayk(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, ayx paramayx, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void a(View paramView, int paramInt)
   {
-    NearbyPeopleProfileActivity.m(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.dating", 2, "updateDateSig sig = " + NearbyPeopleProfileActivity.a(this.a).b);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a();
+      return;
+      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity, this.jdField_a_of_type_Ayx);
     }
   }
 }

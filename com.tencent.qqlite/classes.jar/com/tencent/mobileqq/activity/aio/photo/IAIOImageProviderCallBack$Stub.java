@@ -4,7 +4,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
-import byv;
+import bzv;
 
 public abstract class IAIOImageProviderCallBack$Stub
   extends Binder
@@ -29,7 +29,7 @@ public abstract class IAIOImageProviderCallBack$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IAIOImageProviderCallBack))) {
       return (IAIOImageProviderCallBack)localIInterface;
     }
-    return new byv(paramIBinder);
+    return new bzv(paramIBinder);
   }
   
   public IBinder asBinder()

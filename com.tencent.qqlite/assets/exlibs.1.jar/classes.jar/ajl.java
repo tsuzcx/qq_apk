@@ -1,16 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class ajl
-  implements View.OnClickListener
+  extends FriendListObserver
 {
-  public ajl(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public ajl(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

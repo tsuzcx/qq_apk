@@ -1,26 +1,42 @@
-import com.dataline.mpfile.LiteMpFileMainActivity;
-import com.dataline.mpfile.MpFileDataReportCenter;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.dataline.mpfile.MpFileConstant;
 import com.dataline.mpfile.MpfileDataCenter;
-import com.dataline.mpfile.MpfileDataReportInfo;
-import com.dataline.util.DBNetworkUtil;
+import java.util.TimerTask;
 
 public class cw
-  implements Runnable
+  extends TimerTask
 {
-  public cw(LiteMpFileMainActivity paramLiteMpFileMainActivity) {}
+  private long jdField_a_of_type_Long = System.currentTimeMillis();
+  private long b = 0L;
+  
+  private cw(MpfileDataCenter paramMpfileDataCenter) {}
+  
+  public void a(long paramLong)
+  {
+    this.b = paramLong;
+  }
   
   public void run()
   {
-    MpfileDataReportInfo localMpfileDataReportInfo = new MpfileDataReportInfo();
-    localMpfileDataReportInfo.jdField_b_of_type_Int = 253;
-    localMpfileDataReportInfo.jdField_a_of_type_Int = 1;
-    localMpfileDataReportInfo.jdField_a_of_type_JavaLangString = MpfileDataCenter.k;
-    localMpfileDataReportInfo.jdField_b_of_type_JavaLangString = DBNetworkUtil.b();
-    localMpfileDataReportInfo.d = MpfileDataCenter.E;
-    localMpfileDataReportInfo.jdField_b_of_type_Long = LiteMpFileMainActivity.b(this.a);
-    localMpfileDataReportInfo.c = LiteMpFileMainActivity.c(this.a);
-    MpFileDataReportCenter.a(this.a.app, localMpfileDataReportInfo);
-    this.a.a(MpfileDataCenter.t);
+    if (this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.jdField_a_of_type_Boolean) {
+      cancel();
+    }
+    long l;
+    do
+    {
+      return;
+      l = System.currentTimeMillis();
+    } while ((l <= this.jdField_a_of_type_Long) || (l - this.jdField_a_of_type_Long <= 30000L));
+    cancel();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(MpFileConstant.e, MpfileDataCenter.q);
+    localBundle.putLong(MpFileConstant.f, this.b);
+    Intent localIntent = new Intent();
+    localIntent.setAction(MpFileConstant.d);
+    localIntent.putExtras(localBundle);
+    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
   }
 }
 

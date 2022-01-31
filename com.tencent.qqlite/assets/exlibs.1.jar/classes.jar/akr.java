@@ -1,13 +1,26 @@
-import com.tencent.mobileqq.activity.EditActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.DoodleActivity;
 
 public class akr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akr(EditActivity paramEditActivity) {}
+  public akr(DoodleActivity paramDoodleActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.e();
+    if ((this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0) || (this.a.b.getVisibility() == 0))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.b.setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839163);
+    this.a.c.setVisibility(0);
   }
 }
 

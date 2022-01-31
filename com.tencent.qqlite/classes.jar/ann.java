@@ -1,40 +1,40 @@
+import android.os.Bundle;
 import android.os.Handler;
-import com.tencent.biz.common.util.OpenIdObserver;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.SSOAccountObserver;
 
 public class ann
-  extends OpenIdObserver
+  extends SSOAccountObserver
 {
-  public ann(ForwardRecentActivity paramForwardRecentActivity) {}
+  WeakReference a;
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public ann(ForwardOperations paramForwardOperations)
   {
-    if ((this.a.isFinishing()) || (this.a.d)) {}
-    do
+    this.a = new WeakReference(paramForwardOperations);
+  }
+  
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    paramString = (ForwardOperations)this.a.get();
+    if ((paramString != null) && (!paramString.c) && (ForwardOperations.a(paramString) != null)) {
+      ForwardOperations.a(paramString).sendEmptyMessage(0);
+    }
+  }
+  
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    if (paramInt == 4096) {}
+    for (paramString = new String(paramArrayOfByte);; paramString = null)
     {
+      paramArrayOfByte = (ForwardOperations)this.a.get();
+      if (paramArrayOfByte != null)
+      {
+        paramArrayOfByte.C = paramString;
+        paramArrayOfByte.c = true;
+      }
       return;
-      ForwardRecentActivity.a(this.a).d();
-      if (this.a.a != null) {
-        this.a.a.removeCallbacksAndMessages(null);
-      }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardRecentActivity", 2, "openIdObserver success");
-        }
-        if (!paramOpenID.openID.equals(this.a.w)) {
-          this.a.a();
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("ForwardRecentActivity", 2, "openIdObserver fail");
-      }
-    } while ((!this.a.b) || (this.a.f != 11));
-    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131362372));
+    }
   }
 }
 

@@ -1,28 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 
-class bbm
-  implements DialogInterface.OnClickListener
+public class bbm
+  implements Runnable
 {
-  bbm(bbl parambbl) {}
+  public bbm(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    try
     {
+      i = ProfileCardMoreActivity.a(this.a, this.a.a.a);
+      ProfileCardMoreActivity.a(this.a, false);
+      this.a.app.runOnUiThread(new bbn(this, i));
+      return;
     }
-    do
+    catch (Exception localException)
     {
-      return;
-      this.a.jdField_a_of_type_Bbk.a.app.a().b(this.a.jdField_a_of_type_Bbk.a.b(), 0, this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_Bbk.a.b();
-      return;
-    } while (this.a.jdField_a_of_type_Bbk.a.jdField_a_of_type_Bbk.getCount() <= 0);
-    this.a.jdField_a_of_type_Bbk.a.app.a().a(this.a.jdField_a_of_type_Bbk.a.b(), 0);
-    this.a.jdField_a_of_type_Bbk.a.jdField_a_of_type_Bbk.changeCursor(this.a.jdField_a_of_type_Bbk.getCursor());
+      for (;;)
+      {
+        int i = -1;
+      }
+    }
   }
 }
 

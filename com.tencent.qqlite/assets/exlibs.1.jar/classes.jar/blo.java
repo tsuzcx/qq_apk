@@ -1,15 +1,21 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 
 public class blo
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
   public blo(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((this.a.a != null) && (this.a.a.equals("conversation"))) {
-      this.a.c();
+    switch (paramCompoundButton.getId())
+    {
+    default: 
+      return;
     }
+    TroopAssistantManager.a().a(this.a.app, paramBoolean);
   }
 }
 

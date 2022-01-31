@@ -3,6 +3,7 @@ package com.tencent.mobileqq.troop.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateResult;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
@@ -19,20 +20,32 @@ public class TroopCreateActivity
   public static final int d = 44;
   String jdField_a_of_type_JavaLangString;
   boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString = "";
+  String jdField_b_of_type_JavaLangString;
   boolean jdField_b_of_type_Boolean = true;
-  boolean c = false;
+  String jdField_c_of_type_JavaLangString = "";
+  boolean jdField_c_of_type_Boolean = false;
   int e = 0;
   int f = -1;
+  
+  private void y()
+  {
+    Intent localIntent = new Intent(this, ChatActivity.class);
+    localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("uinname", this.jdField_b_of_type_JavaLangString);
+    localIntent.putExtra("uintype", 1);
+    localIntent.setFlags(67108864);
+    startActivity(localIntent);
+    finish();
+  }
   
   public void a(String paramString)
   {
     if (!NetworkUtil.e(BaseApplication.getContext()))
     {
-      QQToast.a(this, 2131362916, 0).b(getTitleBarHeight());
+      QQToast.a(this, 2131362923, 0).b(getTitleBarHeight());
       return;
     }
-    d(getString(2131363794));
+    d(getString(2131363805));
     Intent localIntent = new Intent(this, TroopCreateLogicActivity.class);
     localIntent.putExtra("type", 1);
     localIntent.putExtra("cfg", paramString);
@@ -41,7 +54,7 @@ public class TroopCreateActivity
   
   public void b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_c_of_type_JavaLangString = paramString;
   }
   
   protected void d()
@@ -71,6 +84,7 @@ public class TroopCreateActivity
       }
       int i = paramIntent.getIntExtra("retCode", -1);
       Object localObject2 = paramIntent.getStringExtra("troopUin");
+      String str = paramIntent.getStringExtra("troopName");
       Object localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         localObject1 = "";
@@ -102,6 +116,8 @@ public class TroopCreateActivity
         }
         this.jdField_a_of_type_Boolean = true;
         this.jdField_a_of_type_JavaLangString = ((String)localObject1);
+        this.jdField_b_of_type_JavaLangString = str;
+        y();
         break;
         localObject2 = "";
       }
@@ -135,7 +151,7 @@ public class TroopCreateActivity
       ((Intent)localObject1).putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
       startActivityForResult((Intent)localObject1, 42);
       continue;
-      this.c = paramIntent.getBooleanExtra("has_head", false);
+      this.jdField_c_of_type_Boolean = paramIntent.getBooleanExtra("has_head", false);
     }
   }
   
@@ -149,9 +165,9 @@ public class TroopCreateActivity
     }
     if (paramBundle != null)
     {
-      this.jdField_b_of_type_JavaLangString = paramBundle.getString("TroopCreateWebData");
-      if (this.jdField_b_of_type_JavaLangString == null) {
-        this.jdField_b_of_type_JavaLangString = "";
+      this.jdField_c_of_type_JavaLangString = paramBundle.getString("TroopCreateWebData");
+      if (this.jdField_c_of_type_JavaLangString == null) {
+        this.jdField_c_of_type_JavaLangString = "";
       }
       if (Boolean.valueOf(paramBundle.getBoolean("isSavedInstanceState", false)).booleanValue())
       {
@@ -199,7 +215,7 @@ public class TroopCreateActivity
     this.jdField_b_of_type_Boolean = false;
     super.doOnSaveInstanceState(paramBundle);
     paramBundle.putBoolean("isSavedInstanceState", true);
-    paramBundle.putString("TroopCreateWebData", this.jdField_b_of_type_JavaLangString);
+    paramBundle.putString("TroopCreateWebData", this.jdField_c_of_type_JavaLangString);
   }
   
   public String f()
@@ -207,8 +223,8 @@ public class TroopCreateActivity
     Object localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("head", this.c);
-      ((JSONObject)localObject).put("webCacheData", this.jdField_b_of_type_JavaLangString);
+      ((JSONObject)localObject).put("head", this.jdField_c_of_type_Boolean);
+      ((JSONObject)localObject).put("webCacheData", this.jdField_c_of_type_JavaLangString);
       localObject = ((JSONObject)localObject).toString();
       return localObject;
     }

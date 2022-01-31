@@ -1,56 +1,24 @@
-import android.content.Context;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.messagesearch.HistoryItem;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.activity.messagesearch.MessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.mobileqq.activity.messagesearch.SearchHistoryAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
-public class cfv
-  implements AdapterView.OnItemClickListener
+class cfv
+  implements DialogInterface.OnClickListener
 {
-  public cfv(MessageSearchDialog paramMessageSearchDialog) {}
+  cfv(cft paramcft, String paramString) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onItemClick, position = " + paramInt);
-    }
-    paramAdapterView = MessageSearchDialog.a(this.a).a();
-    if (paramAdapterView == this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter)
+    try
     {
-      paramAdapterView = (MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.getItem(paramInt);
-      MessageSearchDialog.a(this.a, MessageSearchDialog.a(this.a).a().a(MessageSearchDialog.a(this.a).jdField_a_of_type_JavaLangString, MessageSearchDialog.a(this.a).jdField_a_of_type_Int, paramAdapterView.a));
-      if (QLog.isColorLevel()) {
-        QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onItemClick, mRecordCount = " + MessageSearchDialog.a(this.a));
-      }
-      this.a.a(true);
-      this.a.dismiss();
-    }
-    do
-    {
+      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_Cft.a.a.startActivity(paramDialogInterface);
       return;
-      if (paramAdapterView == this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter)
-      {
-        paramAdapterView = (HistoryItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter.getItem(paramInt);
-        this.a.b = false;
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramAdapterView.jdField_a_of_type_JavaLangString);
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramAdapterView.jdField_a_of_type_JavaLangString.length());
-        this.a.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-        ((InputMethodManager)this.a.jdField_a_of_type_AndroidWidgetEditText.getContext().getSystemService("input_method")).toggleSoftInput(0, 2);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onItemClick, unknown data type");
+    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 

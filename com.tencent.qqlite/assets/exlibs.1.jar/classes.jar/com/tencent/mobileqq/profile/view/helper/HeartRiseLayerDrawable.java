@@ -8,15 +8,15 @@ import android.graphics.Paint;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Handler;
 import android.util.DisplayMetrics;
-import eak;
-import eal;
+import ebm;
+import ebn;
 
 public class HeartRiseLayerDrawable
   extends LayerDrawable
 {
   public HeartRiseLayerDrawable(int paramInt, Resources paramResources)
   {
-    super(eal.a(paramInt, paramResources, a(paramResources)));
+    super(ebn.a(paramInt, paramResources, a(paramResources)));
   }
   
   public static Bitmap a(Resources paramResources)
@@ -39,11 +39,11 @@ public class HeartRiseLayerDrawable
     int i = 0;
     if (i < getNumberOfLayers())
     {
-      eak localeak = new eak(this, i, paramInt1, paramInt2);
+      ebm localebm = new ebm(this, i, paramInt1, paramInt2);
       if (i % 2 == 0) {}
       for (long l = i * 200;; l = i * 130)
       {
-        paramHandler.postDelayed(localeak, l);
+        paramHandler.postDelayed(localebm, l);
         i += 1;
         break;
       }

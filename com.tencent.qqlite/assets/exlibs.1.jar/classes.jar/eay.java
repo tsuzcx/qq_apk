@@ -1,70 +1,84 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richstatus.ActionGridActivity;
-import com.tencent.mobileqq.richstatus.ActionInfo;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.mobileqq.widget.GridListView.GridListAdapter;
-import com.tencent.mobileqq.widget.StatableBitmapDrawable;
-import java.util.ArrayList;
+import android.app.KeyguardManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.pic.PicPreDownloader;
 
 public class eay
-  extends GridListView.GridListAdapter
+  extends BroadcastReceiver
 {
-  private eay(ActionGridActivity paramActionGridActivity) {}
+  private String a;
   
-  public int a()
+  public eay(String paramString)
   {
-    return 1;
+    this.a = paramString;
   }
   
-  public int a(int paramInt)
+  public boolean a(Context paramContext)
   {
-    return 0;
+    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
   }
   
-  public int b(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return 0;
-  }
-  
-  public int getCount()
-  {
-    return ActionGridActivity.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return ActionGridActivity.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null)
+    boolean bool = true;
+    paramIntent = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_ON".equals(paramIntent))
     {
-      paramViewGroup = this.a.getLayoutInflater().inflate(2130903653, null);
-      paramView = new eaz(null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131298195));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131298196));
-      paramViewGroup.setTag(paramView);
+      PicPreDownloader.a(PicPreDownloader.b());
+      if (!a(paramContext))
+      {
+        PicPreDownloader.b(bool);
+        label36:
+        Logger.a("PIC_TAG_PRELOAD", "onReceive", "isScreenOn:" + PicPreDownloader.b() + ",lastScreenOnState:" + PicPreDownloader.c());
+        if (PicPreDownloader.c() != PicPreDownloader.b()) {
+          break label138;
+        }
+      }
     }
-    paramView = (eaz)paramViewGroup.getTag();
-    ActionInfo localActionInfo = (ActionInfo)ActionGridActivity.a(this.a).get(paramInt);
-    if (paramView.jdField_a_of_type_Int != localActionInfo.i)
+    for (;;)
     {
-      paramView.jdField_a_of_type_Int = localActionInfo.i;
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new StatableBitmapDrawable(this.a.getResources(), ActionGridActivity.a(this.a).a(localActionInfo.i, 201), false, false));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localActionInfo.c);
+      return;
+      bool = false;
+      break;
+      if ("android.intent.action.SCREEN_OFF".equals(paramIntent))
+      {
+        PicPreDownloader.a(PicPreDownloader.b());
+        PicPreDownloader.b(false);
+        break label36;
+      }
+      if (!"android.intent.action.USER_PRESENT".equals(paramIntent)) {
+        break label36;
+      }
+      PicPreDownloader.a(PicPreDownloader.b());
+      PicPreDownloader.b(true);
+      break label36;
+      try
+      {
+        label138:
+        paramContext = (QQAppInterface)BaseApplicationImpl.a.getAppRuntime(this.a);
+        if (paramContext == null) {
+          continue;
+        }
+        paramContext = paramContext.a();
+        if (paramContext == null) {
+          continue;
+        }
+        paramContext.d();
+        PicPreDownloader.a(paramContext);
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        for (;;)
+        {
+          paramContext = null;
+        }
+      }
     }
-    return paramViewGroup;
   }
 }
 

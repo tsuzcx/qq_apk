@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.GridListView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class faq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public faq(AuthorityActivity paramAuthorityActivity, int paramInt, JSONObject paramJSONObject) {}
+  public faq(GridListView paramGridListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    int i = ((Integer)paramView.getTag(2131298476)).intValue();
+    this.a.a.a(this.a, paramView, i, 0L);
   }
 }
 

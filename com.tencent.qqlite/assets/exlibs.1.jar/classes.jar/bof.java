@@ -1,52 +1,172 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopMemberCard;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import java.util.ArrayList;
 
 public class bof
-  implements TabBarView.OnTabChangeListener
+  extends TroopObserver
 {
-  public bof(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public bof(TroopMemberCardActivity paramTroopMemberCardActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  protected void a(int paramInt, byte paramByte)
   {
-    String str2 = "";
-    String str1;
-    if (paramInt2 == 0)
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onTroopManagerFailed, reqtype:" + paramInt);
+    }
+    if ((paramInt == 2) || (paramInt == 9)) {
+      this.a.a(1, this.a.getString(2131363686));
+    }
+  }
+  
+  protected void a(int paramInt, byte paramByte, String paramString)
+  {
+    if (paramInt == 2)
     {
-      this.a.g = true;
-      str2 = "1";
       if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberListActivity", 2, "onTabSelected, isPositiveSort=" + this.a.g);
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onTroopManagerSuccess, reqtype:_eResignGroupReq result:" + paramByte + " troopUin:" + paramString);
       }
-      if (this.a.a != null) {
-        this.a.a.a();
+      if (paramByte == 0) {
+        this.a.a(5, 2131363685, 1000);
       }
-      str1 = "";
-      if (this.a.w != 1) {
-        break label139;
+    }
+    while (paramInt != 9)
+    {
+      return;
+      this.a.a(1, this.a.getString(2131363686));
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onTroopManagerSuccess, reqtype:_eDeleteGroupReq result:" + paramByte + " troopUin:" + paramString);
+    }
+    if (paramByte == 0)
+    {
+      this.a.a(5, 2131363685, 1000);
+      return;
+    }
+    this.a.a(1, this.a.getString(2131363686));
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, ArrayList paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onDeleteTroopMember, isSuccess:" + paramBoolean + " errorCode:" + paramInt);
+    }
+    if (paramBoolean)
+    {
+      this.a.a(2, this.a.getString(2131362861));
+      this.a.a(1);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    }
+    this.a.a(1, this.a.getString(2131362862));
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    try
+    {
+      if ((this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.a.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
+        this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       }
-      str1 = "Clk_lastactivetime";
+      TroopMemberCardActivity.a(this.a);
+      ((TroopGagMgr)this.a.app.getManager(42)).a(this.a.c, this.a.e);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard: isSuccess " + paramBoolean);
+      }
+      if (paramBoolean)
+      {
+        paramObject = (Object[])paramObject;
+        l = ((Long)paramObject[0]).longValue();
+        i = ((Integer)paramObject[1]).intValue();
+        paramObject = (TroopMemberCard)paramObject[2];
+        if (l != Long.parseLong(this.a.c))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard: troopUin != mTroopUin, " + l + "!=" + this.a.c);
+          }
+        }
+        else if (paramObject == null)
+        {
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard: cardInfo==null");
+        }
+      }
+    }
+    catch (Exception paramObject)
+    {
+      long l;
+      int i;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard:" + paramObject.toString());
+        return;
+        l = paramObject.memberUin;
+        if (l != Long.parseLong(this.a.e))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard: memberUin != mMemberUin, " + l + "!=" + this.a.e);
+          }
+        }
+        else {
+          this.a.a(i, paramObject);
+        }
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt, long[] paramArrayOfLong)
+  {
+    if (paramString.equalsIgnoreCase("OidbSvc.0x8bb_2"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onOperateSpecialFocus, CMD_ADD_SPECIAL_FOCUS, isSuccess:" + paramBoolean + " cmd:" + paramString + " errorCode:" + paramInt);
+      }
+      if (paramBoolean)
+      {
+        this.a.a(2, this.a.getString(2131363736));
+        this.a.a(0);
+        paramString = this.a.jdField_a_of_type_ArrayOfAndroidViewView[3];
+        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.isConcerned = this.a.a(this.a.c, this.a.e);
+        if (!this.a.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.isConcerned) {
+          break label368;
+        }
+        this.a.a(paramString, this.a.getString(2131363735), true);
+        paramString.setContentDescription(this.a.getString(2131363631) + this.a.getString(2131363735));
+      }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(str1)) {
-        this.a.a(str1, str2, this.a.p);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onOperateSpecialFocus, isMemberSpecialFocus:" + this.a.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.isConcerned);
       }
       return;
-      if (paramInt2 != 1) {
+      this.a.a(1, this.a.getString(2131363737));
+      break;
+      if (!paramString.equalsIgnoreCase("OidbSvc.0x8bb_3")) {
         break;
       }
-      this.a.g = false;
-      str2 = "0";
-      break;
-      label139:
-      if (this.a.w == 2) {
-        str1 = "Clk_mberlevel";
-      } else if (this.a.w == 4) {
-        str1 = "Clk_jointime";
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onOperateSpecialFocus, CMD_DELETE_SPECIAL_FOCUS, isSuccess:" + paramBoolean + " cmd:" + paramString + " errorCode:" + paramInt);
       }
+      if (paramBoolean)
+      {
+        this.a.a(2, this.a.getString(2131363739));
+        this.a.a(0);
+        break;
+      }
+      this.a.a(1, this.a.getString(2131363740));
+      break;
+      label368:
+      paramString.setContentDescription(this.a.getString(2131363631) + this.a.getString(2131363738));
+      this.a.a(paramString, this.a.getString(2131363738), true);
     }
   }
 }

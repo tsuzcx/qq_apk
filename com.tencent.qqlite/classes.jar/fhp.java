@@ -1,21 +1,14 @@
-import android.view.animation.AnimationUtils;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.widget.ActionSheet;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class fhp
   implements Runnable
 {
-  public fhp(ActionSheet paramActionSheet) {}
+  public fhp(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
   
   public void run()
   {
-    ActionSheet.a(this.a, new TranslateAnimation(0.0F, 0.0F, 0.0F, -ActionSheet.a(this.a).getHeight()));
-    ActionSheet.a(this.a).setInterpolator(AnimationUtils.loadInterpolator(ActionSheet.a(this.a), 17432582));
-    ActionSheet.a(this.a).setDuration(200L);
-    ActionSheet.a(this.a).setFillAfter(true);
-    ActionSheet.a(this.a).startAnimation(ActionSheet.a(this.a));
-    ActionSheet.a(this.a).setAnimationListener(new fhq(this));
+    StaticAnalyz.a("202", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
   }
 }
 

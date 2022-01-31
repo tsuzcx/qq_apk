@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.OpenConfig;
-import fdo;
+import ffu;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -646,7 +646,7 @@ public class ReportManager
   
   protected void a(String paramString1, String paramString2, Bundle paramBundle)
   {
-    ThreadManager.a(new fdo(this, paramString1, paramBundle));
+    ThreadManager.a(new ffu(this, paramString1, paramBundle));
   }
   
   protected boolean a()

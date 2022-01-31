@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class auv
   implements Runnable
 {
-  public auv(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
+  public auv(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
   public void run()
   {
     try
     {
-      if ((LoginVerifyCodeActivity2.a(this.a) == null) && (!this.a.isFinishing()))
+      if ((LoginVerifyCodeActivity.a(this.a) != null) && (LoginVerifyCodeActivity.a(this.a).isShowing()))
       {
-        LoginVerifyCodeActivity2.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-        LoginVerifyCodeActivity2.a(this.a).b(2131363558);
+        LoginVerifyCodeActivity.a(this.a).dismiss();
+        LoginVerifyCodeActivity.a(this.a).cancel();
       }
-      if ((LoginVerifyCodeActivity2.a(this.a) != null) && (!LoginVerifyCodeActivity2.a(this.a).isShowing())) {
-        LoginVerifyCodeActivity2.a(this.a).show();
-      }
+      LoginVerifyCodeActivity.a(this.a, null);
       return;
     }
     catch (Throwable localThrowable)

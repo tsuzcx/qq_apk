@@ -14,7 +14,7 @@ import com.tencent.open.component.cache.database.DbCacheManager;
 import com.tencent.open.component.cache.database.DbCacheService;
 import com.tencent.open.settings.OpensdkPreference;
 import com.tencent.open.settings.ServerSetting;
-import fbq;
+import fdw;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -121,7 +121,7 @@ public class OpenSdkFriendService
   
   public void a(Handler paramHandler)
   {
-    new Handler(Looper.getMainLooper()).post(new fbq(this, paramHandler));
+    new Handler(Looper.getMainLooper()).post(new fdw(this, paramHandler));
   }
   
   public void a(String paramString)

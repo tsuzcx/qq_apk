@@ -1,21 +1,41 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.jsbridge.JsBridge;
+import com.tencent.mobileqq.richstatus.ActionUrlActivity;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.widget.ProtectedWebView;
 
 public class ecl
-  extends Handler
+  extends WebViewClient
 {
-  public ecl(StatusHistoryActivity paramStatusHistoryActivity, Looper paramLooper)
+  private ecl(ActionUrlActivity paramActionUrlActivity) {}
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    super(paramLooper);
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    super.onPageFinished(paramWebView, paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if (paramMessage.what == 1) {
-      this.a.a = false;
-    }
+    ActionUrlActivity.a(this.a).setVisibility(0);
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    ActionUrlActivity.a(this.a).clearView();
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    ActionUrlActivity.a(this.a).setVisibility(0);
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return ActionUrlActivity.a(this.a).a(paramWebView, paramString);
   }
 }
 

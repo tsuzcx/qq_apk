@@ -23,7 +23,7 @@ import com.tencent.mobileqq.unifiedname.MQQProfileName;
 import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.widget.BounceScrollView.MotionEventInterceptor;
 import com.tencent.qphone.base.util.QLog;
-import eae;
+import ebg;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -91,7 +91,7 @@ public abstract class ProfileHeaderView
     if (QLog.isColorLevel()) {
       QLog.d("Q.profilecard.FrdProfileCard", 2, "updateAvatar() type = " + paramInt + "key = " + paramString);
     }
-    ThreadManager.b(new eae(this, paramInt, paramAllInOne, paramString));
+    ThreadManager.b(new ebg(this, paramInt, paramAllInOne, paramString));
   }
   
   public abstract void a(ProfileCardInfo paramProfileCardInfo);
@@ -109,7 +109,7 @@ public abstract class ProfileHeaderView
         if (QLog.isColorLevel()) {
           QLog.d("Q.profilecard.FrdProfileCard", 2, "updateLiked");
         }
-        ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(2130839218, 0, 0, 0);
+        ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(2130839276, 0, 0, 0);
         ((TextView)localObject2).setTag(null);
         ((TextView)localObject2).setOnClickListener(paramProfileCardInfo.jdField_a_of_type_AndroidViewView$OnClickListener);
         ((TextView)localObject2).setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131361806), new Object[] { ((TextView)localObject2).getText() }));
@@ -261,7 +261,7 @@ public abstract class ProfileHeaderView
         if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 33) {
           break label126;
         }
-        paramProfileCardInfo = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364188);
+        paramProfileCardInfo = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131364199);
         if (((TextView)localObject).getVisibility() != 0) {
           ((TextView)localObject).setVisibility(0);
         }
@@ -378,7 +378,7 @@ public abstract class ProfileHeaderView
           if (((ImageView)localObject2).getVisibility() != 8) {
             ((ImageView)localObject2).setVisibility(8);
           }
-          ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(2130839217, 0, 0, 0);
+          ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(2130839275, 0, 0, 0);
           ((TextView)localObject1).setTag(null);
           ((TextView)localObject1).setOnClickListener(paramProfileCardInfo.jdField_a_of_type_AndroidViewView$OnClickListener);
           ((TextView)localObject1).setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131361809));
@@ -407,13 +407,13 @@ public abstract class ProfileHeaderView
             if (1 != paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.bVoted) {
               continue;
             }
-            ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(2130839218, 0, 0, 0);
+            ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(2130839276, 0, 0, 0);
             ((TextView)localObject1).setTag(null);
             ((TextView)localObject1).setOnClickListener(paramProfileCardInfo.jdField_a_of_type_AndroidViewView$OnClickListener);
             ((TextView)localObject1).setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131361806), new Object[] { ((TextView)localObject1).getText() }));
             return;
             ((TextView)localObject1).setEnabled(true);
-            ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(2130839217, 0, 0, 0);
+            ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(2130839275, 0, 0, 0);
             ((TextView)localObject1).setTag(new DataTag(10, paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard));
             ((TextView)localObject1).setOnClickListener(paramProfileCardInfo.jdField_a_of_type_AndroidViewView$OnClickListener);
             ((TextView)localObject1).setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131361807), new Object[] { ((TextView)localObject1).getText() }));
@@ -422,7 +422,7 @@ public abstract class ProfileHeaderView
           if (!paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a())) {
             continue;
           }
-          ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(2130839217, 0, 0, 0);
+          ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(2130839275, 0, 0, 0);
           ((TextView)localObject1).setTag(new DataTag(10, paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard));
           ((TextView)localObject1).setOnClickListener(paramProfileCardInfo.jdField_a_of_type_AndroidViewView$OnClickListener);
           ((TextView)localObject1).setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131361808), new Object[] { ((TextView)localObject1).getText() }));

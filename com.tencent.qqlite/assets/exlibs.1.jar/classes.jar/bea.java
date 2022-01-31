@@ -1,16 +1,29 @@
-import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.widget.ImageView;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.tencentmap.mapsdk.map.GeoPoint;
+import com.tencent.tencentmap.mapsdk.map.MapController;
 
-public class bea
-  extends ConfigObserver
+class bea
+  implements Runnable
 {
-  public bea(QQSetting paramQQSetting) {}
+  bea(bdz parambdz, SOSOMapLBSApiResult paramSOSOMapLBSApiResult, String paramString) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void run()
   {
-    QQSetting.a(this.a, paramUpgradeDetailWrapper);
-    QQSetting.a(this.a);
+    GeoPoint localGeoPoint = new GeoPoint((int)(this.jdField_a_of_type_ComTencentMapLbsapiApiSOSOMapLBSApiResult.Latitude * 1000000.0D), (int)(this.jdField_a_of_type_ComTencentMapLbsapiApiSOSOMapLBSApiResult.Longitude * 1000000.0D));
+    this.jdField_a_of_type_Bdz.a.a.setCenter(localGeoPoint);
+    if (this.jdField_a_of_type_Bdz.a.h) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Bdz.a.a(localGeoPoint, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Bdz.a.h();
+      return;
+      this.jdField_a_of_type_Bdz.a.j = this.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Bdz.a.b.setVisibility(0);
+      this.jdField_a_of_type_Bdz.a.c.setVisibility(0);
+      this.jdField_a_of_type_Bdz.a.a(localGeoPoint);
+    }
   }
 }
 

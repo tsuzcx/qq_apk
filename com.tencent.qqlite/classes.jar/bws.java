@@ -1,26 +1,20 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class bws
-  extends AbstractChatItemBuilder.ViewHolder
+  extends DownloadListener
 {
-  public int a;
-  public long a;
-  public ViewGroup a;
-  public ImageView a;
-  public AnyScaleTypeImageView a;
-  public String a;
-  public TextView b;
-  public String b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  private bws(MarketFaceItemBuilder paramMarketFaceItemBuilder) {}
   
-  public bws(RichStatItemBuilder paramRichStatItemBuilder) {}
+  public void a(int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, PicEmoticonInfo paramPicEmoticonInfo, QQProgressDialog paramQQProgressDialog, SessionInfo paramSessionInfo) {}
+  
+  public void onDone(DownloadTask paramDownloadTask) {}
 }
 
 

@@ -17,7 +17,7 @@ public class rp
     this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
     if (!this.a.jdField_a_of_type_Boolean)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838196);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838215);
       paramAnimation = (AbsoluteLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
       paramAnimation.y = (this.a.b.getHeight() - this.a.e);
       this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);

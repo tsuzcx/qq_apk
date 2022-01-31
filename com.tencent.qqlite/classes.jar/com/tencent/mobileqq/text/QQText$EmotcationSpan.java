@@ -65,7 +65,7 @@ public class QQText$EmotcationSpan
       localDrawable.setBounds(0, 0, this.b, this.b);
       return localDrawable;
     }
-    Drawable localDrawable = TextUtils.a(i, true);
+    Drawable localDrawable = TextUtils.a(i, false);
     localDrawable.setBounds(0, 0, this.b, this.b);
     return localDrawable;
   }

@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import android.view.animation.AlphaAnimation;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.LoginActivity;
 
-public class atd
-  implements DialogInterface.OnClickListener
+class atd
+  implements Runnable
 {
-  public atd(LoginActivity paramLoginActivity) {}
+  atd(atc paramatc, Bitmap paramBitmap) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_Atc.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_Atc.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(500L);
+      this.jdField_a_of_type_Atc.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_Atc.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+      return;
     }
+    this.jdField_a_of_type_Atc.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838139);
   }
 }
 

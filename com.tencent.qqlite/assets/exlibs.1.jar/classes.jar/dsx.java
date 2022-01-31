@@ -1,32 +1,21 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.CanPreviewOfflineFileView;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarLocalFile.ActionBarLocalPicFile;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class dsx
-  implements View.OnClickListener
+class dsx
+  implements FMDialogUtil.FMDialogInterface
 {
-  public dsx(CanPreviewOfflineFileView paramCanPreviewOfflineFileView) {}
+  dsx(dsw paramdsw, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    CanPreviewOfflineFileView.a(this.a).b(1);
-    if (!NetworkUtil.e(BaseApplicationImpl.getContext())) {
-      FMToastUtil.a(CanPreviewOfflineFileView.a(this.a).getString(2131363570));
-    }
-    do
-    {
-      return;
-      CanPreviewOfflineFileView.a(this.a).a(true);
-      CanPreviewOfflineFileView.b(this.a).b(false);
-    } while (CanPreviewOfflineFileView.b(this.a) == null);
-    CanPreviewOfflineFileView.c(this.a).c();
+    this.jdField_a_of_type_Dsw.a.a.a().a().a(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Dsw.a.h();
   }
+  
+  public void b() {}
 }
 
 

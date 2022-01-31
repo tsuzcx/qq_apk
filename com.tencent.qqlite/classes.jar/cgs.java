@@ -1,19 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.phone.ContactListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
 
 public class cgs
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public cgs(ContactListView paramContactListView) {}
+  public cgs(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 4) {
-      this.a.f();
-    }
-    return false;
+    this.a.dismiss();
   }
 }
 

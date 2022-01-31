@@ -1,32 +1,22 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class ecw
-  extends FriendListObserver
+class ecw
+  implements Animation.AnimationListener
 {
-  public ecw(StatusManager paramStatusManager) {}
+  ecw(ecv paramecv) {}
   
-  protected void a(boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.set", 2, "onSetSelfSignatureResult " + paramBoolean);
-    }
-    StatusManager.a(this.a, null);
-    if (paramBoolean) {}
-    for (int i = 100; StatusManager.b(this.a) != null; i = -1)
-    {
-      RichStatus localRichStatus = this.a.a();
-      Iterator localIterator = StatusManager.b(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((IStatusListener)localIterator.next()).a(i, localRichStatus);
-      }
-    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

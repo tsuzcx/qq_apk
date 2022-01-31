@@ -10,7 +10,7 @@ import android.os.StatFs;
 import android.telephony.TelephonyManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import ctj;
+import cuk;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.InputStream;
@@ -472,7 +472,7 @@ public class InjectUtils
       localStringBuilder.append(paramContext.getDeviceId()).append("|");
     }
     localStringBuilder.append(paramString2).append("|");
-    new ctj(arrayOfByte, localStringBuilder.toString()).start();
+    new cuk(arrayOfByte, localStringBuilder.toString()).start();
   }
   
   /* Error */

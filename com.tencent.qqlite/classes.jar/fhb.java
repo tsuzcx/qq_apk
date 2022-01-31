@@ -1,64 +1,37 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
-import android.view.View;
-import android.view.ViewConfiguration;
-import com.tencent.widget.AbsListView;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.appreport.AppReport;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.io.File;
 
-public final class fhb
+public class fhb
   implements Runnable
 {
-  public fhb(AbsListView paramAbsListView) {}
+  public fhb(DownloadManager paramDownloadManager) {}
   
   public void run()
   {
-    Object localObject;
-    int i;
-    boolean bool;
-    if (this.a.ab == 0)
-    {
-      this.a.ab = 1;
-      localObject = this.a.getChildAt(this.a.W - this.a.ao);
-      if ((localObject != null) && (!((View)localObject).hasFocusable()))
-      {
-        this.a.P = 0;
-        if (this.a.q) {
-          break label249;
-        }
-        ((View)localObject).setPressed(true);
-        this.a.setPressed(true);
-        this.a.i();
-        this.a.a(this.a.W, (View)localObject);
-        this.a.refreshDrawableState();
-        i = ViewConfiguration.getLongPressTimeout();
-        bool = this.a.isLongClickable();
-        if (this.a.c != null)
-        {
-          localObject = this.a.c.getCurrent();
-          if ((localObject != null) && ((localObject instanceof TransitionDrawable)))
-          {
-            if (!bool) {
-              break label230;
-            }
-            ((TransitionDrawable)localObject).startTransition(i);
-          }
-        }
-      }
+    Context localContext = CommonDataAdapter.a().a();
+    boolean bool = localContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false);
+    SimpleAccount localSimpleAccount = BaseApplicationImpl.a().getFirstSimpleAccount();
+    String str = "";
+    if (localSimpleAccount != null) {
+      str = localSimpleAccount.getUin();
     }
-    while (bool)
+    if (!bool)
     {
-      if (AbsListView.a(this.a) == null) {
-        AbsListView.a(this.a, new fha(this.a, null));
-      }
-      AbsListView.a(this.a).a();
-      this.a.postDelayed(AbsListView.a(this.a), i);
+      LogUtility.c(DownloadManager.a, "getUpdateApp will do full report");
+      AppReport.a(localContext, null, null, str);
+    }
+    while (!new File(localContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists()) {
       return;
-      label230:
-      ((TransitionDrawable)localObject).resetTransition();
     }
-    this.a.ab = 2;
-    return;
-    label249:
-    this.a.ab = 2;
+    LogUtility.c(DownloadManager.a, "getUpdateApp will do incremental report");
+    AppReport.a(localContext, null, 0, null, null, str);
   }
 }
 

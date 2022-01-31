@@ -1,17 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.utils.StartupTracker;
 
 public class dbk
-  extends Handler
+  implements Runnable
 {
-  public dbk(LocationSelectActivity paramLocationSelectActivity) {}
+  public dbk(BubbleManager paramBubbleManager, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 1000) {
-      this.a.a(((Boolean)((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[0]).booleanValue(), (String[])((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[1]);
-    }
+    StartupTracker.a(null, "AIO_bubble_craete_bubble_info");
+    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_a_of_type_Int, true);
+    StartupTracker.a("AIO_bubble_craete_bubble_info", null);
   }
 }
 

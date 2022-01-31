@@ -10,8 +10,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import cix;
-import ciy;
+import cjy;
+import cjz;
 import com.tencent.mobileqq.activity.PortraitImageview;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.AlbumUtil;
@@ -57,7 +57,7 @@ public class PhotoCropActivity
     this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("PhotoConst.TARGET_PATH");
     if (this.jdField_a_of_type_JavaLangString == null)
     {
-      QQToast.a(this, 2131363947, 0).a();
+      QQToast.a(this, 2131363958, 0).a();
       return false;
     }
     this.f = localIntent.getIntExtra("PhotoConst.EDIT_MASK_SHAPE_TYPE", 1);
@@ -105,7 +105,7 @@ public class PhotoCropActivity
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    new ciy(this, null).execute(new Void[0]);
+    new cjz(this, null).execute(new Void[0]);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -118,7 +118,7 @@ public class PhotoCropActivity
       return false;
     }
     a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.e, this.f);
-    new cix(this, null).execute(new Void[0]);
+    new cjy(this, null).execute(new Void[0]);
     return true;
   }
   

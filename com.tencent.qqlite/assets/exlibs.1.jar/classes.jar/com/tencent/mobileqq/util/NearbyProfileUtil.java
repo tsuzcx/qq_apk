@@ -2,7 +2,7 @@ package com.tencent.mobileqq.util;
 
 import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import esh;
+import eum;
 
 public class NearbyProfileUtil
 {
@@ -21,7 +21,7 @@ public class NearbyProfileUtil
     c = new String[] { "", "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座" };
     d = new String[] { "不限", "计算机/互联网/通信", "生产/工艺/制造", "医疗/护理/制药", "金融/银行/投资/保险", "商业/服务业/个体经营", "文化/广告/传媒", "娱乐/艺术/表演", "律师/法务", "教育/培训", "公务员/行政/事业单位", "模特", "空姐", "学生", "其他职业" };
     e = new String[] { "", "IT", "制造", "医疗", "金融", "商业", "文化", "艺术", "法律", "教育", "行政", "模特", "空姐", "学生", "" };
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130838898, 2130838620, 2130838620, 2130838620, 2130838737, 2130838737, 2130838905, 2130838905, 2130838701, 2130838701, 2130838701, 2130838898, 2130838898, 2130838741, 2130838898 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130838925, 2130838647, 2130838647, 2130838647, 2130838764, 2130838764, 2130838932, 2130838932, 2130838728, 2130838728, 2130838728, 2130838925, 2130838925, 2130838768, 2130838925 };
   }
   
   public static final int a(int paramInt)
@@ -42,7 +42,7 @@ public class NearbyProfileUtil
   
   public static final void a(CardHandler paramCardHandler, QQAppInterface paramQQAppInterface, long paramLong, String paramString)
   {
-    paramQQAppInterface.a(new esh(paramQQAppInterface, paramLong, paramString, paramCardHandler));
+    paramQQAppInterface.a(new eum(paramQQAppInterface, paramLong, paramString, paramCardHandler));
   }
   
   public static boolean a(int paramInt)

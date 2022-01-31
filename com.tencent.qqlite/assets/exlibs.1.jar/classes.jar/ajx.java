@@ -1,12 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
-class ajx
-  implements DialogInterface.OnClickListener
+public class ajx
+  implements TextWatcher
 {
-  ajx(ajv paramajv) {}
+  private ajx(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void afterTextChanged(Editable paramEditable)
+  {
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.b(paramEditable);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

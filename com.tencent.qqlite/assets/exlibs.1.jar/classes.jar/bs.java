@@ -1,12 +1,15 @@
-import com.dataline.util.file.ImageInfo;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.LiteWifiphotoActivity;
 
-public final class bs
-  implements Comparator
+public class bs
+  implements View.OnClickListener
 {
-  public int a(ImageInfo paramImageInfo1, ImageInfo paramImageInfo2)
+  public bs(LiteWifiphotoActivity paramLiteWifiphotoActivity) {}
+  
+  public void onClick(View paramView)
   {
-    return -Long.valueOf(paramImageInfo1.a()).compareTo(Long.valueOf(paramImageInfo2.a()));
+    this.a.finish();
   }
 }
 

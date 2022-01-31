@@ -1,46 +1,47 @@
-import android.view.View;
-import com.tencent.widget.AbsListView;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.AppUtil;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.common.DownloadDBHelper;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class fgz
-  extends fhk
   implements Runnable
 {
-  private fgz(AbsListView paramAbsListView)
-  {
-    super(paramAbsListView, null);
-  }
+  public fgz(DownloadManager paramDownloadManager) {}
   
   public void run()
   {
-    View localView;
-    if ((this.a.isPressed()) && (this.a.az >= 0))
+    this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = ((ConcurrentHashMap)DownloadDBHelper.a().a());
+    try
     {
-      int i = this.a.az;
-      int j = this.a.ao;
-      localView = this.a.getChildAt(i - j);
-      if (this.a.q) {
-        break label108;
-      }
-      if (!a()) {
-        break label128;
+      DownloadInfo localDownloadInfo = this.a.b("com.tencent.qqlite");
+      if ((localDownloadInfo != null) && (localDownloadInfo.jdField_h_of_type_Int == 0))
+      {
+        TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo;
+        if (localDownloadInfo.f == 0) {
+          localTMAssistantDownloadTaskInfo = this.a.a(localDownloadInfo.c);
+        }
+        for (String str = localTMAssistantDownloadTaskInfo.mSavePath; localTMAssistantDownloadTaskInfo == null; str = localDownloadInfo.k)
+        {
+          this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
+          DownloadDBHelper.a().a(localDownloadInfo.b);
+          return;
+          localTMAssistantDownloadTaskInfo = this.a.a(localDownloadInfo.jdField_h_of_type_JavaLangString);
+        }
+        if ((localTMAssistantDownloadTaskInfo.mState == 4) && (AppUtil.b(str) <= CommonDataAdapter.a().a()))
+        {
+          this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
+          DownloadDBHelper.a().a(localDownloadInfo.b);
+          return;
+        }
       }
     }
-    label128:
-    for (boolean bool = this.a.b(localView, this.a.az, this.a.d);; bool = false)
+    catch (Exception localException)
     {
-      if (bool)
-      {
-        this.a.setPressed(false);
-        localView.setPressed(false);
-      }
-      label108:
-      do
-      {
-        return;
-        this.a.setPressed(false);
-      } while (localView == null);
-      localView.setPressed(false);
-      return;
+      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "speical clear>>>", localException);
     }
   }
 }

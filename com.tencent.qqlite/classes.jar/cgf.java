@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.observer.GetRedPointExObserver;
 
 public class cgf
-  implements DialogInterface.OnClickListener
+  extends GetRedPointExObserver
 {
-  public cgf(BaseActivityView paramBaseActivityView) {}
+  public cgf(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a()
   {
-    this.a.f();
+    this.a.g();
   }
 }
 

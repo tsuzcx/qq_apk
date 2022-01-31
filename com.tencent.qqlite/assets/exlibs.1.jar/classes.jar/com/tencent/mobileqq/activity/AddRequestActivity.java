@@ -195,18 +195,18 @@ public class AddRequestActivity
   {
     int i2 = 0;
     b();
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298465));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298466));
-    this.g = ((TextView)findViewById(2131298467));
-    TextView localTextView = (TextView)findViewById(2131298476);
-    Object localObject2 = (LinearLayout)findViewById(2131298469);
-    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131298475);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296439));
-    this.l = ((TextView)findViewById(2131296532));
-    Object localObject3 = (TextView)findViewById(2131298470);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298478));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131298477));
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131298471));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298490));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298491));
+    this.g = ((TextView)findViewById(2131298492));
+    TextView localTextView = (TextView)findViewById(2131298501);
+    Object localObject2 = (LinearLayout)findViewById(2131298494);
+    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131298500);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296442));
+    this.l = ((TextView)findViewById(2131296535));
+    Object localObject3 = (TextView)findViewById(2131298495);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298503));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131298502));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131298496));
     if ((this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg != null) && (TextUtils.isEmpty(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_additional.get()))) {
       this.t = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_describe.get();
     }
@@ -232,7 +232,7 @@ public class AddRequestActivity
       if ((this.u == null) || (this.u.equals(""))) {
         break label577;
       }
-      ((LinearLayout)localObject2).setBackgroundResource(2130837927);
+      ((LinearLayout)localObject2).setBackgroundResource(2130837945);
       if (((LinearLayout)localObject2).getVisibility() != 0) {
         ((LinearLayout)localObject2).setVisibility(0);
       }
@@ -264,12 +264,12 @@ public class AddRequestActivity
     {
       i1 += 1;
       break label464;
-      localObject2 = (LinearLayout)findViewById(2131298472);
-      localObject1 = (TextView)findViewById(2131298473);
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131298474));
+      localObject2 = (LinearLayout)findViewById(2131298497);
+      localObject1 = (TextView)findViewById(2131298498);
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131298499));
       break;
       label577:
-      ((LinearLayout)localObject2).setBackgroundResource(2130837926);
+      ((LinearLayout)localObject2).setBackgroundResource(2130837944);
       ((LinearLayout)localObject2).setVisibility(0);
       localLinearLayout.setVisibility(8);
       break label391;
@@ -287,8 +287,8 @@ public class AddRequestActivity
         localLinearLayout.setVisibility(0);
         break label391;
       }
-      localObject3 = (ViewGroup)findViewById(2131298463);
-      ((View)localObject3).setBackgroundResource(2130837924);
+      localObject3 = (ViewGroup)findViewById(2131298488);
+      ((View)localObject3).setBackgroundResource(2130837942);
       ((View)localObject3).setVisibility(0);
       ((LinearLayout)localObject2).setVisibility(8);
       localLinearLayout.setVisibility(8);
@@ -304,15 +304,15 @@ public class AddRequestActivity
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
     label773:
-    localObject2 = (TextView)findViewById(2131298203);
+    localObject2 = (TextView)findViewById(2131298225);
     if ((this.jdField_f_of_type_Int == 3014) || (this.jdField_f_of_type_Int == 2014))
     {
       ((TextView)localObject2).setVisibility(0);
       label811:
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298482));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298507));
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298481));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298480));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298506));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298505));
       this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
       if ((this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg != null))
       {
@@ -331,7 +331,7 @@ public class AddRequestActivity
       default: 
         this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
         label1065:
-        this.m = ((TextView)findViewById(2131298464));
+        this.m = ((TextView)findViewById(2131298489));
         if ((this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.has()) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.msg_joint_friend.has() == true))
         {
           this.m.setText(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.msg_joint_friend.get());
@@ -378,7 +378,7 @@ public class AddRequestActivity
     for (localObject2 = FaceDrawable.a(this.app, 3000, this.s, true);; localObject2 = FaceDrawable.a(this.app, 1, this.s))
     {
       this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject2);
-      ((ViewGroup)findViewById(2131298463)).setOnClickListener(new xo(this));
+      ((ViewGroup)findViewById(2131298488)).setOnClickListener(new xo(this));
       if (this.jdField_e_of_type_Int != 2) {
         break label1623;
       }
@@ -472,7 +472,7 @@ public class AddRequestActivity
     {
       if (i1 == 0)
       {
-        localObject1 = getString(2131363199);
+        localObject1 = getString(2131363209);
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_e_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
         localObject1 = "";
@@ -483,7 +483,7 @@ public class AddRequestActivity
         if (i1 <= 0) {
           break label353;
         }
-        localObject1 = i1 + getString(2131363201);
+        localObject1 = i1 + getString(2131363211);
         this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
       }
       for (;;)
@@ -513,7 +513,7 @@ public class AddRequestActivity
         return;
         if (i1 == 1)
         {
-          localObject1 = getString(2131363200);
+          localObject1 = getString(2131363210);
           this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
           break;
         }
@@ -581,11 +581,11 @@ public class AddRequestActivity
   
   public void c()
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
-    localActionSheet.a(getString(2131363496));
-    localActionSheet.a(getString(2131363495), 3);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624120);
+    localActionSheet.a(getString(2131363507));
+    localActionSheet.a(getString(2131363506), 3);
     localActionSheet.a(new xr(this, localActionSheet));
-    localActionSheet.d(2131362794);
+    localActionSheet.d(2131362801);
     localActionSheet.show();
   }
   
@@ -616,9 +616,9 @@ public class AddRequestActivity
     this.jdField_d_of_type_Long = getIntent().getLongExtra("msg_troopuin", 0L);
     this.w = getIntent().getStringExtra("msg_title");
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-    setContentView(2130903542);
-    d(2130837635);
-    this.n = ((TextView)findViewById(2131298479));
+    setContentView(2130903551);
+    d(2130837660);
+    this.n = ((TextView)findViewById(2131298504));
     if ((this.x != null) && (!this.x.equals("")))
     {
       this.n.setText(this.x);
@@ -660,12 +660,12 @@ public class AddRequestActivity
     default: 
       return super.onCreateDialog(paramInt);
     case 1: 
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setTitle(getString(2131363019)).setMessage(2131363020).setPositiveButton(2131363021, new xl(this)).setNegativeButton(2131363114, new xk(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setTitle(getString(2131363029)).setMessage(2131363030).setPositiveButton(2131363031, new xl(this)).setNegativeButton(2131363124, new xk(this));
       return this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
     }
-    this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624119);
+    this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624120);
     this.jdField_a_of_type_AndroidAppDialog.setContentView(2130903049);
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131296470)).setText(2131363025);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131296473)).setText(2131363035);
     return this.jdField_a_of_type_AndroidAppDialog;
   }
 }

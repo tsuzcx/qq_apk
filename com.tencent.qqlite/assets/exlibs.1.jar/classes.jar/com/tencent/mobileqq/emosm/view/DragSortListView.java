@@ -617,7 +617,7 @@ public class DragSortListView
     {
       View localView = super.getChildAt(paramInt);
       if (localView != null) {
-        return (ImageView)localView.findViewById(2131298193);
+        return (ImageView)localView.findViewById(2131298215);
       }
     }
     return null;
@@ -1121,7 +1121,7 @@ public class DragSortListView
     {
       View localView = super.getChildAt(paramInt);
       if (localView != null) {
-        return (ShaderAnimLayout)localView.findViewById(2131296441);
+        return (ShaderAnimLayout)localView.findViewById(2131296444);
       }
     }
     return null;

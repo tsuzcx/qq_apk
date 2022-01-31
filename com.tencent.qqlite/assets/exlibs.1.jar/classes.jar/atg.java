@@ -1,33 +1,20 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.LoginActivity;
 
 public class atg
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
   public atg(LoginActivity paramLoginActivity) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramCharSequence.length() > 0) {
-      if (this.a.b != null) {
-        this.a.b.setVisibility(0);
-      }
-    }
-    while (paramCharSequence.length() > 4)
+    try
     {
-      this.a.a(paramCharSequence.toString());
+      paramDialogInterface.dismiss();
       return;
-      if ((this.a.b != null) && (this.a.b.isShown())) {
-        this.a.b.setVisibility(8);
-      }
     }
-    this.a.a.setImageResource(2130838120);
+    catch (Exception paramDialogInterface) {}
   }
 }
 

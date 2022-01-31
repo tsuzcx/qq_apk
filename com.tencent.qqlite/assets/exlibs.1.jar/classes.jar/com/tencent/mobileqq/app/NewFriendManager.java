@@ -12,7 +12,7 @@ import com.tencent.mobileqq.newfriend.NewFriendMessage;
 import com.tencent.mobileqq.newfriend.NewFriendPushListener;
 import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.qphone.base.util.QLog;
-import cuh;
+import cvi;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
@@ -25,7 +25,7 @@ public class NewFriendManager
   extends Observable
   implements Manager
 {
-  public static final int a = 2130838048;
+  public static final int a = 2130838067;
   public static final String a = "新朋友";
   public static final String b = "_" + "data_spliter".hashCode() + "_";
   private static final String c = "NewFriendManager";
@@ -263,7 +263,7 @@ public class NewFriendManager
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cuh(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cvi(this));
   }
   
   public int a()

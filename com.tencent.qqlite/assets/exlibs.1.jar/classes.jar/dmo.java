@@ -1,44 +1,28 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileRecentImageExpandableListAdapter.ImageHolder;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentFileBaseExpandableListAdapter.RecentItemHolder;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
 
-public class dmo
-  implements Runnable
+class dmo
+  implements View.OnClickListener
 {
-  public dmo(QfileRecentDocFileTabView paramQfileRecentDocFileTabView) {}
+  dmo(dmn paramdmn, View paramView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    localLinkedHashMap.put("WORD", new ArrayList());
-    localLinkedHashMap.put("PPT", new ArrayList());
-    localLinkedHashMap.put("PDF", new ArrayList());
-    localLinkedHashMap.put("EXCEL", new ArrayList());
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    paramView = this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((paramView instanceof QfileRecentImageExpandableListAdapter.ImageHolder)) {}
+    for (paramView = (FileManagerEntity)((QfileRecentImageExpandableListAdapter.ImageHolder)paramView).a;; paramView = (FileManagerEntity)((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)paramView).a)
     {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      String str = QfileRecentDocFileTabView.a(this.a, localFileManagerEntity.fileName);
-      if (str != null) {
-        ((List)localLinkedHashMap.get(str)).add(localFileManagerEntity);
-      }
+      if (QfileBaseRecentFileTabView.d(this.jdField_a_of_type_Dmn.a).a().b(paramView.nSessionId)) {}
+      this.jdField_a_of_type_Dmn.a.a(paramView);
+      QfileBaseRecentFileTabView.a(this.jdField_a_of_type_Dmn.a);
+      return;
     }
-    localIterator = localLinkedHashMap.keySet().iterator();
-    while (localIterator.hasNext()) {
-      if (((List)localLinkedHashMap.get((String)localIterator.next())).size() == 0) {
-        localIterator.remove();
-      }
-    }
-    this.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(localLinkedHashMap);
-    this.a.i();
-    this.a.setSelect(0);
-    this.a.a(true);
-    this.a.c = false;
   }
 }
 

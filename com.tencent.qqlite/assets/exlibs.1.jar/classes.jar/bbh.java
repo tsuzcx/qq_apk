@@ -1,27 +1,23 @@
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class bbh
-  implements Runnable
+  extends MessageObserver
 {
   public bbh(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    try
-    {
-      i = ProfileCardMoreActivity.a(this.a, this.a.a.a);
-      ProfileCardMoreActivity.a(this.a, false);
-      this.a.app.runOnUiThread(new bbi(this, i));
-      return;
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, false);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i = -1;
-      }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, true);
     }
   }
 }

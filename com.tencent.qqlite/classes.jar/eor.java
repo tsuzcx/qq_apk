@@ -1,20 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileError;
-import com.tencent.mobileqq.troop.utils.TroopFileError.TroopFileErrorObserver;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-class eor
+public class eor
   implements DialogInterface.OnClickListener
 {
-  eor(eoq parameoq) {}
+  public eor(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((TroopFileError.a != null) && (TroopFileError.a.get() != null)) {
-      ((TroopFileError.TroopFileErrorObserver)TroopFileError.a.get()).a = 0;
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c(this.jdField_a_of_type_JavaUtilUUID);
     }
-    paramDialogInterface.dismiss();
   }
 }
 

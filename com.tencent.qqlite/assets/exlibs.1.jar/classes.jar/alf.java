@@ -1,63 +1,58 @@
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
+import java.util.ArrayList;
 
 public class alf
-  implements AdapterView.OnItemClickListener
+  extends TroopObserver
 {
-  public alf(EmosmActivity paramEmosmActivity) {}
+  public alf(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void b(boolean paramBoolean, ArrayList paramArrayList)
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
+    EditInfoActivity.a(this.a, false);
+    if (this.a.a == null) {
+      this.a.a = new QQProgressNotifier(this.a);
+    }
+    if ((!paramBoolean) || (paramArrayList == null) || (paramArrayList.size() == 0)) {
+      this.a.a.a(2, 2131363098, 1000);
+    }
+    Object localObject1;
     do
     {
       return;
-      paramView = (EmoticonPackage)this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.getItem(paramInt);
-      if (this.a.b)
+      localObject1 = null;
+      int i = 0;
+      if ((localObject1 == null) && (i < paramArrayList.size()))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.setSelected(paramInt);
-        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.notifyDataSetChanged();
-        paramAdapterView = this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.getSelectedPackages();
-        if ((paramAdapterView != null) && (paramAdapterView.size() > 0))
-        {
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          return;
+        localObject2 = (TroopMemberCardInfo)paramArrayList.get(i);
+        if (localObject2 == null) {
+          localObject1 = localObject2;
         }
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-        return;
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject1 = localObject2;
+          if (!Utils.a(((TroopMemberCardInfo)localObject2).troopuin, this.a.c)) {
+            localObject1 = null;
+          }
+        }
       }
-    } while (!EmosmUtils.showNetEnable(this.a));
-    this.a.jdField_a_of_type_Boolean = true;
-    paramAdapterView = paramView.epId;
-    boolean bool = false;
-    if (paramView.jobType == 2)
-    {
-      paramAdapterView = paramView.kinId;
-      bool = true;
+    } while (localObject1 == null);
+    paramArrayList = new Intent();
+    paramArrayList.putExtra("nick", localObject1.name);
+    Object localObject2 = (FriendsManagerImp)this.a.app.getManager(8);
+    if (localObject2 != null) {
+      ((FriendsManagerImp)localObject2).a(this.a.c, this.a.d, localObject1.name, -100, null, null, -100, -100, -100, -100L, (byte)-100, -100L, -100.0D);
     }
-    if (1 == this.a.getIntent().getExtras().getInt("emojimall_src", 3)) {
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 8, paramAdapterView, this.a.app.getSid(), bool);
-    }
-    for (;;)
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "ep_mall", "Clk_ep_mine_detail", 0, 0, paramView.epId, "", "", "");
-      return;
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 4, paramAdapterView, this.a.app.getSid(), bool);
-    }
+    this.a.setResult(-1, paramArrayList);
+    EditInfoActivity.e(this.a);
   }
 }
 

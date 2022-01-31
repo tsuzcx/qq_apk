@@ -1,18 +1,26 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
 public class aat
-  implements DialogInterface.OnClickListener
+  implements Comparator
 {
   public aat(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    if ((this.a.b != null) && (this.a.b.isShowing())) {
-      this.a.b.dismiss();
+    if (paramChatMessage1.time == paramChatMessage2.time) {
+      if (paramChatMessage1.getId() <= paramChatMessage2.getId()) {}
     }
+    while (paramChatMessage1.time > paramChatMessage2.time)
+    {
+      return 1;
+      if (paramChatMessage1.getId() < paramChatMessage2.getId()) {
+        return -1;
+      }
+      return 0;
+    }
+    return -1;
   }
 }
 

@@ -1,25 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.adapter.ContactsSearchResultAdapter;
-import com.tencent.mobileqq.search.ConversationSearchAdapter.SearchResultCallBack;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.app.NearFieldDiscussHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import tencent.im.nearfield_discuss.nearfield_discuss.LBSInfo;
 
 public class cml
-  implements ConversationSearchAdapter.SearchResultCallBack
+  implements Runnable
 {
-  public cml(SelectMemberActivity paramSelectMemberActivity) {}
+  public cml(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (1 == paramInt)
-    {
-      if (SelectMemberActivity.a(this.a).getCount() == 0) {
-        SelectMemberActivity.a(this.a).setVisibility(0);
-      }
-    }
-    else {
-      return;
-    }
-    SelectMemberActivity.a(this.a).setVisibility(8);
+    NearFieldDiscussHandler localNearFieldDiscussHandler = (NearFieldDiscussHandler)this.a.app.a(32);
+    nearfield_discuss.LBSInfo localLBSInfo = CreateFaceToFaceDiscussionActivity.a(this.a);
+    localNearFieldDiscussHandler.b(this.a.a.toString(), this.a.b, localLBSInfo);
   }
 }
 

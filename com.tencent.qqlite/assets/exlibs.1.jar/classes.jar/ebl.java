@@ -1,30 +1,27 @@
-import com.tencent.mobileqq.richstatus.ActionInfo;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.IActionListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.profile.view.helper.ShakeEffectGenerator;
 
 public class ebl
-  implements IActionListener
+  implements Animation.AnimationListener
 {
-  public ebl(EditActivity paramEditActivity) {}
+  public ebl(VipTagView paramVipTagView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramInt1 == 102) && (EditActivity.a(this.a).b != 0) && (" ".equals(EditActivity.a(this.a).c)))
-    {
-      ActionInfo localActionInfo = EditActivity.a(this.a).a(EditActivity.a(this.a).b);
-      if (localActionInfo != null)
-      {
-        EditActivity.a(this.a).c = localActionInfo.d;
-        EditActivity.a(this.a, false);
-      }
+    if (VipTagView.a(this.a)) {
+      VipTagView.a(this.a).a();
     }
-    if (EditActivity.a(this.a) != null)
-    {
-      EditActivity.a(this.a, true);
-      EditActivity.a(this.a).notifyDataSetChanged();
-    }
+    VipTagView.a(this.a, false);
+    this.a.invalidate();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    VipTagView.a(this.a, 0.0F);
   }
 }
 

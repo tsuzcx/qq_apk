@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.SearchTroopListActivity;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class bir
-  implements DialogInterface.OnCancelListener
+  extends FriendListObserver
 {
-  public bir(SearchTroopListActivity paramSearchTroopListActivity) {}
+  public bir(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.a.a = null;
-    if (!this.a.isFinishing()) {
-      this.a.finish();
+    if (paramBoolean) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null)) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
     }
   }
 }

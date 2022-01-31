@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
-import java.util.Stack;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
 
 public class eyq
+  implements Runnable
 {
-  private Stack jdField_a_of_type_JavaUtilStack = new Stack();
+  public eyq(HttpCommunicator paramHttpCommunicator, HttpMsg paramHttpMsg, eys parameys) {}
   
-  public eyq(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
-  
-  public AnimationTextView a()
+  public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-      return null;
-    }
-    return (AnimationTextView)this.jdField_a_of_type_JavaUtilStack.pop();
-  }
-  
-  public void a(AnimationTextView paramAnimationTextView)
-  {
-    this.jdField_a_of_type_JavaUtilStack.push(paramAnimationTextView);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.jdField_a_of_type_Eys);
   }
 }
 

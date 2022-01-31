@@ -1,16 +1,15 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.MusicSharePlayActivity;
 
 public class avz
-  implements Runnable
+  extends Handler
 {
-  public avz(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
+  public avz(MusicSharePlayActivity paramMusicSharePlayActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.b = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.d = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.a.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.d);
+    int i = paramMessage.what;
   }
 }
 

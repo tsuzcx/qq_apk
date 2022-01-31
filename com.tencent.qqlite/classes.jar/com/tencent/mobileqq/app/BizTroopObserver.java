@@ -82,6 +82,8 @@ public class BizTroopObserver
   
   protected void k(boolean paramBoolean, Object paramObject) {}
   
+  protected void l(boolean paramBoolean, Object paramObject) {}
+  
   public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
     boolean bool = false;
@@ -95,6 +97,8 @@ public class BizTroopObserver
       case 16: 
       case 18: 
       case 23: 
+      case 39: 
+      case 40: 
       default: 
       case 1: 
       case 3: 
@@ -237,19 +241,23 @@ public class BizTroopObserver
           return;
           b(paramBoolean, ((Boolean)arrayOfObject[1]).booleanValue());
           return;
-          k(paramBoolean, paramObject);
+          l(paramBoolean, paramObject);
           return;
         } while ((paramObject == null) || (!(paramObject instanceof JSONObject)));
         a((JSONObject)paramObject);
         return;
+      case 38: 
+        if (paramBoolean) {
+          a(((Long)arrayOfObject[0]).longValue(), ((Long)arrayOfObject[1]).longValue(), ((Long)arrayOfObject[2]).longValue(), (String)arrayOfObject[3]);
+        }
+        break;
       }
-      if (paramBoolean)
+      for (;;)
       {
-        a(((Long)arrayOfObject[0]).longValue(), ((Long)arrayOfObject[1]).longValue(), ((Long)arrayOfObject[2]).longValue(), (String)arrayOfObject[3]);
+        k(paramBoolean, paramObject);
         return;
+        a(-1L, -1L, -1L, "");
       }
-      a(-1L, -1L, -1L, "");
-      return;
     }
   }
 }

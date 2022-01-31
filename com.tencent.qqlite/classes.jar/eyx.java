@@ -1,14 +1,24 @@
-import android.graphics.drawable.Animatable;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.pathtracker.VipPathTracker;
+import mqq.app.AppRuntime;
+import mqq.manager.ServerConfigManager.ConfigType;
 
 public class eyx
   implements Runnable
 {
-  public eyx(QQProgressDialog paramQQProgressDialog) {}
+  public eyx(VipPathTracker paramVipPathTracker, AppRuntime paramAppRuntime) {}
   
   public void run()
   {
-    QQProgressDialog.a(this.a).start();
+    String str = ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).a(ServerConfigManager.ConfigType.common, "PathTrack");
+    VipPathTracker localVipPathTracker = this.jdField_a_of_type_ComTencentMobileqqUtilsPathtrackerVipPathTracker;
+    if ((!TextUtils.isEmpty(str)) && (str.equals("0"))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      VipPathTracker.a(localVipPathTracker, Boolean.valueOf(bool));
+      return;
+    }
   }
 }
 

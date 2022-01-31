@@ -1,27 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.newfriend.NewFriendMessage;
+import com.tencent.mobileqq.newfriend.NewFriendPushListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class agy
-  implements Animation.AnimationListener
+  implements NewFriendPushListener
 {
-  public agy(Conversation paramConversation, View paramView, long paramLong) {}
+  public agy(Conversation paramConversation) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(NewFriendMessage paramNewFriendMessage)
   {
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation).show();
-    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
     if (QLog.isColorLevel()) {
-      QLog.d("Q.PerfTrace", 2, "conversationTab search up anim time: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      QLog.d("Q.recent", 2, "onRecommendMsgPushed");
     }
+    this.a.b(new agz(this));
+    this.a.a(0L);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

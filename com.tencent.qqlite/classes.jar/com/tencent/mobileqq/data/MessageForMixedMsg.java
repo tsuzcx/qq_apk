@@ -52,7 +52,7 @@ public class MessageForMixedMsg
           if ((??? instanceof MessageForText)) {
             localStringBuilder.append(((MessageForText)???).msg);
           } else if ((??? instanceof MessageForPic)) {
-            localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131362796));
+            localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131362803));
           }
         }
       }
@@ -91,7 +91,7 @@ public class MessageForMixedMsg
             if ((localMessageRecord instanceof MessageForText)) {
               localObject1.append(((MessageForText)localMessageRecord).msg);
             } else if ((localMessageRecord instanceof MessageForPic)) {
-              localObject1.append(BaseApplicationImpl.getContext().getString(2131362796));
+              localObject1.append(BaseApplicationImpl.getContext().getString(2131362803));
             }
           }
         }
@@ -169,7 +169,7 @@ public class MessageForMixedMsg
             ((MessageForPic)localObject3).subMsgId = i;
             copyBaseInfoFromMixedToPic((MessageForPic)localObject3, this);
             this.msgElemList.add(localObject3);
-            localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131362796));
+            localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131362803));
           }
         }
         finally {}
@@ -229,7 +229,7 @@ public class MessageForMixedMsg
     MixedMsg.Msg localMsg = new MixedMsg.Msg();
     for (;;)
     {
-      MessageRecord localMessageRecord;
+      Object localObject3;
       MixedMsg.Elem localElem;
       synchronized (this.elemListSyncLock)
       {
@@ -237,17 +237,17 @@ public class MessageForMixedMsg
         if (!localIterator.hasNext()) {
           break;
         }
-        localMessageRecord = (MessageRecord)localIterator.next();
+        localObject3 = localIterator.next();
         localElem = new MixedMsg.Elem();
-        if ((localMessageRecord instanceof MessageForText))
+        if ((localObject3 instanceof MessageForText))
         {
-          localElem.textMsg.set(((MessageForText)localMessageRecord).msg);
+          localElem.textMsg.set(((MessageForText)localObject3).msg);
           localMsg.elems.get().add(localElem);
         }
       }
-      if ((localMessageRecord instanceof MessageForPic)) {
-        localElem.picMsg.set(((MessageForPic)localMessageRecord).getSerialPB());
-      } else if (!(localMessageRecord instanceof MessageForMarketFace)) {}
+      if ((localObject3 instanceof MessageForPic)) {
+        localElem.picMsg.set(((MessageForPic)localObject3).getSerialPB());
+      } else if (!(localObject3 instanceof MessageForMarketFace)) {}
     }
     this.msgData = localObject2.toByteArray();
   }
@@ -271,7 +271,7 @@ public class MessageForMixedMsg
         if (!localIterator.hasNext()) {
           break;
         }
-        localObject2 = (MessageRecord)localIterator.next();
+        localObject2 = localIterator.next();
         localElem = new MixedMsg.Elem();
         if ((localObject2 instanceof MessageForText))
         {

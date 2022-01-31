@@ -34,7 +34,7 @@ public class FormSimpleItem
   private int n;
   private int o;
   private int p;
-  private int q = getResources().getDimensionPixelSize(2131493068);
+  private int q = getResources().getDimensionPixelSize(2131493070);
   private int r;
   private int s;
   private int t;
@@ -47,7 +47,7 @@ public class FormSimpleItem
   public FormSimpleItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    int i1 = getResources().getDimensionPixelSize(2131493067);
+    int i1 = getResources().getDimensionPixelSize(2131493069);
     this.s = ((int)(getResources().getDisplayMetrics().density * 35.0F + 0.5D));
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.e);
     this.p = paramContext.getDimensionPixelSize(3, i1);
@@ -73,18 +73,18 @@ public class FormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131427466);
+      return paramResources.getColorStateList(2131427469);
     case 0: 
-      return paramResources.getColorStateList(2131427466);
+      return paramResources.getColorStateList(2131427469);
     case 2: 
-      return paramResources.getColorStateList(2131427493);
+      return paramResources.getColorStateList(2131427497);
     }
-    return paramResources.getColorStateList(2131427469);
+    return paramResources.getColorStateList(2131427472);
   }
   
   public static Drawable a(Resources paramResources, int paramInt)
   {
-    return paramResources.getDrawable(2130837754);
+    return paramResources.getDrawable(2130837914);
   }
   
   private void b()
@@ -104,7 +104,7 @@ public class FormSimpleItem
       i1 = 0;
       break;
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-        break label111;
+        break label113;
       }
       this.t = (i2 / 2);
       this.r = (i2 / 2);
@@ -112,7 +112,7 @@ public class FormSimpleItem
     } while (i1 >= this.t);
     this.r = (i2 - i1);
     return;
-    label111:
+    label113:
     if (this.i == 0) {}
     for (int i1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();; i1 = this.i)
     {

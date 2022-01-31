@@ -1,6 +1,6 @@
 package com.dataline.core;
 
-import bx;
+import bu;
 import com.dataline.util.DataLineReportUtil;
 import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.DataLineHandler.EFILETYPE;
@@ -28,7 +28,7 @@ public class MoloHandler
   private static final int jdField_a_of_type_Int = 1;
   private static final String jdField_a_of_type_JavaLangString = "dataline.MoloHandler";
   public DataLineHandler a;
-  private PCPushProxy.OnDownloadListener jdField_a_of_type_ComTencentOpenPcpushPCPushProxy$OnDownloadListener = new bx(this);
+  private PCPushProxy.OnDownloadListener jdField_a_of_type_ComTencentOpenPcpushPCPushProxy$OnDownloadListener = new bu(this);
   
   public MoloHandler(DataLineHandler paramDataLineHandler)
   {

@@ -9,9 +9,9 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import bu;
-import bv;
-import bw;
+import br;
+import bs;
+import bt;
 import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -28,7 +28,7 @@ public class LiteWifiphotoActivity
   implements View.OnClickListener, Observer
 {
   public static String a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bu(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new br(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   boolean jdField_a_of_type_Boolean = false;
@@ -54,7 +54,7 @@ public class LiteWifiphotoActivity
     {
       this.j.setVisibility(4);
       String str = this.h.getText().toString();
-      if (str.contains(getString(2131362950)))
+      if (str.contains(getString(2131362957)))
       {
         this.b = this.h;
         e();
@@ -62,7 +62,7 @@ public class LiteWifiphotoActivity
       do
       {
         return;
-        if (str.contains(getString(2131362941)))
+        if (str.contains(getString(2131362948)))
         {
           this.b = this.h;
           this.b = this.h;
@@ -75,7 +75,7 @@ public class LiteWifiphotoActivity
     this.h.setVisibility(4);
     this.j.setVisibility(0);
     this.j.setText(getString(2131361861));
-    this.j.setOnClickListener(new bv(this));
+    this.j.setOnClickListener(new bs(this));
   }
   
   private void e()
@@ -93,15 +93,15 @@ public class LiteWifiphotoActivity
         if (i <= 99) {
           break label66;
         }
-        this.b.setText(getString(2131362950) + "(99+)");
+        this.b.setText(getString(2131362957) + "(99+)");
       }
     }
     return;
     label66:
-    this.b.setText(getString(2131362950) + "(" + i + ")");
+    this.b.setText(getString(2131362957) + "(" + i + ")");
     return;
     label107:
-    this.b.setText(getString(2131362950));
+    this.b.setText(getString(2131362957));
   }
   
   protected boolean a()
@@ -113,12 +113,12 @@ public class LiteWifiphotoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903452);
+    setContentView(2130903457);
     c();
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("isFromStatusbar", false);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298085));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298090));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296760));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296761));
     paramBundle = (DataLineHandler)this.app.a(8);
     if (DataLineHandler.a.a.b()) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(2131361857);
@@ -182,7 +182,7 @@ public class LiteWifiphotoActivity
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    runOnUiThread(new bw(this));
+    runOnUiThread(new bt(this));
   }
 }
 

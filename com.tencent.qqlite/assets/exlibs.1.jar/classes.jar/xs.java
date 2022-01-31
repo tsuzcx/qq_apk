@@ -20,7 +20,7 @@ public class xs
       this.a.a.a(l, Long.valueOf(AddRequestActivity.a(this.a)).longValue(), 1);
       return;
     }
-    QQToast.a(this.a, 2131363516, 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a, 2131363527, 0).b(this.a.getTitleBarHeight());
   }
 }
 

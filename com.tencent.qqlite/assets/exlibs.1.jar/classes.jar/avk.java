@@ -1,36 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.model.FriendManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.MayKnowManActivity;
 
 public class avk
-  extends Thread
+  implements DialogInterface.OnCancelListener
 {
-  public avk(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
+  public avk(MayKnowManActivity paramMayKnowManActivity) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    Object localObject = (FriendManager)this.a.app.getManager(8);
-    Friends localFriends = ((FriendManager)localObject).c(this.a.jdField_a_of_type_JavaLangString);
-    if (localFriends != null)
-    {
-      this.a.jdField_a_of_type_Int = localFriends.groupid;
-      localObject = ((FriendManager)localObject).a(this.a.jdField_a_of_type_Int + "");
-      if (localObject != null) {
-        this.a.d = ((Groups)localObject).group_name;
-      }
+    this.a.a = null;
+    if (!this.a.isFinishing()) {
+      this.a.finish();
     }
-    if (this.a.jdField_a_of_type_Int == -1)
-    {
-      this.a.runOnUiThread(new avl(this));
-      return;
-    }
-    localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-    ((Message)localObject).what = 2;
-    ((Message)localObject).sendToTarget();
   }
 }
 

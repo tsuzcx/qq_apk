@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c009b" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:id="@id/title" android:paddingBottom="0.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0108" />
-        <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0908da" android:paddingBottom="0.0dip" android:layout_marginLeft="4.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e010f">
-            <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e011a" />
-            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09064b" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0116" />
-            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09064c" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0114" />
-        </LinearLayout>
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0905d0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e010c" />
-        <LinearLayout android:id="@id/content" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c009e" android:paddingBottom="0.0dip" android:visibility="gone" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c009d" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0113">
-            <TextView android:id="@id/info" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0114" />"
-</LinearLayout>
-    </RelativeLayout>
+    <com.tencent.mobileqq.widget.SlideDetectListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0908df" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="@android:color/transparent" android:divider="@android:color/white" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0908e0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205ae" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00ab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="暂无好友申请" />
+    </LinearLayout>
 </RelativeLayout>

@@ -190,19 +190,19 @@ public class TextPreviewActivity
     int n = 1;
     int m = 1;
     int i = paramView.getId();
-    if (i == 2131296570)
+    if (i == 2131296573)
     {
       c();
       return;
     }
-    if (i == 2131296572)
+    if (i == 2131296575)
     {
       a(this.h, this, this.app, this.g, this.jdField_a_of_type_Int, jdField_a_of_type_Long, true);
       ReportController.b(this.app, "CliOper", "", "", "0X8004064", "0X8004064", 0, 0, "", "", "", "");
       return;
     }
     boolean bool;
-    if (i == 2131296574)
+    if (i == 2131296577)
     {
       paramView = (GameCenterManagerImp)this.app.getManager(11);
       if (paramView == null) {
@@ -273,7 +273,7 @@ public class TextPreviewActivity
           i = 0;
           break label248;
         }
-        if (i != 2131296578) {
+        if (i != 2131296581) {
           break;
         }
         paramView = (GameCenterManagerImp)this.app.getManager(11);
@@ -360,13 +360,13 @@ public class TextPreviewActivity
     }
     try
     {
-      paramBundle = ((BitmapDrawable)findViewById(2131296567).getBackground()).getBitmap();
+      paramBundle = ((BitmapDrawable)findViewById(2131296570).getBackground()).getBitmap();
       if (paramBundle != null)
       {
         localObject1 = new Matrix();
         ((Matrix)localObject1).postRotate(180.0F);
         paramBundle = new BitmapDrawable(Bitmap.createBitmap(paramBundle, 0, 0, paramBundle.getWidth(), paramBundle.getHeight(), (Matrix)localObject1, true));
-        findViewById(2131296568).setBackgroundDrawable(paramBundle);
+        findViewById(2131296571).setBackgroundDrawable(paramBundle);
       }
     }
     catch (OutOfMemoryError paramBundle)
@@ -380,14 +380,14 @@ public class TextPreviewActivity
         boolean bool = false;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView = ((ContainerView)findViewById(2131296566));
-    this.jdField_a_of_type_ComTencentWidgetScrollView = ((ScrollView)findViewById(2131296565));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView = ((ContainerView)findViewById(2131296569));
+    this.jdField_a_of_type_ComTencentWidgetScrollView = ((ScrollView)findViewById(2131296568));
     this.jdField_a_of_type_ComTencentWidgetScrollView.setOverScrollMode(2);
     this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setOutScrollView(this.jdField_a_of_type_ComTencentWidgetScrollView);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131296569);
-    paramBundle = (TextView)findViewById(2131296574);
-    localObject1 = (TextView)findViewById(2131296578);
-    localObject2 = findViewById(2131296577);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131296572);
+    paramBundle = (TextView)findViewById(2131296577);
+    localObject1 = (TextView)findViewById(2131296581);
+    localObject2 = findViewById(2131296580);
     if ((this.app == null) && ((getAppRuntime() instanceof QQAppInterface))) {
       this.app = ((QQAppInterface)getAppRuntime());
     }
@@ -410,13 +410,13 @@ public class TextPreviewActivity
       for (;;)
       {
         paramBundle.setOnClickListener(this);
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296575));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296578));
         paramBundle = (BubbleManager)this.app.getManager(40);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle.a(this.jdField_b_of_type_Int));
-        paramBundle = (TextView)findViewById(2131296570);
-        localObject1 = findViewById(2131296571);
-        localObject2 = (TextView)findViewById(2131296572);
-        localObject3 = findViewById(2131296573);
+        paramBundle = (TextView)findViewById(2131296573);
+        localObject1 = findViewById(2131296574);
+        localObject2 = (TextView)findViewById(2131296575);
+        localObject3 = findViewById(2131296576);
         paramBundle.setVisibility(0);
         ((View)localObject1).setVisibility(0);
         paramBundle.setOnClickListener(this);

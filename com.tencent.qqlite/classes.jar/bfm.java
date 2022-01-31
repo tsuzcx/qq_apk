@@ -1,15 +1,13 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
 import com.tencent.mobileqq.activity.QQSettingMe;
 
 class bfm
   implements Runnable
 {
-  bfm(bfl parambfl, Drawable paramDrawable) {}
+  bfm(bfk parambfk) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bfl.a.a.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.a.a.h();
   }
 }
 

@@ -1,23 +1,37 @@
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
 
-class dnn
+public class dnn
+  implements Runnable
 {
-  public int a;
-  public long a = 0L;
-  public HttpMsg a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b = 0L;
-  public String b;
-  public long c = 0L;
-  public String c;
-  public long d = 0L;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public dnn(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
+  
+  public void run()
+  {
+    this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (localFileManagerEntity.nFileType == 5)
+      {
+        String str = QfileTimeUtils.a(localFileManagerEntity.srvTime);
+        if (!this.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
+          this.a.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
+        }
+        ((List)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).add(localFileManagerEntity);
+      }
+    }
+    this.a.i();
+    this.a.setSelect(0);
+    this.a.a(true);
+    this.a.c = false;
+  }
 }
 
 

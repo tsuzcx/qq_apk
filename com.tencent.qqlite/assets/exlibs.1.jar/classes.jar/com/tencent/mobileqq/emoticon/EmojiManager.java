@@ -24,15 +24,15 @@ import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import ddp;
-import ddq;
-import ddr;
-import dds;
-import ddt;
-import ddu;
-import ddv;
-import ddw;
-import ddx;
+import der;
+import des;
+import det;
+import deu;
+import dev;
+import dew;
+import dex;
+import dey;
+import dez;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -79,7 +79,7 @@ public class EmojiManager
   public DownloadListener c;
   public DownloadListener d;
   public DownloadListener e;
-  private DownloadListener jdField_f_of_type_ComTencentMobileqqVipDownloadListener = new ddp(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
+  private DownloadListener jdField_f_of_type_ComTencentMobileqqVipDownloadListener = new der(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
   private int g = 3000000;
   private int h = 0;
   
@@ -101,11 +101,11 @@ public class EmojiManager
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager = null;
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new ddq(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
-    this.jdField_b_of_type_ComTencentMobileqqVipDownloadListener = new ddr(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
-    this.jdField_c_of_type_ComTencentMobileqqVipDownloadListener = new dds(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
-    this.jdField_d_of_type_ComTencentMobileqqVipDownloadListener = new ddt(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
-    this.jdField_e_of_type_ComTencentMobileqqVipDownloadListener = new ddu(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new des(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
+    this.jdField_b_of_type_ComTencentMobileqqVipDownloadListener = new det(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
+    this.jdField_c_of_type_ComTencentMobileqqVipDownloadListener = new deu(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
+    this.jdField_d_of_type_ComTencentMobileqqVipDownloadListener = new dev(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
+    this.jdField_e_of_type_ComTencentMobileqqVipDownloadListener = new dew(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
     this.jdField_b_of_type_JavaUtilMap = Collections.synchronizedMap(new LinkedHashMap(10, 1.1F, true));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager = new EmojiListenerManager();
@@ -508,7 +508,7 @@ public class EmojiManager
     }
     paramString = new Object();
     EmosmHandler localEmosmHandler = (EmosmHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-    Object localObject = new ddw(this, paramReqInfo, localEmosmHandler, paramBoolean, paramArrayList, paramString);
+    Object localObject = new dey(this, paramReqInfo, localEmosmHandler, paramBoolean, paramArrayList, paramString);
     localEmosmHandler.a((EmosmHandler.EmosmHandlerListener)localObject);
     this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
     int j = this.h;
@@ -704,7 +704,7 @@ public class EmojiManager
     if ((paramEmoticonPackage == null) || (paramEmoticonPackage.epId == null) || (paramEmoticonPackage.jobType != 1)) {
       return;
     }
-    new ddx(this, EmosmUtils.getQFaceMaterialFolderPath(paramEmoticonPackage.epId, false)).start();
+    new dez(this, EmosmUtils.getQFaceMaterialFolderPath(paramEmoticonPackage.epId, false)).start();
   }
   
   private void c(List paramList, Map paramMap, EmoticonPackage paramEmoticonPackage, Bundle paramBundle)
@@ -1381,7 +1381,7 @@ public class EmojiManager
       paramEmoticonPackage.valid = true;
       a().a(paramEmoticonPackage);
       a().a(paramEmoticonPackage.epId);
-      ThreadManager.a(new ddv(this, paramEmoticonPackage, paramBoolean));
+      ThreadManager.a(new dex(this, paramEmoticonPackage, paramBoolean));
       return;
       label273:
       paramEmoticonPackage.status = 0;

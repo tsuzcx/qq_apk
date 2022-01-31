@@ -1,22 +1,20 @@
+import android.content.Intent;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public class abc
-  implements Runnable
+  implements FMDialogUtil.FMDialogInterface
 {
-  private ExtensionInfo jdField_a_of_type_ComTencentMobileqqDataExtensionInfo;
+  public abc(BaseChatPie paramBaseChatPie, Intent paramIntent, String paramString, ForwardFileInfo paramForwardFileInfo) {}
   
-  public abc(BaseChatPie paramBaseChatPie, ExtensionInfo paramExtensionInfo)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo = paramExtensionInfo;
+    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo, false);
   }
   
-  public void run()
-  {
-    ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(43)).a(this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo);
-  }
+  public void b() {}
 }
 
 

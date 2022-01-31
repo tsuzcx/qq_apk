@@ -20,7 +20,7 @@ public class jp
       JoinGroupHandler.a(this.a, paramTroopInfo);
       return;
     }
-    JoinGroupHandler.a(this.a, 2131363388, 1);
+    JoinGroupHandler.a(this.a, 2131363399, 1);
     JoinGroupHandler.a(this.a).a();
   }
 }

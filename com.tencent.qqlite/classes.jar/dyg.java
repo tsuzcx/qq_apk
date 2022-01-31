@@ -1,53 +1,94 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.getopenid.GetOpenidProto.GetOpenidEntry;
+import com.tencent.protofile.getopenid.GetOpenidProto.GetOpenidResp;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import mqq.observer.BusinessObserver;
 
-public class dyg
-  implements UpCallBack
+public final class dyg
+  implements BusinessObserver
 {
-  public dyg(MultiMsgManager paramMultiMsgManager, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  public dyg(Activity paramActivity) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return null;
-  }
-  
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
-  {
-    if (paramSendResult.jdField_a_of_type_Int == 0)
-    {
-      MultiMsgManager.a().b("pack msg and upload pack ");
-      MultiMsgManager.a().c();
-      MessageForStructing localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      localMessageForStructing.structingMsg.mResid = paramSendResult.c;
-      localMessageForStructing.structingMsg.mFileName = String.valueOf(localMessageForStructing.uniseq);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localMessageForStructing.uniseq, localMessageForStructing.structingMsg.getBytes());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg", 2, "send real struct msg done, cost : " + (System.currentTimeMillis() - MultiMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager)));
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(UiApiPlugin.a, 2, "onReceive get_openid:" + paramBoolean);
+    }
+    if (this.a.isFinishing()) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiMsg", 2, "upload multi msg pack failed, result.errStr=" + paramSendResult.b + ",result.errStr=" + paramSendResult.jdField_a_of_type_JavaLangString);
+    int[] arrayOfInt;
+    int i;
+    if (paramBoolean)
+    {
+      Object localObject = paramBundle.getByteArray("data");
+      if (localObject != null)
+      {
+        paramBundle = new GetOpenidProto.GetOpenidResp();
+        try
+        {
+          paramBundle.mergeFrom((byte[])localObject);
+          if (paramBundle.retcode.get() != 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d(UiApiPlugin.a, 2, "get_openid retcode:" + paramBundle.retcode.get());
+            }
+            this.a.setResult(-1, new Intent().putExtra("ret", 2).putExtra("errMsg", "server error, unexpected retcode"));
+            this.a.finish();
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramBundle)
+        {
+          this.a.setResult(-1, new Intent().putExtra("ret", 2).putExtra("errMsg", "server error, unexpected pbdata"));
+          this.a.finish();
+          return;
+        }
+        int j = paramBundle.list.size();
+        localObject = new String[j];
+        arrayOfInt = new int[j];
+        i = 0;
+        if (i < j)
+        {
+          GetOpenidProto.GetOpenidEntry localGetOpenidEntry = (GetOpenidProto.GetOpenidEntry)paramBundle.list.get(i);
+          localObject[i] = localGetOpenidEntry.openid.get();
+          paramInt = localGetOpenidEntry.type.get();
+          if (paramInt != 0) {
+            break label360;
+          }
+          paramInt = 1;
+          break label345;
+        }
+        this.a.setResult(-1, new Intent().putExtra("ret", 0).putExtra("openids", (String[])localObject).putExtra("types", arrayOfInt));
+        this.a.finish();
+        return;
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extraflag = 32768;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    paramSendResult = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_Int;
-    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
-    ((MessageHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0)).a(MessageHandler.a(this.jdField_a_of_type_Int), false, new Object[] { paramSendResult, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+    this.a.setResult(-1, new Intent().putExtra("ret", 2));
+    this.a.finish();
+    return;
+    for (;;)
+    {
+      label345:
+      arrayOfInt[i] = paramInt;
+      i += 1;
+      break;
+      label360:
+      if (paramInt == 1) {
+        paramInt = 4;
+      } else if (paramInt == 2) {
+        paramInt = 8;
+      } else {
+        paramInt = 0;
+      }
+    }
   }
 }
 

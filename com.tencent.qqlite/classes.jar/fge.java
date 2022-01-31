@@ -1,10 +1,16 @@
-import com.tencent.qqconnect.wtlogin.AuthDevUgActivity2;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.MyAppApi;
 
-public class fge
-  extends VerifyDevLockManager.VerifyDevLockObserver
+public final class fge
+  implements Runnable
 {
-  public fge(AuthDevUgActivity2 paramAuthDevUgActivity2) {}
+  public fge(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void run()
+  {
+    MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle);
+  }
 }
 
 

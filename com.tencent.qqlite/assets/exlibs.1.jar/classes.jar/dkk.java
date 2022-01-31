@@ -1,34 +1,25 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
-class dkk
-  implements Runnable
+public class dkk
+  extends FMObserver
 {
-  dkk(dkj paramdkj) {}
+  public dkk(QfileFileAssistantActivity paramQfileFileAssistantActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean)
   {
-    if (this.a.a.b != null)
-    {
-      Iterator localIterator = this.a.a.b.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (((List)this.a.a.b.get(str)).size() == 0) {
-          localIterator.remove();
-        }
-      }
+    if (QfileFileAssistantActivity.b(this.a)) {
+      return;
     }
-    this.a.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.a.a.b);
-    this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.c(0);
-    this.a.a.i();
-    this.a.a.setSelect(0);
-    this.a.a.b.clear();
-    this.a.a.a(true);
+    this.a.runOnUiThread(new dkl(this, paramBoolean));
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    if (!QfileFileAssistantActivity.b(this.a)) {
+      FMToastUtil.a(paramString);
+    }
   }
 }
 

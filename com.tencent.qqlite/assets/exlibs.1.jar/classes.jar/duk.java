@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
 
-class duk
-  implements Runnable
+public class duk
+  implements View.OnClickListener
 {
-  duk(duj paramduj) {}
+  public duk(LocalVideoFileView paramLocalVideoFileView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (PreviewingOfflineFileViewBase.a(this.a.a) >= 90)
+    if (LocalVideoFileView.a(this.a))
     {
-      PreviewingOfflineFileViewBase.a(this.a.a);
-      PreviewingOfflineFileViewBase.f(this.a.a);
+      LocalVideoFileView.a(this.a);
       return;
     }
-    PreviewingOfflineFileViewBase.b(this.a.a);
-    PreviewingOfflineFileViewBase.g(this.a.a);
+    LocalVideoFileView.b(this.a);
+    new Handler().postDelayed(new dul(this), 2000L);
   }
 }
 

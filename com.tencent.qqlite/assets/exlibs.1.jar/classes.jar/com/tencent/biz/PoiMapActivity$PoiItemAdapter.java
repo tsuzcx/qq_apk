@@ -139,14 +139,14 @@ public class PoiMapActivity$PoiItemAdapter
     if (paramView == null)
     {
       paramViewGroup = new PoiMapActivity.PoiItemViewHolder(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2130903348, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2130903351, null);
       paramView.setFocusable(true);
       paramView.setFocusableInTouchMode(true);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297794));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297795));
-      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131297796);
-      paramViewGroup.c = paramView.findViewById(2131297797);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131297793);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297798));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297799));
+      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131297800);
+      paramViewGroup.c = paramView.findViewById(2131297801);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131297797);
       paramView.setTag(paramViewGroup);
     }
     while ((paramInt == this.jdField_a_of_type_JavaUtilArrayList.size()) || ((this.jdField_a_of_type_Boolean) && (paramInt == this.jdField_a_of_type_JavaUtilArrayList.size() - 1)))
@@ -174,7 +174,7 @@ public class PoiMapActivity$PoiItemAdapter
       paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.c);
       paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(0);
     }
-    for (paramViewGroup = (String)localObject + this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131362638);; paramViewGroup = (String)localObject + this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131362639))
+    for (paramViewGroup = (String)localObject + this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131362645);; paramViewGroup = (String)localObject + this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131362646))
     {
       paramView.setContentDescription(paramViewGroup);
       return paramView;

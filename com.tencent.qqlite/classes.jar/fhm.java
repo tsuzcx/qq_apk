@@ -1,41 +1,31 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.widget.AbsSpinner;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK;
+import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK_V2;
 
-public class fhm
+class fhm
+  implements Runnable
 {
-  private final SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  fhm(fhk paramfhk) {}
   
-  public fhm(AbsSpinner paramAbsSpinner) {}
-  
-  public View a(int paramInt)
+  public void run()
   {
-    View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localView != null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt);
-    }
-    return localView;
-  }
-  
-  public void a()
-  {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
-    int j = localSparseArray.size();
-    int i = 0;
-    while (i < j)
+    this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils.a();
+    this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.c();
+    if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam != null)
     {
-      View localView = (View)localSparseArray.valueAt(i);
-      if (localView != null) {
-        AbsSpinner.a(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
+      if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2) {
+        ((TMQQDownloaderOpenSDK)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKBaseQQDownloaderOpenSDK).startToAuthorized(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, "2");
       }
-      i += 1;
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam = null;
+        return;
+        ((TMQQDownloaderOpenSDK_V2)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKBaseQQDownloaderOpenSDK).startToAuthorized(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, "2");
+      }
     }
-    localSparseArray.clear();
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
+    LogUtility.e("MyAppApi", "startToAuthorizedDirect->onGetA1Fail lastAuthorizeParam = null, needCarryQQIdentity = true");
   }
 }
 

@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.plugin.PluginIphoneTitleBarActivity;
+import com.tencent.widget.Gallery;
 
 public class fkn
-  implements View.OnClickListener
+  implements Runnable
 {
-  public fkn(PluginIphoneTitleBarActivity paramPluginIphoneTitleBarActivity) {}
+  public fkn(Gallery paramGallery) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a();
+    Gallery.a(this.a);
   }
 }
 

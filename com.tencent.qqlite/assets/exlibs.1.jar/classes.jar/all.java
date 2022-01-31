@@ -1,14 +1,28 @@
-import com.tencent.mobileqq.activity.EmosmDetailActivity;
+import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmoticonPackageChangedListener;
+import java.util.ArrayList;
 
-class all
-  implements Runnable
+public class all
+  implements EmoticonPackageChangedListener
 {
-  all(alk paramalk, EmoticonPackage paramEmoticonPackage) {}
+  public all(EmosmActivity paramEmosmActivity) {}
   
-  public void run()
+  public void a(EmoticonPackage paramEmoticonPackage) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage)
   {
-    this.jdField_a_of_type_Alk.a.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).epId.equals(paramEmoticonPackage.epId)) {
+        return;
+      }
+      i += 1;
+    }
+    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

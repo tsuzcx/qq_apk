@@ -92,15 +92,15 @@ public class AuthDevActivity
   {
     String str = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      str = getResources().getString(2131364159);
+      str = getResources().getString(2131364170);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null, 2131624119));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null, 2131624120));
     if (paramBoolean1) {}
-    for (paramString1 = getString(2131364200, new Object[] { str });; paramString1 = getString(2131364199, new Object[] { str }))
+    for (paramString1 = getString(2131364211, new Object[] { str });; paramString1 = getString(2131364210, new Object[] { str }))
     {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramString1);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131364201), 3, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362794);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131364212), 3, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362801);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new yp(this, paramString2, paramArrayList, paramInt, paramBoolean2, paramLong));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
       return;
@@ -129,28 +129,28 @@ public class AuthDevActivity
       }
       else
       {
-        View localView = getLayoutInflater().inflate(2130903475, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-        RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131296449);
-        Object localObject1 = (ImageView)localView.findViewById(2131298169);
+        View localView = getLayoutInflater().inflate(2130903483, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+        RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131296452);
+        Object localObject1 = (ImageView)localView.findViewById(2131298191);
         label141:
         Object localObject2;
         TextView localTextView;
         if (k == 1)
         {
-          localRelativeLayout.setBackgroundResource(2130837924);
-          localObject2 = (TextView)localView.findViewById(2131296455);
+          localRelativeLayout.setBackgroundResource(2130837942);
+          localObject2 = (TextView)localView.findViewById(2131296458);
           localObject1 = (TextView)localView.findViewById(2131296953);
-          localTextView = (TextView)localView.findViewById(2131298170);
+          localTextView = (TextView)localView.findViewById(2131298192);
           if (!TextUtils.isEmpty(localSvcDevLoginInfo.strDeviceName)) {
             break label446;
           }
-          ((TextView)localObject2).setText(2131364159);
+          ((TextView)localObject2).setText(2131364170);
         }
         for (;;)
         {
           if (Arrays.equals(NetConnInfoCenter.GUID, localSvcDevLoginInfo.vecGuid))
           {
-            localTextView.setText("（" + getResources().getString(2131364155) + "）");
+            localTextView.setText("（" + getResources().getString(2131364166) + "）");
             localTextView.setVisibility(0);
           }
           localObject2 = new StringBuffer();
@@ -175,17 +175,17 @@ public class AuthDevActivity
           if (i == 0)
           {
             ((ImageView)localObject1).setVisibility(0);
-            localRelativeLayout.setBackgroundResource(2130837924);
+            localRelativeLayout.setBackgroundResource(2130837942);
             break label141;
           }
           if (i == k - 1)
           {
             ((ImageView)localObject1).setVisibility(0);
-            localRelativeLayout.setBackgroundResource(2130837926);
+            localRelativeLayout.setBackgroundResource(2130837944);
             break label141;
           }
           ((ImageView)localObject1).setVisibility(0);
-          localRelativeLayout.setBackgroundResource(2130837927);
+          localRelativeLayout.setBackgroundResource(2130837945);
           break label141;
           label446:
           ((TextView)localObject2).setText(localSvcDevLoginInfo.strDeviceName);
@@ -240,7 +240,7 @@ public class AuthDevActivity
   private void f()
   {
     if (!NetworkUtil.e(this)) {
-      QQToast.a(this, getString(2131362790), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131362797), 0).b(getTitleBarHeight());
     }
     int i;
     do
@@ -274,29 +274,29 @@ public class AuthDevActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.devlock.AuthDevActivity", 2, "onClick.CheckDevLockSms fail ret=" + i);
     }
-    QQToast.a(getApplicationContext(), getString(2131364211), 0).b(getTitleBarHeight());
+    QQToast.a(getApplicationContext(), getString(2131364222), 0).b(getTitleBarHeight());
   }
   
   void a()
   {
     b();
-    Dialog localDialog = new Dialog(this, 2131624119);
+    Dialog localDialog = new Dialog(this, 2131624120);
     localDialog.setContentView(2130903135);
-    TextView localTextView1 = (TextView)localDialog.findViewById(2131296911);
+    TextView localTextView1 = (TextView)localDialog.findViewById(2131296912);
     if (localTextView1 != null) {
-      localTextView1.setText(getString(2131364202));
+      localTextView1.setText(getString(2131364213));
     }
-    localTextView1 = (TextView)localDialog.findViewById(2131296470);
+    localTextView1 = (TextView)localDialog.findViewById(2131296473);
     if (localTextView1 != null) {
-      localTextView1.setText(getString(2131364203));
+      localTextView1.setText(getString(2131364214));
     }
-    localTextView1 = (TextView)localDialog.findViewById(2131296914);
+    localTextView1 = (TextView)localDialog.findViewById(2131296915);
     if (localTextView1 != null) {
-      localTextView1.setText(2131363523);
+      localTextView1.setText(2131363534);
     }
-    TextView localTextView2 = (TextView)localDialog.findViewById(2131296915);
+    TextView localTextView2 = (TextView)localDialog.findViewById(2131296916);
     if (localTextView2 != null) {
-      localTextView2.setText(2131362794);
+      localTextView2.setText(2131362801);
     }
     localDialog.setOnDismissListener(new yt(this));
     if (localTextView1 != null) {
@@ -339,11 +339,11 @@ public class AuthDevActivity
   {
     switch (paramView.getId())
     {
-    case 2131298162: 
-    case 2131298163: 
+    case 2131298184: 
+    case 2131298185: 
     default: 
       return;
-    case 2131298161: 
+    case 2131298183: 
       f();
       return;
     }
@@ -358,21 +358,21 @@ public class AuthDevActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130903474);
-    super.setTitle(2131364189);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)super.findViewById(2131298164));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131298168));
+    super.setContentView(2130903482);
+    super.setTitle(2131364200);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)super.findViewById(2131298186));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131298190));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131297059));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131298161));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131298167));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131298183));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131298189));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131298165));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131298187));
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131298166));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131298188));
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131298163));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131298185));
     paramBundle = SpannableString.valueOf(this.jdField_c_of_type_AndroidWidgetTextView.getText());
     yn localyn = new yn(this);
     int i = this.jdField_c_of_type_AndroidWidgetTextView.getText().toString().indexOf("点击这里");
@@ -393,13 +393,13 @@ public class AuthDevActivity
     if (paramBundle != null)
     {
       if (!this.jdField_a_of_type_Boolean) {
-        break label510;
+        break label512;
       }
       paramBundle.obtainMessage(20140331, 1, 0).sendToTarget();
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131364189));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131364200));
       try
       {
         this.jdField_b_of_type_JavaLangString = getPackageManager().getPackageInfo(getPackageName(), 0).packageName;
@@ -417,7 +417,7 @@ public class AuthDevActivity
           }
           c();
           return;
-          label510:
+          label512:
           paramBundle.obtainMessage(20140331, 0, 0).sendToTarget();
         }
       }

@@ -1,16 +1,15 @@
-import android.os.Handler;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
 
-public class cbs
-  implements MessageQueue.IdleHandler
+class cbs
+  implements Runnable
 {
-  public cbs(AddContactsActivity paramAddContactsActivity) {}
+  cbs(cbr paramcbr) {}
   
-  public boolean queueIdle()
+  public void run()
   {
-    this.a.a.sendEmptyMessage(0);
-    return false;
+    FraudTipsBar.a(this.a.a, 2);
+    FraudTipsBar.a(this.a.a).a();
   }
 }
 

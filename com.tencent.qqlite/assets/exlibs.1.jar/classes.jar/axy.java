@@ -1,32 +1,17 @@
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class axy
-  implements Runnable
+public class axy
+  implements View.OnClickListener
 {
-  axy(axw paramaxw) {}
+  public axy(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.app.b(this.a.a.app.a(), 3000);
-    EntityManager localEntityManager = this.a.a.app.a().createEntityManager();
-    if (localEntityManager != null)
-    {
-      NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.a.app.a() });
-      if ((localNearbyPeopleCard != null) && (localNearbyPeopleCard.tinyId > 0L)) {
-        this.a.a.app.b(String.valueOf(localNearbyPeopleCard.tinyId), 3001);
-      }
-      localEntityManager.a();
-    }
-    if (NearbyPeopleProfileActivity.d(this.a.a)) {
-      NearbyPeopleProfileActivity.q(this.a.a);
-    }
-    new Handler(ThreadManager.b()).postDelayed(new axz(this), 2000L);
+    NearbyPeopleProfileActivity.l(this.a);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800482D", "0X800482D", 0, 0, "", "", "", "");
   }
 }
 

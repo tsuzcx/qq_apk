@@ -6,6 +6,8 @@ public abstract interface VoiceHelper
   
   public abstract void a(String paramString, long paramLong);
   
+  public abstract void a(String paramString, long paramLong, boolean paramBoolean);
+  
   public abstract boolean a();
 }
 

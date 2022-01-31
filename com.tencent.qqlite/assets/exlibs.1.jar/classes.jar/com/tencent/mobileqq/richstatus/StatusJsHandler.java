@@ -19,10 +19,10 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import ecq;
-import ecr;
-import ecs;
-import ect;
+import edv;
+import edw;
+import edx;
+import edy;
 import java.lang.ref.WeakReference;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
@@ -35,11 +35,11 @@ public class StatusJsHandler
   public AccountDetail a;
   public String a;
   public WeakReference a;
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new ecs(this);
+  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new edx(this);
   public boolean a;
   public String b;
   WeakReference jdField_b_of_type_JavaLangRefWeakReference;
-  private BusinessObserver jdField_b_of_type_MqqObserverBusinessObserver = new ect(this);
+  private BusinessObserver jdField_b_of_type_MqqObserverBusinessObserver = new edy(this);
   public boolean b;
   public String c;
   
@@ -146,7 +146,7 @@ public class StatusJsHandler
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ecr(this, paramString1, paramString2, localWebView));
+    this.jdField_a_of_type_AndroidOsHandler.post(new edw(this, paramString1, paramString2, localWebView));
   }
   
   public void followAccount(String paramString1, String paramString2)
@@ -178,7 +178,7 @@ public class StatusJsHandler
     }
     this.jdField_b_of_type_Boolean = true;
     this.jdField_b_of_type_JavaLangString = paramString;
-    new Thread(new ecq(this, (LocationManager)localBaseActivity.getSystemService("location"))).start();
+    new Thread(new edv(this, (LocationManager)localBaseActivity.getSystemService("location"))).start();
   }
   
   public boolean hasFollowAccount(String paramString)

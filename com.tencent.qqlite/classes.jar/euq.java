@@ -1,19 +1,45 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
-public class euq
-  implements View.OnClickListener
+class euq
+  implements Runnable
 {
-  public euq(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
+  euq(eup parameup, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
+    for (;;)
+    {
+      try
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_Eup.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+        localIntent.putExtra("BSafeReportPost", true);
+        if (this.jdField_a_of_type_JavaLangString != null) {
+          continue;
+        }
+        arrayOfByte = null;
+        localIntent.putExtra("SafeReportData", arrayOfByte);
+        localIntent.putExtra("hide_more_button", true);
+        localIntent.putExtra("ishiderefresh", true);
+        localIntent.putExtra("ishidebackforward", true);
+        this.jdField_a_of_type_Eup.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent.putExtra("url", "http://jubao.qq.com/cn/jubao"));
+      }
+      catch (Exception localException)
+      {
+        byte[] arrayOfByte;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception" + localException.getMessage());
+        continue;
+      }
+      this.jdField_a_of_type_Eup.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      return;
+      arrayOfByte = this.jdField_a_of_type_JavaLangString.getBytes("utf-8");
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
   }
 }
 

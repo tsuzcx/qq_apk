@@ -1,101 +1,37 @@
-import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
 public class cdi
-  extends DiscussionObserver
+  implements TextWatcher
 {
-  private cdi(DiscussionView paramDiscussionView) {}
+  public cdi(SearchContactsActivity paramSearchContactsActivity) {}
   
-  protected void a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    if (this.a.c)
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    ImageButton localImageButton = this.a.jdField_a_of_type_AndroidWidgetImageButton;
+    if (paramEditable.equals("")) {}
+    for (int i = 8;; i = 0)
     {
-      this.a.c = false;
-      if (paramBoolean)
-      {
-        DiscussionView.a(this.a).a(0);
-        this.a.a(100, 800L);
+      localImageButton.setVisibility(i);
+      if (TextUtils.isEmpty(paramEditable)) {
+        break;
       }
-    }
-    else
-    {
+      this.a.g();
+      this.a.b(paramEditable);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentWidgetXListView.B();
-    this.a.b(2131363356);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
   }
   
-  protected void a(boolean paramBoolean, long paramLong)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  protected void a(boolean paramBoolean, long paramLong, ArrayList paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
-  
-  protected void b()
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
-  
-  protected void d(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

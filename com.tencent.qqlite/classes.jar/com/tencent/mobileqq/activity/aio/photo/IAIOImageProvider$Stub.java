@@ -7,7 +7,7 @@ import android.os.IBinder.DeathRecipient;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
-import byu;
+import bzu;
 import com.tencent.qphone.base.util.QLog;
 
 public abstract class IAIOImageProvider$Stub
@@ -38,7 +38,7 @@ public abstract class IAIOImageProvider$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IAIOImageProvider))) {
       return (IAIOImageProvider)localIInterface;
     }
-    return new byu(paramIBinder);
+    return new bzu(paramIBinder);
   }
   
   public void a()

@@ -1,15 +1,71 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 public class cjt
-  implements MessageQueue.IdleHandler
+  extends BaseAdapter
 {
-  public cjt(SendPhotoActivity paramSendPhotoActivity) {}
+  public cjt(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public boolean queueIdle()
+  public String a(int paramInt)
   {
-    new cju(this.a).execute(new Void[0]);
-    return false;
+    if ((CameraPreviewActivity.a(this.a) != null) && (paramInt < CameraPreviewActivity.a(this.a).size()) && (paramInt >= 0)) {
+      return (String)CameraPreviewActivity.a(this.a).get(paramInt);
+    }
+    return null;
+  }
+  
+  public int getCount()
+  {
+    if (CameraPreviewActivity.a(this.a) != null) {
+      return CameraPreviewActivity.a(this.a).size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = this.a.getLayoutInflater().inflate(2130903268, null);
+      paramViewGroup = new cju();
+      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131297424));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      Object localObject = a(paramInt);
+      if (localObject == null) {
+        break;
+      }
+      localObject = new File((String)localObject);
+      if (((File)localObject).exists()) {}
+      try
+      {
+        paramViewGroup.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null, true));
+        return paramView;
+      }
+      catch (MalformedURLException paramViewGroup)
+      {
+        paramViewGroup.printStackTrace();
+        return paramView;
+      }
+      paramViewGroup = (cju)paramView.getTag();
+    }
+    paramViewGroup.a.setImageDrawable(null);
+    return paramView;
   }
 }
 

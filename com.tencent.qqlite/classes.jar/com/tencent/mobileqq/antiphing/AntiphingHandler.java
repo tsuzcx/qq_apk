@@ -29,9 +29,9 @@ import com.tencent.mobileqq.widget.AntiphingToast;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import cps;
-import cpt;
-import cpu;
+import cqt;
+import cqu;
+import cqv;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -109,7 +109,7 @@ public class AntiphingHandler
       }
       this.jdField_a_of_type_Boolean = true;
     } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast == null) || (this.jdField_a_of_type_AndroidWidgetFrameLayout == null));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast.a(2131364177, 3000, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast.a(2131364188, 3000, this.jdField_a_of_type_AndroidWidgetFrameLayout);
     this.jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast.a(paramString);
     return true;
   }
@@ -182,7 +182,7 @@ public class AntiphingHandler
     }
   }
   
-  private boolean a(String paramString, cpu paramcpu)
+  private boolean a(String paramString, cqv paramcqv)
   {
     if (paramString == null) {
       return false;
@@ -235,13 +235,13 @@ public class AntiphingHandler
         } while (localObject == null);
         if (((String)localObject).equalsIgnoreCase(str))
         {
-          paramcpu.jdField_a_of_type_JavaLangString = ((String)localObject);
-          paramcpu.jdField_a_of_type_Int = 1;
+          paramcqv.jdField_a_of_type_JavaLangString = ((String)localObject);
+          paramcqv.jdField_a_of_type_Int = 1;
           return true;
         }
       } while ((i != 1) || (!str.contains((CharSequence)localObject)));
-      paramcpu.jdField_a_of_type_JavaLangString = ((String)localObject);
-      paramcpu.jdField_a_of_type_Int = 2;
+      paramcqv.jdField_a_of_type_JavaLangString = ((String)localObject);
+      paramcqv.jdField_a_of_type_Int = 2;
       return true;
     }
   }
@@ -331,11 +331,11 @@ public class AntiphingHandler
       }
     }
     label121:
-    for (Object localObject2 = null;; localObject2 = new cpt(this))
+    for (Object localObject2 = null;; localObject2 = new cqu(this))
     {
       DialogUtil.a(localActivity, 230, paramString1, paramString2, paramString3, paramString4, (DialogInterface.OnClickListener)localObject1, (DialogInterface.OnClickListener)localObject2).show();
       return;
-      localObject1 = new cps(this);
+      localObject1 = new cqt(this);
       break;
     }
   }
@@ -394,15 +394,15 @@ public class AntiphingHandler
         a(this.jdField_d_of_type_JavaLangString, 2, "Already Shown Tips!!");
       }
     }
-    cpu localcpu;
+    cqv localcqv;
     do
     {
       return false;
       if (QLog.isColorLevel()) {
         a(this.jdField_d_of_type_JavaLangString, 2, "Js is call back!");
       }
-      localcpu = new cpu(this);
-      if (a(paramString1, localcpu)) {
+      localcqv = new cqv(this);
+      if (a(paramString1, localcqv)) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -410,12 +410,12 @@ public class AntiphingHandler
     return false;
     try
     {
-      long l = Long.parseLong(localcpu.jdField_a_of_type_JavaLangString);
+      long l = Long.parseLong(localcqv.jdField_a_of_type_JavaLangString);
       int i = Integer.parseInt(paramString3);
       int j = Integer.parseInt(paramString4);
       int k = Integer.parseInt(paramString5);
       int m = Integer.parseInt(paramString6);
-      a(i, j, k, m, paramString2, Long.valueOf(l), localcpu.jdField_a_of_type_Int);
+      a(i, j, k, m, paramString2, Long.valueOf(l), localcqv.jdField_a_of_type_Int);
       return true;
     }
     catch (Exception paramString1) {}
@@ -455,7 +455,7 @@ public class AntiphingHandler
   protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.mRuntime.a().findViewById(2131296641));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.mRuntime.a().findViewById(2131296644));
     Object localObject = this.mRuntime.a();
     AntiphishingUrlConfig localAntiphishingUrlConfig;
     String str;
@@ -499,10 +499,10 @@ public class AntiphingHandler
         return;
       } while ((!paramBoolean) || (this.mRuntime.a() == null));
       localContext = this.mRuntime.a().getApplicationContext();
-      str = localContext.getString(2131364187);
-      localObject1 = localContext.getString(2131364184);
-      localObject3 = localContext.getString(2131364185);
-      localObject2 = localContext.getString(2131364186);
+      str = localContext.getString(2131364198);
+      localObject1 = localContext.getString(2131364195);
+      localObject3 = localContext.getString(2131364196);
+      localObject2 = localContext.getString(2131364197);
     } while ((!paramBoolean) || (paramBundle == null));
     antiphishingAlertQuery.ResponsePack localResponsePack = new antiphishingAlertQuery.ResponsePack();
     for (;;)

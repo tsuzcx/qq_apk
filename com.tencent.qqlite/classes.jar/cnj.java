@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame.TroopListAdapter;
-import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
 
-public class cnj
-  implements Comparator
+class cnj
+  implements Runnable
 {
-  private cnj(TroopListInnerFrame.TroopListAdapter paramTroopListAdapter) {}
+  cnj(cni paramcni) {}
   
-  public int a(TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask paramTroopListItemWithMask1, TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask paramTroopListItemWithMask2)
+  public void run()
   {
-    return paramTroopListItemWithMask1.a - paramTroopListItemWithMask2.a;
+    Object localObject = ((SelectMemberInnerFrame)this.a.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).a();
+    localObject = this.a.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000, localObject);
+    this.a.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
   }
 }
 

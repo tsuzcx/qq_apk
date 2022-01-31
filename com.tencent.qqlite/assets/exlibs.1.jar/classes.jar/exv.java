@@ -1,39 +1,29 @@
-import android.content.Context;
-import android.text.Selection;
-import android.text.Spannable;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
-import com.tencent.mobileqq.widget.ContainerView.SelectableTextView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.utils.QQLSSensor;
+import com.tencent.mobileqq.utils.QQLSSensor.ProximitySensorChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class exv
-  implements View.OnLongClickListener
+  extends Handler
 {
-  public exv(ContainerView.SelectableTextView paramSelectableTextView) {}
-  
-  public boolean onLongClick(View paramView)
+  public exv(QQLSSensor paramQQLSSensor, Looper paramLooper)
   {
-    if (this.a.getSelectionEnd() - this.a.getSelectionStart() > 0)
-    {
-      this.a.onTextContextMenuItem(16908321);
-      Toast.makeText(this.a.getContext(), "已经复制到剪贴板", 0).show();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QQLSSensor.a(this.a) != null) {
+      QQLSSensor.a(this.a).a(QQLSSensor.a(this.a));
     }
     for (;;)
     {
-      return true;
-      try
-      {
-        Selection.setSelection((Spannable)this.a.getText(), Math.max(ContainerView.SelectableTextView.a(this.a) - 50, 0), Math.min(ContainerView.SelectableTextView.a(this.a) + 50, this.a.getText().length()));
-        this.a.onTextContextMenuItem(16908328);
-        ((InputMethodManager)this.a.getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
-      }
-      catch (Exception paramView)
-      {
-        for (;;)
-        {
-          Selection.setSelection((Spannable)this.a.getText(), ContainerView.SelectableTextView.a(this.a), ContainerView.SelectableTextView.a(this.a));
-        }
+      super.handleMessage(paramMessage);
+      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QQLSActivity", 4, "QQLSSensor handler callback=null");
       }
     }
   }

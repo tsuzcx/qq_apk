@@ -1,14 +1,17 @@
 import com.dataline.activities.LiteActivity;
-import com.dataline.util.DatalineSessionAdapter;
+import com.tencent.mobileqq.widget.ScrollerRunnable;
+import com.tencent.widget.XListView;
 
-class aa
+public final class aa
   implements Runnable
 {
-  aa(q paramq) {}
+  public aa(XListView paramXListView, ScrollerRunnable paramScrollerRunnable) {}
   
   public void run()
   {
-    LiteActivity.a(this.a.a).notifyDataSetChanged();
+    if (this.jdField_a_of_type_ComTencentWidgetXListView.b() > 2) {
+      LiteActivity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_ComTencentWidgetXListView.b());
+    }
   }
 }
 

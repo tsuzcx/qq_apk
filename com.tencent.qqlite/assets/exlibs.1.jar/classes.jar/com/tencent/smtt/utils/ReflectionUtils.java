@@ -1,5 +1,9 @@
 package com.tencent.smtt.utils;
 
+import android.os.Build.VERSION;
+import android.util.Log;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.reflect.Method;
 
 public class ReflectionUtils
@@ -31,21 +35,37 @@ public class ReflectionUtils
   
   public static Object invokeInstance(Object paramObject, String paramString, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
   {
-    if (paramObject == null) {
-      return null;
-    }
-    try
+    if (paramObject == null) {}
+    do
     {
-      paramArrayOfClass = paramObject.getClass().getMethod(paramString, paramArrayOfClass);
-      paramArrayOfClass.setAccessible(true);
-      paramString = paramVarArgs;
-      if (paramVarArgs.length == 0) {
-        paramString = null;
+      return null;
+      try
+      {
+        Object localObject = paramObject.getClass();
+        if (Build.VERSION.SDK_INT > 10) {}
+        for (paramArrayOfClass = ((Class)localObject).getMethod(paramString, paramArrayOfClass);; paramArrayOfClass = ((Class)localObject).getDeclaredMethod(paramString, paramArrayOfClass))
+        {
+          paramArrayOfClass.setAccessible(true);
+          localObject = paramVarArgs;
+          if (paramVarArgs.length == 0) {
+            localObject = null;
+          }
+          return paramArrayOfClass.invoke(paramObject, (Object[])localObject);
+        }
+        if (paramString == null) {
+          break;
+        }
       }
-      paramObject = paramArrayOfClass.invoke(paramObject, paramString);
-      return paramObject;
-    }
-    catch (Throwable paramObject) {}
+      catch (Throwable paramObject)
+      {
+        if ((paramObject.getCause() != null) && (paramObject.getCause().toString().contains("AuthenticationFail"))) {
+          return new String("AuthenticationFail");
+        }
+      }
+    } while ((paramString.equalsIgnoreCase("canLoadX5Core")) || (paramString.equalsIgnoreCase("initTesRuntimeEnvironment")));
+    paramString = new StringWriter();
+    paramObject.printStackTrace(new PrintWriter(paramString));
+    Log.e("ReflectionUtils", "invokeInstance -- exceptions:" + paramString.toString());
     return null;
   }
   

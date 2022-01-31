@@ -176,7 +176,7 @@ public class ProfileCardMoreInfoView
         if (!str.equals("S")) {
           break label860;
         }
-        i3 = 2130838895;
+        i3 = 2130838922;
         localDrawable = paramString.getDrawable(i3);
         paramString = URLDrawable.getDrawable(paramCard, localDrawable, localDrawable);
         i3 = localDrawable.getIntrinsicHeight();
@@ -278,7 +278,7 @@ public class ProfileCardMoreInfoView
           break;
         }
         label860:
-        i3 = 2130838892;
+        i3 = 2130838919;
         break label360;
         label868:
         d1 = 67.0D * (i3 / 27.0D);
@@ -289,7 +289,7 @@ public class ProfileCardMoreInfoView
           paramString = getResources();
           if (str.equals("V"))
           {
-            i3 = 2130838896;
+            i3 = 2130838923;
             localDrawable = paramString.getDrawable(i3);
             paramString = URLDrawable.getDrawable(paramCard, localDrawable, localDrawable);
             i3 = localDrawable.getIntrinsicHeight();
@@ -301,7 +301,7 @@ public class ProfileCardMoreInfoView
           {
             paramString.setBounds(0, 0, (int)d1, i3);
             break;
-            i3 = 2130838893;
+            i3 = 2130838920;
             break label923;
           }
         }
@@ -309,12 +309,12 @@ public class ProfileCardMoreInfoView
         label996:
         if ("N".equals(str))
         {
-          paramString = ((Resources)localObject2).getDrawable(2130838852);
+          paramString = ((Resources)localObject2).getDrawable(2130838911);
           paramString.setBounds(0, 0, paramString.getIntrinsicWidth(), paramString.getIntrinsicHeight());
         }
         else if ("B".equals(str))
         {
-          paramString = ((Resources)localObject2).getDrawable(2130838894);
+          paramString = ((Resources)localObject2).getDrawable(2130838921);
           paramString.setBounds(0, 0, (int)(10.0F * this.c), paramString.getIntrinsicHeight());
         }
       }
@@ -333,11 +333,11 @@ public class ProfileCardMoreInfoView
     }
     Object localObject = paramView;
     if (paramView == null) {
-      localObject = (LinearLayout)paramLayoutInflater.inflate(2130903521, null);
+      localObject = (LinearLayout)paramLayoutInflater.inflate(2130903529, null);
     }
-    paramLayoutInflater = (TextView)((View)localObject).findViewById(2131296932);
+    paramLayoutInflater = (TextView)((View)localObject).findViewById(2131296934);
     paramView = (TextView)((View)localObject).findViewById(2131296953);
-    ImageView localImageView = (ImageView)((View)localObject).findViewById(2131297744);
+    ImageView localImageView = (ImageView)((View)localObject).findViewById(2131297748);
     if (localImageView.getVisibility() != 0) {
       localImageView.setVisibility(0);
     }
@@ -359,7 +359,7 @@ public class ProfileCardMoreInfoView
       ((View)localObject).setContentDescription(paramCardContactInfo.toString());
       a(paramString, paramLayoutInflater, paramView, localImageView);
       return localObject;
-      paramLayoutInflater.setText(2131363865);
+      paramLayoutInflater.setText(2131363876);
       paramView.setText(paramCardContactInfo.jdField_a_of_type_JavaLangString + " " + paramCardContactInfo.c);
       break;
       label249:
@@ -370,19 +370,19 @@ public class ProfileCardMoreInfoView
   private String a(String paramString)
   {
     if ("map_key_nick".equals(paramString)) {
-      return a(2131363869);
+      return a(2131363880);
     }
     if ("map_key_circlenick".equals(paramString)) {
-      return a(2131363871);
+      return a(2131363882);
     }
     if ("map_key_remark".equals(paramString)) {
-      return a(2131363870);
+      return a(2131363881);
     }
     if ("map_key_recommendname".equals(paramString)) {
-      return a(2131363872);
+      return a(2131363883);
     }
     if ("map_key_troopnick".equals(paramString)) {
-      return a(2131363873);
+      return a(2131363884);
     }
     return null;
   }
@@ -475,14 +475,14 @@ public class ProfileCardMoreInfoView
       }
       this.jdField_b_of_type_JavaUtilHashMap.put(paramString, String.valueOf(0));
       if (paramTextView1 != null) {
-        paramTextView1.setTextColor(getResources().getColorStateList(2131427493));
+        paramTextView1.setTextColor(getResources().getColorStateList(2131427497));
       }
       if (paramTextView2 != null) {
-        paramTextView2.setTextColor(getResources().getColorStateList(2131427466));
+        paramTextView2.setTextColor(getResources().getColorStateList(2131427469));
       }
       if (paramImageView != null)
       {
-        paramImageView.setImageResource(2130837716);
+        paramImageView.setImageResource(2130837733);
         return;
       }
     }
@@ -575,20 +575,20 @@ public class ProfileCardMoreInfoView
     Object localObject1 = (View)this.jdField_a_of_type_JavaUtilHashMap.get("map_key_qrcode");
     if (localObject1 == null)
     {
-      localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903521, null);
+      localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903529, null);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_qrcode", localObject1);
     }
     for (boolean bool1 = true;; bool1 = false)
     {
-      Object localObject2 = (TextView)((View)localObject1).findViewById(2131296932);
-      ((TextView)localObject2).setText(2131363868);
+      Object localObject2 = (TextView)((View)localObject1).findViewById(2131296934);
+      ((TextView)localObject2).setText(2131363879);
       TextView localTextView = (TextView)((View)localObject1).findViewById(2131296953);
-      localTextView.setCompoundDrawablesWithIntrinsicBounds(2130838762, 0, 0, 0);
-      ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131297744);
+      localTextView.setCompoundDrawablesWithIntrinsicBounds(2130838823, 0, 0, 0);
+      ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131297748);
       localImageView.setVisibility(0);
       ((View)localObject1).setTag(new DataTag(13, null));
       ((View)localObject1).setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_AndroidViewView$OnClickListener);
-      ((View)localObject1).setContentDescription(a(2131363868));
+      ((View)localObject1).setContentDescription(a(2131363879));
       a("map_key_qrcode", (TextView)localObject2, null, localImageView);
       bool2 = bool1;
       if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate == null) {
@@ -612,7 +612,7 @@ public class ProfileCardMoreInfoView
         break;
       }
       localObject1 = (Drawable)localObject1;
-      localObject2 = getResources().getDrawable(2130838762);
+      localObject2 = getResources().getDrawable(2130838823);
       ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight());
       localTextView.setCompoundDrawables((Drawable)localObject1, null, null, null);
       return bool1;
@@ -713,27 +713,27 @@ public class ProfileCardMoreInfoView
       localObject2 = (View)this.jdField_a_of_type_JavaUtilHashMap.get("map_key_account_info");
       if (localObject2 == null)
       {
-        localObject2 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903525, null);
+        localObject2 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903533, null);
         this.jdField_a_of_type_JavaUtilHashMap.put("map_key_account_info", localObject2);
         ((View)localObject2).setClickable(false);
       }
       for (bool2 = true;; bool2 = false)
       {
-        Object localObject4 = ((View)localObject2).findViewById(2131298384);
-        View localView = ((View)localObject4).findViewById(2131298386);
-        localObject3 = (TextView)((View)localObject4).findViewById(2131296932);
-        ((TextView)localObject3).setText(2131363864);
-        ImageView localImageView = (ImageView)((View)localObject4).findViewById(2131297744);
+        Object localObject4 = ((View)localObject2).findViewById(2131298406);
+        View localView = ((View)localObject4).findViewById(2131298408);
+        localObject3 = (TextView)((View)localObject4).findViewById(2131296934);
+        ((TextView)localObject3).setText(2131363875);
+        ImageView localImageView = (ImageView)((View)localObject4).findViewById(2131297748);
         localImageView.setVisibility(0);
         TextView localTextView1 = (TextView)((View)localObject4).findViewById(2131296953);
         TextView localTextView2;
         double d1;
         if (paramCard.iQQLevel >= 0)
         {
-          localTextView2 = (TextView)localView.findViewById(2131298387);
+          localTextView2 = (TextView)localView.findViewById(2131298409);
           localTextView2.setText(ProfileCardUtil.a(getContext(), 8, paramCard.iQQLevel, true));
           localTextView2.setContentDescription(paramCard.iQQLevel + "级");
-          localTextView2 = (TextView)localView.findViewById(2131298388);
+          localTextView2 = (TextView)localView.findViewById(2131298410);
           d1 = paramCard.uAccelerateMultiple / 10.0D;
           if (d1 < 0.0D)
           {
@@ -749,8 +749,8 @@ public class ProfileCardMoreInfoView
             ((View)localObject4).setTag(new DataTag(14, localObject1));
             ((View)localObject4).setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_AndroidViewView$OnLongClickListener);
             ((View)localObject4).setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_AndroidViewView$OnClickListener);
-            localObject2 = ((View)localObject2).findViewById(2131298389);
-            localObject4 = (TextView)((View)localObject2).findViewById(2131298391);
+            localObject2 = ((View)localObject2).findViewById(2131298411);
+            localObject4 = (TextView)((View)localObject2).findViewById(2131298413);
             if ((bool1) || (!ProfileActivity.AllInOne.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) || (TextUtils.isEmpty(paramCard.strShowName)) || (paramCard.strShowName.equals(localObject1))) {
               break label1084;
             }
@@ -818,7 +818,7 @@ public class ProfileCardMoreInfoView
     View localView = (View)this.jdField_a_of_type_JavaUtilHashMap.get("map_key_qzone_photo");
     if (localView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903523, null);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903531, null);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_qzone_photo", localView);
     }
     for (paramBoolean = true;; paramBoolean = false)
@@ -828,7 +828,7 @@ public class ProfileCardMoreInfoView
       int i1 = 0;
       if (i1 < 3)
       {
-        ImageView localImageView = (ImageView)localView.findViewById(2131298381 + i1);
+        ImageView localImageView = (ImageView)localView.findViewById(2131298403 + i1);
         if ((localList != null) && (localList.size() > i1))
         {
           paramCard = (String)localList.get(i1);
@@ -870,7 +870,7 @@ public class ProfileCardMoreInfoView
       localView.setTag(new DataTag(6, null));
       localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_AndroidViewView$OnClickListener);
       localView.setContentDescription(a(2131361803));
-      a("map_key_qzone_photo", (TextView)localView.findViewById(2131298378), null, (ImageView)localView.findViewById(2131298379));
+      a("map_key_qzone_photo", (TextView)localView.findViewById(2131298400), null, (ImageView)localView.findViewById(2131298401));
       return paramBoolean;
     }
   }
@@ -884,15 +884,15 @@ public class ProfileCardMoreInfoView
     View localView = (View)this.jdField_a_of_type_JavaUtilHashMap.get("map_key_sig");
     if (localView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903524, null);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903532, null);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_sig", localView);
     }
     for (boolean bool1 = true;; bool1 = false)
     {
-      TextView localTextView1 = (TextView)localView.findViewById(2131296932);
+      TextView localTextView1 = (TextView)localView.findViewById(2131296934);
       TextView localTextView2 = (TextView)localView.findViewById(2131296953);
-      ImageView localImageView = (ImageView)localView.findViewById(2131297744);
-      localTextView1.setText(2131363863);
+      ImageView localImageView = (ImageView)localView.findViewById(2131297748);
+      localTextView1.setText(2131363874);
       StatusManager localStatusManager = (StatusManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
       Resources localResources = getResources();
       if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
@@ -949,18 +949,18 @@ public class ProfileCardMoreInfoView
     View localView = (View)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
     if (localView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903521, null);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903529, null);
       this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localView);
     }
     for (boolean bool = true;; bool = false)
     {
-      TextView localTextView1 = (TextView)localView.findViewById(2131296932);
+      TextView localTextView1 = (TextView)localView.findViewById(2131296934);
       localTextView1.setText(a(paramString1));
       TextView localTextView2 = (TextView)localView.findViewById(2131296953);
       localTextView2.setText(paramString2);
       localView.setTag(new DataTag(11, paramString2));
       localView.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-      ImageView localImageView = (ImageView)localView.findViewById(2131297744);
+      ImageView localImageView = (ImageView)localView.findViewById(2131297748);
       if (localImageView.getVisibility() != 4) {
         localImageView.setVisibility(4);
       }
@@ -1057,15 +1057,15 @@ public class ProfileCardMoreInfoView
     View localView = (View)this.jdField_a_of_type_JavaUtilHashMap.get("map_key_qzone_feed");
     if (localView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903522, null);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903530, null);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_qzone_feed", localView);
     }
     for (paramBoolean = true;; paramBoolean = false)
     {
-      TextView localTextView1 = (TextView)localView.findViewById(2131296932);
+      TextView localTextView1 = (TextView)localView.findViewById(2131296934);
       TextView localTextView2 = (TextView)localView.findViewById(2131296953);
-      ImageView localImageView = (ImageView)localView.findViewById(2131297744);
-      localTextView1.setText(a(2131363866));
+      ImageView localImageView = (ImageView)localView.findViewById(2131297748);
+      localTextView1.setText(a(2131363877));
       if (!TextUtils.isEmpty(paramCard.strQzoneFeedsDesc)) {
         localTextView2.setText(paramCard.strQzoneFeedsDesc);
       }
@@ -1097,7 +1097,7 @@ public class ProfileCardMoreInfoView
         {
           localObject = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
         }
-        localTextView2.setText((String)localObject + a(2131363892));
+        localTextView2.setText((String)localObject + a(2131363903));
         break;
       }
     }
@@ -1161,11 +1161,11 @@ public class ProfileCardMoreInfoView
       if (localObject == localView) {
         break label133;
       }
-      ((View)localObject).setBackgroundResource(2130837754);
+      ((View)localObject).setBackgroundResource(2130837914);
       break label133;
       label195:
       localObject = new ImageView(getContext());
-      ((ImageView)localObject).setBackgroundResource(2130837991);
+      ((ImageView)localObject).setBackgroundResource(2130838010);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, 1);
       localLayoutParams.setMargins((int)this.c * 14, 0, (int)this.c * 14, 0);
       ((ImageView)localObject).setLayoutParams(localLayoutParams);
@@ -1199,7 +1199,7 @@ public class ProfileCardMoreInfoView
     {
       localObject = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
     }
-    localTextView.setText((String)localObject + a(2131363892));
+    localTextView.setText((String)localObject + a(2131363903));
   }
   
   public void a(Card paramCard, boolean paramBoolean)

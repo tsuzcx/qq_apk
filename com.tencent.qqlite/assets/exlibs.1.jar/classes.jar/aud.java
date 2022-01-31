@@ -1,14 +1,27 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class aud
-  implements Runnable
+public class aud
+  extends Handler
 {
-  aud(auc paramauc) {}
+  public aud(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    QQToast.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131364161), 0).b(this.a.a.a.getTitleBarHeight());
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "handleMessage.msg.arg1=" + paramMessage.arg1);
+      }
+    } while (LoginInfoActivity.a(this.a) == null);
+    LoginInfoActivity.a(this.a).DevSetup = paramMessage.arg1;
+    LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
   }
 }
 

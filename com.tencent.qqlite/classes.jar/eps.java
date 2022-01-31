@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
-import com.tencent.mobileqq.troop.widget.MediaControllerX.MediaPlayerControlX;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
 
 public class eps
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public eps(MediaControllerX paramMediaControllerX) {}
+  public eps(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = MediaControllerX.a(this.a).b();
-    MediaControllerX.a(this.a).a(i + 15000);
-    MediaControllerX.a(this.a);
-    this.a.a(5000);
+    VideoPlayLogic.a(this.a);
   }
 }
 

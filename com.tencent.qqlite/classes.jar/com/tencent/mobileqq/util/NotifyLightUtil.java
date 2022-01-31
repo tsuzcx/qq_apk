@@ -10,7 +10,7 @@ public class NotifyLightUtil
 {
   public static boolean a(Context paramContext, AppInterface paramAppInterface)
   {
-    if ((SettingCloneUtil.readValue(paramContext, paramAppInterface.a(), paramContext.getString(2131363282), "qqsetting_notify_blncontrol_key", true)) && ((paramAppInterface.isBackground_Pause) || (!ReflectionUtil.a(BaseApplicationImpl.a))))
+    if ((SettingCloneUtil.readValue(paramContext, paramAppInterface.a(), paramContext.getString(2131363292), "qqsetting_notify_blncontrol_key", true)) && ((paramAppInterface.isBackground_Pause) || (!ReflectionUtil.a(BaseApplicationImpl.a))))
     {
       if (SettingCloneUtil.readValue(paramContext, null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", false))
       {

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020083" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mobileqq.widget.TroopMemberListSlideItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a38" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02019d" android:layout_width="fill_parent" android:layout_height="62.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/text1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="10.0dip" android:text="选择禁言的时长" android:layout_alignParentTop="true" />
-    <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a29" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@null" android:layout_below="@id/text1" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a2a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:text="确定" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f090a29" android:layout_centerHorizontal="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e006f" />
-</RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a39" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a3a" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020672" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a3b" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f090a39" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true" />
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c0014" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b008d" android:ellipsize="end" android:id="@id/tv_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="80.0dip" android:singleLine="true" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f090a3b" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b000b" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a3c" android:background="#ffff3b2f" android:layout_width="90.0dip" android:layout_height="fill_parent" android:layout_marginBottom="1.0px" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a042a" />
+</com.tencent.mobileqq.widget.TroopMemberListSlideItem>

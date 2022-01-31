@@ -1,30 +1,7 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.open.agent.report.ReportCenter;
-
 public class fch
-  extends Handler
 {
-  public fch(ReportCenter paramReportCenter, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.a();
-      continue;
-      this.a.b();
-    }
-  }
+  public String a = "";
+  public String b = "";
 }
 
 

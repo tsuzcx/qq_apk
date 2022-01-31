@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.activity.TroopDisbandActivity.MemberGridAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class bmq
-  implements View.OnClickListener
+  extends FriendListObserver
 {
-  public bmq(TroopInfoActivity paramTroopInfoActivity) {}
+  public bmq(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.a.f();
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.a(paramString))) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

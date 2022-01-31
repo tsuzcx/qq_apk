@@ -1,128 +1,81 @@
-import android.content.res.Resources;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.FriendsManagerImp;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.model.FriendManager;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class ajc
-  extends BaseAdapter
+  extends CardObserver
 {
-  private FriendsManagerImp jdField_a_of_type_ComTencentMobileqqAppFriendsManagerImp = null;
+  public ajc(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public ajc(DiscussionInfoCardActivity paramDiscussionInfoCardActivity)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendsManagerImp = ((FriendsManagerImp)paramDiscussionInfoCardActivity.app.getManager(8));
-  }
-  
-  public int getCount()
-  {
-    switch (DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity))
+    if ((paramObject instanceof Card)) {}
+    for (Object localObject2 = (Card)paramObject;; localObject2 = null)
     {
-    default: 
-      return DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).size();
-    case 0: 
-      return 2;
-    }
-    return DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).size() + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (paramInt >= DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).size()) {
-      return null;
-    }
-    return DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getLayoutInflater().inflate(2130903098, null);
-    }
-    paramViewGroup.setVisibility(0);
-    paramViewGroup.setFocusable(false);
-    TextView localTextView = (TextView)paramViewGroup.findViewById(2131296455);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131296453);
-    if ((paramInt == getCount() - 1) && ((DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity) == 0) || (DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity) == 3000)))
-    {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131363638);
-      localTextView.setText(paramView);
-      localTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getResources().getColor(2131427469));
-      localImageView.setBackgroundDrawable(null);
-      localImageView.setImageResource(2130837705);
-      localImageView.setTag(paramView);
-    }
-    for (;;)
-    {
-      localImageView.setContentDescription(localTextView.getText());
-      localImageView.setOnClickListener(new ajd(this));
-      return paramViewGroup;
-      if (paramInt > getCount() - 1)
+      if ((paramBoolean) && (localObject2 != null))
       {
-        localTextView.setText("");
-        localImageView.setBackgroundDrawable(null);
-        localImageView.setImageDrawable(null);
+        if ((DiscussionInfoCardActivity.a(this.a) != 0) || (!DiscussionInfoCardActivity.a(this.a).equals(((Card)localObject2).uin))) {
+          break label148;
+        }
+        paramObject = ((FriendManager)this.a.app.getManager(8)).b(DiscussionInfoCardActivity.a(this.a));
+        if ((!TextUtils.isEmpty(paramObject)) && (!paramObject.equals(DiscussionInfoCardActivity.b(this.a))))
+        {
+          DiscussionInfoCardActivity.a(this.a, paramObject);
+          ((HashMap)DiscussionInfoCardActivity.a(this.a).get(0)).put("memberName", DiscussionInfoCardActivity.b(this.a));
+          DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+        }
       }
-      else
+      return;
+      label148:
+      while (DiscussionInfoCardActivity.a(this.a) != 3000) {}
+      paramObject = (FriendManager)this.a.app.getManager(8);
+      String str = ((Card)localObject2).uin;
+      Object localObject3 = paramObject.c(str);
+      Object localObject1 = paramObject.b(str);
+      paramObject = localObject1;
+      if (localObject3 != null)
       {
-        localImageView.setImageResource(2130838624);
-        localTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getResources().getColor(2131427466));
-        paramView = (HashMap)DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).get(paramInt);
-        String str = (String)paramView.get("memberUin");
-        Object localObject = (String)paramView.get("memberName");
-        if (TextUtils.isEmpty(str))
-        {
-          paramView = (View)localObject;
-          if (localObject == null) {
-            paramView = "";
-          }
-          localTextView.setText(paramView);
-          localImageView.setImageDrawable(ImageUtil.b());
-        }
-        else
-        {
-          paramView = (View)localObject;
-          if (TextUtils.isEmpty((CharSequence)localObject))
+        paramObject = localObject1;
+        if (!((Friends)localObject3).isFriend()) {
+          if (!TextUtils.isEmpty(((Card)localObject2).strAutoRemark))
           {
-            paramView = (View)localObject;
-            if (this.jdField_a_of_type_ComTencentMobileqqAppFriendsManagerImp != null)
-            {
-              Friends localFriends = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManagerImp.c(str);
-              paramView = (View)localObject;
-              if (localFriends != null)
-              {
-                paramView = (View)localObject;
-                if (localFriends.isFriend()) {
-                  paramView = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManagerImp.b(str);
-                }
-              }
+            localObject1 = ((Card)localObject2).strAutoRemark;
+            label237:
+            paramObject = localObject1;
+            if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+              break label351;
             }
+            paramObject = ((Card)localObject2).uin;
           }
-          localObject = paramView;
-          if (TextUtils.isEmpty(paramView)) {
-            localObject = str;
-          }
-          localTextView.setText((CharSequence)localObject);
-          localImageView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.b(str));
-          localImageView.setTag(str);
-          localImageView.setTag(2131296419, localObject);
         }
+      }
+      label351:
+      for (;;)
+      {
+        localObject1 = DiscussionInfoCardActivity.a(this.a).iterator();
+        if (!((Iterator)localObject1).hasNext()) {
+          break;
+        }
+        localObject2 = (HashMap)((Iterator)localObject1).next();
+        localObject3 = (String)((HashMap)localObject2).get("memberUin");
+        if ((localObject3 == null) || (!((String)localObject3).equals(str))) {
+          break;
+        }
+        ((HashMap)localObject2).put("memberName", paramObject);
+        if (DiscussionInfoCardActivity.a(this.a) == null) {
+          break;
+        }
+        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+        return;
+        localObject1 = ((Card)localObject2).strNick;
+        break label237;
       }
     }
   }

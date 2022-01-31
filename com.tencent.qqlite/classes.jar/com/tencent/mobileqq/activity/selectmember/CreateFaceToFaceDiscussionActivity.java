@@ -22,18 +22,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
-import clb;
-import clc;
-import cld;
-import cle;
-import clf;
-import clg;
-import cli;
-import clj;
-import clk;
-import cll;
-import clm;
-import cln;
+import cmc;
+import cmd;
+import cme;
+import cmf;
+import cmg;
+import cmh;
+import cmj;
+import cmk;
+import cml;
+import cmm;
+import cmn;
+import cmo;
 import com.tencent.mobileqq.activity.LbsBaseActivity;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.NearFieldDiscussObserver;
@@ -87,9 +87,9 @@ public class CreateFaceToFaceDiscussionActivity
   public LinearLayout a;
   TableLayout jdField_a_of_type_AndroidWidgetTableLayout;
   public TextView a;
-  public clm a;
+  public cmn a;
   FriendsManager jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
-  private NearFieldDiscussObserver jdField_a_of_type_ComTencentMobileqqAppNearFieldDiscussObserver = new clj(this);
+  private NearFieldDiscussObserver jdField_a_of_type_ComTencentMobileqqAppNearFieldDiscussObserver = new cmk(this);
   FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   public QQProgressDialog a;
   public StringBuffer a;
@@ -137,7 +137,7 @@ public class CreateFaceToFaceDiscussionActivity
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_Long = 60000L;
     this.jdField_f_of_type_Int = 11;
-    this.jdField_a_of_type_AndroidOsHandler = new clg(this);
+    this.jdField_a_of_type_AndroidOsHandler = new cmh(this);
     this.jdField_c_of_type_Boolean = true;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
@@ -195,8 +195,8 @@ public class CreateFaceToFaceDiscussionActivity
   
   private void a(View paramView)
   {
-    paramView = (cln)paramView.getTag();
-    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838668);
+    paramView = (cmo)paramView.getTag();
+    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838695);
     paramView.jdField_a_of_type_AndroidWidgetTextView.setText(null);
     paramView.jdField_a_of_type_JavaLangString = "";
     paramView.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(null);
@@ -207,7 +207,7 @@ public class CreateFaceToFaceDiscussionActivity
   {
     String str = String.valueOf(paramUserProfile.uint64_uin.get());
     paramUserProfile = paramUserProfile.str_nick.get();
-    cln localcln = (cln)paramView.getTag();
+    cmo localcmo = (cmo)paramView.getTag();
     Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(1, str);
     paramView = localBitmap;
     if (localBitmap == null)
@@ -218,34 +218,34 @@ public class CreateFaceToFaceDiscussionActivity
       }
       paramView = this.jdField_a_of_type_AndroidGraphicsBitmap;
     }
-    localcln.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramView);
+    localcmo.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramView);
     if (this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager == null) {
       this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)this.app.getManager(43));
     }
     if ((str != null) && (this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.b(str))) {}
     for (paramView = ContactUtils.a(this.app, str);; paramView = paramUserProfile)
     {
-      localcln.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-      localcln.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramView);
-      localcln.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramView + "头像");
-      localcln.jdField_a_of_type_JavaLangString = str;
+      localcmo.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+      localcmo.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramView);
+      localcmo.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramView + "头像");
+      localcmo.jdField_a_of_type_JavaLangString = str;
       return;
     }
   }
   
   private void e()
   {
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298719));
-    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298720));
-    this.g = ((ImageView)findViewById(2131298721));
-    this.h = ((ImageView)findViewById(2131298722));
-    this.i = ((ImageView)findViewById(2131298723));
-    this.j = ((ImageView)findViewById(2131298724));
-    this.k = ((ImageView)findViewById(2131298725));
-    this.l = ((ImageView)findViewById(2131298726));
-    this.m = ((ImageView)findViewById(2131298727));
-    this.n = ((ImageView)findViewById(2131298729));
-    this.o = ((ImageView)findViewById(2131298730));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298745));
+    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298746));
+    this.g = ((ImageView)findViewById(2131298747));
+    this.h = ((ImageView)findViewById(2131298748));
+    this.i = ((ImageView)findViewById(2131298749));
+    this.j = ((ImageView)findViewById(2131298750));
+    this.k = ((ImageView)findViewById(2131298751));
+    this.l = ((ImageView)findViewById(2131298752));
+    this.m = ((ImageView)findViewById(2131298753));
+    this.n = ((ImageView)findViewById(2131298755));
+    this.o = ((ImageView)findViewById(2131298756));
     this.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.g.setOnClickListener(this);
@@ -257,47 +257,47 @@ public class CreateFaceToFaceDiscussionActivity
     this.m.setOnClickListener(this);
     this.n.setOnClickListener(this);
     this.o.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298732));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298733));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298734));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298735));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131298737);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837910);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298758));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298759));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298760));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298761));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131298763);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837928);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131296952));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298741));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298767));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298736));
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131363973));
-    this.jdField_a_of_type_AndroidWidgetTableLayout = ((TableLayout)findViewById(2131298718));
-    this.jdField_b_of_type_AndroidWidgetTableLayout = ((TableLayout)findViewById(2131298731));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298738));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298762));
+    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131363984));
+    this.jdField_a_of_type_AndroidWidgetTableLayout = ((TableLayout)findViewById(2131298744));
+    this.jdField_b_of_type_AndroidWidgetTableLayout = ((TableLayout)findViewById(2131298757));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298764));
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131298739);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131298765);
     this.jdField_b_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296891));
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131363764));
-    this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(getString(2131363764));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296897));
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(getString(2131363764));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296901));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296892));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131363775));
+    this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(getString(2131363775));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296898));
+    this.jdField_d_of_type_AndroidWidgetTextView.setText(getString(2131363775));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296902));
     if (this.jdField_d_of_type_Boolean)
     {
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(4);
       this.jdField_d_of_type_AndroidWidgetTextView.setContentDescription("返回，按钮");
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new cle(this));
+      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new cmf(this));
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131298614));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131298640));
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-      this.jdField_c_of_type_AndroidViewView = findViewById(2131298740);
+      this.jdField_c_of_type_AndroidViewView = findViewById(2131298766);
       this.jdField_c_of_type_AndroidViewView.setVisibility(4);
       return;
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(4);
       this.jdField_d_of_type_AndroidWidgetTextView.setContentDescription("取消，按钮");
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new clf(this));
+      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new cmg(this));
     }
   }
   
@@ -316,7 +316,7 @@ public class CreateFaceToFaceDiscussionActivity
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
     this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, -this.jdField_a_of_type_AndroidWidgetTextView.getBottom());
-    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new cli(this));
+    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new cmj(this));
     this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setDuration(500L);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation);
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.jdField_b_of_type_AndroidWidgetLinearLayout.getHeight(), 0.0F);
@@ -331,12 +331,12 @@ public class CreateFaceToFaceDiscussionActivity
     if (NetworkUtil.e(this))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131492887));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363217);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363227);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-      this.app.a(new clk(this));
+      this.app.a(new cml(this));
       return;
     }
-    a(1, getString(2131363450));
+    a(1, getString(2131363461));
   }
   
   public void a(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
@@ -346,11 +346,11 @@ public class CreateFaceToFaceDiscussionActivity
     while (paramInt1 < paramInt2)
     {
       Object localObject = this.jdField_a_of_type_AndroidWidgetGridView.getChildAt(paramInt1).getTag();
-      if ((localObject != null) && ((localObject instanceof cln)))
+      if ((localObject != null) && ((localObject instanceof cmo)))
       {
-        localObject = (cln)localObject;
-        if (((cln)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) {
-          ((cln)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+        localObject = (cmo)localObject;
+        if (((cmo)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) {
+          ((cmo)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
         }
       }
       paramInt1 += 1;
@@ -395,9 +395,9 @@ public class CreateFaceToFaceDiscussionActivity
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
-    setTheme(2131624275);
+    setTheme(2131624276);
     super.doOnCreate(paramBundle);
-    setContentView(2130903612);
+    setContentView(2130903621);
     this.jdField_a_of_type_AndroidContentContext = getApplicationContext();
     this.jdField_d_of_type_Boolean = getIntent().getBooleanExtra("fromFace2FaceActivity", false);
     e();
@@ -405,18 +405,18 @@ public class CreateFaceToFaceDiscussionActivity
     this.jdField_b_of_type_Int = Math.abs(new Random().nextInt());
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(this, this.app);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
-    this.jdField_a_of_type_Clm = new clm(this);
+    this.jdField_a_of_type_Cmn = new cmn(this);
     this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131296990));
-    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Clm);
+    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Cmn);
     this.jdField_a_of_type_TencentImNearfield_discussNearfield_discuss$UserProfile = new nearfield_discuss.UserProfile();
     this.jdField_a_of_type_TencentImNearfield_discussNearfield_discuss$UserProfile.uint64_uin.set(Long.parseLong(this.app.getAccount()));
     this.jdField_a_of_type_TencentImNearfield_discussNearfield_discuss$UserProfile.str_nick.set(this.app.c());
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new clb(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new cmc(this);
     paramBundle = new IntentFilter();
     paramBundle.addAction("android.net.conn.CONNECTIVITY_CHANGE");
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-    a(new cld(this));
+    a(new cme(this));
     return true;
   }
   
@@ -426,7 +426,7 @@ public class CreateFaceToFaceDiscussionActivity
     this.app.c(this.jdField_a_of_type_ComTencentMobileqqAppNearFieldDiscussObserver);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     if ((this.jdField_a_of_type_Boolean) && (NetworkUtil.e(this))) {
-      this.app.a(new clc(this));
+      this.app.a(new cmd(this));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder != null)
     {
@@ -548,7 +548,7 @@ public class CreateFaceToFaceDiscussionActivity
     int i2;
     switch (paramView.getId())
     {
-    case 2131298728: 
+    case 2131298754: 
     default: 
       this.jdField_b_of_type_AndroidWidgetTableLayout.setContentDescription(c());
       i2 = this.jdField_a_of_type_JavaLangStringBuffer.length();
@@ -596,36 +596,36 @@ public class CreateFaceToFaceDiscussionActivity
         default: 
           return;
         case 1: 
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838694);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838721);
           return;
         case 2: 
-          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838694);
+          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838721);
           return;
         case 3: 
-          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838694);
+          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838721);
           return;
         }
-        this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130838694);
+        this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130838721);
         return;
-        i1 = 2130838684;
+        i1 = 2130838711;
         continue;
-        i1 = 2130838685;
+        i1 = 2130838712;
         continue;
-        i1 = 2130838686;
+        i1 = 2130838713;
         continue;
-        i1 = 2130838687;
+        i1 = 2130838714;
         continue;
-        i1 = 2130838688;
+        i1 = 2130838715;
         continue;
-        i1 = 2130838689;
+        i1 = 2130838716;
         continue;
-        i1 = 2130838690;
+        i1 = 2130838717;
         continue;
-        i1 = 2130838691;
+        i1 = 2130838718;
         continue;
-        i1 = 2130838692;
+        i1 = 2130838719;
         continue;
-        i1 = 2130838693;
+        i1 = 2130838720;
       }
     }
     this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(i1);
@@ -650,7 +650,7 @@ public class CreateFaceToFaceDiscussionActivity
         this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
       }
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 600L);
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, getString(2131364380), 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, getString(2131364391), 0).a();
       ReportController.b(this.app, "CliOper", "", "", "0X80041AD", "0X80041AD", 0, 0, "", "", "", "");
       return;
     }
@@ -660,10 +660,10 @@ public class CreateFaceToFaceDiscussionActivity
     if (NetworkUtil.e(this))
     {
       this.jdField_a_of_type_AndroidWidgetTableLayout.setEnabled(false);
-      this.app.a(new cll(this));
+      this.app.a(new cmm(this));
       return;
     }
-    a(1, getString(2131363450));
+    a(1, getString(2131363461));
     ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
     this.jdField_a_of_type_AndroidViewView.setVisibility(4);
     if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {

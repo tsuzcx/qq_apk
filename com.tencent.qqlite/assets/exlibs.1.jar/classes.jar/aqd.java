@@ -1,10 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
 
-public class aqd
-  extends Handler
+class aqd
+  implements Runnable
 {
-  public aqd(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  aqd(aqa paramaqa) {}
+  
+  public void run()
+  {
+    this.a.a.setResult(-1);
+    this.a.a.finish();
+  }
 }
 
 

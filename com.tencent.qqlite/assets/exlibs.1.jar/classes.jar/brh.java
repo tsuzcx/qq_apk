@@ -1,7 +1,6 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class brh
   implements DialogInterface.OnClickListener
@@ -10,9 +9,8 @@ public class brh
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
+    UpgradeActivity.b(this.a);
     this.a.finish();
-    this.a.d();
   }
 }
 

@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.TabHost.OnTabChangeListener;
 import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
 import com.tencent.qphone.base.util.QLog;
-import csv;
+import ctw;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.Constants.LogoutReason;
@@ -225,7 +225,7 @@ public class FrameActivity
   public void onAccountChanged()
   {
     super.onAccountChanged();
-    new Handler().post(new csv(this));
+    new Handler().post(new ctw(this));
   }
   
   public void onLogout(Constants.LogoutReason paramLogoutReason)

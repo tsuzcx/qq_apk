@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 
-class din
-  implements Runnable
+public class din
+  implements View.OnClickListener
 {
-  din(dil paramdil, long paramLong) {}
+  public din(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QfileBaseCloudFileTabView.a(this.jdField_a_of_type_Dil.a);
-    QfileBaseCloudFileTabView.p(this.jdField_a_of_type_Dil.a).a().a(this.jdField_a_of_type_Long);
+    LocalFileBrowserActivity.a(this.a);
   }
 }
 

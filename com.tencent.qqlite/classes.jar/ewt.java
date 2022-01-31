@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.utils.pathtracker.VipPathTracker;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 
 public class ewt
+  implements View.OnClickListener
 {
-  public static final int a = 0;
-  public static final int b = 2;
-  public boolean a;
-  public int c;
-  public int d;
+  public ewt(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public ewt(VipPathTracker paramVipPathTracker, int paramInt1, int paramInt2, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.d = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
   }
 }
 

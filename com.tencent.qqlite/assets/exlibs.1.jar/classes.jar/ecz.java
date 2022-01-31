@@ -1,16 +1,20 @@
-import PersonalState.UserProfile;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import java.util.Comparator;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.richstatus.EditActivity;
 
 public class ecz
-  implements Comparator
+  implements TextWatcher
 {
-  public ecz(StatusManager paramStatusManager) {}
+  public ecz(EditActivity paramEditActivity) {}
   
-  public int a(UserProfile paramUserProfile1, UserProfile paramUserProfile2)
+  public void afterTextChanged(Editable paramEditable)
   {
-    return (int)(paramUserProfile2.richTime - paramUserProfile1.richTime);
+    EditActivity.a(this.a);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

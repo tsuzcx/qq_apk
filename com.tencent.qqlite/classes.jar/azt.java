@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
 
-public class azt
-  implements DialogInterface.OnClickListener
+class azt
+  implements DialogInterface.OnDismissListener
 {
-  public azt(NotificationActivity paramNotificationActivity) {}
+  azt(azs paramazs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.c();
+    this.a.a.c();
   }
 }
 

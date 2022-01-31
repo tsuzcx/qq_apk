@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bxj;
+import byh;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.ChatBackground;
@@ -107,16 +107,16 @@ public class TextSignatureItemBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     Object localObject2 = (MessageForRichState)paramMessageRecord;
-    paramLinearLayout = (bxj)paramViewHolder;
+    paramLinearLayout = (byh)paramViewHolder;
     paramMessageRecord = paramView;
     if (paramView == null)
     {
       paramMessageRecord = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903096, null);
-      paramLinearLayout.b = ((TextView)paramMessageRecord.findViewById(2131296734));
-      paramLinearLayout.c = ((TextView)paramMessageRecord.findViewById(2131296741));
-      paramLinearLayout.d = ((TextView)paramMessageRecord.findViewById(2131296740));
-      paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramMessageRecord.findViewById(2131296739));
-      paramLinearLayout.e = ((TextView)paramMessageRecord.findViewById(2131296738));
+      paramLinearLayout.b = ((TextView)paramMessageRecord.findViewById(2131296735));
+      paramLinearLayout.c = ((TextView)paramMessageRecord.findViewById(2131296742));
+      paramLinearLayout.d = ((TextView)paramMessageRecord.findViewById(2131296741));
+      paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramMessageRecord.findViewById(2131296740));
+      paramLinearLayout.e = ((TextView)paramMessageRecord.findViewById(2131296739));
       paramLinearLayout.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
     }
     paramMessageRecord.setContentDescription(null);
@@ -189,7 +189,7 @@ public class TextSignatureItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new bxj(this);
+    return new byh(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

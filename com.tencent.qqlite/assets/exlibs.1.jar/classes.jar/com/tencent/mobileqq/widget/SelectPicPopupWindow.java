@@ -40,16 +40,16 @@ public class SelectPicPopupWindow
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903346, null);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131297786));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297785));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297788));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297789));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903349, null);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131297790));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297789));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297792));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297793));
     setContentView(this.jdField_a_of_type_AndroidViewView);
     setWidth(-1);
     setHeight(-1);
     setFocusable(true);
-    setAnimationStyle(2131624141);
+    setAnimationStyle(2131624142);
     setBackgroundDrawable(new ColorDrawable(-2147483648));
   }
   
@@ -84,17 +84,17 @@ public class SelectPicPopupWindow
   
   public void a(Drawable paramDrawable, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4)
   {
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903347, null);
-    localView.setBackgroundResource(2130837924);
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903350, null);
+    localView.setBackgroundResource(2130837942);
     localView.setPadding(20, 10, 20, 10);
     SelectPicPopupWindow.ViewHolder localViewHolder = new SelectPicPopupWindow.ViewHolder();
     localViewHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView.findViewById(2131297059));
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131297791));
+    localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131297795));
     localViewHolder.jdField_a_of_type_AndroidViewView = localView;
-    localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131297792));
+    localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131297796));
     ((ImageView)localView.findViewById(2131296283)).setBackgroundDrawable(paramDrawable);
-    ((TextView)localView.findViewById(2131296932)).setText(paramString1);
-    paramDrawable = (TextView)localView.findViewById(2131297785);
+    ((TextView)localView.findViewById(2131296934)).setText(paramString1);
+    paramDrawable = (TextView)localView.findViewById(2131297789);
     if (!TextUtils.isEmpty(paramString2))
     {
       paramDrawable.setText(paramString2);
@@ -140,7 +140,7 @@ public class SelectPicPopupWindow
     localViewHolder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
     localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130837732);
+    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130837749);
     localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
     localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }

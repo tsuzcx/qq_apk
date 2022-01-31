@@ -23,7 +23,7 @@ import com.tencent.mobileqq.troop.widget.NearbyTroopsExpandableListView;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.ExpandableListView;
-import emg;
+import env;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -289,7 +289,7 @@ public class NearbyTroopsExpandableListViewAdapter
   
   public void c(int paramInt)
   {
-    switch (((emg)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a())
+    switch (((env)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a())
     {
     default: 
       return;
@@ -380,7 +380,7 @@ public class NearbyTroopsExpandableListViewAdapter
       if (i == 1)
       {
         paramViewGroup = NearbyTroops.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup, paramBoolean);
-        NearbyTroops.a(paramViewGroup, (emg)this.jdField_a_of_type_JavaUtilArrayList.get(b(i, paramInt2)));
+        NearbyTroops.a(paramViewGroup, (env)this.jdField_a_of_type_JavaUtilArrayList.get(b(i, paramInt2)));
         paramView = paramViewGroup;
       }
       Object localObject;

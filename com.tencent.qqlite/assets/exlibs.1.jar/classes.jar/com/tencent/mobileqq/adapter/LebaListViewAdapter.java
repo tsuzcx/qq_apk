@@ -26,8 +26,8 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.redtouch.RedTouchManager;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import cpj;
-import cpk;
+import cqk;
+import cql;
 import java.util.List;
 
 public class LebaListViewAdapter
@@ -81,10 +81,10 @@ public class LebaListViewAdapter
           break;
         }
       } while ((paramCornerListItemHolder == null) || (paramCornerListItemHolder.f == null));
-      paramCornerListItemHolder.f.post(new cpj(this, paramCornerListItemHolder, paramDrawable, paramInt1));
+      paramCornerListItemHolder.f.post(new cqk(this, paramCornerListItemHolder, paramDrawable, paramInt1));
       return;
     } while ((paramCornerListItemHolder == null) || (paramCornerListItemHolder.d == null));
-    paramCornerListItemHolder.d.post(new cpk(this, paramCornerListItemHolder, paramDrawable, paramInt1));
+    paramCornerListItemHolder.d.post(new cql(this, paramCornerListItemHolder, paramDrawable, paramInt1));
   }
   
   private void a(View paramView1, View paramView2, boolean paramBoolean)
@@ -168,7 +168,7 @@ public class LebaListViewAdapter
     }
     if (paramInt2 == 1)
     {
-      localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838036);
+      localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838055);
       if (paramInt2 != 1) {
         break label225;
       }
@@ -185,7 +185,7 @@ public class LebaListViewAdapter
     {
       LebaIconDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString, new LebaIconDownloader.DownloadListenerAdapter(this.jdField_a_of_type_AndroidContentContext, this, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramCornerListItemHolder }));
       return;
-      localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839029);
+      localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839062);
       break;
       label219:
       bool1 = false;
@@ -401,7 +401,7 @@ public class LebaListViewAdapter
         paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297000));
         paramViewGroup.d = ((ImageView)paramView.findViewById(2131297004));
         paramViewGroup.e = ((ImageView)paramView.findViewById(2131297007));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296761));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296762));
         paramViewGroup.c = ((ImageView)paramView.findViewById(2131297003));
         paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297002));
         paramViewGroup.f = ((ImageView)paramView.findViewById(2131297005));
@@ -418,7 +418,7 @@ public class LebaListViewAdapter
         switch (localLebaViewItem.jdField_a_of_type_Int)
         {
         default: 
-          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837924);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837942);
           label290:
           a(paramViewGroup, localLebaViewItem);
           paramViewGroup = paramView;
@@ -437,15 +437,15 @@ public class LebaListViewAdapter
       paramViewGroup = (LebaListViewAdapter.CornerListItemHolder)paramView.getTag();
       break label203;
       label335:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838714);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838741);
       break label238;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837924);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837942);
       break label290;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837927);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837945);
       break label290;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837926);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837944);
       break label290;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837927);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837945);
       break label290;
       if (n == 1)
       {

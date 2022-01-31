@@ -13,10 +13,10 @@ public class xn
     }
     if (paramBoolean)
     {
-      this.a.a(2130837985, this.a.getString(2131363024));
+      this.a.a(2130838004, this.a.getString(2131363034));
       return;
     }
-    this.a.a(2130837975, this.a.getString(2131363023));
+    this.a.a(2130837994, this.a.getString(2131363033));
   }
 }
 

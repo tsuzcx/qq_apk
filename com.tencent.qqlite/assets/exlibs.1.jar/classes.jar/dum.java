@@ -1,18 +1,24 @@
 import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
 
-class dum
-  implements Runnable
+public class dum
+  implements View.OnClickListener
 {
-  dum(dul paramdul) {}
+  public dum(LocalVideoFileView paramLocalVideoFileView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PreviewingOfflineFileViewBase<FileAssistant>", 4, "TimeoutTimer run in ui thread");
+    if (LocalVideoFileView.b(this.a).getRequestedOrientation() != 0)
+    {
+      LocalVideoFileView.b(this.a).setRequestedOrientation(0);
+      LocalVideoFileView.a(this.a).setBackgroundResource(2130838599);
+      return;
     }
-    this.a.a.b(9037L, "Time out", PreviewingOfflineFileViewBase.f(this.a.a).getString(2131363570));
+    LocalVideoFileView.b(this.a).setRequestedOrientation(1);
+    LocalVideoFileView.a(this.a).setBackgroundResource(2130838602);
   }
 }
 

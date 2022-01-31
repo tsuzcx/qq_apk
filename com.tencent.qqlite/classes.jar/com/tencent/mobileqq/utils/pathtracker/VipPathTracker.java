@@ -12,8 +12,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import ews;
-import ewt;
+import eyx;
+import eyy;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Stack;
@@ -40,7 +40,7 @@ public class VipPathTracker
   
   private void a(int paramInt, boolean paramBoolean)
   {
-    while ((this.jdField_a_of_type_JavaUtilStack.size() > 0) && (((ewt)this.jdField_a_of_type_JavaUtilStack.peek()).d != 0)) {
+    while ((this.jdField_a_of_type_JavaUtilStack.size() > 0) && (((eyy)this.jdField_a_of_type_JavaUtilStack.peek()).d != 0)) {
       c();
     }
     if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
@@ -51,7 +51,7 @@ public class VipPathTracker
       i = this.jdField_a_of_type_JavaUtilStack.size() - 1;
       if (i >= 0)
       {
-        if (((ewt)this.jdField_a_of_type_JavaUtilStack.get(i)).c != paramInt) {
+        if (((eyy)this.jdField_a_of_type_JavaUtilStack.get(i)).c != paramInt) {
           break label90;
         }
         this.jdField_a_of_type_JavaUtilStack.remove(i);
@@ -59,7 +59,7 @@ public class VipPathTracker
     }
     label90:
     label97:
-    while (((ewt)this.jdField_a_of_type_JavaUtilStack.peek()).c != paramInt) {
+    while (((eyy)this.jdField_a_of_type_JavaUtilStack.peek()).c != paramInt) {
       for (;;)
       {
         int i;
@@ -180,21 +180,21 @@ public class VipPathTracker
     }
     if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
     {
-      if ((((ewt)this.jdField_a_of_type_JavaUtilStack.peek()).d == 2) && (2 == paramInt1) && (((ewt)this.jdField_a_of_type_JavaUtilStack.peek()).c == paramInt2)) {
+      if ((((eyy)this.jdField_a_of_type_JavaUtilStack.peek()).d == 2) && (2 == paramInt1) && (((eyy)this.jdField_a_of_type_JavaUtilStack.peek()).c == paramInt2)) {
         return true;
       }
       if (this.jdField_a_of_type_JavaUtilStack.size() >= 64) {
         this.jdField_a_of_type_JavaUtilStack.clear();
       }
     }
-    this.jdField_a_of_type_JavaUtilStack.push(new ewt(this, paramInt1, paramInt2, paramBoolean));
+    this.jdField_a_of_type_JavaUtilStack.push(new eyy(this, paramInt1, paramInt2, paramBoolean));
     return true;
   }
   
-  private ewt c()
+  private eyy c()
   {
     if (!this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-      return (ewt)this.jdField_a_of_type_JavaUtilStack.pop();
+      return (eyy)this.jdField_a_of_type_JavaUtilStack.pop();
     }
     return null;
   }
@@ -207,7 +207,7 @@ public class VipPathTracker
       i -= 2;
       while (i >= 0)
       {
-        int j = ((ewt)this.jdField_a_of_type_JavaUtilStack.get(i)).c;
+        int j = ((eyy)this.jdField_a_of_type_JavaUtilStack.get(i)).c;
         if (-1 != j) {
           return j;
         }
@@ -217,7 +217,7 @@ public class VipPathTracker
     return 0;
   }
   
-  public ewt a()
+  public eyy a()
   {
     return b();
   }
@@ -230,13 +230,13 @@ public class VipPathTracker
     int j = 0;
     if ((k >= 0) && (j < 10))
     {
-      ewt localewt = (ewt)this.jdField_a_of_type_JavaUtilStack.get(k);
-      if (localewt.c == -1) {
+      eyy localeyy = (eyy)this.jdField_a_of_type_JavaUtilStack.get(k);
+      if (localeyy.c == -1) {
         break label167;
       }
-      if (localewt.c <= 1000)
+      if (localeyy.c <= 1000)
       {
-        localStringBuilder.insert(0, String.valueOf(localewt.c)).insert(0, ">");
+        localStringBuilder.insert(0, String.valueOf(localeyy.c)).insert(0, ">");
         label90:
         j += 1;
       }
@@ -273,9 +273,9 @@ public class VipPathTracker
   {
     if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
     {
-      ewt localewt = (ewt)this.jdField_a_of_type_JavaUtilStack.peek();
-      if ((paramArrayOfInt != null) && (Arrays.binarySearch(paramArrayOfInt, localewt.c) >= 0) && (paramInt != localewt.c)) {
-        localewt.c = paramInt;
+      eyy localeyy = (eyy)this.jdField_a_of_type_JavaUtilStack.peek();
+      if ((paramArrayOfInt != null) && (Arrays.binarySearch(paramArrayOfInt, localeyy.c) >= 0) && (paramInt != localeyy.c)) {
+        localeyy.c = paramInt;
       }
     }
   }
@@ -309,10 +309,10 @@ public class VipPathTracker
   public boolean a(AppRuntime paramAppRuntime, String paramString, int paramInt)
   {
     if ((this.jdField_a_of_type_JavaLangBoolean == null) && ((paramAppRuntime instanceof QQAppInterface))) {
-      ThreadManager.a().post(new ews(this, paramAppRuntime));
+      ThreadManager.a().post(new eyx(this, paramAppRuntime));
     }
     String str;
-    if ((!this.jdField_a_of_type_JavaUtilStack.isEmpty()) && (!((ewt)this.jdField_a_of_type_JavaUtilStack.peek()).a))
+    if ((!this.jdField_a_of_type_JavaUtilStack.isEmpty()) && (!((eyy)this.jdField_a_of_type_JavaUtilStack.peek()).a))
     {
       str = a(true);
       if (TextUtils.isEmpty(str)) {
@@ -328,19 +328,19 @@ public class VipPathTracker
       a(paramAppRuntime, str, paramString, paramInt);
       paramAppRuntime = this.jdField_a_of_type_JavaUtilStack.iterator();
       while (paramAppRuntime.hasNext()) {
-        ((ewt)paramAppRuntime.next()).a = true;
+        ((eyy)paramAppRuntime.next()).a = true;
       }
       return true;
       return false;
     }
   }
   
-  public ewt b()
+  public eyy b()
   {
     if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
     {
       a(null, null, 0);
-      if (((ewt)this.jdField_a_of_type_JavaUtilStack.peek()).d == 2) {
+      if (((eyy)this.jdField_a_of_type_JavaUtilStack.peek()).d == 2) {
         return c();
       }
     }

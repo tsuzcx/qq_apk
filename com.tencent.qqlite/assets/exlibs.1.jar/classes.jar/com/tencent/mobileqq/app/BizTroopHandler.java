@@ -130,12 +130,15 @@ public class BizTroopHandler
   public static final int G = 36;
   public static final int H = 37;
   public static final int I = 38;
-  public static final int J = 1;
-  public static final int K = 2;
-  public static final int L = 3;
-  protected static final int M = 1282;
-  public static final int N = 1;
+  public static final int J = 39;
+  public static final int K = 40;
+  public static final int L = 41;
+  public static final int M = 1;
+  public static final int N = 2;
   public static final int O = 3;
+  protected static final int P = 1282;
+  public static final int Q = 1;
+  public static final int R = 3;
   public static final int a = 1;
   public static final int b = 2;
   public static final int c = 3;
@@ -1637,8 +1640,13 @@ public class BizTroopHandler
         u(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
-    } while (!"ModifyExamine.GetModifyTimes".equals(paramFromServiceMsg.getServiceCmd()));
-    d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      if ("ModifyExamine.GetModifyTimes".equals(paramFromServiceMsg.getServiceCmd()))
+      {
+        d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+    } while (!"GroupFileAppSvr.GetFileSearch".equals(paramFromServiceMsg.getServiceCmd()));
+    a(41, true, paramObject);
   }
   
   public void a(Object paramObject)
@@ -2211,6 +2219,7 @@ public class BizTroopHandler
       this.jdField_a_of_type_JavaUtilSet.add("GrpMemberLBS.ReportLBS");
       this.jdField_a_of_type_JavaUtilSet.add("GrpMemberLBS.GetNeighbours");
       this.jdField_a_of_type_JavaUtilSet.add("ModifyExamine.GetModifyTimes");
+      this.jdField_a_of_type_JavaUtilSet.add("GroupFileAppSvr.GetFileSearch");
     }
     return !this.jdField_a_of_type_JavaUtilSet.contains(paramString);
   }
@@ -2333,7 +2342,7 @@ public class BizTroopHandler
       {
         localReqBody.uint32_network_type.set(1);
         localReqBody.uint32_cur_play_time.set(0);
-        localReqBody.bytes_mobileQ_ver.set(ByteStringMicro.copyFrom("3.4.0".getBytes()));
+        localReqBody.bytes_mobileQ_ver.set(ByteStringMicro.copyFrom("3.5.0".getBytes()));
         localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
         localToServiceMsg.extraData.putString("pageUrl", paramString);
         b(localToServiceMsg);

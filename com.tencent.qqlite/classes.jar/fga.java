@@ -1,55 +1,105 @@
+import android.app.Activity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.APNUtil;
 import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.ControlPolicyUtil;
+import com.tencent.open.downloadnew.DownloadApi;
+import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadQueryListener;
-import com.tencent.open.export.js.VipDownloadInterface;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi;
 
-public class fga
-  implements DownloadQueryListener
+public final class fga
+  implements Runnable
 {
-  public fga(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
+  public fga(Bundle paramBundle, int paramInt1, int paramInt2, Activity paramActivity, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    LogUtility.e(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction ERROR");
-  }
-  
-  public void b(List paramList)
-  {
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
+    boolean bool2 = true;
+    String str1 = DownloadApi.a;
+    Object localObject = new StringBuilder().append("doDownloadAction pParams=").append(this.jdField_a_of_type_AndroidOsBundle).append(" source=").append(this.jdField_a_of_type_Int).append(" myAppConfig=").append(this.b).append(" ac==null is");
+    if (this.jdField_a_of_type_AndroidAppActivity == null) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      if (i < j)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.b);
-          localJSONObject.put("pro", localDownloadInfo.k);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.h);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
+      LogUtility.a(str1, bool1);
+      if (this.jdField_a_of_type_AndroidOsBundle != null) {
+        break;
+      }
+      LogUtility.e(DownloadApi.a, "doDownloadAction pParams == null return");
+      return;
+    }
+    DownloadManager.a().a();
+    localObject = this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.a);
+    this.jdField_a_of_type_AndroidOsBundle.putInt(DownloadConstants.r, this.jdField_a_of_type_Int);
+    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.A);
+    str1 = this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.h);
+    if ((TextUtils.isEmpty(str2)) || (str2.equals("0"))) {
+      this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.A, "");
+    }
+    localObject = DownloadManager.a().a((String)localObject);
+    if ((localObject == null) && (this.jdField_a_of_type_Int == 0) && (ControlPolicyUtil.d()))
+    {
+      int i = this.jdField_a_of_type_AndroidOsBundle.getInt(DownloadConstants.j);
+      str2 = this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.e);
+      if ((i == 5) && (str2.equals("com.tencent.android.qqdownloader"))) {
+        MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity, str1);
       }
     }
-    paramList = "javascript:QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});void(0);";
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "querySucess : " + paramList);
-    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramList);
+    else if ((localObject != null) && (!TextUtils.isEmpty(str1)))
+    {
+      ((DownloadInfo)localObject).g = str1;
+    }
+    if (DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle))
+    {
+      LogUtility.a(DownloadApi.a, "doDownloadAction installApp");
+      return;
+    }
+    if ((this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null) && (this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.updatemethod == 2) && (TextUtils.isEmpty(this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.i))) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url))) {
+      this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.i, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url);
+    }
+    if (this.b == 0)
+    {
+      if ((localObject != null) && (((DownloadInfo)localObject).h == 1))
+      {
+        DownloadApi.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.b);
+        return;
+      }
+      boolean bool3 = APNUtil.d(CommonDataAdapter.a().a());
+      boolean bool4 = APNUtil.c(CommonDataAdapter.a().a());
+      if ((localObject == null) || (((DownloadInfo)localObject).a() == 1))
+      {
+        bool1 = true;
+        if (this.jdField_a_of_type_AndroidAppActivity != null) {
+          break label566;
+        }
+      }
+      for (;;)
+      {
+        LogUtility.a(DownloadApi.a, "check wifi dialog isWifiActive=" + bool4 + " isFirstDownload=" + bool1 + " acIsNull=" + bool2);
+        if ((!bool3) || (bool2) || (bool4) || (!bool1) || (!this.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.q))) {
+          break label571;
+        }
+        DownloadManager.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.b);
+        return;
+        bool1 = false;
+        break;
+        label566:
+        bool2 = false;
+      }
+      label571:
+      DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+      return;
+    }
+    if ((localObject == null) || (((DownloadInfo)localObject).h == 1))
+    {
+      DownloadApi.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.b);
+      return;
+    }
+    DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
   }
 }
 

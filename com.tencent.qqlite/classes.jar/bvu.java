@@ -1,25 +1,39 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bvu
-  extends BaseBubbleBuilder.ViewHolder
+  extends ClickableSpan
 {
-  public FrameLayout a;
-  public ImageView a;
-  public ProgressBar a;
-  public PicEmoticonInfo a;
-  public boolean a;
-  public ImageView b;
-  public ImageView c;
-  public ImageView d;
-  public ImageView e;
-  public ImageView f;
+  public bvu(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString) {}
   
-  public bvu(MarketFaceItemBuilder paramMarketFaceItemBuilder) {}
+  public void onClick(View paramView)
+  {
+    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    ReportController.b(GrayTipsItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder), "CliOper", "", GrayTipsItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).jdField_a_of_type_JavaLangString, "0X800491B", "0X800491B", 0, 0, "", "", "", "");
+    try
+    {
+      GrayTipsItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).startActivity(paramView);
+      return;
+    }
+    catch (ActivityNotFoundException paramView)
+    {
+      paramView.printStackTrace();
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-16732929);
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.activity.Leba;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class asb
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public asb(Leba paramLeba) {}
+  public asb(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Leba.a(this.a, true);
+    if (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.d();
+      return;
+    }
+    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity, this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

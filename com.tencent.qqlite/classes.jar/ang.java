@@ -1,16 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ang
-  implements DialogInterface.OnClickListener
+class ang
+  implements Runnable
 {
-  public ang(ForwardOperations paramForwardOperations) {}
+  ang(anf paramanf, Drawable paramDrawable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.finish();
+    if ((this.jdField_a_of_type_Anf.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_Anf.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+      this.jdField_a_of_type_Anf.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(ForwardOperations.a(this.jdField_a_of_type_Anf.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+    }
   }
 }
 

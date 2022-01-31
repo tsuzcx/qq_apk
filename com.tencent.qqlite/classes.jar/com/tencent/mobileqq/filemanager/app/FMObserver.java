@@ -10,8 +10,8 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.weiyun.sdk.IWyFileSystem.Thumbnail;
 import com.weiyun.sdk.IWyFileSystem.ThumbnailType;
-import dmz;
-import dna;
+import dob;
+import doc;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -42,6 +42,9 @@ public class FMObserver
       return;
     case 0: 
       a();
+      return;
+    case 25: 
+      b();
       return;
     case 10: 
     case 13: 
@@ -227,7 +230,7 @@ public class FMObserver
         if (QLog.isColorLevel()) {
           QLog.d("FMObserver<FileAssistant>", 2, "OnWeiYunSendToOfflineSuccess");
         }
-        b();
+        c();
         return;
       }
       paramObject = (Object[])paramObject[2];
@@ -273,7 +276,7 @@ public class FMObserver
         if ((paramObject.jdField_a_of_type_JavaLangObject != null) && (((IWyFileSystem.Thumbnail)localObject1).filePath != null) && (((IWyFileSystem.Thumbnail)localObject1).filePath.length() > 0))
         {
           if (!(paramObject.jdField_a_of_type_JavaLangObject instanceof WeiYunFileInfo)) {
-            break label2947;
+            break label2960;
           }
           ((WeiYunFileInfo)((IWyFileSystem.Thumbnail)localObject1).context).g = ((IWyFileSystem.Thumbnail)localObject1).filePath;
         }
@@ -296,7 +299,7 @@ public class FMObserver
       paramObject.jdField_a_of_type_JavaLangObject = localObject1[1];
       localObject1 = new Handler();
       QLog.i("FMObserver<FileAssistant>", 1, "OnThumbDownLoadSuccess(faild),fileId[" + paramObject.jdField_a_of_type_JavaLangString + "],delay 1000ms");
-      ((Handler)localObject1).postDelayed(new dna(this, paramObject), 1000L);
+      ((Handler)localObject1).postDelayed(new doc(this, paramObject), 1000L);
       return;
     case 40: 
       if (((Boolean)paramObject[1]).booleanValue())
@@ -313,7 +316,7 @@ public class FMObserver
       b(Integer.valueOf(i), paramObject);
       return;
     case 3: 
-      d();
+      e();
       return;
     case 19: 
       bool = ((Boolean)paramObject[1]).booleanValue();
@@ -402,7 +405,7 @@ public class FMObserver
         return;
       }
       QLog.i("FMObserver<FileAssistant>", 1, "OnVerifyPwdSuccess");
-      c();
+      d();
       return;
     case 50: 
       bool = ((Boolean)paramObject[1]).booleanValue();
@@ -422,7 +425,7 @@ public class FMObserver
       a((ThumbnailInfo)localObject1);
       return;
     case 191: 
-      label2947:
+      label2960:
       bool = ((Boolean)paramObject[1]).booleanValue();
       paramObject = (Object[])paramObject[2];
       i = ((Integer)paramObject[0]).intValue();
@@ -521,16 +524,18 @@ public class FMObserver
   
   protected void c(long paramLong) {}
   
-  public void d() {}
+  protected void d() {}
   
   protected void d(int paramInt, String paramString) {}
+  
+  public void e() {}
   
   public void update(Observable paramObservable, Object paramObject)
   {
     paramObservable = Looper.getMainLooper();
     if (Thread.currentThread() != paramObservable.getThread())
     {
-      new Handler(paramObservable).post(new dmz(this, paramObject));
+      new Handler(paramObservable).post(new dob(this, paramObject));
       return;
     }
     a(paramObject);

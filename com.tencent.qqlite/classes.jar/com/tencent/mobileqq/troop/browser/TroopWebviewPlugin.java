@@ -26,7 +26,7 @@ import org.json.JSONObject;
 public class TroopWebviewPlugin
   extends WebViewPlugin
 {
-  public static final String a = "3.4.0.607";
+  public static final String a = "3.5.0.660";
   public static final String b = "Troop";
   public static final String c = "searchTroop";
   public static final String d = "showTroopProfile";
@@ -78,10 +78,10 @@ public class TroopWebviewPlugin
         paramString = new JSONObject(paramString);
         String str1 = paramString.getString("type");
         String str2 = paramString.optString("wording", "");
-        String str3 = paramString.optString("callback", "");
+        paramString.optString("callback", "");
         boolean bool1 = paramString.optBoolean("show", true);
         boolean bool2 = paramString.optBoolean("disabled", false);
-        ((QQBrowserActivity)localObject).a(str1, str2, bool1, paramString.optBoolean("showImg", true), bool2, str3);
+        ((QQBrowserActivity)localObject).a(str1, str2, bool1, paramString.optBoolean("showImg", true), bool2, null);
         if (QLog.isColorLevel())
         {
           QLog.d("CreateTroop-SetTitleButton", 2, "wording: " + str2 + " show: " + bool1);
@@ -170,9 +170,9 @@ public class TroopWebviewPlugin
         localIntent.putExtra("param_type", 1);
         localIntent.putExtra("param_subtype", 0);
         localIntent.putExtra("param_only_friends", true);
-        localIntent.putExtra("param_title", this.mRuntime.a().getString(2131363093));
-        localIntent.putExtra("param_done_button_wording", this.mRuntime.a().getString(2131362795));
-        localIntent.putExtra("param_done_button_highlight_wording", this.mRuntime.a().getString(2131363550));
+        localIntent.putExtra("param_title", this.mRuntime.a().getString(2131363103));
+        localIntent.putExtra("param_done_button_wording", this.mRuntime.a().getString(2131362802));
+        localIntent.putExtra("param_done_button_highlight_wording", this.mRuntime.a().getString(2131363561));
         localIntent.putExtra("param_only_friends", true);
         localIntent.putExtra("param_exit_animation", 1);
         localIntent.putExtra("param_max", 10);
@@ -215,7 +215,7 @@ public class TroopWebviewPlugin
           if (!TextUtils.isEmpty(paramString))
           {
             paramString = TroopInfoActivity.a(paramString, 9);
-            paramString.putString("troop_info_title", localActivity.getString(2131362323));
+            paramString.putString("troop_info_title", localActivity.getString(2131362324));
             TroopInfoActivity.a(localActivity, paramString, 5);
           }
           if (m == 0) {
@@ -517,7 +517,7 @@ public class TroopWebviewPlugin
         }
         else if (paramString3.equals("getVersion"))
         {
-          paramJsBridgeListener.a("3.4.0.607");
+          paramJsBridgeListener.a("3.5.0.660");
         }
         else if (paramString3.equals("isNetworkConnected"))
         {

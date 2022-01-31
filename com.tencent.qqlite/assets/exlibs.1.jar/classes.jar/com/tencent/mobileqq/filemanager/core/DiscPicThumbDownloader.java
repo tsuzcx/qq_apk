@@ -8,7 +8,7 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.qphone.base.util.QLog;
-import dnl;
+import don;
 
 public class DiscPicThumbDownloader
   extends BaseThumbDownloader
@@ -19,7 +19,7 @@ public class DiscPicThumbDownloader
   public DiscPicThumbDownloader(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new dnl(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new don(this);
   }
   
   private DiscPicThumbDownloader.PicSession a(long paramLong, boolean paramBoolean)

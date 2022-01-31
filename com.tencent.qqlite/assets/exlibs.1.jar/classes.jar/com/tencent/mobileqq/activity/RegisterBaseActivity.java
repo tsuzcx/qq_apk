@@ -6,10 +6,10 @@ import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ViewGroup;
-import bgz;
-import bha;
-import bhc;
-import bhd;
+import bhe;
+import bhf;
+import bhh;
+import bhi;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -26,7 +26,7 @@ public class RegisterBaseActivity
   protected ViewGroup a;
   private QQCustomDialog a;
   protected QQToastNotifier a;
-  public Handler b = new bgz(this);
+  public Handler b = new bhe(this);
   public String c;
   public String d = "86";
   public String e;
@@ -35,7 +35,7 @@ public class RegisterBaseActivity
   {
     try
     {
-      this.b.post(new bhd(this, paramInt));
+      this.b.post(new bhi(this, paramInt));
       return;
     }
     catch (Exception localException)
@@ -71,7 +71,7 @@ public class RegisterBaseActivity
   {
     try
     {
-      this.b.post(new bha(this, paramString1, paramString2));
+      this.b.post(new bhf(this, paramString1, paramString2));
       return;
     }
     catch (Exception paramString1)
@@ -88,7 +88,7 @@ public class RegisterBaseActivity
     }
     h();
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(getActivity(), 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131364309, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131364320, (DialogInterface.OnClickListener)localObject);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
@@ -112,7 +112,7 @@ public class RegisterBaseActivity
   
   public void g()
   {
-    this.b.post(new bhc(this));
+    this.b.post(new bhh(this));
   }
   
   public void h()

@@ -13,7 +13,7 @@ public class zb
       if ((AuthDevVerifyCodeActivity.a(this.a) == null) && (!this.a.isFinishing()))
       {
         AuthDevVerifyCodeActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-        AuthDevVerifyCodeActivity.a(this.a).b(2131363558);
+        AuthDevVerifyCodeActivity.a(this.a).b(2131363569);
         AuthDevVerifyCodeActivity.a(this.a).d(true);
       }
       if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (!AuthDevVerifyCodeActivity.a(this.a).isShowing())) {

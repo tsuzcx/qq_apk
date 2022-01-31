@@ -29,8 +29,8 @@ import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.MessageDBUtils;
 import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.qphone.base.util.QLog;
-import cyt;
-import cyu;
+import czv;
+import czw;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -754,15 +754,15 @@ public class MsgProxy
           paramInt += 1;
         }
       }
-      return new cyu(this, localArrayList);
+      return new czw(this, localArrayList);
     }
-    return new cyu(this, (List)((ArrayList)localList).clone());
+    return new czw(this, (List)((ArrayList)localList).clone());
   }
   
   @Deprecated
   protected Cursor a(List paramList)
   {
-    return new cyu(this, paramList);
+    return new czw(this, paramList);
   }
   
   protected QQMessageFacade.Message a(String paramString, EntityManager paramEntityManager)
@@ -2270,7 +2270,7 @@ public class MsgProxy
   
   protected void a(String paramString, int paramInt, boolean paramBoolean)
   {
-    new Thread(new cyt(this, paramBoolean), "report_troop_aio_break").start();
+    new Thread(new czv(this, paramBoolean), "report_troop_aio_break").start();
   }
   
   public void a(List paramList, ProxyListener paramProxyListener)

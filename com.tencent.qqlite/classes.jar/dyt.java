@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.music.SongInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.maproam.Utils;
 
 public final class dyt
-  implements Parcelable.Creator
+  implements DialogInterface.OnDismissListener
 {
-  public SongInfo a(Parcel paramParcel)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new SongInfo(paramParcel, null);
-  }
-  
-  public SongInfo[] a(int paramInt)
-  {
-    return new SongInfo[paramInt];
+    if (paramDialogInterface == Utils.a) {
+      Utils.a = null;
+    }
   }
 }
 

@@ -1,35 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.util.FaceDecodeTask;
-import com.tencent.mobileqq.util.FaceDecodeTask.DecodeCompletionListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
 
-public final class erp
-  extends Handler
+public class erp
+  implements View.OnClickListener
 {
-  public erp(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public erp(MediaControllerX paramMediaControllerX) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (paramMessage.what != FaceDecodeTask.a());
-      paramMessage = (FaceDecodeTask)paramMessage.obj;
-    } while ((paramMessage == null) || (FaceDecodeTask.a(paramMessage) == null) || (FaceDecodeTask.a(paramMessage) == null));
-    if (FaceDecodeTask.a(paramMessage))
-    {
-      FaceDecodeTask.a(paramMessage).b = 2;
-      FaceDecodeTask.a(paramMessage).a(FaceDecodeTask.a(paramMessage), FaceDecodeTask.a(paramMessage));
-      return;
-    }
-    FaceDecodeTask.a(paramMessage).a(FaceDecodeTask.a(paramMessage), FaceDecodeTask.a(paramMessage));
+    MediaControllerX.b(this.a);
+    this.a.a(5000);
   }
 }
 

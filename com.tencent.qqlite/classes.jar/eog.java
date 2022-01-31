@@ -1,17 +1,34 @@
 import android.os.Handler;
-import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class eog
-  implements Runnable
+  extends Handler
 {
-  public eog(VideoPlayLogic paramVideoPlayLogic) {}
-  
-  public void run()
+  public eog(TroopFeedsDataManager paramTroopFeedsDataManager, Looper paramLooper)
   {
-    if (VideoPlayLogic.a(this.a) != null) {
-      VideoPlayLogic.c(this.a);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    this.a.b.removeCallbacks(VideoPlayLogic.a(this.a));
+    do
+    {
+      return;
+      this.a.a = ((List)paramMessage.obj);
+      this.a.b();
+      return;
+      this.a.a = ((List)paramMessage.obj);
+      TroopFeedsDataManager.a(this.a);
+      this.a.notifyObservers(Integer.valueOf(101));
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopFeedsDataManager", 2, "end load feed: " + System.currentTimeMillis());
   }
 }
 

@@ -1,42 +1,19 @@
-import android.view.MotionEvent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webviewplugin.WebViewPluginEngine;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
-public class bbs
-  implements View.OnTouchListener
+class bbs
+  implements View.OnClickListener
 {
-  public bbs(QQBrowserActivity paramQQBrowserActivity) {}
+  bbs(bbp parambbp, SharedPreferences paramSharedPreferences, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramView != QQBrowserActivity.a(this.a));
-      if (QLog.isColorLevel()) {
-        QLog.d("QQBrowser", 2, "vg onTouch");
-      }
-      bool1 = bool2;
-    } while (this.a.a == null);
-    paramView = new HashMap(2);
-    paramView.put("X", Integer.valueOf((int)paramMotionEvent.getX()));
-    paramView.put("Y", Integer.valueOf((int)paramMotionEvent.getY()));
-    this.a.a.a(this.a.K, 22, paramView);
-    return true;
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    this.jdField_a_of_type_Bbp.a.a.sendEmptyMessageDelayed(1010, 1000L);
   }
 }
 

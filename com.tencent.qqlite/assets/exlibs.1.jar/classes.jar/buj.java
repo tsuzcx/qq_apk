@@ -1,18 +1,13 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.mobileqq.activity.aio.audiopanel.ViewPagerRadioGroup;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
 
 public class buj
-  extends RadioButton
+  implements Runnable
 {
-  public buj(ViewPagerRadioGroup paramViewPagerRadioGroup, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public buj(PressToChangeVoicePanel paramPressToChangeVoicePanel) {}
   
-  public boolean performClick()
+  public void run()
   {
-    return true;
+    this.a.g();
   }
 }
 

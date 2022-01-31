@@ -1,36 +1,13 @@
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
-public class dhr
-  extends FMObserver
+class dhr
+  implements Runnable
 {
-  public dhr(VerifyPwdView paramVerifyPwdView) {}
+  dhr(dhp paramdhp) {}
   
-  protected void a(int paramInt, String paramString)
+  public void run()
   {
-    FMToastUtil.a(paramString);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      VerifyPwdView.a(this.a);
-      return;
-    }
-    VerifyPwdView.b(this.a);
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    FMToastUtil.a(paramString);
-    VerifyPwdView.c(this.a);
-  }
-  
-  protected void c()
-  {
-    VerifyPwdView.a(this.a);
+    this.a.a.e();
   }
 }
 

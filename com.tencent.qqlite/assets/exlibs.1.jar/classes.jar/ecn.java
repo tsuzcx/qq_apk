@@ -1,85 +1,128 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.mobileqq.richstatus.StatusServlet;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import java.util.ArrayList;
-import mqq.app.NewIntent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.os.SystemClock;
+import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashSet;
 
-public class ecn
-  implements View.OnClickListener
+class ecn
+  extends AsyncTask
 {
-  public ecn(StatusHistoryActivity paramStatusHistoryActivity) {}
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public void onClick(View paramView)
+  public ecn(ecm paramecm, String paramString1, String paramString2, String paramString3)
   {
-    int i = 1;
-    boolean bool;
-    if ((paramView != null) && (paramView.getTag() != null) && ((paramView.getTag() instanceof Integer)))
-    {
-      if (!NetworkUtil.e(this.a)) {
-        QQToast.a(this.a, this.a.getString(2131362790), 0).b(this.a.getTitleBarHeight());
-      }
-      int j;
-      do
-      {
-        return;
-        j = ((Integer)paramView.getTag()).intValue();
-      } while ((StatusHistoryActivity.a(this.a) == null) || (j < 0) || (j >= StatusHistoryActivity.a(this.a).size()));
-      StatusHistoryActivity.a(this.a, (RichStatus)StatusHistoryActivity.a(this.a).get(j));
-      paramView = this.a;
-      if (j != 0) {
-        break label264;
-      }
-      bool = true;
-      StatusHistoryActivity.b(paramView, bool);
-      StatusHistoryActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
-      StatusHistoryActivity.a(this.a).a("正在删除");
-      StatusHistoryActivity.a(this.a).show();
-      if ((!StatusHistoryActivity.b(this.a)) || (StatusHistoryActivity.a(this.a).size() != 1)) {
-        break label270;
-      }
-      paramView = (StatusManager)this.a.app.getManager(14);
-      if (paramView != null) {
-        paramView.a(RichStatus.a(), -1);
-      }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  private Bitmap a(File paramFile)
+  {
+    Bitmap localBitmap1 = null;
+    Bitmap localBitmap2 = null;
+    if (paramFile.exists()) {
+      localBitmap2 = localBitmap1;
     }
-    label264:
-    label270:
-    for (;;)
+    try
     {
-      label243:
-      if (StatusHistoryActivity.a(this.a) != null)
+      localBitmap1 = BitmapFactory.decodeFile(paramFile.getAbsolutePath());
+      localBitmap2 = localBitmap1;
+      if (localBitmap1 == null)
       {
-        StatusHistoryActivity.a(this.a).d();
-        return;
-        bool = false;
-        break;
-        if ((StatusHistoryActivity.a(this.a) != null) && (this.a.app != null) && (StatusHistoryActivity.a(this.a).a != null))
+        localBitmap2 = localBitmap1;
+        paramFile.delete();
+        localBitmap2 = localBitmap1;
+      }
+      return localBitmap2;
+    }
+    catch (OutOfMemoryError paramFile) {}
+    return localBitmap2;
+  }
+  
+  protected Bitmap a(Void... paramVarArgs)
+  {
+    Object localObject1 = null;
+    paramVarArgs = null;
+    boolean bool2 = true;
+    Object localObject2 = ecm.a();
+    if (localObject2 != null)
+    {
+      localObject1 = new File((File)localObject2, this.jdField_a_of_type_JavaLangString);
+      boolean bool1 = bool2;
+      if (!((File)localObject1).exists())
+      {
+        if (!TextUtils.isEmpty(this.b))
         {
-          paramView = new NewIntent(this.a.app.a(), StatusServlet.class);
-          paramView.putExtra("k_cmd", 5);
-          paramView.putExtra("k_status_key", StatusHistoryActivity.a(this.a).a);
-          if (!StatusHistoryActivity.c(this.a)) {
-            break label380;
+          localObject2 = a(new File((File)localObject2, this.b));
+          if (localObject2 != null) {
+            publishProgress(new Bitmap[] { localObject2 });
+          }
+        }
+        bool1 = bool2;
+        if (this.c != null)
+        {
+          if ((ecm.a(this.jdField_a_of_type_Ecm) > 3L) && (Math.abs(SystemClock.uptimeMillis() - ecm.a(this.jdField_a_of_type_Ecm)) > 60000L)) {
+            ecm.a(this.jdField_a_of_type_Ecm, 0L);
+          }
+          bool1 = bool2;
+          if (ecm.a(this.jdField_a_of_type_Ecm) < 3L) {
+            bool1 = ecm.a(this.jdField_a_of_type_Ecm, this.c, (File)localObject1);
           }
         }
       }
+      if (bool1) {
+        paramVarArgs = a((File)localObject1);
+      }
+      if ((!bool1) || (paramVarArgs == null)) {
+        break label253;
+      }
+      ecm.a(this.jdField_a_of_type_Ecm, 0L);
+      localObject1 = paramVarArgs;
     }
     for (;;)
     {
-      paramView.putExtra("k_status_flag", i);
-      this.a.app.startServlet(paramView);
-      break label243;
-      break;
-      label380:
-      i = 0;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.richstatus.img", 2, "decodeBitmap finish with " + localObject1 + ", " + ecm.a(this.jdField_a_of_type_Ecm));
+      }
+      return localObject1;
+      label253:
+      localObject1 = paramVarArgs;
+      if (!TextUtils.isEmpty(this.c))
+      {
+        localObject1 = paramVarArgs;
+        if (ecm.b(this.jdField_a_of_type_Ecm) == 3L)
+        {
+          ecm.a(this.jdField_a_of_type_Ecm, SystemClock.uptimeMillis());
+          localObject1 = paramVarArgs;
+        }
+      }
+    }
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null) {
+      BaseApplicationImpl.a.put(ecm.a(this.jdField_a_of_type_Ecm) + this.jdField_a_of_type_JavaLangString, paramBitmap, (byte)0);
+    }
+    ecm.a(this.jdField_a_of_type_Ecm).remove(this.jdField_a_of_type_JavaLangString);
+    if (ecm.a(this.jdField_a_of_type_Ecm) != null) {
+      ecm.a(this.jdField_a_of_type_Ecm).a(this.jdField_a_of_type_JavaLangString, this.c, paramBitmap, 1);
+    }
+  }
+  
+  protected void a(Bitmap... paramVarArgs)
+  {
+    paramVarArgs = paramVarArgs[0];
+    BaseApplicationImpl.a.put(ecm.a(this.jdField_a_of_type_Ecm) + this.b, paramVarArgs, (byte)0);
+    if (ecm.a(this.jdField_a_of_type_Ecm) != null) {
+      ecm.a(this.jdField_a_of_type_Ecm).a(this.jdField_a_of_type_JavaLangString, this.c, paramVarArgs, 0);
     }
   }
 }

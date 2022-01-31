@@ -13,8 +13,8 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
-import etb;
-import etc;
+import evg;
+import evh;
 import java.io.IOException;
 import mqq.app.AppRuntime;
 
@@ -131,10 +131,10 @@ public class AudioUtil
     //   71: isub
     //   72: putstatic 11	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_Int	I
     //   75: getstatic 98	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   78: new 115	etd
+    //   78: new 115	evi
     //   81: dup
     //   82: aload_2
-    //   83: invokespecial 118	etd:<init>	(Landroid/media/MediaPlayer$OnCompletionListener;)V
+    //   83: invokespecial 118	evi:<init>	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   86: invokevirtual 121	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   89: getstatic 98	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   92: invokevirtual 124	android/media/MediaPlayer:start	()V
@@ -267,7 +267,7 @@ public class AudioUtil
         QLog.d("mediaPlayerStartForMsg", 2, "media palyer uri=" + Settings.System.DEFAULT_NOTIFICATION_URI);
         continue;
       }
-      jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new etb());
+      jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new evg());
       jdField_a_of_type_AndroidMediaMediaPlayer.start();
       jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean);
     }
@@ -333,9 +333,9 @@ public class AudioUtil
     //   115: putstatic 98	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   118: goto -67 -> 51
     //   121: getstatic 98	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   124: new 196	ete
+    //   124: new 196	evj
     //   127: dup
-    //   128: invokespecial 197	ete:<init>	()V
+    //   128: invokespecial 197	evj:<init>	()V
     //   131: invokevirtual 121	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   134: goto -66 -> 68
     //   137: astore_3
@@ -436,9 +436,9 @@ public class AudioUtil
     //   102: aload_0
     //   103: invokevirtual 251	java/io/FileInputStream:close	()V
     //   106: getstatic 98	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   109: new 253	etf
+    //   109: new 253	evk
     //   112: dup
-    //   113: invokespecial 254	etf:<init>	()V
+    //   113: invokespecial 254	evk:<init>	()V
     //   116: invokevirtual 121	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   119: getstatic 98	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   122: invokevirtual 124	android/media/MediaPlayer:start	()V
@@ -558,9 +558,9 @@ public class AudioUtil
     //   79: getstatic 98	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   82: invokevirtual 76	android/media/MediaPlayer:prepare	()V
     //   85: getstatic 98	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   88: new 261	eta
+    //   88: new 261	evf
     //   91: dup
-    //   92: invokespecial 262	eta:<init>	()V
+    //   92: invokespecial 262	evf:<init>	()V
     //   95: invokevirtual 121	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   98: getstatic 98	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   101: invokevirtual 124	android/media/MediaPlayer:start	()V
@@ -718,7 +718,7 @@ public class AudioUtil
         QLog.d("MediaPlayerStart", 2, "media palyer uri=" + Settings.System.DEFAULT_NOTIFICATION_URI);
         continue;
       }
-      jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new etc());
+      jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new evh());
       jdField_a_of_type_AndroidMediaMediaPlayer.start();
       jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean);
     }

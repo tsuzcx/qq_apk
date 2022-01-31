@@ -1,92 +1,34 @@
-import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar.IActionBarClickEvent;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarLocalFile.ActionBarLocalPicFile;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 public class dsw
-  implements BaseActionBar.IActionBarClickEvent
+  implements View.OnClickListener
 {
-  public dsw(FileBrowserActivity paramFileBrowserActivity) {}
+  public dsw(ActionBarLocalPicFile paramActionBarLocalPicFile) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (FileBrowserActivity.e(this.a))
-    {
-      FileManagerReporter.a("0X8004BBE");
-      return;
+    long l = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().b();
+    if ((FileManagerUtil.a()) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize > 5242880L)) {
+      FMDialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), 2131362018, 2131362016, new dsx(this, l));
     }
-    FileManagerReporter.a("0X8004BD4");
-  }
-  
-  public void b()
-  {
-    if (FileBrowserActivity.e(this.a))
+    while (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g())
     {
-      FileManagerReporter.a("0X8004BC2");
+      FileManagerReporter.a("0X8004BBB");
       return;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(l);
+      this.a.h();
     }
-    FileManagerReporter.a("0X8004BD8");
-  }
-  
-  public void c()
-  {
-    if (FileBrowserActivity.e(this.a))
-    {
-      FileManagerReporter.a("0X8004BBF");
-      return;
-    }
-    FileManagerReporter.a("0X8004BD5");
-  }
-  
-  public void d()
-  {
-    if (FileBrowserActivity.e(this.a))
-    {
-      FileManagerReporter.a("0X8004BC6");
-      return;
-    }
-    FileManagerReporter.a("0X8004BDC");
-  }
-  
-  public void e()
-  {
-    if (FileBrowserActivity.e(this.a))
-    {
-      FileManagerReporter.a("0X8004BC3");
-      return;
-    }
-    FileManagerReporter.a("0X8004BD9");
-  }
-  
-  public void f() {}
-  
-  public void g()
-  {
-    if (FileBrowserActivity.e(this.a))
-    {
-      FileManagerReporter.a("0X8004BC4");
-      return;
-    }
-    FileManagerReporter.a("0X8004BDA");
-  }
-  
-  public void h()
-  {
-    if (FileBrowserActivity.e(this.a))
-    {
-      FileManagerReporter.a("0X8004BBD");
-      return;
-    }
-    FileManagerReporter.a("0X8004BD3");
-  }
-  
-  public void i()
-  {
-    if (FileBrowserActivity.e(this.a))
-    {
-      FileManagerReporter.a("0X8004BC1");
-      return;
-    }
-    FileManagerReporter.a("0X8004BD7");
+    FileManagerReporter.a("0X8004BD1");
   }
 }
 

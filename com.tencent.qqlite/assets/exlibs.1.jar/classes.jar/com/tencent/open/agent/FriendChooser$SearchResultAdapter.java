@@ -11,8 +11,8 @@ import com.tencent.open.agent.datamodel.Friend;
 import com.tencent.open.agent.datamodel.FriendDataManager;
 import com.tencent.open.agent.datamodel.ImageLoader;
 import com.tencent.open.agent.datamodel.QZonePortraitData;
-import fbl;
-import fbm;
+import fdr;
+import fds;
 import java.util.List;
 
 public class FriendChooser$SearchResultAdapter
@@ -42,17 +42,17 @@ public class FriendChooser$SearchResultAdapter
   {
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2130903626, paramViewGroup, false);
-      paramViewGroup = new fbm();
+      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2130903635, paramViewGroup, false);
+      paramViewGroup = new fds();
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297011));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296875));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131298766));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296876));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131298792));
       paramView.setTag(paramViewGroup);
     }
     while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
       return paramView;
-      paramViewGroup = (fbm)paramView.getTag();
+      paramViewGroup = (fds)paramView.getTag();
     }
     Friend localFriend = (Friend)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     Object localObject;
@@ -66,16 +66,16 @@ public class FriendChooser$SearchResultAdapter
       if (localObject != null) {
         break label290;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838036);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838055);
       localObject = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-      ImageLoader.a().a(localFriend.d, new fbl(this, (ImageView)localObject));
+      ImageLoader.a().a(localFriend.d, new fdr(this, (ImageView)localObject));
     }
     for (;;)
     {
       if (!this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.a(localFriend.a)) {
         break label302;
       }
-      paramViewGroup.b.setText(2131363230);
+      paramViewGroup.b.setText(2131363240);
       return paramView;
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFriend.c);
       break;

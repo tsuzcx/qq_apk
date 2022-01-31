@@ -1,88 +1,70 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.jsbridge.JsBridge;
-import com.tencent.mobileqq.richstatus.MovieDetailActivity;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
-import com.tencent.widget.ProtectedWebView;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.richstatus.ActionGridActivity;
+import com.tencent.mobileqq.richstatus.ActionInfo;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.widget.GridListView.GridListAdapter;
+import com.tencent.mobileqq.widget.StatableBitmapDrawable;
+import java.util.ArrayList;
 
 public class ecd
-  extends WebViewClient
+  extends GridListView.GridListAdapter
 {
-  private ecd(MovieDetailActivity paramMovieDetailActivity) {}
+  private ecd(ActionGridActivity paramActionGridActivity) {}
   
-  private boolean a(String paramString)
+  public int a()
   {
-    if (!TextUtils.isEmpty(paramString))
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 0;
+  }
+  
+  public int b(int paramInt)
+  {
+    return 0;
+  }
+  
+  public int getCount()
+  {
+    return ActionGridActivity.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return ActionGridActivity.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null)
     {
-      Object localObject = Uri.parse(paramString);
-      String str = ((Uri)localObject).getQueryParameter("window");
-      paramString = str;
-      if (str == null)
-      {
-        localObject = ((Uri)localObject).getFragment();
-        paramString = str;
-        if (localObject != null)
-        {
-          int i = ((String)localObject).indexOf("window");
-          paramString = str;
-          if (i != -1) {
-            paramString = ((String)localObject).substring("window=".length() + i);
-          }
-        }
-      }
-      if (!TextUtils.isEmpty(paramString)) {}
+      paramViewGroup = this.a.getLayoutInflater().inflate(2130903662, null);
+      paramView = new ece(null);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131298217));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131298218));
+      paramViewGroup.setTag(paramView);
     }
-    else
+    paramView = (ece)paramViewGroup.getTag();
+    ActionInfo localActionInfo = (ActionInfo)ActionGridActivity.a(this.a).get(paramInt);
+    if (paramView.jdField_a_of_type_Int != localActionInfo.i)
     {
-      return false;
+      paramView.jdField_a_of_type_Int = localActionInfo.i;
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new StatableBitmapDrawable(this.a.getResources(), ActionGridActivity.a(this.a).a(localActionInfo.i, 201), false, false));
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localActionInfo.c);
     }
-    paramString = paramString.toLowerCase();
-    if ((!"false".equals(paramString)) && (!"0".equals(paramString))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    MovieDetailActivity.a(this.a).setVisibility(8);
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    MovieDetailActivity.a(this.a).setVisibility(0);
-    MovieDetailActivity.a(this.a).setVisibility(8);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    MovieDetailActivity.a(this.a).clearView();
-    MovieDetailActivity.a(this.a).setVisibility(8);
-    MovieDetailActivity.a(this.a).setVisibility(0);
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if (MovieDetailActivity.a(this.a).a(paramWebView, paramString)) {
-      return true;
-    }
-    if (a(paramString))
-    {
-      paramWebView = new Intent(this.a, MovieDetailActivity.class);
-      paramWebView.putExtra("key_params_qq", paramString);
-      paramWebView.putExtra("k_same_tuin", MovieDetailActivity.a(this.a));
-      this.a.startActivity(paramWebView);
-      return true;
-    }
-    return super.shouldOverrideUrlLoading(paramWebView, paramString);
+    return paramViewGroup;
   }
 }
 

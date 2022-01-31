@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
-import flp;
+import fnv;
 import java.io.File;
 
 public class ImageFilePathUtil
@@ -33,7 +33,7 @@ public class ImageFilePathUtil
   
   private static String a()
   {
-    File localFile = flp.b();
+    File localFile = fnv.b();
     if (localFile == null) {
       return null;
     }
@@ -138,7 +138,7 @@ public class ImageFilePathUtil
   private static String b(Context paramContext, boolean paramBoolean)
   {
     if (!paramBoolean) {}
-    for (paramContext = flp.a(paramContext); paramContext == null; paramContext = flp.a(paramContext, "cache")) {
+    for (paramContext = fnv.a(paramContext); paramContext == null; paramContext = fnv.a(paramContext, "cache")) {
       return null;
     }
     return paramContext.getAbsolutePath();

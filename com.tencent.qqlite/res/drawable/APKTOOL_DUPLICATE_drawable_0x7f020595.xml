@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020596" />
-    <item android:drawable="@color/APKTOOL_DUPLICATE_color_0x7f0b0019" android:bottom="3.0dip" />
+    <item android:id="@android:id/background">
+        <inset android:insetTop="5.0dip" android:insetBottom="5.0dip">
+            <shape>
+                <corners android:radius="20.0dip" />
+                <solid android:color="#ff6f6f6f" />
+            </shape>
+        </inset>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <inset android:insetTop="5.0dip" android:insetBottom="5.0dip">
+                <shape>
+                    <corners android:radius="20.0dip" />
+                    <solid android:color="#ff6f6f6f" />
+                </shape>
+            </inset>
+        </clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <inset android:insetTop="5.0dip" android:insetBottom="5.0dip">
+                <shape>
+                    <corners android:radius="20.0dip" />
+                    <solid android:color="#ff00a5e0" />
+                </shape>
+            </inset>
+        </clip>
+    </item>
 </layer-list>

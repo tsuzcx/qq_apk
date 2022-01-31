@@ -1,36 +1,18 @@
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayp
-  implements IphonePickerView.PickerViewAdapter
+  implements Runnable
 {
   public ayp(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public int a()
+  public void run()
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 >= 0)
-    {
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 1) {}
+    NearbyPeopleProfileActivity.m(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.dating", 2, "updateDateSig sig = " + NearbyPeopleProfileActivity.a(this.a).b);
     }
-    else
-    {
-      paramInt1 = 0;
-    }
-    if (paramInt1 == 0) {
-      return "男";
-    }
-    return "女";
   }
 }
 

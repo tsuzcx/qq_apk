@@ -22,7 +22,7 @@ import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
 import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import dkm;
+import dlo;
 import java.util.LinkedHashMap;
 
 public class QfileLocalFileBaseExpandableListAdapter
@@ -63,7 +63,7 @@ public class QfileLocalFileBaseExpandableListAdapter
   
   private void a(AsyncImageView paramAsyncImageView, String paramString)
   {
-    paramAsyncImageView.setDefaultImage(2130838527);
+    paramAsyncImageView.setDefaultImage(2130838552);
     paramAsyncImageView.setAsyncImage(paramString);
   }
   
@@ -74,13 +74,13 @@ public class QfileLocalFileBaseExpandableListAdapter
   
   public void a(View paramView, int paramInt)
   {
-    Object localObject = (dkm)paramView.getTag();
+    Object localObject = (dlo)paramView.getTag();
     if (localObject == null)
     {
-      localObject = new dkm();
-      paramView.findViewById(2131296843).setVisibility(0);
-      ((dkm)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296844));
-      ((dkm)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296845));
+      localObject = new dlo();
+      paramView.findViewById(2131296844).setVisibility(0);
+      ((dlo)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296845));
+      ((dlo)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296846));
       paramView.setTag(localObject);
     }
     for (paramView = (View)localObject;; paramView = (View)localObject)
@@ -106,7 +106,7 @@ public class QfileLocalFileBaseExpandableListAdapter
       try
       {
         localLocalItemHolder = new QfileLocalFileBaseExpandableListAdapter.LocalItemHolder(this);
-        paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903408, paramViewGroup, false);
+        paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903413, paramViewGroup, false);
         paramView = paramViewGroup;
       }
       catch (Exception paramViewGroup)
@@ -116,7 +116,7 @@ public class QfileLocalFileBaseExpandableListAdapter
       }
       try
       {
-        localLocalItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131297978));
+        localLocalItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131297983));
         paramView = paramViewGroup;
         localLocalItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.c);
         paramView = paramViewGroup;
@@ -124,23 +124,23 @@ public class QfileLocalFileBaseExpandableListAdapter
         paramView = paramViewGroup;
         localLocalItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localLocalItemHolder);
         paramView = paramViewGroup;
-        localLocalItemHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131297983));
+        localLocalItemHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131297988));
         paramView = paramViewGroup;
-        localLocalItemHolder.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131297979));
+        localLocalItemHolder.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131297984));
         paramView = paramViewGroup;
-        localLocalItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131297981));
+        localLocalItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131297986));
         paramView = paramViewGroup;
-        localLocalItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131297982));
+        localLocalItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131297987));
         paramView = paramViewGroup;
-        localLocalItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131297985));
+        localLocalItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131297990));
         paramView = paramViewGroup;
         localLocalItemHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131296950));
         paramView = paramViewGroup;
-        localLocalItemHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131297986));
+        localLocalItemHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131297991));
         paramView = paramViewGroup;
         localLocalItemHolder.d = ((TextView)paramViewGroup.findViewById(2131297251));
         paramView = paramViewGroup;
-        localLocalItemHolder.jdField_b_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131296442));
+        localLocalItemHolder.jdField_b_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131296445));
         paramView = paramViewGroup;
         localLocalItemHolder.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this.b);
         paramView = paramViewGroup;
@@ -200,7 +200,7 @@ public class QfileLocalFileBaseExpandableListAdapter
           paramView = paramViewGroup;
           localLocalItemHolder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
           paramView = paramViewGroup;
-          localLocalItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837757);
+          localLocalItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837917);
           paramView = paramViewGroup;
           localLocalItemHolder.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
           paramView = paramViewGroup;
@@ -241,7 +241,7 @@ public class QfileLocalFileBaseExpandableListAdapter
     Object localObject;
     if (paramView != null)
     {
-      localObject = (dkm)paramView.getTag();
+      localObject = (dlo)paramView.getTag();
       paramViewGroup = paramView;
       paramView = (View)localObject;
       localObject = (String)getGroup(paramInt);
@@ -258,9 +258,9 @@ public class QfileLocalFileBaseExpandableListAdapter
       paramViewGroup.setFocusableInTouchMode(true);
       return paramViewGroup;
       paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903119, paramViewGroup, false);
-      paramView = new dkm();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296844));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296845));
+      paramView = new dlo();
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296845));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296846));
       paramViewGroup.setTag(paramView);
       break;
       label150:

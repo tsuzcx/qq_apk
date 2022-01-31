@@ -1,34 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.biz.lebasearch.SearchProtocol;
 import com.tencent.mobileqq.activity.Leba;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import cooperation.qzone.QZoneHelper;
 
 public class asp
-  extends Handler
+  implements Runnable
 {
   public asp(Leba paramLeba) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if ((this.a.a != null) && ("0".equals(this.a.a.a()))) {
-      return;
+    QZoneHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Leba.a(this.a);
+    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12);
+    if ((localWebProcessManager != null) && (localWebProcessManager.c())) {
+      localWebProcessManager.e();
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1134006: 
-      this.a.j();
-      return;
-    case 11340002: 
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.leba", 2, "handler refresh leba config");
-      }
-      this.a.m();
-      return;
-    }
-    Leba.b(this.a);
+    SearchProtocol.a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    SearchProtocol.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentBizLebasearchSearchProtocol$SearchObserver);
+    this.a.o();
   }
 }
 

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204d7" />
-    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204d6" />
+    <item android:state_pressed="true">
+        <color android:color="#99000000" />
+    </item>
+    <item>
+        <color android:color="#99000000" />
+    </item>
 </selector>

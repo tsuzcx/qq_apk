@@ -1,38 +1,40 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.ChatItemBuilder;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.PAGameItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.PASingleItemBuilder;
+import com.tencent.mobileqq.data.MessageForPubAccount;
+import com.tencent.mobileqq.data.PAMessage;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import java.util.ArrayList;
 
 public class bwy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bwy(ShortVideoItemBuilder paramShortVideoItemBuilder) {}
+  public bwy(PAGameItemBuilder paramPAGameItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    SharedPreferences localSharedPreferences = this.a.a.getPreferences();
-    long l1 = localSharedPreferences.getLong("key_check_temp", 0L);
-    long l2 = localCalendar.getTimeInMillis();
-    if (l1 < l2) {
-      bool = true;
+    bxa localbxa = (bxa)paramView.getTag();
+    paramView = AIOUtils.a(paramView);
+    if ((localbxa == null) || (!(paramView instanceof MessageForPubAccount))) {
+      if (QLog.isColorLevel()) {
+        QLog.d(ChatItemBuilder.a, 2, "PAGameItemBuilder onClickListener holder = " + localbxa + ", msg = " + paramView);
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "TempCleanTask, lastCheck=" + l1 + ", today:" + l2 + ", needClean : " + bool);
-    }
-    if (bool)
+    do
     {
-      localSharedPreferences.edit().putLong("key_check_temp", l2).commit();
-      ShortVideoUtils.a("", true);
-    }
+      return;
+      paramView = (MessageForPubAccount)paramView;
+      if ((paramView.mPAMessage != null) && (paramView.mPAMessage.items != null) && (!paramView.mPAMessage.items.isEmpty())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(ChatItemBuilder.a, 2, "PAGameItemBuilder onClickListener mPAMessage or items is empty !");
+    return;
+    PASingleItemBuilder.a(PAGameItemBuilder.a(this.a), PAGameItemBuilder.a(this.a), localbxa.a, localbxa.b, localbxa.c, PAGameItemBuilder.a(this.a).a, PAGameItemBuilder.b(this.a).d);
   }
 }
 

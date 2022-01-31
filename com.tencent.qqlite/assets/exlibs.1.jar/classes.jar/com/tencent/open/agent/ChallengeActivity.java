@@ -135,10 +135,10 @@ public class ChallengeActivity
         e();
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838036);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838055);
       ImageLoader.a().a(this.jdField_b_of_type_JavaLangString, this);
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838036);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838055);
     ImageLoader.a().a(this.jdField_c_of_type_JavaLangString, this);
   }
   

@@ -100,8 +100,8 @@ public class Automator
     label125:
     if (localIterator.hasNext())
     {
-      LinearGroup localLinearGroup = (LinearGroup)localIterator.next();
-      if ((!"{{4,3,5,6},[11,13],16,19,20,21,36,37,[49,24,10,25,26,27,28,29,30,32,33,34,35,39,40,45,41,43,44,48,50],46,51}".equals(localLinearGroup.b)) && (!localLinearGroup.b.equals(paramLinearGroup.b))) {
+      AsyncStep localAsyncStep = (AsyncStep)localIterator.next();
+      if ((!"{{4,3,5,6},[11,13],16,19,20,21,36,37,[49,24,10,25,26,27,28,29,30,32,33,34,35,39,40,45,41,43,44,48,50],46,51}".equals(localAsyncStep.b)) && (!localAsyncStep.b.equals(paramLinearGroup.b))) {
         break label243;
       }
       bool = false;
@@ -118,7 +118,7 @@ public class Automator
       bool = true;
       if (localIterator.hasNext())
       {
-        if ("{{4,3,5,6},[11,13],16,19,20,21,36,37,[49,24,10,25,26,27,28,29,30,32,33,34,35,39,40,45,41,43,44,48,50],46,51}".equals(((LinearGroup)localIterator.next()).b)) {
+        if ("{{4,3,5,6},[11,13],16,19,20,21,36,37,[49,24,10,25,26,27,28,29,30,32,33,34,35,39,40,45,41,43,44,48,50],46,51}".equals(((AsyncStep)localIterator.next()).b)) {
           bool = false;
         }
         for (;;)

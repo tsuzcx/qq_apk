@@ -1,40 +1,24 @@
-import android.os.Bundle;
-import android.os.Handler;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import java.lang.ref.WeakReference;
-import mqq.observer.SSOAccountObserver;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ani
-  extends SSOAccountObserver
+class ani
+  implements URLDrawable.URLDrawableListener
 {
-  WeakReference a;
+  ani(anh paramanh) {}
   
-  public ani(ForwardOperations paramForwardOperations)
-  {
-    this.a = new WeakReference(paramForwardOperations);
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    paramString = (ForwardOperations)this.a.get();
-    if ((paramString != null) && (!paramString.c) && (ForwardOperations.a(paramString) != null)) {
-      ForwardOperations.a(paramString).sendEmptyMessage(0);
-    }
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (paramInt == 4096) {}
-    for (paramString = new String(paramArrayOfByte);; paramString = null)
-    {
-      paramArrayOfByte = (ForwardOperations)this.a.get();
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte.C = paramString;
-        paramArrayOfByte.c = true;
-      }
-      return;
-    }
+    paramURLDrawable.setBounds(ImageUtil.a(this.a.jdField_a_of_type_ComTencentImageURLDrawable, 36, 100, ForwardOperations.a(this.a.jdField_a_of_type_Anf.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations)));
+    this.a.jdField_a_of_type_Anf.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(paramURLDrawable);
   }
 }
 

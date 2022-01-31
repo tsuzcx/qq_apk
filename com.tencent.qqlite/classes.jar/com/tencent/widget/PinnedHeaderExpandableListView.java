@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
-import fiu;
+import fla;
 
 public class PinnedHeaderExpandableListView
   extends XExpandableListView
@@ -217,7 +217,7 @@ public class PinnedHeaderExpandableListView
       {
         this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(j, this, false);
         if (this.jdField_a_of_type_AndroidViewView != null) {
-          this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new fiu(this));
+          this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new fla(this));
         }
         requestLayout();
       }

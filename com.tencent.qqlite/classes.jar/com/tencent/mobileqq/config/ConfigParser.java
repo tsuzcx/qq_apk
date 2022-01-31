@@ -11,8 +11,8 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import dcb;
-import dcc;
+import ddd;
+import dde;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -180,27 +180,27 @@ public class ConfigParser
     }
   }
   
-  private static void a(dcb paramdcb, byte[] paramArrayOfByte)
+  private static void a(ddd paramddd, byte[] paramArrayOfByte)
   {
     int i1 = PkgTools.a(paramArrayOfByte, 0);
-    paramdcb.jdField_a_of_type_JavaLangString = PkgTools.a(paramArrayOfByte, 2, i1);
+    paramddd.jdField_a_of_type_JavaLangString = PkgTools.a(paramArrayOfByte, 2, i1);
     i1 += 2;
-    paramdcb.jdField_a_of_type_Byte = paramArrayOfByte[i1];
+    paramddd.jdField_a_of_type_Byte = paramArrayOfByte[i1];
     i1 += 1;
-    paramdcb.jdField_b_of_type_Byte = paramArrayOfByte[i1];
+    paramddd.jdField_b_of_type_Byte = paramArrayOfByte[i1];
     int i2 = i1 + 1;
     i1 = PkgTools.a(paramArrayOfByte, i2);
     i2 += 2;
-    paramdcb.jdField_b_of_type_JavaLangString = PkgTools.a(paramArrayOfByte, i2, i1);
+    paramddd.jdField_b_of_type_JavaLangString = PkgTools.a(paramArrayOfByte, i2, i1);
   }
   
-  private static void a(dcc paramdcc) {}
+  private static void a(dde paramdde) {}
   
-  private static void a(dcc paramdcc, String paramString)
+  private static void a(dde paramdde, String paramString)
   {
     int i3 = 2;
     int i4 = 0;
-    int i5 = PkgTools.a(paramdcc.jdField_a_of_type_ArrayOfByte, 0);
+    int i5 = PkgTools.a(paramdde.jdField_a_of_type_ArrayOfByte, 0);
     int i1 = i4;
     int i2 = i3;
     if (QLog.isColorLevel())
@@ -211,19 +211,19 @@ public class ConfigParser
     }
     while (i1 < i5)
     {
-      i3 = PkgTools.a(paramdcc.jdField_a_of_type_ArrayOfByte, i2);
+      i3 = PkgTools.a(paramdde.jdField_a_of_type_ArrayOfByte, i2);
       i4 = i2 + 2;
-      i2 = PkgTools.a(paramdcc.jdField_a_of_type_ArrayOfByte, i4);
+      i2 = PkgTools.a(paramdde.jdField_a_of_type_ArrayOfByte, i4);
       i4 += 2;
       byte[] arrayOfByte = new byte[i2];
-      PkgTools.b(paramdcc.jdField_a_of_type_ArrayOfByte, i4, arrayOfByte, i2);
+      PkgTools.b(paramdde.jdField_a_of_type_ArrayOfByte, i4, arrayOfByte, i2);
       i2 = i4 + i2;
       a(i3, arrayOfByte, paramString);
       i1 += 1;
     }
-    paramdcc = Config.a();
-    if (paramdcc != null) {
-      paramdcc.c();
+    paramdde = Config.a();
+    if (paramdde != null) {
+      paramdde.c();
     }
   }
   
@@ -257,7 +257,7 @@ public class ConfigParser
     }
   }
   
-  private static void a(byte[] paramArrayOfByte, dcc paramdcc)
+  private static void a(byte[] paramArrayOfByte, dde paramdde)
   {
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 11)) {}
     for (;;)
@@ -265,20 +265,20 @@ public class ConfigParser
       return;
       if (paramArrayOfByte[0] == 2)
       {
-        paramdcc.b = PkgTools.a(paramArrayOfByte, 1);
-        paramdcc.jdField_a_of_type_Short = PkgTools.a(paramArrayOfByte, 3);
-        paramdcc.jdField_a_of_type_Long = (PkgTools.a(paramArrayOfByte, 5) * 1000L);
-        paramdcc.jdField_a_of_type_Byte = paramArrayOfByte[9];
+        paramdde.b = PkgTools.a(paramArrayOfByte, 1);
+        paramdde.jdField_a_of_type_Short = PkgTools.a(paramArrayOfByte, 3);
+        paramdde.jdField_a_of_type_Long = (PkgTools.a(paramArrayOfByte, 5) * 1000L);
+        paramdde.jdField_a_of_type_Byte = paramArrayOfByte[9];
         int i1 = paramArrayOfByte.length - 10 - 1;
-        if (paramdcc.jdField_a_of_type_Byte == 0)
+        if (paramdde.jdField_a_of_type_Byte == 0)
         {
-          paramdcc.jdField_a_of_type_ArrayOfByte = new byte[i1];
-          PkgTools.b(paramArrayOfByte, 10, paramdcc.jdField_a_of_type_ArrayOfByte, i1);
+          paramdde.jdField_a_of_type_ArrayOfByte = new byte[i1];
+          PkgTools.b(paramArrayOfByte, 10, paramdde.jdField_a_of_type_ArrayOfByte, i1);
         }
         while (paramArrayOfByte.length != i1 + 10 + 1)
         {
           return;
-          paramdcc.jdField_a_of_type_JavaLangString = PkgTools.a(paramArrayOfByte, 10, i1);
+          paramdde.jdField_a_of_type_JavaLangString = PkgTools.a(paramArrayOfByte, 10, i1);
         }
       }
     }
@@ -289,7 +289,7 @@ public class ConfigParser
     return new File(BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/ADPic/" + paramString).exists();
   }
   
-  public static boolean a(byte[] paramArrayOfByte, dcc paramdcc, String paramString)
+  public static boolean a(byte[] paramArrayOfByte, dde paramdde, String paramString)
   {
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
     do
@@ -297,15 +297,15 @@ public class ConfigParser
       do
       {
         return false;
-        a(paramArrayOfByte, paramdcc);
-      } while (paramdcc.b != 768);
-      if (paramdcc.jdField_a_of_type_Byte != 0)
+        a(paramArrayOfByte, paramdde);
+      } while (paramdde.b != 768);
+      if (paramdde.jdField_a_of_type_Byte != 0)
       {
-        a(paramdcc);
+        a(paramdde);
         return false;
       }
-    } while ((paramdcc.jdField_a_of_type_ArrayOfByte == null) || (paramdcc.jdField_a_of_type_ArrayOfByte.length == 0));
-    a(paramdcc, paramString);
+    } while ((paramdde.jdField_a_of_type_ArrayOfByte == null) || (paramdde.jdField_a_of_type_ArrayOfByte.length == 0));
+    a(paramdde, paramString);
     return true;
   }
   

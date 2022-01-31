@@ -1,16 +1,23 @@
 package com.tencent.smtt.sdk;
 
 import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.net.http.SslCertificate;
 import android.os.Build.VERSION;
 import android.os.Message;
 import android.view.KeyEvent;
+import com.tencent.smtt.utils.QBApkProcesser;
+import com.tencent.smtt.utils.TbsConfigFile;
+import com.tencent.smtt.utils.TbsLog;
+import java.util.Map;
 
 class SystemWebViewClient
   extends android.webkit.WebViewClient
 {
-  private static final String LOGTAG = "SystemWebViewClient";
+  private static String result_configForceSyswebview = null;
   private WebViewClient mClient;
   private WebView mWebView;
   
@@ -40,11 +47,24 @@ class SystemWebViewClient
   
   public void onPageFinished(android.webkit.WebView paramWebView, String paramString)
   {
+    if (result_configForceSyswebview == null)
+    {
+      localObject = TbsConfigFile.getInstance();
+      if (localObject != null)
+      {
+        ((TbsConfigFile)localObject).setForceUseSystemWebview(true);
+        result_configForceSyswebview = Boolean.toString(true);
+      }
+    }
     this.mWebView.setSysWebView(paramWebView);
-    paramWebView = this.mWebView;
-    paramWebView.mPv += 1;
-    this.mWebView.compareQBTimestampForReboot();
+    Object localObject = this.mWebView;
+    ((WebView)localObject).mPv += 1;
     this.mClient.onPageFinished(this.mWebView, paramString);
+    if ("com.qzone".equals(paramWebView.getContext().getApplicationInfo().packageName)) {
+      this.mWebView.writetbscorepvfile(paramWebView.getContext());
+    }
+    TbsLog.app_extra("SystemWebViewClient", paramWebView.getContext());
+    WebView.updateRebootStatus();
   }
   
   public void onPageStarted(android.webkit.WebView paramWebView, String paramString, Bitmap paramBitmap)
@@ -103,14 +123,26 @@ class SystemWebViewClient
     this.mClient.onUnhandledKeyEvent(this.mWebView, paramKeyEvent);
   }
   
+  public android.webkit.WebResourceResponse shouldInterceptRequest(android.webkit.WebView paramWebView, android.webkit.WebResourceRequest paramWebResourceRequest)
+  {
+    if (Build.VERSION.SDK_INT < 21) {
+      return null;
+    }
+    if (paramWebResourceRequest == null) {
+      return null;
+    }
+    paramWebView = new WebResourceRequestImpl(paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.isForMainFrame(), paramWebResourceRequest.hasGesture(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.getRequestHeaders());
+    paramWebView = this.mClient.shouldInterceptRequest(this.mWebView, paramWebView);
+    if (paramWebView == null) {
+      return null;
+    }
+    return new android.webkit.WebResourceResponse(paramWebView.getMimeType(), paramWebView.getEncoding(), paramWebView.getData());
+  }
+  
   @TargetApi(11)
   public android.webkit.WebResourceResponse shouldInterceptRequest(android.webkit.WebView paramWebView, String paramString)
   {
-    if (Build.VERSION.SDK_INT < 11)
-    {
-      QbSdkLog.w("SystemWebViewClient", "[shouldInterceptRequest] -- Your sdk_version is:" + Build.VERSION.SDK_INT);
-      QbSdkLog.e("SystemWebViewClient", "Sorry, your sdk_version is too low to call this method!");
-    }
+    if (Build.VERSION.SDK_INT < 11) {}
     do
     {
       return null;
@@ -127,7 +159,12 @@ class SystemWebViewClient
   
   public boolean shouldOverrideUrlLoading(android.webkit.WebView paramWebView, String paramString)
   {
-    this.mWebView.setSysWebView(paramWebView);
+    if ((paramString == null) || (this.mWebView.showDebugView(paramString))) {}
+    do
+    {
+      return true;
+      this.mWebView.setSysWebView(paramWebView);
+    } while (QBApkProcesser.getInstance().hiJackUrl(this.mWebView.getContext().getApplicationContext(), paramString));
     return this.mClient.shouldOverrideUrlLoading(this.mWebView, paramString);
   }
   
@@ -206,6 +243,51 @@ class SystemWebViewClient
     public boolean hasError(int paramInt)
     {
       return this.mSslError.hasError(paramInt);
+    }
+  }
+  
+  private class WebResourceRequestImpl
+    implements com.tencent.smtt.export.external.interfaces.WebResourceRequest
+  {
+    private boolean hasUserGesture;
+    private boolean isMainFrame;
+    private String method;
+    private Map<String, String> requestHeaders;
+    private String url;
+    
+    public WebResourceRequestImpl(boolean paramBoolean1, boolean paramBoolean2, String paramString, Map<String, String> paramMap)
+    {
+      this.url = paramBoolean1;
+      this.isMainFrame = paramBoolean2;
+      this.hasUserGesture = paramString;
+      this.method = paramMap;
+      Object localObject;
+      this.requestHeaders = localObject;
+    }
+    
+    public String getMethod()
+    {
+      return this.method;
+    }
+    
+    public Map<String, String> getRequestHeaders()
+    {
+      return this.requestHeaders;
+    }
+    
+    public Uri getUrl()
+    {
+      return Uri.parse(this.url);
+    }
+    
+    public boolean hasGesture()
+    {
+      return this.hasUserGesture;
+    }
+    
+    public boolean isForMainFrame()
+    {
+      return this.isMainFrame;
     }
   }
 }

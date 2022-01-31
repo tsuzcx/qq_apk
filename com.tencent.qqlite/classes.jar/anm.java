@@ -1,31 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class anm
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public anm(ForwardRecentActivity paramForwardRecentActivity) {}
+  public anm(ForwardOperations paramForwardOperations) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 1)
-    {
-      if ((this.a.b) && (this.a.f == 11)) {
-        ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131362372));
-      }
-      StatisticCollector.a(BaseApplication.getContext()).a(this.a.app, this.a.app.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
+    if (paramMessage.what == 0) {
+      QQToast.a(this.a.a, "网络异常", 0).a();
     }
-    while (paramInt != 0) {
+    while (1 != paramMessage.what) {
       return;
     }
-    this.a.setResult(0);
-    StatisticCollector.a(BaseApplication.getContext()).a(this.a.app, this.a.app.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
-    this.a.finish();
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

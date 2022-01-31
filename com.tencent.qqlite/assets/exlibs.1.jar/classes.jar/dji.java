@@ -1,24 +1,35 @@
-import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileWeiYunImageExpandableListAdapter.ImageHolder;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileBaseExpandableListAdapter.CloudItemHolder;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
 public class dji
-  extends FMObserver
+  implements View.OnClickListener
 {
-  public dji(QfileFileAssistantActivity paramQfileFileAssistantActivity) {}
+  public dji(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QfileFileAssistantActivity.b(this.a)) {
-      return;
+    Object localObject = paramView.getTag();
+    WeiYunFileInfo localWeiYunFileInfo = null;
+    int i = 0;
+    if ((localObject instanceof QfileCloudFileBaseExpandableListAdapter.CloudItemHolder))
+    {
+      paramView = (QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)paramView.getTag();
+      i = paramView.c;
+      localWeiYunFileInfo = (WeiYunFileInfo)paramView.a;
     }
-    this.a.runOnUiThread(new djj(this, paramBoolean));
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    if (!QfileFileAssistantActivity.b(this.a)) {
-      FMToastUtil.a(paramString);
+    for (;;)
+    {
+      this.a.a(localWeiYunFileInfo, i);
+      return;
+      if ((localObject instanceof QfileWeiYunImageExpandableListAdapter.ImageHolder))
+      {
+        localWeiYunFileInfo = (WeiYunFileInfo)((QfileWeiYunImageExpandableListAdapter.ImageHolder)paramView.getTag()).a;
+        i = -1;
+      }
     }
   }
 }

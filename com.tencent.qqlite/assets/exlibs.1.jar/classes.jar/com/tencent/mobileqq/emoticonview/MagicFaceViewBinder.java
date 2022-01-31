@@ -8,7 +8,7 @@ import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.emoticon.EmojiManager;
-import dfb;
+import dgd;
 import java.util.Iterator;
 import java.util.List;
 
@@ -59,8 +59,8 @@ public class MagicFaceViewBinder
   
   public Drawable a(Context paramContext)
   {
-    Drawable localDrawable = paramContext.getResources().getDrawable(2130838999);
-    paramContext = paramContext.getResources().getDrawable(2130839000);
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130839032);
+    paramContext = paramContext.getResources().getDrawable(2130839033);
     StateListDrawable localStateListDrawable = new StateListDrawable();
     localStateListDrawable.addState(new int[] { 16842913 }, paramContext);
     localStateListDrawable.addState(new int[0], localDrawable);
@@ -90,7 +90,7 @@ public class MagicFaceViewBinder
     }
     if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter = new dfb(this, 2008);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter = new dgd(this, 2008);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.b(false);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.d(this.jdField_a_of_type_Boolean);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.c(false);

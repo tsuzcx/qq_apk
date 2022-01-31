@@ -1,70 +1,15 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.contact.newfriend.BaseNewFriendView.INewFriendContext;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 
 public class ccn
-  implements BaseNewFriendView.INewFriendContext
+  implements View.OnClickListener
 {
-  public ccn(NewFriendActivity paramNewFriendActivity) {}
+  public ccn(SearchResultDialog paramSearchResultDialog) {}
   
-  public Activity a()
+  public void onClick(View paramView)
   {
-    return this.a;
-  }
-  
-  public View a()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
-  
-  public void a()
-  {
-    NewFriendActivity.b(this.a);
-  }
-  
-  public void a(int paramInt, View.OnClickListener paramOnClickListener) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    QQToast.a(a(), paramInt, paramString, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ImageView localImageView = NewFriendActivity.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      return;
-    }
-  }
-  
-  public View b()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public void b()
-  {
-    NewFriendActivity.a(this.a);
-  }
-  
-  public View c()
-  {
-    return null;
+    this.a.dismiss();
   }
 }
 

@@ -1,126 +1,62 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
+import android.content.Intent;
+import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.phone.RebindActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class chk
-  extends Dialog
-  implements TextWatcher, View.OnClickListener, View.OnTouchListener
+  extends ContactBindObserver
 {
-  private View jdField_a_of_type_AndroidViewView;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private chj jdField_a_of_type_Chj;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
+  public chk(BindNumberActivity paramBindNumberActivity) {}
   
-  public chk(CountryActivity paramCountryActivity, Context paramContext)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramContext);
-    requestWindowFeature(1);
-    getWindow().setSoftInputMode(36);
-    getWindow().setBackgroundDrawable(new ColorDrawable());
-    setContentView(2130903123);
-    paramContext = getWindow().getAttributes();
-    paramContext.x = 0;
-    paramContext.y = 0;
-    paramContext.width = -1;
-    paramContext.windowAnimations = 16973824;
-    paramContext.gravity = 51;
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297957));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131297950));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    ((Button)findViewById(2131298408)).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131296865);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296867));
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363155);
-    findViewById(2131296868).setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131296866));
-    this.jdField_a_of_type_Chj = new chj(paramCountryActivity, null);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Chj);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(this);
-  }
-  
-  void a(String paramString)
-  {
-    if ((paramString.equals("")) || (paramString.trim().length() == 0))
+    this.a.a.setEnabled(true);
+    this.a.d();
+    int i;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Chj.a(paramString);
-    if (this.jdField_a_of_type_Chj.getCount() == 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      i = paramBundle.getInt("k_result");
+      if ((i == 104) || (i == 0))
+      {
+        paramBundle = new Intent(this.a, BindVerifyActivity.class);
+        paramBundle.putExtra("k_number", this.a.c);
+        if ((paramBundle != null) && (!this.a.isFinishing()))
+        {
+          paramBundle.addFlags(536870912);
+          this.a.startActivityForResult(paramBundle, 2);
+        }
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Chj.notifyDataSetChanged();
+      this.a.app.unRegistObserver(BindNumberActivity.b(this.a));
+      BindNumberActivity.b(this.a, null);
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      if (i == 107)
+      {
+        Intent localIntent = new Intent(this.a, RebindActivity.class);
+        localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
+        localIntent.putExtra("k_number", this.a.c);
+        localIntent.putExtra("k_country_code", this.a.b);
+        paramBundle = localIntent;
+        break;
+      }
+      if (i == 106)
+      {
+        this.a.setResult(-1);
+        this.a.finish();
+        paramBundle = null;
+        break;
+      }
+      this.a.a(a(i));
+      paramBundle = null;
+      break;
+      this.a.b(2131363394);
     }
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    a(paramEditable);
-    if (paramEditable.equals(""))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void dismiss()
-  {
-    try
-    {
-      super.dismiss();
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131298408: 
-      dismiss();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    ((InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
   }
 }
 

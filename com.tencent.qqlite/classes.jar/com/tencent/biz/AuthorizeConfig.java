@@ -41,7 +41,7 @@ public class AuthorizeConfig
   protected static final String p = "{\"*.qq.com\":[\"*\"],\"*.tencent.com\":[\"*\"],\"*.soso.com\":[\"*\"],\"*.paipai.com\":[\"*\"],\"*.tenpay.com\":[\"*\"],\"*.yixun.com\":[\"*\"],\"*.myapp.com\":[\"*\"],\"*.wanggou.com\":[\"*\"],\"*.qzone.com\":[\"*\"],\"*.weishi.com\":[\"*\"],\"*.weiyun.com\":[\"*\"],\"*\":[\"InputClickEvent.onClickInputCtrl\",\"HtmlViewer.showHTML\"]}";
   protected static final String q = "[\"*.qq.com\",\"*.tenpay.com\"]";
   protected static final String r = "[\"qq.com\"]";
-  protected static final String s = "[\"game.qq.com\",\"id.qq.com\"]";
+  protected static final String s = "[\"game.qq.com\",\"id.qq.com\",\"qzone.qq.com\",\"m.qzone.com\",\"qzone.com\"]";
   protected static final String t = "{\"*.qq.com\":[\"*\"],\"*.tencent.com\":[\"*\"],\"*.soso.com\":[\"*\"],\"*.paipai.com\":[\"*\"],\"*.tenpay.com\":[\"*\"],\"*.yixun.com\":[\"*\"],\"*.myapp.com\":[\"*\"],\"*.wanggou.com\":[\"*\"],\"*.qzone.com\":[\"*\"],\"*.weishi.com\":[\"*\"],\"*.weiyun.com\":[\"*\"],\"*\":[\"tel\",\"sms\",\"http\",\"https\",\"file\"]}";
   static final String u = "lastMod";
   static final String v = "qqVersion";
@@ -490,7 +490,7 @@ public class AuthorizeConfig
                           {
                             try
                             {
-                              this.jdField_e_of_type_OrgJsonJSONArray = new JSONArray("[\"game.qq.com\",\"id.qq.com\"]");
+                              this.jdField_e_of_type_OrgJsonJSONArray = new JSONArray("[\"game.qq.com\",\"id.qq.com\",\"qzone.qq.com\",\"m.qzone.com\",\"qzone.com\"]");
                               label385:
                               if (str2 != null) {}
                               try
@@ -657,7 +657,7 @@ public class AuthorizeConfig
     //   89: istore 7
     //   91: iload 5
     //   93: iload 7
-    //   95: if_icmpge +717 -> 812
+    //   95: if_icmpge +740 -> 835
     //   98: aload 10
     //   100: aload 13
     //   102: iload 5
@@ -767,276 +767,286 @@ public class AuthorizeConfig
     //   330: ldc 49
     //   332: invokevirtual 264	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   335: astore 10
-    //   337: aload_0
-    //   338: aload 10
-    //   340: putfield 310	com/tencent/biz/AuthorizeConfig:jdField_e_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   343: aload 9
-    //   345: ldc 49
-    //   347: aload 10
-    //   349: invokevirtual 360	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   352: invokeinterface 359 3 0
-    //   357: pop
-    //   358: aload_0
-    //   359: aconst_null
-    //   360: putfield 368	com/tencent/biz/AuthorizeConfig:jdField_b_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   363: new 198	org/json/JSONObject
-    //   366: dup
-    //   367: invokespecial 342	org/json/JSONObject:<init>	()V
-    //   370: astore 10
-    //   372: aload_1
-    //   373: ldc 52
-    //   375: invokevirtual 264	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   378: astore 11
-    //   380: aload 11
-    //   382: invokevirtual 268	org/json/JSONArray:length	()I
-    //   385: istore 6
-    //   387: iconst_0
-    //   388: istore 4
-    //   390: iload 4
-    //   392: iload 6
-    //   394: if_icmpge +170 -> 564
-    //   397: aload 11
-    //   399: iload 4
-    //   401: invokevirtual 284	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   404: astore 13
-    //   406: aload 13
-    //   408: ldc_w 274
-    //   411: invokevirtual 264	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   414: astore 12
-    //   416: aload 13
-    //   418: ldc_w 348
-    //   421: invokevirtual 264	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   424: astore 13
-    //   426: iconst_0
-    //   427: istore 5
+    //   337: aload 10
+    //   339: invokevirtual 360	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   342: ldc_w 368
+    //   345: invokevirtual 371	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   348: ifne +12 -> 360
+    //   351: aload 10
+    //   353: ldc_w 368
+    //   356: invokevirtual 374	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   359: pop
+    //   360: aload_0
+    //   361: aload 10
+    //   363: putfield 310	com/tencent/biz/AuthorizeConfig:jdField_e_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
+    //   366: aload 9
+    //   368: ldc 49
+    //   370: aload 10
+    //   372: invokevirtual 360	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   375: invokeinterface 359 3 0
+    //   380: pop
+    //   381: aload_0
+    //   382: aconst_null
+    //   383: putfield 376	com/tencent/biz/AuthorizeConfig:jdField_b_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   386: new 198	org/json/JSONObject
+    //   389: dup
+    //   390: invokespecial 342	org/json/JSONObject:<init>	()V
+    //   393: astore 10
+    //   395: aload_1
+    //   396: ldc 52
+    //   398: invokevirtual 264	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   401: astore 11
+    //   403: aload 11
+    //   405: invokevirtual 268	org/json/JSONArray:length	()I
+    //   408: istore 6
+    //   410: iconst_0
+    //   411: istore 4
+    //   413: iload 4
+    //   415: iload 6
+    //   417: if_icmpge +170 -> 587
+    //   420: aload 11
+    //   422: iload 4
+    //   424: invokevirtual 284	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   427: astore 13
     //   429: aload 13
-    //   431: invokevirtual 268	org/json/JSONArray:length	()I
-    //   434: istore 7
-    //   436: iload 5
-    //   438: iload 7
-    //   440: if_icmpge +115 -> 555
-    //   443: aload 10
-    //   445: aload 13
-    //   447: iload 5
-    //   449: invokevirtual 291	org/json/JSONArray:getString	(I)Ljava/lang/String;
-    //   452: aload 12
-    //   454: invokevirtual 352	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   457: pop
-    //   458: iload 5
-    //   460: iconst_1
-    //   461: iadd
-    //   462: istore 5
-    //   464: goto -28 -> 436
-    //   467: astore 8
-    //   469: iconst_0
-    //   470: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   473: astore 8
-    //   475: goto -332 -> 143
-    //   478: astore 8
-    //   480: iconst_0
-    //   481: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   484: astore 8
-    //   486: goto -314 -> 172
-    //   489: astore 8
-    //   491: iconst_0
-    //   492: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   495: astore 8
-    //   497: goto -295 -> 202
-    //   500: astore 8
-    //   502: iconst_0
-    //   503: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   506: astore 8
-    //   508: goto -276 -> 232
-    //   511: astore 8
-    //   513: iconst_0
-    //   514: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   517: astore 8
-    //   519: goto -258 -> 261
-    //   522: astore 8
-    //   524: iconst_0
-    //   525: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   528: astore 8
-    //   530: goto -235 -> 295
-    //   533: astore 8
-    //   535: iconst_0
-    //   536: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   539: astore 8
-    //   541: goto -212 -> 329
-    //   544: astore 8
-    //   546: iconst_0
-    //   547: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   550: astore 8
-    //   552: goto -189 -> 363
-    //   555: iload 4
-    //   557: iconst_1
-    //   558: iadd
-    //   559: istore 4
-    //   561: goto -171 -> 390
-    //   564: aload_0
-    //   565: aload 10
-    //   567: putfield 312	com/tencent/biz/AuthorizeConfig:jdField_e_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   570: aload 9
-    //   572: ldc 52
-    //   574: aload 10
-    //   576: invokevirtual 353	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   579: invokeinterface 359 3 0
-    //   584: pop
-    //   585: aload_1
-    //   586: ldc 55
-    //   588: invokevirtual 264	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   591: astore_1
-    //   592: aload_0
-    //   593: aload_1
-    //   594: putfield 314	com/tencent/biz/AuthorizeConfig:f	Lorg/json/JSONArray;
-    //   597: aload 9
-    //   599: ldc 55
-    //   601: aload_1
-    //   602: invokevirtual 360	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   605: invokeinterface 359 3 0
-    //   610: pop
-    //   611: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   614: ifeq +30 -> 644
-    //   617: ldc 14
-    //   619: iconst_2
-    //   620: new 170	java/lang/StringBuilder
-    //   623: dup
-    //   624: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   627: ldc_w 370
-    //   630: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   633: aload 8
-    //   635: invokevirtual 373	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   638: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   641: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   644: aload 8
-    //   646: invokevirtual 376	java/lang/Boolean:booleanValue	()Z
-    //   649: ifeq +122 -> 771
-    //   652: iconst_2
-    //   653: putstatic 102	com/tencent/biz/AuthorizeConfig:jdField_b_of_type_Int	I
-    //   656: aload 9
-    //   658: ldc 31
-    //   660: invokestatic 382	java/lang/System:currentTimeMillis	()J
-    //   663: invokeinterface 386 4 0
-    //   668: pop
-    //   669: aload 9
-    //   671: ldc 79
-    //   673: ldc_w 388
-    //   676: invokeinterface 359 3 0
-    //   681: pop
-    //   682: aload 9
-    //   684: aload_3
-    //   685: aload_2
-    //   686: invokeinterface 359 3 0
+    //   431: ldc_w 274
+    //   434: invokevirtual 264	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   437: astore 12
+    //   439: aload 13
+    //   441: ldc_w 348
+    //   444: invokevirtual 264	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   447: astore 13
+    //   449: iconst_0
+    //   450: istore 5
+    //   452: aload 13
+    //   454: invokevirtual 268	org/json/JSONArray:length	()I
+    //   457: istore 7
+    //   459: iload 5
+    //   461: iload 7
+    //   463: if_icmpge +115 -> 578
+    //   466: aload 10
+    //   468: aload 13
+    //   470: iload 5
+    //   472: invokevirtual 291	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   475: aload 12
+    //   477: invokevirtual 352	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   480: pop
+    //   481: iload 5
+    //   483: iconst_1
+    //   484: iadd
+    //   485: istore 5
+    //   487: goto -28 -> 459
+    //   490: astore 8
+    //   492: iconst_0
+    //   493: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   496: astore 8
+    //   498: goto -355 -> 143
+    //   501: astore 8
+    //   503: iconst_0
+    //   504: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   507: astore 8
+    //   509: goto -337 -> 172
+    //   512: astore 8
+    //   514: iconst_0
+    //   515: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   518: astore 8
+    //   520: goto -318 -> 202
+    //   523: astore 8
+    //   525: iconst_0
+    //   526: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   529: astore 8
+    //   531: goto -299 -> 232
+    //   534: astore 8
+    //   536: iconst_0
+    //   537: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   540: astore 8
+    //   542: goto -281 -> 261
+    //   545: astore 8
+    //   547: iconst_0
+    //   548: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   551: astore 8
+    //   553: goto -258 -> 295
+    //   556: astore 8
+    //   558: iconst_0
+    //   559: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   562: astore 8
+    //   564: goto -235 -> 329
+    //   567: astore 8
+    //   569: iconst_0
+    //   570: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   573: astore 8
+    //   575: goto -189 -> 386
+    //   578: iload 4
+    //   580: iconst_1
+    //   581: iadd
+    //   582: istore 4
+    //   584: goto -171 -> 413
+    //   587: aload_0
+    //   588: aload 10
+    //   590: putfield 312	com/tencent/biz/AuthorizeConfig:jdField_e_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   593: aload 9
+    //   595: ldc 52
+    //   597: aload 10
+    //   599: invokevirtual 353	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   602: invokeinterface 359 3 0
+    //   607: pop
+    //   608: aload_1
+    //   609: ldc 55
+    //   611: invokevirtual 264	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   614: astore_1
+    //   615: aload_0
+    //   616: aload_1
+    //   617: putfield 314	com/tencent/biz/AuthorizeConfig:f	Lorg/json/JSONArray;
+    //   620: aload 9
+    //   622: ldc 55
+    //   624: aload_1
+    //   625: invokevirtual 360	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   628: invokeinterface 359 3 0
+    //   633: pop
+    //   634: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   637: ifeq +30 -> 667
+    //   640: ldc 14
+    //   642: iconst_2
+    //   643: new 170	java/lang/StringBuilder
+    //   646: dup
+    //   647: invokespecial 171	java/lang/StringBuilder:<init>	()V
+    //   650: ldc_w 378
+    //   653: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   656: aload 8
+    //   658: invokevirtual 381	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   661: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   664: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   667: aload 8
+    //   669: invokevirtual 384	java/lang/Boolean:booleanValue	()Z
+    //   672: ifeq +122 -> 794
+    //   675: iconst_2
+    //   676: putstatic 102	com/tencent/biz/AuthorizeConfig:jdField_b_of_type_Int	I
+    //   679: aload 9
+    //   681: ldc 31
+    //   683: invokestatic 390	java/lang/System:currentTimeMillis	()J
+    //   686: invokeinterface 394 4 0
     //   691: pop
-    //   692: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   695: ifeq +12 -> 707
-    //   698: ldc 14
-    //   700: iconst_2
-    //   701: ldc_w 390
-    //   704: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   707: aconst_null
-    //   708: ldc_w 392
-    //   711: ldc_w 394
-    //   714: ldc_w 396
-    //   717: ldc_w 398
-    //   720: ldc_w 400
-    //   723: iconst_0
-    //   724: iconst_1
-    //   725: iconst_0
-    //   726: ldc_w 396
-    //   729: ldc_w 396
-    //   732: ldc_w 396
-    //   735: ldc_w 396
-    //   738: invokestatic 405	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   741: aload 9
-    //   743: invokeinterface 408 1 0
-    //   748: pop
-    //   749: return
-    //   750: astore 8
-    //   752: iconst_0
-    //   753: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   756: astore 8
-    //   758: goto -173 -> 585
-    //   761: astore_1
-    //   762: iconst_0
-    //   763: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   766: astore 8
-    //   768: goto -157 -> 611
-    //   771: iconst_0
-    //   772: putstatic 102	com/tencent/biz/AuthorizeConfig:jdField_b_of_type_Int	I
-    //   775: aconst_null
-    //   776: ldc_w 392
-    //   779: ldc_w 394
-    //   782: ldc_w 396
-    //   785: ldc_w 398
-    //   788: ldc_w 410
-    //   791: iconst_0
-    //   792: iconst_1
-    //   793: iconst_0
-    //   794: ldc_w 396
-    //   797: ldc_w 396
-    //   800: ldc_w 396
-    //   803: ldc_w 396
-    //   806: invokestatic 405	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   809: goto -68 -> 741
-    //   812: iload 4
-    //   814: iconst_1
-    //   815: iadd
-    //   816: istore 4
-    //   818: goto -773 -> 45
+    //   692: aload 9
+    //   694: ldc 79
+    //   696: ldc_w 396
+    //   699: invokeinterface 359 3 0
+    //   704: pop
+    //   705: aload 9
+    //   707: aload_3
+    //   708: aload_2
+    //   709: invokeinterface 359 3 0
+    //   714: pop
+    //   715: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   718: ifeq +12 -> 730
+    //   721: ldc 14
+    //   723: iconst_2
+    //   724: ldc_w 398
+    //   727: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   730: aconst_null
+    //   731: ldc_w 400
+    //   734: ldc_w 402
+    //   737: ldc_w 404
+    //   740: ldc_w 406
+    //   743: ldc_w 408
+    //   746: iconst_0
+    //   747: iconst_1
+    //   748: iconst_0
+    //   749: ldc_w 404
+    //   752: ldc_w 404
+    //   755: ldc_w 404
+    //   758: ldc_w 404
+    //   761: invokestatic 413	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   764: aload 9
+    //   766: invokeinterface 416 1 0
+    //   771: pop
+    //   772: return
+    //   773: astore 8
+    //   775: iconst_0
+    //   776: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   779: astore 8
+    //   781: goto -173 -> 608
+    //   784: astore_1
+    //   785: iconst_0
+    //   786: invokestatic 231	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   789: astore 8
+    //   791: goto -157 -> 634
+    //   794: iconst_0
+    //   795: putstatic 102	com/tencent/biz/AuthorizeConfig:jdField_b_of_type_Int	I
+    //   798: aconst_null
+    //   799: ldc_w 400
+    //   802: ldc_w 402
+    //   805: ldc_w 404
+    //   808: ldc_w 406
+    //   811: ldc_w 418
+    //   814: iconst_0
+    //   815: iconst_1
+    //   816: iconst_0
+    //   817: ldc_w 404
+    //   820: ldc_w 404
+    //   823: ldc_w 404
+    //   826: ldc_w 404
+    //   829: invokestatic 413	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   832: goto -68 -> 764
+    //   835: iload 4
+    //   837: iconst_1
+    //   838: iadd
+    //   839: istore 4
+    //   841: goto -796 -> 45
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	821	0	this	AuthorizeConfig
-    //   0	821	1	paramJSONObject	JSONObject
-    //   0	821	2	paramString1	String
-    //   0	821	3	paramString2	String
-    //   43	774	4	i1	int
-    //   82	381	5	i2	int
-    //   40	355	6	i3	int
-    //   89	352	7	i4	int
+    //   0	844	0	this	AuthorizeConfig
+    //   0	844	1	paramJSONObject	JSONObject
+    //   0	844	2	paramString1	String
+    //   0	844	3	paramString2	String
+    //   43	797	4	i1	int
+    //   82	404	5	i2	int
+    //   40	378	6	i3	int
+    //   89	375	7	i4	int
     //   4	1	8	localBoolean1	Boolean
-    //   467	1	8	localException1	java.lang.Exception
-    //   473	1	8	localBoolean2	Boolean
-    //   478	1	8	localJSONException1	JSONException
-    //   484	1	8	localBoolean3	Boolean
-    //   489	1	8	localJSONException2	JSONException
-    //   495	1	8	localBoolean4	Boolean
-    //   500	1	8	localJSONException3	JSONException
-    //   506	1	8	localBoolean5	Boolean
-    //   511	1	8	localJSONException4	JSONException
-    //   517	1	8	localBoolean6	Boolean
-    //   522	1	8	localJSONException5	JSONException
-    //   528	1	8	localBoolean7	Boolean
-    //   533	1	8	localJSONException6	JSONException
-    //   539	1	8	localBoolean8	Boolean
-    //   544	1	8	localJSONException7	JSONException
-    //   550	95	8	localBoolean9	Boolean
-    //   750	1	8	localException2	java.lang.Exception
-    //   756	11	8	localBoolean10	Boolean
-    //   15	727	9	localEditor	android.content.SharedPreferences.Editor
-    //   24	551	10	localObject1	Object
-    //   33	365	11	localJSONArray1	JSONArray
-    //   69	384	12	localJSONArray2	JSONArray
-    //   59	387	13	localObject2	Object
+    //   490	1	8	localException1	java.lang.Exception
+    //   496	1	8	localBoolean2	Boolean
+    //   501	1	8	localJSONException1	JSONException
+    //   507	1	8	localBoolean3	Boolean
+    //   512	1	8	localJSONException2	JSONException
+    //   518	1	8	localBoolean4	Boolean
+    //   523	1	8	localJSONException3	JSONException
+    //   529	1	8	localBoolean5	Boolean
+    //   534	1	8	localJSONException4	JSONException
+    //   540	1	8	localBoolean6	Boolean
+    //   545	1	8	localJSONException5	JSONException
+    //   551	1	8	localBoolean7	Boolean
+    //   556	1	8	localJSONException6	JSONException
+    //   562	1	8	localBoolean8	Boolean
+    //   567	1	8	localJSONException7	JSONException
+    //   573	95	8	localBoolean9	Boolean
+    //   773	1	8	localException2	java.lang.Exception
+    //   779	11	8	localBoolean10	Boolean
+    //   15	750	9	localEditor	android.content.SharedPreferences.Editor
+    //   24	574	10	localObject1	Object
+    //   33	388	11	localJSONArray1	JSONArray
+    //   69	407	12	localJSONArray2	JSONArray
+    //   59	410	13	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   17	42	467	java/lang/Exception
-    //   52	81	467	java/lang/Exception
-    //   84	91	467	java/lang/Exception
-    //   98	113	467	java/lang/Exception
-    //   122	143	467	java/lang/Exception
-    //   143	172	478	org/json/JSONException
-    //   172	202	489	org/json/JSONException
-    //   202	232	500	org/json/JSONException
-    //   232	261	511	org/json/JSONException
-    //   261	295	522	org/json/JSONException
-    //   295	329	533	org/json/JSONException
-    //   329	363	544	org/json/JSONException
-    //   363	387	750	java/lang/Exception
-    //   397	426	750	java/lang/Exception
-    //   429	436	750	java/lang/Exception
-    //   443	458	750	java/lang/Exception
-    //   564	585	750	java/lang/Exception
-    //   585	611	761	org/json/JSONException
+    //   17	42	490	java/lang/Exception
+    //   52	81	490	java/lang/Exception
+    //   84	91	490	java/lang/Exception
+    //   98	113	490	java/lang/Exception
+    //   122	143	490	java/lang/Exception
+    //   143	172	501	org/json/JSONException
+    //   172	202	512	org/json/JSONException
+    //   202	232	523	org/json/JSONException
+    //   232	261	534	org/json/JSONException
+    //   261	295	545	org/json/JSONException
+    //   295	329	556	org/json/JSONException
+    //   329	360	567	org/json/JSONException
+    //   360	386	567	org/json/JSONException
+    //   386	410	773	java/lang/Exception
+    //   420	449	773	java/lang/Exception
+    //   452	459	773	java/lang/Exception
+    //   466	481	773	java/lang/Exception
+    //   587	608	773	java/lang/Exception
+    //   608	634	784	org/json/JSONException
   }
   
   public boolean a(String paramString)
@@ -1249,6 +1259,9 @@ public class AuthorizeConfig
       localObject = new HashSet(16);
       if ((this.jdField_e_of_type_OrgJsonJSONArray != null) && (this.jdField_e_of_type_OrgJsonJSONArray.length() != 0))
       {
+        if (!this.jdField_e_of_type_OrgJsonJSONArray.toString().contains("m.qzone.com")) {
+          this.jdField_e_of_type_OrgJsonJSONArray.put("m.qzone.com");
+        }
         int i2 = this.jdField_e_of_type_OrgJsonJSONArray.length();
         int i1 = 0;
         while (i1 < i2)

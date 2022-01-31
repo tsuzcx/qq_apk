@@ -29,7 +29,7 @@ import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import dvy;
+import dxb;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -65,7 +65,7 @@ public class QfileEditBottomBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903405, this, true);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903410, this, true);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     b();
   }
@@ -74,11 +74,11 @@ public class QfileEditBottomBar
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getAppRuntime());
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297970));
-    this.b = ((Button)findViewById(2131297971));
-    this.c = ((Button)findViewById(2131297973));
-    this.d = ((Button)findViewById(2131297972));
-    this.e = ((Button)findViewById(2131297974));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297975));
+    this.b = ((Button)findViewById(2131297976));
+    this.c = ((Button)findViewById(2131297978));
+    this.d = ((Button)findViewById(2131297977));
+    this.e = ((Button)findViewById(2131297979));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.b.setOnClickListener(this);
     this.c.setOnClickListener(this);
@@ -259,7 +259,7 @@ public class QfileEditBottomBar
       if (FMDataCache.a() <= 0L) {
         break label395;
       }
-      this.e.setTextColor(getResources().getColor(2131427513));
+      this.e.setTextColor(getResources().getColor(2131427519));
       this.e.setEnabled(true);
       this.d.setEnabled(true);
       return;
@@ -339,8 +339,8 @@ public class QfileEditBottomBar
       continue;
       ((List)localObject).add(Integer.valueOf(2131362059));
     }
-    paramView.a(new dvy(this, paramView));
-    paramView.d(2131362794);
+    paramView.a(new dxb(this, paramView));
+    paramView.d(2131362801);
     paramView.show();
   }
   

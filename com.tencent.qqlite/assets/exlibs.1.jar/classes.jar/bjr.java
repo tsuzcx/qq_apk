@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SnapScreenActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.SetTroopAdminsActivity.TroopAdmin;
 
-public class bjr
-  implements View.OnClickListener
+public final class bjr
+  implements Parcelable.Creator
 {
-  public bjr(SnapScreenActivity paramSnapScreenActivity) {}
-  
-  public void onClick(View paramView)
+  public SetTroopAdminsActivity.TroopAdmin a(Parcel paramParcel)
   {
-    this.a.a.a(false);
+    return new SetTroopAdminsActivity.TroopAdmin(paramParcel, null);
+  }
+  
+  public SetTroopAdminsActivity.TroopAdmin[] a(int paramInt)
+  {
+    return new SetTroopAdminsActivity.TroopAdmin[paramInt];
   }
 }
 

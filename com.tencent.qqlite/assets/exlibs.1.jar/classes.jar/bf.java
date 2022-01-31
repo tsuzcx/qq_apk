@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteMutiPicViewerActivity;
 
-public class bf
-  implements DialogInterface.OnClickListener
+class bf
+  implements Runnable
 {
-  public bf(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity) {}
+  bf(bd parambd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    LiteMutiPicViewerActivity.a(this.a.a);
   }
 }
 

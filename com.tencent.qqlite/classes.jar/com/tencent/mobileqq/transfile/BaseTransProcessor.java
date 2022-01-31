@@ -6,6 +6,7 @@ import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.AppConstants.RichMediaErrorCode;
 import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
@@ -16,7 +17,7 @@ import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import egl;
+import ehp;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -126,7 +127,7 @@ public class BaseTransProcessor
     jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     jdField_a_of_type_JavaLangObject = new Object();
     N = "param_reason";
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new egl();
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new ehp();
   }
   
   public BaseTransProcessor(TransFileController paramTransFileController)
@@ -160,7 +161,7 @@ public class BaseTransProcessor
     this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = paramTransferRequest;
     this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_b_of_type_Int;
     this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_c_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.aS = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.aT = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int;
     this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.n = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_b_of_type_JavaLangString;
     paramTransFileController = this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg;
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Boolean) {
@@ -449,9 +450,9 @@ public class BaseTransProcessor
     return this.jdField_c_of_type_JavaLangString;
   }
   
-  public String a(String paramString1, String paramString2)
+  public String a(String paramString1, String paramString2, int paramInt)
   {
-    return AppConstants.as + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "/" + "ptt" + "/" + paramString1 + "_" + FileMsg.a() + ".amr";
+    return MessageForPtt.getLocalFilePath(paramInt, AppConstants.as + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "/" + "ptt" + "/" + paramString1 + "_" + FileMsg.a() + ".amr");
   }
   
   protected String a(String paramString, List paramList)
@@ -689,7 +690,7 @@ public class BaseTransProcessor
     //   1: monitorenter
     //   2: aload_0
     //   3: iload_1
-    //   4: invokevirtual 572	com/tencent/mobileqq/transfile/BaseTransProcessor:a	(I)Lcom/tencent/mobileqq/transfile/FileMsg$StepBaseInfo;
+    //   4: invokevirtual 579	com/tencent/mobileqq/transfile/BaseTransProcessor:a	(I)Lcom/tencent/mobileqq/transfile/FileMsg$StepBaseInfo;
     //   7: astore 4
     //   9: aload 4
     //   11: ifnull +19 -> 30
@@ -697,19 +698,19 @@ public class BaseTransProcessor
     //   15: ifeq +18 -> 33
     //   18: aload 4
     //   20: aload 4
-    //   22: getfield 657	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:jdField_c_of_type_Int	I
+    //   22: getfield 664	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:jdField_c_of_type_Int	I
     //   25: iload_3
     //   26: iadd
-    //   27: putfield 657	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:jdField_c_of_type_Int	I
+    //   27: putfield 664	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:jdField_c_of_type_Int	I
     //   30: aload_0
     //   31: monitorexit
     //   32: return
     //   33: aload 4
     //   35: aload 4
-    //   37: getfield 659	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:jdField_d_of_type_Int	I
+    //   37: getfield 666	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:jdField_d_of_type_Int	I
     //   40: iload_3
     //   41: iadd
-    //   42: putfield 659	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:jdField_d_of_type_Int	I
+    //   42: putfield 666	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:jdField_d_of_type_Int	I
     //   45: goto -15 -> 30
     //   48: astore 4
     //   50: aload_0

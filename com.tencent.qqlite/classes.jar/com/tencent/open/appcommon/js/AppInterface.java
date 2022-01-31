@@ -119,11 +119,11 @@ public class AppInterface
     {
       i = 1;
       if (!"true".equals(paramString2)) {
-        break label177;
+        break label179;
       }
       j = 1;
       if (!"true".equals(paramString3)) {
-        break label194;
+        break label196;
       }
       k = 1;
       label37:
@@ -132,23 +132,23 @@ public class AppInterface
       paramString1.put(paramPackageInfo.versionCode);
       paramString1.put(paramPackageInfo.versionName);
       if (i == 0) {
-        break label212;
+        break label214;
       }
       paramString1.put(paramPackageInfo.applicationInfo.loadLabel(this.activity.getPackageManager()).toString());
-      label99:
+      label101:
       if (j == 0) {
-        break label222;
+        break label224;
       }
       paramString1.put(ImageUtil.a(paramPackageInfo.applicationInfo.loadIcon(this.activity.getPackageManager())));
-      label126:
+      label128:
       if (k == 0) {
-        break label250;
+        break label252;
       }
       if (Build.VERSION.SDK_INT <= 7) {
-        break label241;
+        break label243;
       }
       if ((paramPackageInfo.applicationInfo.flags & 0x40000) == 0) {
-        break label232;
+        break label234;
       }
       paramString1.put(1);
     }
@@ -161,33 +161,33 @@ public class AppInterface
         break;
       }
       return null;
-      label177:
+      label179:
       if ("false".equals(paramString2))
       {
         j = 0;
         break label24;
       }
       return null;
-      label194:
+      label196:
       if ("false".equals(paramString3))
       {
         k = 0;
         break label37;
       }
       return null;
-      label212:
+      label214:
       paramString1.put("");
-      break label99;
-      label222:
+      break label101;
+      label224:
       paramString1.put("");
-      break label126;
-      label232:
+      break label128;
+      label234:
       paramString1.put(0);
       continue;
-      label241:
+      label243:
       paramString1.put(0);
       continue;
-      label250:
+      label252:
       paramString1.put(-1);
     }
   }

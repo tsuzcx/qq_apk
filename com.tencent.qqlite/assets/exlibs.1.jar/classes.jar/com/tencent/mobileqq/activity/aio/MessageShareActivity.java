@@ -111,10 +111,10 @@ public class MessageShareActivity
   {
     super.onCreate(paramBundle);
     super.setContentView(new View(this));
-    this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624119);
+    this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624120);
     this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
     this.jdField_a_of_type_AndroidAppDialog.setContentView(2130903271);
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131297431)).setText(2131364057);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131297431)).setText(2131364068);
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
     if (this.jdField_a_of_type_AndroidOsBundle != null)
     {

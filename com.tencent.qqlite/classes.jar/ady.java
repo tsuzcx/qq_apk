@@ -1,38 +1,40 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.text.Editable;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class ady
-  extends ClickableSpan
+  implements DialogInterface.OnDismissListener
 {
-  public ady(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, String paramString1, String paramString2) {}
+  public ady(ChatHistory paramChatHistory, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, "CliOper", "", this.b, "0X8004937", "0X8004937", 0, 0, "", "", "", "");
-    try
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.b.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    int i = ((MessageSearchDialog)paramDialogInterface).b();
+    if (QLog.isColorLevel()) {
+      QLog.i("ChatHistory", 2, "onDismiss, recordCount : " + i);
+    }
+    if (i <= 0) {}
+    int j;
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
       return;
-    }
-    catch (ActivityNotFoundException paramView)
-    {
-      paramView.printStackTrace();
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16732929);
-    paramTextPaint.setUnderlineText(false);
+      j = (i - 1) / 8 + 1;
+      if (QLog.isColorLevel()) {
+        QLog.i("ChatHistory", 2, "onDismiss, pageIndex = " + j);
+      }
+    } while (j < 0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_Int = ((i - 1) % 8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(j));
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.getText().length());
   }
 }
 

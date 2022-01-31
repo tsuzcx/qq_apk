@@ -34,13 +34,13 @@ import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 import com.tencent.tencentmap.mapsdk.map.MapView;
 import com.tencent.tencentmap.mapsdk.map.MapView.LayoutParams;
 import com.tencent.tencentmap.mapsdk.map.Projection;
-import eqf;
-import eqg;
-import eqh;
-import eqi;
-import eqj;
-import eqk;
-import eql;
+import erv;
+import erw;
+import erx;
+import ery;
+import erz;
+import esa;
+import esb;
 import java.util.ArrayList;
 
 public class NearbyTroopsMapView
@@ -89,15 +89,15 @@ public class NearbyTroopsMapView
     this.jdField_b_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = false;
     this.e = false;
-    this.jdField_a_of_type_AndroidOsHandler = new eqf(this);
-    this.jdField_a_of_type_JavaLangThread = new eqg(this, "qqmapview_calculate_position");
+    this.jdField_a_of_type_AndroidOsHandler = new erv(this);
+    this.jdField_a_of_type_JavaLangThread = new erw(this, "qqmapview_calculate_position");
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838282);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838301);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
     addView(this.jdField_b_of_type_AndroidWidgetImageView);
-    paramAttributeSet = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838283);
+    paramAttributeSet = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838302);
     paramContext = (NearbyTroopsActivity)this.jdField_a_of_type_AndroidContentContext;
     if ((paramContext.getAppRuntime() instanceof QQAppInterface)) {}
     for (paramContext = ((QQAppInterface)paramContext.getAppRuntime()).a();; paramContext = "")
@@ -105,21 +105,21 @@ public class NearbyTroopsMapView
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewItemOverlay = new NearbyTroopsMapViewItemOverlay(paramAttributeSet, paramContext);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewItemOverlay.setShadowEnable(false);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewItemOverlay.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewItemOverlay.setOnFocusChangeListener(new eqh(this));
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewItemOverlay.setOnFocusChangeListener(new erx(this));
       addOverlay(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewItemOverlay);
       this.j = getZoomLevel();
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903324, this, false);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297710));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297711));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297712));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297713));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297708));
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903327, this, false);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297714));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297715));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297716));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297717));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297712));
       this.jdField_a_of_type_AndroidViewView.setVisibility(4);
       addView(this.jdField_a_of_type_AndroidViewView);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130968630);
+      this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130968631);
       this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297714));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297718));
       this.jdField_a_of_type_JavaLangThread.setPriority(10);
       this.jdField_a_of_type_JavaLangThread.start();
       return;
@@ -312,8 +312,8 @@ public class NearbyTroopsMapView
     {
       k = localView.getHeight();
       int m = Utils.a(this.jdField_a_of_type_AndroidContentContext, 55.0F);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = new ValueAnimation(Integer.valueOf(getHeight()), Integer.valueOf(k - m), new eqi(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setAnimationListener(new eqj(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = new ValueAnimation(Integer.valueOf(getHeight()), Integer.valueOf(k - m), new ery(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setAnimationListener(new erz(this));
     }
     for (;;)
     {
@@ -322,8 +322,8 @@ public class NearbyTroopsMapView
       return;
       b(false);
       k = Utils.a(this.jdField_a_of_type_AndroidContentContext, 150.0F);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = new ValueAnimation(Integer.valueOf(getHeight()), Integer.valueOf(k), new eqk(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setAnimationListener(new eql(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = new ValueAnimation(Integer.valueOf(getHeight()), Integer.valueOf(k), new esa(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setAnimationListener(new esb(this));
     }
   }
   
@@ -403,7 +403,7 @@ public class NearbyTroopsMapView
     ((Intent)localObject).putExtra("location_name", paramView.jdField_a_of_type_JavaLangString);
     ((Intent)localObject).putExtra("from", 10);
     ((Intent)localObject).putExtra("mode", 1);
-    ((Intent)localObject).putExtra("leftViewText", this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363113));
+    ((Intent)localObject).putExtra("leftViewText", this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363123));
     this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
   }
   

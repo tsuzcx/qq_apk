@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import cgk;
+import chl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
@@ -36,7 +36,7 @@ public class BindNumberFromPcActivity
   {
     setTitle("验证手机号码");
     if (this.jdField_a_of_type_Boolean) {
-      setLeftButton(2131363523, null);
+      setLeftButton(2131363534, null);
     }
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297388));
     int i = this.jdField_a_of_type_JavaLangString.length();
@@ -54,17 +54,17 @@ public class BindNumberFromPcActivity
   {
     if (!NetworkUtil.e(this))
     {
-      b(2131363450);
+      b(2131363461);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cgk(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new chl(this);
       this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-    b(2131363381, 1000L);
+    b(2131363392, 1000L);
   }
   
   private void f()
@@ -79,7 +79,7 @@ public class BindNumberFromPcActivity
   {
     super.finish();
     if (this.jdField_a_of_type_Boolean) {
-      overridePendingTransition(2130968589, 2130968637);
+      overridePendingTransition(2130968589, 2130968641);
     }
   }
   

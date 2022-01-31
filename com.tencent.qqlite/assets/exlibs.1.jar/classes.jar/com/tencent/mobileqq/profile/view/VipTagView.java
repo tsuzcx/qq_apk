@@ -17,8 +17,8 @@ import com.tencent.mobileqq.utils.ValueAnimation;
 import com.tencent.mobileqq.utils.drag_n_drop.DragAndDropDetector.DragSource;
 import com.tencent.mobileqq.utils.drag_n_drop.DragAndDropDetector.Draggable;
 import com.tencent.mobileqq.utils.drag_n_drop.DragAndDropDetector.DropTarget;
-import eai;
-import eaj;
+import ebk;
+import ebl;
 
 public final class VipTagView
   extends TextView
@@ -26,7 +26,7 @@ public final class VipTagView
 {
   public static final int a = 99;
   public static final String a = "99+";
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131493082, 2131493083, 2131493084, 2131493085, 2131493086 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131493084, 2131493085, 2131493086, 2131493087, 2131493088 };
   public static final String b = "+1";
   private float jdField_a_of_type_Float;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
@@ -72,7 +72,7 @@ public final class VipTagView
   
   private void a(int paramInt)
   {
-    setBackgroundResource(2130839028);
+    setBackgroundResource(2130839061);
     if ((paramInt > 0) && (paramInt <= 5))
     {
       Object localObject = getBackground();
@@ -110,8 +110,8 @@ public final class VipTagView
   {
     setClickable(true);
     Resources localResources = getResources();
-    setTextSize(0, localResources.getDimensionPixelSize(2131493087));
-    int i = localResources.getDimensionPixelSize(2131493088);
+    setTextSize(0, localResources.getDimensionPixelSize(2131493089));
+    int i = localResources.getDimensionPixelSize(2131493090);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(i);
@@ -119,10 +119,10 @@ public final class VipTagView
     this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText("+1"), i, Bitmap.Config.ARGB_4444);
     new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap).drawText("+1", 0.0F, i, this.jdField_a_of_type_AndroidGraphicsPaint);
     this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator = new ShakeEffectGenerator(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(1.0F), new eai(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(1.0F), new ebk(this));
     this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setDuration(800L);
     this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setAnimationListener(new eaj(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setAnimationListener(new ebl(this));
   }
   
   private void c()

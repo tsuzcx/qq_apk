@@ -195,13 +195,13 @@ public class FriendListOpenFrame$FriendListAdapter
     Bitmap localBitmap;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903620, paramViewGroup, false);
+      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903629, paramViewGroup, false);
       paramViewGroup = new FriendListOpenFrame.ViewHolder();
       paramViewGroup.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131297010));
       paramViewGroup.e = ((TextView)paramView.findViewById(2131297009));
-      paramViewGroup.a = ((CheckBox)paramView.findViewById(2131298744));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296453));
-      paramViewGroup.f = ((TextView)paramView.findViewById(2131296455));
+      paramViewGroup.a = ((CheckBox)paramView.findViewById(2131298770));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296456));
+      paramViewGroup.f = ((TextView)paramView.findViewById(2131296458));
       paramView.setTag(paramViewGroup);
       if (i >= 0) {
         break label380;
@@ -222,7 +222,7 @@ public class FriendListOpenFrame$FriendListAdapter
       if (localBitmap != null) {
         break label354;
       }
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838036);
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838055);
       ImageLoader.a().a(localFriend.d, this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame);
     }
     for (;;)

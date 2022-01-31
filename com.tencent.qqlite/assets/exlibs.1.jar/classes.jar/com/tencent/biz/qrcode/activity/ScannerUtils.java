@@ -79,7 +79,7 @@ public class ScannerUtils
           paramBitmap = new Paint();
           paramBitmap.setAntiAlias(true);
           Rect localRect = new Rect(247, 247, 353, 353);
-          paramContext = BitmapFactory.decodeResource(paramContext.getResources(), 2130838017);
+          paramContext = BitmapFactory.decodeResource(paramContext.getResources(), 2130838036);
           localCanvas.drawBitmap(paramContext, null, localRect, paramBitmap);
           paramContext.recycle();
           return paramRect;
@@ -218,7 +218,7 @@ public class ScannerUtils
             AudioUtil.b(2131165191, false);
           }
           if (i2 == 0) {
-            break label574;
+            break label598;
           }
           QRResultHandler.a(paramQQAppInterface, paramAppActivity, str, i1);
           i1 = 0;
@@ -230,9 +230,9 @@ public class ScannerUtils
           if (!HttpUtil.a(paramAppActivity))
           {
             paramBoolean1 = DialogUtil.a(paramAppActivity, 230);
-            paramBoolean1.setMessage(2131362376);
+            paramBoolean1.setMessage(2131362377);
             paramBoolean2 = new qr(paramScannerView);
-            paramBoolean1.setPositiveButton(2131362795, paramBoolean2);
+            paramBoolean1.setPositiveButton(2131362802, paramBoolean2);
             paramBoolean1.setOnCancelListener(paramBoolean2);
             paramBoolean1.show();
             return;
@@ -259,19 +259,23 @@ public class ScannerUtils
               paramBoolean2 = new Intent(paramAppActivity, JoinDiscussionActivity.class);
               paramBoolean2.putExtra("innerSig", str);
               paramBoolean2.putExtra(i, c);
-              paramAppActivity.startActivity(paramBoolean2);
-              i1 = 0;
+              if (paramAppActivity.getIntent().getBooleanExtra("QRDecode", false) == true) {
+                paramAppActivity.startActivityForResult(paramBoolean2, 2);
+              }
+              for (;;)
+              {
+                i1 = 0;
+                break;
+                paramAppActivity.startActivity(paramBoolean2);
+              }
             }
-            else
-            {
-              a(paramBoolean1.booleanValue(), str, paramAppActivity, paramQQAppInterface, paramBoolean, paramScannerView, paramView);
-              i1 = 1;
-            }
+            a(paramBoolean1.booleanValue(), str, paramAppActivity, paramQQAppInterface, paramBoolean, paramScannerView, paramView);
+            i1 = 1;
           }
           else
           {
             QRResultHandler.a(paramQQAppInterface, paramAppActivity, str);
-            label574:
+            label598:
             i1 = 0;
           }
         }

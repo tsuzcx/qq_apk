@@ -23,7 +23,7 @@ class ChatActivityUtils$AddFriendSpan
     {
       paramView = (ChatActivity)paramView;
       if ((paramView.a() instanceof StrangerChatPie)) {
-        ((StrangerChatPie)paramView.a()).aa();
+        ((StrangerChatPie)paramView.a()).ab();
       }
     }
   }

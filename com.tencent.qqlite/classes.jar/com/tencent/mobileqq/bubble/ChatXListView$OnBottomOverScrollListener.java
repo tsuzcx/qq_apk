@@ -6,7 +6,7 @@ public abstract interface ChatXListView$OnBottomOverScrollListener
   
   public abstract void Y();
   
-  public abstract boolean i();
+  public abstract boolean j();
 }
 
 

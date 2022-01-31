@@ -1,41 +1,24 @@
+import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
-import android.widget.Scroller;
-import com.tencent.mobileqq.widget.TCTransitDrawable;
+import com.tencent.mobileqq.widget.AlbumImageProxy;
+import com.tencent.qphone.base.util.QLog;
 
 public class ezp
-  extends Handler
+  extends Thread
 {
-  public ezp(TCTransitDrawable paramTCTransitDrawable) {}
+  public ezp(AlbumImageProxy paramAlbumImageProxy, String paramString, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 1) {
-      if ((this.a.jdField_a_of_type_Boolean) && (!this.a.b) && (this.a.c)) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("AlbumImageProxy", 2, "AlbumImageProxy, decode Thread: filekey :" + this.jdField_a_of_type_JavaLangString);
     }
-    while (paramMessage.what != 2)
-    {
-      return;
-      if (this.a.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
-      {
-        int i = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-        int j = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
-        int k = this.a.f;
-        int m = this.a.g;
-        this.a.f = i;
-        this.a.g = j;
-        paramMessage = this.a;
-        paramMessage.d += i - k;
-        paramMessage = this.a;
-        paramMessage.e += j - m;
-        this.a.invalidateSelf();
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 50L);
-        return;
-      }
-      this.a.d();
-      return;
-    }
-    this.a.d();
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqWidgetAlbumImageProxy.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    Message localMessage = new Message();
+    localMessage.what = 0;
+    localMessage.obj = localBitmap;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAlbumImageProxy.a.sendMessage(localMessage);
   }
 }
 

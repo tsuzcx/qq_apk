@@ -1,11 +1,12 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-
-public class bmb
+class bmb
   implements Runnable
 {
-  public bmb(TroopAssistantActivity paramTroopAssistantActivity) {}
+  bmb(blz paramblz, String paramString) {}
   
-  public void run() {}
+  public void run()
+  {
+    this.jdField_a_of_type_Blz.a(this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

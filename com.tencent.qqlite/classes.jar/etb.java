@@ -1,13 +1,20 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
 
-public final class etb
-  implements MediaPlayer.OnCompletionListener
+public class etb
+  implements View.OnClickListener
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public etb(VideoViewX paramVideoViewX) {}
+  
+  public void onClick(View paramView)
   {
-    paramMediaPlayer.release();
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
+    if (VideoViewX.a(this.a) == -1) {
+      this.a.d = true;
+    }
+    if ((VideoViewX.a(this.a) != null) && (VideoViewX.a(this.a) != 0) && (VideoViewX.a(this.a) != 1) && (VideoViewX.a(this.a) != null)) {
+      VideoViewX.a(this.a);
+    }
   }
 }
 

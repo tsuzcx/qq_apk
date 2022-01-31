@@ -1,17 +1,17 @@
-import java.io.File;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
 
-class ebk
+public class ebk
+  implements ValueAnimation.AnimationUpdateListener
 {
-  private String a;
+  public ebk(VipTagView paramVipTagView) {}
   
-  public ebk(String paramString)
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    this.a = paramString;
-  }
-  
-  public File a(int paramInt, String paramString)
-  {
-    return null;
+    VipTagView.a(this.a, paramFloat1.floatValue());
+    this.a.invalidate();
   }
 }
 

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import fge;
+import fik;
 import java.net.URLEncoder;
 import mqq.manager.VerifyDevLockManager;
 import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
@@ -40,7 +40,7 @@ public class AuthDevUgActivity2
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private OpenSDKAppInterface jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface;
-  private VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new fge(this);
+  private VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new fik(this);
   private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
   private Button jdField_b_of_type_AndroidWidgetButton;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -57,19 +57,19 @@ public class AuthDevUgActivity2
     {
       if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null)
       {
-        String str = getString(2131364195) + ":" + this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
+        String str = getString(2131364206) + ":" + this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
         this.c.setText(str);
       }
-      this.jdField_b_of_type_AndroidWidgetButton.setText(getString(2131364209));
+      this.jdField_b_of_type_AndroidWidgetButton.setText(getString(2131364220));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       this.c.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       this.h.setVisibility(4);
-      setRightButton(2131362794, this);
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131364207));
-      this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131364209));
+      setRightButton(2131362801, this);
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131364218));
+      this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131364220));
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131364208));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131364219));
     }
   }
   
@@ -93,7 +93,7 @@ public class AuthDevUgActivity2
       ((StringBuilder)localObject1).append("?");
       ((StringBuilder)localObject1).append("plat=1");
       ((StringBuilder)localObject1).append("&app=1");
-      ((StringBuilder)localObject1).append("&version=3.4.0.607");
+      ((StringBuilder)localObject1).append("&version=3.5.0.660");
       ((StringBuilder)localObject1).append("&device=" + URLEncoder.encode(Build.DEVICE));
       ((StringBuilder)localObject1).append("&system=" + Build.VERSION.RELEASE);
       ((StringBuilder)localObject1).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
@@ -145,10 +145,10 @@ public class AuthDevUgActivity2
     {
     default: 
       return;
-    case 2131298188: 
+    case 2131298210: 
       d();
       return;
-    case 2131298180: 
+    case 2131298202: 
       paramView = new Intent(this, AuthDevVerifyCodeActivity2.class);
       if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null)
       {
@@ -206,19 +206,19 @@ public class AuthDevUgActivity2
         QLog.d("Q.devlock.AuthDevUgActivity2", 2, "seq=" + this.d);
       }
       getWindow().setFormat(-3);
-      setTheme(2131624267);
+      setTheme(2131624268);
       super.onCreate(paramBundle);
-      setContentView(2130903483);
-      setTitle(2131364189);
+      setContentView(2130903491);
+      setTitle(2131364200);
       this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)getAppRuntime());
       if ((this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.MbGuideInfo))) {
         j = this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.MbGuideInfo;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298185));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298186));
-      this.c = ((TextView)findViewById(2131298187));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298188));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131298180));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298207));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298208));
+      this.c = ((TextView)findViewById(2131298209));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298210));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131298202));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
       c();

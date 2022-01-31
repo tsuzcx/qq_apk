@@ -1,31 +1,12 @@
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class bhy
-  implements Runnable
+class bhy
+  implements DialogInterface.OnDismissListener
 {
-  public bhy(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  bhy(bhw parambhw) {}
   
-  public void run()
-  {
-    try
-    {
-      if ((RegisterQQNumberActivity.a(this.a) != null) && (RegisterQQNumberActivity.a(this.a).isShowing()))
-      {
-        RegisterQQNumberActivity.a(this.a).dismiss();
-        RegisterQQNumberActivity.a(this.a).cancel();
-      }
-      RegisterQQNumberActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

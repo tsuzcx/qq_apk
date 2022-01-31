@@ -1,43 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.DownloadInfo;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.mobileqq.utils.HttpDownloadUtil.HttpDownloadListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.config.ResourcePluginListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-public final class ast
-  extends Thread
+public class ast
+  extends ResourcePluginListener
 {
-  public ast(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, HttpDownloadUtil.HttpDownloadListener paramHttpDownloadListener) {}
+  public ast(Leba paramLeba) {}
   
-  public void run()
+  public void a(byte paramByte)
   {
-    boolean bool = false;
-    try
-    {
-      Object localObject = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      localObject = new DownloadInfo(this.jdField_a_of_type_JavaLangString, (File)localObject, 0);
-      if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (DownloadInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqUtilsHttpDownloadUtil$HttpDownloadListener) == 0) {
-        bool = true;
-      }
-      if (bool)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LebaIconDownloader", 2, "download ok");
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.i("LebaIconDownloader", 2, "download error,error code:" + bool);
-        return;
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
     }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("LebaIconDownloader", 2, localException.toString());
-      }
+    if (paramByte != -1) {
+      this.a.a.sendEmptyMessage(11340002);
     }
   }
 }

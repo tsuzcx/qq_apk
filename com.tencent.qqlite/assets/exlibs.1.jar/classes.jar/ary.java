@@ -2,7 +2,6 @@ import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.LbsBaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ary
   implements View.OnClickListener
@@ -11,10 +10,10 @@ public class ary
   
   public void onClick(View paramView)
   {
-    this.a.app.e(true);
-    if ((LbsBaseActivity.c(this.a) != null) && (LbsBaseActivity.c(this.a).isShowing())) {
-      LbsBaseActivity.c(this.a).dismiss();
+    if ((LbsBaseActivity.b(this.a) != null) && (LbsBaseActivity.b(this.a).isShowing())) {
+      LbsBaseActivity.b(this.a).dismiss();
     }
+    this.a.a();
   }
 }
 

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09055f" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f09057c" android:background="@drawable/common_strip_setting_top" android:paddingRight="10.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_alignParentTop="true">
-        <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a1" android:gravity="center_vertical" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c009f" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a021b" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0005" />
-        <com.tencent.widget.Switch android:id="@id/APKTOOL_DUPLICATE_id_0x7f09057d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a5" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09057e" android:paddingTop="6.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c009f" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a021c" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f09057c" />
-</RelativeLayout>
+    <include android:id="@id/search_box" android:clickable="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0301f3" />
+    <com.tencent.mobileqq.widget.TabBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090560" android:layout_width="fill_parent" android:layout_height="46.0dip" />
+</LinearLayout>

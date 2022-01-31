@@ -1,44 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.mobileqq.filemanager.data.WeiYunClassificationType;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 import com.tencent.qphone.base.util.QLog;
-import com.weiyun.sdk.IWyFileSystem.IWyCallback;
-import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
-import com.weiyun.sdk.data.WyCategoryInfo;
-import java.util.Iterator;
-import java.util.List;
 
 public class dqo
-  implements IWyFileSystem.IWyCallback
+  extends dpp
 {
-  public dqo(WeiYunLogicCenter paramWeiYunLogicCenter) {}
-  
-  public void a(List paramList)
+  public dqo(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunTypeList onSucceed, num[" + paramList.size() + "]");
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      WyCategoryInfo localWyCategoryInfo = (WyCategoryInfo)paramList.next();
-      WeiYunClassificationType localWeiYunClassificationType = new WeiYunClassificationType();
-      localWeiYunClassificationType.jdField_a_of_type_JavaLangString = localWyCategoryInfo.categoryId;
-      localWeiYunClassificationType.b = localWyCategoryInfo.name;
-      localWeiYunClassificationType.jdField_a_of_type_Long = localWyCategoryInfo.timestamp;
-      localWeiYunClassificationType.jdField_a_of_type_Int = localWyCategoryInfo.totalNum;
-      this.a.b.add(localWeiYunClassificationType);
-    }
-    this.a.a.a().a(true, 30, this.a.b);
+    super(paramOnlineFileSessionWorker);
   }
   
-  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
+  protected String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunTypeList onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
+    return "StateSenderCancelSendWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "]. recvOnLineFile entity is null");
+      return;
     }
-    this.a.a.a().a(false, 30, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg });
+    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 8);
+    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 8);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Dpp.a() + "->StateSenderCancelSend)");
+    this.jdField_a_of_type_Dpp = new dqm(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
   }
 }
 

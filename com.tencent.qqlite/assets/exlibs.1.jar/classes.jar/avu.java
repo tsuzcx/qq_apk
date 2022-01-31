@@ -1,15 +1,27 @@
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.MusicSharePlayActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
 
 public class avu
   extends Handler
 {
-  public avu(MusicSharePlayActivity paramMusicSharePlayActivity) {}
+  public avu(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
   
   public void handleMessage(Message paramMessage)
   {
-    int i = paramMessage.what;
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+      do
+      {
+        return;
+      } while ((this.a.c == null) || (this.a.c.length() <= 0));
+      this.a.b.setText(this.a.c);
+      return;
+    }
+    this.a.a.setText(this.a.d);
   }
 }
 

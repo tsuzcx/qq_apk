@@ -1,6 +1,6 @@
 package com.dataline.util;
 
-import dm;
+import dj;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -51,9 +51,9 @@ public class HttpDownload
         if (localHttpTar.jdField_a_of_type_JavaLangThread == null)
         {
           this.h += 1;
-          localObject2 = new dm();
-          ((dm)localObject2).jdField_a_of_type_ComDatalineUtilHttpDownload = this;
-          ((dm)localObject2).jdField_a_of_type_ComDatalineUtilHttpDownload$HttpTar = localHttpTar;
+          localObject2 = new dj();
+          ((dj)localObject2).jdField_a_of_type_ComDatalineUtilHttpDownload = this;
+          ((dj)localObject2).jdField_a_of_type_ComDatalineUtilHttpDownload$HttpTar = localHttpTar;
           localHttpTar.jdField_a_of_type_JavaLangThread = new Thread((Runnable)localObject2, "download thread");
           localHttpTar.jdField_a_of_type_JavaLangThread.start();
           return;

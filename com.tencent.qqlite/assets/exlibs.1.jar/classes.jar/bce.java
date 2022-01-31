@@ -1,48 +1,15 @@
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.smtt.sdk.stat.DesUtils;
-import java.io.UnsupportedEncodingException;
+import com.tencent.qphone.base.util.QLog;
 
 public class bce
-  extends Thread
+  implements Runnable
 {
-  public bce(QQBrowserActivity paramQQBrowserActivity, String paramString)
-  {
-    super(paramString);
-  }
+  public bce(QQBrowserActivity paramQQBrowserActivity) {}
   
   public void run()
   {
-    Object localObject = null;
-    label31:
-    do
-    {
-      byte[] arrayOfByte2;
-      try
-      {
-        byte[] arrayOfByte1 = "65dRa93L".getBytes("utf-8");
-        if (arrayOfByte1 == null) {
-          return;
-        }
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        for (;;)
-        {
-          arrayOfByte2 = null;
-        }
-      }
-      try
-      {
-        byte[] arrayOfByte3 = "mqq|icon|13".getBytes("utf-8");
-        localObject = arrayOfByte3;
-      }
-      catch (Exception localException)
-      {
-        break label31;
-      }
-    } while (localObject == null);
-    arrayOfByte2 = DesUtils.DesEncrypt(arrayOfByte2, localObject, 1);
-    QQBrowserActivity.a(this.a, "http://p.mb.qq.com/sdk", arrayOfByte2);
+    QLog.doReportLogSelf(AppSetting.a, "FeedbackReport", "");
   }
 }
 

@@ -79,11 +79,11 @@ public class TroopInfoManager
     //   36: iconst_0
     //   37: putfield 50	com/tencent/mobileqq/model/TroopInfoManager:jdField_c_of_type_Boolean	Z
     //   40: aload_0
-    //   41: new 52	dyc
+    //   41: new 52	dzf
     //   44: dup
     //   45: aload_0
     //   46: invokestatic 57	com/tencent/mobileqq/app/ThreadManager:b	()Landroid/os/Looper;
-    //   49: invokespecial 60	dyc:<init>	(Lcom/tencent/mobileqq/model/TroopInfoManager;Landroid/os/Looper;)V
+    //   49: invokespecial 60	dzf:<init>	(Lcom/tencent/mobileqq/model/TroopInfoManager;Landroid/os/Looper;)V
     //   52: putfield 62	com/tencent/mobileqq/model/TroopInfoManager:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   55: aload_0
     //   56: aload_1

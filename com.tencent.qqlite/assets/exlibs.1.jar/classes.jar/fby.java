@@ -1,16 +1,23 @@
-import android.text.Editable;
-import com.tencent.open.agent.SendStoryActivity.CustomLengthInputFilter;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
+import android.graphics.Paint;
+import com.tencent.mobileqq.widget.UnderlinePageIndicator;
 
 public class fby
-  implements Comparator
+  implements Runnable
 {
-  public fby(SendStoryActivity.CustomLengthInputFilter paramCustomLengthInputFilter, Editable paramEditable) {}
+  public fby(UnderlinePageIndicator paramUnderlinePageIndicator) {}
   
-  public int a(Friend paramFriend1, Friend paramFriend2)
+  public void run()
   {
-    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1);
+    if (!this.a.a) {}
+    int i;
+    do
+    {
+      return;
+      i = Math.max(UnderlinePageIndicator.a(this.a).getAlpha() - UnderlinePageIndicator.a(this.a), 0);
+      UnderlinePageIndicator.a(this.a).setAlpha(i);
+      this.a.invalidate();
+    } while (i <= 0);
+    this.a.postDelayed(this, 30L);
   }
 }
 

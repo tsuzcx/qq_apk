@@ -1,21 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class bri
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnDismissListener
 {
   public bri(UpgradeActivity paramUpgradeActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramInt == 4)
-    {
-      this.a.finish();
-      this.a.d();
-    }
-    return false;
+    this.a.finish();
   }
 }
 

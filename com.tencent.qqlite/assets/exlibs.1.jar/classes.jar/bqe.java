@@ -1,19 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bqe
-  implements View.OnClickListener
+  extends Handler
 {
-  public bqe(TroopTransferActivity paramTroopTransferActivity) {}
+  public bqe(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      if (TroopRequestActivity.a(this.a) != null) {
+        TroopRequestActivity.a(this.a).dismiss();
+      }
+      QQToast.a(this.a, this.a.getString(2131363398), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      if (TroopRequestActivity.a(this.a) != null) {
+        TroopRequestActivity.a(this.a).dismiss();
+      }
+      QQToast.a(this.a, this.a.getString(2131363399), 0).b(this.a.getTitleBarHeight());
+      return;
     }
-    this.a.finish();
+    paramMessage = (String)paramMessage.obj;
+    this.a.a.setText(paramMessage + "");
   }
 }
 

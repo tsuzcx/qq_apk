@@ -1,14 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.dataline.activities.LiteVideoActivity.ImageAdapter;
+import com.dataline.activities.LiteWifiphotoActivity;
 
 public class bt
+  implements Runnable
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
+  public bt(LiteWifiphotoActivity paramLiteWifiphotoActivity) {}
   
-  public bt(LiteVideoActivity.ImageAdapter paramImageAdapter) {}
+  public void run()
+  {
+    LiteWifiphotoActivity.a(this.a);
+  }
 }
 
 

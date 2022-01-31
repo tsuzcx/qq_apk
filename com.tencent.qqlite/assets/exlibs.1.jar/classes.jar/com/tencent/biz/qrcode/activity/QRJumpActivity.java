@@ -27,7 +27,7 @@ public class QRJumpActivity
       return false;
     }
     this.a = new QQProgressDialog(this, super.getTitleBarHeight());
-    this.a.b(2131362435);
+    this.a.b(2131362436);
     this.a.setOnCancelListener(new qe(this));
     this.a.show();
     paramBundle = URLDecoder.decode(paramBundle);

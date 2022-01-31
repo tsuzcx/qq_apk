@@ -1,17 +1,39 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberCardActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.TroopManageActivity;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.widget.Switch;
 
 public class bnp
-  implements View.OnClickListener
+  extends BizTroopObserver
 {
-  public bnp(TroopMemberCardActivity paramTroopMemberCardActivity) {}
+  public bnp(TroopManageActivity paramTroopManageActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    ReportController.b(this.a.app, "P_CliOper", "Grp_mber", "", "mber_card", "Clk_set", 0, 0, this.a.c, "", "", "");
-    this.a.k();
+    if (paramBoolean1)
+    {
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
+      ((TroopInfo)localObject).dwGroupFlagExt ^= 0x40000000;
+      localObject = (TroopManager)this.a.app.getManager(44);
+      if (localObject != null) {
+        ((TroopManager)localObject).b(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+      }
+      return;
+    }
+    this.a.a(1, this.a.getString(2131362567));
+    Object localObject = ((FormSwitchItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[7].findViewById(2131298549)).a();
+    ((Switch)localObject).setOnCheckedChangeListener(null);
+    if (!paramBoolean2) {}
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      ((Switch)localObject).setChecked(paramBoolean1);
+      ((Switch)localObject).setOnCheckedChangeListener(this.a);
+      return;
+    }
   }
 }
 

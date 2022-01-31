@@ -1,18 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
 public class cge
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  public cge(BaseActivityView paramBaseActivityView) {}
+  public cge(MainAssistObserver paramMainAssistObserver) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (paramInt == 4) && (this.a.a.h()) && (NetworkUtil.e(this.a.getContext()));
+    paramDialogInterface.dismiss();
   }
 }
 

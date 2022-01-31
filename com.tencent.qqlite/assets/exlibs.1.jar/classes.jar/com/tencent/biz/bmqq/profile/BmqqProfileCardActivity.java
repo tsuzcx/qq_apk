@@ -214,39 +214,39 @@ public class BmqqProfileCardActivity
         }
         paramInt += 1;
       }
-      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 29, 2131363885, 2130838756, 2131361812);
+      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 29, 2131363896, 2130838783, 2131361812);
       localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1);
       if (localObject != null) {
         ((View)localObject).setVisibility(0);
       }
       paramInt = 1;
       continue;
-      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 30, 2131363884, 2130838753, 2131361810);
+      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 30, 2131363895, 2130838780, 2131361810);
       localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1);
       if (localObject != null) {
         ((View)localObject).setVisibility(0);
       }
-      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 32, 2131363080, 2130838759, 2131361811);
+      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 32, 2131363090, 2130838800, 2131361811);
       paramInt = 3;
       continue;
-      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 30, 2131363884, 2130838753, 2131361810);
+      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 30, 2131363895, 2130838780, 2131361810);
       localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1);
       if (localObject != null) {
         ((View)localObject).setVisibility(0);
       }
-      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 32, 2131363080, 2130838759, 2131361811);
+      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 32, 2131363090, 2130838800, 2131361811);
       paramInt = 3;
       continue;
-      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 32, 2131363080, 2130838759, 2131361811);
+      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 32, 2131363090, 2130838800, 2131361811);
       paramInt = 1;
       continue;
-      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 30, 2131363884, 2130838753, 2131361810);
+      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 30, 2131363895, 2130838780, 2131361810);
       paramInt = 1;
       continue;
-      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 30, 2131363884, 2130838753, 2131361810);
+      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 30, 2131363895, 2130838780, 2131361810);
       paramInt = 1;
       continue;
-      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 32, 2131363080, 2130838759, 2131361811);
+      a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 32, 2131363090, 2130838800, 2131361811);
       paramInt = 1;
       continue;
       paramInt = 0;
@@ -264,22 +264,22 @@ public class BmqqProfileCardActivity
       paramView.setTag(Integer.valueOf(paramInt1));
       paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       paramView.setContentDescription(getString(paramInt4));
-      localTextView = (TextView)paramView.findViewById(2131298339);
+      localTextView = (TextView)paramView.findViewById(2131298361);
       localTextView.setText(paramInt2);
       localTextView.setContentDescription(getString(paramInt4));
       localTextView.setCompoundDrawablesWithIntrinsicBounds(paramInt3, 0, 0, 0);
       if ((!a(paramInt1)) || (this.jdField_a_of_type_Boolean)) {
         break label135;
       }
-      localTextView.setTextColor(getResources().getColor(2131427493));
+      localTextView.setTextColor(getResources().getColor(2131427497));
     }
     for (;;)
     {
       localTextView.setEnabled(this.jdField_a_of_type_Boolean);
       try
       {
-        paramView.setBackgroundResource(2130838750);
-        localTextView.setTextColor(getResources().getColorStateList(2131427491));
+        paramView.setBackgroundResource(2130838777);
+        localTextView.setTextColor(getResources().getColorStateList(2131427495));
         return;
       }
       catch (Exception paramView)
@@ -287,29 +287,29 @@ public class BmqqProfileCardActivity
         label135:
         paramView.printStackTrace();
       }
-      localTextView.setTextColor(getResources().getColor(2131427491));
+      localTextView.setTextColor(getResources().getColor(2131427495));
     }
   }
   
   private void a(LinearLayout paramLinearLayout)
   {
     paramLinearLayout.removeAllViews();
-    int k = getResources().getColor(2131427446);
-    View localView = View.inflate(this, 2130903517, null);
+    int k = getResources().getColor(2131427449);
+    View localView = View.inflate(this, 2130903525, null);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -1);
     localLayoutParams.weight = 1.0F;
     paramLinearLayout.addView(localView, localLayoutParams);
     localView = new View(this);
     localView.setBackgroundColor(k);
     paramLinearLayout.addView(localView, new LinearLayout.LayoutParams(1, -1));
-    localView = View.inflate(this, 2130903517, null);
+    localView = View.inflate(this, 2130903525, null);
     localLayoutParams = new LinearLayout.LayoutParams(0, -1);
     localLayoutParams.weight = 1.0F;
     paramLinearLayout.addView(localView, localLayoutParams);
     localView = new View(this);
     localView.setBackgroundColor(k);
     paramLinearLayout.addView(localView, new LinearLayout.LayoutParams(1, -1));
-    localView = View.inflate(this, 2130903517, null);
+    localView = View.inflate(this, 2130903525, null);
     localLayoutParams = new LinearLayout.LayoutParams(0, -1);
     localLayoutParams.weight = 1.0F;
     paramLinearLayout.addView(localView, localLayoutParams);
@@ -597,7 +597,7 @@ public class BmqqProfileCardActivity
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296604));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296607));
     a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -636,35 +636,35 @@ public class BmqqProfileCardActivity
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)findViewById(2131296601));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)findViewById(2131296604));
     this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.jdField_f_of_type_Int = 1;
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296605));
-    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296606));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296607));
-    this.jdField_g_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_d_of_type_AndroidWidgetRelativeLayout.findViewById(2131296609));
-    this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.jdField_g_of_type_AndroidWidgetRelativeLayout.findViewById(2131296621));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296608));
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296609));
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296610));
+    this.jdField_g_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_d_of_type_AndroidWidgetRelativeLayout.findViewById(2131296612));
+    this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.jdField_g_of_type_AndroidWidgetRelativeLayout.findViewById(2131296624));
     this.jdField_g_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(8));
     this.jdField_g_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296610));
-    this.jdField_h_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_e_of_type_AndroidWidgetRelativeLayout.findViewById(2131296612));
-    this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)this.jdField_h_of_type_AndroidWidgetRelativeLayout.findViewById(2131296621));
+    this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296613));
+    this.jdField_h_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_e_of_type_AndroidWidgetRelativeLayout.findViewById(2131296615));
+    this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)this.jdField_h_of_type_AndroidWidgetRelativeLayout.findViewById(2131296624));
     this.jdField_h_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(7));
     this.jdField_h_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296613));
-    this.jdField_i_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131296615));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_i_of_type_AndroidWidgetRelativeLayout.findViewById(2131296621));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296616));
+    this.jdField_i_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131296618));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_i_of_type_AndroidWidgetRelativeLayout.findViewById(2131296624));
     this.jdField_i_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(13));
     this.jdField_i_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296616));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131296618));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131296621));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296619));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131296621));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131296624));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(16));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_f_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296619));
-    this.jdField_j_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_f_of_type_AndroidWidgetRelativeLayout.findViewById(2131296620));
-    this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)this.jdField_j_of_type_AndroidWidgetRelativeLayout.findViewById(2131296624));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131296602));
+    this.jdField_f_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296622));
+    this.jdField_j_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_f_of_type_AndroidWidgetRelativeLayout.findViewById(2131296623));
+    this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)this.jdField_j_of_type_AndroidWidgetRelativeLayout.findViewById(2131296627));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131296605));
   }
   
   private void g()
@@ -747,7 +747,7 @@ public class BmqqProfileCardActivity
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqJobTitle))
       {
         this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_g_of_type_AndroidWidgetTextView.setBackgroundResource(2130837643);
+        this.jdField_g_of_type_AndroidWidgetTextView.setBackgroundResource(2130837668);
         this.jdField_g_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo.mBmqqJobTitle);
       }
       int[] arrayOfInt;
@@ -832,21 +832,21 @@ public class BmqqProfileCardActivity
               }
               if (i5 == 0)
               {
-                this.jdField_g_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837650);
+                this.jdField_g_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837675);
                 if (i5 != 1) {
                   break label754;
                 }
-                this.jdField_h_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837650);
+                this.jdField_h_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837675);
                 label666:
                 if (i5 != 2) {
                   break label767;
                 }
-                this.jdField_i_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837650);
+                this.jdField_i_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837675);
                 label682:
                 if (i5 != 3) {
                   break label780;
                 }
-                this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837650);
+                this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837675);
               }
               for (;;)
               {
@@ -856,16 +856,16 @@ public class BmqqProfileCardActivity
                 this.jdField_f_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
                 this.jdField_j_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
                 return;
-                this.jdField_g_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837651);
+                this.jdField_g_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837676);
                 break;
                 label754:
-                this.jdField_h_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837651);
+                this.jdField_h_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837676);
                 break label666;
                 label767:
-                this.jdField_i_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837651);
+                this.jdField_i_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837676);
                 break label682;
                 label780:
-                this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837651);
+                this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837676);
               }
               label791:
               break;
@@ -929,20 +929,20 @@ public class BmqqProfileCardActivity
   private void o()
   {
     int m = 1;
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296598));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296601));
     label75:
     int k;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
     {
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(2131363862);
+      this.jdField_d_of_type_AndroidWidgetTextView.setText(2131363873);
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296599));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296602));
       if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.g != 6) {
         break label175;
       }
       a();
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new kx(this));
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296600));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296603));
       if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
         break label192;
       }
@@ -958,10 +958,10 @@ public class BmqqProfileCardActivity
       this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_e_of_type_AndroidWidgetTextView.setEnabled(this.jdField_a_of_type_Boolean);
       return;
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(2131363861);
+      this.jdField_d_of_type_AndroidWidgetTextView.setText(2131363872);
       break;
       label175:
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131363113));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131363123));
       break label75;
       label192:
       k = m;
@@ -1645,7 +1645,7 @@ public class BmqqProfileCardActivity
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
       if (ProfileCardUtil.a()) {
-        a(2131363439, 1);
+        a(2131363450, 1);
       }
     }
     do
@@ -1667,7 +1667,7 @@ public class BmqqProfileCardActivity
     } while (this.jdField_a_of_type_AndroidWidgetImageView == null);
     if (ProfileCardUtil.a())
     {
-      a(2131363439, 1);
+      a(2131363450, 1);
       return;
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 41) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals("0")))
@@ -1851,7 +1851,7 @@ public class BmqqProfileCardActivity
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363381);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363392);
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
@@ -1902,18 +1902,18 @@ public class BmqqProfileCardActivity
         break label117;
       }
       if (k > 99) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131362950) + "(" + "99+" + ")");
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131362957) + "(" + "99+" + ")");
       }
     }
     else
     {
       return;
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131362950) + "(" + k + ")");
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131362957) + "(" + k + ")");
     return;
     label117:
-    getIntent().putExtra("leftViewText", getString(2131362950));
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131362950));
+    getIntent().putExtra("leftViewText", getString(2131362957));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131362957));
   }
   
   public void a(int paramInt1, int paramInt2)

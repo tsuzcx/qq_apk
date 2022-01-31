@@ -1,18 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
 
-public class aqe
-  extends BroadcastReceiver
+class aqe
+  implements Runnable
 {
-  public aqe(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  aqe(aqa paramaqa) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ((paramIntent != null) && (paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
-      this.a.finish();
-    }
+    this.a.a.a.a();
   }
 }
 

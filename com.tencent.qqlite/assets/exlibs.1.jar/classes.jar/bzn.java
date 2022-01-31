@@ -1,76 +1,58 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.utils.SendMessageHandler;
+import android.view.View;
+import com.tencent.common.galleryactivity.AbstractImageAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageInfo;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.GestureSelectGridView;
 
 public class bzn
-  extends MessageObserver
+  implements AdapterView.OnItemClickListener
 {
-  public bzn(FriendChatPie paramFriendChatPie) {}
+  public bzn(AIOImageListScene paramAIOImageListScene) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramString1 == null) || (!paramString1.equals(FriendChatPie.g(this.a).jdField_a_of_type_JavaLangString)) || (paramInt1 != FriendChatPie.h(this.a).jdField_a_of_type_Int))
+    boolean bool = true;
+    AIOImageInfo localAIOImageInfo = AIOImageListScene.a(this.a).a(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOImageListScene", 2, "onItemClick" + paramInt + " FirstVisiblePosition " + AIOImageListScene.a(this.a).q() + " LastVisiblePosition " + AIOImageListScene.b(this.a).r());
+    }
+    int i;
+    if (AIOImageListScene.a(this.a)) {
+      if (localAIOImageInfo.b() == 1)
+      {
+        i = 1;
+        AIOImageListScene localAIOImageListScene = this.a;
+        if (i != 0) {
+          break label248;
+        }
+        label116:
+        AIOImageListScene.a(localAIOImageListScene, localAIOImageInfo, bool);
+        if (!AIOImageListScene.a(this.a, paramView, localAIOImageInfo)) {
+          ((AbstractImageAdapter)paramAdapterView.a()).notifyDataSetChanged();
+        }
+        AIOImageListScene.b(this.a);
+      }
+    }
+    for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ChatActivity", 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+        QLog.d("AIOImageListScene", 2, "onItemClick" + paramInt + " FirstVisiblePosition " + AIOImageListScene.e(this.a).q() + " LastVisiblePosition " + AIOImageListScene.f(this.a).r() + " SelectedIndex = " + AIOImageListScene.a(this.a).b());
       }
       return;
+      i = 0;
+      break;
+      label248:
+      bool = false;
+      break label116;
+      AIOImageListScene.a(this.a).a(paramInt);
+      AIOImageListScene.a(this.a).b(AIOImageListScene.c(this.a).q());
+      AIOImageListScene.a(this.a).c(AIOImageListScene.d(this.a).r());
+      this.a.n();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-    }
-    this.a.a(196608);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (FriendChatPie.j(this.a).jdField_a_of_type_JavaLangString != null) && (FriendChatPie.k(this.a).jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.a();
-      if (paramBoolean) {
-        this.a.h();
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (paramBoolean1) {
-      this.a.C();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (FriendChatPie.l(this.a).jdField_a_of_type_JavaLangString != null) && (FriendChatPie.m(this.a).jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.a();
-      if (paramBoolean) {
-        this.a.h();
-      }
-    }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.a(65536);
-  }
-  
-  protected void d(boolean paramBoolean, String paramString)
-  {
-    MultiMsgManager.a().b("send struct msg  ");
-    MultiMsgManager.a().c();
-    MultiMsgManager.a().a("all cost time ");
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(FriendChatPie.i(this.a).jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.a.j = true;
-    this.a.a(131072);
   }
 }
 

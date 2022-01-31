@@ -1,40 +1,30 @@
-import android.database.Cursor;
-import android.os.Parcel;
-import com.tencent.open.agent.datamodel.FriendGroup;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import com.tencent.open.component.cache.database.DbCacheData.Structure;
+import android.content.res.Resources;
+import android.graphics.Xfermode;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.widget.DrawableContainer;
+import com.tencent.mobileqq.widget.DrawableContainer.ContainerState;
+import com.tencent.mobileqq.widget.XfermodeDrawable;
 
-public final class fcf
-  implements DbCacheData.DbCreator
+public class fcf
+  extends DrawableContainer.ContainerState
 {
-  public int a()
+  public Xfermode a;
+  
+  public fcf(Drawable paramDrawable, DrawableContainer paramDrawableContainer, Xfermode paramXfermode)
   {
-    return 0;
+    super(paramDrawable, paramDrawableContainer);
+    this.a = paramXfermode;
   }
   
-  public FriendGroup a(Cursor paramCursor)
+  fcf(fcf paramfcf, DrawableContainer paramDrawableContainer, Resources paramResources)
   {
-    Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
-    if (localObject == null) {
-      return null;
-    }
-    paramCursor = Parcel.obtain();
-    paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-    paramCursor.setDataPosition(0);
-    localObject = new FriendGroup();
-    ((FriendGroup)localObject).a(paramCursor);
-    paramCursor.recycle();
-    return localObject;
+    super(paramfcf, paramDrawableContainer, paramResources);
+    this.a = paramfcf.a;
   }
   
-  public String a()
+  public Drawable newDrawable()
   {
-    return null;
-  }
-  
-  public DbCacheData.Structure[] a()
-  {
-    return new DbCacheData.Structure[] { new DbCacheData.Structure("groupId", "INTEGER UNIQUE"), new DbCacheData.Structure("data", "BLOB") };
+    return new XfermodeDrawable(this, null, null);
   }
 }
 

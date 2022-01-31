@@ -131,7 +131,7 @@ public class VerifyDevLockManagerImpl
       break;
       label453:
       paramToServiceMsg.setAction("android.intent.action.VIEW");
-      paramToServiceMsg.setData(Uri.parse("mqqverifycode://puzzle_verify_code/DEVLOCK_CODE?"));
+      paramToServiceMsg.setData(Uri.parse("mqqverifycode://puzzle_verify_code_qqlite/DEVLOCK_CODE_QQLITE?"));
     }
   }
   

@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.TroopPrivilegeActivity.PrivilegeAdapter;
 
 public class bps
-  implements View.OnClickListener
 {
-  public bps(TroopRequestActivity paramTroopRequestActivity) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
+  public bps(TroopPrivilegeActivity.PrivilegeAdapter paramPrivilegeAdapter, String paramString, int paramInt)
   {
-    this.a.c();
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

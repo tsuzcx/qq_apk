@@ -33,9 +33,9 @@ public class StructMsgItemMore
   {
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(paramContext).inflate(2130903650, null);
+      localView = LayoutInflater.from(paramContext).inflate(2130903659, null);
     }
-    paramContext = (TextView)localView.findViewById(2131298831);
+    paramContext = (TextView)localView.findViewById(2131298857);
     if (TextUtils.isEmpty(this.h)) {
       this.h = "阅读全文";
     }

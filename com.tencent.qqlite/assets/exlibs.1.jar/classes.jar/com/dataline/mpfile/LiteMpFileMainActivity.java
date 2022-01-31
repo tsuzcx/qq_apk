@@ -16,6 +16,9 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import cl;
+import cm;
+import cn;
 import co;
 import com.dataline.util.DBNetworkUtil;
 import com.dataline.util.HttpUpload;
@@ -33,12 +36,9 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import cp;
-import cq;
 import cr;
 import cs;
-import cu;
-import cv;
-import cw;
+import ct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -64,7 +64,7 @@ public class LiteMpFileMainActivity
   public static final int j = 8;
   public static final int k = 101;
   private long jdField_a_of_type_Long = 0L;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cr(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new co(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -136,7 +136,7 @@ public class LiteMpFileMainActivity
   {
     this.jdField_b_of_type_Long = System.currentTimeMillis();
     jdField_a_of_type_Int += 1;
-    MpfileFileListDownloader.a(jdField_a_of_type_Int, paramString, new cs(this));
+    MpfileFileListDownloader.a(jdField_a_of_type_Int, paramString, new cp(this));
   }
   
   private void c(String paramString)
@@ -220,13 +220,13 @@ public class LiteMpFileMainActivity
       catch (JSONException paramString)
       {
         paramString.printStackTrace();
-        runOnUiThread(new cw(this));
+        runOnUiThread(new ct(this));
       }
       label388:
       ((MpfileItemInfo)localObject2).jdField_a_of_type_JavaLangString = getResources().getString(2131361907);
       continue;
       label406:
-      runOnUiThread(new cu(this));
+      runOnUiThread(new cr(this));
       paramString.jdField_b_of_type_Int = i2;
       paramString.jdField_c_of_type_Int = i3;
       MpFileDataReportCenter.a(this.app, paramString);
@@ -234,7 +234,7 @@ public class LiteMpFileMainActivity
       label439:
       if (i2 == 2)
       {
-        runOnUiThread(new cv(this));
+        runOnUiThread(new cs(this));
         return;
       }
       if (i2 == 7)
@@ -322,21 +322,21 @@ public class LiteMpFileMainActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903450);
+    setContentView(2130903455);
     this.m = 40;
     this.l = 0;
     setTitle(2131361918);
     setLeftViewName(2131361916);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298084));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298089));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296760));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298085));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296761));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298090));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298082));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298087));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     this.jdField_a_of_type_ComDatalineMpfileMpfileMenuListAdapter = new MpfileMenuListAdapter(this);
     this.jdField_a_of_type_ComDatalineMpfileMpfileMenuListAdapter.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131296662));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131296665));
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComDatalineMpfileMpfileMenuListAdapter);
     this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(this);
     paramBundle = new IntentFilter();
@@ -344,9 +344,9 @@ public class LiteMpFileMainActivity
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     this.j.setVisibility(8);
     this.p.setVisibility(0);
-    this.p.setImageResource(2130838581);
+    this.p.setImageResource(2130838606);
     this.p.setContentDescription(getString(2131361920));
-    this.p.setOnClickListener(new co(this));
+    this.p.setOnClickListener(new cl(this));
     a(true);
     return true;
   }
@@ -370,7 +370,7 @@ public class LiteMpFileMainActivity
     if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
     {
       if (!this.jdField_a_of_type_AndroidWidgetButton.getText().toString().equalsIgnoreCase(getResources().getString(2131361922))) {
-        break label96;
+        break label98;
       }
       ReportController.b(this.app, "CliOper", "", "", "0X8004219", "0X8004219", 0, 0, "", "", "", "");
     }
@@ -378,9 +378,9 @@ public class LiteMpFileMainActivity
     {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       b();
-      this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new cq(this), 3000L);
+      this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new cn(this), 3000L);
       return;
-      label96:
+      label98:
       ReportController.b(this.app, "CliOper", "", "", "0X800421A", "0X800421A", 0, 0, "", "", "", "");
     }
   }
@@ -388,7 +388,7 @@ public class LiteMpFileMainActivity
   public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     if (!NetworkUtil.e(this)) {
-      FMToastUtil.a(2131363450);
+      FMToastUtil.a(2131363461);
     }
     do
     {
@@ -453,7 +453,7 @@ public class LiteMpFileMainActivity
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    runOnUiThread(new cp(this));
+    runOnUiThread(new cm(this));
   }
 }
 

@@ -1,22 +1,13 @@
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
 
-class bbf
-  implements Runnable
+public class bbf
+  implements DialogInterface.OnClickListener
 {
-  bbf(bbe parambbe) {}
+  public bbf(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void run()
-  {
-    FormSimpleItem localFormSimpleItem = this.a.a.c;
-    if (TextUtils.isEmpty(ProfileCardMoreActivity.b(this.a.a))) {}
-    for (String str = "";; str = ProfileCardMoreActivity.b(this.a.a))
-    {
-      localFormSimpleItem.setRightText(str);
-      return;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.transfile.protohandler;
 
 public class RichProto$RichProtoReq$ReqCommon
 {
-  public int c;
   public String c;
+  public int d;
   public String d;
   public String e;
 }

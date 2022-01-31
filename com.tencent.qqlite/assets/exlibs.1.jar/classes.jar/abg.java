@@ -1,40 +1,43 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.BookShareAdviceEditActivity;
-import com.tencent.mobileqq.activity.book.BookEditText;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
 
 public class abg
-  implements TextWatcher
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abg(BookShareAdviceEditActivity paramBookShareAdviceEditActivity) {}
+  public abg(BaseChatPie paramBaseChatPie) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    paramEditable = this.a.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.getText().toString();
-    if ((paramEditable != null) && ("".equals(paramEditable))) {
-      BookShareAdviceEditActivity.a(this.a).setEnabled(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("MyOnGestureListener", 2, "onScroll");
     }
-    for (;;)
-    {
-      int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.a(paramEditable);
-      this.a.c = (40 - (i + 2) / 3);
-      if (this.a.c < 0) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#9A9A9A"));
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.a.c));
-      return;
-      BookShareAdviceEditActivity.b(this.a).setEnabled(true);
+    if (BaseChatPie.c(this.a)) {
+      BaseChatPie.d(this.a, false);
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-65536);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.a.c));
+    return false;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onShowPress(MotionEvent paramMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MyOnGestureListener", 2, "onShowPress");
+    }
+    this.a.f(false);
+    BaseChatPie.d(this.a, true);
+    super.onShowPress(paramMotionEvent);
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MyOnGestureListener", 2, "onSingleTapConfirmed");
+    }
+    this.a.f(false);
+    BaseChatPie.d(this.a, true);
+    return false;
+  }
 }
 
 

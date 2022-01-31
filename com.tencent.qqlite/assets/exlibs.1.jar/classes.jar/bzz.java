@@ -1,33 +1,23 @@
+import android.os.Handler;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.ChatBackground;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.widget.XPanelContainer;
+import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bzz
-  implements Animation.AnimationListener
+  implements CustomMenuBar.OnMenuItemClickListener
 {
-  public bzz(TroopChatPie paramTroopChatPie) {}
+  public bzz(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    this.a.e.setVisibility(8);
-    this.a.f.setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.e.setVisibility(0);
-    this.a.f.setVisibility(0);
-    TroopChatPie.b(this.a).setBackgroundDrawable(TroopChatPie.O(this.a).a.a);
-    TroopChatPie.b(this.a).setBackgroundResource(2130839257);
-    TroopChatPie.a(this.a).setBackgroundResource(2130839181);
+    BusinessCmrTmpChatPie.a(this.a).setVisibility(0);
+    BusinessCmrTmpChatPie.a(this.a).sendEmptyMessageDelayed(0, 10000L);
+    StructMsg.ButtonInfo localButtonInfo = BusinessCmrTmpChatPie.a(this.a, paramInt1);
+    EnterpriseQQManager.a(BusinessCmrTmpChatPie.b(this.a)).a(paramString, this.a.a(), BusinessCmrTmpChatPie.a(this.a), this.a.a(), localButtonInfo);
+    ReportController.b(BusinessCmrTmpChatPie.c(this.a), "P_CliOper", "Bqq_Crm", "", "Aio_menu", "Clk_menu", 0, 0, this.a.a(), paramInt1 + "", "", "");
   }
 }
 

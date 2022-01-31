@@ -105,8 +105,8 @@ public class InnerFrameManager
       setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130968608);
       setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130968609);
       continue;
-      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130968622);
-      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130968622);
+      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130968623);
+      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130968623);
     }
   }
   

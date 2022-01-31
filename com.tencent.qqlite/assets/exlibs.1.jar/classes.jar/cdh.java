@@ -1,27 +1,39 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.FriendManager;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity.ItemViewHolder;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.widget.XListView;
 
 public class cdh
-  extends SearchResultDialog
+  implements IIconListener
 {
-  public cdh(DiscussionView paramDiscussionView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
-  {
-    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
-  }
+  public cdh(SearchBaseActivity paramSearchBaseActivity) {}
   
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((FriendManager)paramQQAppInterface.getManager(8) == null) {
-      return localArrayList;
+    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    for (;;)
+    {
+      return;
+      if (this.a.g == 0)
+      {
+        int i = this.a.a.getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
+        {
+          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+          if ((paramBitmap != null) && ((paramBitmap instanceof SearchBaseActivity.ItemViewHolder)))
+          {
+            paramBitmap = (SearchBaseActivity.ItemViewHolder)paramBitmap;
+            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
+              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            }
+          }
+          paramInt2 += 1;
+        }
+      }
     }
-    return b(paramContext, paramQQAppInterface, 17179869184L, 0);
   }
 }
 

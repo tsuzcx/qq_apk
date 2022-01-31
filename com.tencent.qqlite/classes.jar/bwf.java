@@ -1,22 +1,13 @@
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.PASingleItemBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.LocationItemBuilder;
 
 public class bwf
-  extends AbstractChatItemBuilder.ViewHolder
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public Object a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public bwf(LocationItemBuilder paramLocationItemBuilder) {}
   
-  public bwf(PASingleItemBuilder paramPASingleItemBuilder) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

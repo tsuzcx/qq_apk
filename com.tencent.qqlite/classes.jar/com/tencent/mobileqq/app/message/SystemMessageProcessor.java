@@ -50,17 +50,17 @@ import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import czf;
-import czg;
-import czh;
-import czi;
-import czj;
-import czk;
-import czl;
-import czm;
-import czn;
-import czo;
-import czp;
+import dah;
+import dai;
+import daj;
+import dak;
+import dal;
+import dam;
+import dan;
+import dao;
+import dap;
+import daq;
+import dar;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -676,7 +676,7 @@ public class SystemMessageProcessor
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppConstants.ah, 0, true, false);
     GroupSystemMsgController.a().a(true);
     GroupSystemMsgController.a().a(false, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    Collections.sort(paramToServiceMsg, new czf(this));
+    Collections.sort(paramToServiceMsg, new dah(this));
     k = 0;
     while (k < n)
     {
@@ -1102,7 +1102,7 @@ public class SystemMessageProcessor
     if (QLog.isColorLevel()) {
       QLog.d("SystemMessageProcessor", 2, "sendSystemMsgReadedReport latestFriendSeq=" + l1 + ";latestGroupSeq=" + l2);
     }
-    a(true, true, false, 0L, new czj(this, l1, l2, localReqSystemMsgRead));
+    a(true, true, false, 0L, new dal(this, l1, l2, localReqSystemMsgRead));
   }
   
   public void a(int paramInt)
@@ -1203,7 +1203,7 @@ public class SystemMessageProcessor
     ((ToServiceMsg)localObject).extraData.putInt("system_msg_action_type", paramInt6);
     ((ToServiceMsg)localObject).extraData.putBoolean("isUncommonlyUsedFrd", paramBoolean);
     localProtoReq.jdField_a_of_type_JavaLangObject = localObject;
-    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new czi(this, paramInt6, paramInt3, paramSystemMsgActionInfo, paramStructMsg, paramLong2);
+    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new dak(this, paramInt6, paramInt3, paramSystemMsgActionInfo, paramStructMsg, paramLong2);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localProtoReq);
   }
   
@@ -1417,7 +1417,7 @@ public class SystemMessageProcessor
     ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
     localProtoReq.jdField_a_of_type_JavaLangString = "ProfileService.Pb.ReqSystemMsgRead.Friend";
     localProtoReq.jdField_a_of_type_ArrayOfByte = localReqSystemMsgRead.toByteArray();
-    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new czk(this, l1, l2, l3);
+    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new dam(this, l1, l2, l3);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localProtoReq);
   }
   
@@ -1444,7 +1444,7 @@ public class SystemMessageProcessor
     ((ToServiceMsg)localObject).addAttribute("_tag_LOGSTR", String.valueOf(l));
     ((ToServiceMsg)localObject).extraData.putInt("system_msg_action_type", paramInt6);
     paramSystemMsgActionInfo.jdField_a_of_type_JavaLangObject = localObject;
-    paramSystemMsgActionInfo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new czh(this);
+    paramSystemMsgActionInfo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new daj(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramSystemMsgActionInfo);
   }
   
@@ -1515,7 +1515,7 @@ public class SystemMessageProcessor
     ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
     localProtoReq.jdField_a_of_type_JavaLangString = "ProfileService.Pb.ReqSystemMsgRead.Group";
     localProtoReq.jdField_a_of_type_ArrayOfByte = localReqSystemMsgRead.toByteArray();
-    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new czl(this, l1, l2, l3);
+    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new dan(this, l1, l2, l3);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localProtoReq);
   }
   
@@ -1537,7 +1537,7 @@ public class SystemMessageProcessor
     ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
     localProtoReq.jdField_a_of_type_JavaLangString = "ProfileService.Pb.ReqSystemMsgRead.Friend";
     localProtoReq.jdField_a_of_type_ArrayOfByte = localReqSystemMsgRead.toByteArray();
-    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new czm(this, l1, l2, l3);
+    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new dao(this, l1, l2, l3);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localProtoReq);
   }
   
@@ -1559,7 +1559,7 @@ public class SystemMessageProcessor
     ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
     localProtoReq.jdField_a_of_type_JavaLangString = "ProfileService.Pb.ReqSystemMsgRead.Group";
     localProtoReq.jdField_a_of_type_ArrayOfByte = localReqSystemMsgRead.toByteArray();
-    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new czn(this, l1, l2, l3);
+    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new dap(this, l1, l2, l3);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localProtoReq);
   }
   
@@ -1574,7 +1574,7 @@ public class SystemMessageProcessor
     if (QLog.isColorLevel()) {
       QLog.d("SystemMessageProcessor", 2, "clearSystemMsg latestFriendSeq=" + l1 + ";latestGroupSeq=" + l2);
     }
-    a(true, true, false, 0L, new czo(this, l1, l2, localReqSystemMsgRead));
+    a(true, true, false, 0L, new daq(this, l1, l2, localReqSystemMsgRead));
   }
   
   public void g()
@@ -1608,7 +1608,7 @@ public class SystemMessageProcessor
     localProtoReq.a();
     localProtoReq.jdField_a_of_type_JavaLangString = "ProfileService.Pb.ReqNextSystemMsg.Friend";
     localProtoReq.jdField_a_of_type_ArrayOfByte = localReqNextSystemMsg.toByteArray();
-    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new czp(this);
+    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new dar(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localProtoReq);
   }
   
@@ -1630,7 +1630,7 @@ public class SystemMessageProcessor
     ((ProtoReqManager.ProtoReq)localObject).a();
     ((ProtoReqManager.ProtoReq)localObject).jdField_a_of_type_JavaLangString = "ProfileService.Pb.ReqNextSystemMsg.Group";
     ((ProtoReqManager.ProtoReq)localObject).jdField_a_of_type_ArrayOfByte = localReqNextSystemMsg.toByteArray();
-    ((ProtoReqManager.ProtoReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new czg(this);
+    ((ProtoReqManager.ProtoReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new dai(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((ProtoReqManager.ProtoReq)localObject);
   }
 }

@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.antiphing.UinFraudInfo;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.adapter.BuddyListAdapter;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.MenuPopupDialog;
 
 public class cpy
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
+  public cpy(BuddyListAdapter paramBuddyListAdapter) {}
   
-  public cpy(UinFraudInfo paramUinFraudInfo)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
+    GroupManagerActivity.a((Activity)BuddyListAdapter.a(this.a));
+    ReportController.b(BuddyListAdapter.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
+    if (BuddyListAdapter.a(this.a) != null)
+    {
+      BuddyListAdapter.a(this.a).dismiss();
+      BuddyListAdapter.a(this.a, null);
+    }
   }
 }
 

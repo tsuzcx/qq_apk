@@ -1,35 +1,18 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class cfy
-  implements View.OnKeyListener, TextView.OnEditorActionListener
+  implements DialogInterface.OnDismissListener
 {
-  private cfy(MessageSearchDialog paramMessageSearchDialog) {}
+  public cfy(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramInt == 3)
-    {
-      MessageSearchDialog.a(this.a);
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
-    {
-      if (paramKeyEvent.getAction() == 1) {
-        MessageSearchDialog.a(this.a);
-      }
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(false);
   }
 }
 

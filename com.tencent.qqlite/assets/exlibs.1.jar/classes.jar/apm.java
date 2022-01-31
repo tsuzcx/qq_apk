@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
 public class apm
-  implements DialogInterface.OnClickListener
+  implements AdapterView.OnItemLongClickListener
 {
-  public apm(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString1, String paramString2) {}
+  public apm(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_JavaLangString, this.b);
+    FriendProfileImageActivity.a(this.a);
+    return true;
   }
 }
 

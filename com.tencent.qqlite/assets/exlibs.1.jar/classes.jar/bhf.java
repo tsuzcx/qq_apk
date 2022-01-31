@@ -1,68 +1,19 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import mqq.observer.WtloginObserver;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class bhf
-  extends WtloginObserver
+  implements Runnable
 {
-  public bhf(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
+  public bhf(RegisterBaseActivity paramRegisterBaseActivity, String paramString1, String paramString2) {}
   
-  public void OnRegGetSMSVerifyLoginAccount(int paramInt, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterPersonalInfoActivity", 2, "OnRegGetSMSVerifyLoginAccount ret=" + paramInt + " uin=" + paramLong);
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.g();
-    if (paramInt == 0)
-    {
-      RegisterPersonalInfoActivity.a(this.a, Long.valueOf(paramLong).toString());
-      RegisterPersonalInfoActivity.a(this.a, paramArrayOfByte2);
-      if (TextUtils.isEmpty(RegisterPersonalInfoActivity.a(this.a)))
-      {
-        this.a.a(2131363286, 1);
-        return;
-      }
-      if ((RegisterPersonalInfoActivity.a(this.a) == null) || (RegisterPersonalInfoActivity.a(this.a).length == 0))
-      {
-        this.a.a(2131363286, 1);
-        return;
-      }
-      paramArrayOfByte1 = new Intent(this.a, RegisterQQNumberActivity.class);
-      paramArrayOfByte1.putExtra("phonenum", this.a.c);
-      paramArrayOfByte1.putExtra("key", this.a.d);
-      paramArrayOfByte1.putExtra("uin", RegisterPersonalInfoActivity.a(this.a));
-      paramArrayOfByte1.putExtra("key_register_now_account", this.a.e);
-      paramArrayOfByte1.putExtra("key_register_sign", RegisterPersonalInfoActivity.a(this.a));
-      this.a.startActivity(paramArrayOfByte1);
-      this.a.finish();
-      return;
-    }
-    if (paramArrayOfByte3 != null) {}
-    for (;;)
-    {
-      try
-      {
-        paramArrayOfByte1 = new String(paramArrayOfByte3, "utf-8");
-        if (!TextUtils.isEmpty(paramArrayOfByte1)) {
-          break;
-        }
-        this.a.a(2131363286, 1);
-        return;
-      }
-      catch (UnsupportedEncodingException paramArrayOfByte1)
-      {
-        paramArrayOfByte1.printStackTrace();
-      }
-      paramArrayOfByte1 = null;
-    }
-    this.a.a(paramArrayOfByte1, 1);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 230);
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
+    localQQCustomDialog.setMessage(this.b);
+    localQQCustomDialog.setPositiveButton(2131364121, new bhg(this));
+    localQQCustomDialog.show();
   }
 }
 

@@ -1,24 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.util.VersionUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
 
-public class cki
-  implements View.OnClickListener
+class cki
 {
-  public cki(BannerManager paramBannerManager) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  ImageView b;
+  ImageView c;
   
-  public void onClick(View paramView)
-  {
-    if (VersionUtils.e())
-    {
-      BannerManager.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
-      return;
-    }
-    BannerManager.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
-  }
+  private cki(ckh paramckh) {}
 }
 
 

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.service;
 
 import com.dataline.util.DBNetworkUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import edd;
-import edj;
-import edp;
+import eei;
+import eeo;
+import eeu;
 import java.io.IOException;
 import java.net.InetAddress;
 
@@ -12,7 +12,7 @@ public class HttpServer
 {
   public static final String a = "dlFileTransfer.Server";
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private edj jdField_a_of_type_Edj = null;
+  private eeo jdField_a_of_type_Eeo = null;
   
   public HttpServer(QQAppInterface paramQQAppInterface)
   {
@@ -21,69 +21,69 @@ public class HttpServer
   
   public int a()
   {
-    if (this.jdField_a_of_type_Edj != null) {
-      return this.jdField_a_of_type_Edj.a();
+    if (this.jdField_a_of_type_Eeo != null) {
+      return this.jdField_a_of_type_Eeo.a();
     }
     return 0;
   }
   
   public String a(long paramLong)
   {
-    return edp.a(paramLong);
+    return eeu.a(paramLong);
   }
   
   public InetAddress a()
   {
-    if (this.jdField_a_of_type_Edj != null) {
-      return this.jdField_a_of_type_Edj.a();
+    if (this.jdField_a_of_type_Eeo != null) {
+      return this.jdField_a_of_type_Eeo.a();
     }
     return null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Edj != null)
+    if (this.jdField_a_of_type_Eeo != null)
     {
-      this.jdField_a_of_type_Edj.a();
-      this.jdField_a_of_type_Edj = null;
+      this.jdField_a_of_type_Eeo.a();
+      this.jdField_a_of_type_Eeo = null;
     }
   }
   
   public void a(long paramLong)
   {
-    edp.a(paramLong);
+    eeu.a(paramLong);
   }
   
   public void a(long paramLong, String paramString)
   {
-    edp.a(paramLong, paramString);
+    eeu.a(paramLong, paramString);
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Edj != null) {
-      return this.jdField_a_of_type_Edj.c();
+    if (this.jdField_a_of_type_Eeo != null) {
+      return this.jdField_a_of_type_Eeo.c();
     }
     return false;
   }
   
   public boolean a(String paramString, HttpNotify paramHttpNotify)
   {
-    paramHttpNotify = new edd(paramHttpNotify);
+    paramHttpNotify = new eei(paramHttpNotify);
     try
     {
-      if (this.jdField_a_of_type_Edj != null)
+      if (this.jdField_a_of_type_Eeo != null)
       {
-        if (this.jdField_a_of_type_Edj.c()) {
+        if (this.jdField_a_of_type_Eeo.c()) {
           return true;
         }
         a();
       }
       if (DBNetworkUtil.a())
       {
-        this.jdField_a_of_type_Edj = new edj(paramString, paramHttpNotify, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.jdField_a_of_type_Edj.setDaemon(false);
-        boolean bool = this.jdField_a_of_type_Edj.b();
+        this.jdField_a_of_type_Eeo = new eeo(paramString, paramHttpNotify, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        this.jdField_a_of_type_Eeo.setDaemon(false);
+        boolean bool = this.jdField_a_of_type_Eeo.b();
         return bool;
       }
     }
@@ -93,7 +93,7 @@ public class HttpServer
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Edj.a();
+    return this.jdField_a_of_type_Eeo.a();
   }
 }
 

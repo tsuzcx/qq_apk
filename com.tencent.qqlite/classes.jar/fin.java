@@ -1,23 +1,28 @@
-import com.tencent.widget.ListView;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class fin
-  implements Runnable
+  implements View.OnFocusChangeListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public fin(Login paramLogin) {}
   
-  private fin(ListView paramListView) {}
-  
-  public fin a(int paramInt1, int paramInt2)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    return this;
-  }
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentWidgetListView.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
+    {
+      if (true == paramBoolean) {
+        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
+      }
+      if (!paramBoolean) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
+      }
+    }
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 

@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.open.agent.BindGroupConfirmActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.QFavDownloadProgressDialog;
+import java.io.PrintStream;
 
 public class fba
-  implements Runnable
+  extends Handler
 {
-  public fba(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  private fba(QFavDownloadProgressDialog paramQFavDownloadProgressDialog) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    paramMessage = String.format(QFavDownloadProgressDialog.a(this.a).getResources().getString(2131364524), new Object[] { Integer.valueOf(QFavDownloadProgressDialog.a(this.a)), Integer.valueOf(QFavDownloadProgressDialog.b(this.a)) });
+    QFavDownloadProgressDialog.a(this.a).setText(paramMessage);
+    System.out.println("s progress = " + paramMessage);
   }
 }
 

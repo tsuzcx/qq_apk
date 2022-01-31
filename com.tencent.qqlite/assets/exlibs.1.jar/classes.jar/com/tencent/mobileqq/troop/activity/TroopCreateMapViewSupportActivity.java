@@ -27,7 +27,7 @@ public class TroopCreateMapViewSupportActivity
     ((ViewGroup)localObject).removeView(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView);
     getLayoutInflater().inflate(2130903301, (ViewGroup)localObject, true);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297590));
-    this.B = ((int)getResources().getDimension(2131493046));
+    this.B = ((int)getResources().getDimension(2131493048));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView = new AutoLocationMapView(this);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView.setId(2131296369);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView.setBuiltInZoomControls(false);

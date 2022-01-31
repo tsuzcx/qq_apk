@@ -1,22 +1,56 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqfav.QfavHelper;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.theme.NightModeLogic.NightModeCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfo
-  implements View.OnClickListener
+  extends NightModeLogic.NightModeCallback
 {
   public bfo(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    QfavHelper.b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, -1);
-    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).isShowing()))
+    this.a.j();
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("start_status");
+    if (i == 1) {
+      this.a.j();
+    }
+    do
     {
-      QQSettingMe.a(this.a).dismiss();
-      QQSettingMe.a(this.a, null);
+      return;
+      if (i == 2)
+      {
+        this.a.j();
+        return;
+      }
+    } while (i != 3);
+    if ((this.a.b.getDrawable() instanceof Animatable)) {}
+    for (;;)
+    {
+      i = paramBundle.getInt("percent");
+      paramBundle = this.a.a.getString(2131364291);
+      paramBundle = paramBundle + "  " + String.valueOf(i) + "%";
+      this.a.c.setText(paramBundle);
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.d("QQSettingRedesign", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
+      return;
+      Drawable localDrawable = this.a.a.getResources().getDrawable(2130838942);
+      this.a.b.setImageDrawable(localDrawable);
+      if ((localDrawable instanceof Animatable)) {
+        ((Animatable)localDrawable).start();
+      }
     }
   }
 }

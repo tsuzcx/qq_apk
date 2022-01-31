@@ -39,7 +39,7 @@ public class TextUtils
     if (paramInt < 0) {
       throw new IllegalArgumentException("invaid emoji index: " + paramInt);
     }
-    int j = 2130838002;
+    int j = 2130838021;
     int i = j;
     if (paramInt >= 0)
     {
@@ -58,7 +58,7 @@ public class TextUtils
             return localObject;
           }
         }
-        i = 2130838001;
+        i = 2130838020;
       }
     }
     if (BaseApplicationImpl.a != null) {

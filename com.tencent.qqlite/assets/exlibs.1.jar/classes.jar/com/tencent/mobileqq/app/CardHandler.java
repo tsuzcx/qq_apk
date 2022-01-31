@@ -70,8 +70,8 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cql;
-import cqm;
+import crm;
+import crn;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -2745,7 +2745,7 @@ public class CardHandler
         paramObject.setZanShowFlag(bool);
         paramFromServiceMsg.a(paramObject);
         paramFromServiceMsg = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()).edit();
-        paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131363058) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+        paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131363068) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
         if (l2 != 0L) {
           break label194;
         }
@@ -3093,7 +3093,7 @@ public class CardHandler
       if (paramFromServiceMsg.uCloseTimeGateVote == 0L) {}
       for (bool1 = true;; bool1 = false)
       {
-        localSharedPreferences.edit().putBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131363058) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), bool1).commit();
+        localSharedPreferences.edit().putBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131363068) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), bool1).commit();
         break;
       }
     }
@@ -3122,7 +3122,7 @@ public class CardHandler
     label362:
     label364:
     label370:
-    for (boolean bool1 = paramObject.isShowZan();; bool1 = localSharedPreferences.getBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131363058) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), false))
+    for (boolean bool1 = paramObject.isShowZan();; bool1 = localSharedPreferences.getBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131363068) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), false))
     {
       paramBundle.putString("uin", paramToServiceMsg.getUin());
       paramBundle.putBoolean("current_switch", bool1);
@@ -5690,7 +5690,7 @@ public class CardHandler
     localMessageRecord.senderuin = String.valueOf(localVisitor.lUIN);
     localMessageRecord.extraflag = paramPushVoteIncreaseInfo.iIncrement;
     localMessageRecord.time = (System.currentTimeMillis() / 1000L);
-    new cql(this, paramPushVoteIncreaseInfo.iIncrement, paramPushVoteIncreaseInfo.vVoterList).start();
+    new crm(this, paramPushVoteIncreaseInfo.iIncrement, paramPushVoteIncreaseInfo.vVoterList).start();
     try
     {
       Object localObject1 = new String(localVisitor.vecNick, "UTF8");
@@ -5700,7 +5700,7 @@ public class CardHandler
       }
       if (1 == paramPushVoteIncreaseInfo.iIncrement)
       {
-        localMessageRecord.msg = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getApplicationContext().getString(2131363546), new Object[] { localObject2 });
+        localMessageRecord.msg = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getApplicationContext().getString(2131363557), new Object[] { localObject2 });
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord, paramString1);
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, true, true);
         localObject1 = new Bundle();
@@ -5722,7 +5722,7 @@ public class CardHandler
         }
         String str = "";
         continue;
-        localMessageRecord.msg = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getApplicationContext().getString(2131363547), new Object[] { localObject2, Integer.valueOf(paramPushVoteIncreaseInfo.iIncrement) });
+        localMessageRecord.msg = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getApplicationContext().getString(2131363558), new Object[] { localObject2, Integer.valueOf(paramPushVoteIncreaseInfo.iIncrement) });
       }
     }
   }
@@ -6355,7 +6355,7 @@ public class CardHandler
   
   public void b(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cqm(this, paramBundle));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new crn(this, paramBundle));
   }
   
   public void b(String paramString1, String paramString2, long paramLong, int paramInt)

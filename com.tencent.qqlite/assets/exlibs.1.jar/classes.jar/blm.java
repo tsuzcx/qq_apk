@@ -1,27 +1,20 @@
-import android.view.View;
-import android.widget.ExpandableListAdapter;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.StatisticTroopAssist;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnChildClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
+import com.tencent.mobileqq.theme.NightModeLogic.NightModeCallback;
 
-public class blm
-  implements ExpandableListView.OnChildClickListener
+class blm
+  extends NightModeLogic.NightModeCallback
 {
-  public blm(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  blm(bll parambll) {}
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
+  public void a(Bundle paramBundle)
   {
-    if (((TroopMessageSettingAdapter)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
-      return true;
-    }
-    StatisticTroopAssist.c(this.a.getActivity(), this.a.app.a());
-    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
-    this.a.a(paramExpandableListView);
-    return true;
+    this.a.a.finish();
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    if (paramBundle.getInt("start_status") == 2) {}
   }
 }
 

@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
 
 class car
   implements Runnable
 {
-  car(caq paramcaq) {}
+  car(cap paramcap, MultiForwardChatPie paramMultiForwardChatPie) {}
   
   public void run()
   {
-    FraudTipsBar.a(this.a.a, 2);
-    FraudTipsBar.a(this.a.a).a();
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
+    MultiForwardChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setText(2131363007);
+    MultiForwardChatPie.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.K);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.l();
   }
 }
 

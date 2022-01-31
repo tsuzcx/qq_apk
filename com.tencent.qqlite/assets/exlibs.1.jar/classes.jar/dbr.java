@@ -1,20 +1,57 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.conditionsearch.data.AddressData;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Build.VERSION;
+import java.util.AbstractCollection;
+import java.util.ArrayDeque;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class dbr
-  implements Runnable
 {
-  public dbr(AddressData paramAddressData, String paramString) {}
+  final AbstractCollection a;
   
-  public void run()
+  public dbr(int paramInt)
   {
-    int i = 0;
-    while (i < 3)
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      QQToast.a(BaseApplicationImpl.a, "条件搜素配置文件存在不同code对应相同name的问题！！！ name = " + this.jdField_a_of_type_JavaLangString, 1).a();
-      i += 1;
+      this.a = new ArrayDeque();
+      return;
     }
+    this.a = new ArrayBlockingQueue(30);
+  }
+  
+  public int a()
+  {
+    return this.a.size();
+  }
+  
+  public Object a()
+  {
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      if ((this.a instanceof ArrayDeque)) {
+        return ((ArrayDeque)this.a).poll();
+      }
+    }
+    else if ((this.a instanceof ArrayBlockingQueue)) {
+      return ((ArrayBlockingQueue)this.a).poll();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (Build.VERSION.SDK_INT >= 9) {
+      if ((this.a instanceof ArrayDeque)) {
+        ((ArrayDeque)this.a).offer(paramObject);
+      }
+    }
+    while (!(this.a instanceof ArrayBlockingQueue)) {
+      return;
+    }
+    ((ArrayBlockingQueue)this.a).offer(paramObject);
   }
 }
 

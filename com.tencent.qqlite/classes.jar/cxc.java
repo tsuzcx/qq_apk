@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
 
 public class cxc
-  extends FriendListObserver
+  implements View.OnClickListener
 {
-  private cxc(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
+  public cxc(ScreenShot paramScreenShot) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    if (!paramBoolean1) {
-      this.a.a(6);
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        this.a.a(7);
-      }
-      return;
-      if (paramBoolean2) {
-        i = 1;
-      }
+    this.a.jdField_a_of_type_Cxf.a(true);
+    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
+      KapalaiAdapterUtil.a().b(this.a.jdField_a_of_type_AndroidViewWindow);
     }
   }
 }

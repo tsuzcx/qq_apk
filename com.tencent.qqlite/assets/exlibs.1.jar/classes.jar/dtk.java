@@ -1,24 +1,34 @@
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar.IActionBarClickEvent;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter.HlistViewHolder;
+import com.tencent.widget.ActionSheet;
 
-public class dtk
+public final class dtk
   implements View.OnClickListener
 {
-  public dtk(LocalVideoFileView paramLocalVideoFileView) {}
+  public dtk(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity, Activity paramActivity, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent) {}
   
   public void onClick(View paramView)
   {
-    if (LocalVideoFileView.b(this.a).getRequestedOrientation() != 0)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin);
+    FMToastUtil.b(FileManagerUtil.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName) + this.jdField_a_of_type_AndroidAppActivity.getString(2131361998));
+    if ((paramView.getTag() instanceof HorizontalListViewAdapter.HlistViewHolder))
     {
-      LocalVideoFileView.b(this.a).setRequestedOrientation(0);
-      LocalVideoFileView.a(this.a).setBackgroundResource(2130838574);
-      return;
+      paramView = (HorizontalListViewAdapter.HlistViewHolder)paramView.getTag();
+      if (paramView.a.isShowing()) {
+        paramView.a.dismiss();
+      }
     }
-    LocalVideoFileView.b(this.a).setRequestedOrientation(1);
-    LocalVideoFileView.a(this.a).setBackgroundResource(2130838577);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent.d();
+    }
   }
 }
 

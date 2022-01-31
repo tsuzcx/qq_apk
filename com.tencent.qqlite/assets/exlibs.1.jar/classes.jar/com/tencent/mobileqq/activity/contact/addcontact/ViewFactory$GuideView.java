@@ -44,7 +44,7 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setTag(((Integer)localView.getTag()).intValue(), paramString);
-      ((TextView)localView.findViewById(2131296516)).setText(paramString);
+      ((TextView)localView.findViewById(2131296519)).setText(paramString);
       i += 1;
     }
   }
@@ -59,9 +59,9 @@ public class ViewFactory$GuideView
       localView.setOnClickListener(this);
       localView.setTag(Integer.valueOf(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b));
       localView.setTag(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b, paramString);
-      ((ImageView)localView.findViewById(2131296514)).setImageResource(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b);
-      ((TextView)localView.findViewById(2131296515)).setText(localView.getContext().getResources().getString(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).a) + ":");
-      ((TextView)localView.findViewById(2131296516)).setText(paramString);
+      ((ImageView)localView.findViewById(2131296517)).setImageResource(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b);
+      ((TextView)localView.findViewById(2131296518)).setText(localView.getContext().getResources().getString(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).a) + ":");
+      ((TextView)localView.findViewById(2131296519)).setText(paramString);
       localView.setContentDescription(getResources().getString(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).a) + paramString + "，轻触两次搜索");
       i += 1;
     }
@@ -74,9 +74,9 @@ public class ViewFactory$GuideView
     default: 
       return null;
     case 80000000: 
-      return new ViewFactory.GuideView.DataHolder(2131363362, 2130838603);
+      return new ViewFactory.GuideView.DataHolder(2131363373, 2130838628);
     }
-    return new ViewFactory.GuideView.DataHolder(2131363363, 2130838604);
+    return new ViewFactory.GuideView.DataHolder(2131363374, 2130838629);
   }
   
   public ViewFactory.GuideView.OnItemClickListener a()

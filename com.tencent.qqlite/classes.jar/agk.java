@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.Contacts;
+import com.tencent.mobileqq.richstatus.IIconListener;
 
-class agk
-  implements Runnable
+public class agk
+  implements IIconListener
 {
-  agk(agh paramagh) {}
+  private agk(Contacts paramContacts) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.a.a.a();
+    if ((this.a.a) && (paramBitmap != null) && (paramInt2 == 200)) {
+      this.a.a(1400L, false);
+    }
   }
 }
 

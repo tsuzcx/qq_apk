@@ -679,7 +679,7 @@ class ThemeJsPlugin$SwitchThemeTask
       this.this$0.isSwitchTheme = Boolean.valueOf(true);
       this.this$0.themeSwitchDialog = new QQProgressDialog(this.this$0.mRuntime.a(), ((IphoneTitleBarActivity)this.this$0.mRuntime.a()).getTitleBarHeight());
       this.this$0.themeSwitchDialog.setCancelable(false);
-      this.this$0.themeSwitchDialog.b(2131363263);
+      this.this$0.themeSwitchDialog.b(2131363273);
       if (!this.showDlgTip) {
         this.this$0.themeSwitchDialog.c(false);
       }

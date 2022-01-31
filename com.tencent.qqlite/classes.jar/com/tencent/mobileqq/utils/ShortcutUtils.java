@@ -7,7 +7,7 @@ import android.content.Intent.ShortcutIconResource;
 import android.content.res.Resources;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BadgeUtils;
-import evz;
+import eye;
 
 public class ShortcutUtils
 {
@@ -31,8 +31,8 @@ public class ShortcutUtils
     localIntent.addFlags(2097152);
     paramString = new Intent();
     paramString.putExtra("android.intent.extra.shortcut.INTENT", localIntent);
-    paramString.putExtra("android.intent.extra.shortcut.NAME", paramActivity.getResources().getString(2131362787));
-    paramString.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(paramActivity.getApplicationContext(), 2130838046));
+    paramString.putExtra("android.intent.extra.shortcut.NAME", paramActivity.getResources().getString(2131362794));
+    paramString.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(paramActivity.getApplicationContext(), 2130838065));
     paramString.setAction("com.android.launcher.action.UNINSTALL_SHORTCUT");
     paramActivity.sendOrderedBroadcast(paramString, null);
     BadgeUtils.a(paramActivity.getApplicationContext(), 0);
@@ -40,7 +40,7 @@ public class ShortcutUtils
   
   public static void a(Context paramContext, String paramString)
   {
-    new evz(paramContext, paramString).run();
+    new eye(paramContext, paramString).run();
   }
   
   static boolean a(Context paramContext)

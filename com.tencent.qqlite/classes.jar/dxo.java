@@ -1,24 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.utils.SharedPreferencesHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Set;
+import android.app.Activity;
+import com.tencent.biz.common.util.Util;
+import com.tencent.mobileqq.jsp.DataApiPlugin;
 
-public class dxo
+class dxo
   implements Runnable
 {
-  public dxo(TroopAssistantManager paramTroopAssistantManager, QQAppInterface paramQQAppInterface) {}
+  dxo(dxn paramdxn, Activity paramActivity, String paramString, int paramInt) {}
   
   public void run()
   {
-    synchronized (TroopAssistantManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager))
+    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
     {
-      Object[] arrayOfObject = TroopAssistantManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager).toArray();
-      SharedPreferencesHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "troop_assis_new_unread_list", arrayOfObject).commit();
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        this.jdField_a_of_type_Dxn.a.callJs(this.jdField_a_of_type_Dxn.c, new String[] { "null", Integer.toString(this.jdField_a_of_type_Int) });
+      }
+    }
+    else {
       return;
     }
+    this.jdField_a_of_type_Dxn.a.callJs(this.jdField_a_of_type_Dxn.c, new String[] { Util.b(this.jdField_a_of_type_JavaLangString), Integer.toString(this.jdField_a_of_type_Int) });
   }
 }
 

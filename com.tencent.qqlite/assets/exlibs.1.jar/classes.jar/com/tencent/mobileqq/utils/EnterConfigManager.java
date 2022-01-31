@@ -10,7 +10,7 @@ import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.RespG
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import eto;
+import evt;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -244,7 +244,7 @@ public class EnterConfigManager
     if ((!this.jdField_a_of_type_Boolean) && (!this.b))
     {
       this.b = true;
-      ThreadManager.a().post(new eto(this));
+      ThreadManager.a().post(new evt(this));
     }
   }
   

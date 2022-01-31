@@ -1,49 +1,90 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
-import com.tencent.mobileqq.richstatus.StatusHistoryActivity.ItemViewHolder;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class ecm
-  implements SlideDetectListView.OnSlideListener
 {
-  public ecm(StatusHistoryActivity paramStatusHistoryActivity) {}
+  private static final int jdField_a_of_type_Int = 3;
+  private static final long jdField_a_of_type_Long = 60000L;
+  private static final String jdField_a_of_type_JavaLangString = "Q.richstatus.img";
+  private eco jdField_a_of_type_Eco;
+  private HashSet jdField_a_of_type_JavaUtilHashSet;
+  private volatile long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  public ecm(String paramString, eco parameco)
   {
-    if ((StatusHistoryActivity.b(this.a) == 23) && (paramView != null))
-    {
-      paramView = paramView.getTag();
-      if ((paramView != null) && ((paramView instanceof StatusHistoryActivity.ItemViewHolder)))
-      {
-        paramView = (StatusHistoryActivity.ItemViewHolder)paramView;
-        Button localButton = (Button)paramView.jdField_a_of_type_AndroidViewView;
-        localButton.setTag(Integer.valueOf(paramInt));
-        localButton.setOnClickListener(StatusHistoryActivity.a(this.a));
-        paramSlideDetectListView.setDeleteAreaDim(paramView.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.getLayoutParams().width, paramView.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.getLayoutParams().height);
-        paramView.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.a();
-        this.a.a(false);
-      }
-    }
+    paramString = this.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_Eco = parameco;
   }
   
-  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  public static File a()
   {
-    if (paramView != null)
+    if (SystemUtil.a()) {
+      return new File(AppConstants.as + "status_ic");
+    }
+    return null;
+  }
+  
+  private boolean a(String paramString, File paramFile)
+  {
+    int i = HttpDownloadUtil.a(null, paramString, paramFile);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.img", 2, "download " + paramString + "result " + i);
+    }
+    paramFile = StatisticCollector.a(BaseApplication.getContext());
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("result", String.valueOf(i));
+    localHashMap.put("url", paramString);
+    if (i == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramSlideDetectListView = paramView.getTag();
-      if ((paramSlideDetectListView != null) && ((paramSlideDetectListView instanceof StatusHistoryActivity.ItemViewHolder)))
+      paramFile.a("", "RichStatusIcon", bool, 0L, 0L, localHashMap, "");
+      if (i != 0) {
+        break;
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public Bitmap a(String paramString)
+  {
+    return (Bitmap)BaseApplicationImpl.a.get(this.jdField_b_of_type_JavaLangString + paramString);
+  }
+  
+  public Bitmap a(String paramString1, String paramString2, String paramString3)
+  {
+    Bitmap localBitmap = a(paramString1);
+    if (localBitmap == null)
+    {
+      if (this.jdField_a_of_type_JavaUtilHashSet == null) {
+        this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+      }
+      if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString1))
       {
-        paramSlideDetectListView = (StatusHistoryActivity.ItemViewHolder)paramSlideDetectListView;
-        paramSlideDetectListView.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.d();
-        paramSlideDetectListView.jdField_a_of_type_AndroidViewView.setTag(null);
-        paramSlideDetectListView.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
-        this.a.a(true);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.richstatus.img", 2, "decodeBitmap " + paramString1 + ", " + paramString2 + ", " + paramString3);
+        }
+        this.jdField_a_of_type_JavaUtilHashSet.add(paramString1);
+        new ecn(this, paramString1, paramString2, paramString3).execute((Void[])null);
       }
     }
+    return localBitmap;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashSet.clear();
   }
 }
 

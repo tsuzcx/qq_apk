@@ -1,28 +1,11 @@
-import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView.TimerCallback;
+import java.util.concurrent.ThreadFactory;
 
-public class efq
-  extends CountDownTimer.CountDownTimerListener
+public final class efq
+  implements ThreadFactory
 {
-  public efq(CountdownTextView paramCountdownTextView, long paramLong, CountdownTextView.TimerCallback paramTimerCallback)
+  public Thread newThread(Runnable paramRunnable)
   {
-    super(paramLong);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
-  }
-  
-  public void b(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a(paramLong);
-    }
+    return new Thread(paramRunnable, "RDM-Service");
   }
 }
 

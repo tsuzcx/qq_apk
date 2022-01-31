@@ -13,7 +13,7 @@ import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 import com.tencent.mobileqq.widget.CustomScaleType;
-import efn;
+import egr;
 import java.io.File;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -29,7 +29,7 @@ public class StructMsgItemCover
   
   public StructMsgItemCover()
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new efn(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new egr(this);
     this.jdField_a_of_type_JavaLangString = "picture";
   }
   
@@ -46,7 +46,7 @@ public class StructMsgItemCover
     Object localObject2;
     try
     {
-      Drawable localDrawable = ((Resources)localObject1).getDrawable(2130839365);
+      Drawable localDrawable = ((Resources)localObject1).getDrawable(2130839430);
       if ((paramView != null) && ((paramView instanceof AnyScaleTypeImageView)))
       {
         localObject3 = (AnyScaleTypeImageView)paramView;
@@ -70,7 +70,7 @@ public class StructMsgItemCover
         continue;
         paramView = new AnyScaleTypeImageView(paramContext);
         paramView.setId(2131296323);
-        paramView.setContentDescription(((Resources)localObject1).getString(2131362827));
+        paramView.setContentDescription(((Resources)localObject1).getString(2131362834));
         paramView.setDisplayRuleDef(CustomScaleType.CENTER_SMALL_SCALE_BIG_RULE);
         localObject1 = paramView;
       }

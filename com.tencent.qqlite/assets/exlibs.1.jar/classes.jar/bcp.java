@@ -1,13 +1,18 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.widget.XEditTextEx;
 
 public class bcp
-  implements Runnable
+  implements View.OnTouchListener
 {
   public bcp(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QQLSActivity.a(this.a);
+    QQLSActivity.a(this.a).setCursorVisible(true);
+    return false;
   }
 }
 

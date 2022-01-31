@@ -3,6 +3,7 @@ package com.tencent.mobileqq.transfile.protohandler;
 public class RichProto$RichProtoReq$GroupPttDownReq
   extends RichProto.RichProtoReq.ReqCommon
 {
+  public int a;
   public long a;
   public String a;
   public byte[] a;

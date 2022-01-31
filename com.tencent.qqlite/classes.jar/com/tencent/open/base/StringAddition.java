@@ -59,7 +59,7 @@ public class StringAddition
       {
         j = a(paramString);
         if (i < j) {
-          break label135;
+          break label139;
         }
         i -= j;
         localStringBuilder.append(paramString);
@@ -67,7 +67,7 @@ public class StringAddition
         paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
         paramInt += 1;
       }
-      label135:
+      label139:
       localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
       localStringBuilder.append("…");
     }
@@ -99,7 +99,7 @@ public class StringAddition
       {
         j = a(paramString);
         if (i < j) {
-          break label150;
+          break label154;
         }
         i -= j;
         localStringBuilder.append(paramString);
@@ -107,7 +107,7 @@ public class StringAddition
         paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
         paramInt += 1;
       }
-      label150:
+      label154:
       localStringBuilder.append("…");
     }
     return localStringBuilder.toString();
@@ -135,7 +135,7 @@ public class StringAddition
       {
         j = a(paramString);
         if (i < j) {
-          break label144;
+          break label148;
         }
         i -= j;
         localStringBuilder.append(paramString);
@@ -143,9 +143,9 @@ public class StringAddition
         paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
         paramInt += 1;
       }
-      label144:
+      label148:
       if ((!paramBoolean1) || (paramBoolean2)) {
-        break label184;
+        break label188;
       }
       localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
       localStringBuilder.append("…");
@@ -153,7 +153,7 @@ public class StringAddition
     for (;;)
     {
       return localStringBuilder.toString();
-      label184:
+      label188:
       if ((paramBoolean1) && (paramBoolean2)) {
         localStringBuilder.append("…");
       }

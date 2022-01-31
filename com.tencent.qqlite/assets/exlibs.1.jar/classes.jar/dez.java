@@ -1,18 +1,25 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class dez
-  extends RadioButton
+  extends Thread
 {
-  public dez(EmoticonPagerRadioGroup paramEmoticonPagerRadioGroup, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public dez(EmojiManager paramEmojiManager, String paramString) {}
   
-  public boolean performClick()
+  public void run()
   {
-    return true;
+    String str = this.jdField_a_of_type_JavaLangString + ".err";
+    if (FileUtils.b(this.jdField_a_of_type_JavaLangString, str)) {}
+    for (;;)
+    {
+      FileUtils.a(str);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.jdField_a_of_type_JavaLangString, 2, "EMaterialTask| zip folder is lossy, Do delete ok.:" + str);
+      }
+      return;
+      str = this.jdField_a_of_type_JavaLangString;
+    }
   }
 }
 

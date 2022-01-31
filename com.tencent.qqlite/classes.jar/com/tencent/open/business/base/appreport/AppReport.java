@@ -13,8 +13,8 @@ import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.MobileInfoUtil;
 import com.tencent.open.business.base.OpenConfig;
 import com.tencent.smtt.sdk.WebView;
-import fdl;
-import fdm;
+import ffr;
+import ffs;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -737,12 +737,12 @@ public class AppReport
   
   public static void a(Context paramContext, String paramString1, int paramInt, String paramString2, WebView paramWebView, String paramString3)
   {
-    ThreadManager.a(new fdl(paramString1, paramInt, paramContext, paramString2, paramWebView, paramString3));
+    ThreadManager.a(new ffr(paramString1, paramInt, paramContext, paramString2, paramWebView, paramString3));
   }
   
   public static void a(Context paramContext, String paramString1, WebView paramWebView, String paramString2)
   {
-    ThreadManager.a(new fdm(paramContext, paramString1, paramWebView, paramString2));
+    ThreadManager.a(new ffs(paramContext, paramString1, paramWebView, paramString2));
   }
   
   public static boolean a()

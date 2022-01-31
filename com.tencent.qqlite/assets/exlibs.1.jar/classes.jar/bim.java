@@ -1,23 +1,13 @@
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 
-public class bim
-  extends FriendListObserver
+class bim
+  implements Runnable
 {
-  public bim(SearchFriendListActivity paramSearchFriendListActivity) {}
+  bim(bik parambik) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (paramBoolean) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null)) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
+    this.a.a.a(2131363351, 1);
   }
 }
 

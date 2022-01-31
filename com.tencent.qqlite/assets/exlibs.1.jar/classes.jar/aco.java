@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.data.ChatBackgroundInfo;
+import java.util.ArrayList;
 
-class aco
-  implements DialogInterface.OnClickListener
+public class aco
+  implements Runnable
 {
-  aco(acm paramacm, ChatBackgroundInfo paramChatBackgroundInfo) {}
+  public aco(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity, ArrayList paramArrayList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Acm.a.a.jdField_a_of_type_ComTencentMobileqqDataChatBackgroundInfo = this.jdField_a_of_type_ComTencentMobileqqDataChatBackgroundInfo;
-    ChatBackgroundSettingActivity.a(this.jdField_a_of_type_Acm.a.a, "OPENVIP_DOWN", 3);
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.e();
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.jdField_a_of_type_Acq.notifyDataSetChanged();
   }
 }
 

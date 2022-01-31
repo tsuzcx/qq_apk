@@ -1,19 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.utils.pathtracker.VipPathTracker;
 
 public class eyy
-  implements DialogInterface.OnKeyListener
 {
-  public eyy(QQProgressDialog paramQQProgressDialog, boolean paramBoolean) {}
+  public static final int a = 0;
+  public static final int b = 2;
+  public boolean a;
+  public int c;
+  public int d;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public eyy(VipPathTracker paramVipPathTracker, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if ((paramInt == 84) || (paramInt == 4)) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    return false;
+    this.d = paramInt1;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

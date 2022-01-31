@@ -1,29 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-public final class byj
-  implements Parcelable.Creator
+public class byj
+  implements DialogInterface.OnClickListener
 {
-  public AIOImageData a(Parcel paramParcel)
-  {
-    AIOImageData localAIOImageData = new AIOImageData();
-    localAIOImageData.a = paramParcel.readLong();
-    localAIOImageData.jdField_d_of_type_Int = paramParcel.readInt();
-    localAIOImageData.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localAIOImageData.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localAIOImageData.f = paramParcel.readString();
-    localAIOImageData.g = paramParcel.readString();
-    localAIOImageData.b = paramParcel.readLong();
-    localAIOImageData.c = paramParcel.readLong();
-    localAIOImageData.jdField_d_of_type_Long = paramParcel.readLong();
-    localAIOImageData.jdField_e_of_type_Long = paramParcel.readLong();
-    return localAIOImageData;
-  }
+  public byj(TroopFileItemBuilder paramTroopFileItemBuilder, long paramLong, UUID paramUUID, Activity paramActivity) {}
   
-  public AIOImageData[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new AIOImageData[paramInt];
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.a, this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
+      return;
+    }
+    new TroopFileItemOperation(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.a, this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
   }
 }
 

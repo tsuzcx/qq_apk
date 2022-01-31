@@ -1,15 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageInfo;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
 
 public class byy
-  implements View.OnClickListener
+  implements MessageQueue.IdleHandler
 {
-  public byy(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public byy(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public void onClick(View paramView)
+  public boolean queueIdle()
   {
-    paramView.setVisibility(8);
+    Object localObject = this.a.a.a();
+    if (localObject != null)
+    {
+      localObject = ((AIOImageInfo)localObject).a;
+      if ((localObject != null) && (((AIOImageData)localObject).a(4)) && (((AIOImageData)localObject).a(4) == null)) {
+        this.a.c(true);
+      }
+    }
+    return false;
   }
 }
 

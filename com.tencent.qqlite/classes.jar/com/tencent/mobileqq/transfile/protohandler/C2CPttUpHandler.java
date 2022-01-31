@@ -144,7 +144,7 @@ public class C2CPttUpHandler
       localApplyUploadReq.uint64_sender_uin.set(Long.parseLong(localPttUpReq.jdField_c_of_type_JavaLangString));
       try
       {
-        String str = localPttUpReq.d;
+        String str = localPttUpReq.jdField_d_of_type_JavaLangString;
         paramList = str;
         if (str.startsWith("+")) {
           paramList = str.substring(1);
@@ -163,7 +163,7 @@ public class C2CPttUpHandler
           {
             i = 500;
             continue;
-            paramList.str_dst_phonenum.set(localPttUpReq.d);
+            paramList.str_dst_phonenum.set(localPttUpReq.jdField_d_of_type_JavaLangString);
             i = 102;
             continue;
             i = 104;
@@ -190,7 +190,8 @@ public class C2CPttUpHandler
       localReqBody.msg_apply_upload_req.set(localApplyUploadReq);
       paramList = new cmd0x346.ExtensionReq();
       paramList.uint64_id.set(3L);
-      switch (localPttUpReq.jdField_c_of_type_Int)
+      paramList.uint32_ptt_format.set(localPttUpReq.jdField_c_of_type_Int);
+      switch (localPttUpReq.jdField_d_of_type_Int)
       {
       default: 
         i = 0;

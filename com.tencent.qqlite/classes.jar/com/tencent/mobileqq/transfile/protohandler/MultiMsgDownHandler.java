@@ -36,8 +36,8 @@ public class MultiMsgDownHandler
     MultiMsg.MultiMsgApplyDownReq localMultiMsgApplyDownReq = new MultiMsg.MultiMsgApplyDownReq();
     localMultiMsgApplyDownReq.setHasFlag(true);
     localMultiMsgApplyDownReq.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramReqCommon.jdField_a_of_type_ArrayOfByte));
-    localMultiMsgApplyDownReq.uint32_msg_type.set(MultiMsgUpHandler.a(paramReqCommon.jdField_c_of_type_Int));
-    localMultiMsgApplyDownReq.uint64_src_uin.set(Long.valueOf(paramReqCommon.jdField_c_of_type_JavaLangString).longValue());
+    localMultiMsgApplyDownReq.uint32_msg_type.set(MultiMsgUpHandler.a(paramReqCommon.d));
+    localMultiMsgApplyDownReq.uint64_src_uin.set(Long.valueOf(paramReqCommon.c).longValue());
     paramReqBody.rpt_multimsg_applydown_req.add(localMultiMsgApplyDownReq);
   }
   

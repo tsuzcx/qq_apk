@@ -1,31 +1,14 @@
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.biz.lebasearch.SearchProtocol.SearchObserver;
-import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
 import com.tencent.mobileqq.activity.Leba;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
 
 public class asq
-  implements SearchProtocol.SearchObserver
+  implements Runnable
 {
-  public asq(Leba paramLeba) {}
+  public asq(Leba paramLeba, boolean paramBoolean) {}
   
-  public void a(int paramInt, SearchProtocol.WordItem paramWordItem)
+  public void run()
   {
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramWordItem.a)))
-    {
-      Leba.a(this.a).setHint(paramWordItem.a);
-      Leba.a(this.a).setTag(paramWordItem.b);
-    }
+    Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba, this.jdField_a_of_type_Boolean);
   }
-  
-  public void a(int paramInt, ArrayList paramArrayList) {}
-  
-  public void a(int paramInt, List paramList) {}
-  
-  public void a(int paramInt, JSONArray paramJSONArray) {}
 }
 
 

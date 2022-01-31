@@ -17,7 +17,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import bhe;
+import bhj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.AppActivity;
 
@@ -35,7 +35,7 @@ public class RegisterGuideActivity
   private void a()
   {
     int i = (int)(getResources().getDisplayMetrics().heightPixels * 0.15F);
-    int j = getResources().getDimensionPixelSize(2131493095);
+    int j = getResources().getDimensionPixelSize(2131493097);
     this.jdField_a_of_type_AndroidViewView.getLayoutParams().height = Math.max(i, j);
     this.jdField_a_of_type_AndroidViewView.requestLayout();
   }
@@ -116,7 +116,7 @@ public class RegisterGuideActivity
     if ((paramBoolean) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
-      new Handler().post(new bhe(this));
+      new Handler().post(new bhj(this));
     }
   }
   
@@ -141,7 +141,7 @@ public class RegisterGuideActivity
       return;
     }
     paramView = new Intent(this, RegisterPhoneNumActivity.class);
-    paramView.putExtra("leftViewText", super.getString(2131363113));
+    paramView.putExtra("leftViewText", super.getString(2131363123));
     paramView.addFlags(67108864);
     super.startActivity(paramView);
   }

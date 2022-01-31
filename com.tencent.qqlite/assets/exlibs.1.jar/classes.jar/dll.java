@@ -1,25 +1,20 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.widget.MenuPopupDialog;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.HashMap;
 
 public class dll
-  implements View.OnLongClickListener
+  implements Runnable
 {
-  public dll(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public dll(QfileLocalFileAppTabView paramQfileLocalFileAppTabView) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
-      return false;
-    }
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131296440, paramView.getContext().getString(2131363250));
-    QfileBaseRecentFileTabView.a(this.a, MenuPopupDialog.a(paramView, paramView.getContext().getString(2131363277), localQQCustomMenu, new dlm(this, paramView), new dln(this, paramView)));
-    return true;
+    FileCategoryUtil.a(this.a.a, this.a);
+    HashMap localHashMap = new HashMap();
+    FileCategoryUtil.a(AppConstants.ay, ".apk", "", localHashMap, this.a);
+    FileCategoryUtil.a(localHashMap);
+    QfileLocalFileAppTabView.a(this.a, new dlm(this));
   }
 }
 

@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.downloadnew.common.NoticeParam;
+import com.tencent.open.component.cache.database.DbCacheManager;
+import com.tencent.open.component.cache.database.DbCacheService;
+import java.util.HashMap;
 
-public final class ffz
-  implements Parcelable.Creator
+public class ffz
+  implements ffy
 {
-  public NoticeParam a(Parcel paramParcel)
-  {
-    return new NoticeParam(paramParcel);
-  }
+  public ffz(DbCacheService paramDbCacheService) {}
   
-  public NoticeParam[] a(int paramInt)
+  public void a(DbCacheManager paramDbCacheManager)
   {
-    return new NoticeParam[paramInt];
+    synchronized (this.a.a)
+    {
+      this.a.a.remove(paramDbCacheManager.a());
+      return;
+    }
   }
 }
 

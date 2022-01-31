@@ -1,32 +1,43 @@
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aup
-  implements Runnable
+  extends WtloginObserver
 {
-  public aup(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
+  public aup(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public void run()
+  public void OnCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
   {
-    try
+    if (QLog.isColorLevel())
     {
-      if ((LoginVerifyCodeActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        LoginVerifyCodeActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-        LoginVerifyCodeActivity.a(this.a).b(2131363558);
+      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + paramString2);
+      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
+      if (paramErrMsg != null) {
+        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
       }
-      if ((LoginVerifyCodeActivity.a(this.a) != null) && (!LoginVerifyCodeActivity.a(this.a).isShowing())) {
-        LoginVerifyCodeActivity.a(this.a).show();
-      }
+    }
+    this.a.g();
+    if (this.a.isFinishing()) {
       return;
     }
-    catch (Throwable localThrowable)
+    if (paramInt3 == 0)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      this.a.c();
+      return;
     }
+    paramString1 = null;
+    if (paramErrMsg != null) {
+      paramString1 = paramErrMsg.getMessage();
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      this.a.a(null, paramString1);
+      return;
+    }
+    this.a.a(2131363397, 1);
   }
 }
 

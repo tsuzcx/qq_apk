@@ -1,26 +1,30 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.widget.XPanelContainer;
 
 public class caz
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public caz(TroopAssistTipsBar paramTroopAssistTipsBar) {}
+  public caz(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    TroopAssistTipsBar.a(this.a).a(TroopAssistTipsBar.a(this.a).a, Integer.valueOf(4));
-    TroopAssistTipsBar.a(this.a).a();
-    TroopAssistantManager.a().a(TroopAssistTipsBar.a(this.a), TroopAssistTipsBar.a(this.a).a);
-    QQToast.a(TroopAssistTipsBar.a(this.a).a(), 2, 2131364146, 0).b(TroopAssistTipsBar.a(this.a).getTitleBarHeight());
-    ReportController.b(TroopAssistTipsBar.a(this.a), "P_CliOper", "Grp_msg", "", "AIOchat", "Clk_setmsg", 0, 0, TroopAssistTipsBar.a(this.a).a, "", "", "");
+    TroopChatPie.a(this.a).setBackgroundResource(2130838407);
+    TroopChatPie.a(this.a).setBackgroundResource(2130838407);
+    this.a.f.setVisibility(8);
+    this.a.g.setVisibility(8);
+    this.a.d.setVisibility(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.f.setVisibility(0);
+    this.a.g.setVisibility(0);
   }
 }
 

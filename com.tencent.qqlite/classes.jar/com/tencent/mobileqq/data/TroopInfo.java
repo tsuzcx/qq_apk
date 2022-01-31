@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -90,6 +92,15 @@ public class TroopInfo
   public int wMemberMax;
   public int wMemberNum;
   public int wSpecialClass;
+  
+  public static final boolean isTroopMember(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(44);
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface.a(paramString) != null;
+    }
+    return false;
+  }
   
   public static List setAvatarPicId(oidb_0x88d.GroupHeadPortrait paramGroupHeadPortrait)
   {
@@ -210,7 +221,7 @@ public class TroopInfo
   public String getAdminShow(Context paramContext)
   {
     if (TextUtils.isEmpty(this.adminNameShow)) {
-      return paramContext.getString(2131362886);
+      return paramContext.getString(2131362893);
     }
     return this.adminNameShow;
   }
@@ -241,7 +252,7 @@ public class TroopInfo
   public String getOwnerShow(Context paramContext)
   {
     if (TextUtils.isEmpty(this.ownerNameShow)) {
-      return paramContext.getString(2131362885);
+      return paramContext.getString(2131362892);
     }
     return this.ownerNameShow;
   }

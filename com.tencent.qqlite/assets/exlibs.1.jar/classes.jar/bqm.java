@@ -1,7 +1,7 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
 
 public class bqm
   implements View.OnClickListener
@@ -10,7 +10,10 @@ public class bqm
   
   public void onClick(View paramView)
   {
-    this.a.a.cancel();
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+    this.a.finish();
   }
 }
 

@@ -1,21 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.LiteVideoActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.dataline.util.file.ImageInfo;
+import java.util.Comparator;
 
-public class bp
-  implements View.OnClickListener
+public final class bp
+  implements Comparator
 {
-  public bp(LiteVideoActivity paramLiteVideoActivity) {}
-  
-  public void onClick(View paramView)
+  public int a(ImageInfo paramImageInfo1, ImageInfo paramImageInfo2)
   {
-    if ((this.a.a) && (NetworkUtil.f(this.a)) && (!NetworkUtil.g(this.a)) && (LiteVideoActivity.a(this.a) > LiteVideoActivity.a()))
-    {
-      LiteVideoActivity.a(this.a);
-      return;
-    }
-    LiteVideoActivity.b(this.a);
+    return -Long.valueOf(paramImageInfo1.a()).compareTo(Long.valueOf(paramImageInfo2.a()));
   }
 }
 

@@ -4,7 +4,7 @@ import com.tencent.mobileqq.app.BizTroopObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.core.FilePreViewControllerBase;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import enk;
+import eoz;
 
 public class TroopFilePreviewController
   extends FilePreViewControllerBase
@@ -25,7 +25,7 @@ public class TroopFilePreviewController
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new enk(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new eoz(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
   }
   

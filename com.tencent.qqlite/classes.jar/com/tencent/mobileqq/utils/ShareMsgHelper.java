@@ -159,7 +159,7 @@ public class ShareMsgHelper
   {
     Intent localIntent = new Intent("com.tencent.intent.QQLite_FORWARD");
     localIntent.putExtra("forward_type", 1001);
-    localIntent.putExtra("category", paramContext.getString(2131362440));
+    localIntent.putExtra("category", paramContext.getString(2131362441));
     localIntent.putExtra("detail_url", paramString5);
     localIntent.putExtra("image_url_remote", paramString4);
     localIntent.putExtra("title", paramString2);
@@ -181,8 +181,8 @@ public class ShareMsgHelper
       localIntent.putExtra("req_share_id", -1);
       localIntent.putExtra("isFromShare", true);
       localIntent.putExtra("struct_share_key_source_action", " ");
-      localIntent.putExtra("app_name", paramContext.getString(2131362441));
-      localIntent.putExtra("brief_key", String.format(paramContext.getString(2131362443), new Object[] { paramString6, paramString2 }));
+      localIntent.putExtra("app_name", paramContext.getString(2131362442));
+      localIntent.putExtra("brief_key", String.format(paramContext.getString(2131362444), new Object[] { paramString6, paramString2 }));
       localIntent.putExtra("compatible_text", "分享名片");
       paramString1 = StructMsgFactory.a(localIntent.getExtras());
       if (paramString1 == null) {

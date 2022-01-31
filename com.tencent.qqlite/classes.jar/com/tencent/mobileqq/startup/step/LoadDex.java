@@ -8,7 +8,7 @@ public class LoadDex
 {
   protected boolean a()
   {
-    if ((BaseApplicationImpl.h == 4) || ("Success".equals(BaseApplicationImpl.jdField_a_of_type_JavaLangString))) {
+    if ((BaseApplicationImpl.g == 4) || ("Success".equals(BaseApplicationImpl.jdField_a_of_type_JavaLangString))) {
       return true;
     }
     boolean bool1;

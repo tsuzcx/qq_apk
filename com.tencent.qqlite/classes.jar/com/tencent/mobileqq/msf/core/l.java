@@ -553,23 +553,23 @@ public class l
     //   200: aload 4
     //   202: ldc_w 544
     //   205: invokevirtual 471	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   208: astore_1
-    //   209: aload_1
+    //   208: astore_2
+    //   209: aload_2
     //   210: ifnull -172 -> 38
-    //   213: aload_1
+    //   213: aload_2
     //   214: invokevirtual 547	java/lang/String:trim	()Ljava/lang/String;
     //   217: invokevirtual 550	java/lang/String:length	()I
     //   220: ifle -182 -> 38
-    //   223: aload_1
+    //   223: aload_2
     //   224: invokestatic 526	com/tencent/mobileqq/msf/core/d:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/msf/core/d;
-    //   227: astore_2
-    //   228: aload_2
+    //   227: astore_1
+    //   228: aload_1
     //   229: invokevirtual 528	com/tencent/mobileqq/msf/core/d:c	()Ljava/lang/String;
     //   232: ifnull -194 -> 38
-    //   235: aload_2
+    //   235: aload_1
     //   236: invokevirtual 530	com/tencent/mobileqq/msf/core/d:d	()I
     //   239: ifle -201 -> 38
-    //   242: aload_1
+    //   242: aload_2
     //   243: invokevirtual 547	java/lang/String:trim	()Ljava/lang/String;
     //   246: ldc_w 363
     //   249: ldc 136

@@ -44,9 +44,9 @@ public class yr
       AuthDevActivity.b(this.a, true);
       EquipmentLockImpl.a().a(this.a.app, this.a, this.a.app.a(), true);
       AuthDevActivity.c(this.a, true);
-      AuthDevActivity.b(this.a).setText(this.a.getString(2131364191));
-      AuthDevActivity.b(this.a).setContentDescription(this.a.getString(2131364191));
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131364194), 0).b(this.a.getTitleBarHeight());
+      AuthDevActivity.b(this.a).setText(this.a.getString(2131364202));
+      AuthDevActivity.b(this.a).setContentDescription(this.a.getString(2131364202));
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131364205), 0).b(this.a.getTitleBarHeight());
       AuthDevActivity.d(this.a);
       paramWUserSigInfo = this.a.app.a(LoginInfoActivity.class);
     } while (paramWUserSigInfo == null);
@@ -64,7 +64,7 @@ public class yr
       QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131364218), 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131364229), 0).b(this.a.getTitleBarHeight());
   }
   
   public void OnCloseDevLock(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
@@ -87,9 +87,9 @@ public class yr
       AuthDevActivity.b(this.a, false);
       AuthDevActivity.a(this.a).setVisibility(8);
       EquipmentLockImpl.a().a(this.a.app, this.a, this.a.app.a(), false);
-      AuthDevActivity.b(this.a).setText(this.a.getString(2131364192));
-      AuthDevActivity.b(this.a).setContentDescription(this.a.getString(2131364192));
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131364216), 0).b(this.a.getTitleBarHeight());
+      AuthDevActivity.b(this.a).setText(this.a.getString(2131364203));
+      AuthDevActivity.b(this.a).setContentDescription(this.a.getString(2131364203));
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131364227), 0).b(this.a.getTitleBarHeight());
       paramWUserSigInfo = this.a.app.a(LoginInfoActivity.class);
       if (paramWUserSigInfo != null) {
         paramWUserSigInfo.obtainMessage(20140331, 0, 0).sendToTarget();
@@ -110,7 +110,7 @@ public class yr
       QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131364217), 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131364228), 0).b(this.a.getTitleBarHeight());
   }
 }
 

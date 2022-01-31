@@ -1,10 +1,6 @@
-import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
 
 public class adu
   implements View.OnClickListener
@@ -13,21 +9,11 @@ public class adu
   
   public void onClick(View paramView)
   {
-    if (this.a.c > 1)
+    long l = System.currentTimeMillis();
+    if (l - this.a.a > this.a.b)
     {
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130837682);
-      paramView = this.a;
-      paramView.c -= 1;
-      if (this.a.c <= 1)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838090);
-      }
-      this.a.e = ((this.a.c - 1) * 8);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.c));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.a.a = l;
+      this.a.a();
     }
   }
 }

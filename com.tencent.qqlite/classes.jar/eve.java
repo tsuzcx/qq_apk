@@ -1,11 +1,8 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
 
 public class eve
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  private eve(QQCustomSingleButtonDialog paramQQCustomSingleButtonDialog) {}
+  public static AntiFraudConfigFileUtil a = new AntiFraudConfigFileUtil(null);
 }
 
 

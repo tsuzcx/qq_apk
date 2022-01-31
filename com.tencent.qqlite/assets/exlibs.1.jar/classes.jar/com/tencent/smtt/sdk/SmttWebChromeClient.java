@@ -1,14 +1,15 @@
 package com.tencent.smtt.sdk;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Message;
 import android.view.View;
-import android.webkit.ValueCallback;
-import com.tencent.smtt.export.external.WebViewWizardBase;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
 import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.FileChooserParams;
 import com.tencent.smtt.export.external.interfaces.IX5WebViewBase;
 import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.WebViewTransport;
 import com.tencent.smtt.export.external.interfaces.JsPromptResult;
@@ -22,9 +23,9 @@ class SmttWebChromeClient
   private WebChromeClient mChromeClient;
   private WebView mWebView;
   
-  public SmttWebChromeClient(WebViewWizardBase paramWebViewWizardBase, WebView paramWebView, WebChromeClient paramWebChromeClient)
+  public SmttWebChromeClient(IX5WebChromeClient paramIX5WebChromeClient, WebView paramWebView, WebChromeClient paramWebChromeClient)
   {
-    super(paramWebViewWizardBase);
+    super(paramIX5WebChromeClient);
     this.mWebView = paramWebView;
     this.mChromeClient = paramWebChromeClient;
   }
@@ -34,7 +35,7 @@ class SmttWebChromeClient
     return this.mChromeClient.getDefaultVideoPoster();
   }
   
-  public void getVisitedHistory(ValueCallback<String[]> paramValueCallback) {}
+  public void getVisitedHistory(android.webkit.ValueCallback<String[]> paramValueCallback) {}
   
   public void onCloseWindow(IX5WebViewBase paramIX5WebViewBase)
   {
@@ -71,7 +72,7 @@ class SmttWebChromeClient
   
   public void onExceededDatabaseQuota(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, QuotaUpdater paramQuotaUpdater)
   {
-    this.mChromeClient.onExceededDatabaseQuota(paramString1, paramString2, paramLong1, paramLong2, paramLong3, paramQuotaUpdater);
+    this.mChromeClient.onExceededDatabaseQuota(paramString1, paramString2, paramLong1, paramLong2, paramLong3, new QuotaUpdaterImpl(paramQuotaUpdater));
   }
   
   public void onGeolocationPermissionsHidePrompt()
@@ -126,7 +127,7 @@ class SmttWebChromeClient
   
   public void onReachedMaxAppCacheSize(long paramLong1, long paramLong2, QuotaUpdater paramQuotaUpdater)
   {
-    this.mChromeClient.onReachedMaxAppCacheSize(paramLong1, paramLong2, paramQuotaUpdater);
+    this.mChromeClient.onReachedMaxAppCacheSize(paramLong1, paramLong2, new QuotaUpdaterImpl(paramQuotaUpdater));
   }
   
   public void onReceivedIcon(IX5WebViewBase paramIX5WebViewBase, Bitmap paramBitmap)
@@ -139,7 +140,6 @@ class SmttWebChromeClient
   {
     this.mWebView.setX5WebView(paramIX5WebViewBase);
     this.mChromeClient.onReceivedTitle(this.mWebView, paramString);
-    this.mWebView.hideSplashLogo();
   }
   
   public void onReceivedTouchIconUrl(IX5WebViewBase paramIX5WebViewBase, String paramString, boolean paramBoolean)
@@ -164,7 +164,52 @@ class SmttWebChromeClient
     this.mChromeClient.onShowCustomView(paramView, paramCustomViewCallback);
   }
   
-  public void openFileChooser(final ValueCallback<Uri[]> paramValueCallback, String paramString1, String paramString2, boolean paramBoolean)
+  public boolean onShowFileChooser(IX5WebViewBase paramIX5WebViewBase, final android.webkit.ValueCallback<Uri[]> paramValueCallback, final IX5WebChromeClient.FileChooserParams paramFileChooserParams)
+  {
+    paramValueCallback = new ValueCallback()
+    {
+      public void onReceiveValue(Uri[] paramAnonymousArrayOfUri)
+      {
+        paramValueCallback.onReceiveValue(paramAnonymousArrayOfUri);
+      }
+    };
+    paramFileChooserParams = new WebChromeClient.FileChooserParams()
+    {
+      public Intent createIntent()
+      {
+        return paramFileChooserParams.createIntent();
+      }
+      
+      public String[] getAcceptTypes()
+      {
+        return paramFileChooserParams.getAcceptTypes();
+      }
+      
+      public String getFilenameHint()
+      {
+        return paramFileChooserParams.getFilenameHint();
+      }
+      
+      public int getMode()
+      {
+        return paramFileChooserParams.getMode();
+      }
+      
+      public CharSequence getTitle()
+      {
+        return paramFileChooserParams.getTitle();
+      }
+      
+      public boolean isCaptureEnabled()
+      {
+        return paramFileChooserParams.isCaptureEnabled();
+      }
+    };
+    this.mWebView.setX5WebView(paramIX5WebViewBase);
+    return this.mChromeClient.onShowFileChooser(this.mWebView, paramValueCallback, paramFileChooserParams);
+  }
+  
+  public void openFileChooser(final android.webkit.ValueCallback<Uri[]> paramValueCallback, String paramString1, String paramString2, boolean paramBoolean)
   {
     this.mChromeClient.openFileChooser(new ValueCallback()
     {
@@ -173,6 +218,22 @@ class SmttWebChromeClient
         paramValueCallback.onReceiveValue(new Uri[] { paramAnonymousUri });
       }
     }, paramString1, paramString2);
+  }
+  
+  class QuotaUpdaterImpl
+    implements WebStorage.QuotaUpdater
+  {
+    QuotaUpdater mQuotaUpdater;
+    
+    QuotaUpdaterImpl(QuotaUpdater paramQuotaUpdater)
+    {
+      this.mQuotaUpdater = paramQuotaUpdater;
+    }
+    
+    public void updateQuota(long paramLong)
+    {
+      this.mQuotaUpdater.updateQuota(paramLong);
+    }
   }
 }
 

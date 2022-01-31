@@ -1,93 +1,23 @@
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class cnb
-  extends DiscussionObserver
+class cnb
+  implements View.OnClickListener
 {
-  public cnb(SelectMemberActivity paramSelectMemberActivity) {}
+  cnb(cmz paramcmz, int paramInt) {}
   
-  protected void a(boolean paramBoolean, long paramLong)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean) {
-      SelectMemberActivity.jdField_a_of_type_Boolean = false;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      if (paramBoolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SelectMemberActivity", 2, "create discussion success: roomId: " + paramLong + ", mSubType: " + SelectMemberActivity.a(this.a) + ", mEntrance: " + this.a.q);
-        }
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", String.valueOf(paramLong));
-        this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-        if ((this.a.jdField_a_of_type_AndroidContentIntent != null) && (this.a.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("sendToVideo", false))) {
-          QQToast.a(this.a, 2131364487, 0).a();
-        }
-        this.a.finish();
-      }
-    }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "create discussion fail");
-    }
-    QQToast.a(this.a, this.a.getString(2131363216), 2000).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, ArrayList paramArrayList)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      if (paramBoolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SelectMemberActivity", 2, "add discussion member success: roomId: " + paramLong);
-        }
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", String.valueOf(paramLong));
-        this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-        if ((this.a.jdField_a_of_type_AndroidContentIntent != null) && (this.a.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("sendToVideo", false))) {
-          QQToast.a(this.a, 2131364487, 0).a();
-        }
-        this.a.finish();
-      }
-    }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "add discussion member fail");
-    }
-    QQToast.a(this.a, this.a.getString(2131363219), 2000).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
-  }
-  
-  protected void a(Object[] paramArrayOfObject)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    if (paramArrayOfObject == null) {}
-    String str;
-    do
-    {
-      return;
-      str = (String)paramArrayOfObject[0];
-    } while (!this.a.F.equals(str));
-    int i = ((Integer)paramArrayOfObject[1]).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "add discussion member failed, error code: " + i);
-    }
-    QQToast.a(this.a, this.a.getString(2131363219), 0).b(this.a.getTitleBarHeight());
+    paramView = new Bundle();
+    paramView.putInt("friend_team_id", ((Groups)this.jdField_a_of_type_Cmz.getItem(this.jdField_a_of_type_Int)).group_id);
+    paramView.putString("group_name", ((Groups)this.jdField_a_of_type_Cmz.getItem(this.jdField_a_of_type_Int)).group_name);
+    this.jdField_a_of_type_Cmz.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(6, paramView);
+    ReportController.b(this.jdField_a_of_type_Cmz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Friends_select", "Fs_tab_clk", 0, 0, "5", "", "", "");
   }
 }
 

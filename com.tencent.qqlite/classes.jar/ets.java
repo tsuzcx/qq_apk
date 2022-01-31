@@ -1,66 +1,124 @@
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ReportHandler;
-import com.tencent.mobileqq.data.PushBannerReportLog;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.utils.JumpAction;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.troopshare.TroopShareResp;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class ets
-  extends Thread
+  extends TroopObserver
 {
-  public ets(JumpAction paramJumpAction) {}
+  public ets(TroopShareUtility paramTroopShareUtility) {}
   
-  public void run()
+  public void a(boolean paramBoolean, TroopShareResp paramTroopShareResp)
   {
-    Object localObject1 = (String)JumpAction.a(this.a).get("version");
-    Object localObject3 = ReportHandler.a(this.a.ce, this.a.cf, (String)localObject1, "");
-    localObject1 = JumpAction.a(this.a).a().createEntityManager();
-    Object localObject4 = ((EntityManager)localObject1).a(PushBannerReportLog.class);
-    Object localObject2;
-    if ((localObject4 != null) && (((List)localObject4).size() >= 9))
-    {
-      localObject2 = new HashMap();
-      ((HashMap)localObject2).put(localObject3, Integer.valueOf(1));
-      localObject3 = ((List)localObject4).iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (PushBannerReportLog)((Iterator)localObject3).next();
-        if (((HashMap)localObject2).containsKey(((PushBannerReportLog)localObject4).getLog())) {
-          ((HashMap)localObject2).put(((PushBannerReportLog)localObject4).getLog(), Integer.valueOf(((Integer)((HashMap)localObject2).get(((PushBannerReportLog)localObject4).getLog())).intValue() + 1));
-        } else {
-          ((HashMap)localObject2).put(((PushBannerReportLog)localObject4).getLog(), Integer.valueOf(1));
-        }
-      }
-      localObject3 = new ArrayList();
-      localObject4 = ((HashMap)localObject2).entrySet().iterator();
-      while (((Iterator)localObject4).hasNext())
-      {
-        Object localObject5 = (Map.Entry)((Iterator)localObject4).next();
-        String str = (String)((Map.Entry)localObject5).getKey();
-        localObject5 = (Integer)((Map.Entry)localObject5).getValue();
-        ((List)localObject3).add(str + "|" + localObject5);
-      }
-      localObject4 = JumpAction.a(this.a);
-      JumpAction.a(this.a);
-      ((ReportHandler)((QQAppInterface)localObject4).a(5)).a((String[])((List)localObject3).toArray(new String[((List)localObject3).size()]));
-      ((EntityManager)localObject1).a(PushBannerReportLog.class);
-      ((HashMap)localObject2).clear();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopShareUtility", 2, "onTroopShareLink start");
     }
-    for (;;)
+    if ((TroopShareUtility.a(this.a) == null) || (TroopShareUtility.a(this.a).c == null) || (paramTroopShareResp == null) || (!TroopShareUtility.a(this.a).c.equals(paramTroopShareResp.jdField_a_of_type_JavaLangString))) {
+      if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
+        ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+      }
+    }
+    label250:
+    label634:
+    do
     {
-      ((EntityManager)localObject1).a();
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                if ((TroopShareUtility.a(this.a) == null) || (!TroopShareUtility.a(this.a).isShowing()) || (TroopShareUtility.a(this.a) == -1) || (TroopShareUtility.b(this.a) == -1)) {
+                  break label634;
+                }
+                if ((!paramBoolean) || (paramTroopShareResp.jdField_a_of_type_Int != 0)) {
+                  break label455;
+                }
+                if (!paramTroopShareResp.jdField_a_of_type_Boolean) {
+                  break;
+                }
+                TroopShareUtility.a(this.a, paramTroopShareResp.b);
+                if (TroopShareUtility.b(this.a) == 0) {
+                  break label250;
+                }
+              } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
+              ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+              return;
+              TroopShareUtility.b(this.a, paramTroopShareResp.b);
+              if (TroopShareUtility.b(this.a) == 1) {
+                break;
+              }
+            } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
+            ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+            return;
+            switch (TroopShareUtility.a(this.a))
+            {
+            default: 
+              return;
+            case 0: 
+              QQAppInterface localQQAppInterface = (QQAppInterface)TroopShareUtility.a(this.a).getAppRuntime();
+              String str = localQQAppInterface.a(4, 3000, TroopShareUtility.a(this.a).c);
+              Setting localSetting = localQQAppInterface.a(str);
+              paramTroopShareResp = localSetting;
+              if (localSetting == null) {
+                paramTroopShareResp = localQQAppInterface.b(str);
+              }
+              if (paramTroopShareResp != null) {
+                TroopShareUtility.c(this.a, paramTroopShareResp.url);
+              }
+              if (TroopShareUtility.a(this.a) == null) {
+                ((FriendListHandler)localQQAppInterface.a(1)).c(TroopShareUtility.a(this.a).c);
+              }
+              this.a.b();
+              TroopShareUtility.d(this.a);
+              return;
+            case 2: 
+              this.a.b();
+              TroopShareUtility.b(this.a);
+              return;
+            case 1: 
+              this.a.b();
+              TroopShareUtility.c(this.a);
+              return;
+            }
+            this.a.b();
+            TroopShareUtility.e(this.a);
+            return;
+            if ((!paramTroopShareResp.jdField_a_of_type_Boolean) || (TroopShareUtility.b(this.a) == 0)) {
+              break;
+            }
+          } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
+          ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+          return;
+          if ((paramTroopShareResp.jdField_a_of_type_Boolean) || (TroopShareUtility.b(this.a) == 1)) {
+            break;
+          }
+        } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
+        ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+        return;
+        this.a.b();
+        QQToast.a(TroopShareUtility.a(this.a), 1, TroopShareUtility.a(this.a).getString(2131363716), 0).b(TroopShareUtility.a(this.a).getTitleBarHeight());
+        TroopShareUtility.a(this.a, -1);
+        TroopShareUtility.b(this.a, -1);
+      } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
+      ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
       return;
-      localObject2 = new PushBannerReportLog();
-      ((PushBannerReportLog)localObject2).setLog((String)localObject3);
-      ((EntityManager)localObject1).a((Entity)localObject2);
-    }
+    } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
+    label455:
+    ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
   }
 }
 

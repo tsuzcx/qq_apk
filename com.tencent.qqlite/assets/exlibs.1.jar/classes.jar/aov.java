@@ -1,15 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
 public class aov
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public aov(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public aov(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    FriendProfileImageActivity.a(this.a);
+    if ((this.a.a.a.a.equals(this.a.app.a())) && (FriendProfileCardActivity.a(this.a) != null)) {
+      FriendProfileCardActivity.a(this.a).sendEmptyMessage(2);
+    }
   }
 }
 

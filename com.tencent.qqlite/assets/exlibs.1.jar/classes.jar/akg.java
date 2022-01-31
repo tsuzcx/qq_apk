@@ -1,8 +1,8 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.DoodleActivity;
+import com.tencent.mobileqq.widget.DoodlePicView;
 import com.tencent.mobileqq.widget.DoodleTextView;
 
 public class akg
@@ -12,17 +12,34 @@ public class akg
   
   public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0) || (this.a.b.getVisibility() == 0))
+    int j = 0;
+    int i = 0;
+    while (i < 6)
     {
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.b.setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-      return;
+      this.a.jdField_b_of_type_ArrayOfAndroidWidgetImageView[i].setBackgroundDrawable(null);
+      i += 1;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.d();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839129);
-    this.a.c.setVisibility(8);
+    paramView.setBackgroundResource(2130839170);
+    int k = paramView.getId();
+    i = j;
+    for (;;)
+    {
+      if (i < 6)
+      {
+        if (this.a.jdField_b_of_type_ArrayOfInt[i] == k)
+        {
+          if (this.a.jdField_a_of_type_Boolean) {
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.d();
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.setPaintColor(this.a.d[i]);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setPaintColor(this.a.d[i]);
+        }
+      }
+      else {
+        return;
+      }
+      i += 1;
+    }
   }
 }
 

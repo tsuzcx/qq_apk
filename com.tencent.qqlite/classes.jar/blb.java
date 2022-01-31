@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class blb
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
   public blb(SplashActivity paramSplashActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
+    Intent localIntent = new Intent("mqql.intent.action.NOTICE_ON_PCACTIVE");
+    localIntent.addFlags(268435456);
+    localIntent.putExtra("uin", this.a.app.getAccount());
+    BaseApplicationImpl.a().startActivity(localIntent);
   }
 }
 

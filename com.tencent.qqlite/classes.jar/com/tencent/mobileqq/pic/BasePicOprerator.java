@@ -27,19 +27,19 @@ import com.tencent.mobileqq.transfile.TransferResult;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import dzh;
-import dzi;
-import dzm;
-import dzn;
-import dzo;
-import dzq;
+import eaj;
+import eak;
+import eao;
+import eap;
+import eaq;
+import eas;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import tencent.im.msg.im_msg_body.RichText;
 
 public abstract class BasePicOprerator
-  implements DownCallBack, InfoBuilder, UpCallBack, dzq
+  implements DownCallBack, InfoBuilder, UpCallBack, eas
 {
   public static final int a = 0;
   public static final int b = 1;
@@ -62,7 +62,7 @@ public abstract class BasePicOprerator
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new dzh(this, Looper.getMainLooper());
+      this.jdField_a_of_type_AndroidOsHandler = new eaj(this, Looper.getMainLooper());
     }
   }
   
@@ -292,12 +292,12 @@ public abstract class BasePicOprerator
   
   private void b(PicFowardInfo paramPicFowardInfo)
   {
-    new dzm(this, paramPicFowardInfo).execute(new Void[0]);
+    new eao(this, paramPicFowardInfo).execute(new Void[0]);
   }
   
   private void b(PicUploadInfo paramPicUploadInfo)
   {
-    new dzo(this, paramPicUploadInfo).execute(new Void[0]);
+    new eaq(this, paramPicUploadInfo).execute(new Void[0]);
   }
   
   private boolean b(PicFowardInfo paramPicFowardInfo)
@@ -449,7 +449,7 @@ public abstract class BasePicOprerator
           }
         }
       }
-      ThreadManager.a().post(new dzn(this, paramDownResult));
+      ThreadManager.a().post(new eap(this, paramDownResult));
       if (paramDownResult != null) {
         break label482;
       }
@@ -599,7 +599,7 @@ public abstract class BasePicOprerator
     if (QLog.isColorLevel()) {
       QLog.d("MultiMsg", 2, "[uploadForwardMultiMsgPics] start");
     }
-    new dzi(this, paramArrayList, l).execute(new Void[0]);
+    new eak(this, paramArrayList, l).execute(new Void[0]);
   }
   
   public void b(UpCallBack.SendResult paramSendResult)

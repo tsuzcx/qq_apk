@@ -1,30 +1,41 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.LinearLayout;
+import android.os.Message;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class ayh
-  implements DialogInterface.OnClickListener
+  extends TransProcessorHandler
 {
   public ayh(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if ((NearbyPeopleProfileActivity.c(this.a) != null) && (!NearbyPeopleProfileActivity.c(this.a).isEnabled()))
+    if (NearbyPeopleProfileActivity.b(this.a) != 1) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.dating", 2, "profile add friend return");
-      }
       return;
+      switch (paramMessage.what)
+      {
+      case 1004: 
+      default: 
+        return;
+      case 1003: 
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyPeopleProfileActivity.mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.aN);
+        }
+        break;
+      }
+    } while (NearbyPeopleProfileActivity.a(this.a) == null);
+    NearbyPeopleProfileActivity.a(this.a).a = NearbyPeoplePhotoUploadProcessor.aN;
+    NearbyPeopleProfileActivity.f(this.a);
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyPeopleProfileActivity.mPicUploadHandler.handleMessage(), upload fail.");
     }
-    NearbyPeopleProfileActivity.w(this.a);
-    if ((NearbyPeopleProfileActivity.c(this.a) != null) && (NearbyPeopleProfileActivity.c(this.a).isShowing())) {
-      NearbyPeopleProfileActivity.c(this.a).dismiss();
-    }
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004829", "0X8004829", 1, 0, "", "", "", "");
+    this.a.c();
+    QQToast.a(this.a, "上传失败", 0).b(this.a.getTitleBarHeight());
   }
 }
 

@@ -1,16 +1,16 @@
-import android.widget.Button;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.MayKnowManActivity;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.app.LBSObserver;
+import java.util.List;
 
 public class avg
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends LBSObserver
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public avg(MayKnowManActivity paramMayKnowManActivity) {}
   
-  private avg(MayKnowManActivity paramMayKnowManActivity) {}
+  protected void a(boolean paramBoolean, List paramList, int paramInt)
+  {
+    this.a.runOnUiThread(new avh(this, paramBoolean, paramList, paramInt));
+  }
 }
 
 

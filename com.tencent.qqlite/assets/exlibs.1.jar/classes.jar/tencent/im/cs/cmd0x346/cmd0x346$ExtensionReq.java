@@ -18,6 +18,7 @@ public final class cmd0x346$ExtensionReq
   public static final int MSG_DEL_MESSAGE_REQ_FIELD_NUMBER = 90100;
   public static final int STR_DST_PHONENUM_FIELD_NUMBER = 3;
   public static final int UINT32_DOWNLOAD_URL_TYPE_FIELD_NUMBER = 90200;
+  public static final int UINT32_PTT_FORMAT_FIELD_NUMBER = 90300;
   public static final int UINT64_ID_FIELD_NUMBER = 1;
   public static final int UINT64_ROUTE_ID_FIELD_NUMBER = 100;
   public static final int UINT64_TYPE_FIELD_NUMBER = 2;
@@ -27,6 +28,7 @@ public final class cmd0x346$ExtensionReq
   public cmd0x346.DelMessageReq msg_del_message_req = new cmd0x346.DelMessageReq();
   public final PBStringField str_dst_phonenum = PBField.initString("");
   public final PBUInt32Field uint32_download_url_type = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_ptt_format = PBField.initUInt32(0);
   public final PBUInt64Field uint64_id = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_route_id = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_type = PBField.initUInt64(0L);
@@ -34,7 +36,7 @@ public final class cmd0x346$ExtensionReq
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 162, 800, 720802, 721600 }, new String[] { "uint64_id", "uint64_type", "str_dst_phonenum", "int32_phone_convert_type", "bytes_sig", "uint64_route_id", "msg_del_message_req", "uint32_download_url_type" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), "", Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L), null, Integer.valueOf(0) }, ExtensionReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 162, 800, 720802, 721600, 722400 }, new String[] { "uint64_id", "uint64_type", "str_dst_phonenum", "int32_phone_convert_type", "bytes_sig", "uint64_route_id", "msg_del_message_req", "uint32_download_url_type", "uint32_ptt_format" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), "", Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L), null, Integer.valueOf(0), Integer.valueOf(0) }, ExtensionReq.class);
   }
 }
 

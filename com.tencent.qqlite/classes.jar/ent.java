@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.troop.data.NearbyOpenTroop;
 
 public class ent
   implements Runnable
 {
-  public ent(TroopNoticeJsHandler paramTroopNoticeJsHandler, WebView paramWebView, String paramString1, String paramString2) {}
+  public ent(NearbyOpenTroop paramNearbyOpenTroop) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript: " + this.jdField_a_of_type_JavaLangString + "(" + this.b + ")");
+    this.a.a = true;
+    if (this.a.b)
+    {
+      this.a.b = false;
+      NearbyOpenTroop.a(this.a, this.a.d, this.a.e, this.a.c, this.a.f);
     }
   }
 }

@@ -28,7 +28,7 @@ public class ym
         if (NetworkUtil.e(this.a)) {
           break label118;
         }
-        QQToast.a(this.a, this.a.getString(2131362790), 0).b(this.a.getTitleBarHeight());
+        QQToast.a(this.a, this.a.getString(2131362797), 0).b(this.a.getTitleBarHeight());
       }
     }
     label118:

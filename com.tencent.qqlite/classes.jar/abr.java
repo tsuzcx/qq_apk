@@ -1,23 +1,31 @@
-import android.app.Dialog;
-import android.view.animation.AlphaAnimation;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public final class abr
-  implements Runnable
+  implements FMDialogUtil.FMDialogInterface
 {
-  public abr(Dialog paramDialog) {}
+  public abr(SessionInfo paramSessionInfo, ForwardFileInfo paramForwardFileInfo, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.isShowing())
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
     {
-      TextView localTextView = (TextView)this.a.findViewById(2131296580);
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.9F, 0.0F);
-      localAlphaAnimation.setDuration(500L);
-      localAlphaAnimation.setAnimationListener(new abs(this));
-      localTextView.startAnimation(localAlphaAnimation);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a()))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.b(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.b(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
   }
+  
+  public void b() {}
 }
 
 

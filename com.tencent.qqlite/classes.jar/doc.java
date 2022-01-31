@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
 
 public class doc
   implements Runnable
 {
-  public doc(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt) {}
+  public doc(FMObserver paramFMObserver, ThumbnailInfo paramThumbnailInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataThumbnailInfo);
   }
 }
 

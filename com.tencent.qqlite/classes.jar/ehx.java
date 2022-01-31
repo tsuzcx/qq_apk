@@ -1,7 +1,23 @@
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
+import com.tencent.mobileqq.transfile.C2CPttUploadProcessor;
+
 public class ehx
+  extends MessageObserver
 {
-  public static final int a = 8;
-  public static final int b = 5;
+  public ehx(C2CPttUploadProcessor paramC2CPttUploadProcessor) {}
+  
+  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  {
+    this.a.a("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    this.a.d();
+  }
 }
 
 

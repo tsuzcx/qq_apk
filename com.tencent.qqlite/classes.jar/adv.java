@@ -1,16 +1,16 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class adv
   implements View.OnClickListener
 {
-  public adv(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, int paramInt, String paramString) {}
+  public adv(ChatHistory paramChatHistory) {}
   
   public void onClick(View paramView)
   {
-    View localView = (View)paramView.getParent();
-    new adw(this, paramView.getTag(), localView).run();
+    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 

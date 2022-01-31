@@ -1,17 +1,19 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NearPeopleFilterActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class awj
-  implements View.OnClickListener
+  extends Handler
 {
-  public awj(NearbyActivity paramNearbyActivity) {}
+  public awj(NearPeopleFilterActivity paramNearPeopleFilterActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if ((NearbyActivity.a(this.a) != null) && (NearbyActivity.a(this.a).isShowing())) {
-      NearbyActivity.a(this.a).dismiss();
+    if (paramMessage.what == 1000)
+    {
+      this.a.e();
+      QQToast.a(this.a, 2131364405, 0).b(this.a.getTitleBarHeight());
     }
   }
 }

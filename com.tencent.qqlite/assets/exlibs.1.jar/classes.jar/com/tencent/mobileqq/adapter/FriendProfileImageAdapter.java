@@ -15,7 +15,7 @@ import com.tencent.mobileqq.activity.FriendProfileImageModel;
 import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
 import com.tencent.mobileqq.widget.ImageProgressCircle;
 import com.tencent.qphone.base.util.QLog;
-import cpi;
+import cqj;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -26,7 +26,7 @@ public class FriendProfileImageAdapter
   int jdField_a_of_type_Int;
   Context jdField_a_of_type_AndroidContentContext;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new cpi(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new cqj(this);
   private FriendProfileImageModel jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel;
   Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   
@@ -34,8 +34,8 @@ public class FriendProfileImageAdapter
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131492904));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839445);
-    this.b = paramContext.getResources().getDrawable(2130839446);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839510);
+    this.b = paramContext.getResources().getDrawable(2130839511);
   }
   
   public void a()
@@ -220,7 +220,7 @@ public class FriendProfileImageAdapter
     } while (!localProfileImageInfo.a);
     a(paramViewGroup);
     return paramView;
-    localImageView.setImageResource(2130839446);
+    localImageView.setImageResource(2130839511);
     return paramView;
   }
 }

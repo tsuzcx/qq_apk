@@ -1,13 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class asz
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
   public asz(LoginActivity paramLoginActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+    case 20140107: 
+      do
+      {
+        return;
+      } while (this.a.isFinishing());
+      try
+      {
+        this.a.dismissDialog(0);
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        paramMessage.printStackTrace();
+        return;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity", 2, "recv message FINISH_ACTIVITY.. finish activity");
+    }
+    this.a.finish();
+  }
 }
 
 

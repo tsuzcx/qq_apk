@@ -1,13 +1,11 @@
-import com.tencent.mobileqq.widget.DropdownView;
-
-public class eyh
-  implements Runnable
+public final class eyh
+  implements eym
 {
-  public eyh(DropdownView paramDropdownView) {}
-  
-  public void run()
+  public Integer a(float paramFloat, Integer paramInteger1, Integer paramInteger2)
   {
-    this.a.a = false;
+    int i = paramInteger1.intValue();
+    float f = i;
+    return Integer.valueOf((int)((paramInteger2.intValue() - i) * paramFloat + f));
   }
 }
 

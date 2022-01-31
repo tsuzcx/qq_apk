@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.phone.BaseActivityView.IPhoneContext;
-import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 
 public class chs
-  extends ContactBindObserver
+  implements DialogInterface.OnClickListener
 {
-  public chs(PhoneInnerFrame paramPhoneInnerFrame) {}
+  public chs(ContactListView paramContactListView) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a)
-    {
-      this.a.b().a().unRegistObserver(this);
-      this.a.g();
-    }
+    this.a.f();
+    this.a.m();
   }
 }
 

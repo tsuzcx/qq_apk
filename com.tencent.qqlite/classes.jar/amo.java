@@ -1,14 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qqfav.QfavHelper;
+import cooperation.qqfav.QfavReport;
 
 class amo
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  amo(amm paramamm, HashMap paramHashMap) {}
+  amo(amn paramamn) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Amm.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(this.jdField_a_of_type_Amm.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Amm.jdField_a_of_type_Int, this.jdField_a_of_type_Amm.b, this.jdField_a_of_type_JavaUtilHashMap);
+    QfavHelper.b(this.a.a.jdField_a_of_type_AndroidAppActivity, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), new Intent().putExtra("is_share_flag", true), -1);
+    QfavReport.c(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2);
   }
 }
 

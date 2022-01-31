@@ -1,12 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
 
-class acn
-  implements DialogInterface.OnClickListener
+public class acn
+  implements Runnable
 {
-  acn(acm paramacm) {}
+  public acn(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    this.a.b();
+  }
 }
 
 

@@ -1,14 +1,25 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class adi
-  extends ProxyObserver
+  extends Handler
 {
   public adi(ChatHistory paramChatHistory) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.runOnUiThread(new adj(this));
+    if (paramMessage.what == 1)
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.b(2131363273);
+      this.a.a.show();
+    }
   }
 }
 

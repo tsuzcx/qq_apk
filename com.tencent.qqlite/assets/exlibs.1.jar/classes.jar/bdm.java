@@ -1,33 +1,27 @@
-import android.os.Handler;
-import com.tencent.biz.common.offline.AsyncBack;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdm
-  implements AsyncBack
+  extends BroadcastReceiver
 {
-  int jdField_a_of_type_Int = 0;
-  
   public bdm(QQMapActivity paramQQMapActivity) {}
   
-  public void a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt - this.jdField_a_of_type_Int >= 1) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.a.post(new bdn(this, paramInt));
-    }
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (paramInt == 0)
+    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.m) && (!this.a.jdField_n_of_type_Boolean) && (GesturePWDUtils.getGesturePWDState(this.a, this.a.jdField_n_of_type_JavaLangString) == 2) && (GesturePWDUtils.getGesturePWDMode(this.a, this.a.jdField_n_of_type_JavaLangString) == 21))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.a.post(new bdo(this));
-      ReportController.a(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_tx_download", 0, 0, "", "", "", "");
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
+      }
+      paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
+      QQMapActivity.b(this.a, paramContext);
+      this.a.jdField_n_of_type_Boolean = true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.a.post(new bdp(this));
-    ReportController.a(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_tx_download", 0, 1, "", "", "", "");
   }
 }
 

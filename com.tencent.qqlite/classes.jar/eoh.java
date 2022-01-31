@@ -1,19 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
 
 public class eoh
-  implements View.OnClickListener
+  implements Runnable
 {
-  public eoh(VideoPlayLogic paramVideoPlayLogic) {}
+  public eoh(TroopFeedsDataManager paramTroopFeedsDataManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((VideoPlayLogic.a(this.a) instanceof ChatActivity)) {
-      ((ChatActivity)VideoPlayLogic.a(this.a)).a().S();
-    }
+    Message localMessage = this.a.a.obtainMessage(2);
+    localMessage.obj = this.a.a();
+    this.a.a.sendMessage(localMessage);
   }
 }
 

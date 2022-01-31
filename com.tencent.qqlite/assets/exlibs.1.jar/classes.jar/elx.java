@@ -1,26 +1,29 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnInfoListener;
-import com.tencent.mobileqq.troop.activity.VideoRecordActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.activity.TroopCreateAvatarActivity;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.observer.AccountObserver;
 
 public class elx
-  implements MediaRecorder.OnInfoListener
+  extends AccountObserver
 {
-  public elx(VideoRecordActivity paramVideoRecordActivity) {}
+  public elx(TroopCreateAvatarActivity paramTroopCreateAvatarActivity) {}
   
-  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public void onUpdateSKey(String paramString1, String paramString2)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return;
-    case 801: 
-      QQToast.a(this.a, "录制视频大小达到上限", 1).a();
-      VideoRecordActivity.c(this.a);
-      return;
+    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    if (paramString1 == null) {
+      while (i > 0)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b - 1);
+        i -= 1;
+      }
     }
-    QQToast.a(this.a, "录制时长达到上限", 1).a();
-    VideoRecordActivity.c(this.a);
+    paramString2 = new HashMap();
+    paramString2.put("groupsig", this.a.c);
+    TroopUtils.a(paramString1, this.a.app.a(), this.a.d, this.a.jdField_a_of_type_JavaUtilArrayList, paramString2, this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter);
   }
 }
 

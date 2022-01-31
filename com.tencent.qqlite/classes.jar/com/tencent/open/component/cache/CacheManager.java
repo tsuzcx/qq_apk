@@ -2,7 +2,7 @@ package com.tencent.open.component.cache;
 
 import android.content.Context;
 import com.tencent.open.component.cache.database.DbCacheService;
-import fdr;
+import ffx;
 import java.io.File;
 
 public class CacheManager
@@ -17,7 +17,7 @@ public class CacheManager
   protected static String a(Context paramContext, boolean paramBoolean)
   {
     if (!paramBoolean) {}
-    for (paramContext = fdr.a(paramContext); paramContext == null; paramContext = fdr.a(paramContext, "cache")) {
+    for (paramContext = ffx.a(paramContext); paramContext == null; paramContext = ffx.a(paramContext, "cache")) {
       return null;
     }
     return paramContext.getAbsolutePath();

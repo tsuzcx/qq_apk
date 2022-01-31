@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
 
 public class buc
   implements Runnable
 {
-  public buc(RecordSoundPanel paramRecordSoundPanel) {}
+  public buc(PressToChangeVoicePanel paramPressToChangeVoicePanel) {}
   
   public void run()
   {
-    this.a.i();
+    this.a.d();
   }
 }
 

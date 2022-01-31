@@ -1,24 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.IndividuationSetActivity;
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.richstatus.IActionListener;
 
 public class beo
-  implements View.OnClickListener
+  implements IActionListener
 {
   public beo(QQSetting paramQQSetting) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    ((RedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(32)).b(String.valueOf(100005));
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    paramView = new Intent(this.a.a(), IndividuationSetActivity.class);
-    this.a.a(paramView);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Trends_tab", "Personality_setting_native", 0, 0, "", "", "", "");
+    if ((paramInt1 == 102) && (paramInt2 == 300)) {
+      this.a.n();
+    }
   }
 }
 

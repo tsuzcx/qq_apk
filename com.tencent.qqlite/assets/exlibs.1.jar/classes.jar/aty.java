@@ -1,27 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class aty
-  extends Handler
+  implements View.OnClickListener
 {
-  public aty(LoginInfoActivity paramLoginInfoActivity) {}
+  public aty(LoginActivity paramLoginActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.LoginInfoActivity", 2, "handleMessage.msg.arg1=" + paramMessage.arg1);
-      }
-    } while (LoginInfoActivity.a(this.a) == null);
-    LoginInfoActivity.a(this.a).DevSetup = paramMessage.arg1;
-    LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+    this.a.a();
   }
 }
 

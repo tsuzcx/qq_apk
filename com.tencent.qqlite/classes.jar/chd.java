@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
 public class chd
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public chd(CountryActivity paramCountryActivity) {}
+  public chd(BaseActivityView paramBaseActivityView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_Chk.show();
-    this.a.b.setAnimation(null);
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.a.f();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

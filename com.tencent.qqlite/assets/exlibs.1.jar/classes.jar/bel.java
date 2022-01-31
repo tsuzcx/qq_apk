@@ -1,13 +1,24 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQSetting;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.StatusManager;
 
 public class bel
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bel(QQSetting paramQQSetting, boolean paramBoolean) {}
+  public bel(QQSetting paramQQSetting) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQSetting.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSetting, this.jdField_a_of_type_Boolean);
+    if (QQSetting.a(this.a) == null) {}
+    while (QQSetting.a(this.a).a()) {
+      return;
+    }
+    paramView = new Intent(this.a.a(), EditActivity.class);
+    paramView.putExtra("k_source", 0);
+    this.a.a(paramView);
   }
 }
 

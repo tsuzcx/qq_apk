@@ -1,17 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class ati
-  implements Runnable
+public class ati
+  implements DialogInterface.OnClickListener
 {
-  ati(ath paramath) {}
+  public ati(LoginActivity paramLoginActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.isFinishing()))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-public class bpe
-  implements View.OnClickListener
+class bpe
+  implements Runnable
 {
-  public bpe(TroopMemberListActivity paramTroopMemberListActivity) {}
+  bpe(bpd parambpd, boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
+    TroopMemberListActivity.a(this.jdField_a_of_type_Bpd.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "", "");
   }
 }
 

@@ -1,27 +1,47 @@
-import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.provider.Settings.System;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.recent.TimeManager;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class agx
-  extends SearchResultDialog
+  extends BroadcastReceiver
 {
-  public agx(Conversation paramConversation, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, AdapterView.OnItemClickListener paramOnItemClickListener)
-  {
-    super(paramContext, paramQQAppInterface, paramInt, paramOnItemClickListener);
-  }
+  public agx(Conversation paramConversation) {}
   
-  @SuppressLint({"UseSparseArrays"})
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(a(paramContext, paramQQAppInterface));
-    localArrayList.addAll(super.a(paramContext, paramQQAppInterface, paramInt));
-    return localArrayList;
+    paramContext = paramIntent.getAction();
+    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext)))
+    {
+      paramContext = Settings.System.getString(this.a.a().getContentResolver(), "date_format");
+      if (Conversation.a(this.a) != null)
+      {
+        TimeManager.a().a();
+        if (paramContext != null)
+        {
+          TimeManager.a().a(paramContext);
+          TimeManager.a().a();
+        }
+        if (Conversation.a(this.a))
+        {
+          Conversation.a(this.a, 1014, 0L, false);
+          this.a.m();
+        }
+      }
+      if (this.a.a != null)
+      {
+        paramContext = this.a.a.a(TroopAssistantActivity.class);
+        if (paramContext != null) {
+          paramContext.sendEmptyMessage(2);
+        }
+      }
+    }
   }
 }
 

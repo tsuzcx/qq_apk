@@ -1,28 +1,26 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateTroop;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
 
 public class cyb
-  extends TroopObserver
+  implements Comparator
 {
-  private cyb(UpdateTroop paramUpdateTroop) {}
+  public cyb(RecentUserCache paramRecentUserCache) {}
   
-  protected void a(boolean paramBoolean)
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
+    paramEntity1 = (RecentUser)paramEntity1;
+    paramEntity2 = (RecentUser)paramEntity2;
+    long l1 = Math.max(paramEntity1.lastmsgtime, paramEntity1.lastmsgdrafttime);
+    long l2 = Math.max(paramEntity2.lastmsgtime, paramEntity2.lastmsgdrafttime);
+    if (l1 < l2) {
+      return 1;
     }
-    if (!paramBoolean)
-    {
-      this.a.a(6);
-      return;
+    if (l1 == l2) {
+      return 0;
     }
-    UpdateTroop.a(this.a).a.edit().putBoolean("isTrooplistok", true).commit();
-    UpdateTroop.b(this.a).a(3, true, Integer.valueOf(2));
-    this.a.a(7);
+    return -1;
   }
 }
 

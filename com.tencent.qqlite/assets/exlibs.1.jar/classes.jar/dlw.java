@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
 
 class dlw
   implements Runnable
 {
-  dlw(dls paramdls) {}
+  dlw(dlv paramdlv) {}
   
   public void run()
   {
-    QfileBaseRecentFileTabView.a(this.a.a);
+    this.a.a.a.c(0);
   }
 }
 

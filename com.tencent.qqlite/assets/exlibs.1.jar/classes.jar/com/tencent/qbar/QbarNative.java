@@ -1,7 +1,7 @@
 package com.tencent.qbar;
 
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.uncompress.UncompressSo;
+import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import java.io.UnsupportedEncodingException;
 
 public class QbarNative
@@ -29,35 +29,12 @@ public class QbarNative
   static
   {
     jdField_a_of_type_Boolean = false;
-    String str;
-    if (BaseApplicationImpl.a == 0)
-    {
-      str = UncompressSo.GetInstance().GetPath("stlport_shared");
-      if (str != null) {
-        break label73;
-      }
-      jdField_a_of_type_Boolean = true;
-      str = UncompressSo.GetInstance().GetPath("QrMod");
-      if (str != null) {
-        break label84;
-      }
-      jdField_a_of_type_Boolean = true;
-    }
-    for (;;)
-    {
-      jdField_a_of_type_ArrayOfByte = new byte[100];
-      b = new byte[3000];
-      c = new byte[100];
-      jdField_a_of_type_ArrayOfInt = new int[3];
-      return;
-      label73:
-      jdField_a_of_type_Boolean = false;
-      System.load(str);
-      break;
-      label84:
-      jdField_a_of_type_Boolean = false;
-      System.load(str);
-    }
+    SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "stlport_shared");
+    SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "QrMod");
+    jdField_a_of_type_ArrayOfByte = new byte[100];
+    b = new byte[3000];
+    c = new byte[100];
+    jdField_a_of_type_ArrayOfInt = new int[3];
   }
   
   public static native int GetOneResult(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int[] paramArrayOfInt);

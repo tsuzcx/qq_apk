@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.app.Dialog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
-class bhi
+public class bhi
   implements Runnable
 {
-  bhi(bhh parambhh) {}
+  public bhi(RegisterBaseActivity paramRegisterBaseActivity, int paramInt) {}
   
   public void run()
   {
-    RegisterPhoneNumActivity.a(this.a.a, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 2131624120);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.setContentView(2130903049);
+    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.findViewById(2131296473)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.getString(this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.show();
   }
 }
 

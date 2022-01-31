@@ -1,40 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.CustomedTabWidget;
+import com.tencent.mobileqq.utils.RoamSettingController;
 
 public class eyc
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public eyc(CustomedTabWidget paramCustomedTabWidget) {}
+  public eyc(RoamSettingController paramRoamSettingController) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      i = 0;
-      if (i < this.a.getChildCount())
-      {
-        if (this.a.getChildAt(i) != paramView) {
-          break label57;
-        }
-        this.a.jdField_a_of_type_Int = i;
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.invalidate();
-      }
-    }
-    label57:
-    while (paramMotionEvent.getAction() != 1) {
-      for (;;)
-      {
-        int i;
-        return false;
-        i += 1;
-      }
-    }
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.invalidate();
-    return false;
+    RoamSettingController.a(this.a);
   }
 }
 

@@ -76,11 +76,11 @@ import cooperation.qzone.QUA;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.troop.TroopProxyActivity;
-import ets;
-import ett;
-import etu;
-import etv;
-import etw;
+import evx;
+import evy;
+import evz;
+import ewa;
+import ewb;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -102,10 +102,10 @@ public class JumpAction
   public static final String B = "url";
   public static final String C = "bid";
   public static final String D = "sourceUrl";
-  public static final String E = "puzzle_verify_code";
-  public static final String F = "PUZZLEVERIFYCODE";
-  public static final String G = "VERIFYCODE";
-  public static final String H = "DEVLOCK_CODE";
+  public static final String E = "puzzle_verify_code_qqlite";
+  public static final String F = "PUZZLEVERIFYCODEQQLITE";
+  public static final String G = "VERIFYCODEQQLITE";
+  public static final String H = "DEVLOCK_CODE_QQLITE";
   public static final String I = "chat";
   public static final String J = "pay";
   public static final String K = "openqqdataline";
@@ -291,8 +291,8 @@ public class JumpAction
   private final Context jdField_a_of_type_AndroidContentContext;
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private QWalletAuthObserver jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver;
-  private etv jdField_a_of_type_Etv = new etv(this, this);
-  private etw jdField_a_of_type_Etw;
+  private ewa jdField_a_of_type_Ewa = new ewa(this, this);
+  private ewb jdField_a_of_type_Ewb;
   private final HashMap jdField_a_of_type_JavaUtilHashMap;
   private Hashtable jdField_a_of_type_JavaUtilHashtable = new Hashtable();
   public boolean a;
@@ -490,7 +490,7 @@ public class JumpAction
               if ((TextUtils.isEmpty((CharSequence)localObject6)) && (TextUtils.isEmpty((CharSequence)localObject8)))
               {
                 if (!TextUtils.isEmpty((CharSequence)localObject7)) {
-                  ((Bundle)localObject9).putString("title", String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131362760), new Object[] { localObject7 }));
+                  ((Bundle)localObject9).putString("title", String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131362767), new Object[] { localObject7 }));
                 }
               }
               else
@@ -536,7 +536,7 @@ public class JumpAction
             QLog.e("qqfav", 2, "gotoQfavShareMsg|parse reqtype exp: reqType=" + str2);
             i2 = i3;
             continue;
-            ((Bundle)localObject9).putString("title", this.jdField_a_of_type_AndroidContentContext.getString(2131362761));
+            ((Bundle)localObject9).putString("title", this.jdField_a_of_type_AndroidContentContext.getString(2131362768));
             continue;
             if (6 == i2)
             {
@@ -641,7 +641,7 @@ public class JumpAction
               }
               if (((ArrayList)localObject11).isEmpty())
               {
-                QfavUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362754, 1);
+                QfavUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362761, 1);
                 if (QLog.isColorLevel()) {
                   QLog.e("qqfav", 2, "gotoQfavShareMsg|image type.no image path");
                 }
@@ -665,7 +665,7 @@ public class JumpAction
                 continue;
               }
               if (TextUtils.isEmpty((CharSequence)localObject7)) {
-                ((Bundle)localObject9).putString("title", ((ArrayList)localObject11).size() + this.jdField_a_of_type_AndroidContentContext.getString(2131362723));
+                ((Bundle)localObject9).putString("title", ((ArrayList)localObject11).size() + this.jdField_a_of_type_AndroidContentContext.getString(2131362730));
               }
               ((Bundle)localObject9).putBoolean("qqfav_extra_multi_pic", true);
               ((Bundle)localObject9).putInt("req_type", 1);
@@ -676,7 +676,7 @@ public class JumpAction
               if ((TextUtils.isEmpty((CharSequence)localObject6)) && (TextUtils.isEmpty((CharSequence)localObject8)))
               {
                 if (!TextUtils.isEmpty((CharSequence)localObject7)) {
-                  ((Bundle)localObject9).putString("title", String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131362760), new Object[] { localObject7 }));
+                  ((Bundle)localObject9).putString("title", String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131362767), new Object[] { localObject7 }));
                 }
               }
               else
@@ -687,10 +687,10 @@ public class JumpAction
                 QLog.i("qqfav", 2, "gotoQfavShareMsg|link type. no detail url");
                 continue;
               }
-              ((Bundle)localObject9).putString("title", this.jdField_a_of_type_AndroidContentContext.getString(2131362761));
+              ((Bundle)localObject9).putString("title", this.jdField_a_of_type_AndroidContentContext.getString(2131362768));
               continue;
             }
-            QfavUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362754, 1);
+            QfavUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362761, 1);
             if (QLog.isColorLevel()) {
               QLog.e("qqfav", 2, "gotoQfavShareMsg|unknown reqType. reqType=" + i2);
             }
@@ -744,7 +744,7 @@ public class JumpAction
   
   private boolean I()
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131364487, 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131364498, 0).a();
     return false;
   }
   
@@ -1140,7 +1140,7 @@ public class JumpAction
                 if (TextUtils.isEmpty((CharSequence)localObject1)) {
                   break;
                 }
-                localBundle.putString("title", String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131362760), new Object[] { localObject1 }));
+                localBundle.putString("title", String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131362767), new Object[] { localObject1 }));
               }
               com.tencent.mobileqq.app.PhoneContactManagerImp.c = true;
               localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, LiteActivity.class);
@@ -1179,7 +1179,7 @@ public class JumpAction
                 QLog.e("qqfav", 2, "gotoQfavShareMsg|parse reqtype exp: reqType=" + (String)localObject6);
                 i1 = i2;
                 continue;
-                localException2.putString("title", this.jdField_a_of_type_AndroidContentContext.getString(2131362761));
+                localException2.putString("title", this.jdField_a_of_type_AndroidContentContext.getString(2131362768));
                 continue;
                 if (6 == i1)
                 {
@@ -1297,7 +1297,7 @@ public class JumpAction
                 }
                 else if (FileManagerUtil.a(localObject3) == 0)
                 {
-                  localException2.putString("title", ((ArrayList)localObject6).size() + this.jdField_a_of_type_AndroidContentContext.getString(2131362723));
+                  localException2.putString("title", ((ArrayList)localObject6).size() + this.jdField_a_of_type_AndroidContentContext.getString(2131362730));
                   localException2.putString("qqfav_extra_multi_pic_path_list", str1);
                   localException2.putBoolean("qqfav_extra_multi_pic", true);
                   localException2.putInt("req_type", 1);
@@ -1478,7 +1478,7 @@ public class JumpAction
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131364482, 2131364481, 2131364483, 2131364484, new ett(this), new etu(this));
+    this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131364493, 2131364492, 2131364494, 2131364495, new evy(this), new evz(this));
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
   
@@ -1547,8 +1547,8 @@ public class JumpAction
       }
       localObject = new ReqCheckChangePwdAuth((String)localObject, str1, str2, str3, str4, str5);
       ((QWalletAuthHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(36)).a((ReqCheckChangePwdAuth)localObject);
-      this.jdField_a_of_type_Etw = new etw(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver = new QWalletAuthObserver(this.jdField_a_of_type_Etw);
+      this.jdField_a_of_type_Ewb = new ewb(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver = new QWalletAuthObserver(this.jdField_a_of_type_Ewb);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver);
       return;
       localObject = "";
@@ -1598,13 +1598,13 @@ public class JumpAction
     {
       if ("head".equals(this.cf))
       {
-        if (this.jdField_a_of_type_Etv == null) {
-          this.jdField_a_of_type_Etv = new etv(this, this);
+        if (this.jdField_a_of_type_Ewa == null) {
+          this.jdField_a_of_type_Ewa = new ewa(this, this);
         }
         if (this.jdField_a_of_type_JavaUtilHashtable == null) {
           this.jdField_a_of_type_JavaUtilHashtable = new Hashtable();
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Etv);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Ewa);
         long l1 = System.currentTimeMillis();
         String[] arrayOfString = ((String)this.jdField_a_of_type_JavaUtilHashMap.get("uin")).split(",");
         FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
@@ -1681,7 +1681,7 @@ public class JumpAction
     if (!(this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
       return false;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131364486, 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131364497, 0).a();
     return true;
   }
   
@@ -2290,7 +2290,7 @@ public class JumpAction
   
   private boolean v()
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131364486, 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131364497, 0).a();
     return true;
   }
   
@@ -2423,10 +2423,10 @@ public class JumpAction
       {
         if ((this.cH != null) && (this.cH.trim().equalsIgnoreCase("com.qq.yijianfankui")))
         {
-          localStringBuffer.append("&version=3.4.0.607");
+          localStringBuffer.append("&version=3.5.0.660");
           localStringBuffer.append("&appid=" + AppSetting.a);
           localStringBuffer.append("&QUA=" + QUA.a());
-          localStringBuffer.append("&adtag=607");
+          localStringBuffer.append("&adtag=660");
           if (localStringBuffer.indexOf("sid=") < 0) {
             localStringBuffer.append("&sid=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getSid());
           }
@@ -2627,7 +2627,7 @@ public class JumpAction
   
   public boolean a()
   {
-    new ets(this).start();
+    new evx(this).start();
     return b();
   }
   
@@ -2787,7 +2787,7 @@ public class JumpAction
                 return true;
                 if ((this.ce.equals("shop")) && (this.cf.equals("font")))
                 {
-                  QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131364489, 0).a();
+                  QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131364500, 0).a();
                   return false;
                 }
                 if ((this.ce.equals("readingcenter")) && (this.cf.equals("open"))) {
@@ -2814,7 +2814,7 @@ public class JumpAction
             localObject = str + "?";
           }
           localObject = new StringBuilder((String)localObject);
-          ((StringBuilder)localObject).append("&client=androidQQ").append("&uin=").append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()).append("&version=").append("3.4.0.607").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&density=").append(ThemeUtil.getThemeDensity(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())).append("&platformId=2").append("&_lv=0").append("&adtag=mvip.gongneng.anroid.health.nativet");
+          ((StringBuilder)localObject).append("&client=androidQQ").append("&uin=").append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()).append("&version=").append("3.5.0.660").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&density=").append(ThemeUtil.getThemeDensity(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())).append("&platformId=2").append("&_lv=0").append("&adtag=mvip.gongneng.anroid.health.nativet");
           VasWebviewUtil.a(this.jdField_a_of_type_AndroidContentContext, ((StringBuilder)localObject).toString(), 65536L, null, false, -1);
           return true;
           if ((this.ce.equals("ptlogin")) && (this.cf.equals("qlogin"))) {
@@ -2847,7 +2847,7 @@ public class JumpAction
       } while (!this.ce.equals("share"));
       bool1 = bool2;
     } while (!this.cf.equals("to_troopbar"));
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131364488, 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131364499, 0).a();
     return false;
   }
   

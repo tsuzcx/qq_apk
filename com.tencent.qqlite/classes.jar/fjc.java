@@ -1,12 +1,26 @@
-public abstract interface fjc
+import com.tencent.widget.AbsListView;
+
+public class fjc
+  implements Runnable
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public fjc(AbsListView paramAbsListView) {}
   
-  public abstract void a(int... paramVarArgs);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c(int paramInt1, int paramInt2);
+  public void run()
+  {
+    if (this.a.g)
+    {
+      AbsListView localAbsListView = this.a;
+      this.a.h = false;
+      localAbsListView.g = false;
+      AbsListView.a(this.a, false);
+      if ((AbsListView.n(this.a) & 0x2) == 0) {
+        AbsListView.b(this.a, false);
+      }
+      if (!this.a.isAlwaysDrawnWithCacheEnabled()) {
+        this.a.invalidate();
+      }
+    }
+  }
 }
 
 

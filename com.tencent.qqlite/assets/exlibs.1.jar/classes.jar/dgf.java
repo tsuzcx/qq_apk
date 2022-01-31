@@ -1,18 +1,80 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.data.EmoticonKeyword;
+import com.tencent.mobileqq.data.EmoticonKeywordForCloud;
+import com.tencent.mobileqq.emoticonview.EmotionPreviewLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class dgf
-  implements View.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  public dgf(FilePreviewActivity paramFilePreviewActivity) {}
+  public dgf(EmotionPreviewLayout paramEmotionPreviewLayout) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.a.setResult(0, new Intent());
-    this.a.finish();
-    this.a.overridePendingTransition(2130968583, 2130968584);
+    QLog.e(EmotionPreviewLayout.jdField_a_of_type_JavaLangString, 2, "bigImage load faild");
+    if ((this.a.jdField_a_of_type_AndroidWidgetEditText != null) && (this.a.b.equals(this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString())))
+    {
+      paramThrowable = (EmoticonKeywordForCloud)paramURLDrawable.getTag();
+      if (paramThrowable != null)
+      {
+        paramURLDrawable.setTag(paramThrowable);
+        paramThrowable.loadedType = 3;
+      }
+      paramURLDrawable = this.a;
+      paramURLDrawable.f -= 1;
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 10002));
+      if (this.a.f == 0) {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 10000), 3000L);
+      }
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    QLog.e(EmotionPreviewLayout.jdField_a_of_type_JavaLangString, 2, "bigImage load successed");
+    if ((this.a.jdField_a_of_type_AndroidWidgetEditText != null) && (this.a.b.equals(this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString())))
+    {
+      paramURLDrawable = (EmoticonKeywordForCloud)paramURLDrawable.getTag();
+      if (paramURLDrawable != null)
+      {
+        paramURLDrawable.loadedType = 2;
+        if (this.a.jdField_a_of_type_JavaUtilList != null)
+        {
+          Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+          EmoticonKeyword localEmoticonKeyword;
+          do
+          {
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            localEmoticonKeyword = (EmoticonKeyword)localIterator.next();
+          } while ((!localEmoticonKeyword.eId.equals(paramURLDrawable.eId)) || (!localEmoticonKeyword.epId.equals(paramURLDrawable.epId)));
+        }
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        this.a.jdField_a_of_type_JavaUtilList.add(paramURLDrawable);
+      }
+      paramURLDrawable = this.a;
+      paramURLDrawable.f -= 1;
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 10002));
+      if (this.a.f == 0) {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 10000), 3000L);
+      }
+      return;
+    }
   }
 }
 

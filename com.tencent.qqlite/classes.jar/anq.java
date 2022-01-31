@@ -1,90 +1,71 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.AutomatorObserver;
+import com.tencent.mobileqq.app.ContactFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.model.FriendManager;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class anq
-  implements View.OnClickListener
+  extends AutomatorObserver
 {
   public anq(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt)
   {
-    if (paramView.getId() == 2131296902)
+    Object localObject1 = (ContactFacade)this.a.app.getManager(46);
+    if (localObject1 == null) {}
+    do
     {
-      ForwardRecentActivity.a(this.a, 10);
       return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("call_by_forward", true);
-    if (this.a.jdField_a_of_type_AndroidNetUri != null) {
-      localIntent.setData(this.a.jdField_a_of_type_AndroidNetUri);
-    }
-    if (this.a.getIntent().getBooleanExtra("isFromShare", false))
-    {
-      localIntent.putExtras(this.a.jdField_a_of_type_AndroidOsBundle);
-      localIntent.setAction(this.a.getIntent().getAction());
-    }
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131296856: 
-      localIntent.setClass(this.a, PhoneFrameActivity.class);
-      localIntent.putExtra("key_req_type", 2);
-      this.a.startActivityForResult(localIntent, 20000);
-      ReportController.b(this.a.app, "CliOper", "", "", "Two_call", "Tc_msg_cate", 0, 0, "1", "", "", "");
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800404B", "0X800404B", 0, 0, "", "", "", "");
-      return;
-      Bundle localBundle = this.a.getIntent().getExtras();
-      if ("com.tencent.intent.QQLite_FORWARD".equals(this.a.getIntent().getAction())) {
-        localIntent.setAction("com.tencent.intent.QQLite_FORWARD");
-      }
-      for (;;)
+      switch (paramInt)
       {
-        localIntent.putExtras(localBundle);
-        break;
-        if (this.a.b) {
-          localIntent.setAction("com.tencent.intent.QQLite_FORWARD");
-        }
+      default: 
+        ForwardRecentActivity.c(this.a);
+        return;
+      case 1: 
+        localObject2 = (FriendManager)this.a.app.getManager(8);
       }
-    case 2131296860: 
-      localIntent.putExtra("onlyOneSegement", true);
-      localIntent.putExtra("_key_mode", 0);
-      localIntent.putExtra("key_tab_mode", 1);
-      localIntent.setClass(this.a, TroopActivity.class);
-      this.a.startActivityForResult(localIntent, 20000);
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800404C", "0X800404C", 0, 0, "", "", "", "");
-      return;
-    case 2131296862: 
-      localIntent.putExtra("onlyOneSegement", true);
-      localIntent.putExtra("_key_mode", 1);
-      localIntent.putExtra("key_tab_mode", 1);
-      localIntent.setClass(this.a, TroopActivity.class);
-      this.a.startActivityForResult(localIntent, 20000);
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800404D", "0X800404D", 0, 0, "", "", "", "");
-      return;
-    case 2131297137: 
-      localIntent.setClass(this.a, ForwardFriendListActivity.class);
-      this.a.startActivityForResult(localIntent, 20000);
-      ReportController.b(this.a.app, "CliOper", "", "", "Two_call", "Tc_msg_cate", 0, 0, "0", "", "", "");
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800404A", "0X800404A", 0, 0, "", "", "", "");
-      return;
-    }
-    if ((this.a.b) && (this.a.f != 11)) {
-      ForwardRecentActivity.a(this.a);
-    }
-    for (;;)
+    } while (localObject2 == null);
+    Object localObject2 = ((FriendManager)localObject2).c();
+    if (localObject2 != null)
     {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800404E", "0X800404E", 0, 0, "", "", "", "");
-      return;
-      ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131362372));
+      localObject2 = ((ArrayList)localObject2).iterator();
+      ArrayList localArrayList;
+      do
+      {
+        if (!((Iterator)localObject2).hasNext()) {
+          break;
+        }
+        localArrayList = ((ContactFacade)localObject1).a(String.valueOf(((Groups)((Iterator)localObject2).next()).group_id));
+      } while ((localArrayList == null) || (localArrayList.size() <= 0));
+    }
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (paramInt == 0)
+      {
+        ForwardRecentActivity.a(this.a, false);
+        break;
+      }
+      ForwardRecentActivity.a(this.a, true);
+      break;
+      localObject1 = ((ContactFacade)localObject1).a("-1004");
+      if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0))
+      {
+        ForwardRecentActivity.b(this.a, false);
+        break;
+      }
+      ForwardRecentActivity.b(this.a, true);
+      break;
+      localObject1 = ((ContactFacade)localObject1).a("-1003");
+      if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0))
+      {
+        ForwardRecentActivity.c(this.a, false);
+        break;
+      }
+      ForwardRecentActivity.c(this.a, true);
+      break;
     }
   }
 }

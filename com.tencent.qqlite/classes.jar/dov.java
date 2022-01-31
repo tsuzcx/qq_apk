@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
 
 public class dov
-  extends don
+  implements Runnable
 {
-  public dov(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-    this.a = true;
-    this.b = true;
-  }
+  public dov(FileManagerRSWorker paramFileManagerRSWorker, long paramLong) {}
   
-  protected String a()
+  public void run()
   {
-    return "StateEnd";
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerRSWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerRSWorker.f, this.jdField_a_of_type_Long);
   }
 }
 

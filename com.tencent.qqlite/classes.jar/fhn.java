@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.AbsSpinner.SavedState;
+import android.app.Activity;
+import com.tencent.open.downloadnew.MyAppApi;
 
-public final class fhn
-  implements Parcelable.Creator
+public class fhn
+  implements Runnable
 {
-  public AbsSpinner.SavedState a(Parcel paramParcel)
-  {
-    return new AbsSpinner.SavedState(paramParcel, null);
-  }
+  public fhn(MyAppApi paramMyAppApi, Activity paramActivity) {}
   
-  public AbsSpinner.SavedState[] a(int paramInt)
+  public void run()
   {
-    return new AbsSpinner.SavedState[paramInt];
+    if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.e) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a != null))
+    {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d(this.jdField_a_of_type_AndroidAppActivity);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

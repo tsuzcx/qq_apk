@@ -17,7 +17,7 @@ import android.widget.EditText;
 import com.tencent.mobileqq.utils.kapalaiadapter.sdcardmountinforutil.SDCardMountInforUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
-import ewq;
+import eyv;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class KapalaiAdapterUtil
   
   public static KapalaiAdapterUtil a()
   {
-    return ewq.a;
+    return eyv.a;
   }
   
   private Camera b()

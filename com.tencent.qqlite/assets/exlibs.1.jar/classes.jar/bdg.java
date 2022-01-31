@@ -1,21 +1,17 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.tencentmap.mapsdk.map.MapController;
 
 public class bdg
   implements View.OnClickListener
 {
-  public bdg(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
+  public bdg(QQMapActivity paramQQMapActivity) {}
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.h) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
-    }
+    this.a.a.zoomIn();
+    this.a.n();
   }
 }
 

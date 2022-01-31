@@ -1,21 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
-public class atb
-  implements DialogInterface.OnClickListener
+class atb
+  implements Animation.AnimationListener
 {
-  public atb(LoginActivity paramLoginActivity) {}
+  atb(ata paramata) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
+    this.a.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.a.a.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.invalidate();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

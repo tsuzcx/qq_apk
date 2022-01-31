@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.activity.TroopMemberGagActivity;
-import com.tencent.mobileqq.activity.TroopMemberGagActivity.GagItemListener;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagItem;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity;
 
 public class boc
-  implements TroopMemberGagActivity.GagItemListener
+  implements View.OnClickListener
 {
-  public boc(TroopMemberGagActivity paramTroopMemberGagActivity) {}
+  public boc(TroopMemberCardActivity paramTroopMemberCardActivity, Dialog paramDialog) {}
   
-  public void a(TroopGagMgr.GagItem paramGagItem)
+  public void onClick(View paramView)
   {
-    if (paramGagItem.a > 0) {
-      this.a.a = paramGagItem.a;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

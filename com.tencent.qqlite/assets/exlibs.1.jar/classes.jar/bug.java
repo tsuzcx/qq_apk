@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
 
-public class bug
-  implements Runnable
+class bug
+  implements Animator.AnimatorListener
 {
-  public bug(RecordSoundPanel paramRecordSoundPanel) {}
+  bug(buf parambuf, ViewGroup paramViewGroup) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.g();
-    QQToast.a(RecordSoundPanel.a(this.a).a(), RecordSoundPanel.a(this.a).a().getString(2131362978), 0).a();
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
   }
 }
 

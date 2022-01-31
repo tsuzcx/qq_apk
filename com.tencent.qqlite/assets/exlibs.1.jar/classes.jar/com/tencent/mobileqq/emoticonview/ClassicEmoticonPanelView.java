@@ -29,9 +29,9 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
-import dej;
-import dek;
-import del;
+import dfl;
+import dfm;
+import dfn;
 import java.io.File;
 import java.util.List;
 
@@ -52,7 +52,7 @@ public class ClassicEmoticonPanelView
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   public EmoticonCallback a;
   private EmoticonInfo jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo;
-  private del jdField_a_of_type_Del;
+  private dfn jdField_a_of_type_Dfn;
   public Runnable a;
   private List jdField_a_of_type_JavaUtilList;
   public boolean a;
@@ -66,7 +66,7 @@ public class ClassicEmoticonPanelView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangRunnable = new dek(this);
+    this.jdField_a_of_type_JavaLangRunnable = new dfm(this);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
     this.c = super.getContext().getDir("classic_emoticon", 0).getPath();
@@ -337,7 +337,7 @@ public class ClassicEmoticonPanelView
         }
         localObject5 = null;
         continue;
-        localObject5 = getContext().getResources().getDrawable(2130837970);
+        localObject5 = getContext().getResources().getDrawable(2130837989);
         if (localObject5 != null)
         {
           if (!(localObject5 instanceof BitmapDrawable)) {
@@ -359,7 +359,7 @@ public class ClassicEmoticonPanelView
           }
         }
         if ((bool) && (localObject4 != null)) {
-          ThreadManager.b(new dej(this, (Bitmap)localObject4, this.jdField_a_of_type_Int, super.getResources().getConfiguration().orientation));
+          ThreadManager.b(new dfl(this, (Bitmap)localObject4, this.jdField_a_of_type_Int, super.getResources().getConfiguration().orientation));
         }
       }
       if (!QLog.isColorLevel()) {
@@ -403,8 +403,8 @@ public class ClassicEmoticonPanelView
           do
           {
             return true;
-            if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Del != null)) {
-              removeCallbacks(this.jdField_a_of_type_Del);
+            if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Dfn != null)) {
+              removeCallbacks(this.jdField_a_of_type_Dfn);
             }
             if ((this.jdField_b_of_type_Int != -1) && (!this.jdField_a_of_type_Boolean))
             {
@@ -425,17 +425,17 @@ public class ClassicEmoticonPanelView
             this.jdField_a_of_type_Boolean = false;
             this.jdField_b_of_type_Int = a(paramMotionEvent.getX(), paramMotionEvent.getY());
           } while (this.jdField_b_of_type_Int == -1);
-          if (this.jdField_a_of_type_Del == null) {
-            this.jdField_a_of_type_Del = new del(this);
+          if (this.jdField_a_of_type_Dfn == null) {
+            this.jdField_a_of_type_Dfn = new dfn(this);
           }
-          this.jdField_a_of_type_Del.a();
-          super.postDelayed(this.jdField_a_of_type_Del, ViewConfiguration.getLongPressTimeout());
+          this.jdField_a_of_type_Dfn.a();
+          super.postDelayed(this.jdField_a_of_type_Dfn, ViewConfiguration.getLongPressTimeout());
         } while (this.jdField_b_of_type_Int != 20);
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback.a();
         return true;
         super.setPressed(false);
-        if (this.jdField_a_of_type_Del != null) {
-          super.removeCallbacks(this.jdField_a_of_type_Del);
+        if (this.jdField_a_of_type_Dfn != null) {
+          super.removeCallbacks(this.jdField_a_of_type_Dfn);
         }
         super.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
         a();

@@ -10,45 +10,32 @@ import com.tencent.mobileqq.data.DataLineMsgSet;
 class v
   implements Runnable
 {
-  v(q paramq, long paramLong, boolean paramBoolean) {}
+  v(p paramp, long paramLong) {}
   
   public void run()
   {
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_Q.a.app.a().a().b(this.jdField_a_of_type_Long);
+    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_P.a.app.a().a().b(this.jdField_a_of_type_Long);
     if (localDataLineMsgRecord == null) {}
-    label221:
     do
     {
       do
       {
-        return;
-      } while (localDataLineMsgRecord.isSendFromLocal());
-      if (this.jdField_a_of_type_Boolean)
-      {
-        localDataLineMsgRecord.issuc = true;
-        localDataLineMsgRecord.fileMsgStatus = 0L;
-        this.jdField_a_of_type_Q.a.app.a().a().c(localDataLineMsgRecord.msgId);
-        this.jdField_a_of_type_Q.a.app.a().a().d();
-      }
-      for (;;)
-      {
-        DataLineMsgSet localDataLineMsgSet = this.jdField_a_of_type_Q.a.app.a().a(this.jdField_a_of_type_Long);
+        do
+        {
+          return;
+        } while (!localDataLineMsgRecord.isSendFromLocal());
+        this.jdField_a_of_type_P.a.app.a().a().d();
+        DataLineMsgSet localDataLineMsgSet = this.jdField_a_of_type_P.a.app.a().a(this.jdField_a_of_type_Long);
         if ((localDataLineMsgSet == null) || (localDataLineMsgSet.isSingle())) {
-          break label221;
-        }
-        if (LiteActivity.a(this.jdField_a_of_type_Q.a).a(this.jdField_a_of_type_Long, LiteActivity.a(this.jdField_a_of_type_Q.a))) {
           break;
         }
-        LiteActivity.a(this.jdField_a_of_type_Q.a).notifyDataSetChanged();
-        return;
-        localDataLineMsgRecord.fileMsgStatus = 1L;
-        this.jdField_a_of_type_Q.a.app.a().a().c(localDataLineMsgRecord.msgId);
-        this.jdField_a_of_type_Q.a.app.a().a().d();
-      }
-      LiteActivity.a(this.jdField_a_of_type_Q.a).notifyDataSetChanged();
+      } while (LiteActivity.a(this.jdField_a_of_type_P.a).a(this.jdField_a_of_type_Long, LiteActivity.a(this.jdField_a_of_type_P.a)));
+      LiteActivity.a(this.jdField_a_of_type_P.a).notifyDataSetChanged();
+      return;
+      LiteActivity.a(this.jdField_a_of_type_P.a).notifyDataSetChanged();
     } while (localDataLineMsgRecord.bIsResendOrRecvFile);
-    LiteActivity.a(this.jdField_a_of_type_Q.a.a, LiteActivity.a(this.jdField_a_of_type_Q.a));
-    LiteActivity.a(LiteActivity.a(this.jdField_a_of_type_Q.a));
+    LiteActivity.a(this.jdField_a_of_type_P.a.a, LiteActivity.a(this.jdField_a_of_type_P.a));
+    LiteActivity.a(LiteActivity.a(this.jdField_a_of_type_P.a));
   }
 }
 

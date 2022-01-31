@@ -1,20 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
 
-public class ado
-  implements View.OnClickListener
+class ado
+  implements Runnable
 {
-  public ado(ChatHistory paramChatHistory) {}
+  ado(adn paramadn) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a.a > this.a.b)
-    {
-      this.a.a = l;
-      this.a.a();
-    }
+    this.a.a.d();
   }
 }
 

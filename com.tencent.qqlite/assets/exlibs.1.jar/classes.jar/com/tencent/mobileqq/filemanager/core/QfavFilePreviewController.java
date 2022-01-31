@@ -7,9 +7,9 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qqfav.QfavPluginProxyService;
 import cooperation.qqfav.ipc.FavoritesRemoteCommand;
 import cooperation.qqfav.ipc.FavoritesRemoteCommand.IRemoteCommandHandler;
-import dpv;
-import dpx;
-import dpy;
+import dqx;
+import dqz;
+import dra;
 
 public class QfavFilePreviewController
   extends FilePreViewControllerBase
@@ -20,7 +20,7 @@ public class QfavFilePreviewController
   public static final int c = 2;
   public static final int d = 3;
   private long jdField_a_of_type_Long = 0L;
-  private FavoritesRemoteCommand.IRemoteCommandHandler jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand$IRemoteCommandHandler = new dpv(this);
+  private FavoritesRemoteCommand.IRemoteCommandHandler jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand$IRemoteCommandHandler = new dqx(this);
   private String b = null;
   private String c = null;
   private String d = null;
@@ -31,7 +31,7 @@ public class QfavFilePreviewController
   {
     QfavPluginProxyService.a().a(3, this.jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand$IRemoteCommandHandler);
     this.e = 2;
-    new Handler(Looper.getMainLooper()).postDelayed(new dpx(this), 300000L);
+    new Handler(Looper.getMainLooper()).postDelayed(new dqz(this), 300000L);
   }
   
   public int a()
@@ -49,7 +49,7 @@ public class QfavFilePreviewController
       this.e = 1;
       return true;
     }
-    new Handler(Looper.getMainLooper()).postDelayed(new dpy(this), 2000L);
+    new Handler(Looper.getMainLooper()).postDelayed(new dra(this), 2000L);
     return true;
   }
   

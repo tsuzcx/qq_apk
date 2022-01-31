@@ -29,13 +29,13 @@ public class PoiMapActivity$PoiTab
     this.jdField_a_of_type_Int = 1;
     this.jdField_b_of_type_Int = 2;
     this.d = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((PoiMapActivity)paramContext).findViewById(2131298555));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((PoiMapActivity)paramContext).findViewById(2131298580));
     this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setFocusableInTouchMode(false);
     this.jdField_a_of_type_ComTencentBizPoiMapActivity$TabView = new PoiMapActivity.TabView(paramPoiMapActivity, paramContext, paramString, paramInt);
     this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(paramContext);
     this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiItemAdapter = new PoiMapActivity.PoiItemAdapter(paramPoiMapActivity);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130837635));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130837660));
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiItemAdapter);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
@@ -52,11 +52,11 @@ public class PoiMapActivity$PoiTab
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131364318));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131364329));
       continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131364317));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131364328));
       continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131364366));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131364377));
     }
   }
   

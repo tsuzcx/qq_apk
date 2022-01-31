@@ -130,7 +130,7 @@ public class RecentItemPcDataLine
         }
         bool2 = bool3;
         if (paramMessage.msgtype != -1000) {
-          break label351;
+          break label353;
         }
         paramQQAppInterface = paramMessage.getMessageText();
         if (paramQQAppInterface == null) {
@@ -172,7 +172,7 @@ public class RecentItemPcDataLine
       {
         paramContext.append("F ");
         if (paramQQAppInterface == null) {
-          break label345;
+          break label347;
         }
       }
       for (paramMessage = paramQQAppInterface.toString().trim();; paramMessage = "")
@@ -196,24 +196,24 @@ public class RecentItemPcDataLine
       }
       if (paramMessage.msgtype == -2000)
       {
-        paramMsgSummary.b = a(paramContext.getString(2131363278), bool1, bool2, null, paramMsgSummary);
+        paramMsgSummary.b = a(paramContext.getString(2131363288), bool1, bool2, null, paramMsgSummary);
         return;
       }
       if (paramMessage.msgtype == -2005)
       {
-        paramMsgSummary.b = a(paramContext.getString(2131363561), bool1, bool2, null, paramMsgSummary);
+        paramMsgSummary.b = a(paramContext.getString(2131363572), bool1, bool2, null, paramMsgSummary);
         return;
       }
       if (paramMessage.msgtype == -2009)
       {
-        paramMsgSummary.b = a(paramContext.getString(2131363966), bool1, bool2, null, paramMsgSummary);
+        paramMsgSummary.b = a(paramContext.getString(2131363977), bool1, bool2, null, paramMsgSummary);
         return;
       }
     } while (paramMessage.msgtype != -2335);
     label195:
-    label345:
-    label351:
-    paramMsgSummary.b = a(paramContext.getString(2131363561), bool1, bool2, null, paramMsgSummary);
+    label347:
+    label353:
+    paramMsgSummary.b = a(paramContext.getString(2131363572), bool1, bool2, null, paramMsgSummary);
     return;
     paramMsgSummary.b = "";
   }

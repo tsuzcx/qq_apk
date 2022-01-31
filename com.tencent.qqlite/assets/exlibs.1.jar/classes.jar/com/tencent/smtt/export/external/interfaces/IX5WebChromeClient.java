@@ -1,5 +1,6 @@
 package com.tencent.smtt.export.external.interfaces;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.net.Uri;
@@ -61,11 +62,38 @@ public abstract interface IX5WebChromeClient
   
   public abstract void onShowCustomView(View paramView, CustomViewCallback paramCustomViewCallback);
   
+  public abstract boolean onShowFileChooser(IX5WebViewBase paramIX5WebViewBase, ValueCallback<Uri[]> paramValueCallback, FileChooserParams paramFileChooserParams);
+  
   public abstract void openFileChooser(ValueCallback<Uri[]> paramValueCallback, String paramString1, String paramString2, boolean paramBoolean);
   
   public static abstract interface CustomViewCallback
   {
     public abstract void onCustomViewHidden();
+  }
+  
+  public static abstract class FileChooserParams
+  {
+    public static final int MODE_OPEN = 0;
+    public static final int MODE_OPEN_FOLDER = 2;
+    public static final int MODE_OPEN_MULTIPLE = 1;
+    public static final int MODE_SAVE = 3;
+    
+    public static Uri[] parseResult(int paramInt, Intent paramIntent)
+    {
+      return null;
+    }
+    
+    public abstract Intent createIntent();
+    
+    public abstract String[] getAcceptTypes();
+    
+    public abstract String getFilenameHint();
+    
+    public abstract int getMode();
+    
+    public abstract CharSequence getTitle();
+    
+    public abstract boolean isCaptureEnabled();
   }
 }
 

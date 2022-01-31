@@ -1,80 +1,175 @@
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.QQOperateTips;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.config.operation.QQOperateManager;
-import com.tencent.mobileqq.config.operation.QQOperationRequestInfo;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 public class cat
-  implements Runnable
+  extends MessageObserver
 {
-  public cat(QQOperateTips paramQQOperateTips) {}
+  public cat(StrangerChatPie paramStrangerChatPie) {}
   
-  public void run()
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    Object localObject1 = QQOperateTips.a(this.a).a().a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int, false);
-    int j = ((List)localObject1).size();
-    Object localObject2;
-    int i;
-    if ((localObject1 != null) && (j > 0))
+    if ((paramString1 == null) || (!paramString1.equals(this.a.a.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.a.jdField_a_of_type_Int))
     {
-      localObject2 = (ChatMessage)((List)localObject1).get(j - 1);
-      if (localObject2 != null)
+      if (QLog.isColorLevel()) {
+        QLog.d("StrangerChatPie", 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("StrangerChatPie", 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " errorCode " + paramInt2);
+    }
+    if (paramInt1 == 1005) {
+      switch (paramInt2)
       {
-        if (QQOperateTips.a(this.a).jdField_a_of_type_Int != 0) {
-          break label329;
-        }
-        QQOperateTips.a(this.a, ((ChatMessage)localObject2).time);
-        QQOperateTips.b(this.a, ((ChatMessage)localObject2).uniseq);
-      }
-      if (QQOperateTips.a(this.a).a().a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int) <= 0) {
-        break label361;
-      }
-      i = 1;
-      label146:
-      if (i != 0) {
-        i = j;
+      default: 
+        QQToast.a(StrangerChatPie.f(this.a), StrangerChatPie.g(this.a).getString(2131362974), 0).b(StrangerChatPie.e(this.a).getTitleBarHeight());
       }
     }
     for (;;)
     {
-      if (i > 0)
-      {
-        localObject2 = (ChatMessage)((List)localObject1).get(i - 1);
-        if ((localObject2 == null) || (!((ChatMessage)localObject2).isread)) {}
-      }
-      else
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("QQOperateVoIP", 4, " from aio open .. unreadMsg index = " + QQOperateTips.a(this.a));
-        }
-        localObject2 = QQOperateManager.a(QQOperateTips.a(this.a));
-        localObject1 = ((QQOperateManager)localObject2).a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int, QQOperateTips.a(this.a), (List)localObject1, true, QQOperateTips.a(this.a));
-        if (((QQOperationRequestInfo)localObject1).jdField_a_of_type_Boolean)
+      this.a.a(196608);
+      return;
+      QQToast.a(StrangerChatPie.c(this.a), StrangerChatPie.d(this.a).getString(2131362973), 0).b(StrangerChatPie.b(this.a).getTitleBarHeight());
+      continue;
+      if (paramInt1 == 1004) {
+        switch (paramInt2)
         {
-          localObject1 = ((QQOperationRequestInfo)localObject1).jdField_a_of_type_JavaUtilArrayList;
-          ((QQOperateManager)localObject2).a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int, (ArrayList)localObject1, QQOperateTips.a(this.a));
-        }
-        QQOperateTips.a(this.a, -1);
-        return;
-        label329:
-        if (QQOperateTips.a(this.a).jdField_a_of_type_Int != 3000) {
+        default: 
+          break;
+        case 102: 
+        case 103: 
+        case 104: 
+          paramString1 = String.format(StrangerChatPie.h(this.a).getString(2131362976), new Object[] { this.a.a.d });
+          QQToast.a(StrangerChatPie.j(this.a), paramString1, 0).b(StrangerChatPie.i(this.a).getTitleBarHeight());
           break;
         }
-        QQOperateTips.a(this.a, ((ChatMessage)localObject2).shmsgseq);
-        break;
-        label361:
-        i = 0;
-        break label146;
+      } else if (paramInt1 == 1000) {
+        switch (paramInt2)
+        {
+        default: 
+          break;
+        case 102: 
+        case 103: 
+        case 104: 
+          paramString1 = String.format(StrangerChatPie.k(this.a).getString(2131362977), new Object[] { this.a.a.d });
+          QQToast.a(StrangerChatPie.m(this.a), paramString1, 0).b(StrangerChatPie.l(this.a).getTitleBarHeight());
+          break;
+        }
+      } else if (paramInt1 == 1020) {
+        switch (paramInt2)
+        {
+        default: 
+          break;
+        case 40: 
+        case 102: 
+        case 103: 
+        case 104: 
+          paramString1 = String.format(StrangerChatPie.n(this.a).getString(2131362172), new Object[] { this.a.a.d });
+          QQToast.a(StrangerChatPie.p(this.a), paramString1, 0).b(StrangerChatPie.o(this.a).getTitleBarHeight());
+          break;
+        }
+      } else if (paramInt1 == 1009) {
+        switch (paramInt2)
+        {
+        default: 
+          break;
+        case 3: 
+        case 21: 
+        case 22: 
+        case 23: 
+        case 28: 
+        case 48: 
+          QQToast.a(StrangerChatPie.r(this.a), StrangerChatPie.s(this.a).getString(2131362975), 0).b(StrangerChatPie.q(this.a).getTitleBarHeight());
+          break;
+        }
+      } else if (paramInt1 == 1006) {
+        switch (paramInt2)
+        {
+        default: 
+          break;
+        case 1600: 
+          QQToast.a(StrangerChatPie.u(this.a), StrangerChatPie.v(this.a).getString(2131363014), 0).b(StrangerChatPie.t(this.a).getTitleBarHeight());
+          break;
+        case 1601: 
+          QQToast.a(StrangerChatPie.x(this.a), StrangerChatPie.y(this.a).getString(2131363014), 0).b(StrangerChatPie.w(this.a).getTitleBarHeight());
+          break;
+        case 1602: 
+          QQToast.a(StrangerChatPie.A(this.a), StrangerChatPie.B(this.a).getString(2131363015), 0).b(StrangerChatPie.z(this.a).getTitleBarHeight());
+          break;
+        }
+      } else if (paramInt1 == 1022) {
+        switch (paramInt2)
+        {
+        default: 
+          break;
+        case 16: 
+          ChatActivityFacade.c(StrangerChatPie.a(this.a), this.a.a);
+          break;
+        }
+      } else if (paramInt1 == 1023) {
+        QQToast.a(StrangerChatPie.D(this.a), "errorCode" + paramInt2, 0).b(StrangerChatPie.C(this.a).getTitleBarHeight());
+      } else if (paramInt1 == 1025) {
+        switch (paramInt2)
+        {
+        default: 
+          QQToast.a(StrangerChatPie.H(this.a), "errorCode" + paramInt2, 0).b(StrangerChatPie.G(this.a).getTitleBarHeight());
+          break;
+        case 55: 
+          QQToast.a(StrangerChatPie.F(this.a), "已屏蔽的临时会话", 0).b(StrangerChatPie.E(this.a).getTitleBarHeight());
+        }
       }
-      QQOperateTips.a(this.a, i - 1);
-      i -= 1;
     }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.a.jdField_a_of_type_JavaLangString != null) && (this.a.a.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ChatActivityUtils.a();
+      if (paramBoolean) {
+        this.a.h();
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (paramBoolean1) {
+      this.a.C();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.a.jdField_a_of_type_JavaLangString != null) && (this.a.a.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ChatActivityUtils.a();
+      if (paramBoolean) {
+        this.a.h();
+      }
+    }
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.a(65536);
+  }
+  
+  protected void d(boolean paramBoolean, String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.a.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.a.k = true;
+    this.a.a(131072);
   }
 }
 

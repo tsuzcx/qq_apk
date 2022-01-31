@@ -3,7 +3,7 @@ import com.dataline.activities.LiteMutiPicViewerActivity;
 class bj
   implements Runnable
 {
-  bj(bg parambg) {}
+  bj(bd parambd) {}
   
   public void run()
   {

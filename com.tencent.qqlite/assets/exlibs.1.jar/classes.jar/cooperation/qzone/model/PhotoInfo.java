@@ -6,7 +6,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.common.galleryactivity.GalleryImage;
-import fln;
+import fnt;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.util.WeakReference;
@@ -15,7 +15,7 @@ public class PhotoInfo
   extends GalleryImage
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new fln();
+  public static final Parcelable.Creator CREATOR = new fnt();
   public static int m = 0;
   public static int n = 1;
   public static int o = 2;

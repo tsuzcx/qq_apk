@@ -1,50 +1,16 @@
-import android.content.Context;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
 
-public class dkw
+class dkw
   implements Runnable
 {
-  public dkw(QfileLocalFileMediaTabView paramQfileLocalFileMediaTabView, Context paramContext) {}
+  dkw(dku paramdku, long paramLong) {}
   
   public void run()
   {
-    Map localMap = FileCategoryUtil.c(this.jdField_a_of_type_AndroidContentContext);
-    Iterator localIterator;
-    Object localObject;
-    if (localMap != null)
-    {
-      localIterator = localMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (String)localIterator.next();
-        if (((String)localObject).equalsIgnoreCase("QQfile_recv") != true)
-        {
-          localObject = (List)localMap.get(localObject);
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.addAll((Collection)localObject);
-        }
-      }
-    }
-    localMap = FileCategoryUtil.b(this.jdField_a_of_type_AndroidContentContext);
-    if (localMap != null)
-    {
-      localIterator = localMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (String)localIterator.next();
-        if (((String)localObject).equalsIgnoreCase("QQfile_recv") != true)
-        {
-          localObject = (List)localMap.get(localObject);
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.addAll((Collection)localObject);
-        }
-      }
-    }
+    QfileBaseLocalFileTabView.a(this.jdField_a_of_type_Dku.a);
+    QfileBaseLocalFileTabView.c(this.jdField_a_of_type_Dku.a).a().a(this.jdField_a_of_type_Long);
   }
 }
 

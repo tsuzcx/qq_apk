@@ -1,24 +1,94 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
+import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
+import java.util.ArrayList;
 
-class bmj
-  implements DialogInterface.OnClickListener
+public class bmj
+  extends BaseAdapter
 {
-  bmj(bmi parambmi, QQCustomDialog paramQQCustomDialog) {}
+  public bmj(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int getCount()
   {
-    ReportController.a(this.jdField_a_of_type_Bmi.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Bmi.a.b, "", "", "");
-    paramDialogInterface = new Intent(this.jdField_a_of_type_Bmi.a, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", "http://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
-    paramDialogInterface.putExtra("webStyle", "noBottomBar");
-    this.jdField_a_of_type_Bmi.a.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.a.getLayoutInflater().inflate(2130903677, null);
+    }
+    TextView localTextView1 = (TextView)paramViewGroup.findViewById(2131298880);
+    TextView localTextView2 = (TextView)paramViewGroup.findViewById(2131298882);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131298881);
+    GroupCatalogBean localGroupCatalogBean2 = (GroupCatalogBean)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    Object localObject;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean != null) && (localGroupCatalogBean2.jdField_a_of_type_Int < this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean.jdField_a_of_type_Int))
+    {
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
+      paramView = ((GroupCatalogBean)localObject).jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
+      if ((paramView == null) || (paramView.jdField_a_of_type_Int < localGroupCatalogBean2.jdField_a_of_type_Int)) {
+        break label310;
+      }
+      if (!localGroupCatalogBean2.b.equals(paramView.b)) {}
+    }
+    label302:
+    label310:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (paramInt != 0)
+      {
+        localTextView2.setVisibility(0);
+        localTextView2.setText(((GroupCatalogBean)localObject).jdField_a_of_type_JavaLangString);
+        localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839492, 0);
+      }
+      for (;;)
+      {
+        localTextView1.setText(localGroupCatalogBean2.jdField_a_of_type_JavaLangString);
+        if ((localGroupCatalogBean2.jdField_a_of_type_JavaUtilArrayList == null) || (localGroupCatalogBean2.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
+          break label302;
+        }
+        localImageView.setVisibility(0);
+        return paramViewGroup;
+        GroupCatalogBean localGroupCatalogBean1 = paramView.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
+        localObject = paramView;
+        paramView = localGroupCatalogBean1;
+        break;
+        localTextView2.setVisibility(4);
+        continue;
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean != null) && (localGroupCatalogBean2.b.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean.b)))
+        {
+          localTextView2.setVisibility(0);
+          localTextView2.setText("");
+          localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839492, 0);
+        }
+        else
+        {
+          localTextView2.setVisibility(4);
+        }
+      }
+      localImageView.setVisibility(4);
+      return paramViewGroup;
+    }
   }
 }
 

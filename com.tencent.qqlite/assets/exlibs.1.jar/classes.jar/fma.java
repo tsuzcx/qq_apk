@@ -1,10 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import common.qzone.component.cache.common.SoftHashMap;
 
-public final class fma
-  implements DialogInterface.OnDismissListener
+public class fma
+  extends flw
 {
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  fma(SoftHashMap paramSoftHashMap)
+  {
+    super(paramSoftHashMap);
+  }
+  
+  public Object next()
+  {
+    return flt.a(a());
+  }
 }
 
 

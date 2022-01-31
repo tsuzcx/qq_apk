@@ -8,12 +8,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import bhr;
-import bhu;
-import bhv;
 import bhw;
-import bhx;
-import bhy;
+import bhz;
+import bia;
+import bib;
+import bic;
+import bid;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
@@ -33,10 +33,10 @@ public class RegisterQQNumberActivity
   private static final String jdField_a_of_type_JavaLangString = "RegisterQQNumberActivity";
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new bhw(this);
+  ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new bib(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private MenuPopupDialog jdField_a_of_type_ComTencentWidgetMenuPopupDialog = null;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new bhv(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new bia(this);
   private boolean jdField_a_of_type_Boolean = false;
   private byte[] jdField_a_of_type_ArrayOfByte = null;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -44,15 +44,15 @@ public class RegisterQQNumberActivity
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298598));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298600));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298624));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298626));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298599));
-    String str = String.format(getString(2131363347), new Object[] { this.c });
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298625));
+    String str = String.format(getString(2131363357), new Object[] { this.c });
     this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString + "");
     this.jdField_a_of_type_AndroidWidgetTextView.setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnLongClickListener(new bhr(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnLongClickListener(new bhw(this));
   }
   
   private void f()
@@ -76,12 +76,12 @@ public class RegisterQQNumberActivity
   
   private void j()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new bhx(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new bic(this));
   }
   
   private void k()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new bhy(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new bid(this));
   }
   
   protected boolean b()
@@ -107,7 +107,7 @@ public class RegisterQQNumberActivity
     this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.app.a(new bhu(this));
+      this.app.a(new bhz(this));
       return;
     }
     LoginActivity.a(this.app, this.app.getAccount());
@@ -124,7 +124,7 @@ public class RegisterQQNumberActivity
     }
     if (!NetworkUtil.e(BaseApplication.getContext()))
     {
-      a(2131362790, 0);
+      a(2131362797, 0);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -154,8 +154,8 @@ public class RegisterQQNumberActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130903572));
-    setTitle(2131363331);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130903581));
+    setTitle(2131363341);
     this.c = getIntent().getStringExtra("phonenum");
     this.d = getIntent().getStringExtra("key");
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("uin");

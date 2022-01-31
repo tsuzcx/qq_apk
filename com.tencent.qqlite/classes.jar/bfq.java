@@ -1,26 +1,18 @@
+import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bfq
-  implements IStatusListener
+  implements Runnable
 {
-  public bfq(QQSettingMe paramQQSettingMe) {}
+  public bfq(QQSettingMe paramQQSettingMe, String paramString) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus)
+  public void run()
   {
-    if (this.a.b)
-    {
-      if (paramInt != 100) {
-        this.a.a(2131363668);
-      }
-      this.a.q();
-    }
+    Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new bfr(this, localDrawable));
   }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

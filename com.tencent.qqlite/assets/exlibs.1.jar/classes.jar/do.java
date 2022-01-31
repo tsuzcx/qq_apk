@@ -1,13 +1,18 @@
-import com.dataline.util.HttpUpload.HttpUploadListenerPack;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.dataline.util.file.DLFileInfo;
 
-public class do
-  implements Runnable
+public final class do
+  implements Parcelable.Creator
 {
-  public do(HttpUpload.HttpUploadListenerPack paramHttpUploadListenerPack, long paramLong1, boolean paramBoolean, long paramLong2, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2) {}
-  
-  public void run()
+  public DLFileInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComDatalineUtilHttpUpload$HttpUploadListenerPack.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    return new DLFileInfo(paramParcel, null);
+  }
+  
+  public DLFileInfo[] a(int paramInt)
+  {
+    return new DLFileInfo[paramInt];
   }
 }
 

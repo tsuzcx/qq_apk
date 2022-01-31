@@ -1,23 +1,29 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 
-class ash
+public class ash
   implements Runnable
 {
-  ash(asg paramasg, List paramList) {}
+  public ash(Leba paramLeba, String paramString, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
   
   public void run()
   {
-    if (Leba.a(this.jdField_a_of_type_Asg.a) != null)
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.a().getSharedPreferences("web_process_preload_file", 0);
+    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+    int i = localSharedPreferences.getInt("key_web_plugin_click_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a(), 0);
+    localEditor.putInt("key_web_plugin_click_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a(), i + 1);
+    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 0)
     {
-      Leba.a(this.jdField_a_of_type_Asg.a).clear();
-      Leba.a(this.jdField_a_of_type_Asg.a).addAll(this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_Asg.a.a != null) {
-        this.jdField_a_of_type_Asg.a.a.notifyDataSetChanged();
-      }
-      Leba.b(this.jdField_a_of_type_Asg.a);
+      i = localSharedPreferences.getInt("key_web_plugin_click_red_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a(), 0);
+      localEditor.putInt("key_web_plugin_click_red_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a(), i + 1);
     }
+    localEditor.putLong("key_come_webview_time" + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a(), System.currentTimeMillis());
+    localEditor.commit();
   }
 }
 

@@ -1,32 +1,13 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.widget.QQToast;
 
-public class bpg
-  implements View.OnClickListener
+class bpg
+  implements Runnable
 {
-  public bpg(TroopMemberListActivity paramTroopMemberListActivity, String paramString) {}
+  bpg(bpf parambpf, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.c)
-    {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getIntent();
-      paramView.putExtra("member_uin", "0");
-      paramView.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.setResult(-1, paramView);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.finish();
-      return;
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.l))
-    {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.l, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.getHeight());
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, "现在无法发送@All消息", 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.getHeight());
+    TroopMemberListActivity.a(this.jdField_a_of_type_Bpf.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, 0, 0, this.jdField_b_of_type_JavaLangString, this.c);
   }
 }
 

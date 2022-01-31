@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.ChangeVoiceView;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
 
 public class btw
   implements Runnable
 {
-  public btw(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public btw(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
   
   public void run()
   {
-    this.a.g();
+    this.a.a[ListenChangeVoicePanel.a(this.a)].a(1);
   }
 }
 

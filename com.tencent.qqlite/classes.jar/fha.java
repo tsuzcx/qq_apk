@@ -1,41 +1,45 @@
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.widget.AbsListView;
+import android.text.TextUtils;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.business.base.AppUtil;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.common.AppNotificationManager;
+import com.tencent.open.downloadnew.common.AppNotificationManager.NoticeIdentity;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class fha
-  extends fhk
   implements Runnable
 {
-  private fha(AbsListView paramAbsListView)
-  {
-    super(paramAbsListView, null);
-  }
+  public fha(DownloadManager paramDownloadManager) {}
   
   public void run()
   {
-    int i = this.a.W;
-    View localView = this.a.getChildAt(i - this.a.ao);
-    long l;
-    if (localView != null)
+    Object localObject1 = AppUtil.b(CommonDataAdapter.a().a());
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).contains(":")))
     {
-      i = this.a.W;
-      l = this.a.a.getItemId(this.a.W);
-      if ((!a()) || (this.a.q)) {
-        break label126;
-      }
-    }
-    label126:
-    for (boolean bool = this.a.b(localView, i, l);; bool = false)
-    {
-      if (bool)
+      localObject1 = AppNotificationManager.a().a();
+      if (localObject1 != null)
       {
-        this.a.ab = -1;
-        this.a.setPressed(false);
-        localView.setPressed(false);
-        return;
+        Iterator localIterator = ((ConcurrentHashMap)localObject1).keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          AppNotificationManager.NoticeIdentity localNoticeIdentity = (AppNotificationManager.NoticeIdentity)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
+          if (localNoticeIdentity != null)
+          {
+            Object localObject2 = this.a.a(localNoticeIdentity.b);
+            if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).c)))
+            {
+              localObject2 = this.a.a(((DownloadInfo)localObject2).c);
+              if ((localObject2 != null) && (4 != DownloadManager.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
+                AppNotificationManager.a().a(localNoticeIdentity.a);
+              }
+            }
+          }
+        }
       }
-      this.a.ab = 2;
-      return;
     }
   }
 }

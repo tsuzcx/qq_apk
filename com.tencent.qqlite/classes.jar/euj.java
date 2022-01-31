@@ -1,19 +1,20 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogDevLock;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.util.ImageCreator;
+import com.tencent.mobileqq.util.ImageWorker;
 
 public class euj
-  implements View.OnClickListener
+  implements ImageCreator
 {
-  public euj(QQCustomDialogDevLock paramQQCustomDialogDevLock, DialogInterface.OnClickListener paramOnClickListener) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public euj(ImageWorker paramImageWorker, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogDevLock, 1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogDevLock.dismiss();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

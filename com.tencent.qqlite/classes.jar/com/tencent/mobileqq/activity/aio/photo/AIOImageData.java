@@ -3,13 +3,13 @@ package com.tencent.mobileqq.activity.aio.photo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import byj;
+import bzj;
 import java.io.File;
 
 public class AIOImageData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new byj();
+  public static final Parcelable.Creator CREATOR = new bzj();
   public static final int a = 1;
   public static final String a = "I:N";
   public static final int b = 2;

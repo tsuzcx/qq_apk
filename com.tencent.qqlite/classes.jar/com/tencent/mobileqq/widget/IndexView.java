@@ -22,6 +22,7 @@ public class IndexView
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  private IndexView.OnIndexChangedListener2 jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener2 = null;
   private IndexView.OnIndexChangedListener jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener = null;
   private boolean jdField_a_of_type_Boolean = false;
   private int[] jdField_a_of_type_ArrayOfInt;
@@ -291,11 +292,12 @@ public class IndexView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = false;
-    int i = paramMotionEvent.getAction();
+    int k = paramMotionEvent.getAction();
     int[] arrayOfInt;
     float f2;
+    int i;
     int j;
-    if (i == 0)
+    if (k == 0)
     {
       this.jdField_a_of_type_Boolean = true;
       arrayOfInt = new int[1];
@@ -312,22 +314,21 @@ public class IndexView
       }
       getBackground().setState(arrayOfInt);
       getBackground().invalidateSelf();
-      if ((i != 0) && (i != 2) && (i != 1)) {
-        break label364;
+      if ((k != 0) && (k != 2) && (k != 1)) {
+        break label389;
       }
       f2 = paramMotionEvent.getY();
       if ((this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener == null) || (f2 < 0.0F)) {
-        break label358;
+        break label383;
       }
       i = getHeight() - getPaddingTop() - getPaddingBottom();
       j = a(this.jdField_a_of_type_ArrayOfInt);
       if (i <= j) {
-        break label372;
+        break label397;
       }
     }
-    label358:
-    label364:
-    label372:
+    label389:
+    label397:
     for (float f1 = (i - j) * 1.0F / (this.jdField_a_of_type_ArrayOfJavaLangString.length - 1);; f1 = 0.0F)
     {
       j = -1;
@@ -344,7 +345,7 @@ public class IndexView
         }
         f2 -= this.jdField_a_of_type_ArrayOfInt[j] + f1;
       }
-      if ((i != 3) && (i != 1)) {
+      if ((k != 3) && (k != 1)) {
         break;
       }
       this.jdField_a_of_type_Boolean = false;
@@ -367,11 +368,15 @@ public class IndexView
         j = this.jdField_a_of_type_ArrayOfInt.length - 1;
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener.a(this.jdField_a_of_type_ArrayOfJavaLangString[j]);
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener2 != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener2.a(this.jdField_a_of_type_ArrayOfJavaLangString[j], k);
+      }
+      label383:
       bool = true;
       do
       {
         return bool;
-      } while (i != 3);
+      } while (k != 3);
       return true;
     }
   }
@@ -381,12 +386,12 @@ public class IndexView
     if ("$".equals(paramArrayOfString[0]))
     {
       this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838075);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838094);
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     }
     if (this.c)
     {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838074);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838093);
       this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
     }
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
@@ -472,6 +477,11 @@ public class IndexView
   public void setOnIndexChangedListener(IndexView.OnIndexChangedListener paramOnIndexChangedListener)
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener = paramOnIndexChangedListener;
+  }
+  
+  public void setOnIndexChangedListener2(IndexView.OnIndexChangedListener2 paramOnIndexChangedListener2)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener2 = paramOnIndexChangedListener2;
   }
 }
 

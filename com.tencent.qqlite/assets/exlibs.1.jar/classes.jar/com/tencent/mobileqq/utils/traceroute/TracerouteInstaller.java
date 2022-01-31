@@ -308,14 +308,14 @@ public class TracerouteInstaller
     //   559: astore_3
     //   560: goto -333 -> 227
     //   563: astore 4
-    //   565: aload_3
+    //   565: aload_0
     //   566: astore 6
-    //   568: aload_0
-    //   569: astore_3
-    //   570: aload 5
-    //   572: astore_0
-    //   573: aload 6
-    //   575: astore 5
+    //   568: aload 5
+    //   570: astore_0
+    //   571: aload_3
+    //   572: astore 5
+    //   574: aload 6
+    //   576: astore_3
     //   577: goto -350 -> 227
     // Local variable table:
     //   start	length	slot	name	signature
@@ -325,7 +325,7 @@ public class TracerouteInstaller
     //   84	326	3	localFileOutputStream1	java.io.FileOutputStream
     //   437	1	3	localException1	java.lang.Exception
     //   441	1	3	localException2	java.lang.Exception
-    //   468	102	3	localObject1	Object
+    //   468	109	3	localObject1	Object
     //   9	166	4	localProcess	Process
     //   221	29	4	localIOException1	IOException
     //   294	49	4	localInterruptedException1	InterruptedException
@@ -340,8 +340,8 @@ public class TracerouteInstaller
     //   530	1	4	localIOException2	IOException
     //   543	1	4	localIOException3	IOException
     //   563	1	4	localIOException4	IOException
-    //   12	564	5	localObject7	Object
-    //   6	568	6	localObject8	Object
+    //   12	561	5	localObject7	Object
+    //   6	569	6	localObject8	Object
     //   90	389	7	localFileOutputStream2	java.io.FileOutputStream
     //   3	523	8	localObject9	Object
     //   21	136	9	str	String

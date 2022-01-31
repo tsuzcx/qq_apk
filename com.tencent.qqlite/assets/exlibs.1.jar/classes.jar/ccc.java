@@ -1,31 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.book.ResizeLayout;
+import com.tencent.mobileqq.activity.book.ResizeLayout.OnResizeListener;
 
 public class ccc
-  extends Handler
+  implements Runnable
 {
-  public ccc(SearchBaseActivity paramSearchBaseActivity) {}
+  public ccc(ResizeLayout paramResizeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    this.a.a.clearFocus();
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.e();
-      return;
-    case 1: 
-      this.a.a((String)paramMessage.obj);
-      return;
-    case 2: 
-      this.a.k();
-      return;
-    }
-    this.a.h();
+    ResizeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout).a(this.jdField_a_of_type_Int, this.b, this.c, this.d);
   }
 }
 

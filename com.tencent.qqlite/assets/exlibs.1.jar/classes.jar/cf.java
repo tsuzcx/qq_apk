@@ -1,20 +1,60 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.mpfile.LiteMpFileDownloadActivity;
+import android.os.Bundle;
 import com.dataline.mpfile.LiteMpFileFileListActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.dataline.mpfile.MpFileConstant;
+import com.dataline.mpfile.MpfileDataCenter;
+import com.dataline.util.DatalineMathUtil;
 
 public class cf
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
   public cf(LiteMpFileFileListActivity paramLiteMpFileFileListActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = new Intent(this.a, LiteMpFileDownloadActivity.class);
-    this.a.startActivity(paramView);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800421B", "0X800421B", 0, 0, "", "", "", "");
+    if (paramIntent == null) {}
+    long l;
+    do
+    {
+      do
+      {
+        return;
+        paramContext = paramIntent.getAction();
+      } while ((paramContext == null) || (!paramContext.equals(MpFileConstant.d)));
+      paramContext = paramIntent.getExtras();
+      l = paramIntent.getLongExtra(MpFileConstant.f, 0L);
+    } while (LiteMpFileFileListActivity.a(this.a) != l);
+    int i = paramContext.getInt(MpFileConstant.e);
+    if (i == 0)
+    {
+      paramIntent = DatalineMathUtil.a(paramContext.getLong("ip"));
+      int j = paramContext.getInt("port");
+      if (paramContext.getInt("result") == 0)
+      {
+        MpfileDataCenter.k = paramIntent;
+        MpfileDataCenter.E = j;
+        LiteMpFileFileListActivity.a(this.a, 0);
+        this.a.c();
+        paramContext = String.format(LiteMpFileFileListActivity.a(this.a), new Object[] { MpfileDataCenter.k, Integer.valueOf(MpfileDataCenter.E), Integer.valueOf(LiteMpFileFileListActivity.a(this.a)), Integer.valueOf(LiteMpFileFileListActivity.b(this.a)), this.a.a });
+        LiteMpFileFileListActivity.a(this.a, paramContext);
+        return;
+      }
+      if (i == 2)
+      {
+        this.a.a(7);
+        return;
+      }
+      if (i == 3)
+      {
+        this.a.a(MpfileDataCenter.w);
+        return;
+      }
+      this.a.a(MpfileDataCenter.r);
+      return;
+    }
+    this.a.a(i);
   }
 }
 

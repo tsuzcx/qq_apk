@@ -1,36 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.sdk.modelbase.BaseResp;
-import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
 class dww
-  implements WXShareHelper.WXShareListener
+  implements Runnable
 {
-  dww(dwv paramdwv) {}
+  dww(dws paramdws) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if ((this.a.a.r == null) || (!this.a.a.r.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    boolean bool;
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131363689);
-      bool = false;
-    }
-    while (!TextUtils.isEmpty(this.a.a.q))
-    {
-      this.a.a.callJs(this.a.a.q, new String[] { String.valueOf(bool) });
-      return;
-      QRUtils.a(2, 2131363688);
-      bool = true;
-      continue;
-      bool = false;
-    }
+    UniformDownloaderAppBabySdk.c(this.a.a);
+    UniformDownloaderAppBabySdk.a(this.a.a);
   }
 }
 

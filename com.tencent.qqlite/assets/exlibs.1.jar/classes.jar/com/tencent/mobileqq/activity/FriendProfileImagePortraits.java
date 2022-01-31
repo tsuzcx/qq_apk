@@ -2,9 +2,9 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import apr;
-import aps;
-import apt;
+import apw;
+import apx;
+import apy;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.CardObserver;
@@ -35,7 +35,7 @@ public class FriendProfileImagePortraits
   protected static final int d = 2;
   int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new aps(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new apx(this);
   protected TransProcessorHandler a;
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   protected List a;
@@ -47,7 +47,7 @@ public class FriendProfileImagePortraits
   public FriendProfileImagePortraits(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new apr(this);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new apw(this);
   }
   
   private void a()
@@ -302,7 +302,7 @@ public class FriendProfileImagePortraits
         if ((this.jdField_a_of_type_JavaUtilStack == null) || (this.jdField_a_of_type_AndroidOsHandler == null))
         {
           this.jdField_a_of_type_JavaUtilStack = new Stack();
-          this.jdField_a_of_type_AndroidOsHandler = new apt(this);
+          this.jdField_a_of_type_AndroidOsHandler = new apy(this);
         }
         if (this.jdField_a_of_type_JavaUtilStack.size() < 2) {
           break label227;

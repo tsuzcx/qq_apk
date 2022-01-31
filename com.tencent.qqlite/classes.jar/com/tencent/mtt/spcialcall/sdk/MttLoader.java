@@ -11,7 +11,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.text.TextUtils;
-import fab;
+import fch;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -128,8 +128,8 @@ public class MttLoader
                 }
                 paramString = new Intent("com.tencent.QQBrowser.action.VIEW");
                 localObject2 = a(paramActivity, (Uri)localObject1);
-                if ((localObject2 != null) && (!TextUtils.isEmpty(((fab)localObject2).jdField_a_of_type_JavaLangString))) {
-                  paramString.setClassName(((fab)localObject2).b, ((fab)localObject2).jdField_a_of_type_JavaLangString);
+                if ((localObject2 != null) && (!TextUtils.isEmpty(((fch)localObject2).jdField_a_of_type_JavaLangString))) {
+                  paramString.setClassName(((fch)localObject2).b, ((fch)localObject2).jdField_a_of_type_JavaLangString);
                 }
                 break;
                 if (((MttLoader.BrowserInfo)localObject2).jdField_a_of_type_Int == 1)
@@ -157,15 +157,15 @@ public class MttLoader
                   }
                   paramString = new Intent("com.tencent.QQBrowser.action.VIEW");
                   localObject2 = a(paramActivity, (Uri)localObject1);
-                  if ((localObject2 != null) && (!TextUtils.isEmpty(((fab)localObject2).jdField_a_of_type_JavaLangString))) {
-                    paramString.setClassName(((fab)localObject2).b, ((fab)localObject2).jdField_a_of_type_JavaLangString);
+                  if ((localObject2 != null) && (!TextUtils.isEmpty(((fch)localObject2).jdField_a_of_type_JavaLangString))) {
+                    paramString.setClassName(((fch)localObject2).b, ((fch)localObject2).jdField_a_of_type_JavaLangString);
                   }
                   break;
                 }
                 paramString = new Intent("com.tencent.QQBrowser.action.VIEW");
                 localObject2 = a(paramActivity, (Uri)localObject1);
-                if ((localObject2 != null) && (!TextUtils.isEmpty(((fab)localObject2).jdField_a_of_type_JavaLangString))) {
-                  paramString.setClassName(((fab)localObject2).b, ((fab)localObject2).jdField_a_of_type_JavaLangString);
+                if ((localObject2 != null) && (!TextUtils.isEmpty(((fch)localObject2).jdField_a_of_type_JavaLangString))) {
+                  paramString.setClassName(((fch)localObject2).b, ((fch)localObject2).jdField_a_of_type_JavaLangString);
                 }
                 break;
               }
@@ -287,11 +287,11 @@ public class MttLoader
                 }
                 paramContext = localObject2;
                 localObject5 = localObject2;
-                if (TextUtils.isEmpty(((fab)localObject6).b)) {
+                if (TextUtils.isEmpty(((fch)localObject6).b)) {
                   continue;
                 }
                 localObject5 = localObject2;
-                paramContext = localPackageManager.getPackageInfo(((fab)localObject6).b, 0);
+                paramContext = localPackageManager.getPackageInfo(((fch)localObject6).b, 0);
                 localObject5 = paramContext;
                 localBrowserInfo.jdField_a_of_type_Int = 2;
                 localObject5 = paramContext;
@@ -314,7 +314,7 @@ public class MttLoader
     return localBrowserInfo;
   }
   
-  private static fab a(Context paramContext, Uri paramUri)
+  private static fch a(Context paramContext, Uri paramUri)
   {
     Object localObject = new Intent("com.tencent.QQBrowser.action.VIEW");
     ((Intent)localObject).setData(paramUri);
@@ -322,7 +322,7 @@ public class MttLoader
     if (paramUri.size() <= 0) {
       return null;
     }
-    paramContext = new fab(null);
+    paramContext = new fch(null);
     paramUri = paramUri.iterator();
     while (paramUri.hasNext())
     {

@@ -1,23 +1,50 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
-import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.media.ExifInterface;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class byz
-  implements CustomMenuBar.OnMenuItemClickListener
+  extends AsyncTask
 {
-  public byz(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public byz(AIOGalleryScene paramAIOGalleryScene, File paramFile, int paramInt) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  protected Void a(Void... paramVarArgs)
   {
-    BusinessCmrTmpChatPie.a(this.a).setVisibility(0);
-    BusinessCmrTmpChatPie.a(this.a).sendEmptyMessageDelayed(0, 10000L);
-    StructMsg.ButtonInfo localButtonInfo = BusinessCmrTmpChatPie.a(this.a, paramInt1);
-    EnterpriseQQManager.a(BusinessCmrTmpChatPie.b(this.a)).a(paramString, this.a.a(), BusinessCmrTmpChatPie.a(this.a), this.a.a(), localButtonInfo);
-    ReportController.b(BusinessCmrTmpChatPie.c(this.a), "P_CliOper", "Bqq_Crm", "", "Aio_menu", "Clk_menu", 0, 0, this.a.a(), paramInt1 + "", "", "");
+    try
+    {
+      paramVarArgs = new ExifInterface(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+      if (this.jdField_a_of_type_Int == 0) {
+        paramVarArgs.setAttribute("Orientation", String.valueOf(1));
+      }
+      for (;;)
+      {
+        paramVarArgs.saveAttributes();
+        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene;
+        paramVarArgs.c += 1;
+        break label138;
+        if (this.jdField_a_of_type_Int != 1) {
+          break;
+        }
+        paramVarArgs.setAttribute("Orientation", String.valueOf(6));
+      }
+    }
+    catch (IOException paramVarArgs)
+    {
+      while (QLog.isColorLevel())
+      {
+        QLog.e("AIOGalleryScene", 2, "save exif error", paramVarArgs);
+        break;
+        if (this.jdField_a_of_type_Int == 2) {
+          paramVarArgs.setAttribute("Orientation", String.valueOf(3));
+        } else if (this.jdField_a_of_type_Int == 3) {
+          paramVarArgs.setAttribute("Orientation", String.valueOf(8));
+        }
+      }
+    }
+    label138:
+    return null;
   }
 }
 

@@ -1,14 +1,37 @@
-import com.tencent.mobileqq.transfile.RichMediaUtil;
-import java.util.TimerTask;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.service.message.MessageFactoryReceiver.UploadStreamStruct;
+import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ehq
-  extends TimerTask
+public class ehq
+  extends MessageObserver
 {
-  public ehq(String paramString) {}
+  public ehq(BuddyTransfileProcessor paramBuddyTransfileProcessor) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, MessageFactoryReceiver.UploadStreamStruct paramUploadStreamStruct)
   {
-    RichMediaUtil.a(this.a, false, null);
+    if (QLog.isColorLevel()) {
+      if ("Stream ptt:onUpdateUploadStreamFinished : isSuccess:" + paramBoolean + " Key:" + paramUploadStreamStruct != null) {
+        break label87;
+      }
+    }
+    label87:
+    for (String str = "null";; str = paramUploadStreamStruct.jdField_a_of_type_JavaLangString + " FilePath:" + this.a.a.e + " seq:" + paramUploadStreamStruct.jdField_a_of_type_Short + " Layer:" + paramUploadStreamStruct.jdField_a_of_type_Int + " RespCode:" + paramUploadStreamStruct.b + " isStreamPttSuccess:" + this.a.l)
+    {
+      QLog.e("streamptt.send", 2, str);
+      this.a.c(2);
+      if ((paramUploadStreamStruct != null) && (paramUploadStreamStruct.jdField_a_of_type_JavaLangString != null) && (paramUploadStreamStruct.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.a.a.e))) {
+        break;
+      }
+      return;
+    }
+    if (!paramBoolean)
+    {
+      BuddyTransfileProcessor.a(this.a, false, paramUploadStreamStruct);
+      return;
+    }
+    BuddyTransfileProcessor.a(this.a, true, paramUploadStreamStruct);
   }
 }
 

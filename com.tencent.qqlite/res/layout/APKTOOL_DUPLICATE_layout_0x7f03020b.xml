@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/skin_setting_strip_bg_unpressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f0908e2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginBottom="10.0dip" android:checked="true" android:button="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02059b" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a07a3" android:drawablePadding="6.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/C6_Font" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0908e3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0908e2" android:layout_alignParentLeft="true">
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0908e4" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="5.0dip" android:text="立即更新" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e006f" />
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0908e5" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_marginRight="10.0dip" android:text="稍后处理" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0068" />
+    <TextView android:id="@id/title" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0109" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0905d4" style="@style/APKTOOL_DUPLICATE_style_0x7f0e010c" />
+    <LinearLayout android:id="@id/content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0110">
+        <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e011b" />
+        <TextView android:id="@id/info" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0115" />
     </LinearLayout>
-    <com.tencent.widget.ProtectedWebView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0908e6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="10.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0908e3" android:layout_alignParentTop="true" />
 </RelativeLayout>

@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
 
-public class bra
-  implements DialogInterface.OnDismissListener
+class bra
+  implements Runnable
 {
-  public bra(UpgradeActivity paramUpgradeActivity) {}
+  bra(bqz parambqz) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.finish();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

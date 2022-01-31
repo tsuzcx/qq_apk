@@ -1,15 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.CustomedTabWidget;
-
 public class eyb
-  implements View.OnClickListener
 {
-  public eyb(CustomedTabWidget paramCustomedTabWidget) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
+  public eyb()
   {
-    this.a.setCurrentTab(this.a.indexOfChild(paramView));
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

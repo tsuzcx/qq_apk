@@ -1,67 +1,30 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.discussion.LinkShareActionSheetBuilder;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
+import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter.ViewHolder;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import java.util.List;
 
 public class cek
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  private cek(LinkShareActionSheetBuilder paramLinkShareActionSheetBuilder) {}
+  public cek(NotificationAdapter paramNotificationAdapter) {}
   
-  public int getCount()
+  public void onClick(View paramView)
   {
-    return 4;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = LayoutInflater.from(LinkShareActionSheetBuilder.a(this.a)).inflate(2130903673, null);
+    NotificationAdapter.ViewHolder localViewHolder = (NotificationAdapter.ViewHolder)paramView.getTag();
+    if ((localViewHolder == null) || (!(localViewHolder instanceof NotificationAdapter.ViewHolder))) {
+      return;
     }
-    int i;
-    int j;
-    switch (paramInt)
-    {
-    default: 
-      i = 2131363690;
-      j = 2130837667;
-      paramInt = 2131363711;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
+    paramView = (View)paramView.getParent();
+    if ((paramView instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)paramView).c();
     }
-    for (;;)
-    {
-      paramView = (ImageView)paramViewGroup.findViewById(2131297779);
-      TextView localTextView = (TextView)paramViewGroup.findViewById(2131297780);
-      paramView.setImageResource(j);
-      localTextView.setText(i);
-      paramViewGroup.setContentDescription(LinkShareActionSheetBuilder.a(this.a).getString(paramInt));
-      return paramViewGroup;
-      i = 2131363687;
-      j = 2130837669;
-      paramInt = 2131363709;
-      continue;
-      i = 2131363685;
-      j = 2130837670;
-      paramInt = 2131363708;
-      continue;
-      i = 2131363684;
-      j = 2130837668;
-      paramInt = 2131363707;
-    }
+    NotificationAdapter.a(this.a, localViewHolder.a);
+    this.a.jdField_a_of_type_JavaUtilList.add(NotificationAdapter.a(this.a).remove(this.a.getCount() - localViewHolder.b - 1));
+    this.a.notifyDataSetChanged();
   }
 }
 

@@ -20,7 +20,7 @@ public class TroopSpecialAttentionMsg
   
   public TroopSpecialAttentionMsg(Context paramContext)
   {
-    this.c = paramContext.getString(2131362888);
+    this.c = paramContext.getString(2131362895);
   }
   
   public Object a()

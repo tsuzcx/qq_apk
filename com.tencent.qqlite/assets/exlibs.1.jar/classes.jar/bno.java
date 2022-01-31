@@ -1,27 +1,19 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import com.tencent.mobileqq.activity.TroopManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public class bno
-  extends Handler
+class bno
+  implements Runnable
 {
-  public bno(TroopMemberCardActivity paramTroopMemberCardActivity) {}
+  bno(bnn parambnn) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    TroopHandler localTroopHandler = (TroopHandler)this.a.a.app.a(17);
+    if (localTroopHandler != null) {
+      localTroopHandler.k(this.a.a.a.troopuin);
     }
-    if (this.a.o != 1)
-    {
-      paramMessage = new Intent();
-      paramMessage.putExtra("finish_chat_setting", true);
-      this.a.a.setResult(-1, paramMessage);
-    }
-    this.a.a.finish();
   }
 }
 

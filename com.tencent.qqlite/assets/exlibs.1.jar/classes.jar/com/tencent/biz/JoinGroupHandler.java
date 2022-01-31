@@ -56,7 +56,7 @@ public class JoinGroupHandler
       this.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.b();
       return;
     }
-    a(2131363368, 1);
+    a(2131363379, 1);
     this.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.a();
   }
   
@@ -72,7 +72,7 @@ public class JoinGroupHandler
     catch (Exception localException)
     {
       localException.printStackTrace();
-      a(2131362896, 0);
+      a(2131362903, 0);
       this.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.a();
     }
   }
@@ -94,7 +94,7 @@ public class JoinGroupHandler
       if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext, a());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363558);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363569);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(false);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new jo(this));
       }
@@ -131,7 +131,7 @@ public class JoinGroupHandler
   {
     if (!NetworkUtil.e(this.jdField_a_of_type_AndroidContentContext))
     {
-      a(2131362916, 0);
+      a(2131362923, 0);
       this.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.a();
       return;
     }

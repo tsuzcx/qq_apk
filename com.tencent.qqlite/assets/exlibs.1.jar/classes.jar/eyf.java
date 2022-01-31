@@ -1,29 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.widget.DropdownView;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
+import java.util.concurrent.TimeUnit;
 
 public class eyf
-  implements View.OnClickListener
+  extends ThreadPoolExecutor
 {
-  public eyf(DropdownView paramDropdownView) {}
+  private static int a = 0;
+  public static final String a = "InfiniteTaskThread_";
   
-  public void onClick(View paramView)
+  public eyf(int paramInt, long paramLong)
   {
-    this.a.jdField_a_of_type_Eyi.clearFocus();
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Eyi.getWindowToken(), 0);
-    if ((this.a.jdField_a_of_type_Eyi.getAdapter() != null) && (this.a.jdField_a_of_type_Eyi.getAdapter().getCount() > 0))
-    {
-      if ((((ImageView)paramView).getDrawable() == this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) && (!this.a.jdField_a_of_type_Boolean)) {
-        DropdownView.a(this.a).postDelayed(new eyg(this, paramView), 250L);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_Eyi.dismissDropDown();
+    super(paramInt, 2147483647, paramLong, TimeUnit.SECONDS, new LinkedBlockingQueue(), new eyg(), new ThreadPoolExecutor.CallerRunsPolicy());
   }
 }
 

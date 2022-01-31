@@ -1,23 +1,30 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.dataline.mpfile.LiteMpFileDownloadActivity;
-import com.dataline.mpfile.LiteMpFileDownloadActivity.SortComparator;
-import com.dataline.mpfile.MpfileDataCenter;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class bz
-  implements Runnable
+  extends BroadcastReceiver
 {
   public bz(LiteMpFileDownloadActivity paramLiteMpFileDownloadActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject = (DataLineHandler)this.a.app.a(8);
-    LiteMpFileDownloadActivity.a(this.a, ((DataLineHandler)localObject).a().a());
-    localObject = new LiteMpFileDownloadActivity.SortComparator(this.a);
-    Collections.sort(LiteMpFileDownloadActivity.a(this.a), (Comparator)localObject);
-    this.a.runOnUiThread(new ca(this));
+    if (paramIntent == null) {}
+    do
+    {
+      do
+      {
+        return;
+        paramContext = paramIntent.getAction();
+      } while (paramContext == null);
+      if (paramContext.equals("com.dataline.mpfile.download_progress"))
+      {
+        this.a.a();
+        return;
+      }
+    } while (!paramContext.equals("com.dataline.mpfile.download_completed"));
+    this.a.a();
   }
 }
 

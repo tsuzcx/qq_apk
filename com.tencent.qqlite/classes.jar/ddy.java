@@ -1,25 +1,29 @@
-import com.tencent.mobileqq.emoticon.SogouEmoji;
-import com.tencent.mobileqq.emoticon.SogouEmoji.OnEmojiJsonBackSogou;
-import com.tencent.mobileqq.emoticon.SogouEmojiTaskController;
+import android.database.DatabaseErrorHandler;
+import android.database.DefaultDatabaseErrorHandler;
+import android.database.sqlite.SQLiteDatabase;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class ddy
-  implements SogouEmoji.OnEmojiJsonBackSogou
+  implements DatabaseErrorHandler
 {
-  public ddy(SogouEmoji paramSogouEmoji) {}
+  private DefaultDatabaseErrorHandler jdField_a_of_type_AndroidDatabaseDefaultDatabaseErrorHandler = new DefaultDatabaseErrorHandler();
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public ddy(QQEntityManagerFactory paramQQEntityManagerFactory) {}
+  
+  public void onCorruption(SQLiteDatabase paramSQLiteDatabase)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(SogouEmoji.jdField_a_of_type_JavaLangString, 2, "func onEmojiJsonBack begins, taskId:" + paramInt + ",packId:" + paramString1);
+      QLog.i(this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory.TAG, 2, "[SQLiteDatabaseCorruptException]Corruption reported by sqlite on database: " + paramSQLiteDatabase.getPath());
     }
-    boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmojiTaskController.a(paramInt);
-    if (bool) {
-      this.a.a(paramString1, paramString2, false);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(SogouEmoji.jdField_a_of_type_JavaLangString, 2, "func onEmojiJsonBack ends, isTaskExist:" + bool);
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_ROM", DeviceInfoUtil.i());
+    StatisticCollector.a(BaseApplication.getContext()).a(null, "actSqliteDatabaseCorrupt", true, -1L, 0L, localHashMap, null, false);
+    this.jdField_a_of_type_AndroidDatabaseDefaultDatabaseErrorHandler.onCorruption(paramSQLiteDatabase);
   }
 }
 

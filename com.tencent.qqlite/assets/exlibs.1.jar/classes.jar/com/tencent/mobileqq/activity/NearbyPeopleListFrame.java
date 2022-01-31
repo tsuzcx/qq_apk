@@ -13,11 +13,11 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import awr;
-import aws;
-import awt;
-import awu;
+import aww;
+import awx;
 import awy;
+import awz;
+import axd;
 import com.tencent.mobileqq.adapter.PeopleAroundAdapter;
 import com.tencent.mobileqq.adapter.PeopleAroundAdapter.ViewHolder;
 import com.tencent.mobileqq.app.ConditionSearchManager;
@@ -70,16 +70,16 @@ public class NearbyPeopleListFrame
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  private awy jdField_a_of_type_Awy = new awy(this, this);
+  private axd jdField_a_of_type_Axd = new axd(this, this);
   public NearPeopleFilterActivity.NearPeopleFilters a;
   public PeopleAroundAdapter a;
   private LBSHandler jdField_a_of_type_ComTencentMobileqqAppLBSHandler;
-  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new awu(this);
-  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new aws(this);
+  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new awz(this);
+  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new awx(this);
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   public PullRefreshHeader a;
-  OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener = new awt(this);
+  OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener = new awy(this);
   public XListView a;
   public List a;
   public boolean a;
@@ -140,11 +140,11 @@ public class NearbyPeopleListFrame
   {
     int i2 = 8;
     TextView localTextView = (TextView)this.d.findViewById(2131297311);
-    ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131296558);
+    ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131296561);
     ImageView localImageView = (ImageView)this.d.findViewById(2131297310);
     if (paramBoolean)
     {
-      i1 = 2131364181;
+      i1 = 2131364192;
       localTextView.setText(i1);
       if (!paramBoolean) {
         break label89;
@@ -162,7 +162,7 @@ public class NearbyPeopleListFrame
     {
       localImageView.setVisibility(i1);
       return;
-      i1 = 2131363196;
+      i1 = 2131363206;
       break;
       i1 = 8;
       break label64;
@@ -276,7 +276,7 @@ public class NearbyPeopleListFrame
   
   public View a(LayoutInflater paramLayoutInflater)
   {
-    return paramLayoutInflater.inflate(2130903502, null);
+    return paramLayoutInflater.inflate(2130903510, null);
   }
   
   short a()
@@ -308,18 +308,18 @@ public class NearbyPeopleListFrame
     this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131298199));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.getLayoutInflater().inflate(2130903349, this.jdField_a_of_type_ComTencentWidgetXListView, false));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131298221));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.getLayoutInflater().inflate(2130903352, this.jdField_a_of_type_ComTencentWidgetXListView, false));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeight(a().getDimensionPixelSize(2131492882));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837635);
-    this.e = a(2131297717);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837660);
+    this.e = a(2131297721);
     this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(this.e);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.getLayoutInflater().inflate(2130903503, null);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131298248);
-    this.d = this.jdField_b_of_type_AndroidViewView.findViewById(2131298249);
-    this.d.setOnClickListener(new awr(this));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.getLayoutInflater().inflate(2130903511, null);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131298270);
+    this.d = this.jdField_b_of_type_AndroidViewView.findViewById(2131298271);
+    this.d.setOnClickListener(new aww(this));
     this.jdField_a_of_type_ComTencentWidgetXListView.b(this.jdField_b_of_type_AndroidViewView);
     this.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter = new PeopleAroundAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager, this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter);
@@ -569,7 +569,7 @@ public class NearbyPeopleListFrame
   {
     if (paramBoolean1)
     {
-      this.jdField_a_of_type_Awy.removeMessages(0);
+      this.jdField_a_of_type_Axd.removeMessages(0);
       if (paramBoolean2) {
         o();
       }
@@ -582,8 +582,8 @@ public class NearbyPeopleListFrame
       continue;
       b(true);
     }
-    Message localMessage = this.jdField_a_of_type_Awy.obtainMessage(1, 1, 0);
-    this.jdField_a_of_type_Awy.sendMessageDelayed(localMessage, 1000L);
+    Message localMessage = this.jdField_a_of_type_Axd.obtainMessage(1, 1, 0);
+    this.jdField_a_of_type_Axd.sendMessageDelayed(localMessage, 1000L);
   }
   
   /* Error */
@@ -756,12 +756,12 @@ public class NearbyPeopleListFrame
         this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
       }
     }
-    Object localObject = this.jdField_a_of_type_Awy;
+    Object localObject = this.jdField_a_of_type_Axd;
     if (paramBoolean1) {}
     for (int i1 = 0;; i1 = 1)
     {
-      localObject = ((awy)localObject).obtainMessage(0, i1, 0);
-      this.jdField_a_of_type_Awy.sendMessageDelayed((Message)localObject, 1000L);
+      localObject = ((axd)localObject).obtainMessage(0, i1, 0);
+      this.jdField_a_of_type_Axd.sendMessageDelayed((Message)localObject, 1000L);
       return;
     }
   }
@@ -816,7 +816,7 @@ public class NearbyPeopleListFrame
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      a(0, 2131364432);
+      a(0, 2131364443);
       return;
     }
     a(new Intent(a(), NearPeopleFilterActivity.class), r);

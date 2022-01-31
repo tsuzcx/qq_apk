@@ -1,45 +1,53 @@
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.widget.ClearableEditText.OnTextClearedListener;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.Collection;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class atz
-  implements Runnable
+  implements ClearableEditText.OnTextClearedListener
 {
-  public atz(LoginInfoActivity paramLoginInfoActivity, int paramInt) {}
+  public atz(LoginActivity paramLoginActivity) {}
   
-  public void run()
+  public void a()
   {
-    for (;;)
+    libsafeedit.clearPassBuffer();
+    this.a.getAppRuntime().stopPCActivePolling("clearPassInput");
+    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.size() <= 0) || (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView == null) || (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText() == null) || (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString() == null)) {}
+    label82:
+    Object localObject;
+    label140:
+    do
     {
-      try
+      return;
+      int i = 0;
+      SimpleAccount localSimpleAccount;
+      if (i < this.a.jdField_a_of_type_JavaUtilList.size())
       {
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.isFinishing())
-        {
-          if ((LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity) != null) && (LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).isShowing()))
-          {
-            LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).dismiss();
-            LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).cancel();
-            LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, null);
-          }
-          LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight()));
-          int i = this.jdField_a_of_type_Int;
-          switch (i)
-          {
-          }
+        localObject = this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString();
+        localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(i);
+        if (localSimpleAccount != null) {
+          break label140;
         }
       }
-      catch (Throwable localThrowable)
+      while (!((String)localObject).equals(this.a.app.b(localSimpleAccount.getUin())))
       {
-        localThrowable.printStackTrace();
-        continue;
-        LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).b(2131363558);
-        continue;
+        i += 1;
+        break label82;
+        break;
       }
-      if ((LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity) != null) && (!LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).isShowing())) {
-        LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).show();
-      }
-      return;
-      LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).b(2131362789);
-    }
+      this.a.app.updateSubAccountLogin(localSimpleAccount.getUin(), false);
+      this.a.e = null;
+      this.a.app.getApplication().refreAccountList();
+      localObject = this.a.getAppRuntime().getApplication().getAllAccounts();
+    } while ((localObject == null) || (this.a.jdField_a_of_type_JavaUtilList == null));
+    this.a.jdField_a_of_type_JavaUtilList.clear();
+    this.a.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
   }
 }
 

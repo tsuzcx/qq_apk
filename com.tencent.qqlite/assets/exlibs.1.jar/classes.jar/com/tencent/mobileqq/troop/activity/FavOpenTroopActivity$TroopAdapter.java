@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import com.tencent.mobileqq.data.FavOpenTroopInfo;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.widget.MenuPopupDialog;
-import eid;
+import ejj;
 import java.util.ArrayList;
 
 public class FavOpenTroopActivity$TroopAdapter
@@ -74,8 +74,8 @@ public class FavOpenTroopActivity$TroopAdapter
         this.a.b = i;
       }
       localObject = new QQCustomMenu();
-      ((QQCustomMenu)localObject).a(i, this.a.getString(2131363250));
-      FavOpenTroopActivity.a(this.a, MenuPopupDialog.a(paramView, this.a.getString(2131363277), (QQCustomMenu)localObject, this.a.jdField_a_of_type_AndroidViewView$OnClickListener, new eid(this, paramView)));
+      ((QQCustomMenu)localObject).a(i, this.a.getString(2131363260));
+      FavOpenTroopActivity.a(this.a, MenuPopupDialog.a(paramView, this.a.getString(2131363287), (QQCustomMenu)localObject, this.a.jdField_a_of_type_AndroidViewView$OnClickListener, new ejj(this, paramView)));
       return true;
     }
     return false;

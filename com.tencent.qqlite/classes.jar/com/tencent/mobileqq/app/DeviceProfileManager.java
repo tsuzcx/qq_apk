@@ -27,8 +27,8 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.ReflectedMethods;
 import com.tencent.qphone.base.util.QLog;
-import csb;
-import csc;
+import ctc;
+import ctd;
 import java.io.ByteArrayInputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -615,7 +615,7 @@ public class DeviceProfileManager
   {
     try
     {
-      ThreadManager.b().post(new csb(this, paramRespGetConfig, paramString));
+      ThreadManager.b().post(new ctc(this, paramRespGetConfig, paramString));
       return true;
     }
     finally
@@ -698,7 +698,7 @@ public class DeviceProfileManager
     if ((paramString == null) || (paramString.length() == 0)) {
       return false;
     }
-    paramHashMap = new csc(paramHashMap);
+    paramHashMap = new ctd(paramHashMap);
     try
     {
       SAXParserFactory.newInstance().newSAXParser().parse(new InputSource(new ByteArrayInputStream(paramString.getBytes("utf-8"))), paramHashMap);

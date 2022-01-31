@@ -32,9 +32,9 @@ import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.Login;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import fbt;
-import fbu;
-import fbv;
+import fdz;
+import fea;
+import feb;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -89,9 +89,9 @@ public class QuickLoginAuthorityActivity
     this.jdField_a_of_type_MqqManagerWtloginManager = null;
     this.jdField_a_of_type_ArrayOfByte = null;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new fbt(this);
-    this.jdField_a_of_type_AndroidOsHandler = new fbu(this, ThreadManager.b());
-    this.jdField_b_of_type_AndroidOsHandler = new fbv(this, Looper.getMainLooper());
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new fdz(this);
+    this.jdField_a_of_type_AndroidOsHandler = new fea(this, ThreadManager.b());
+    this.jdField_b_of_type_AndroidOsHandler = new feb(this, Looper.getMainLooper());
   }
   
   public void a(int paramInt, byte[] paramArrayOfByte, String paramString1, String paramString2)
@@ -245,7 +245,7 @@ public class QuickLoginAuthorityActivity
     this.h.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297484));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    setRightButton(2131363819, this);
+    setRightButton(2131363830, this);
     this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_ComTencentOpenAgentCardContainer = ((CardContainer)super.findViewById(2131297483));
   }
@@ -471,7 +471,7 @@ public class QuickLoginAuthorityActivity
       }
       label217:
       g();
-      QQToast.a(this, 2131363835, 0).b(getResources().getDimensionPixelSize(2131492887));
+      QQToast.a(this, 2131363846, 0).b(getResources().getDimensionPixelSize(2131492887));
       return;
     }
     g();
@@ -559,7 +559,7 @@ public class QuickLoginAuthorityActivity
   
   protected void l()
   {
-    this.jdField_a_of_type_AndroidAppProgressDialog.setMessage(super.getString(2131363832));
+    this.jdField_a_of_type_AndroidAppProgressDialog.setMessage(super.getString(2131363843));
     if (!this.jdField_a_of_type_AndroidAppProgressDialog.isShowing()) {
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
     }
@@ -688,7 +688,7 @@ public class QuickLoginAuthorityActivity
       bool = this.jdField_a_of_type_MqqManagerWtloginManager.IsUserHaveA1(this.d, 16L);
     }
     g();
-    QQToast.a(this, 2131363835, 0).b(super.getResources().getDimensionPixelSize(2131492887));
+    QQToast.a(this, 2131363846, 0).b(super.getResources().getDimensionPixelSize(2131492887));
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -698,8 +698,8 @@ public class QuickLoginAuthorityActivity
       QLog.d("Q.quicklogin.", 2, "onCreate:");
     }
     super.setContentView(2130903280);
-    this.h.setText(2131363823);
-    super.setTitle(2131363821);
+    this.h.setText(2131363834);
+    super.setTitle(2131363832);
     c();
     paramBundle = super.getIntent().getStringExtra("key_action");
     this.jdField_b_of_type_Boolean = "action_ptlogin_login".equals(paramBundle);

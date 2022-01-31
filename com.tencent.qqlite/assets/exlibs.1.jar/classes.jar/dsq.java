@@ -1,56 +1,34 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseQfileActionBar;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarLocalFile.ActionBarLocalAppFile;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 public class dsq
   implements View.OnClickListener
 {
-  public dsq(BaseQfileActionBar paramBaseQfileActionBar) {}
+  public dsq(ActionBarLocalAppFile paramActionBarLocalAppFile) {}
   
   public void onClick(View paramView)
   {
-    Object localObject = null;
-    paramView = localObject;
-    switch (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType)
-    {
-    default: 
-      paramView = localObject;
+    long l = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().b();
+    if ((FileManagerUtil.a()) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize > 5242880L)) {
+      FMDialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), 2131362018, 2131362016, new dsr(this, l));
     }
-    for (;;)
+    while (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g())
     {
-      if (paramView != null) {
-        FileManagerReporter.a(paramView);
-      }
-      this.a.d();
-      this.a.g();
+      FileManagerReporter.a("0X8004BBB");
       return;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g())
-      {
-        paramView = "0X8004BB7";
-      }
-      else
-      {
-        paramView = "0X8004BCD";
-        continue;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g())
-        {
-          paramView = "0X8004BB8";
-        }
-        else
-        {
-          paramView = "0X8004BCE";
-          continue;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g()) {
-            paramView = "0X8004BB9";
-          } else {
-            paramView = "0X8004BCF";
-          }
-        }
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(l);
+      this.a.h();
     }
+    FileManagerReporter.a("0X8004BD1");
   }
 }
 

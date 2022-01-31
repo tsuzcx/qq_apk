@@ -20,8 +20,8 @@ import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ExpandableListView;
 import com.tencent.widget.PinnedHeaderExpandableListView.ExpandableListAdapter;
-import cpo;
-import cpp;
+import cqp;
+import cqq;
 import java.util.ArrayList;
 
 public class WebBaseFacePreloadExpandableListAdapter
@@ -33,7 +33,7 @@ public class WebBaseFacePreloadExpandableListAdapter
   public static final String b = "com.tencent.qqhead.getheadreq";
   public static final String c = "com.tencent.qqhead.getheadresp";
   protected float a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cpo(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cqp(this);
   private Context jdField_a_of_type_AndroidContentContext;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
   protected Handler a;
@@ -51,7 +51,7 @@ public class WebBaseFacePreloadExpandableListAdapter
   {
     this.jdField_a_of_type_ComTencentWidgetExpandableListView = null;
     this.jdField_b_of_type_AndroidSupportV4UtilLruCache = new LruCache(120);
-    this.jdField_a_of_type_AndroidOsHandler = new cpp(this);
+    this.jdField_a_of_type_AndroidOsHandler = new cqq(this);
     this.jdField_a_of_type_Float = 1.0F;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;

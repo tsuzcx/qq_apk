@@ -1,17 +1,15 @@
-import android.graphics.drawable.Drawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class anb
-  implements Runnable
+public class anb
+  implements DialogInterface.OnClickListener
 {
-  anb(ana paramana, Drawable paramDrawable) {}
+  public anb(ForwardOperations paramForwardOperations) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-      this.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(ForwardOperations.a(this.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
-    }
+    ForwardOperations.a(this.a.jdField_a_of_type_AndroidAppActivity, false, "addToQQFavorites", this.a.jdField_a_of_type_Long);
   }
 }
 

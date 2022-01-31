@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app;
 
 public abstract interface VibrateListener
 {
-  public abstract void k(int paramInt);
+  public abstract void j(int paramInt);
 }
 
 

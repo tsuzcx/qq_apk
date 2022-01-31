@@ -1,12 +1,22 @@
-import com.dataline.util.file.ImageInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController;
+import com.tencent.qphone.base.util.QLog;
 
-public final class dqz
-  implements Comparator
+public class dqz
+  implements Runnable
 {
-  public int a(ImageInfo paramImageInfo1, ImageInfo paramImageInfo2)
+  public dqz(QfavFilePreviewController paramQfavFilePreviewController) {}
+  
+  public void run()
   {
-    return -Long.valueOf(paramImageInfo1.a()).compareTo(Long.valueOf(paramImageInfo2.a()));
+    if (3 != QfavFilePreviewController.b(this.a))
+    {
+      this.a.a.a(false, QfavFilePreviewController.a(this.a), String.valueOf(QfavFilePreviewController.a(this.a)), QfavFilePreviewController.a(this.a), null, QfavFilePreviewController.b(this.a), QfavFilePreviewController.c(this.a));
+      QfavFilePreviewController.b(this.a, 3);
+      if (QLog.isColorLevel()) {
+        QLog.i("QfavFilePreviewController", 2, "QfavFilePreviewController.run:wait for remote command timeout(5min).");
+      }
+    }
   }
 }
 

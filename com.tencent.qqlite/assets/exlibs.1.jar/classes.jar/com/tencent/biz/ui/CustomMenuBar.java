@@ -58,9 +58,9 @@ public class CustomMenuBar
     super.setOrientation(0);
     super.setGravity(16);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839185);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839219);
     this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getText(2131362456));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getText(2131362457));
     paramAttributeSet = new LinearLayout.LayoutParams(-2, -2);
     paramAttributeSet.rightMargin = a(paramContext, 7.0F);
     paramAttributeSet.gravity = 16;
@@ -116,8 +116,8 @@ public class CustomMenuBar
         break label348;
       }
       localImageView1.setVisibility(0);
-      localImageView1.setImageResource(2130838352);
-      localTextView.setTextColor(getResources().getColor(2131427443));
+      localImageView1.setImageResource(2130838371);
+      localTextView.setTextColor(getResources().getColor(2131427446));
       localObject = new PopupMenu(super.getContext());
       int i = 0;
       while (i < paramMenuItem.b())

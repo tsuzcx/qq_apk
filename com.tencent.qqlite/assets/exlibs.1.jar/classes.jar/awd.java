@@ -1,35 +1,37 @@
-import android.view.View;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import java.util.ArrayList;
 
 public class awd
-  implements ActionSheet.OnButtonClickListener
+  extends TroopObserver
 {
   public awd(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
   
-  public void a(View paramView, int paramInt)
+  protected void d(boolean paramBoolean, ArrayList paramArrayList)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if ((!paramBoolean) || (paramArrayList == null)) {
       return;
-      this.a.jdField_a_of_type_Byte = 0;
-      this.a.jdField_c_of_type_Boolean = true;
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText("男");
-      continue;
-      this.a.jdField_a_of_type_Byte = 1;
-      this.a.jdField_c_of_type_Boolean = true;
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText("女");
-      continue;
-      this.a.jdField_a_of_type_Byte = 2;
-      this.a.jdField_c_of_type_Boolean = true;
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText("");
     }
+    int i = 0;
+    label11:
+    TroopMemberCardInfo localTroopMemberCardInfo;
+    if (i < paramArrayList.size())
+    {
+      localTroopMemberCardInfo = (TroopMemberCardInfo)paramArrayList.get(i);
+      if ((localTroopMemberCardInfo != null) && (localTroopMemberCardInfo.memberuin != null)) {
+        break label49;
+      }
+    }
+    label49:
+    while (!localTroopMemberCardInfo.memberuin.equals(this.a.app.a()))
+    {
+      i += 1;
+      break label11;
+      break;
+    }
+    this.a.a(localTroopMemberCardInfo, false);
   }
 }
 

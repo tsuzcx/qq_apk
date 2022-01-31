@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import alb;
-import alc;
-import ald;
-import ale;
-import alf;
 import alg;
 import alh;
 import ali;
 import alj;
+import alk;
+import all;
+import alm;
+import aln;
+import alo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -60,10 +60,10 @@ public class EmosmActivity
   private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
   private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
   public TextView a;
-  private EmosmObserver jdField_a_of_type_ComTencentMobileqqAppEmosmObserver = new alb(this);
+  private EmosmObserver jdField_a_of_type_ComTencentMobileqqAppEmosmObserver = new alg(this);
   public DragSortAdapter a;
-  private DragSortListView.DropListener jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropListener = new ali(this);
-  private DragSortListView.RemoveListener jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener = new alj(this);
+  private DragSortListView.DropListener jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropListener = new aln(this);
+  private DragSortListView.RemoveListener jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener = new alo(this);
   public DragSortListView a;
   private EmoticonPackageChangedListener jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageChangedListener;
   private EmoticonPackageDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener;
@@ -229,21 +229,21 @@ public class EmosmActivity
   {
     super.doOnCreate(paramBundle);
     super.setContentView(2130903196);
-    super.d(2130837635);
-    super.setTitle(2131364024);
+    super.d(2130837660);
+    super.setTitle(2131364035);
     this.jdField_a_of_type_AndroidWidgetTextView = this.j;
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364025);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new alc(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364036);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new alh(this));
     this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297111));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297115));
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new ald(this));
+    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new ali(this));
     this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)super.findViewById(2131297112));
     this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)super.findViewById(2131297113));
     this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)super.findViewById(2131297114));
-    this.jdField_a_of_type_AndroidWidgetRadioButton.setContentDescription(getString(2131364077));
-    this.jdField_b_of_type_AndroidWidgetRadioButton.setContentDescription(getString(2131364078));
+    this.jdField_a_of_type_AndroidWidgetRadioButton.setContentDescription(getString(2131364088));
+    this.jdField_b_of_type_AndroidWidgetRadioButton.setContentDescription(getString(2131364089));
     this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView = ((DragSortListView)super.findViewById(16908298));
     paramBundle = a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
@@ -252,7 +252,7 @@ public class EmosmActivity
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(false);
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDelImmediately(false);
     this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager = ((EmoticonManager)this.app.getManager(13));
-    this.jdField_a_of_type_JavaLangRunnable = new ale(this);
+    this.jdField_a_of_type_JavaLangRunnable = new alj(this);
     paramBundle = getIntent();
     this.h = paramBundle.getIntExtra("extra_launch_mode", 1);
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.b();
@@ -286,19 +286,19 @@ public class EmosmActivity
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter);
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDropListener(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropListener);
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setRemoveListener(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setOnItemClickListener(new alf(this));
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setOnItemClickListener(new alk(this));
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageChangedListener = new alg(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageChangedListener = new all(this);
     localObject = (EmojiManager)this.app.getManager(39);
     ((EmojiManager)localObject).a.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageChangedListener);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new alh(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new alm(this);
     ((EmojiManager)localObject).a.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener);
     this.g = paramBundle.getIntExtra("extra_launch_source", 2);
     if ((this.g == 2) || (this.g == 1))
     {
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364025);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364036);
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(false);
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.setEditMode(false);
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.notifyDataSetChanged();
@@ -391,13 +391,13 @@ public class EmosmActivity
     if (!NetworkUtil.e(this))
     {
       paramView = new QQToast(this);
-      paramView.a(2130837962);
+      paramView.a(2130837981);
       paramView.c(1500);
       paramView.a("无网络连接，删除失败");
       paramView.b(0);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131364040));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131364051));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.getSelectedPackages();
     this.jdField_a_of_type_Int = 0;

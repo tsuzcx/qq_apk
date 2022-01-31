@@ -1,20 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import android.app.Activity;
+import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 
 public class ezk
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public ezk(ShaderAnimLayout paramShaderAnimLayout) {}
+  public ezk(WebViewJumpPlugin paramWebViewJumpPlugin) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.setVisibility(8);
+    Activity localActivity = this.a.mRuntime.a();
+    if ((localActivity != null) && (!localActivity.isFinishing())) {
+      localActivity.finish();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

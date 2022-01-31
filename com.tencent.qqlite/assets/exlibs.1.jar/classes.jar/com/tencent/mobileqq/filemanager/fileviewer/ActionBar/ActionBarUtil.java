@@ -7,55 +7,55 @@ import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
-import dsc;
-import dsd;
-import dse;
-import dsf;
-import dsg;
-import dsh;
-import dsi;
-import dsj;
+import dte;
+import dtf;
+import dtg;
+import dth;
+import dti;
+import dtj;
+import dtk;
+import dtl;
 
 public class ActionBarUtil
 {
   public static View.OnClickListener a(Activity paramActivity, String paramString, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent)
   {
-    return new dsg(paramActivity, paramString, paramIActionBarClickEvent);
+    return new dti(paramActivity, paramString, paramIActionBarClickEvent);
   }
   
   public static View.OnClickListener a(DataLineHandler paramDataLineHandler, BaseActivity paramBaseActivity, String paramString, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent)
   {
-    return new dsh(paramString, paramDataLineHandler, paramBaseActivity, paramIActionBarClickEvent);
+    return new dtj(paramString, paramDataLineHandler, paramBaseActivity, paramIActionBarClickEvent);
   }
   
   public static View.OnClickListener a(QQAppInterface paramQQAppInterface, Activity paramActivity, FileManagerEntity paramFileManagerEntity, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent)
   {
-    return new dsd(paramFileManagerEntity, paramQQAppInterface, paramActivity, paramIActionBarClickEvent);
+    return new dtf(paramFileManagerEntity, paramQQAppInterface, paramActivity, paramIActionBarClickEvent);
   }
   
   public static View.OnClickListener a(QQAppInterface paramQQAppInterface, Activity paramActivity, IFileBrowser paramIFileBrowser, String paramString, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent)
   {
-    return new dsc(paramIFileBrowser, paramQQAppInterface, paramString, paramActivity, paramIActionBarClickEvent);
+    return new dte(paramIFileBrowser, paramQQAppInterface, paramString, paramActivity, paramIActionBarClickEvent);
   }
   
   public static View.OnClickListener a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent)
   {
-    return new dsf(paramQQAppInterface, paramString, paramActivity, paramIActionBarClickEvent);
+    return new dth(paramQQAppInterface, paramString, paramActivity, paramIActionBarClickEvent);
   }
   
   public static View.OnClickListener a(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity, Activity paramActivity, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent)
   {
-    return new dsi(paramQQAppInterface, paramFileManagerEntity, paramActivity, paramIActionBarClickEvent);
+    return new dtk(paramQQAppInterface, paramFileManagerEntity, paramActivity, paramIActionBarClickEvent);
   }
   
   public static View.OnClickListener a(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent)
   {
-    return new dse(paramFileManagerEntity, paramQQAppInterface, paramInt, paramActivity, paramIActionBarClickEvent);
+    return new dtg(paramFileManagerEntity, paramQQAppInterface, paramInt, paramActivity, paramIActionBarClickEvent);
   }
   
   public static View.OnClickListener b(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent)
   {
-    return new dsj(paramString, paramActivity, paramQQAppInterface, paramIActionBarClickEvent);
+    return new dtl(paramString, paramActivity, paramQQAppInterface, paramIActionBarClickEvent);
   }
 }
 

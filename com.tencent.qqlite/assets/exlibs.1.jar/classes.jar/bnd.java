@@ -1,27 +1,45 @@
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class bnd
-  extends AccountObserver
+  implements View.OnClickListener
 {
   public bnd(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onUpdateSKey(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    if (paramString1 == null) {
-      while (i > 0)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b - 1);
-        i -= 1;
-      }
+    paramView = paramView.getTag();
+    if ((paramView instanceof Integer)) {}
+    switch (((Integer)paramView).intValue())
+    {
+    default: 
+      return;
+    case 10: 
+      this.a.j();
+      return;
     }
-    TroopUtils.a(paramString1, this.a.app.a(), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.d, this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter);
+    paramView = TroopInfoActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
+    if ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f)) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.k)) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.m)) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Long == -1L) || (TextUtils.isEmpty(paramView)))
+    {
+      this.a.e();
+      return;
+    }
+    if (((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.r == 2) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.r == 3)) && (this.a.jdField_a_of_type_Long != -1L) && (this.a.jdField_a_of_type_Long <= this.a.b))
+    {
+      paramView = DialogUtil.a(this.a, 230);
+      paramView.setTitle(null);
+      paramView.setMessage(this.a.getString(2131362669));
+      paramView.setPositiveButton(this.a.getString(2131362670), new bne(this, paramView));
+      paramView.setPositiveButtonContentDescription(this.a.getString(2131362670));
+      paramView.show();
+      return;
+    }
+    this.a.j();
   }
 }
 

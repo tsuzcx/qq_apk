@@ -1,15 +1,52 @@
-import java.util.Comparator;
-import wifiphoto.WifiPhotoDataCenter;
-import wifiphoto.WifiPhotoDataCenter.WpBucketData;
+import common.qzone.component.cache.common.SoftHashMap;
+import java.util.AbstractCollection;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 public class fmb
-  implements Comparator
+  extends AbstractCollection
 {
-  public fmb(WifiPhotoDataCenter paramWifiPhotoDataCenter) {}
+  public fmb(SoftHashMap paramSoftHashMap) {}
   
-  public int a(WifiPhotoDataCenter.WpBucketData paramWpBucketData1, WifiPhotoDataCenter.WpBucketData paramWpBucketData2)
+  public void clear()
   {
-    return -Long.valueOf(paramWpBucketData1.a).compareTo(Long.valueOf(paramWpBucketData2.a));
+    this.a.clear();
+  }
+  
+  public boolean contains(Object paramObject)
+  {
+    return this.a.containsValue(paramObject);
+  }
+  
+  public Iterator iterator()
+  {
+    return new fma(this.a);
+  }
+  
+  public int size()
+  {
+    return this.a.size();
+  }
+  
+  public Object[] toArray()
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
+    }
+    return localArrayList.toArray();
+  }
+  
+  public Object[] toArray(Object[] paramArrayOfObject)
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
+    }
+    return localArrayList.toArray(paramArrayOfObject);
   }
 }
 

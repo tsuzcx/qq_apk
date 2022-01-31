@@ -1,47 +1,29 @@
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
-public class dms
-  extends IClickListener_Ver51
+class dms
+  implements FMDialogUtil.FMDialogInterface
 {
-  public dms(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView) {}
+  dms(dmr paramdmr, FileManagerEntity paramFileManagerEntity) {}
   
   public void a()
   {
-    this.a.a.a().b();
+    this.jdField_a_of_type_Dmr.a.a.a().ad();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType == 0)
+    {
+      QfileBaseRecentFileTabView.e(this.jdField_a_of_type_Dmr.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return;
+    }
+    QfileBaseRecentFileTabView.f(this.jdField_a_of_type_Dmr.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
   
-  public void b()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().u();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().H();
-  }
+  public void b() {}
 }
 
 

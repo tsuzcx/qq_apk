@@ -1,23 +1,39 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 
 public class cdf
-  implements Animation.AnimationListener
+  implements TextView.OnEditorActionListener
 {
-  public cdf(BaseTroopView paramBaseTroopView, int paramInt) {}
+  public cdf(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.c.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.c.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.c.requestLayout();
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramInt != 3)
+    {
+      bool1 = bool2;
+      if (paramKeyEvent != null)
+      {
+        bool1 = bool2;
+        if (paramKeyEvent.getKeyCode() != 66) {}
+      }
+    }
+    else
+    {
+      if (!TextUtils.isEmpty(this.a.a.getText().toString()))
+      {
+        this.a.b = false;
+        this.a.f();
+      }
+      bool1 = true;
+    }
+    return bool1;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

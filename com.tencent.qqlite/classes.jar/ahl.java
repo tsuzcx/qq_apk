@@ -1,23 +1,15 @@
-import android.os.Handler;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.OnDragModeChangedListener;
-import java.util.List;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 
-public class ahl
-  implements DragFrameLayout.OnDragModeChangedListener
+class ahl
+  implements Runnable
 {
-  private int jdField_a_of_type_Int = -2147483648;
-  private List jdField_a_of_type_JavaUtilList;
+  ahl(ahk paramahk, String paramString) {}
   
-  private ahl(Conversation paramConversation) {}
-  
-  public void a(int paramInt, List paramList) {}
-  
-  public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
+  public void run()
   {
-    if ((paramDragFrameLayout.a() == -1) && ((this.jdField_a_of_type_Int == -2147483648) || (Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation) != null))) {
-      Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation).sendEmptyMessage(10);
+    if (Conversation.a(this.jdField_a_of_type_Ahk.a) != null) {
+      Conversation.a(this.jdField_a_of_type_Ahk.a).a(this.jdField_a_of_type_JavaLangString, false);
     }
   }
 }

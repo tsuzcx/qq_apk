@@ -13,8 +13,8 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import eyx;
-import eyy;
+import fbd;
+import fbe;
 
 public class QQProgressDialog
   extends Dialog
@@ -37,15 +37,15 @@ public class QQProgressDialog
   
   public QQProgressDialog(Context paramContext, int paramInt)
   {
-    super(paramContext, 2131624119);
+    super(paramContext, 2131624120);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903528, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298407));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903536, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298429));
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298405));
-    this.b = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298406));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298427));
+    this.b = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298428));
     this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.b.getDrawable());
   }
   
@@ -135,7 +135,7 @@ public class QQProgressDialog
   
   public void d(boolean paramBoolean)
   {
-    setOnKeyListener(new eyy(this, paramBoolean));
+    setOnKeyListener(new fbe(this, paramBoolean));
   }
   
   public void dismiss()
@@ -172,7 +172,7 @@ public class QQProgressDialog
   
   protected void onStart()
   {
-    this.b.postDelayed(new eyx(this), 50L);
+    this.b.postDelayed(new fbd(this), 50L);
     super.onStart();
   }
   

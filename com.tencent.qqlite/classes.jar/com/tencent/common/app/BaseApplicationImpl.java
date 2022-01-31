@@ -27,24 +27,23 @@ public class BaseApplicationImpl
   public static StartupDirector a;
   public static String a;
   public static boolean a = false;
-  public static int b = 0;
+  public static final int b = -1;
   public static long b = 0L;
   public static String b;
   public static boolean b = false;
-  public static final int c = -1;
+  public static final int c = 1;
   public static long c = 0L;
   public static String c;
   public static boolean c = false;
-  public static final int d = 1;
+  public static final int d = 2;
   public static long d = 0L;
   public static final String d = "com.tencent.qqlite.broadcast.qq";
-  public static final int e = 2;
+  public static final int e = 3;
   public static long e = 0L;
   public static final String e = "com.tencent.qqlite";
-  public static final int f = 3;
-  public static long f = 0L;
-  public static final int g = 4;
-  public static int h = -1;
+  public static final int f = 4;
+  public static long f;
+  public static int g = -1;
   private Handler b;
   
   static
@@ -52,7 +51,6 @@ public class BaseApplicationImpl
     jdField_a_of_type_JavaLangString = null;
     jdField_b_of_type_JavaLangString = "";
     jdField_c_of_type_JavaLangString = "";
-    jdField_a_of_type_Int = -1;
     jdField_a_of_type_Boolean = true;
     jdField_a_of_type_Long = 0L;
     jdField_b_of_type_Long = 0L;
@@ -91,7 +89,7 @@ public class BaseApplicationImpl
   
   public int getAppId(String paramString)
   {
-    return AppSetting.jdField_a_of_type_Int;
+    return AppSetting.a;
   }
   
   public String getBootBroadcastName(String paramString)

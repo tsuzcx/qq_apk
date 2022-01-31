@@ -1,14 +1,34 @@
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
+import com.tencent.mobileqq.activity.FriendProfileImagePortraits;
+import java.util.HashMap;
+import java.util.Stack;
 
-class apy
-  implements Runnable
+public class apy
+  extends Handler
 {
-  apy(apv paramapv) {}
+  public apy(FriendProfileImagePortraits paramFriendProfileImagePortraits) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      paramMessage = (String)FriendProfileImagePortraits.a(this.a).pop();
+      if ((TextUtils.isEmpty(paramMessage)) && (FriendProfileImagePortraits.a(this.a) != null))
+      {
+        paramMessage = (FriendProfileImageModel.ProfileImageInfo)FriendProfileImagePortraits.a(this.a).get(paramMessage);
+        if (paramMessage != null) {
+          this.a.e(paramMessage);
+        }
+      }
+    } while (FriendProfileImagePortraits.a(this.a).isEmpty());
+    FriendProfileImagePortraits.a(this.a).sendEmptyMessageDelayed(1, 300L);
   }
 }
 

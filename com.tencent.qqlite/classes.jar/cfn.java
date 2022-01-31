@@ -1,66 +1,79 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.messagesearch.MessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.MessageResultAdapter.LOAD_TYPE;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatHistorySearchData;
-import com.tencent.mobileqq.utils.HistoryChatMsgSearchKeyUtil;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.fling.ContentWrapView;
+import com.tencent.mobileqq.activity.fling.FlingTrackerHandler;
+import com.tencent.mobileqq.activity.fling.ScreenCapture;
+import com.tencent.mobileqq.activity.fling.TopLayout;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import java.util.ArrayList;
+import java.lang.ref.WeakReference;
 
 public class cfn
   implements Runnable
 {
-  public cfn(MessageResultAdapter paramMessageResultAdapter, String paramString, MessageResultAdapter.LOAD_TYPE paramLOAD_TYPE) {}
+  public cfn(FlingTrackerHandler paramFlingTrackerHandler) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(MessageResultAdapter.b(), 2, "loadMessageResult, run(), keyword = " + this.jdField_a_of_type_JavaLangString + ", loadType = " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter$LOAD_TYPE.ordinal());
-    }
-    ??? = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter$LOAD_TYPE == MessageResultAdapter.LOAD_TYPE.LOAD_REFRESH)
-    {
-      ??? = MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter).a().a(MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter), this.jdField_a_of_type_JavaLangString);
-      HistoryChatMsgSearchKeyUtil.a(MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter).a(), this.jdField_a_of_type_JavaLangString);
+    Object localObject1 = (Activity)this.a.a.get();
+    if (localObject1 == null) {
+      QLog.i("sethmao", 4, "activity is null");
     }
     for (;;)
     {
-      Object localObject2 = new ArrayList();
-      ChatHistorySearchData localChatHistorySearchData = MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter, (ChatHistorySearchData)???, (ArrayList)localObject2);
-      if (QLog.isColorLevel()) {
-        QLog.i(MessageResultAdapter.b(), 2, "loadMessageResult, get: messageItems[] = " + localObject2);
-      }
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.jdField_a_of_type_JavaLangObject)
+      return;
+      Object localObject2;
+      if (!ScreenCapture.hasSnapFile((Context)localObject1))
       {
-        if (MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter) == this.jdField_a_of_type_JavaLangString)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter$LOAD_TYPE != MessageResultAdapter.LOAD_TYPE.LOAD_REFRESH) {
-            break label247;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = localChatHistorySearchData;
-          localObject2 = MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter).obtainMessage(2, localObject2);
-          ((Message)localObject2).arg1 = MessageResultAdapter.LOAD_TYPE.LOAD_REFRESH.mValue;
-          ((Message)localObject2).sendToTarget();
+        if (FlingTrackerHandler.a(this.a) > 5) {
+          FlingTrackerHandler.a(this.a, 0);
         }
-        label247:
-        do
+      }
+      else
+      {
+        localObject2 = (ViewGroup)((Activity)localObject1).getWindow().getDecorView();
+        if (FlingTrackerHandler.a(this.a) != null) {
+          break label319;
+        }
+        FlingTrackerHandler.a(this.a, ((ViewGroup)localObject2).getChildAt(0));
+        View localView = FlingTrackerHandler.a(this.a);
+        FlingTrackerHandler.a(this.a, new TopLayout((Context)localObject1));
+        FlingTrackerHandler.a(this.a).setBackgroundColor(-16777216);
+        TopLayout localTopLayout = FlingTrackerHandler.a(this.a);
+        localTopLayout.setOnDraggingListener(this.a);
+        ((ViewGroup)localObject2).addView(localTopLayout);
+        ((ViewGroup)localObject2).removeView(localView);
+        FlingTrackerHandler.a(this.a, new ContentWrapView((Context)localObject1));
+        localObject2 = FlingTrackerHandler.a(this.a);
+        ((ContentWrapView)localObject2).addView(localView);
+        localTopLayout.setContent((ContentWrapView)localObject2);
+        FlingTrackerHandler.a(this.a, new ImageView((Context)localObject1));
+        FlingTrackerHandler.a(this.a).setScaleType(ImageView.ScaleType.FIT_START);
+        localObject1 = FlingTrackerHandler.a(this.a);
+        ((ImageView)localObject1).setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+        localTopLayout.setBehind((View)localObject1);
+      }
+      while ((this.a.a()) && (FlingTrackerHandler.a(this.a) != null) && (FlingTrackerHandler.a(this.a).getDrawable() == null))
+      {
+        FlingTrackerHandler.a(this.a);
+        return;
+        QLog.i("sethmao", 4, "snap file is not exist, reload after 100ms");
+        FlingTrackerHandler.b(this.a);
+        FlingTrackerHandler.a(this.a).postDelayed(this, 100L);
+        return;
+        label319:
+        if (!this.a.a())
         {
-          do
-          {
-            return;
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter$LOAD_TYPE != MessageResultAdapter.LOAD_TYPE.LOAD_MORE) {
-              break;
-            }
-            ??? = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData;
-            break;
-          } while (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter$LOAD_TYPE != MessageResultAdapter.LOAD_TYPE.LOAD_MORE);
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = localChatHistorySearchData;
-        } while (((ArrayList)localObject2).size() <= 0);
-        localObject2 = MessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter).obtainMessage(2, localObject2);
-        ((Message)localObject2).arg1 = MessageResultAdapter.LOAD_TYPE.LOAD_MORE.mValue;
-        ((Message)localObject2).sendToTarget();
+          ((ViewGroup)localObject2).addView(FlingTrackerHandler.a(this.a));
+          ((ViewGroup)localObject2).removeView(FlingTrackerHandler.a(this.a));
+          FlingTrackerHandler.a(this.a).addView(FlingTrackerHandler.a(this.a));
+        }
       }
     }
   }

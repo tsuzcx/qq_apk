@@ -1,36 +1,29 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.os.SystemClock;
-import android.preference.PreferenceManager;
-import android.widget.Toast;
-import com.tencent.mobileqq.app.ScreenShot;
-import java.io.File;
+import com.tencent.lbsapi.QLBSNotification;
+import com.tencent.lbsapi.QLBSService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.log.ReportLog;
+import com.tencent.qphone.base.util.QLog;
 
-class cwh
-  implements Runnable
+public class cwh
+  implements QLBSNotification
 {
-  cwh(cwg paramcwg, File paramFile) {}
+  public cwh(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onLocationNotification(int paramInt)
   {
-    if (this.jdField_a_of_type_Cwg.jdField_a_of_type_Boolean)
+    if (QLog.isColorLevel()) {
+      QLog.d("LBS", 2, "onLocationNotification:" + paramInt);
+    }
+    if (paramInt == 1) {
+      this.a.jdField_a_of_type_ArrayOfByte = this.a.jdField_a_of_type_ComTencentLbsapiQLBSService.getDeviceData();
+    }
+    this.a.jdField_a_of_type_ComTencentLbsapiQLBSService.stopLocation();
+    synchronized (this.a.jdField_a_of_type_ComTencentLbsapiQLBSService)
     {
-      this.jdField_a_of_type_Cwg.jdField_a_of_type_Cwe.k = this.jdField_a_of_type_Cwg.jdField_a_of_type_Cwe.f;
-      ScreenShot.a(this.jdField_a_of_type_Cwg.jdField_a_of_type_Cwe.a, false);
-      this.jdField_a_of_type_Cwg.jdField_a_of_type_Cwe.invalidate();
-      this.jdField_a_of_type_Cwg.jdField_a_of_type_Cwe.scheduleDrawable(null, new cwi(this), SystemClock.uptimeMillis() + 1000L);
-      String str = this.jdField_a_of_type_Cwg.jdField_a_of_type_Cwe.a.jdField_a_of_type_AndroidContentContext.getString(2131363185).replace("${path}", ScreenShot.jdField_a_of_type_JavaLangString);
-      SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_Cwg.jdField_a_of_type_Cwe.a.jdField_a_of_type_AndroidContentContext).edit();
-      localEditor.putString("LastScreenShotUri", Uri.fromFile(this.jdField_a_of_type_JavaIoFile).toString());
-      localEditor.commit();
-      this.jdField_a_of_type_Cwg.jdField_a_of_type_Cwe.a.jdField_a_of_type_AndroidContentContext.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
-      Toast.makeText(this.jdField_a_of_type_Cwg.jdField_a_of_type_Cwe.a.jdField_a_of_type_AndroidContentContext.getApplicationContext(), str, 1).show();
+      this.a.jdField_a_of_type_ComTencentLbsapiQLBSService.notifyAll();
+      ReportLog.a("LBS", "onLocationNotification result:" + paramInt);
       return;
     }
-    Toast.makeText(this.jdField_a_of_type_Cwg.jdField_a_of_type_Cwe.a.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2131363186, 1).show();
   }
 }
 

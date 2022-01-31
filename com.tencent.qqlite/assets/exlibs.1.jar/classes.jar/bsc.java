@@ -1,53 +1,18 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.widget.GridListView;
+import android.app.Dialog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
 public class bsc
-  implements IIconListener
+  implements Runnable
 {
-  public bsc(VisitorsActivity paramVisitorsActivity) {}
+  public bsc(VerifyPhoneNumActivity paramVerifyPhoneNumActivity, int paramInt) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void run()
   {
-    int i = 0;
-    if ((paramBitmap != null) && (paramInt2 == 200)) {
-      if (this.a.h == 0) {
-        paramBitmap = this.a.a;
-      }
-    }
-    for (;;)
-    {
-      if (paramBitmap != null) {
-        paramInt2 = paramBitmap.getChildCount();
-      }
-      for (;;)
-      {
-        if (i < paramInt2)
-        {
-          Object localObject = paramBitmap.getChildAt(i).getTag();
-          if ((localObject != null) && ((localObject instanceof bse)))
-          {
-            localObject = (bse)localObject;
-            if ((((bse)localObject).a == paramInt1) && (((bse)localObject).d != null)) {
-              VisitorsActivity.a(this.a, ((bse)localObject).d, paramInt1);
-            }
-          }
-          i += 1;
-          continue;
-          if (this.a.h != 1) {
-            break label145;
-          }
-          paramBitmap = this.a.b;
-          break;
-        }
-        return;
-        paramInt2 = 0;
-      }
-      label145:
-      paramBitmap = null;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity, 2131624120);
+    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.setContentView(2130903049);
+    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.findViewById(2131296473)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.getString(this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.show();
   }
 }
 

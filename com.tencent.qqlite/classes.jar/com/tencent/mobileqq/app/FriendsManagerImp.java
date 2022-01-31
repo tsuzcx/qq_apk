@@ -175,7 +175,7 @@ public class FriendsManagerImp
   
   public String a(String paramString1, String paramString2)
   {
-    return ContactUtils.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2);
+    return ContactUtils.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2);
   }
   
   public String a(String paramString1, String paramString2, Context paramContext)
@@ -473,7 +473,7 @@ public class FriendsManagerImp
   
   public String b(String paramString1, String paramString2)
   {
-    return ContactUtils.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2);
+    return ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2);
   }
   
   public ArrayList b()

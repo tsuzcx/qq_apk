@@ -1,17 +1,29 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class bzk
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public bzk(FriendChatPie paramFriendChatPie) {}
+  public bzk(AIOImageListScene paramAIOImageListScene, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void a(View paramView, int paramInt)
   {
-    if (FriendChatPie.a(this.a) == null) {}
-    while (FriendChatPie.b(this.a).a == 0) {
-      return;
+    if (paramView != null)
+    {
+      paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
+      if (paramView == null) {
+        return;
+      }
+      if ((!TextUtils.isEmpty(paramView)) && (paramView.equals(AIOImageListScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getResources().getString(2131364260)))) {
+        AIOImageListScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene);
+      }
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

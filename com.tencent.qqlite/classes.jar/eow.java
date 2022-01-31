@@ -1,52 +1,24 @@
-import com.tencent.mobileqq.app.AppConstants;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public final class eow
-  implements Runnable
+public class eow
+  implements DialogInterface.OnClickListener
 {
-  public void run()
+  public eow(TroopFileItemOperation paramTroopFileItemOperation, TroopFileInfo paramTroopFileInfo) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    File[] arrayOfFile;
+    switch (paramInt)
+    {
+    }
     do
     {
-      try
-      {
-        Thread.sleep(3000L);
-        File localFile = new File(AppConstants.aB);
-        if (!localFile.isDirectory()) {
-          return;
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-        return;
-      }
-      arrayOfFile = localInterruptedException.listFiles(new eox(this));
-    } while ((arrayOfFile == null) || (arrayOfFile.length < 100));
-    Object localObject = new ArrayList(arrayOfFile.length);
-    int j = arrayOfFile.length;
-    int i = 0;
-    while (i < j)
-    {
-      ((List)localObject).add(Long.valueOf(arrayOfFile[i].lastModified()));
-      i += 1;
-    }
-    Collections.sort((List)localObject);
-    long l = ((Long)((List)localObject).get(((List)localObject).size() - 100)).longValue();
-    j = arrayOfFile.length;
-    i = 0;
-    while (i < j)
-    {
-      localObject = arrayOfFile[i];
-      if (((File)localObject).lastModified() < l) {
-        ((File)localObject).deleteOnExit();
-      }
-      i += 1;
-    }
+      return;
+    } while (TroopFileItemOperation.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation) == 0);
+    TroopFileTransferManager.a(TroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TroopFileItemOperation.jdField_a_of_type_Long).c(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
   }
 }
 

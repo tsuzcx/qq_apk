@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.phone.PhoneFrame;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
 
 public class cir
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public cir(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public cir(PhoneFrameActivity paramPhoneFrameActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a = null;
+    paramView = this.a.a.a();
+    if ((paramView != null) && (paramView.v == 11))
+    {
+      ForwardOperations.a(this.a, false, "shareToQQ", paramView.a);
+      com.tencent.mobileqq.app.PhoneContactManagerImp.c = false;
+    }
+    this.a.setResult(1);
+    this.a.finish();
   }
 }
 

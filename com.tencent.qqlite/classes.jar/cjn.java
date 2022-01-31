@@ -1,20 +1,21 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class cjn
-  implements FMDialogUtil.FMDialogInterface
+public class cjn
+  implements View.OnClickListener
 {
-  cjn(cjm paramcjm) {}
+  public cjn(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    PhotoPreviewActivity.b(this.a.a);
-  }
-  
-  public void b()
-  {
-    this.a.a.b.setClickable(true);
+    if (this.a.b) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8004D96", "0X8004D96", 0, 0, "", "", "", "");
+    }
+    PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 2, true);
+    paramView.setClickable(false);
   }
 }
 

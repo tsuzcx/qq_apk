@@ -1,15 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView.IWeiYunImageEvent;
 
 public class dkd
-  implements DialogInterface.OnCancelListener
+  implements QfileCloudFileTabView.IWeiYunImageEvent
 {
-  public dkd(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public dkd(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public View.OnClickListener a(TextView paramTextView)
   {
-    QfileBaseLocalFileTabView.a(this.a);
+    this.a.jdField_c_of_type_AndroidWidgetTextView = paramTextView;
+    return new dke(this);
+  }
+  
+  public boolean a()
+  {
+    return this.a.d;
+  }
+  
+  public boolean b()
+  {
+    return this.a.jdField_c_of_type_Boolean;
+  }
+  
+  public boolean c()
+  {
+    return QfileCloudFileTabView.a(this.a);
   }
 }
 

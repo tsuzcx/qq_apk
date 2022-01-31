@@ -1,19 +1,16 @@
+import android.app.Activity;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.MixedImageOnclickListener;
-import com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
 
 public class bvw
-  implements View.OnClickListener
+  extends ClickableSpan
 {
-  public bvw(MixedMsgItemBuilder paramMixedMsgItemBuilder) {}
+  public bvw(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
   public void onClick(View paramView)
   {
-    if (MixedMsgItemBuilder.a(this.a)) {
-      return;
-    }
-    MixedMsgItemBuilder.a(this.a).onClick(paramView);
+    ((Activity)GrayTipsItemBuilder.d(this.a)).showDialog(230);
   }
 }
 

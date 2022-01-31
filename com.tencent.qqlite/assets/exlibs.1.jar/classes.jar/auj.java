@@ -1,23 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class auj
-  extends Handler
+class auj
+  implements Runnable
 {
-  public auj(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  auj(auh paramauh) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 2014: 
-      this.a.finish();
-      return;
-    }
-    this.a.finish();
+    QQToast.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131364172), 0).b(this.a.a.a.getTitleBarHeight());
   }
 }
 

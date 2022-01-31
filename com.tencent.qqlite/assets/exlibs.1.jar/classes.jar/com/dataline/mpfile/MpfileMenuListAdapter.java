@@ -64,60 +64,60 @@ public class MpfileMenuListAdapter
     {
       paramViewGroup = paramView;
       if (paramView == null) {
-        paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903448, null);
+        paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903453, null);
       }
       paramView = (MpfileItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      ((TextView)paramViewGroup.findViewById(2131296760)).setText(paramView.jdField_a_of_type_JavaLangString);
+      ((TextView)paramViewGroup.findViewById(2131296761)).setText(paramView.jdField_a_of_type_JavaLangString);
       return paramViewGroup;
     }
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903447, null);
+      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903452, null);
     }
     paramView = (MpfileItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    ((TextView)paramViewGroup.findViewById(2131296760)).setText(paramView.jdField_a_of_type_JavaLangString);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131296759);
+    ((TextView)paramViewGroup.findViewById(2131296761)).setText(paramView.jdField_a_of_type_JavaLangString);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131296760);
     if (MpfileItemInfo.d == paramView.h)
     {
-      localImageView.setImageResource(2130838590);
+      localImageView.setImageResource(2130838615);
       return paramViewGroup;
     }
     if (paramView.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131361925)))
     {
-      localImageView.setImageResource(2130838583);
+      localImageView.setImageResource(2130838608);
       return paramViewGroup;
     }
     if (paramView.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131361926)))
     {
-      localImageView.setImageResource(2130838584);
+      localImageView.setImageResource(2130838609);
       return paramViewGroup;
     }
     if (paramView.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131361924)))
     {
-      localImageView.setImageResource(2130838585);
+      localImageView.setImageResource(2130838610);
       return paramViewGroup;
     }
     if (paramView.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131361927)))
     {
-      localImageView.setImageResource(2130838586);
+      localImageView.setImageResource(2130838611);
       return paramViewGroup;
     }
     if (paramView.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131361928)))
     {
-      localImageView.setImageResource(2130838587);
+      localImageView.setImageResource(2130838612);
       return paramViewGroup;
     }
     if (paramView.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131361929)))
     {
-      localImageView.setImageResource(2130838588);
+      localImageView.setImageResource(2130838613);
       return paramViewGroup;
     }
     if (paramView.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131361930)))
     {
-      localImageView.setImageResource(2130838589);
+      localImageView.setImageResource(2130838614);
       return paramViewGroup;
     }
-    localImageView.setImageResource(2130838587);
+    localImageView.setImageResource(2130838612);
     return paramViewGroup;
   }
   

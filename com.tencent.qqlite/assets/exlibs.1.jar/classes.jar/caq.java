@@ -1,15 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
-import java.util.TimerTask;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-public class caq
-  extends TimerTask
+class caq
+  implements Runnable
 {
-  public caq(FraudTipsBar paramFraudTipsBar) {}
+  caq(cap paramcap, MultiForwardChatPie paramMultiForwardChatPie, CharSequence paramCharSequence) {}
   
   public void run()
   {
-    FraudTipsBar.a(this.a).post(new car(this));
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(8);
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.K);
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.b, this.jdField_a_of_type_JavaLangCharSequence);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.l();
   }
 }
 

@@ -1,21 +1,13 @@
-import cooperation.qqfav.ipc.QfavRemoteProxyForQQ;
-import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.QfavRemoteProxyCallWrapper;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.widget.TipsPopupWindow;
 
-class flc
-  extends Thread
+public class flc
+  implements Runnable
 {
-  flc(flb paramflb) {}
+  public flc(TipsPopupWindow paramTipsPopupWindow) {}
   
   public void run()
   {
-    while (!this.a.a.a.isEmpty())
-    {
-      QfavRemoteProxyForQQ.QfavRemoteProxyCallWrapper localQfavRemoteProxyCallWrapper = (QfavRemoteProxyForQQ.QfavRemoteProxyCallWrapper)this.a.a.a.poll();
-      if (localQfavRemoteProxyCallWrapper != null) {
-        QfavRemoteProxyForQQ.a(this.a.a, localQfavRemoteProxyCallWrapper);
-      }
-    }
+    this.a.dismiss();
   }
 }
 

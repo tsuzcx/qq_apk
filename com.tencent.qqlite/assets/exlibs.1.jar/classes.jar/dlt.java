@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileCategoryBrowserActivity;
 
-class dlt
-  implements Runnable
+public class dlt
+  implements View.OnClickListener
 {
-  dlt(dls paramdls) {}
+  public dlt(QfileLocalFileCategoryBrowserActivity paramQfileLocalFileCategoryBrowserActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QfileBaseRecentFileTabView.a(this.a.a);
+    QfileLocalFileCategoryBrowserActivity.a(this.a, paramView);
   }
 }
 

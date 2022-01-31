@@ -1,109 +1,45 @@
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
-import com.tencent.open.appcommon.AppClient;
+import android.os.Handler;
+import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
 import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class eez
-  extends StructMsgClickHandler
+  extends WtloginListener
 {
-  public eez(AbsShareMsg paramAbsShareMsg, View paramView)
-  {
-    super(paramView);
-  }
+  public eez(AppLaucherHelper paramAppLaucherHelper, String paramString, WtloginHelper paramWtloginHelper, int paramInt, Context paramContext) {}
   
-  public eez(AbsShareMsg paramAbsShareMsg, QQAppInterface paramQQAppInterface, View paramView)
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    super(paramQQAppInterface, paramView);
-  }
-  
-  public boolean a(Activity paramActivity, long paramLong, String paramString1, String paramString2, String paramString3)
-  {
-    paramString1 = AbsShareMsg.parsePackageNameAndData(paramString2, paramString3)[0];
+    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
     if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, "SourceClickHandler click2YYB  appid = " + paramLong + "; packageName=" + paramString1);
+      QLog.d(getClass().getSimpleName(), 2, "geta1 OnException " + paramErrMsg);
     }
-    if (TextUtils.isEmpty(paramString1)) {
-      return false;
-    }
-    paramString2 = new Bundle();
-    paramString2.putString("packageName", paramString1);
-    paramString2.putString("appId", paramLong + "");
-    AppClient.b(paramActivity, paramString2);
-    return true;
+    AppLaucherHelper.a = false;
+    this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b.removeMessages(0);
   }
   
-  public boolean a(String paramString)
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, "SourceClickHandler clickWebMsg  url = " + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))) {
-      return false;
-    }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("key_isReadModeEnabled", true);
-    localIntent.putExtra("title", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName);
-    localIntent.putExtra("url", paramString);
-    localIntent.putExtra("fromAio", true);
-    PublicAccountUtil.a(localIntent, paramString);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString, "", "", "");
-    return true;
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, "SourceClickHandler clickAppMsg url = " + paramString1 + ", actionData = " + paramString2 + ", actionDataA = " + paramString3);
-    }
-    paramString1 = AbsShareMsg.parsePackageNameAndData(paramString2, paramString3);
-    paramString2 = this.jdField_a_of_type_AndroidContentContext.getPackageManager();
-    try
-    {
-      if (paramString2.getPackageInfo(paramString1[0], 1) != null)
-      {
-        paramString2 = paramString2.getLaunchIntentForPackage(paramString1[0]);
-        if (!TextUtils.isEmpty(paramString1[1])) {
-          paramString2.setData(Uri.parse(paramString1[1]));
-        }
-        try
-        {
-          ((StartAppCheckHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).b(paramString1[0].trim(), this.jdField_a_of_type_AndroidContentContext, paramString2);
-          return true;
-        }
-        catch (Exception paramString1)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("AppStartedHandler", 2, "<-- StartAppCheckHandler AbsShareMSG Failed!");
-            }
-            this.jdField_a_of_type_AndroidContentContext.startActivity(paramString2);
-          }
-        }
-      }
-      return false;
-    }
-    catch (PackageManager.NameNotFoundException paramString1)
+    this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b.removeMessages(0);
+    AppLaucherHelper.a = false;
+    if (paramInt2 != 0)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("StructMsg", 2, paramString1.getMessage());
+        QLog.d(getClass().getSimpleName(), 2, "geta1 failed " + paramInt2);
       }
+      return;
     }
+    paramArrayOfByte1 = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    paramArrayOfByte1.putExtras(this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
+    paramArrayOfByte1.setFlags(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte1);
   }
 }
 

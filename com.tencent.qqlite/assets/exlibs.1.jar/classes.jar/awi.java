@@ -1,23 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.NearPeopleFilterActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class awi
-  implements DialogInterface.OnDismissListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public awi(NearPeopleFilterActivity paramNearPeopleFilterActivity) {}
+  public awi(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(View paramView, int paramInt)
   {
-    if (this.a.i == 0)
+    switch (paramInt)
     {
-      this.a.a.setRightTextColor(2);
-      this.a.a.setContentDescription("年龄" + com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters.a[this.a.c]);
-      return;
     }
-    this.a.b.setRightTextColor(2);
-    this.a.b.setContentDescription("星座" + com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters.b[this.a.d]);
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.a.jdField_a_of_type_Byte = 0;
+      this.a.jdField_c_of_type_Boolean = true;
+      this.a.jdField_c_of_type_AndroidWidgetTextView.setText("男");
+      continue;
+      this.a.jdField_a_of_type_Byte = 1;
+      this.a.jdField_c_of_type_Boolean = true;
+      this.a.jdField_c_of_type_AndroidWidgetTextView.setText("女");
+      continue;
+      this.a.jdField_a_of_type_Byte = 2;
+      this.a.jdField_c_of_type_Boolean = true;
+      this.a.jdField_c_of_type_AndroidWidgetTextView.setText("");
+    }
   }
 }
 

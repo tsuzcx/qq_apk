@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class czx
-  implements Runnable
+public final class czx
+  implements Comparator
 {
-  public czx(DataLineMsgProxy paramDataLineMsgProxy, long paramLong) {}
-  
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    DataLineMsgProxy.b(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_Long);
+    if (paramMessageRecord1.longMsgIndex > paramMessageRecord2.longMsgIndex) {
+      return 1;
+    }
+    return -1;
   }
 }
 

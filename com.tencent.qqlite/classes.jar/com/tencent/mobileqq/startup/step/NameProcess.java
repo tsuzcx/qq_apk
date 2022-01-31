@@ -1,17 +1,13 @@
 package com.tencent.mobileqq.startup.step;
 
-import android.os.Handler;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.uncompress.UncompressSo;
-import eel;
 
 public class NameProcess
   extends Step
 {
   private static final String b = "unknown";
   private static final int y = 3;
-  private Handler a = new eel(this);
   
   protected boolean a()
   {
@@ -25,23 +21,22 @@ public class NameProcess
     if ("unknown".equals(str))
     {
       str = "com.tencent.qqlite";
-      BaseApplicationImpl.h = 1;
+      BaseApplicationImpl.g = 1;
     }
     for (;;)
     {
       BaseApplicationImpl.processName = str;
-      UncompressSo.NewInstance(BaseApplicationImpl.a, this.a, false);
       return true;
       if ("com.tencent.qqlite".equals(str)) {
-        BaseApplicationImpl.h = 1;
+        BaseApplicationImpl.g = 1;
       } else if (str.endsWith("MSF")) {
-        BaseApplicationImpl.h = 4;
+        BaseApplicationImpl.g = 4;
       } else if (str.endsWith("qzone")) {
-        BaseApplicationImpl.h = 2;
+        BaseApplicationImpl.g = 2;
       } else if (str.endsWith("web")) {
-        BaseApplicationImpl.h = 3;
+        BaseApplicationImpl.g = 3;
       } else {
-        BaseApplicationImpl.h = -1;
+        BaseApplicationImpl.g = -1;
       }
     }
   }

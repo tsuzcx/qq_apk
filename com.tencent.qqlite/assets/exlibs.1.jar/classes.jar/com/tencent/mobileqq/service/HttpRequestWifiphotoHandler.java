@@ -12,7 +12,7 @@ import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.QLog;
-import edh;
+import eem;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -191,7 +191,7 @@ public class HttpRequestWifiphotoHandler
         try
         {
           l1 = Long.parseLong(paramString2);
-          paramHttpResponse.setEntity(new DataLineHttpFileEntity(paramString1, l2, paramString2, l1, "text/html", new edh(this)));
+          paramHttpResponse.setEntity(new DataLineHttpFileEntity(paramString1, l2, paramString2, l1, "text/html", new eem(this)));
           return;
         }
         catch (Exception paramHttpRequest)

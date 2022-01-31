@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.widget.DoodlePicView;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class ajy
-  implements View.OnClickListener
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public ajy(DoodleActivity paramDoodleActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.c();
-  }
+  public TextView a;
 }
 
 

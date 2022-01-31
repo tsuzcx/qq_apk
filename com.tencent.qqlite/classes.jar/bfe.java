@@ -1,13 +1,25 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VipInfoObserver;
 
-class bfe
-  implements Runnable
+public class bfe
+  extends VipInfoObserver
 {
-  bfe(bfd parambfd) {}
+  public bfe(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    this.a.a.h();
+    if ((paramBoolean) && (paramInt >= 0) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    {
+      SharedPreferences localSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+      if (localSharedPreferences != null) {
+        localSharedPreferences.edit().putInt("key_selfvip_growthvalue", paramInt).commit();
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new bff(this));
+    }
   }
 }
 

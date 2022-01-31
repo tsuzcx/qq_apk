@@ -1,25 +1,17 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import android.os.Handler;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
 
 public class epw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public epw(MediaControllerX paramMediaControllerX) {}
+  public epw(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.c())
-    {
-      this.a.b(0);
-      MediaControllerX.a(this.a).setContentDescription(this.a.getResources().getString(2131362351));
-      return;
+    if (VideoPlayLogic.a(this.a) != null) {
+      VideoPlayLogic.c(this.a);
     }
-    this.a.b(1);
-    MediaControllerX.a(this.a, true);
-    MediaControllerX.a(this.a).setContentDescription(this.a.getResources().getString(2131362352));
+    this.a.b.removeCallbacks(VideoPlayLogic.a(this.a));
   }
 }
 

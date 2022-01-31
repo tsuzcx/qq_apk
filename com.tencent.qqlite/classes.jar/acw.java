@@ -1,35 +1,20 @@
 import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 
-public class acw
-  implements View.OnClickListener
+class acw
+  implements DialogInterface.OnCancelListener
 {
-  public acw(ChatHistory paramChatHistory) {}
+  acw(acv paramacv) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (NetworkUtil.e(BaseApplication.getContext()))
-    {
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      if (this.a.jdField_a_of_type_Int == 0) {
-        this.a.h();
-      }
-      return;
+    if (this.a.a.a != null) {
+      this.a.a.a.dismiss();
     }
-    ChatHistory.a(this.a).setEnabled(true);
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.getString(2131362790));
+    ChatHistory.a(this.a.a).setEnabled(true);
   }
 }
 

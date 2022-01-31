@@ -69,7 +69,7 @@ public class MsgSummary
         {
           if (this.f == 2)
           {
-            paramContext = ((Resources)localObject).getDrawable(2130839061);
+            paramContext = ((Resources)localObject).getDrawable(2130839094);
             if ((TextUtils.isEmpty(this.b)) || (!(this.b instanceof Spannable))) {
               continue;
             }
@@ -91,7 +91,7 @@ public class MsgSummary
           if (this.f != 1) {
             break label370;
           }
-          paramContext = ((Resources)localObject).getDrawable(2130839065);
+          paramContext = ((Resources)localObject).getDrawable(2130839098);
           continue;
         }
         catch (Exception localException)
@@ -139,13 +139,13 @@ public class MsgSummary
       {
         if (this.f == 2)
         {
-          localObject1 = localResources.getDrawable(2130839061);
+          localObject1 = localResources.getDrawable(2130839094);
           if (paramInt <= 0) {
-            break label616;
+            break label618;
           }
-          paramInt = paramContext.getResources().getColor(2131427509);
+          paramInt = paramContext.getResources().getColor(2131427515);
           if (!(this.b instanceof QQText)) {
-            break label367;
+            break label369;
           }
           paramContext = (QQText)this.b;
           localObject3 = (ImageSpan[])paramContext.getSpans(0, 1, ImageSpan.class);
@@ -154,15 +154,15 @@ public class MsgSummary
           }
           localObject3 = paramContext.a(paramString, true, new int[0]);
           if (this.f != 2) {
-            break label330;
+            break label332;
           }
           paramContext = ((QQText)localObject3).a("F ", true, new int[0]);
           if (this.c == null) {
-            break label613;
+            break label615;
           }
           paramContext = paramContext.a(this.c.toString(), false, new int[0]);
           if (localObject1 == null) {
-            break label607;
+            break label609;
           }
           ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth() * 2 / 3, ((Drawable)localObject1).getIntrinsicHeight() * 2 / 3);
           paramContext.setSpan(new ImageSpan((Drawable)localObject1), 0, 1, 33);
@@ -171,11 +171,11 @@ public class MsgSummary
           {
             localObject1 = new ForegroundColorSpan(paramInt);
             if (i == 0) {
-              break label356;
+              break label358;
             }
             paramInt = k;
             if (i == 0) {
-              break label361;
+              break label363;
             }
             i = 2;
             paramContext.setSpan(localObject1, paramInt, i + paramString.length(), 33);
@@ -186,7 +186,7 @@ public class MsgSummary
         if (this.f != 1) {
           continue;
         }
-        localObject1 = localResources.getDrawable(2130839065);
+        localObject1 = localResources.getDrawable(2130839098);
         continue;
         localObject2 = null;
       }
@@ -198,19 +198,19 @@ public class MsgSummary
       }
       Object localObject2;
       continue;
-      label330:
+      label332:
       paramContext = (Context)localObject3;
       if (this.f == 1)
       {
         paramContext = ((QQText)localObject3).a("S ", true, new int[0]);
         continue;
-        label356:
+        label358:
         paramInt = 0;
         continue;
-        label361:
+        label363:
         i = 0;
         continue;
-        label367:
+        label369:
         paramContext = new StringBuffer(40);
         if (this.f == 2)
         {
@@ -229,14 +229,14 @@ public class MsgSummary
           }
           paramContext = new SpannableStringBuilder(paramContext.toString());
           if (localObject2 == null) {
-            break label601;
+            break label603;
           }
           ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getIntrinsicWidth() * 2 / 3, ((Drawable)localObject2).getIntrinsicHeight() * 2 / 3);
           paramContext.setSpan(new ImageSpan((Drawable)localObject2), 0, 1, 33);
         }
-        label545:
-        label595:
-        label601:
+        label547:
+        label597:
+        label603:
         for (i = 1;; i = 0)
         {
           localObject2 = paramContext;
@@ -248,7 +248,7 @@ public class MsgSummary
           {
             paramInt = 1;
             if (i == 0) {
-              break label595;
+              break label597;
             }
           }
           for (i = j;; i = 0)
@@ -261,15 +261,15 @@ public class MsgSummary
             paramContext.append("S ");
             break;
             paramInt = 0;
-            break label545;
+            break label547;
           }
         }
-        label607:
+        label609:
         i = 0;
         continue;
-        label613:
+        label615:
         continue;
-        label616:
+        label618:
         paramInt = -1;
       }
     }

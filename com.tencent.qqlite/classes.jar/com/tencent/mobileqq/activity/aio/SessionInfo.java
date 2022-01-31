@@ -3,12 +3,12 @@ package com.tencent.mobileqq.activity.aio;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import btd;
+import bti;
 
 public class SessionInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new btd();
+  public static final Parcelable.Creator CREATOR = new bti();
   public int a;
   public long a;
   public ChatBackground a;

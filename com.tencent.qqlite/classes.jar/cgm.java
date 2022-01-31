@@ -1,18 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.MsgTabUnreadListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.BadgeUtils;
 
-class cgm
-  implements DialogInterface.OnClickListener
+public class cgm
+  implements MsgTabUnreadListener
 {
-  cgm(cgl paramcgl) {}
+  public cgm(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.a.app.a(new cgn(this));
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SplashActivity", 4, "msg fresh callback...");
+    }
+    if ((this.a.a == null) || (this.a.a.app == null)) {}
+    QQAppInterface localQQAppInterface;
+    QQMessageFacade localQQMessageFacade;
+    do
+    {
+      return;
+      localQQAppInterface = this.a.a.app;
+      localQQMessageFacade = localQQAppInterface.a();
+    } while (localQQMessageFacade == null);
+    int i = localQQMessageFacade.e();
+    this.a.a(32, 16, Integer.valueOf(i));
+    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
+    localQQAppInterface.a().sendBroadcast(localIntent);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SplashActivity", 4, "msg fresh callback.msgNum.." + i);
+    }
+    BadgeUtils.a(localQQAppInterface.a(), localQQMessageFacade.e());
   }
 }
 

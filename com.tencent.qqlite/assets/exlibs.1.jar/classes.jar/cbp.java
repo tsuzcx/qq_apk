@@ -1,50 +1,24 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.ThreadPriorityManager;
+import com.tencent.mobileqq.troop.utils.TroopFileError.TroopFileErrorFilter;
 
 public class cbp
-  implements ContactBaseView.IAddContactContext
+  implements TroopFileError.TroopFileErrorFilter
 {
-  public cbp(AddContactsActivity paramAddContactsActivity) {}
+  public String a;
   
-  public Activity a()
+  public cbp(String paramString)
   {
-    return this.a;
+    this.a = paramString;
   }
   
-  public QQAppInterface a()
+  public long a()
   {
-    return this.a.app;
-  }
-  
-  public void a()
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
+    try
+    {
+      long l = Long.parseLong(this.a);
+      return l;
     }
-    AddContactsActivity.a(this.a, 2130837635);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, -(this.a.getTitleBarHeight() + AddContactsActivity.a(this.a).a()));
-    localTranslateAnimation.setDuration(250L);
-    localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setAnimationListener(new cbq(this));
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
-    ThreadPriorityManager.a(true);
-  }
-  
-  public void b()
-  {
-    this.a.findViewById(2131297141).setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -(this.a.getTitleBarHeight() + AddContactsActivity.a(this.a).a()), 0.0F);
-    localTranslateAnimation.setDuration(250L);
-    localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setAnimationListener(new cbr(this));
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
+    catch (Exception localException) {}
+    return 0L;
   }
 }
 

@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendsManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class csy
-  extends Thread
+  implements Runnable
 {
-  public csy(FriendListHandler paramFriendListHandler, String paramString1, String paramString2)
-  {
-    super(paramString1);
-  }
+  public csy(DataLineHandler paramDataLineHandler) {}
   
   public void run()
   {
-    FriendsManagerImp localFriendsManagerImp = (FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a.getManager(8);
-    Friends localFriends = localFriendsManagerImp.b(this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a.a());
-    localFriends.signature = this.jdField_a_of_type_JavaLangString;
-    localFriendsManagerImp.a(localFriends);
+    FMToastUtil.a(2131361874);
   }
 }
 

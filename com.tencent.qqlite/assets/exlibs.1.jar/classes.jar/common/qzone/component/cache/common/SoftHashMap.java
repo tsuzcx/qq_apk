@@ -1,9 +1,9 @@
 package common.qzone.component.cache.common;
 
-import fjn;
-import fjp;
-import fjs;
-import fjv;
+import flt;
+import flv;
+import fly;
+import fmb;
 import java.lang.ref.ReferenceQueue;
 import java.util.AbstractMap;
 import java.util.Collection;
@@ -22,7 +22,7 @@ public final class SoftHashMap
   private final ReferenceQueue jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
   private volatile transient Collection jdField_a_of_type_JavaUtilCollection = null;
   private transient Set jdField_a_of_type_JavaUtilSet = null;
-  private fjn[] jdField_a_of_type_ArrayOfFjn;
+  private flt[] jdField_a_of_type_ArrayOfFlt;
   private final float jdField_b_of_type_Float;
   private volatile transient Set jdField_b_of_type_JavaUtilSet = null;
   private int c;
@@ -33,7 +33,7 @@ public final class SoftHashMap
   {
     this.jdField_b_of_type_Float = 0.75F;
     this.d = 16;
-    this.jdField_a_of_type_ArrayOfFjn = new fjn[16];
+    this.jdField_a_of_type_ArrayOfFlt = new flt[16];
   }
   
   public SoftHashMap(int paramInt, float paramFloat)
@@ -52,7 +52,7 @@ public final class SoftHashMap
     while (paramInt < i) {
       paramInt <<= 1;
     }
-    this.jdField_a_of_type_ArrayOfFjn = new fjn[paramInt];
+    this.jdField_a_of_type_ArrayOfFlt = new flt[paramInt];
     this.jdField_b_of_type_Float = paramFloat;
     this.d = ((int)(paramInt * paramFloat));
   }
@@ -73,90 +73,90 @@ public final class SoftHashMap
     return a(paramObject.hashCode());
   }
   
-  private fjn a(Object paramObject)
+  private flt a(Object paramObject)
   {
     Object localObject = b(paramObject);
     int i = a(localObject);
     paramObject = a();
-    for (paramObject = paramObject[a(i, paramObject.length)]; (paramObject != null) && ((fjn.a(paramObject) != i) || (!a(localObject, paramObject.get()))); paramObject = fjn.a(paramObject)) {}
+    for (paramObject = paramObject[a(i, paramObject.length)]; (paramObject != null) && ((flt.a(paramObject) != i) || (!a(localObject, paramObject.get()))); paramObject = flt.a(paramObject)) {}
     return paramObject;
   }
   
   private void a()
   {
-    fjn localfjn2 = (fjn)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll();
-    if (localfjn2 != null)
+    flt localflt2 = (flt)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll();
+    if (localflt2 != null)
     {
-      int i = a(fjn.a(localfjn2), this.jdField_a_of_type_ArrayOfFjn.length);
-      Object localObject1 = this.jdField_a_of_type_ArrayOfFjn[i];
+      int i = a(flt.a(localflt2), this.jdField_a_of_type_ArrayOfFlt.length);
+      Object localObject1 = this.jdField_a_of_type_ArrayOfFlt[i];
       Object localObject2 = localObject1;
       while (localObject1 != null)
       {
-        fjn localfjn1 = fjn.a((fjn)localObject1);
-        if (localObject1 == localfjn2)
+        flt localflt1 = flt.a((flt)localObject1);
+        if (localObject1 == localflt2)
         {
-          if (localObject2 == localfjn2) {
-            this.jdField_a_of_type_ArrayOfFjn[i] = localfjn1;
+          if (localObject2 == localflt2) {
+            this.jdField_a_of_type_ArrayOfFlt[i] = localflt1;
           }
           for (;;)
           {
-            fjn.a(localfjn2, null);
-            fjn.a(localfjn2, null);
+            flt.a(localflt2, null);
+            flt.a(localflt2, null);
             this.c -= 1;
             break;
-            fjn.a(localObject2, localfjn1);
+            flt.a(localObject2, localflt1);
           }
         }
         localObject2 = localObject1;
-        localObject1 = localfjn1;
+        localObject1 = localflt1;
       }
     }
   }
   
   private void a(int paramInt)
   {
-    fjn[] arrayOffjn1 = a();
-    if (arrayOffjn1.length == 1073741824)
+    flt[] arrayOfflt1 = a();
+    if (arrayOfflt1.length == 1073741824)
     {
       this.d = 2147483647;
       return;
     }
-    fjn[] arrayOffjn2 = new fjn[paramInt];
-    a(arrayOffjn1, arrayOffjn2);
-    this.jdField_a_of_type_ArrayOfFjn = arrayOffjn2;
+    flt[] arrayOfflt2 = new flt[paramInt];
+    a(arrayOfflt1, arrayOfflt2);
+    this.jdField_a_of_type_ArrayOfFlt = arrayOfflt2;
     if (this.c >= this.d / 2)
     {
       this.d = ((int)(paramInt * this.jdField_b_of_type_Float));
       return;
     }
     a();
-    a(arrayOffjn2, arrayOffjn1);
-    this.jdField_a_of_type_ArrayOfFjn = arrayOffjn1;
+    a(arrayOfflt2, arrayOfflt1);
+    this.jdField_a_of_type_ArrayOfFlt = arrayOfflt1;
   }
   
-  private void a(fjn[] paramArrayOffjn1, fjn[] paramArrayOffjn2)
+  private void a(flt[] paramArrayOfflt1, flt[] paramArrayOfflt2)
   {
     int i = 0;
-    while (i < paramArrayOffjn1.length)
+    while (i < paramArrayOfflt1.length)
     {
-      Object localObject = paramArrayOffjn1[i];
-      paramArrayOffjn1[i] = null;
+      Object localObject = paramArrayOfflt1[i];
+      paramArrayOfflt1[i] = null;
       if (localObject != null)
       {
-        fjn localfjn = fjn.a((fjn)localObject);
-        if (((fjn)localObject).get() == null)
+        flt localflt = flt.a((flt)localObject);
+        if (((flt)localObject).get() == null)
         {
-          fjn.a((fjn)localObject, null);
-          fjn.a((fjn)localObject, null);
+          flt.a((flt)localObject, null);
+          flt.a((flt)localObject, null);
           this.c -= 1;
         }
         for (;;)
         {
-          localObject = localfjn;
+          localObject = localflt;
           break;
-          int j = a(fjn.a((fjn)localObject), paramArrayOffjn2.length);
-          fjn.a((fjn)localObject, paramArrayOffjn2[j]);
-          paramArrayOffjn2[j] = localObject;
+          int j = a(flt.a((flt)localObject), paramArrayOfflt2.length);
+          flt.a((flt)localObject, paramArrayOfflt2[j]);
+          paramArrayOfflt2[j] = localObject;
         }
       }
       i += 1;
@@ -165,16 +165,16 @@ public final class SoftHashMap
   
   private boolean a()
   {
-    fjn[] arrayOffjn = a();
+    flt[] arrayOfflt = a();
     int j;
-    for (int i = arrayOffjn.length;; i = j)
+    for (int i = arrayOfflt.length;; i = j)
     {
       j = i - 1;
       if (i <= 0) {
         break;
       }
-      for (fjn localfjn = arrayOffjn[j]; localfjn != null; localfjn = fjn.a(localfjn)) {
-        if (fjn.a(localfjn) == null) {
+      for (flt localflt = arrayOfflt[j]; localflt != null; localflt = flt.a(localflt)) {
+        if (flt.a(localflt) == null) {
           return true;
         }
       }
@@ -187,42 +187,42 @@ public final class SoftHashMap
     return (paramObject1 == paramObject2) || (paramObject1.equals(paramObject2));
   }
   
-  private fjn[] a()
+  private flt[] a()
   {
     a();
-    return this.jdField_a_of_type_ArrayOfFjn;
+    return this.jdField_a_of_type_ArrayOfFlt;
   }
   
-  private fjn b(Object paramObject)
+  private flt b(Object paramObject)
   {
     if (!(paramObject instanceof Map.Entry)) {}
     for (;;)
     {
       return null;
-      fjn[] arrayOffjn = a();
+      flt[] arrayOfflt = a();
       Map.Entry localEntry = (Map.Entry)paramObject;
       int i = a(b(localEntry.getKey()));
-      int j = a(i, arrayOffjn.length);
-      paramObject = arrayOffjn[j];
+      int j = a(i, arrayOfflt.length);
+      paramObject = arrayOfflt[j];
       Object localObject = paramObject;
       while (paramObject != null)
       {
-        fjn localfjn = fjn.a(paramObject);
-        if ((i == fjn.a(paramObject)) && (paramObject.equals(localEntry)))
+        flt localflt = flt.a(paramObject);
+        if ((i == flt.a(paramObject)) && (paramObject.equals(localEntry)))
         {
           this.e += 1;
           this.c -= 1;
           if (localObject == paramObject) {
-            arrayOffjn[j] = localfjn;
+            arrayOfflt[j] = localflt;
           }
           for (;;)
           {
             return paramObject;
-            fjn.a(localObject, localfjn);
+            flt.a(localObject, localflt);
           }
         }
         localObject = paramObject;
-        paramObject = localfjn;
+        paramObject = localflt;
       }
     }
   }
@@ -249,11 +249,11 @@ public final class SoftHashMap
   {
     while (this.jdField_a_of_type_JavaLangRefReferenceQueue.poll() != null) {}
     this.e += 1;
-    fjn[] arrayOffjn = this.jdField_a_of_type_ArrayOfFjn;
+    flt[] arrayOfflt = this.jdField_a_of_type_ArrayOfFlt;
     int i = 0;
-    while (i < arrayOffjn.length)
+    while (i < arrayOfflt.length)
     {
-      arrayOffjn[i] = null;
+      arrayOfflt[i] = null;
       i += 1;
     }
     this.c = 0;
@@ -270,16 +270,16 @@ public final class SoftHashMap
     if (paramObject == null) {
       return a();
     }
-    fjn[] arrayOffjn = a();
+    flt[] arrayOfflt = a();
     int j;
-    for (int i = arrayOffjn.length;; i = j)
+    for (int i = arrayOfflt.length;; i = j)
     {
       j = i - 1;
       if (i <= 0) {
         break;
       }
-      for (fjn localfjn = arrayOffjn[j]; localfjn != null; localfjn = fjn.a(localfjn)) {
-        if (paramObject.equals(fjn.a(localfjn))) {
+      for (flt localflt = arrayOfflt[j]; localflt != null; localflt = flt.a(localflt)) {
+        if (paramObject.equals(flt.a(localflt))) {
           return true;
         }
       }
@@ -293,7 +293,7 @@ public final class SoftHashMap
     if (localObject != null) {
       return localObject;
     }
-    localObject = new fjp(this);
+    localObject = new flv(this);
     this.jdField_a_of_type_JavaUtilSet = ((Set)localObject);
     return localObject;
   }
@@ -303,9 +303,9 @@ public final class SoftHashMap
     Object localObject = b(paramObject);
     int i = a(localObject);
     paramObject = a();
-    for (paramObject = paramObject[a(i, paramObject.length)]; paramObject != null; paramObject = fjn.a(paramObject)) {
-      if ((fjn.a(paramObject) == i) && (a(localObject, paramObject.get()))) {
-        return fjn.a(paramObject);
+    for (paramObject = paramObject[a(i, paramObject.length)]; paramObject != null; paramObject = flt.a(paramObject)) {
+      if ((flt.a(paramObject) == i) && (a(localObject, paramObject.get()))) {
+        return flt.a(paramObject);
       }
     }
     return null;
@@ -322,7 +322,7 @@ public final class SoftHashMap
     if (localObject != null) {
       return localObject;
     }
-    localObject = new fjs(this);
+    localObject = new fly(this);
     this.jdField_b_of_type_JavaUtilSet = ((Set)localObject);
     return localObject;
   }
@@ -331,25 +331,25 @@ public final class SoftHashMap
   {
     Object localObject = b(paramObject1);
     int i = a(localObject);
-    fjn[] arrayOffjn = a();
-    int j = a(i, arrayOffjn.length);
-    for (paramObject1 = arrayOffjn[j]; paramObject1 != null; paramObject1 = fjn.a(paramObject1)) {
-      if ((i == fjn.a(paramObject1)) && (a(localObject, paramObject1.get())))
+    flt[] arrayOfflt = a();
+    int j = a(i, arrayOfflt.length);
+    for (paramObject1 = arrayOfflt[j]; paramObject1 != null; paramObject1 = flt.a(paramObject1)) {
+      if ((i == flt.a(paramObject1)) && (a(localObject, paramObject1.get())))
       {
-        localObject = fjn.a(paramObject1);
+        localObject = flt.a(paramObject1);
         if (paramObject2 != localObject) {
-          fjn.a(paramObject1, paramObject2);
+          flt.a(paramObject1, paramObject2);
         }
         return localObject;
       }
     }
     this.e += 1;
-    paramObject1 = arrayOffjn[j];
-    arrayOffjn[j] = new fjn(localObject, paramObject2, this.jdField_a_of_type_JavaLangRefReferenceQueue, i, paramObject1);
+    paramObject1 = arrayOfflt[j];
+    arrayOfflt[j] = new flt(localObject, paramObject2, this.jdField_a_of_type_JavaLangRefReferenceQueue, i, paramObject1);
     i = this.c + 1;
     this.c = i;
     if (i >= this.d) {
-      a(arrayOffjn.length * 2);
+      a(arrayOfflt.length * 2);
     }
     return null;
   }
@@ -370,11 +370,11 @@ public final class SoftHashMap
     }
     for (;;)
     {
-      j = this.jdField_a_of_type_ArrayOfFjn.length;
+      j = this.jdField_a_of_type_ArrayOfFlt.length;
       while (j < i) {
         j <<= 1;
       }
-      if (j > this.jdField_a_of_type_ArrayOfFjn.length) {
+      if (j > this.jdField_a_of_type_ArrayOfFlt.length) {
         a(j);
       }
       paramMap = paramMap.entrySet().iterator();
@@ -393,28 +393,28 @@ public final class SoftHashMap
   {
     Object localObject2 = b(paramObject);
     int i = a(localObject2);
-    fjn[] arrayOffjn = a();
-    int j = a(i, arrayOffjn.length);
-    paramObject = arrayOffjn[j];
+    flt[] arrayOfflt = a();
+    int j = a(i, arrayOfflt.length);
+    paramObject = arrayOfflt[j];
     Object localObject1 = paramObject;
     while (paramObject != null)
     {
-      fjn localfjn = fjn.a(paramObject);
-      if ((i == fjn.a(paramObject)) && (a(localObject2, paramObject.get())))
+      flt localflt = flt.a(paramObject);
+      if ((i == flt.a(paramObject)) && (a(localObject2, paramObject.get())))
       {
         this.e += 1;
         this.c -= 1;
         if (localObject1 == paramObject) {
-          arrayOffjn[j] = localfjn;
+          arrayOfflt[j] = localflt;
         }
         for (;;)
         {
-          return fjn.a(paramObject);
-          fjn.a(localObject1, localfjn);
+          return flt.a(paramObject);
+          flt.a(localObject1, localflt);
         }
       }
       localObject1 = paramObject;
-      paramObject = localfjn;
+      paramObject = localflt;
     }
     return null;
   }
@@ -434,7 +434,7 @@ public final class SoftHashMap
     if (localObject != null) {
       return localObject;
     }
-    localObject = new fjv(this);
+    localObject = new fmb(this);
     this.jdField_a_of_type_JavaUtilCollection = ((Collection)localObject);
     return localObject;
   }

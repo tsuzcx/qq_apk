@@ -1,41 +1,15 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.model.FriendManager;
 
 public class bqf
-  extends FriendListObserver
+  implements View.OnClickListener
 {
   public bqf(TroopTransferActivity paramTroopTransferActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
-    {
-      paramString = this.a.a.a(paramString);
-      if (paramString != null) {
-        break label28;
-      }
-    }
-    label28:
-    Friends localFriends;
-    do
-    {
-      return;
-      localFriends = ((FriendManager)this.a.app.getManager(8)).c(paramString.a);
-    } while (localFriends == null);
-    this.a.a(paramString, localFriends);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
-      this.a.a.notifyDataSetChanged();
-    }
+    this.a.d();
   }
 }
 

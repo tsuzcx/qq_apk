@@ -52,7 +52,7 @@ public class SystemEmoticonInfo
   
   public Drawable b(Context paramContext, float paramFloat)
   {
-    return TextUtils.a(this.jdField_a_of_type_Int, true);
+    return TextUtils.a(this.jdField_a_of_type_Int, false);
   }
 }
 

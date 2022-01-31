@@ -16,7 +16,7 @@ class MQPSecJsPlugin$2
       {
         MQPSecJsPlugin.access$102(this.this$0, new QQProgressDialog(this.this$0.activity, this.this$0.activity.getTitleBarHeight()));
         MQPSecJsPlugin.access$100(this.this$0).setCancelable(false);
-        MQPSecJsPlugin.access$100(this.this$0).b(2131363558);
+        MQPSecJsPlugin.access$100(this.this$0).b(2131363569);
       }
       if ((MQPSecJsPlugin.access$100(this.this$0) != null) && (!MQPSecJsPlugin.access$100(this.this$0).isShowing())) {
         MQPSecJsPlugin.access$100(this.this$0).show();

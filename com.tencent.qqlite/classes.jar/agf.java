@@ -1,17 +1,14 @@
-import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.Contacts;
-import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.fpsreport.FPSPinnedHeaderExpandableListView;
 
 public class agf
-  implements IIconListener
+  implements Runnable
 {
-  private agf(Contacts paramContacts) {}
+  public agf(Contacts paramContacts) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void run()
   {
-    if ((this.a.a) && (paramBitmap != null) && (paramInt2 == 200)) {
-      this.a.a(1400L, false);
-    }
+    this.a.a.setSelection(0);
   }
 }
 

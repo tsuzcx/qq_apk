@@ -33,7 +33,7 @@ import com.tencent.open.business.base.StaticAnalyz;
 import com.tencent.open.settings.ServerSetting;
 import com.tencent.open.widget.CursorEditText;
 import com.tencent.qphone.base.util.QLog;
-import fbx;
+import fed;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
@@ -238,9 +238,9 @@ public class SendStoryActivity
   {
     this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131297533));
     this.jdField_a_of_type_AndroidViewView = super.findViewById(2131297507);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296891));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296897));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296901));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296892));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296898));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296902));
     this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText = ((CursorEditText)super.findViewById(2131297538));
@@ -500,7 +500,7 @@ public class SendStoryActivity
     Object localObject1 = new StringBuilder();
     Object localObject2 = this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText.getEditableText();
     Object localObject3 = (Friend[])((Editable)localObject2).getSpans(0, ((Editable)localObject2).length(), Friend.class);
-    Arrays.sort((Object[])localObject3, new fbx(this, (Editable)localObject2));
+    Arrays.sort((Object[])localObject3, new fed(this, (Editable)localObject2));
     HashSet localHashSet = new HashSet();
     int n = localObject3.length;
     int j = 0;
@@ -544,7 +544,7 @@ public class SendStoryActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setTheme(2131624275);
+    super.setTheme(2131624276);
     super.requestWindowFeature(1);
     super.setContentView(2130903289);
     c();

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import eth;
-import eti;
+import evm;
+import evn;
 import java.io.UnsupportedEncodingException;
 
 public class Base64Util
@@ -61,15 +61,15 @@ public class Base64Util
   
   public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    eth localeth = new eth(paramInt3, new byte[paramInt2 * 3 / 4]);
-    if (!localeth.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
+    evm localevm = new evm(paramInt3, new byte[paramInt2 * 3 / 4]);
+    if (!localevm.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
       throw new IllegalArgumentException("bad base-64");
     }
-    if (localeth.jdField_a_of_type_Int == localeth.jdField_a_of_type_ArrayOfByte.length) {
-      return localeth.jdField_a_of_type_ArrayOfByte;
+    if (localevm.jdField_a_of_type_Int == localevm.jdField_a_of_type_ArrayOfByte.length) {
+      return localevm.jdField_a_of_type_ArrayOfByte;
     }
-    paramArrayOfByte = new byte[localeth.jdField_a_of_type_Int];
-    System.arraycopy(localeth.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localeth.jdField_a_of_type_Int);
+    paramArrayOfByte = new byte[localevm.jdField_a_of_type_Int];
+    System.arraycopy(localevm.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localevm.jdField_a_of_type_Int);
     return paramArrayOfByte;
   }
   
@@ -80,23 +80,23 @@ public class Base64Util
   
   public static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    eti localeti = new eti(paramInt3, null);
+    evn localevn = new evn(paramInt3, null);
     int i = paramInt2 / 3 * 4;
     int j;
-    if (localeti.jdField_a_of_type_Boolean)
+    if (localevn.jdField_a_of_type_Boolean)
     {
       paramInt3 = i;
       if (paramInt2 % 3 > 0) {
         paramInt3 = i + 4;
       }
       i = paramInt3;
-      if (localeti.b)
+      if (localevn.b)
       {
         i = paramInt3;
         if (paramInt2 > 0)
         {
           j = (paramInt2 - 1) / 57;
-          if (!localeti.c) {
+          if (!localevn.c) {
             break label186;
           }
         }
@@ -106,9 +106,9 @@ public class Base64Util
     for (i = 2;; i = 1)
     {
       i = paramInt3 + i * (j + 1);
-      localeti.jdField_a_of_type_ArrayOfByte = new byte[i];
-      localeti.a(paramArrayOfByte, paramInt1, paramInt2, true);
-      if ((jdField_a_of_type_Boolean) || (localeti.jdField_a_of_type_Int == i)) {
+      localevn.jdField_a_of_type_ArrayOfByte = new byte[i];
+      localevn.a(paramArrayOfByte, paramInt1, paramInt2, true);
+      if ((jdField_a_of_type_Boolean) || (localevn.jdField_a_of_type_Int == i)) {
         break label192;
       }
       throw new AssertionError();
@@ -128,7 +128,7 @@ public class Base64Util
       }
     }
     label192:
-    return localeti.jdField_a_of_type_ArrayOfByte;
+    return localevn.jdField_a_of_type_ArrayOfByte;
   }
 }
 

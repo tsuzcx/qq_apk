@@ -1,13 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterSendUpSms;
 
-class bih
-  implements Runnable
+public class bih
+  implements DialogInterface.OnClickListener
 {
-  bih(bif parambif) {}
+  public bih(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a(2131363341, 1);
+    RegisterSendUpSms.c(this.a);
   }
 }
 

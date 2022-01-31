@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.activity.IndividuationSetActivity;
-import com.tencent.mobileqq.app.ConfigObserver;
-import protocol.KQQConfig.GetResourceRespInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class ara
-  extends ConfigObserver
+  implements DialogInterface.OnClickListener
 {
-  public ara(IndividuationSetActivity paramIndividuationSetActivity) {}
+  public ara(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void a(boolean paramBoolean, GetResourceRespInfo paramGetResourceRespInfo)
-  {
-    if (paramBoolean) {
-      this.a.a(1);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

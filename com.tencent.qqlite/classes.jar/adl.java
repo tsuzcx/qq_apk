@@ -1,28 +1,20 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.image.AbstractGifImage;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
 
 public class adl
-  implements AbsListView.OnScrollListener
+  implements Runnable
 {
-  public adl(ChatHistory paramChatHistory) {}
+  public adl(ChatHistory paramChatHistory, boolean paramBoolean) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void run()
   {
-    this.a.v = paramInt;
-    if (paramInt == 0)
+    ChatHistory localChatHistory1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory;
+    ChatHistory localChatHistory2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory;
+    if (this.jdField_a_of_type_Boolean == true) {}
+    for (int i = 2131363130;; i = 2131363131)
     {
-      AbstractGifImage.resumeAll();
+      localChatHistory1.b(localChatHistory2.getString(i));
       return;
     }
-    if ((this.a.a != null) && (this.a.a.c == 1) && (!this.a.a.a)) {
-      this.a.a.b();
-    }
-    AbstractGifImage.pauseAll();
   }
 }
 

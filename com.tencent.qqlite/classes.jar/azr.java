@@ -1,17 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CheckBox;
 import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.MemoryManager;
 
 public class azr
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public azr(NotificationActivity paramNotificationActivity) {}
+  public azr(NotificationActivity paramNotificationActivity, CheckBox paramCheckBox, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramIntent.getAction().equals("com.tencent.qqlite.closeNotification")) && (NotificationActivity.a(this.a) == 5)) {
-      this.a.finish();
+    try
+    {
+      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
+      if (this.jdField_a_of_type_Boolean != bool) {
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
+      }
+      MemoryManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app);
+      return;
+    }
+    catch (Exception paramDialogInterface) {}finally
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
     }
   }
 }

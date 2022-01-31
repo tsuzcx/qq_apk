@@ -6,7 +6,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
-import ceo;
+import cfp;
 
 public class TopContentLayout
   extends RelativeLayout
@@ -38,7 +38,7 @@ public class TopContentLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new ceo(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new cfp(this, paramContext));
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
   }
   

@@ -43,7 +43,7 @@ public class yz
       this.a.a(paramErrMsg.getMessage(), 1);
       return;
     }
-    paramWUserSigInfo = this.a.getString(2131363286);
+    paramWUserSigInfo = this.a.getString(2131363296);
     this.a.a(paramWUserSigInfo, 1);
   }
   
@@ -78,7 +78,7 @@ public class yz
       this.a.a(paramErrMsg.getMessage(), 1);
       return;
     }
-    this.a.a(2131363317, 1);
+    this.a.a(2131363327, 1);
   }
 }
 

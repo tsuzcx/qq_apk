@@ -40,13 +40,13 @@ public class BindGroupActivity$GroupListAdapter
       }
       paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
       return paramViewGroup;
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903619, paramViewGroup, false);
+      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903628, paramViewGroup, false);
       paramView = new BindGroupActivity.ViewHolder();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131296439));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131296442));
       paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131297602));
       paramViewGroup.setTag(paramView);
     }
-    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838100);
+    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838119);
     ImageLoader.a().a(((BindGroupActivity.GroupInfo)localObject).c, this.a);
     return paramViewGroup;
   }

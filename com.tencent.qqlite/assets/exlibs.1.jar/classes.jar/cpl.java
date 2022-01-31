@@ -1,22 +1,34 @@
-import EncounterSvc.RespEncounterInfo;
-import com.tencent.mobileqq.adapter.PeopleAroundAdapter;
-import com.tencent.mobileqq.util.FaceDecoder;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class cpl
-  implements Runnable
+  implements SurfaceHolder.Callback
 {
-  public cpl(PeopleAroundAdapter paramPeopleAroundAdapter, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
+  public cpl(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    FaceDecoder localFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.a;
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp > 0) {}
-    for (long l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp;; l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.common_face_timestamp)
-    {
-      localFaceDecoder.a(str, 3001, l);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + ShortVideoPreviewActivity.c(this.a) + ",mSavedPlayState : " + ShortVideoPreviewActivity.a(this.a, ShortVideoPreviewActivity.d(this.a)));
     }
+    if ((ShortVideoPreviewActivity.d(this.a) == 1) && (ShortVideoPreviewActivity.c(this.a) > 0))
+    {
+      ShortVideoPreviewActivity.a(this.a, ShortVideoPreviewActivity.c(this.a));
+      ShortVideoPreviewActivity.c(this.a, 0);
+      ShortVideoPreviewActivity.d(this.a, 0);
+    }
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
+    }
+    ShortVideoPreviewActivity.b(this.a);
   }
 }
 

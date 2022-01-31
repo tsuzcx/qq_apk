@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.widget.Toast;
-import btc;
+import bth;
 import com.tencent.biz.PoiMapActivity;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
@@ -250,7 +250,7 @@ public class PlusPanelUtils
   {
     if (!Utils.e())
     {
-      Toast.makeText(paramActivity, paramActivity.getResources().getString(2131363511), 0).show();
+      Toast.makeText(paramActivity, paramActivity.getResources().getString(2131363522), 0).show();
       return;
     }
     paramQQAppInterface = new File(AppConstants.aw);
@@ -271,7 +271,7 @@ public class PlusPanelUtils
     catch (Exception paramQQAppInterface)
     {
       paramQQAppInterface.printStackTrace();
-      QQToast.a(paramActivity, 2131363515, 0).a();
+      QQToast.a(paramActivity, 2131363526, 0).a();
     }
   }
   
@@ -301,7 +301,7 @@ public class PlusPanelUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo)
   {
-    new btc(paramSessionInfo, paramQQAppInterface, paramContext, ImageUtil.c(paramContext, paramUri)).execute(new Void[0]);
+    new bth(paramSessionInfo, paramQQAppInterface, paramContext, ImageUtil.c(paramContext, paramUri)).execute(new Void[0]);
   }
   
   public static void b(QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo)

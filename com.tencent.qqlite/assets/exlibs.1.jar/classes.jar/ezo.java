@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.widget.SlideTabWidget;
-import com.tencent.mobileqq.widget.SlideTabWidget.OnTabSlideCompleteListener;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AlbumImageProxy;
+import com.tencent.mobileqq.widget.RotateBitmap;
 
 public class ezo
-  implements Runnable
+  extends Handler
 {
-  public ezo(SlideTabWidget paramSlideTabWidget) {}
+  public ezo(AlbumImageProxy paramAlbumImageProxy) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (SlideTabWidget.a(this.a) != null) {
-      SlideTabWidget.a(this.a).a();
-    }
+    paramMessage = (Bitmap)paramMessage.obj;
+    this.a.setImageRotateBitmapResetBase(new RotateBitmap(paramMessage, 0), true);
   }
 }
 

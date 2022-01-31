@@ -15,8 +15,8 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import cqi;
-import cqj;
+import crj;
+import crk;
 import java.util.ArrayList;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
@@ -26,7 +26,7 @@ public class BrowserAppInterface
 {
   public static final String b = BrowserAppInterface.class.getSimpleName();
   long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cqi(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new crj(this);
   SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   protected final Object a;
@@ -118,7 +118,7 @@ public class BrowserAppInterface
   
   private void b()
   {
-    new cqj(this).start();
+    new crk(this).start();
   }
   
   public int a()
@@ -146,12 +146,12 @@ public class BrowserAppInterface
   
   public void a(boolean paramBoolean)
   {
-    a().edit().putBoolean(a().getString(2131363055) + a(), paramBoolean).commit();
+    a().edit().putBoolean(a().getString(2131363065) + a(), paramBoolean).commit();
   }
   
   public final boolean a()
   {
-    return a().getBoolean(a().getString(2131363055) + a(), false);
+    return a().getBoolean(a().getString(2131363065) + a(), false);
   }
   
   public String b()

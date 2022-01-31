@@ -1,22 +1,13 @@
-import android.util.SparseArray;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
 
 public class epn
   implements Runnable
 {
-  public epn(AvatarWallAdapter paramAvatarWallAdapter, int paramInt) {}
+  public epn(TroopFeedsCenterLogic paramTroopFeedsCenterLogic) {}
   
   public void run()
   {
-    ProgressBar localProgressBar = (ProgressBar)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a.get(this.jdField_a_of_type_Int);
-    if (localProgressBar != null)
-    {
-      AvatarWallAdapter localAvatarWallAdapter = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter;
-      int i = localAvatarWallAdapter.n + 1;
-      localAvatarWallAdapter.n = i;
-      localProgressBar.setProgress(100 - i);
-    }
+    this.a.a(false);
   }
 }
 

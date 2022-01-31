@@ -125,9 +125,25 @@ public abstract class RecentBaseData
       if (((this.jdField_b_of_type_JavaLangCharSequence instanceof SpannableStringBuilder)) && (DeviceInfoUtil.b())) {
         this.jdField_b_of_type_JavaLangCharSequence = ((SpannableStringBuilder)this.jdField_b_of_type_JavaLangCharSequence).append(" ");
       }
+      paramQQAppInterface = this.jdField_b_of_type_JavaLangCharSequence;
+      if ((paramQQAppInterface == null) || (paramQQAppInterface.length() <= 168)) {}
     }
-    if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Long != 9223372036854775806L)) {
-      this.jdField_b_of_type_JavaLangString = TimeManager.a().a(a(), this.jdField_a_of_type_Long);
+    try
+    {
+      this.jdField_b_of_type_JavaLangCharSequence = paramQQAppInterface.subSequence(0, 168);
+      if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Long != 9223372036854775806L)) {
+        this.jdField_b_of_type_JavaLangString = TimeManager.a().a(a(), this.jdField_a_of_type_Long);
+      }
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      for (;;)
+      {
+        if (QLog.isDevelopLevel()) {
+          paramQQAppInterface.printStackTrace();
+        }
+      }
     }
   }
   

@@ -14,12 +14,12 @@ import com.tencent.mobileqq.structmsg.view.StructMsgItemProgress;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemSummary;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.qphone.base.util.QLog;
-import efa;
-import eff;
-import efg;
-import efh;
-import efi;
-import efj;
+import ege;
+import egj;
+import egk;
+import egl;
+import egm;
+import egn;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.util.Iterator;
@@ -28,7 +28,7 @@ import java.util.List;
 public class StructMsgForGeneralShare
   extends AbsShareMsg
 {
-  private static View.OnClickListener a = new efj();
+  private static View.OnClickListener a = new egn();
   
   StructMsgForGeneralShare()
   {
@@ -155,8 +155,8 @@ public class StructMsgForGeneralShare
               localView.setTag(localObject2);
               localView.setClickable(true);
               localView.setOnClickListener((View.OnClickListener)localObject2);
-              localView.setOnLongClickListener(new eff(this, paramOnLongClickAndTouchListener));
-              localView.setOnTouchListener(new efg(this, paramOnLongClickAndTouchListener));
+              localView.setOnLongClickListener(new egj(this, paramOnLongClickAndTouchListener));
+              localView.setOnTouchListener(new egk(this, paramOnLongClickAndTouchListener));
             }
             ((ViewGroup)localObject1).addView(localView);
           }
@@ -177,7 +177,7 @@ public class StructMsgForGeneralShare
         if (hasFlag(4))
         {
           paramContext.width = -1;
-          ((ViewGroup)localObject1).setBackgroundResource(2130837596);
+          ((ViewGroup)localObject1).setBackgroundResource(2130837610);
         }
         ((ViewGroup)localObject1).setLayoutParams(paramContext);
       }
@@ -214,8 +214,8 @@ public class StructMsgForGeneralShare
           ((View)localObject2).setTag(localObject1);
           ((View)localObject2).setClickable(true);
           ((View)localObject2).setOnClickListener((View.OnClickListener)localObject1);
-          ((View)localObject2).setOnLongClickListener(new efh(this, paramOnLongClickAndTouchListener));
-          ((View)localObject2).setOnTouchListener(new efi(this, paramOnLongClickAndTouchListener));
+          ((View)localObject2).setOnLongClickListener(new egl(this, paramOnLongClickAndTouchListener));
+          ((View)localObject2).setOnTouchListener(new egm(this, paramOnLongClickAndTouchListener));
         }
       }
       for (;;)
@@ -379,11 +379,11 @@ public class StructMsgForGeneralShare
     }
   }
   
-  protected void toContentXml(efa paramefa)
+  protected void toContentXml(ege paramege)
   {
     Iterator localIterator = iterator();
     while (localIterator.hasNext()) {
-      ((AbsStructMsgElement)localIterator.next()).a(paramefa);
+      ((AbsStructMsgElement)localIterator.next()).a(paramege);
     }
   }
   

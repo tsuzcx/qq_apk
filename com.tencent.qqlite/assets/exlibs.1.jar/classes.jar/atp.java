@@ -1,31 +1,24 @@
-import android.text.Editable;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.view.View.OnClickListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class atp
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
   public atp(LoginActivity paramLoginActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (true == paramBoolean)
-    {
-      if (this.a.a.isPopupShowing()) {
-        this.a.a.dismissDropDown();
-      }
-      if ((this.a.b != null) && (this.a.a.getText().length() > 0)) {
-        this.a.b.setVisibility(0);
-      }
-      this.a.a.setSelection(this.a.a.getText().length());
+    if ((this.a.b != null) && (this.a.b.isShown())) {
+      this.a.b.setVisibility(8);
     }
-    while ((this.a.b == null) || (!this.a.b.isShown())) {
-      return;
-    }
-    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
+    libsafeedit.clearPassBuffer();
   }
 }
 

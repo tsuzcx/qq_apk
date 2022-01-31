@@ -55,10 +55,10 @@ public class wl
     paramViewGroup = paramView;
     if (paramView == null)
     {
-      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity.getLayoutInflater().inflate(2130903592, null);
+      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity.getLayoutInflater().inflate(2130903601, null);
       paramView = new wn(null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131298092));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131298093));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131298097));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131298098));
       paramViewGroup.setTag(paramView);
       paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     }

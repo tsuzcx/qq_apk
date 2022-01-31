@@ -1,86 +1,60 @@
 import com.dataline.mpfile.MpfileDataCenter;
 import com.dataline.mpfile.MpfileTaskInfo;
-import com.dataline.util.DatalineMathUtil;
-import com.dataline.util.HttpDownload;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class cx
-  implements Runnable
 {
-  public cx(MpfileDataCenter paramMpfileDataCenter, String paramString) {}
+  public Map a;
+  public Map b = new HashMap();
   
-  public void run()
+  private cx(MpfileDataCenter paramMpfileDataCenter)
   {
-    String str = this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(this.jdField_a_of_type_JavaLangString);
-    MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(this.jdField_a_of_type_JavaLangString);
-    if (str == null)
-    {
-      MpfileDataCenter.a("loadFileMd5FromServerBackground failed, content is null");
-      this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(localMpfileTaskInfo.jdField_d_of_type_Long, 0L, false, 251);
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public MpfileTaskInfo a(long paramLong)
+  {
+    return (MpfileTaskInfo)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+  }
+  
+  public MpfileTaskInfo a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!this.b.containsKey(paramString)) {
+      return null;
     }
-    int i;
-    long l;
-    File localFile;
-    for (;;)
+    return a(((Long)this.b.get(paramString)).longValue());
+  }
+  
+  public ArrayList a()
+  {
+    return new ArrayList(this.jdField_a_of_type_JavaUtilMap.values());
+  }
+  
+  public void a(MpfileTaskInfo paramMpfileTaskInfo)
+  {
+    if (paramMpfileTaskInfo == null) {}
+    while ((paramMpfileTaskInfo.c == null) || (paramMpfileTaskInfo.c.length() == 0) || (paramMpfileTaskInfo.d == 0L)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramMpfileTaskInfo.d), paramMpfileTaskInfo);
+    this.b.put(paramMpfileTaskInfo.c, Long.valueOf(paramMpfileTaskInfo.d));
+    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(paramMpfileTaskInfo);
+  }
+  
+  public void a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    do
     {
       return;
-      try
-      {
-        localObject = new JSONObject(str);
-        i = 0;
-        if (((JSONObject)localObject).has("result")) {
-          i = ((JSONObject)localObject).getInt("result");
-        }
-        if (i != 0) {
-          break label352;
-        }
-        str = ((JSONObject)localObject).getString("md5");
-        l = localMpfileTaskInfo.jdField_b_of_type_Long;
-        if (((JSONObject)localObject).has("size")) {
-          l = ((JSONObject)localObject).getLong("size");
-        }
-        if (localMpfileTaskInfo != null)
-        {
-          if ((str == null) || (str.length() <= 0)) {
-            break label321;
-          }
-          localObject = localMpfileTaskInfo.jdField_e_of_type_JavaLangString;
-          localFile = new File((String)localObject);
-          if (!localFile.exists()) {
-            break label233;
-          }
-          if (str.equalsIgnoreCase(DatalineMathUtil.a(DatalineMathUtil.a((String)localObject))))
-          {
-            this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(localMpfileTaskInfo.jdField_d_of_type_Long, localMpfileTaskInfo.jdField_b_of_type_Long, true, 0);
-            return;
-          }
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(localMpfileTaskInfo.jdField_d_of_type_Long, 0L, false, 251);
-        return;
-      }
-    }
-    localFile.delete();
-    label233:
-    Object localObject = String.format("%s/%s.%s", new Object[] { MpfileDataCenter.b(), localMpfileTaskInfo.jdField_d_of_type_JavaLangString, localJSONException });
-    localMpfileTaskInfo.jdField_g_of_type_JavaLangString = localJSONException;
-    localMpfileTaskInfo.f = ((String)localObject);
-    localMpfileTaskInfo.jdField_b_of_type_Long = l;
-    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a.a(localMpfileTaskInfo.jdField_d_of_type_Long, localMpfileTaskInfo.c, localMpfileTaskInfo.jdField_b_of_type_JavaLangString, (String)localObject, localMpfileTaskInfo.jdField_b_of_type_Long, this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter);
-    return;
-    label321:
-    MpfileDataCenter.a("loadFileMd5FromServerBackground failed, task not exist or md5 is empty");
-    localMpfileTaskInfo.jdField_g_of_type_Int = MpfileTaskInfo.jdField_e_of_type_Int;
-    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(localMpfileTaskInfo.jdField_d_of_type_Long, 0L, false, 249);
-    return;
-    label352:
-    MpfileDataCenter.a(String.format("loadFileMd5FromServerBackground failed, result is not ok result is %d", new Object[] { Integer.valueOf(i) }));
-    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(localMpfileTaskInfo.jdField_d_of_type_Long, 0L, false, i);
+      paramString = a(paramString);
+    } while (paramString == null);
+    this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramString.d));
+    this.b.remove(paramString.c);
+    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.d(paramString.c);
   }
 }
 

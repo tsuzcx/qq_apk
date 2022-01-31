@@ -1,19 +1,20 @@
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.filemanager.app.FileTransferObserver;
 
-public class dod
+public final class dod
   extends Handler
 {
-  public dod(OnlineFileSessionCenter paramOnlineFileSessionCenter, Looper paramLooper)
+  public dod(Looper paramLooper)
   {
     super(paramLooper);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    this.a.d();
+    Object[] arrayOfObject = (Object[])paramMessage.obj;
+    ((FileTransferObserver)arrayOfObject[0]).a(paramMessage.what, ((Boolean)arrayOfObject[1]).booleanValue(), arrayOfObject[2]);
   }
 }
 

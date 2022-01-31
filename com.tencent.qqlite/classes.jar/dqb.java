@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
 public class dqb
-  implements Runnable
+  extends dpx
 {
-  public dqb(UniformDownloadMgr paramUniformDownloadMgr) {}
-  
-  public void run()
+  public dqb(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    UniformDownloadMgr.b(this.a, null);
-    UniformDownloadMgr.b(this.a);
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateGotoOffFileProcess";
   }
 }
 

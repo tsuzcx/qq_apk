@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
 
 class aya
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  aya(axw paramaxw, QQCustomDialog paramQQCustomDialog) {}
+  aya(axz paramaxz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    NearbyPeopleProfileActivity.m(this.a.a);
   }
 }
 

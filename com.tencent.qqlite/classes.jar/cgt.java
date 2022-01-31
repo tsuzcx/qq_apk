@@ -1,48 +1,49 @@
-import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.search.ContactsSearchablePhoneContact;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.messagesearch.MessageItem;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.MenuPopupDialog;
 
 public class cgt
-  extends SearchResultDialog
+  implements View.OnClickListener
 {
-  public cgt(ContactListView paramContactListView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
-  {
-    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
-  }
+  public cgt(MessageSearchDialog paramMessageSearchDialog) {}
   
-  @SuppressLint({"UseSparseArrays"})
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new ArrayList();
-    if ((this.a.jdField_a_of_type_Int == 0) || (this.a.jdField_a_of_type_Int == 2)) {
-      if (this.a.jdField_a_of_type_JavaUtilList != null)
-      {
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-        if (localIterator.hasNext()) {
-          ((ArrayList)localObject).addAll((List)localIterator.next());
-        }
-      }
+    if (this.a.jdField_a_of_type_ComTencentWidgetMenuPopupDialog != null) {
+      this.a.jdField_a_of_type_ComTencentWidgetMenuPopupDialog.dismiss();
     }
-    for (;;)
+    int i = paramView.getId();
+    if (QLog.isColorLevel()) {
+      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onClick, id = " + i);
+    }
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem == null) {
+      return;
+    }
+    switch (i)
     {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localArrayList.add(new ContactsSearchablePhoneContact(paramContext, paramQQAppInterface, (PhoneContact)((Iterator)localObject).next(), 30064771072L));
-      }
-      if ((this.a.jdField_a_of_type_Int == 3) && (this.a.b != null)) {
-        ((ArrayList)localObject).addAll(this.a.b);
-      }
+    default: 
+      return;
+    case 2131296655: 
+      paramView = new Bundle();
+      paramView.putInt("forward_type", -1);
+      paramView.putString("forward_text", ((MessageItem)localObject).a.msg);
+      localObject = new Intent(MessageSearchDialog.a(this.a), ForwardRecentActivity.class);
+      ((Intent)localObject).putExtras(paramView);
+      ((Activity)MessageSearchDialog.a(this.a)).startActivityForResult((Intent)localObject, 21);
+      return;
     }
-    return localArrayList;
+    ((ClipboardManager)MessageSearchDialog.a(this.a).getSystemService("clipboard")).setText(((MessageItem)localObject).a.msg);
   }
 }
 

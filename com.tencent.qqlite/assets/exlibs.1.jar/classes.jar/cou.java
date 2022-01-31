@@ -1,12 +1,30 @@
-import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class cou
+  extends Handler
 {
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  public cou(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  private cou(BaseWhatASmoothAdapter paramBaseWhatASmoothAdapter) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      QQToast.a(this.a, 2131364420, 0).a();
+      return;
+    case 2: 
+      String str = this.a.getString(2131364421);
+      paramMessage = (String)paramMessage.obj;
+      QQToast.a(this.a, str + paramMessage, 0).a();
+      return;
+    }
+    QQToast.a(this.a, 2131364422, 0).a();
+  }
 }
 
 

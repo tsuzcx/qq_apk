@@ -1,37 +1,28 @@
 import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.widget.XListView;
+import android.os.Message;
+import android.os.Process;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 
 public class dbn
-  implements IIconListener
+  implements Runnable
 {
-  public dbn(SearchResultActivity paramSearchResultActivity) {}
+  public dbn(QQAnimationDrawable paramQQAnimationDrawable) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void run()
   {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
-    for (;;)
+    this.a.jdField_b_of_type_Boolean = true;
+    Process.setThreadPriority(10);
+    Object localObject = this.a;
+    QQAnimationDrawable localQQAnimationDrawable = this.a;
+    Bitmap localBitmap = this.a.a(true, 0);
+    localQQAnimationDrawable.jdField_b_of_type_AndroidGraphicsBitmap = localBitmap;
+    ((QQAnimationDrawable)localObject).jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+    QQAnimationDrawable.a(this.a, 1);
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      return;
-      if (this.a.jdField_a_of_type_Int == 0)
-      {
-        int i = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramBitmap = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof dbp)))
-          {
-            paramBitmap = (dbp)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              SearchResultActivity.a(this.a, paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-            }
-          }
-          paramInt2 += 1;
-        }
-      }
+      localObject = this.a.jdField_a_of_type_Dbo.obtainMessage();
+      ((Message)localObject).obj = Integer.valueOf(0);
+      ((Message)localObject).sendToTarget();
     }
   }
 }

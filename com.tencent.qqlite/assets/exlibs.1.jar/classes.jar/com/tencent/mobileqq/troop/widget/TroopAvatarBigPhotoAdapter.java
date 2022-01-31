@@ -19,7 +19,7 @@ import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.troop.utils.AvatarTroopUtil;
 import com.tencent.mobileqq.widget.ImageProgressCircle;
 import com.tencent.qphone.base.util.QLog;
-import eqo;
+import esg;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -107,7 +107,7 @@ public class TroopAvatarBigPhotoAdapter
             if (((localSetting != null) && (localSetting.bHeadType != 0)) || (str == null) || (!str.equals("-5"))) {
               break label335;
             }
-            localURLImageView.setImageResource(2130838290);
+            localURLImageView.setImageResource(2130838309);
             return;
           }
           catch (MalformedURLException paramViewHolder) {}
@@ -142,7 +142,7 @@ public class TroopAvatarBigPhotoAdapter
         return;
         localURLImageView.setImageDrawable(URLDrawable.getDrawable((URL)localObject1, URLDrawableHelper.d, null, true));
         a(paramViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-        localURLImageView.setURLDrawableDownListener(new eqo(this, paramViewHolder));
+        localURLImageView.setURLDrawableDownListener(new esg(this, paramViewHolder));
         return;
       }
     }

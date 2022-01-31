@@ -1,10 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-public final class djm
-  implements DialogInterface.OnClickListener
+class djm
+  implements FMDialogUtil.FMDialogInterface
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  djm(djj paramdjj, WeiYunFileInfo paramWeiYunFileInfo) {}
+  
+  public void a()
+  {
+    FileManagerEntity localFileManagerEntity = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo);
+    QfileBaseCloudFileTabView.k(this.jdField_a_of_type_Djj.a).a().a(localFileManagerEntity);
+    QfileBaseCloudFileTabView.l(this.jdField_a_of_type_Djj.a).a().a(localFileManagerEntity);
+    this.jdField_a_of_type_Djj.a.a(localFileManagerEntity);
+  }
+  
+  public void b() {}
 }
 
 

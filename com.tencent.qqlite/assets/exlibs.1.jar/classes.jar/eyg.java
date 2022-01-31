@@ -1,17 +1,14 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.DropdownView;
+import java.util.concurrent.ThreadFactory;
 
 class eyg
-  implements Runnable
+  implements ThreadFactory
 {
-  eyg(eyf parameyf, View paramView) {}
-  
-  public void run()
+  public Thread newThread(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_Eyf.a.jdField_a_of_type_Eyi.showDropDown();
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Eyf.a.b);
-    this.jdField_a_of_type_Eyf.a.jdField_a_of_type_Boolean = true;
+    eyf.a();
+    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + eyf.b());
+    paramRunnable.setDaemon(true);
+    return paramRunnable;
   }
 }
 

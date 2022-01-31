@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/skin_header_bar_bg" android:focusable="true" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c0054" android:contentDescription="搜索聊天或者联系人"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090868" android:background="@null" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="10.0dip" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206dc" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/button_back" style="@style/TitleBtn" />
-    <EditText android:textSize="21.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00bb" android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0b00ae" android:ellipsize="none" android:gravity="center_vertical" android:id="@id/et_search_keyword" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201ec" android:paddingLeft="10.0dip" android:paddingTop="8.0dip" android:paddingRight="30.0dip" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0a058d" android:singleLine="true" android:drawableLeft="@drawable/skin_searchbar_icon" android:drawablePadding="7.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f090868" android:layout_centerVertical="true" android:inputType="textNoSuggestions" />
-    <ImageButton android:id="@id/ib_clear_text" android:background="@null" android:padding="0.0dip" android:visibility="invisible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020647" android:scaleType="centerCrop" android:layout_alignRight="@id/et_search_keyword" android:layout_centerVertical="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0a039d" />
-</RelativeLayout>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">"
+<TextView android:id="@id/title" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e9" />
+    <TextView android:ellipsize="end" android:id="@id/info" android:layout_marginRight="15.0dip" android:maxLines="2" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ea" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0905d4" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00eb" />
+</LinearLayout>

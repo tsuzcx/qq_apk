@@ -25,8 +25,8 @@ public class rf
             return;
           }
           this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838351);
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131427474));
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838370);
+          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131427477));
           this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = false;
           this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
           this.jdField_a_of_type_ComTencentBizUiPopupMenu.a(paramView);
@@ -45,8 +45,8 @@ public class rf
             return;
           }
           this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838351);
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131427474));
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838370);
+          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131427477));
           this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = false;
           this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
           this.jdField_a_of_type_ComTencentBizUiPopupMenu.a(paramView);
@@ -64,8 +64,8 @@ public class rf
           return;
         }
         this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838351);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131427474));
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838370);
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131427477));
         this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = false;
         this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
         this.jdField_a_of_type_ComTencentBizUiPopupMenu.a(paramView);

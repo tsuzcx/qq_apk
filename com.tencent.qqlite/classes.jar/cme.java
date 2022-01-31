@@ -1,15 +1,11 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
 public class cme
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements Runnable
 {
-  public CheckBox a;
-  public TextView a;
+  public cme(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  private cme(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
+  public void run() {}
 }
 
 

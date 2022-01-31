@@ -1,24 +1,32 @@
-import android.app.Activity;
-import com.tencent.biz.common.util.Util;
-import com.tencent.mobileqq.jsp.DataApiPlugin;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import java.lang.ref.WeakReference;
 
-class dwl
-  implements Runnable
+public class dwl
+  extends ClickableSpan
 {
-  dwl(dwk paramdwk, Activity paramActivity, String paramString, int paramInt) {}
+  private WeakReference a;
   
-  public void run()
+  public dwl(FileManagerUtil.TipsClickedInterface paramTipsClickedInterface)
   {
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
-    {
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        this.jdField_a_of_type_Dwk.a.callJs(this.jdField_a_of_type_Dwk.c, new String[] { "null", Integer.toString(this.jdField_a_of_type_Int) });
-      }
+    this.a = new WeakReference(paramTipsClickedInterface);
+  }
+  
+  public void onClick(View paramView)
+  {
+    FileManagerUtil.TipsClickedInterface localTipsClickedInterface = (FileManagerUtil.TipsClickedInterface)this.a.get();
+    if (localTipsClickedInterface != null) {
+      localTipsClickedInterface.a(paramView);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Dwk.a.callJs(this.jdField_a_of_type_Dwk.c, new String[] { Util.b(this.jdField_a_of_type_JavaLangString), Integer.toString(this.jdField_a_of_type_Int) });
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

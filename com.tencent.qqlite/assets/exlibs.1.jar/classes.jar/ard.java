@@ -1,22 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.IndividuationSetActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.utils.DialogUtil;
 
 public class ard
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ard(IndividuationSetActivity paramIndividuationSetActivity) {}
+  public ard(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = (int)(35.0F * this.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("ThemeDownloadTrace", 2, "reqWidth is:" + i + ",reqHeight is:" + i);
-    }
-    Bitmap localBitmap = IndividuationSetActivity.a(this.a, i, i);
-    if (localBitmap != null) {
-      this.a.runOnUiThread(new are(this, localBitmap));
-    }
+    this.a.a = ((Groups)paramView.getTag());
+    GroupManagerActivity.a(this.a, DialogUtil.a(this.a, 2131363795, 2131363796, this.a.a.group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+    GroupManagerActivity.a(this.a, 1);
   }
 }
 

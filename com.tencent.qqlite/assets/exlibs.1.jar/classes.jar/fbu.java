@@ -1,48 +1,16 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.open.agent.util.AuthorityUtil;
+import com.tencent.mobileqq.widget.SlideTabWidget;
+import com.tencent.mobileqq.widget.SlideTabWidget.OnTabSlideCompleteListener;
 
 public class fbu
-  extends Handler
+  implements Runnable
 {
-  public fbu(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public fbu(SlideTabWidget paramSlideTabWidget) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
+    if (SlideTabWidget.a(this.a) != null) {
+      SlideTabWidget.a(this.a).a();
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramMessage = (Bitmap)paramMessage.obj;
-        } while (paramMessage == null);
-        paramMessage = AuthorityUtil.a(this.a, paramMessage, 50, 50);
-        localMessage = Message.obtain();
-        localMessage.what = 1002;
-        localMessage.obj = paramMessage;
-        this.a.b.sendMessage(localMessage);
-        return;
-        paramMessage = (String)paramMessage.obj;
-      } while (TextUtils.isEmpty(paramMessage));
-      paramMessage = AuthorityActivity.a(paramMessage);
-    } while (paramMessage == null);
-    Message localMessage = Message.obtain();
-    localMessage.what = 1003;
-    localMessage.obj = paramMessage;
-    this.a.b.sendMessage(localMessage);
   }
 }
 

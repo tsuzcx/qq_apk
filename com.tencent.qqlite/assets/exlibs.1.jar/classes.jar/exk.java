@@ -1,106 +1,63 @@
-import android.graphics.RectF;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.widget.AlbumImageProxy;
-import com.tencent.mobileqq.widget.AlbumWorkSpace;
-import com.tencent.mobileqq.widget.ImageViewTouche;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.QQCustomSingleChoiceDialog;
 
 public class exk
-  extends GestureDetector.SimpleOnGestureListener
+  extends BaseAdapter
 {
-  private exk(AlbumImageProxy paramAlbumImageProxy) {}
+  public exk(QQCustomSingleChoiceDialog paramQQCustomSingleChoiceDialog) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public int getCount()
   {
-    AlbumImageProxy localAlbumImageProxy = this.a;
-    if (localAlbumImageProxy.getScale() > 2.0F) {
-      localAlbumImageProxy.zoomTo(1.0F);
+    if (this.a.jdField_a_of_type_ArrayOfJavaLangCharSequence != null) {
+      return this.a.jdField_a_of_type_ArrayOfJavaLangCharSequence.length;
     }
-    for (;;)
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.a.inflater == null) {
+      this.a.inflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    }
+    paramViewGroup = paramView;
+    if (paramView == null)
     {
-      return true;
-      localAlbumImageProxy.zoomToPoint(3.0F, paramMotionEvent.getX(), paramMotionEvent.getY());
+      paramViewGroup = this.a.inflater.inflate(2130903137, null);
+      paramView = new exm(this.a, null);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296917));
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131296918));
+      paramViewGroup.setTag(paramView);
     }
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return super.onDown(paramMotionEvent);
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    super.onLongPress(paramMotionEvent);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    boolean bool = true;
-    paramMotionEvent1 = this.a;
-    if (2 == paramMotionEvent2.getAction())
+    paramView = (exm)paramViewGroup.getTag();
+    if (paramView.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      float f;
-      int i;
-      int k;
-      int m;
-      if (paramMotionEvent1.getScale() > 1.0F)
-      {
-        paramMotionEvent1.postTranslateCenter(-paramFloat1, -paramFloat2);
-        paramFloat2 = this.a.getShownRect().right;
-        f = this.a.getShownRect().left;
-        i = ((AlbumWorkSpace)paramMotionEvent1.getParent()).getScrollX();
-        int j = paramMotionEvent1.getLeft();
-        k = paramMotionEvent1.getRight();
-        m = this.a.getWidth();
-        if (paramFloat1 <= 0.0F) {
-          break label138;
-        }
-        if (j - i < 0) {
-          break label110;
-        }
-      }
-      label110:
-      while (k - i <= m)
-      {
-        return false;
-        if ((paramFloat2 >= m) && (f <= 0.0F)) {}
-        for (bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      label138:
-      if ((paramFloat2 >= m) && (f <= 0.0F)) {}
-      for (;;)
-      {
-        return bool;
-        bool = false;
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_ArrayOfJavaLangCharSequence[paramInt]);
+      if (this.a.jdField_a_of_type_Int == paramInt) {
+        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
       }
     }
-    return true;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    super.onSingleTapConfirmed(paramMotionEvent);
-    return false;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    super.onSingleTapUp(paramMotionEvent);
-    return false;
+    else
+    {
+      return paramViewGroup;
+    }
+    paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+    return paramViewGroup;
   }
 }
 

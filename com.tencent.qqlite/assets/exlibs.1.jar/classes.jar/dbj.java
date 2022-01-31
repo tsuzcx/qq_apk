@@ -1,145 +1,119 @@
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.AddressData.NO_LIMIT_ADDRESS;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.os.Bundle;
+import com.tencent.mobileqq.bubble.AnimationConfig;
+import com.tencent.mobileqq.bubble.BubbleInfo;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.bubble.BubbleManager.BubbleInfoLruCache;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.vip.IPCDownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.io.File;
+import java.util.List;
+import java.util.Map;
 
 public class dbj
-  implements IphonePickerView.IphonePickListener
+  extends DownloadListener
 {
-  public dbj(LocationSelectActivity paramLocationSelectActivity) {}
-  
-  public void a()
+  public dbj(BubbleManager paramBubbleManager, String paramString1, String paramString2)
   {
-    LocationSelectActivity.a(this.a).setRightTextColor(2);
-    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    super(paramString1, paramString2);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onCancel(DownloadTask paramDownloadTask)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(BubbleManager.jdField_a_of_type_JavaLangString, 2, "bubbleDownloadListener.onCancel| task:" + paramDownloadTask);
     }
-    switch (paramInt1)
-    {
+    String str = paramDownloadTask.a().getString("name");
+    this.a.a("Bubble_download_cancel", paramDownloadTask.b(), str, 0L);
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    super.onDone(paramDownloadTask);
+    if (QLog.isColorLevel()) {
+      QLog.d(BubbleManager.jdField_a_of_type_JavaLangString, 2, "bubbleDownloadListener.onDone| task:" + paramDownloadTask);
     }
-    label808:
-    label811:
-    for (;;)
+    if (paramDownloadTask.b()) {}
+    String str;
+    do
     {
-      LocationSelectActivity.a(this.a, LocationSelectActivity.a(this.a), LocationSelectActivity.a(this.a));
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(null);
-      this.a.jdField_a_of_type_ArrayOfInt[0] = paramInt2;
-      this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[0] = ((BaseAddress)((ArrayList)this.a.jdField_a_of_type_ArrayOfJavaLangObject[0]).get(paramInt2));
-      ArrayList localArrayList1 = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[0].a();
-      if (localArrayList1.size() > 0)
+      do
       {
-        this.a.jdField_a_of_type_ArrayOfJavaLangObject[1] = localArrayList1;
-        this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = ((BaseAddress)localArrayList1.get(0));
-        this.a.jdField_a_of_type_ArrayOfInt[1] = 0;
-        localArrayList1 = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1].a();
-        if (localArrayList1.size() > 0)
-        {
-          this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = localArrayList1;
-          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = ((BaseAddress)localArrayList1.get(0));
-          this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
+        return;
+        if (paramDownloadTask.a() != -1) {
+          break;
+        }
+      } while ((this.a.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener == null) || (!paramDownloadTask.a().containsKey("callbackId")));
+      this.a.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener.onDone(paramDownloadTask.b(), -1, paramDownloadTask.a());
+      return;
+      str = paramDownloadTask.a().getString("name");
+    } while (str == null);
+    Object localObject1;
+    if ("all.zip".equals(str))
+    {
+      localObject1 = this.a.a(paramDownloadTask.b(), false);
+      if (DownloaderFactory.a((File)paramDownloadTask.a.get(paramDownloadTask.b), (File)localObject1))
+      {
+        if (this.a.a(paramDownloadTask.b(), false)) {
+          this.a.b(paramDownloadTask.b(), null);
+        }
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener != null) && (paramDownloadTask.a().containsKey("callbackId"))) {
+          this.a.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener.onDone(paramDownloadTask.b(), 3, paramDownloadTask.a());
         }
       }
-      for (;;)
+    }
+    for (;;)
+    {
+      long l1 = paramDownloadTask.h;
+      long l2 = paramDownloadTask.g;
+      this.a.a("Bubble_download_succ", paramDownloadTask.b(), str, l1 - l2);
+      return;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener != null) && (paramDownloadTask.a().containsKey("callbackId")))
       {
-        if (this.a.j > 1)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1);
-          this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.a.jdField_a_of_type_ArrayOfInt[1]);
-          if (this.a.j == 3)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.a.jdField_a_of_type_ArrayOfInt[2]);
-          }
+        this.a.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener.onDone(paramDownloadTask.b(), -2, paramDownloadTask.a());
+        continue;
+        localObject1 = new File(this.a.a(paramDownloadTask.b(), true), str);
+        int i = str.lastIndexOf(".zip");
+        if (i < 0) {
+          break;
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(this);
-        break;
-        if (this.a.j == 3)
+        Object localObject2 = str.substring(0, i);
+        if (DownloaderFactory.a((File)localObject1, new File(this.a.a(paramDownloadTask.b(), false), (String)localObject2)))
         {
-          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = new AddressData.NO_LIMIT_ADDRESS(3);
-          this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = null;
-          this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-          continue;
-          if (this.a.j > 1)
+          if (this.a.a(paramDownloadTask.b(), false)) {
+            this.a.b(paramDownloadTask.b(), (String)localObject2);
+          }
+          if (!"static".equals(localObject2))
           {
-            this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = new AddressData.NO_LIMIT_ADDRESS(2);
-            this.a.jdField_a_of_type_ArrayOfJavaLangObject[1] = null;
-            this.a.jdField_a_of_type_ArrayOfInt[1] = 0;
-            if (this.a.j == 3)
+            localObject1 = this.a.a(paramDownloadTask.b(), (String)localObject2);
+            localObject1 = this.a.a(paramDownloadTask.b(), (AnimationConfig)localObject1, false);
+            if (localObject1 != null)
             {
-              this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = new AddressData.NO_LIMIT_ADDRESS(3);
-              this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = null;
-              this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
+              localObject2 = (BubbleInfo)this.a.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager$BubbleInfoLruCache.get(Integer.valueOf(paramDownloadTask.b()));
+              if (localObject2 != null) {
+                ((BubbleInfo)localObject2).a.add(localObject1);
+              }
             }
           }
         }
       }
-      this.a.jdField_a_of_type_ArrayOfInt[1] = paramInt2;
-      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(null);
-      try
-      {
-        this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = ((BaseAddress)((ArrayList)this.a.jdField_a_of_type_ArrayOfJavaLangObject[1]).get(paramInt2));
-        localArrayList1 = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1].a();
-        if (localArrayList1.size() > 0)
-        {
-          this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = localArrayList1;
-          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = ((BaseAddress)localArrayList1.get(0));
-          this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-          if (this.a.j > 2)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.a.jdField_a_of_type_ArrayOfInt[2]);
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(this);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = new BaseAddress("不限", "0", 2);
-          continue;
-          if (this.a.j > 2)
-          {
-            this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = new AddressData.NO_LIMIT_ADDRESS(3);
-            this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = null;
-            this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-          }
-        }
-      }
-      ArrayList localArrayList2;
-      if (Collections.emptyList().equals(this.a.jdField_a_of_type_ArrayOfJavaLangObject[2]))
-      {
-        if (!QLog.isColorLevel()) {
-          break label808;
-        }
-        QLog.d(LocationSelectActivity.c(), 2, "columnListArray at 2 is empty");
-        localArrayList2 = null;
-      }
-      for (;;)
-      {
-        if ((localArrayList2 == null) || (paramInt2 >= localArrayList2.size()) || (paramInt2 < 0)) {
-          break label811;
-        }
-        this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = ((BaseAddress)localArrayList2.get(paramInt2));
-        this.a.jdField_a_of_type_ArrayOfInt[2] = paramInt2;
-        break;
-        localArrayList2 = (ArrayList)this.a.jdField_a_of_type_ArrayOfJavaLangObject[2];
-        continue;
-        localArrayList2 = null;
-      }
     }
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(BubbleManager.jdField_a_of_type_JavaLangString, 2, "bubbleDownloadListener.onStart| task:" + paramDownloadTask);
+    }
+    if (paramDownloadTask.b() == 0) {
+      return false;
+    }
+    String str = paramDownloadTask.a().getString("name");
+    this.a.a("Bubble_download", paramDownloadTask.b(), str, 0L);
+    super.onStart(paramDownloadTask);
+    return true;
   }
 }
 

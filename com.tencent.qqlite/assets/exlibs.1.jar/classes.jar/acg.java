@@ -1,31 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.Intent;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.app.ChatBackgroundManagerImp;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.app.AppConstants;
 
 public class acg
-  implements Runnable
+  implements View.OnClickListener
 {
   public acg(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      Object localObject = new File(ChatBackgroundManagerImp.c);
-      HttpDownloadUtil.a(this.a.app, EmosmUtils.insertMtype("VIP_other", "http://i.gtimg.cn/qqshow/admindata/comdata/backgroundMall_chat_1/xydata.js"), (File)localObject);
-      localObject = new Message();
-      ((Message)localObject).what = 1;
-      this.a.b.sendMessage((Message)localObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    paramView = this.a.getIntent();
+    String str = AppConstants.as + this.a.c + "/" + "custom_background/";
+    str = str + System.currentTimeMillis() + ".jpg";
+    Rect localRect = new Rect();
+    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+    PhotoUtils.a(paramView, this.a, ChatBackgroundSettingActivity.class.getName(), localRect.width() / 5 * 4, localRect.height() / 5 * 4, localRect.width(), localRect.height(), str);
   }
 }
 
